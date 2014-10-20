@@ -1,13 +1,11 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def google_oauth2
-    provider_info = request.env['omniauth.auth'].info
-    @user = User.find_by(email: provider_info.email)
-    unless @user
-      @user = User.create!(first_name: provider_info.first_name, last_name: provider_info.last_name, email: provider_info.email)
-    end
 
+  def authenticate_user
+    omniauth_user = Users::OmniauthUser.new(request.env['omniauth.auth'].info)
+    @user = omniauth_user.find_or_create
     sign_in_and_redirect @user, event: :authentication
   end
 
-  alias_method :facebook, :google_oauth2
+  alias_method :google_oauth2, :authenticate_user
+  alias_method :facebook, :authenticate_user
 end
