@@ -1,8 +1,7 @@
 db:
   environment:
-    MYSQL_ROOT_PASS: root
-  hostname: probebe-mysql
-  image: mysql
+    MYSQL_PASS: root
+  image: tutum/mysql
   ports:
     - 3306:3306
   volumes:
