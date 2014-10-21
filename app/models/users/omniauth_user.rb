@@ -8,9 +8,9 @@ module Users
       @email = auth_info.email
     end
 
-    def find_or_create
+    def build_user
       User.find_by(email: @email) ||
-        User.create!(first_name: @first_name, last_name: @last_name, email: @email)
+        User.new(first_name: @first_name, last_name: @last_name, email: @email)
     end
 
   end
