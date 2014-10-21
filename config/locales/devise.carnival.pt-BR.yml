@@ -37,6 +37,7 @@ pt-BR:
       remember_me: Permanecer conectado
     shared:
       enter: Entrar
-      register: Registrar
       forgot: Esqueci minha senha
       omni: Logar com
+      register: Registrar
+      resend: Reenviar confirmação

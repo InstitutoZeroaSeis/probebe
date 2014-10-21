@@ -6,7 +6,7 @@ en:
     mailer:
       welcome: Welcome
       hello: Hello
-      confirm_message: You can confirm your email account the link below 
+      confirm_message: You can confirm your email account the link below
       confirm_account: Confirm my account
       change_message: Someone has requested a link to change your password. You can do this through the link below
       change: Change my Password
@@ -37,6 +37,7 @@ en:
       remember_me: Remember me
     shared:
       enter: Enter
-      register: Register
       forgot: Forgot my password
       omni: Login with
+      register: Register
+      resend: Resend confirmation

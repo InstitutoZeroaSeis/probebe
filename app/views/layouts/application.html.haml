@@ -7,9 +7,9 @@
   %body
     - if notice
       :javascript
-        noty({ text: "#{notice}", layout: 'bottom', type: 'information', timeout: '3000' });
+        noty({ text: "#{notice}", layout: 'top', type: 'information', timeout: '5000' });
     - if alert
       :javascript
-        noty({ text: "#{alert}", layout: 'bottom', type: 'warning', timeout: '3000' });
+        noty({ text: "#{alert}", layout: 'top', type: 'warning', timeout: '5000' });
     = yield
     = link_to 'Sair', sign_out_path
