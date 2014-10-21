@@ -1,11 +1,11 @@
 module Users
   class OmniauthUser
 
-    def initialize(provider_info)
-      @provider_info = provider_info
-      @first_name = provider_info.first_name
-      @last_name = provider_info.last_name
-      @email = provider_info.email
+    def initialize(auth_info)
+      @auth_info = auth_info
+      @first_name = auth_info.first_name
+      @last_name = auth_info.last_name
+      @email = auth_info.email
     end
 
     def find_or_create
