@@ -5,7 +5,11 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %p.notice= notice
-    %p.alert= alert
+    - if notice
+      :javascript
+        noty({ text: "#{notice}", layout: 'bottom', type: 'information', timeout: '3000' });
+    - if alert
+      :javascript
+        noty({ text: "#{alert}", layout: 'bottom', type: 'warning', timeout: '3000' });
     = yield
     = link_to 'Sair', sign_out_path
