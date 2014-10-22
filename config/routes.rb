@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   mount_carnival_at '/'
 
   root to: 'home#index'
-
+  resources :users
   resources :messages
 end
