@@ -23,11 +23,28 @@ ActiveRecord::Schema.define(version: 20141022155234) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "personal_profiles", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "gender"
+    t.date     "birth_date"
+    t.string   "avatar"
+    t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  add_index "personal_profiles", ["profile_id"], name: "index_personal_profiles_on_profile_id", using: :btree
+
+  create_table "profiles", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
+  create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

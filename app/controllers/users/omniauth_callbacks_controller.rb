@@ -1,19 +1,23 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def authenticate_user
-    build_user
-    @user.skip_confirmation!
-    @user.save
-    sign_in_and_redirect @user, event: :authentication
+    build_omniauth_user
+    if @omniauth_user.save
+      @user = @omniauth_user.user
+      @user.skip_confirmation!
+      sign_in_and_redirect @user, event: :authentication
+    else
+      flash[:alert] = "Não foi possível autenticar com o método escolhido"
+      redirect_to new_user_session_path
+    end
   end
 
   def omniauth_info
     request.env['omniauth.auth'].info
   end
 
-  def build_user
-    omniauth_user = Users::OmniauthUser.new(omniauth_info)
-    @user = omniauth_user.build_user
+  def build_omniauth_user
+    @omniauth_user = Users::OmniauthUser.new(omniauth_info)
   end
 
   alias_method :google_oauth2, :authenticate_user

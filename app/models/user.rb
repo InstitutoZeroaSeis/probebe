@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :confirmable
 
+  has_one :profile
+
   validates_presence_of :email
 
   def password_required?
