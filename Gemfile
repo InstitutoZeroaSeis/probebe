@@ -16,6 +16,7 @@ gem 'carnival_devise_views', :github => 'Vizir/carnival_devise_views', :branch =
 gem 'devise', '~> 3.4.0'
 gem 'omniauth-facebook', '~> 2.0.0'
 gem 'omniauth-google-oauth2', '~> 0.2.5'
+gem 'paperclip', '~> 4.2.0'
 
 group :development, :test do
   gem 'better_errors', '0.9.0'
