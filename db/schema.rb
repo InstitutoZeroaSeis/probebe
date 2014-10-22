@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020182958) do
+ActiveRecord::Schema.define(version: 20141022155234) do
+
+  create_table "messages", force: true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.integer  "gender",            default: 2
+    t.integer  "category_id"
+    t.boolean  "teenage_pregnancy"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
