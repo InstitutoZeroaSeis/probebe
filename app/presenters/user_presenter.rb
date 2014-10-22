@@ -8,5 +8,6 @@ class UserPresenter < Carnival::BaseAdminPresenter
         actions: [:index, :show], :sortable => false,
         advanced_search: {:operator => :like}
 
+  action :show
 
 end
