@@ -1,4 +1,4 @@
-class CategoryPresenter < Carnival::BaseAdminPresenter
+class Admin::CategoryPresenter < Carnival::BaseAdminPresenter
 
   field :id,
         actions: [:index, :show], :sortable => false,

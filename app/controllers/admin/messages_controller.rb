@@ -1,4 +1,4 @@
-class MessagesController < Carnival::BaseAdminController
+class Admin::MessagesController < Carnival::BaseAdminController
 
   private
 
