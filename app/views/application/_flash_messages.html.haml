@@ -1,0 +1,10 @@
+- if notice
+  :javascript
+    $(document).ready(function() {
+      noty({ text: "#{notice}", layout: 'top', type: 'information', timeout: '5000' });
+    });
+- if alert
+  :javascript
+    $(document).ready(function() {
+      noty({ text: "#{alert}", layout: 'top', type: 'warning', timeout: '5000' });
+    });
