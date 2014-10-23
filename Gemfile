@@ -14,9 +14,11 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'carnival', :github => 'Vizir/carnival', :branch => 'master'
 gem 'carnival_devise_views', :github => 'Vizir/carnival_devise_views', :branch => 'master'
 gem 'devise', '~> 3.4.0'
+gem 'devise-i18n', '~> 0.11.2'
 gem 'omniauth-facebook', '~> 2.0.0'
 gem 'omniauth-google-oauth2', '~> 0.2.5'
 gem 'paperclip', '~> 4.2.0'
+gem 'simple_form', '~> 3.0.2'
 
 group :development, :test do
   gem 'better_errors', '0.9.0'
