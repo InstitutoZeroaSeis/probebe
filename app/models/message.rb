@@ -1,4 +1,4 @@
-class Admin::Message < ActiveRecord::Base
+class Message < ActiveRecord::Base
   include Carnival::ModelHelper
   
   # enum gender: { male: 0, female: 1, both: 2 }

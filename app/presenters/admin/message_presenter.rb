@@ -1,4 +1,4 @@
-class MessagePresenter < Carnival::BaseAdminPresenter
+class Admin::MessagePresenter < Carnival::BaseAdminPresenter
 
   field :id,
         actions: [:index, :show], :sortable => false,

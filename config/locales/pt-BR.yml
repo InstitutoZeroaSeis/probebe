@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        category:
+          attributes:
+            parent_category:
+              hierarchy_too_big: "Só é permitido um nível de subcategoria"
+              hierarchy_has_cycles: "A subcategoria não pode ser igual a categoria"
