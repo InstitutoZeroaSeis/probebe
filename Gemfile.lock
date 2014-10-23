@@ -281,6 +281,7 @@ DEPENDENCIES
   rspec-rails (~> 3.1.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  simple_form (~> 3.0.2)
   simplecov
   spring
   spring-commands-rspec
