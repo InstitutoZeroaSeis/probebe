@@ -7,7 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.skip_confirmation!
       sign_in_and_redirect @user, event: :authentication
     else
-      flash[:alert] = "Não foi possível autenticar com o método escolhido"
+      flash[:alert] = I18n.t('errors.messages.controllers.omniauth_callbacks.authenticate')
       redirect_to new_user_session_path
     end
   end

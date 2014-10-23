@@ -46,7 +46,7 @@ class Category < ActiveRecord::Base
 
   def check_has_no_child_categories
     if self.class.where(parent_category_id: self.id).count > 0
-      errors.add(:base, I18n.t("category.errors.has_child_categories"))
+      errors.add(:base, I18n.t("activerecord.errors.models.category.attributes.base.has_child_categories"))
       return false
     end
   end

@@ -1,9 +1,37 @@
 pt-BR:
   activerecord:
+    attributes:
+      category:
+        id: "Id"
+        name: "Nome"
+        parent_category: "Categoria pai"
+      user:
+        id: "Id"
+        email: "Email"
+      personal_profile:
+        first_name: "Nome"
+        last_name: "Sobrenome"
+        gender: "Sexo"
+        birth_date: "Data de Nascimento"
+        avatar: "Avatar"
+      message:
+        id: "Id"
+        text: "Texto"
+        category: "Categoria"
+        teenage_pregnancy: "Aplicável para gravidez na adolescência"
+        gender: "Sexo"
     errors:
       models:
         category:
+          base:
+            has_child_categories: "Categoria não pode ser deletada por conter subcategoria" 
           attributes:
             parent_category:
               hierarchy_too_big: "Só é permitido um nível de subcategoria"
               hierarchy_has_cycles: "A subcategoria não pode ser igual a categoria"
+
+  errors:
+    messages:
+      controllers:
+        omniauth_callbacks:
+          authenticate: "Não foi possível autenticar com o método escolhido"
