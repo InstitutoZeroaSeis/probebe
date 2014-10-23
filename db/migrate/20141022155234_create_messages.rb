@@ -1,7 +1,6 @@
 class CreateMessages < ActiveRecord::Migration
   def change
     create_table :messages do |t|
-      t.string :title
       t.text :text
       t.integer :gender, default: 2
       t.integer :category_id

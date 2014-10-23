@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20141022225302) do
   end
 
   create_table "messages", force: true do |t|
-    t.string   "title"
     t.text     "text"
     t.integer  "gender",            default: 2
     t.integer  "category_id"

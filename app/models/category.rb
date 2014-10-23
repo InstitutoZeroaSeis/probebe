@@ -4,6 +4,7 @@ class Category < ActiveRecord::Base
 
   belongs_to :parent_category, class_name: "Category", foreign_key: :parent_category_id
   has_many :sub_categories, class_name: "Category", foreign_key: :parent_category_id
+  has_many :messages
 
   validates_presence_of :name
   validate :maximum_hierarchy_level

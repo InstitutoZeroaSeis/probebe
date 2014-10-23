@@ -4,10 +4,6 @@ class Admin::MessagePresenter < Carnival::BaseAdminPresenter
         actions: [:index, :show], :sortable => false,
         advanced_search: {:operator => :equal}
 
-  field :title,
-        actions: [:index, :new, :edit, :show],
-        advanced_search: {:operator => :like}
-
   field :text,
         actions: [:index, :new, :edit, :show],
         advanced_search: {:operator => :like}
@@ -18,6 +14,10 @@ class Admin::MessagePresenter < Carnival::BaseAdminPresenter
 
   field :teenage_pregnancy,
         actions: [:index, :new, :edit, :show],
+        advanced_search: {:operator => :equal}
+
+  field :category,
+        actions: [:new, :edit],
         advanced_search: {:operator => :equal}
 
   field :created_at, :actions => [:index, :show]

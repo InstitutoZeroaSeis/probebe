@@ -3,7 +3,7 @@ class Admin::MessagesController < Carnival::BaseAdminController
   private
 
   def permitted_params
-    params.permit(message: [:title, :text, :gender, :teenage_pregnancy])
+    params.permit(message: [:text, :gender, :teenage_pregnancy, :category])
   end
 
 end
