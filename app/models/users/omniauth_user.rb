@@ -4,7 +4,7 @@ module Users
 
     validates_presence_of :email, :first_name, :last_name
 
-    attr_accessor :user, :email, :first_name, :last_name
+    attr_accessor :user, :email, :first_name, :last_name, :image
 
     def initialize(params)
       params.each do |attr, value|
@@ -41,7 +41,7 @@ module Users
     end
 
     def profile_attributes
-      { user: @user, first_name: @first_name, last_name: @last_name }
+      { user: @user, first_name: @first_name, last_name: @last_name, image: @image }
     end
 
   end

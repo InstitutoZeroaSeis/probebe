@@ -3,7 +3,7 @@ class Profiles::ProfileCreator
 
   validates_presence_of :first_name, :last_name, :user
   validate :valid_user?
-  attr_accessor :first_name, :last_name, :user, :profile, :personal_profile
+  attr_accessor :first_name, :last_name, :user, :profile, :personal_profile, :image
 
   def initialize(params)
     params.each do |attr, value|
@@ -22,18 +22,28 @@ class Profiles::ProfileCreator
   protected
 
   def save!
-    create_profile and create_personal_profile
+    create_profile
   end
 
   def create_profile
     @profile = @user.profile || @user.create_profile
-    @profile.valid?
+    @profile.valid? and create_personal_profile
   end
 
   def create_personal_profile
     @personal_profile = @profile.personal_profile ||
       @profile.create_personal_profile(personal_profile_attributes)
-    @personal_profile.valid?
+    @personal_profile.valid? and create_avatar
+  end
+
+  def create_avatar
+    if @image and !@personal_profile.avatar
+      @avatar = @personal_profile.build_avatar
+      @avatar.from_url(@image)
+      @avatar.save
+    else
+      true
+    end
   end
 
   def personal_profile_attributes

@@ -49,5 +49,4 @@ class Category < ActiveRecord::Base
       return false
     end
   end
-
 end
