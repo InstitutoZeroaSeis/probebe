@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20141022225302) do
   create_table "personal_profiles", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "gender"
+    t.integer  "gender",     default: 2
     t.date     "birth_date"
     t.string   "avatar"
     t.integer  "profile_id"

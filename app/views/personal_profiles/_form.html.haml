@@ -3,7 +3,7 @@
 
   = f.input :first_name
   = f.input :last_name
-  = f.input :gender, as: :enum
+  = f.input :gender, as: :enum, include_blank: false
   = f.simple_fields_for :avatar, f.object.avatar || Avatar.new,  wrapper: :horizontal_file_input do |ff|
     = ff.input :photo, as: :file
   .col-sm-offset-2

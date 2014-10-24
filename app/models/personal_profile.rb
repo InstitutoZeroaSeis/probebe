@@ -1,5 +1,5 @@
 class PersonalProfile < ActiveRecord::Base
-  GENDER_ENUM = [:male, :female]
+  GENDER_ENUM = [:male, :female, :not_informed]
 
   belongs_to :profile
   has_one :avatar
