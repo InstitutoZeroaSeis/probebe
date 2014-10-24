@@ -20,6 +20,9 @@ module ProBebe
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.autoload_paths << Rails.root.join('app/inputs')
+    config.autoload_paths << Rails.root.join('app/value_objects')
+
     config.i18n.available_locales = :pt, :'pt-BR', :en
     config.i18n.default_locale = 'pt-BR'
 

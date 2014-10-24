@@ -1,0 +1,18 @@
+= simple_form_for profile do |f|
+  = f.error_notification
+  - if f.object.errors.any?
+    #error_explanation
+      .alert.alert-error
+        = "The form contains #{pluralize(f.object.errors.count, 'error')}"
+      %ul
+        - f.object.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-inputs
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :gender, as: :enum
+    = f.simple_fields_for :avatar do |ff|
+      = ff.input :photo, as: :file
+  .form-actions
+    = f.submit

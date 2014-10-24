@@ -3,17 +3,17 @@ FactoryGirl.define do
     sequence(:name) {|n| "#{n}category"}
   end
 
-  trait :with_parent do 
+  trait :with_parent do
     association :parent_category, factory: :category
   end
 
-  trait :with_parent_category_same_as_self do 
+  trait :with_parent_category_same_as_self do
     after(:build) do |category|
       category.parent_category = category
     end
   end
 
-  trait :with_children do 
+  trait :with_children do
     sub_categories { create_list(:category, 2) }
   end
 end
