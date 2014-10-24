@@ -28,13 +28,20 @@ pt-BR:
       models:
         category:
           base:
-            has_child_categories: "Categoria não pode ser deletada por conter subcategoria" 
+            has_child_categories: "Categoria não pode ser deletada por conter subcategoria"
           attributes:
             parent_category:
               hierarchy_too_big: "Só é permitido um nível de subcategoria"
               hierarchy_has_cycles: "A subcategoria não pode ser igual a categoria"
     models:
       personal_profile: "Perfil pessoal"
+  carnival:
+    impersonate: "Logar como"
+    menu:
+      administration: "Administração"
+      categories: "Categorias"
+      messages: "Mensagens"
+      users: "Usuários"
   errors:
     controllers:
       omniauth_callbacks:
@@ -44,16 +51,6 @@ pt-BR:
       admin:
         users:
           impersonate: "Logado com usuário %{user_name}"
-
-
-  view:
-    message:
-      back_to_admin: "Voltar a acessar como Admin"
-      signed_in_as: "Logado como %{user_name}"
-
-  carnival:
-    impersonate: "Logar como"
-
   general:
     gender:
       <<: *gender
@@ -62,3 +59,8 @@ pt-BR:
       personal_profile:
         gender:
           <<: *gender
+  view:
+    message:
+      back_to_admin: "Voltar a acessar como Admin"
+      signed_in_as: "Logado como %{user_name}"
+
