@@ -1,25 +1,47 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def authenticate_user
-    build_omniauth_user
-    if @omniauth_user.save
-      @user = @omniauth_user.user
-      @user.skip_confirmation!
+    build_hash
+    build_user
+    build_profile
+    build_personal_profile
+
+    @user.skip_confirmation!
+    if @personal_profile.save
       sign_in_and_redirect @user, event: :authentication
     else
-      flash[:alert] = I18n.t('errors.messages.controllers.omniauth_callbacks.authenticate')
-      redirect_to new_user_session_path
+      sign_in @user
+      render 'personal_profiles/edit', locals: { profile: @personal_profile }
     end
-  end
-
-  def omniauth_info
-    request.env['omniauth.auth'].info
-  end
-
-  def build_omniauth_user
-    @omniauth_user = Users::OmniauthUser.new(omniauth_info)
   end
 
   alias_method :google_oauth2, :authenticate_user
   alias_method :facebook, :authenticate_user
+
+  def build_hash
+    @omni_auth_hash = ::OmniAuthHashWrapper.new(request.env['omniauth.auth'])
+  end
+
+  def build_user
+    @user = User.find_by(email: @omni_auth_hash.email) ||
+      User.create(email: @omni_auth_hash.email)
+  end
+
+  def build_profile
+    @profile = @user.profile || @user.create_profile!
+  end
+
+  def build_personal_profile
+    @personal_profile = @profile.personal_profile ||
+      @profile.create_personal_profile(personal_profile_attributes)
+  end
+
+  def personal_profile_attributes
+    {
+      first_name: @omni_auth_hash.first_name,
+      last_name: @omni_auth_hash.last_name,
+      gender: @omni_auth_hash.gender
+    }
+  end
+
 end

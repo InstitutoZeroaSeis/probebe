@@ -1,4 +1,7 @@
 pt-BR:
+  _gender: &gender
+    male: 'Masculino'
+    female: 'Feminno'
   activerecord:
     attributes:
       category:
@@ -29,9 +32,18 @@ pt-BR:
             parent_category:
               hierarchy_too_big: "Só é permitido um nível de subcategoria"
               hierarchy_has_cycles: "A subcategoria não pode ser igual a categoria"
-
+    models:
+      personal_profile: "Perfil pessoal"
   errors:
     messages:
       controllers:
         omniauth_callbacks:
           authenticate: "Não foi possível autenticar com o método escolhido"
+  general:
+    gender:
+      <<: *gender
+  simple_form:
+    options:
+      personal_profile:
+        gender:
+          <<: *gender
