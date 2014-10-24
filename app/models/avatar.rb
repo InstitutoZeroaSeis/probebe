@@ -5,6 +5,7 @@ class Avatar < ActiveRecord::Base
   validates_attachment_size :photo, :in => 0..1.megabyte
 
   def from_url(url)
-    self.photo = open(url)
+    self.photo = Http::Download.download(url)
   end
+
 end

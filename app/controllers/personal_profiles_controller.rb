@@ -6,12 +6,13 @@ class PersonalProfilesController < ApplicationController
 
   def new
     load_profile
+    render :new, locals: { profile: @profile }
   end
 
   def create
     build_profile
     @profile.profile = current_user.profile
-    save_profile or render :new
+    save_profile or render :new, locals: { profile: @profile }
   end
 
   def edit
@@ -21,7 +22,7 @@ class PersonalProfilesController < ApplicationController
 
   def update
     build_profile
-    save_profile or render :edit
+    save_profile or render :edit, locals: { profile: @profile }
   end
 
   def save_profile
@@ -43,6 +44,6 @@ class PersonalProfilesController < ApplicationController
 
   def permitted_params
     profile_params = params[:personal_profile]
-    profile_params ? profile_params.permit(:first_name, :last_name, :gender, avatar_attributes: [:photo]) : {}
+    profile_params ? profile_params.permit(:first_name, :last_name, :gender, avatar_attributes: [:id, :photo]) : {}
   end
 end

@@ -9,20 +9,20 @@ describe Users::OmniauthCallbacksController do
 
       it "should authenticate and redirect to the user profile page" do
         allow(OmniAuthHashWrapper).to receive(:new).and_return(omni_auth_hash)
-        expect(subject).to receive(:sign_in_and_redirect)
+        expect(subject).to receive(:sign_in)
+        expect(subject).to receive(:redirect_to)
 
         subject.authenticate_user
       end
     end
 
     context "with an existing user" do
-      let (:omni_auth_hash) { OmniAuthHashWrapper.new(OmniAuth::MissingNameHash) }
+      let (:omni_auth_hash) { OmniAuthHashWrapper.new(OmniAuth::StubbedHash) }
 
       it "should authenticate and redirect an existing user to the home page" do
         create(:user, :with_profile, email: omni_auth_hash.email)
         allow(OmniAuthHashWrapper).to receive(:new).and_return(omni_auth_hash)
-        expect(subject).to receive(:sign_in)
-        expect(subject).to receive(:render)
+        expect(subject).to receive(:sign_in_and_redirect)
 
         subject.authenticate_user
       end

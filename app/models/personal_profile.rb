@@ -8,6 +8,8 @@ class PersonalProfile < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name
 
+  accepts_nested_attributes_for :avatar
+
   def name
     "#{first_name} #{last_name}"
   end

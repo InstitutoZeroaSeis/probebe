@@ -22,6 +22,7 @@ module ProBebe
 
     config.autoload_paths << Rails.root.join('app/inputs')
     config.autoload_paths << Rails.root.join('app/value_objects')
+    config.autoload_paths << Rails.root.join('lib/')
 
     config.i18n.available_locales = :pt, :'pt-BR', :en
     config.i18n.default_locale = 'pt-BR'

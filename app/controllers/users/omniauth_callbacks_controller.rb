@@ -1,17 +1,21 @@
+
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def authenticate_user
     build_hash
-    build_user
-    build_profile
-    build_personal_profile
+    User.transaction do
+      find_or_create_user
+      find_or_create_profile
+      find_or_create_personal_profile
+      create_profile_avatar
+    end
 
-    if !@personal_profile.persisted?
+    if @new_personal_profile
       @user.skip_confirmation!
+      sign_in @user
+      redirect_to edit_personal_profile_path(@personal_profile)
     else
       sign_in_and_redirect @user, event: :authentication
-      sign_in @user
-      render 'personal_profiles/edit', locals: { profile: @personal_profile }
     end
   end
 
@@ -22,18 +26,30 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @omni_auth_hash = ::OmniAuthHashWrapper.new(request.env['omniauth.auth'])
   end
 
-  def build_user
-    @user = User.find_by(email: @omni_auth_hash.email) ||
-      User.create(email: @omni_auth_hash.email)
+  def find_or_create_user
+    @user = User.find_or_create_by!(email: @omni_auth_hash.email)
   end
 
-  def build_profile
+  def find_or_create_profile
     @profile = @user.profile || @user.create_profile!
   end
 
-  def build_personal_profile
-    @personal_profile = @profile.personal_profile ||
-      @profile.build_personal_profile(personal_profile_attributes)
+  def find_or_create_personal_profile
+    if @profile.personal_profile
+      @personal_profile = @profile.personal_profile
+      @new_personal_profile = false
+    else
+      @personal_profile = @profile.create_personal_profile!(personal_profile_attributes)
+      @new_personal_profile = true
+    end
+  end
+
+  def create_profile_avatar
+    if @new_personal_profile and @omni_auth_hash.photo_url
+      @personal_profile.create_avatar!
+      @personal_profile.avatar.from_url(@omni_auth_hash.photo_url)
+      @personal_profile.avatar.save!
+    end
   end
 
   def personal_profile_attributes
@@ -45,3 +61,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
 end
+

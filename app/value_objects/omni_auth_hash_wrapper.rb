@@ -19,6 +19,10 @@ class OmniAuthHashWrapper
     raw_info.try :gender
   end
 
+  def photo_url
+    basic_info.image
+  end
+
   protected
 
   def basic_info
