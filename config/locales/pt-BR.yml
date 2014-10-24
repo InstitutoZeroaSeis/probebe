@@ -31,7 +31,20 @@ pt-BR:
               hierarchy_has_cycles: "A subcategoria não pode ser igual a categoria"
 
   errors:
-    messages:
-      controllers:
-        omniauth_callbacks:
-          authenticate: "Não foi possível autenticar com o método escolhido"
+    controllers:
+      omniauth_callbacks:
+        authenticate: "Não foi possível autenticar com o método escolhido"
+  success:
+    controllers:
+      admin:
+        users:
+          impersonate: "Logado com usuário %{user_name}"
+
+
+  view:
+    message:
+      back_to_admin: "Voltar a acessar como Admin"
+      signed_in_as: "Logado como %{user_name}"
+
+  carnival:
+    impersonate: "Logar como"
