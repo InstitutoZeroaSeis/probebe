@@ -1,3 +1,4 @@
+!!!5
 %html
   %head
     %title Pro Bebe
@@ -6,5 +7,6 @@
     = csrf_meta_tags
     = render partial: 'flash_messages'
   %body
-    = yield
+    .container
+      = yield
     = link_to 'Sair', sign_out_path

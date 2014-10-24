@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.noty.packaged
+//= require bootstrap-sprockets
 //= require_tree .

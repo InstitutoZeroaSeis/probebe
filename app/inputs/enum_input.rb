@@ -5,6 +5,10 @@ class EnumInput < SimpleForm::Inputs::CollectionSelectInput
     super
   end
 
+  def input_html_classes
+    super.push('form-control')
+  end
+
   def get_collection
     object.class.const_get(constant_name)
   end

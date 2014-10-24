@@ -1,9 +1,11 @@
 %div
   <b>Nome</b>
   = @profile.name
-%div
-  <b>Sexo</b>
-  = t "general.gender.#{@profile.gender}"
-%div
-  <b>Foto</b>
-  = image_tag @profile.avatar_url
+- if @profile.gender
+  %div
+    <b>Sexo</b>
+    = t "general.gender.#{@profile.gender}"
+- if @profile.avatar_url
+  %div
+    <b>Foto</b>
+    = image_tag @profile.avatar_url

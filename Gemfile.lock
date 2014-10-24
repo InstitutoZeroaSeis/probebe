@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Vizir/carnival.git
-  revision: 8336d738bb070630742f09c019c01cdff1ce3e08
+  revision: 95b28ccabba5e456c009eca6a15fc217b223455c
   branch: master
   specs:
     carnival (0.1.0)
@@ -49,12 +49,14 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
-    bcrypt (3.1.7)
+    bcrypt (3.1.8)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     builder (3.2.2)
     bullet (4.14.0)
       activesupport (>= 3.0.0)
@@ -122,7 +124,7 @@ GEM
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
-    mime-types (2.4.2)
+    mime-types (2.4.3)
     minitest (5.4.2)
     multi_json (1.10.1)
     multi_xml (0.5.5)
@@ -216,12 +218,12 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    simple_form (3.0.2)
+    simple_form (3.1.0.rc2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
-    simplecov (0.8.2)
+    simplecov (0.9.1)
       docile (~> 1.1.0)
-      multi_json
+      multi_json (~> 1.0)
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
     slop (3.6.0)
@@ -259,6 +261,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors (= 0.9.0)
   binding_of_caller (~> 0.7.2)
+  bootstrap-sass (~> 3.2.0)
   bullet
   byebug (~> 3.4.0)
   carnival!
@@ -283,7 +286,7 @@ DEPENDENCIES
   rspec-rails (~> 3.1.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
-  simple_form (~> 3.0.2)
+  simple_form (~> 3.1.0.rc2)
   simplecov
   spring
   spring-commands-rspec
