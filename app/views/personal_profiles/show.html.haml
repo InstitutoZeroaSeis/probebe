@@ -1,11 +1,13 @@
-%div
-  <b>Nome</b>
-  = @profile.name
-- if @profile.gender
-  %div
-    <b>Sexo</b>
-    = t "general.gender.#{@profile.gender}"
-- if @profile.avatar_url
-  %div
-    <b>Foto</b>
-    = image_tag @profile.avatar_url
+%form.form-horizontal
+  .form-group
+    %label.control-label.col-sm-2 Nome
+    .div.col-sm-10
+      %p.form-control-static= @profile.name
+  .form-group
+    %label.control-label.col-sm-2 Sexo
+    .div.col-sm-10
+      %p.form-control-static= t "general.gender.#{@profile.gender}"
+  .form-group
+    %label.control-label.col-sm-2 Foto
+    .div.col-sm-10
+      %p.form-control-static= image_tag @profile.avatar_url
