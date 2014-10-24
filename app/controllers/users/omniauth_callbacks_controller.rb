@@ -6,8 +6,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     build_profile
     build_personal_profile
 
-    @user.skip_confirmation!
-    if @personal_profile.save
+    if !@personal_profile.persisted?
+      @user.skip_confirmation!
       sign_in_and_redirect @user, event: :authentication
     else
       sign_in @user
@@ -33,7 +33,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def build_personal_profile
     @personal_profile = @profile.personal_profile ||
-      @profile.create_personal_profile(personal_profile_attributes)
+      @profile.build_personal_profile(personal_profile_attributes)
   end
 
   def personal_profile_attributes
