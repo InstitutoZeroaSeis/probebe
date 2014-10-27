@@ -3,6 +3,7 @@ class PersonalProfile < ActiveRecord::Base
 
   belongs_to :profile
   has_one :avatar
+  has_many :phones
 
   enum gender: GENDER_ENUM
 
