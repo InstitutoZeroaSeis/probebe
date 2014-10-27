@@ -12,6 +12,10 @@
     .div.col-sm-10
       %p.form-control-static= check_box_tag '', '', @profile.is_pregnant?, disabled: 'disabled'
   .form-group
+    %label.control-label.col-sm-2= t('activerecord.attributes.personal_profile.is_mother')
+    .div.col-sm-10
+      %p.form-control-static= check_box_tag '', '', @profile.is_mother?, disabled: 'disabled'
+  .form-group
     %label.control-label.col-sm-2= t('activerecord.attributes.personal_profile.photo')
     .div.col-sm-10
       %p.form-control-static= image_tag @profile.avatar_url

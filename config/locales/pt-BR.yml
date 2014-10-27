@@ -16,10 +16,11 @@ pt-BR:
         birth_date: "Data de Nascimento"
         first_name: "Nome"
         gender: "Sexo"
+        is_mother: "Já é mãe?"
+        is_pregnant: "Em gravidez?"
         last_name: "Sobrenome"
         name: "Nome"
         photo: "Foto"
-        is_pregnant: "Em gravidez?"
       message:
         id: "Id"
         text: "Texto"

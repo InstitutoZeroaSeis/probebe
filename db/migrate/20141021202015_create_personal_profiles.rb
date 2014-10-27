@@ -7,6 +7,7 @@ class CreatePersonalProfiles < ActiveRecord::Migration
       t.date :birth_date
       t.string :avatar
       t.boolean :is_pregnant, default: false
+      t.boolean :is_mother, default: false
       t.references :profile, index: true
 
       t.timestamps

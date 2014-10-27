@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20141022225302) do
     t.date     "birth_date"
     t.string   "avatar"
     t.boolean  "is_pregnant", default: false
+    t.boolean  "is_mother",   default: false
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
