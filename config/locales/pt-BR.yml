@@ -13,11 +13,14 @@ pt-BR:
         id: "Id"
         email: "Email"
       personal_profile:
-        first_name: "Nome"
-        last_name: "Sobrenome"
-        gender: "Sexo"
-        birth_date: "Data de Nascimento"
         avatar: "Avatar"
+        birth_date: "Data de Nascimento"
+        first_name: "Nome"
+        gender: "Sexo"
+        last_name: "Sobrenome"
+        name: "Nome"
+        photo: "Foto"
+        is_pregnant: "Em gravidez?"
       message:
         id: "Id"
         text: "Texto"

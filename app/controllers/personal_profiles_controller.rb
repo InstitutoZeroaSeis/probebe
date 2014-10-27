@@ -44,6 +44,6 @@ class PersonalProfilesController < ApplicationController
 
   def permitted_params
     profile_params = params[:personal_profile]
-    profile_params ? profile_params.permit(:first_name, :last_name, :gender, avatar_attributes: [:id, :photo]) : {}
+    profile_params ? profile_params.permit(:first_name, :last_name, :gender, :is_pregnant, avatar_attributes: [:id, :photo]) : {}
   end
 end
