@@ -5,7 +5,7 @@ class MotherProfilesController < ApplicationController
   end
 
   def new
-    @mother_profile = MotherProfile.new
+    build_profile
   end
 
   def create
@@ -35,7 +35,7 @@ class MotherProfilesController < ApplicationController
   end
 
   def build_profile
-    @mother_profile = current_profile.mother_profile || MotherProfile.new
+    @mother_profile = load_profile || MotherProfile.new
     @mother_profile.attributes = permitted_params
   end
 
