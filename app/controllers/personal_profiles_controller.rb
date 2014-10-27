@@ -11,7 +11,7 @@ class PersonalProfilesController < ApplicationController
 
   def create
     build_profile
-    @profile.profile = current_user.profile
+    @profile.profile = current_profile
     save_profile or render :new, locals: { profile: @profile }
   end
 
@@ -25,12 +25,6 @@ class PersonalProfilesController < ApplicationController
     save_profile or render :edit, locals: { profile: @profile }
   end
 
-  def save_profile
-    if @profile.save
-      redirect_to @profile
-    end
-  end
-
   protected
 
   def load_profile
@@ -40,6 +34,12 @@ class PersonalProfilesController < ApplicationController
   def build_profile
     @profile = params[:id] ? PersonalProfile.find(params[:id]) : PersonalProfile.new
     @profile.attributes = permitted_params
+  end
+
+  def save_profile
+    if @profile.save
+      redirect_to @profile
+    end
   end
 
   def permitted_params

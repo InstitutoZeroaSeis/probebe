@@ -1,0 +1,9 @@
+%h2.col-sm-offset-2= "#{t('activerecord.models.mother_profile')}"
+.form-group
+  %label.control-label.col-sm-2= MotherProfile.human_attribute_name 'is_pregnant'
+  .div.col-sm-10
+    %p.form-control-static= check_box_tag '', '', @mother_profile.is_pregnant?, disabled: 'disabled'
+.form-group
+  %label.control-label.col-sm-2= MotherProfile.human_attribute_name 'is_mother'
+  .div.col-sm-10
+    %p.form-control-static= check_box_tag '', '', @mother_profile.is_mother?, disabled: 'disabled'

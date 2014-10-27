@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   end
   root to: 'home#index'
 
-  resources :personal_profiles
+  resources :personal_profiles, except: [ :index ]
+  resource :mother_profile, except: [ :index ]
 
   mount_carnival_at 'admin'
   namespace :admin do
