@@ -9,6 +9,7 @@ class Admin::MessagePresenter < Carnival::BaseAdminPresenter
         advanced_search: {:operator => :like}
 
   field :gender,
+        as: :enum,
         actions: [:index, :new, :edit, :show],
         advanced_search: {:operator => :equal}
 
