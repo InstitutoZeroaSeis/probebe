@@ -20,7 +20,7 @@ pt-BR:
         last_name: "Sobrenome"
         name: "Nome"
         photo: "Foto"
-        pregnant: "Em gravidez?"
+        is_pregnant: "Em gravidez?"
       message:
         id: "Id"
         text: "Texto"
