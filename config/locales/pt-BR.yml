@@ -2,7 +2,6 @@ pt-BR:
   _gender: &gender
     male: 'Masculino'
     female: 'Feminino'
-    not_informed: 'Não informado'
   activerecord:
     attributes:
       category:
@@ -62,6 +61,11 @@ pt-BR:
       personal_profile:
         gender:
           <<: *gender
+          not_informed: 'Não informado'
+      message:
+        gender:
+          <<: *gender
+          both: 'Ambos'
   view:
     message:
       back_to_admin: "Voltar a acessar como Admin"
