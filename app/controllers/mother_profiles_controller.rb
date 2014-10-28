@@ -15,7 +15,7 @@ class MotherProfilesController < ApplicationController
   end
 
   def edit
-    load_profile
+    build_profile
   end
 
   def update
@@ -25,7 +25,7 @@ class MotherProfilesController < ApplicationController
 
   def permitted_params
     mother_profile = params[:mother_profile]
-    mother_profile ? mother_profile.permit(:is_mother, :is_pregnant) : {}
+    mother_profile ? mother_profile.permit(:is_mother, :is_pregnant, children_attributes: [:id, :_destroy, :name, :birth_date, :gender]) : {}
   end
 
   protected

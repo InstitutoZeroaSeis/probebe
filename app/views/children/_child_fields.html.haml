@@ -1,0 +1,6 @@
+.child_fields.col-sm-offset-1.row
+  = f.input :name
+  = f.input :birth_date, as: :datetime_picker
+  = f.input :gender, as: :enum
+  .col-sm-offset-2.form-control-static
+    = remove_fields_link('Remover', f, container_to_hide: '.child_fields')

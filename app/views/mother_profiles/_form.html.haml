@@ -4,4 +4,14 @@
 = f.input :is_mother
 
 .col-sm-offset-2
+  %h3= t('general.commom_words.children')
+  %hr
+= f.simple_fields_for :children do |ff|
+  = render partial: 'children/child_fields', locals: { f: ff }
+
+.col-sm-offset-2.add_fields_container
+  %p.form-control-static
+    = add_fields_link('Incluir filho', f, :children, path: 'children/')
+
+.col-sm-offset-2
   = f.button :submit

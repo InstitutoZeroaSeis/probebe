@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028124533) do
+ActiveRecord::Schema.define(version: 20141027212719) do
 
   create_table "avatars", force: true do |t|
     t.string   "photo_file_name"
@@ -30,13 +30,14 @@ ActiveRecord::Schema.define(version: 20141028124533) do
     t.datetime "updated_at"
   end
 
-  create_table "contact_profiles", force: true do |t|
-    t.integer  "profile_id"
+  create_table "children", force: true do |t|
+    t.string   "name"
+    t.datetime "birth_date"
+    t.integer  "gender"
+    t.integer  "mother_profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "contact_profiles", ["profile_id"], name: "index_contact_profiles_on_profile_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.text     "text"

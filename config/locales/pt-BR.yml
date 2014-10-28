@@ -1,5 +1,6 @@
 pt-BR:
   _commom_words: &commom_words
+    children: "Filhos"
     edit: &edit "Editar"
     new: &new "Novo"
     view: &view "Visualizar"
@@ -20,6 +21,10 @@ pt-BR:
         area_code: "Código de área"
         number: "Número"
         phone_type: "Tipo"
+      child:
+        name: "Nome"
+        birth_date: "Data de nascimento"
+        gender: "Gênero"
       message:
         id: "Id"
         text: "Texto"
@@ -77,10 +82,9 @@ pt-BR:
       <<: *gender
   simple_form:
     options:
-      personal_profile:
+      children:
         gender:
           <<: *gender
-          not_informed: 'Não informado'
       message:
         gender:
           <<: *gender
@@ -91,7 +95,10 @@ pt-BR:
             residential: 'Residencial'
             smartphone: 'Smartphone'
             dumpphone: 'Celular'
-
+      personal_profile:
+        gender:
+          <<: *gender
+          not_informed: 'Não informado'
   view:
     message:
       add_telefone: "Adicionar telefone"
