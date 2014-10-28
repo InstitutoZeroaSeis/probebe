@@ -29,6 +29,8 @@
                   %li= link_to "#{t('general.commom_words.edit')} #{t('activerecord.models.personal_profile')}", edit_personal_profile_path(current_user.personal_profile)
                   %li= link_to "#{t('general.commom_words.view')} #{t('activerecord.models.mother_profile')}", mother_profile_path
                   %li= link_to "#{t('general.commom_words.edit')} #{t('activerecord.models.mother_profile')}", edit_mother_profile_path
+                  %li= link_to "#{t('general.commom_words.view')} #{t('activerecord.models.contact_profile')}", contact_profile_path
+                  %li= link_to "#{t('general.commom_words.edit')} #{t('activerecord.models.contact_profile')}", edit_contact_profile_path
             %ul.nav.navbar-nav.navbar-right
               %li
                 %a{href: personal_profile_path(current_user.personal_profile)}

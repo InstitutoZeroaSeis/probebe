@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 20141028124533) do
 
   create_table "contact_profiles", force: true do |t|
     t.integer  "profile_id"
+    t.string   "state"
+    t.string   "city"
+    t.string   "street"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

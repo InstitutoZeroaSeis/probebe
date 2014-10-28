@@ -15,11 +15,9 @@ pt-BR:
         name: "Nome"
         parent_category: "Categoria pai"
       contact_profile:
-        id: "Id"
-      phone:
-        area_code: "Código de área"
-        number: "Número"
-        phone_type: "Tipo"
+        state: "Estado"
+        city: "Cidade"
+        street: "Rua"
       message:
         id: "Id"
         text: "Texto"
@@ -36,6 +34,11 @@ pt-BR:
         gender: "Sexo"
         last_name: "Sobrenome"
         name: "Nome"
+        id: "Id"
+      phone:
+        area_code: "Código de área"
+        number: "Número"
+        phone_type: "Tipo"
       user:
         id: "Id"
         email: "Email"
@@ -52,8 +55,10 @@ pt-BR:
           base:
             needs_some_mobile_phone: "Precisa de pelo menos um celular ou um smartphone"
     models:
-      personal_profile: "Perfil Pessoal"
+      contact_profile: "Contato"
       mother_profile: "Perfil Materno"
+      personal_profile: "Perfil Pessoal"
+      phone: "Telefone"
   carnival:
     impersonate: "Logar como"
     menu:
@@ -88,9 +93,9 @@ pt-BR:
       contact_profile:
         phones:
           phone_type:
+            dumpphone: 'Celular'
             residential: 'Residencial'
             smartphone: 'Smartphone'
-            dumpphone: 'Celular'
 
   view:
     message:
