@@ -30,7 +30,8 @@ pt-BR:
         id: "Id"
       message:
         baby_target_type: "Tipo de bebê que a mensagem se aplica"
-        category: "Categoria"
+        category_name: "Categoria"
+        category_id: "Categoria"
         gender: "Sexo"
         id: "Id"
         teenage_pregnancy: "Aplicável para gravidez na adolescência"

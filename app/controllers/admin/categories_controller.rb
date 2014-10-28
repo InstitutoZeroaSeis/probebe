@@ -1,5 +1,5 @@
 class Admin::CategoriesController < Carnival::BaseAdminController
-  
+
   layout "carnival/admin"
 
   def permitted_params

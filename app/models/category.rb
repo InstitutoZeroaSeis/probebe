@@ -11,6 +11,8 @@ class Category < ActiveRecord::Base
   validate :hierarchy_has_no_cycles
   before_destroy :check_has_no_child_categories
 
+  scope :super_categories, -> { where(parent_category_id: nil)}
+
   def maximum_hierarchy_level
     hierarchy_level_count = 1
     current_category = self

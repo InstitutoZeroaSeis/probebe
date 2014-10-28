@@ -17,9 +17,13 @@ class Admin::MessagePresenter < Carnival::BaseAdminPresenter
     actions: [:index, :new, :edit, :show],
     advanced_search: {:operator => :equal}
 
-  field :category,
-    actions: [:new, :edit],
+  field 'category.name',
+    actions: [:show, :index],
     advanced_search: {:operator => :equal}
+
+  field :category_id,
+    actions: [:new, :edit],
+    as: :category_grouped_select
 
   field :baby_target_type,
     actions: [:index, :new, :edit, :show],
