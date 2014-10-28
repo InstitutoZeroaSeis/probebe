@@ -26,18 +26,9 @@ RSpec.describe MotherProfile, :type => :model do
     it { is_expected.to be_invalid }
   end
 
-  context "a pregnant without children" do
-    subject { build_stubbed(:mother_profile, :pregnant, :no_mother, :without_children) }
-    it { is_expected.to be_valid }
-  end
-
-  context "a mother without children" do
+  context "without children" do
     subject { build_stubbed(:mother_profile, :mother, :without_children) }
     it { is_expected.to be_invalid }
   end
 
-  context "a mother with children" do
-    subject { build_stubbed(:mother_profile, :mother, :with_children) }
-    it { is_expected.to be_valid }
-  end
 end

@@ -3,11 +3,11 @@ FactoryGirl.define do
     is_mother false
     is_pregnant true
     profile
+    children { create_list :child, 2 }
   end
 
   trait :mother do
     is_mother true
-    children { create_list :child, 2 }
   end
 
   trait :pregnant do
