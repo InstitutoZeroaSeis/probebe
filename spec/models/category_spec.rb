@@ -17,7 +17,7 @@ describe Category do
   end
 
   context "Having children" do
-    subject { build(:category, :with_children) }
+    subject { build(:category, :with_subcategories) }
     it "Should not be destroyed" do
       subject.destroy
       expect(subject.destroyed?).to eq(false)

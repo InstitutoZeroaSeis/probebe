@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20141028124533) do
     t.datetime "updated_at"
   end
 
+  create_table "children", force: true do |t|
+    t.string   "name"
+    t.datetime "birth_date"
+    t.integer  "gender"
+    t.integer  "mother_profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "contact_profiles", force: true do |t|
     t.integer  "profile_id"
     t.string   "state"

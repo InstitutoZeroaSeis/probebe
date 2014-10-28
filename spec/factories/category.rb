@@ -13,7 +13,7 @@ FactoryGirl.define do
     end
   end
 
-  trait :with_children do
+  trait :with_subcategories do
     sub_categories { create_list(:category, 2) }
   end
 end

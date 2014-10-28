@@ -1,5 +1,6 @@
 pt-BR:
   _commom_words: &commom_words
+    children: "Filhos"
     edit: &edit "Editar"
     new: &new "Novo"
     view: &view "Visualizar"
@@ -14,10 +15,15 @@ pt-BR:
         id: "Id"
         name: "Nome"
         parent_category: "Categoria pai"
+      child:
+        name: "Nome"
+        birth_date: "Data de nascimento"
+        gender: "Gênero"
       contact_profile:
         state: "Estado"
         city: "Cidade"
         street: "Rua"
+        id: "Id"
       message:
         id: "Id"
         text: "Texto"
@@ -51,6 +57,8 @@ pt-BR:
             parent_category:
               hierarchy_too_big: "Só é permitido um nível de subcategoria"
               hierarchy_has_cycles: "A subcategoria não pode ser igual a categoria"
+        mother_profile:
+          mother_has_no_children: "Uma mãe precisa cadastrar ao menos um filho"
         phone:
           base:
             needs_some_mobile_phone: "Precisa de pelo menos um celular ou um smartphone"
@@ -82,10 +90,9 @@ pt-BR:
       <<: *gender
   simple_form:
     options:
-      personal_profile:
+      children:
         gender:
           <<: *gender
-          not_informed: 'Não informado'
       message:
         gender:
           <<: *gender
@@ -96,7 +103,11 @@ pt-BR:
             dumpphone: 'Celular'
             residential: 'Residencial'
             smartphone: 'Smartphone'
-
+            dumpphone: 'Celular'
+      personal_profile:
+        gender:
+          <<: *gender
+          not_informed: 'Não informado'
   view:
     message:
       add_telefone: "Adicionar telefone"
