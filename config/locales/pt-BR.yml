@@ -53,6 +53,8 @@ pt-BR:
             parent_category:
               hierarchy_too_big: "Só é permitido um nível de subcategoria"
               hierarchy_has_cycles: "A subcategoria não pode ser igual a categoria"
+        mother_profile:
+          mother_has_no_children: "Uma mãe precisa cadastrar ao menos um filho"
         phone:
           base:
             needs_some_mobile_phone: "Precisa de pelo menos um celular ou um smartphone"
