@@ -7,7 +7,8 @@ class PersonalProfile < ActiveRecord::Base
   enum gender: GENDER_ENUM
 
   validates_presence_of :first_name, :last_name
-  
+
+  before_save :set_defaults
 
   accepts_nested_attributes_for :avatar
 
@@ -17,6 +18,12 @@ class PersonalProfile < ActiveRecord::Base
 
   def avatar_url
     avatar.photo.url if avatar
+  end
+
+  protected
+
+  def set_defaults
+    self.gender ||= 'not_informed'
   end
 
 end

@@ -7,6 +7,7 @@ pt-BR:
   _gender: &gender
     male: 'Masculino'
     female: 'Feminino'
+    not_informed: 'Não informado'
   activerecord:
     attributes:
       avatar:
