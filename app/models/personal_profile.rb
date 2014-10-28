@@ -3,11 +3,11 @@ class PersonalProfile < ActiveRecord::Base
 
   belongs_to :profile
   has_one :avatar
-  has_many :phones
 
   enum gender: GENDER_ENUM
 
   validates_presence_of :first_name, :last_name
+  
 
   accepts_nested_attributes_for :avatar
 
@@ -18,4 +18,5 @@ class PersonalProfile < ActiveRecord::Base
   def avatar_url
     avatar.photo.url if avatar
   end
+
 end

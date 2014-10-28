@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_one :profile
   has_one :personal_profile, through: :profile
+  has_one :contact_profile, through: :profile
 
   validates_presence_of :email
 

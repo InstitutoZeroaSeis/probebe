@@ -14,6 +14,12 @@ pt-BR:
         id: "Id"
         name: "Nome"
         parent_category: "Categoria pai"
+      contact_profile:
+        id: "Id"
+      phone:
+        area_code: "Código de área"
+        number: "Número"
+        phone_type: "Tipo"
       message:
         id: "Id"
         text: "Texto"
@@ -42,6 +48,9 @@ pt-BR:
             parent_category:
               hierarchy_too_big: "Só é permitido um nível de subcategoria"
               hierarchy_has_cycles: "A subcategoria não pode ser igual a categoria"
+        phone:
+          base:
+            needs_some_mobile_phone: "Precisa de pelo menos um celular ou um smartphone"
     models:
       personal_profile: "Perfil Pessoal"
       mother_profile: "Perfil Materno"
@@ -76,7 +85,16 @@ pt-BR:
         gender:
           <<: *gender
           both: 'Ambos'
+      contact_profile:
+        phones:
+          phone_type:
+            residential: 'Residencial'
+            smartphone: 'Smartphone'
+            dumpphone: 'Celular'
+
   view:
     message:
+      add_telefone: "Adicionar telefone"
       back_to_admin: "Voltar a acessar como Admin"
+      remove: "Remover"
       signed_in_as: "Logado como %{user_name}"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141027164445) do
+ActiveRecord::Schema.define(version: 20141028124533) do
 
   create_table "avatars", force: true do |t|
     t.string   "photo_file_name"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20141027164445) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "contact_profiles", force: true do |t|
+    t.integer  "profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contact_profiles", ["profile_id"], name: "index_contact_profiles_on_profile_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.text     "text"
@@ -64,8 +72,9 @@ ActiveRecord::Schema.define(version: 20141027164445) do
 
   create_table "phones", force: true do |t|
     t.string   "number"
-    t.integer  "type"
-    t.integer  "personal_profile_id"
+    t.integer  "phone_type",         default: 0
+    t.string   "area_code"
+    t.integer  "contact_profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

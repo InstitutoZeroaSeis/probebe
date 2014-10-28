@@ -2,8 +2,9 @@ class CreatePhones < ActiveRecord::Migration
   def change
     create_table :phones do |t|
       t.string :number
-      t.integer :type
-      t.integer :personal_profile_id
+      t.integer :phone_type, default: 0
+      t.string :area_code
+      t.references :contact_profile
 
       t.timestamps
     end
