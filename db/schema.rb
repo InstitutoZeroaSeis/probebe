@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141027163756) do
+ActiveRecord::Schema.define(version: 20141027164445) do
 
   create_table "avatars", force: true do |t|
     t.string   "photo_file_name"
@@ -39,13 +39,22 @@ ActiveRecord::Schema.define(version: 20141027163756) do
     t.datetime "updated_at"
   end
 
+  create_table "mother_profiles", force: true do |t|
+    t.boolean  "is_mother",   null: false
+    t.boolean  "is_pregnant", null: false
+    t.integer  "profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mother_profiles", ["profile_id"], name: "index_mother_profiles_on_profile_id", using: :btree
+
   create_table "personal_profiles", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "gender",      default: 2
+    t.integer  "gender",     default: 2
     t.date     "birth_date"
     t.string   "avatar"
-    t.boolean  "is_pregnant", default: false
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,4 +1,3 @@
-
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def authenticate_user
@@ -61,4 +60,3 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
 end
-

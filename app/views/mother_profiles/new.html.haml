@@ -1,0 +1,3 @@
+%h2.col-sm-offset-2= "#{t('general.commom_words.new')} #{t('activerecord.models.mother_profile')}"
+= simple_form_for @mother_profile, url: mother_profile_path, html: { class: 'form-horizontal' } do |f|
+  = render partial: 'form', locals: { f: f }
