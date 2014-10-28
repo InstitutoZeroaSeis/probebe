@@ -1,25 +1,30 @@
 class Admin::MessagePresenter < Carnival::BaseAdminPresenter
 
   field :id,
-        actions: [:index, :show], :sortable => false,
-        advanced_search: {:operator => :equal}
+    actions: [:index, :show], :sortable => false,
+    advanced_search: {:operator => :equal}
 
   field :text,
-        actions: [:index, :new, :edit, :show],
-        advanced_search: {:operator => :like}
+    actions: [:index, :new, :edit, :show],
+    advanced_search: {:operator => :like}
 
   field :gender,
-        as: :enum,
-        actions: [:index, :new, :edit, :show],
-        advanced_search: {:operator => :equal}
+    as: :enum,
+    actions: [:index, :new, :edit, :show],
+    advanced_search: {:operator => :equal}
 
   field :teenage_pregnancy,
-        actions: [:index, :new, :edit, :show],
-        advanced_search: {:operator => :equal}
+    actions: [:index, :new, :edit, :show],
+    advanced_search: {:operator => :equal}
 
   field :category,
-        actions: [:new, :edit],
-        advanced_search: {:operator => :equal}
+    actions: [:new, :edit],
+    advanced_search: {:operator => :equal}
+
+  field :baby_target_type,
+    actions: [:index, :new, :edit, :show],
+    advanced_search: {:operator => :equal},
+    as: :enum
 
   field :created_at, :actions => [:index, :show]
 

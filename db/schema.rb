@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20141028124533) do
     t.integer  "gender",            default: 2
     t.integer  "category_id"
     t.boolean  "teenage_pregnancy"
+    t.integer  "baby_target_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
