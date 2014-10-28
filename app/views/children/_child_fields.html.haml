@@ -2,5 +2,8 @@
   = f.input :name
   = f.input :birth_date, as: :datetime_picker
   = f.input :gender, as: :enum
+  = f.input :born
+  = f.input :expected_birth_week
+  = f.input :expected_birth_year
   .col-sm-offset-2.form-control-static
     = remove_fields_link('Remover', f, container_to_hide: '.child_fields')

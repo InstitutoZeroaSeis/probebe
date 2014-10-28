@@ -20,6 +20,9 @@ pt-BR:
         name: "Nome"
         birth_date: "Data de nascimento"
         gender: "Gênero"
+        born: "Nasceu?"
+        expected_birth_week: "Semana esperada para o nascimento"
+        expected_birth_year: "Ano esperado para o nascimento"
       contact_profile:
         state: "Estado"
         city: "Cidade"

@@ -25,7 +25,7 @@ class MotherProfilesController < ApplicationController
 
   def permitted_params
     mother_profile = params[:mother_profile]
-    mother_profile ? mother_profile.permit(:is_mother, :is_pregnant, children_attributes: [:id, :_destroy, :name, :birth_date, :gender]) : {}
+    mother_profile ? mother_profile.permit(:is_mother, :is_pregnant, children_attributes: [:id, :_destroy, :name, :birth_date, :gender, :born, :expected_birth_week, :expected_birth_year]) : {}
   end
 
   protected
