@@ -1,0 +1,3 @@
+.alert.alert-danger.col-sm-offset-2
+  - model.errors.full_messages_for(:base).each do |message|
+    %p= message
