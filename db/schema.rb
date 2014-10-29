@@ -55,10 +55,12 @@ ActiveRecord::Schema.define(version: 20141028124533) do
 
   create_table "messages", force: true do |t|
     t.text     "text"
-    t.integer  "gender",            default: 2
+    t.integer  "gender",             default: 2
     t.integer  "category_id"
     t.boolean  "teenage_pregnancy"
     t.integer  "baby_target_type"
+    t.integer  "minimum_valid_week"
+    t.integer  "maximum_valid_week"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

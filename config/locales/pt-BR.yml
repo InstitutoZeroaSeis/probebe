@@ -35,6 +35,8 @@ pt-BR:
         category_id: "Categoria"
         gender: "Sexo"
         id: "Id"
+        minimum_valid_week: "Validade Inicial em Semana"
+        maximum_valid_week: "Validade Final em Semana"
         teenage_pregnancy: "Aplicável para gravidez na adolescência"
         text: "Texto"
       mother_profile:
@@ -60,6 +62,10 @@ pt-BR:
         category:
           base:
             has_child_categories: "Categoria não pode ser deletada por conter subcategoria"
+        message:
+          base:
+            has_no_minimum_and_maximum_valid_week: "Tem que definir pelo menos validade inicial ou final"
+            minimum_higher_than_maximum: "Validade Inicial não pode ser maior que a final"
           attributes:
             parent_category:
               hierarchy_too_big: "Só é permitido um nível de subcategoria"

@@ -6,6 +6,8 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :category_id
       t.boolean :teenage_pregnancy
       t.integer :baby_target_type
+      t.integer :minimum_valid_week
+      t.integer :maximum_valid_week
 
       t.timestamps
     end

@@ -1,3 +1,4 @@
+
 class Admin::MessagePresenter < Carnival::BaseAdminPresenter
 
   field :id,
@@ -29,6 +30,16 @@ class Admin::MessagePresenter < Carnival::BaseAdminPresenter
     actions: [:index, :new, :edit, :show],
     advanced_search: {:operator => :equal},
     as: :enum
+
+  field :minimum_valid_week,
+    actions: [:index, :new, :edit, :show],
+    advanced_search: {:operator => :equal}
+
+  field :maximum_valid_week,
+    actions: [:index, :new, :edit, :show],
+    advanced_search: {:operator => :equal}
+
+
 
   field :created_at, :actions => [:index, :show]
 
