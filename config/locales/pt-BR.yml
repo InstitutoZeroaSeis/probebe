@@ -70,6 +70,7 @@ pt-BR:
           base:
             needs_some_mobile_phone: "Precisa de pelo menos um celular ou um smartphone"
     models:
+      child: "Filho"
       contact_profile: "Contato"
       mother_profile: "Perfil Materno"
       personal_profile: "Perfil Pessoal"
