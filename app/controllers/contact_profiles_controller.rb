@@ -25,11 +25,6 @@ class ContactProfilesController < ApplicationController
     save_profile or render :edit, locals: { profile: @profile }
   end
 
-  def save_profile
-    if @profile.save
-      redirect_to @profile
-    end
-  end
 
   protected
 
@@ -42,10 +37,12 @@ class ContactProfilesController < ApplicationController
     @profile.attributes = permitted_params
   end
 
-  def permitted_params
-    params.permit(contact_profile: [phones_attributes: [:id, :number, :phone_type, :area_code, :_destroy]])
+  def save_profile
+    if @profile.save
+      redirect_to @profile
+    end
   end
-
+  
   def permitted_params
     profile_params = params[:contact_profile]
     profile_params ? profile_params.permit(:state, :city, :street, phones_attributes: [:id, :number, :phone_type,

@@ -24,6 +24,7 @@ pt-BR:
         expected_birth_week: "Semana esperada para o nascimento"
         expected_birth_year: "Ano esperado para o nascimento"
       contact_profile:
+        address: "Endereço"
         state: "Estado"
         city: "Cidade"
         street: "Rua"

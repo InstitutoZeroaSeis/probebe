@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :personal_profiles, except: [ :index ]
   resource :mother_profile, except: [ :index ]
-  resources :contact_profiles, except: [ :index ]
+  resource :contact_profile, except: [ :index ]
 
   mount_carnival_at 'admin'
   namespace :admin do
