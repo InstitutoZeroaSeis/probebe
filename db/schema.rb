@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 20141028124533) do
   end
 
   create_table "mother_profiles", force: true do |t|
-    t.boolean  "is_mother",   null: false
-    t.boolean  "is_pregnant", null: false
+    t.boolean  "is_mother",   default: true, null: false
+    t.boolean  "is_pregnant", default: true, null: false
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"

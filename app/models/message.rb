@@ -1,6 +1,7 @@
 class Message < ActiveRecord::Base
   include Carnival::ModelHelper
 
+  MAXIMUM_POSSIBLE_WEEK = 5200
   GENDER_ENUM = [:male, :female, :both]
   BABY_TARGET_TYPE_ENUM = [:pregnancy, :born]
 
