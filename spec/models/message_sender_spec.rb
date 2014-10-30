@@ -20,4 +20,14 @@ RSpec.describe MessageSender, :type => :model do
       it { is_expected.to match_array([MessageDelivery.new(Message.first, Child.all)]) }
     end
   end
+
+  context "with a message targeting born children, male that are between 1 and 2 years old" do
+    context "and with a male baby about 18 months old and another baby, female about 14 months old" do
+      subject { MessageSender.new.send_messages }
+      before { @male = create(:child, :male, :born, birth_date: (18.months).ago) }
+      before { create(:child, :female, :born, birth_date: (14.months).ago) }
+      before { create(:message, :male, minimum_valid_week: 52, maximum_valid_week: 104, baby_target_type: 'born') }
+      it { is_expected.to match_array([MessageDelivery.new(Message.first, [@male])]) }
+    end
+  end
 end
