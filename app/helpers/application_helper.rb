@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def remove_fields_link(name, form_builder, container_to_hide: '', css_class: '')
-    form_builder.hidden_field(:_destroy) +
+    form_builder.hidden_field(:_destroy, value: false) +
       link_to(name, '#', class: 'remove_fields ' + css_class, data: { container_to_hide: container_to_hide })
   end
 
