@@ -25,8 +25,6 @@ class Child < ActiveRecord::Base
   end
 
   def age_in_pregnancy
-    expected_date = Date.commercial(expected_birth_year.to_i, expected_birth_week.to_i)
-    start_date = expected_date - WEEKS_IN_YEAR.weeks
-    (Date.today - start_date).to_i / DAYS_IN_WEEK
+    (Date.today - pregnancy_start_date.to_date).to_i / DAYS_IN_WEEK
   end
 end

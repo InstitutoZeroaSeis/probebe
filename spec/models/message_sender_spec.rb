@@ -14,9 +14,9 @@ RSpec.describe MessageSender, :type => :model do
   context "with a message targeting not yet born children, regardless the gender that are between 20 and 30 weeks of gestation" do
     context "and with a baby with the gender not yet know with 22 weeks of gestation period and the other too unknown gender with 28 weeks of gestation period" do
       subject { MessageSender.new.send_messages }
-      before { create(:child, :born, birth_date: 22.weeks.ago) }
-      before { create(:child, :born, birth_date: 28.weeks.ago) }
-      before { create(:message, :male, minimum_valid_week: 20, maximum_valid_week: 30, baby_target_type: 'born') }
+      before { create(:child, :not_born, pregnancy_start_date: 22.weeks.ago) }
+      before { create(:child, :not_born, pregnancy_start_date: 28.weeks.ago) }
+      before { create(:message, :male, minimum_valid_week: 20, maximum_valid_week: 30, baby_target_type: 'pregnancy') }
       it { is_expected.to match_array([MessageDelivery.new(Message.first, Child.all)]) }
     end
   end
