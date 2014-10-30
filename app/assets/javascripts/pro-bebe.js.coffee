@@ -35,9 +35,12 @@ replaceNameByCurrentTime = (jqElement) ->
     $(@).attr('name', new_name)
 
 setupDatePickers = ->
-  $('.datepicker').datetimepicker({ pickTime: false })
-  $('.datetimepicker').datetimepicker()
-  $('.datepicker').datetimepicker({ pickDate: false})
+  $('.datepicker').datepicker(beforeShow: ->
+    setTimeout(->
+      $('.ui-datepicker').css('z-index', 99)
+    , 0)
+  , dateFormat: 'dd/mm/yy'
+  )
 
 $ ->
   $('body').on 'click', '.add_fields', addField

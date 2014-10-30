@@ -1,6 +1,6 @@
 .child_fields.col-sm-offset-1.row
   = f.input :name
-  = f.input :birth_date, as: :datetime_picker
+  = f.input :birth_date, as: :date_picker, input_html: { format: :short }
   = f.input :gender, as: :enum
   = f.input :born
   = f.input :pregnancy_start_date, as: :week_to_date

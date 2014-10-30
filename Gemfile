@@ -21,8 +21,7 @@ gem 'paperclip', '~> 4.2.0'
 gem 'pretender', '~> 0.1.0'
 gem 'simple_form', '~> 3.1.0.rc2'
 gem 'bootstrap-sass', '~> 3.2.0'
-gem 'momentjs-rails', '~> 2.8.3'
-gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'master', :submodules => true
+gem 'jquery-ui-rails', '~> 5.0.2'
 
 group :development, :test do
   gem 'better_errors', '0.9.0'
