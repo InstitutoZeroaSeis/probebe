@@ -2,7 +2,7 @@ class MessageSender
 
   def send_messages
     Message.all.map do |message|
-      delivery = MessageDelivery.new
+      delivery = MessageDelivery.new(message)
       delivery.children = find_childrens_for_message(message)
       delivery
     end
