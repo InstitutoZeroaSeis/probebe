@@ -7,8 +7,7 @@ class Child < ActiveRecord::Base
 
   enum gender: GENDER_ENUM
 
-  validates_presence_of :gender
-  validates_presence_of :name, :birth_date, if: :born?
+  validates_presence_of :name, :birth_date, :gender, if: :born?
   validates_presence_of :pregnancy_start_date, unless: :born?
 
   def age_in_weeks
