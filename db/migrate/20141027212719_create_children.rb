@@ -3,7 +3,7 @@ class CreateChildren < ActiveRecord::Migration
     create_table :children do |t|
       t.string :name
       t.integer :gender
-      t.datetime :birth_date
+      t.date :birth_date
       t.boolean :born
       t.date :pregnancy_start_date
       t.references :mother_profile
