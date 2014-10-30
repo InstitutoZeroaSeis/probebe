@@ -5,41 +5,39 @@ class ContactProfilesController < ApplicationController
   end
 
   def new
-    load_profile
-    render :new, locals: { profile: @profile }
+    build_profile
   end
 
   def create
     build_profile
     @profile.profile = current_user.profile
-    save_profile or render :new, locals: { profile: @profile }
+    save_profile or render :new
   end
 
   def edit
-    load_profile
-    render :edit, locals: { profile: @profile }
+    build_profile
   end
 
   def update
     build_profile
-    save_profile or render :edit, locals: { profile: @profile }
+    save_profile or render :edit
   end
 
 
   protected
 
   def load_profile
-    @profile = current_profile.contact_profile || ContactProfile.new
+    @profile = current_profile.contact_profile
   end
 
   def build_profile
-    @profile = params[:id] ? ContactProfile.find(params[:id]) : ContactProfile.new
+    @profile = load_profile || ContactProfile.new
     @profile.attributes = permitted_params
   end
 
   def save_profile
     if @profile.save
-      redirect_to @profile
+      redirect_to contact_profile_path
     end
   end
   
