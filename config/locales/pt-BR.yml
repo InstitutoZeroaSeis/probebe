@@ -4,6 +4,7 @@ pt-BR:
     edit: &edit "Editar"
     new: &new "Novo"
     view: &view "Visualizar"
+    weeks: "Semanas"
   _gender: &gender
     male: 'Masculino'
     female: 'Feminino'
@@ -21,8 +22,7 @@ pt-BR:
         birth_date: "Data de nascimento"
         gender: "Gênero"
         born: "Nasceu?"
-        expected_birth_week: "Semana esperada para o nascimento"
-        expected_birth_year: "Ano esperado para o nascimento"
+        pregnancy_start_date: "Idade da gestação"
       contact_profile:
         address: "Endereço"
         state: "Estado"

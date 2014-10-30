@@ -9,7 +9,7 @@ class Child < ActiveRecord::Base
 
   validates_presence_of :gender
   validates_presence_of :name, :birth_date, if: :born?
-  validates_presence_of :expected_birth_week, :expected_birth_year, if: -> { !born? }
+  validates_presence_of :pregnancy_start_date, unless: :born?
 
   def age_in_weeks
     if self.born?

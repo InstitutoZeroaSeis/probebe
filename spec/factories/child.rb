@@ -21,14 +21,12 @@ FactoryGirl.define do
       birth_date nil
     end
 
-    trait :with_expected_birth_date do
-      expected_birth_week { 6.months.from_now.to_date.cweek }
-      expected_birth_year { 6.months.from_now.year }
+    trait :with_pregnancy_start_date do
+      pregnancy_start_date { 12.weeks.ago }
     end
 
-    trait :without_expected_birth_date do
-      expected_birth_week nil
-      expected_birth_year nil
+    trait :without_pregnancy_start_date do
+      pregnancy_start_date nil
     end
   end
 end

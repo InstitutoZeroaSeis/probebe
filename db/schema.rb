@@ -32,12 +32,11 @@ ActiveRecord::Schema.define(version: 20141028124533) do
 
   create_table "children", force: true do |t|
     t.string   "name"
-    t.datetime "birth_date"
     t.integer  "gender"
-    t.integer  "mother_profile_id"
+    t.datetime "birth_date"
     t.boolean  "born"
-    t.string   "expected_birth_week"
-    t.string   "expected_birth_year"
+    t.date     "pregnancy_start_date"
+    t.integer  "mother_profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

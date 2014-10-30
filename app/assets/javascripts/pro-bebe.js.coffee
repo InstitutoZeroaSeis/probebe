@@ -42,4 +42,5 @@ setupDatePickers = ->
 $ ->
   $('body').on 'click', '.add_fields', addField
   $('body').on 'click', '.remove_fields', removeField
+  setupDateFromWeek()
   setupDatePickers()

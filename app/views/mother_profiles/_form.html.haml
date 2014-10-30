@@ -12,7 +12,7 @@
 
 .col-sm-offset-2.add_fields_container
   %p.form-control-static
-    = add_fields_link('Incluir filho', f, :children, path: 'children/')
+    = add_fields_link('Incluir filho', f, :children, path: 'children/', callback: 'setupDateFromWeek')
 
 .col-sm-offset-2
   = f.button :submit
