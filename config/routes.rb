@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :personal_profiles, except: [ :index ]
   resource :mother_profile, except: [ :index ]
   resource :contact_profile, except: [ :index ]
+  get 'timeline', to: 'timeline#show'
 
   mount_carnival_at 'admin'
   namespace :admin do

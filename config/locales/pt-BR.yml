@@ -3,6 +3,7 @@ pt-BR:
     children: "Filhos"
     edit: &edit "Editar"
     new: &new "Novo"
+    timeline: "Linha do tempo"
     view: &view "Visualizar"
     weeks: "Semanas"
   _gender: &gender
