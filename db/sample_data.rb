@@ -12,7 +12,7 @@ ActiveRecord::Base.transaction do
   profile = user.create_profile!
   profile.create_personal_profile!(first_name: 'Eri', last_name: 'Jonen', gender: 'female')
   profile.create_mother_profile!(is_mother: true, children_attributes: [
-    { gender: 'male', birth_date: nil, born: false, expected_birth_week: 3.months.from_now.to_date.cweek, expected_birth_year: 3.months.from_now.year },
+    { gender: 'male', birth_date: nil, born: false, pregnancy_start_date: 3.months.ago },
     { name: 'Joana', gender: 'female', birth_date: nil, born: true, birth_date: (1.years + 6.months).ago }
   ])
 

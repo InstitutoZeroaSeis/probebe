@@ -1,19 +1,18 @@
 class MessageSender
-  attr_reader :messages
+  attr_reader :message
 
-  def initialize(messages)
-    @messages = messages
+  def initialize(message)
+    @message = message
   end
 
   def send_messages
+    profiles = get_profiles
+    message_delivery = MessageDelivery.create!(message: message, profiles: profiles)
   end
 
   def get_profiles
-    messages.each do |message|
-      profile_finder = ProfileFinder.new(message)
-      profile_finder.find_profiles_by_message
-    end
+    profile_finder = ProfileFinder.new(message)
+    profile_finder.find_profiles_by_message.map &:profile
   end
-  protected
 
 end
