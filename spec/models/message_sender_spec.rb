@@ -30,4 +30,14 @@ RSpec.describe MessageSender, :type => :model do
       it { is_expected.to match_array([MessageDelivery.new(Message.first, [@male])]) }
     end
   end
+
+  context "with a message targeting not yet born children, that are up to 12 weeks of gestation" do
+    context "and with two not yet born children, both with 15 weeks of gestation period" do
+      subject { MessageSender.new.send_messages }
+      before { create_list(:child, 2, :not_born, pregnancy_start_date: 15.weeks.ago) }
+      before { create(:message, :male, maximum_valid_week: 12, baby_target_type: 'pregnancy') }
+      it { is_expected.to match_array([MessageDelivery.new(Message.first)]) }
+    end
+  end
+
 end
