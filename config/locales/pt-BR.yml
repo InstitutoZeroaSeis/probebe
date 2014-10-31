@@ -88,6 +88,9 @@ pt-BR:
       categories: "Categorias"
       messages: "Mensagens"
       users: "Usuários"
+  controller:
+    messages:
+      complete_the_profile: "Complete o perfil para continuar"
   errors:
     controllers:
       omniauth_callbacks:

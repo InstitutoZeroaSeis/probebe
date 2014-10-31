@@ -1,5 +1,7 @@
 class ContactProfilesController < ApplicationController
 
+  skip_before_action :check_profile_status, only: [:edit, :create, :update]
+
   def show
     load_profile
   end
