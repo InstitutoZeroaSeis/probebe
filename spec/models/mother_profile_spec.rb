@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe MotherProfile, :type => :model do
   context "without being mother or pregnant" do

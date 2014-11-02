@@ -1,6 +1,7 @@
+require 'rails_helper'
 require Rails.root.join('spec/stubs/stubbed_hash.rb')
 
-describe Users::OmniauthCallbacksController do
+RSpec.describe Users::OmniauthCallbacksController do
   before { @request.env["devise.mapping"] = Devise.mappings[:user] }
 
   describe "#authenticate_user" do
