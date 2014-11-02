@@ -134,4 +134,5 @@ pt-BR:
       add_telefone: "Adicionar telefone"
       back_to_admin: "Voltar a acessar como Admin"
       remove: "Remover"
+      send_messages: "Enviar mensagens"
       signed_in_as: "Logado como %{user_name}"

@@ -31,6 +31,7 @@
                   %li= link_to "#{t('general.commom_words.edit')} #{t('activerecord.models.mother_profile')}", edit_mother_profile_path
                   %li= link_to "#{t('general.commom_words.view')} #{t('activerecord.models.contact_profile')}", contact_profile_path
                   %li= link_to "#{t('general.commom_words.edit')} #{t('activerecord.models.contact_profile')}", edit_contact_profile_path
+              %li= link_to "#{t('view.message.send_messages')}", message_deliveries_path, method: :post
               %li= link_to "#{t('general.commom_words.view')} #{t('general.commom_words.timeline')}", timeline_path
             %ul.nav.navbar-nav.navbar-right
               %li
@@ -38,7 +39,7 @@
                   %span.glyphicon.glyphicon-user
                   = current_user.personal_profile.name
               %li
-                %a{href: sign_out_path}
+                = link_to destroy_user_session_path, method: :delete do
                   %span.glyphicon.glyphicon-off
                   %span Sair
 

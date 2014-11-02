@@ -3,6 +3,7 @@ class MessageSender
 
   def initialize(message)
     @message = message
+    @profile_finder = ProfileFinder.new(message)
   end
 
   def send_messages
@@ -11,8 +12,7 @@ class MessageSender
   end
 
   def get_profiles
-    profile_finder = ProfileFinder.new(message)
-    profile_finder.find_profiles_by_message.map &:profile
+    @profile_finder.find_profiles_by_message.map &:profile
   end
 
 end
