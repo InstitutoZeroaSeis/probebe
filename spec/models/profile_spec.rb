@@ -1,18 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Profile, :type => :model do
-  context "Without smartphone or dumbphone" do
-    subject { build_stubbed(:profile, :with_residential_phone) }
+  context "Without cell phone" do
+    subject { build_stubbed(:profile, :without_cell_phone) }
     it { is_expected.to be_invalid }
   end
 
-  context "With smartphone" do
-    subject { build_stubbed(:profile, :with_smartphone) }
-    it { is_expected.to be_valid }
-  end
-
-  context "With dumbphone" do
-    subject { build_stubbed(:profile, :with_dumbphone) }
+  context "With cell phone" do
+    subject { build_stubbed(:profile, :with_cell_phone) }
     it { is_expected.to be_valid }
   end
 

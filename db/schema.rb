@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20141031200225) do
     t.datetime "updated_at"
   end
 
+  create_table "cell_phones", force: true do |t|
+    t.string   "number"
+    t.integer  "profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "children", force: true do |t|
     t.string   "name"
     t.integer  "gender"
@@ -62,15 +69,6 @@ ActiveRecord::Schema.define(version: 20141031200225) do
     t.datetime "updated_at"
   end
 
-  create_table "phones", force: true do |t|
-    t.string   "number"
-    t.integer  "phone_type", default: 0
-    t.string   "area_code"
-    t.integer  "profile_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "profiles", force: true do |t|
     t.boolean  "is_mother",            default: true,  null: false
     t.boolean  "is_pregnant",          default: false, null: false
@@ -83,6 +81,7 @@ ActiveRecord::Schema.define(version: 20141031200225) do
     t.string   "last_name"
     t.string   "state"
     t.string   "street"
+    t.string   "home_phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

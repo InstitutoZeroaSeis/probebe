@@ -7,19 +7,15 @@ FactoryGirl.define do
     is_mother false
     birth_date {20.years.ago}
     pregnancy_start_date { 3.months.ago }
-    phones { create_list :phone, 2, :smartphone }
+    cell_phones { create_list :cell_phone, 2 }
     user
 
-    trait :with_smartphone do
-      phones { create_list :phone, 2, :smartphone }
+    trait :with_cell_phone do
+      cell_phones { create_list :cell_phone, 2 }
     end
 
-    trait :with_dumbphone do
-      phones { create_list :phone, 2, :dumbphone }
-    end
-
-    trait :with_residential_phone do
-      phones { create_list :phone, 2, :residential}
+    trait :without_cell_phone do
+      cell_phones []
     end
 
     trait :mother do

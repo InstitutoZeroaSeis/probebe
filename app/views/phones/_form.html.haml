@@ -1,5 +1,0 @@
-= form_builder.simple_fields_for :phones do |phone_builder|
-  = render partial: 'phones/phone_fields', locals: { f: phone_builder  }
-.col-sm-offset-2.add_fields_container
-  %p.form-control-static
-    = add_fields_link(I18n.t('view.message.add_telefone'), form_builder, :phones, path: 'phones/')
