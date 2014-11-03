@@ -43,7 +43,7 @@ pt-BR:
         gender: "Sexo"
         id: "Id"
         is_mother: "Já é mãe?"
-        is_pregnant: "Em gravidez?"
+        is_pregnant: "Está Grávida?"
         last_name: "Sobrenome"
         name: "Nome"
         state: "Estado"
