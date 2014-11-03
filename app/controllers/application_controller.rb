@@ -11,15 +11,13 @@ class ApplicationController < ActionController::Base
   def current_profile
     current_user.profile
   end
+  helper_method :current_profile
 
   def check_profile_status
     if current_user
-      if current_profile.mother_profile.blank?
+      if current_profile.invalid?
         flash[:notice] = I18n.t('controller.messages.complete_the_profile')
-        redirect_to edit_mother_profile_path
-      elsif current_profile.contact_profile.blank?
-        flash[:notice] = I18n.t('controller.messages.complete_the_profile')
-        redirect_to edit_contact_profile_path
+        redirect_to edit_profile_path
       end
     end
   end

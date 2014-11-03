@@ -6,7 +6,7 @@ class ProfileFinder
   end
 
   def find_profiles_by_message
-    MotherProfile.select do |profile|
+    Profile.select do |profile|
       children_finder = ChildrenFinder.new(message, profile.children)
       children_finder.any_children_found?
     end

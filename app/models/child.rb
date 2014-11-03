@@ -3,8 +3,6 @@ class Child < ActiveRecord::Base
   WEEKS_IN_YEAR = 42
   GENDER_ENUM = [:male, :female]
 
-  belongs_to :mother_profile
-
   enum gender: GENDER_ENUM
 
   validates_presence_of :name, :birth_date, :gender, if: :born?

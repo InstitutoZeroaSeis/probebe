@@ -4,7 +4,7 @@ class CreatePhones < ActiveRecord::Migration
       t.string :number
       t.integer :phone_type, default: 0
       t.string :area_code
-      t.references :contact_profile
+      t.references :profile
 
       t.timestamps
     end

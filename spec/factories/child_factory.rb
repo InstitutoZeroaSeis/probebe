@@ -3,7 +3,7 @@ FactoryGirl.define do
     sequence(:name) {|n| "Child #{n}" }
     born true
     sequence(:birth_date) { 2.years.ago }
-    gender 0
+    gender 'male'
 
     trait :born do
       born true

@@ -24,12 +24,6 @@ pt-BR:
         gender: "Gênero"
         born: "Nasceu?"
         pregnancy_start_date: "Idade da gestação"
-      contact_profile:
-        address: "Endereço"
-        state: "Estado"
-        city: "Cidade"
-        street: "Rua"
-        id: "Id"
       message:
         baby_target_type: "Tipo de bebê que a mensagem se aplica"
         category_name: "Categoria"
@@ -40,17 +34,20 @@ pt-BR:
         maximum_valid_week: "Validade Final em Semana"
         teenage_pregnancy: "Aplicável para gravidez na adolescência"
         text: "Texto"
-      mother_profile:
-        is_mother: "Já é mãe?"
-        is_pregnant: "Em gravidez?"
-      personal_profile:
+      profile:
+        address: "Endereço"
         avatar: "Avatar"
         birth_date: "Data de Nascimento"
+        city: "Cidade"
         first_name: "Nome"
         gender: "Sexo"
+        id: "Id"
+        is_mother: "Já é mãe?"
+        is_pregnant: "Em gravidez?"
         last_name: "Sobrenome"
         name: "Nome"
-        id: "Id"
+        state: "Estado"
+        street: "Rua"
       phone:
         area_code: "Código de área"
         number: "Número"
@@ -71,16 +68,14 @@ pt-BR:
             parent_category:
               hierarchy_too_big: "Só é permitido um nível de subcategoria"
               hierarchy_has_cycles: "A subcategoria não pode ser igual a categoria"
-        mother_profile:
-          mother_has_no_children: "Você precisa cadastrar ao menos um filho"
-        phone:
+        profile:
           base:
-            needs_some_mobile_phone: "Precisa de pelo menos um celular ou um smartphone"
+            needs_to_be_mother_or_pregnant: "Você precisa ser mãe ou estar grávida"
+            has_no_children: "Você precisa cadastrar ao menos um filho"
+            needs_some_mobile_phone: "Precisa de pelo menos um número móvel"
     models:
       child: "Filho"
-      contact_profile: "Contato"
-      mother_profile: "Perfil Materno"
-      personal_profile: "Perfil Pessoal"
+      profile: "Perfil"
       phone: "Telefone"
   carnival:
     impersonate: "Logar como"
@@ -92,6 +87,7 @@ pt-BR:
   controller:
     messages:
       complete_the_profile: "Complete o perfil para continuar"
+      could_not_sign_up_with_omniauth: "Não foi possível realizar a autencação com o seu provedor"
   errors:
     controllers:
       omniauth_callbacks:
@@ -118,17 +114,16 @@ pt-BR:
         gender:
           <<: *gender
           both: 'Ambos'
-      contact_profile:
+      profile:
+        gender:
+          <<: *gender
+          not_informed: 'Não informado'
         phones:
           phone_type:
             dumpphone: 'Celular'
             residential: 'Residencial'
             smartphone: 'Smartphone'
             dumpphone: 'Celular'
-      personal_profile:
-        gender:
-          <<: *gender
-          not_informed: 'Não informado'
   view:
     message:
       add_telefone: "Adicionar telefone"

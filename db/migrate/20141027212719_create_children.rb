@@ -6,7 +6,7 @@ class CreateChildren < ActiveRecord::Migration
       t.date :birth_date
       t.boolean :born
       t.date :pregnancy_start_date
-      t.references :mother_profile
+      t.references :profile
 
       t.timestamps
     end

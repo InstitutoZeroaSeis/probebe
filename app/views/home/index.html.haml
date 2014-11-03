@@ -1,6 +1,0 @@
-.page-header
-  %h1 Home
-
--if current_user != true_user
-  = "You #{true_user.email} are signed in as #{current_user.email}"
-  = link_to "Back to admin", admin_stop_impersonating_path(current_user)

@@ -12,7 +12,7 @@ class MessageSender
   end
 
   def get_profiles
-    @profile_finder.find_profiles_by_message.map &:profile
+    @profile_finder.find_profiles_by_message
   end
 
 end
