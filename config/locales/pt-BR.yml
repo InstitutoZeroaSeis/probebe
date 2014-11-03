@@ -47,10 +47,8 @@ pt-BR:
         pregnancy_start_date: "Idade da gestação"
         state: "Estado"
         street: "Rua"
-      phone:
-        area_code: "Código de área"
+      cell_phone:
         number: "Número"
-        phone_type: "Tipo"
       user:
         id: "Id"
         email: "Email"
@@ -71,11 +69,11 @@ pt-BR:
           base:
             needs_to_be_mother_or_pregnant: "Você precisa ser mãe ou estar grávida"
             has_no_children: "Você precisa cadastrar ao menos um filho"
-            needs_some_mobile_phone: "Precisa de pelo menos um número móvel"
+            needs_mobile_phone: "Precisa de pelo menos um celular"
     models:
       child: "Filho"
       profile: "Perfil"
-      phone: "Telefone"
+      cell_phone: "Celular"
   carnival:
     impersonate: "Logar como"
     menu:
@@ -117,12 +115,6 @@ pt-BR:
         gender:
           <<: *gender
           not_informed: 'Não informado'
-        phones:
-          phone_type:
-            dumbphone: 'Celular'
-            residential: 'Residencial'
-            smartphone: 'Smartphone'
-            dumbphone: 'Celular'
   view:
     message:
       add_telefone: "Adicionar telefone"

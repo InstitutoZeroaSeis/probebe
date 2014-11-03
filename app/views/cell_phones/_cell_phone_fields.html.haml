@@ -1,7 +1,5 @@
 .phone_fields
-  = f.input :area_code
   = f.input :number
-  = f.input :phone_type, as: :enum, include_blank: false
   .col-sm-offset-2
     = remove_fields_link(I18n.t('view.message.remove'), f, container_to_hide: '.phone_fields')
 

@@ -7,18 +7,18 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :message_deliveries
   has_many :children
-  has_many :phones
+  has_many :cell_phones
   has_one :avatar
 
   validate :has_children, on: :update, if: :is_mother?
-  validate :has_dumbphone_or_smartphone, on: :update
+  validate :has_cell_phone, on: :update
   validate :is_mother_or_pregnant, on: :update
   validates_presence_of :first_name, :last_name, :user
   validates_presence_of :pregnancy_start_date, if: :is_pregnant?
 
   accepts_nested_attributes_for :avatar
   accepts_nested_attributes_for :children, allow_destroy: true
-  accepts_nested_attributes_for :phones, allow_destroy: true
+  accepts_nested_attributes_for :cell_phones, allow_destroy: true
 
   before_save :set_defaults
 
@@ -49,15 +49,15 @@ class Profile < ActiveRecord::Base
     self.gender ||= 'not_informed'
   end
 
-  def has_dumbphone_or_smartphone
-    unless phones.any? {|p| ["dumbphone", "smartphone"].include? p.phone_type }
-      errors.add(:base, I18n.t('activerecord.errors.models.profile.base.needs_some_mobile_phone'))
+  def has_cell_phone
+    if cell_phones.empty?
+      errors.add(:base, I18n.t('activerecord.errors.models.profile.base.needs_mobile_phone'))
     end
   end
 
   def has_children
     current_children = children.select {|c| !c.marked_for_destruction? }
-    unless current_children.size > 0
+    if current_children.empty?
       errors.add(:base, I18n.t('activerecord.errors.models.profile.base.has_no_children'))
     end
   end

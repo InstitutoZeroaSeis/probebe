@@ -12,16 +12,11 @@
           %dd= @profile.city
           %dt= Profile.human_attribute_name 'state'
           %dd= @profile.state
-    %strong= t('activerecord.models.phone').pluralize
     %table.table
       %thead
         %tr
-          %th= Phone.human_attribute_name 'area_code'
-          %th= Phone.human_attribute_name 'number'
-          %th= Phone.human_attribute_name 'phone_type'
+          %th= t('activerecord.models.cell_phone').pluralize
       %tbody
-        - @profile.phones.each do |phone|
+        - @profile.cell_phones.each do |phone|
           %tr
-            %td= phone.area_code
             %td= phone.number
-            %td= phone.phone_type
