@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/Vizir/carnival.git
-  revision: 95b28ccabba5e456c009eca6a15fc217b223455c
+  revision: 8336d738bb070630742f09c019c01cdff1ce3e08
+  ref: 8336d738bb070630742f09c019c01cdff1ce3e08
   branch: master
   specs:
     carnival (0.1.0)
@@ -131,8 +132,10 @@ GEM
     hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.6.11)
-    inherited_resources (1.5.0)
+    inherited_resources (1.5.1)
+      actionpack (>= 3.2, < 4.2)
       has_scope (~> 0.6.0.rc)
+      railties (>= 3.2, < 4.2)
       responders (~> 1.0)
     jbuilder (2.2.3)
       activesupport (>= 3.0.0, < 5)
