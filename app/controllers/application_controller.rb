@@ -9,15 +9,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_profile
-    current_user.profile || Profile.new
+    current_user.profile if current_user
   end
   helper_method :current_profile
 
   def check_profile_status
     if current_user
-      if current_profile.invalid?
-        flash[:notice] = I18n.t('controller.messages.complete_the_profile')
-        redirect_to edit_profile_path
+      if current_profile
+        if current_profile.invalid?
+          flash[:notice] = I18n.t('controller.messages.complete_the_profile')
+          redirect_to edit_profile_path
+        end
+      else
+        redirect_to new_profile_path
       end
     end
   end

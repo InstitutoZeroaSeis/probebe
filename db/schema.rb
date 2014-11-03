@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20141031200225) do
     t.string   "last_name"
     t.string   "state"
     t.string   "street"
+    t.string   "home_phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

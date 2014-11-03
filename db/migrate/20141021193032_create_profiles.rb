@@ -12,6 +12,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :last_name
       t.string :state
       t.string :street
+      t.string :home_phone_number
 
       t.timestamps
     end

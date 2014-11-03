@@ -39,6 +39,7 @@ pt-BR:
         city: "Cidade"
         first_name: "Nome"
         gender: "Sexo"
+        home_phone_number: "Telefone residencial"
         id: "Id"
         is_mother: "Já é mãe?"
         is_pregnant: "Está Grávida?"
