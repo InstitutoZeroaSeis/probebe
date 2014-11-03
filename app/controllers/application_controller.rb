@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_profile
-    current_user.profile
+    current_user.profile || Profile.new
   end
   helper_method :current_profile
 
