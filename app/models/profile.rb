@@ -11,7 +11,7 @@ class Profile < ActiveRecord::Base
   has_one :avatar
 
   validate :has_children, on: :update, if: :is_mother?
-  validate :has_dumpphone_or_smartphone, on: :update
+  validate :has_dumbphone_or_smartphone, on: :update
   validate :is_mother_or_pregnant, on: :update
   validates_presence_of :first_name, :last_name, :user
   validates_presence_of :pregnancy_start_date, if: :is_pregnant?
@@ -49,8 +49,8 @@ class Profile < ActiveRecord::Base
     self.gender ||= 'not_informed'
   end
 
-  def has_dumpphone_or_smartphone
-    unless phones.any? {|p| ["dumpphone", "smartphone"].include? p.phone_type }
+  def has_dumbphone_or_smartphone
+    unless phones.any? {|p| ["dumbphone", "smartphone"].include? p.phone_type }
       errors.add(:base, I18n.t('activerecord.errors.models.profile.base.needs_some_mobile_phone'))
     end
   end

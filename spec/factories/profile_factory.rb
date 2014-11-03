@@ -13,8 +13,8 @@ FactoryGirl.define do
       phones { create_list :phone, 2, :smartphone }
     end
 
-    trait :with_dumpphone do
-      phones { create_list :phone, 2, :dumpphone }
+    trait :with_dumbphone do
+      phones { create_list :phone, 2, :dumbphone }
     end
 
     trait :with_residential_phone do

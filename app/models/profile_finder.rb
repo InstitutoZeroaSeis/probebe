@@ -7,8 +7,11 @@ class ProfileFinder
   end
 
   def find_profiles_by_message
-    find_by_profile +
+    if @scope == 'pregnant'
+      find_by_profile
+    else
       find_by_children
+    end
   end
 
   protected

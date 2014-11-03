@@ -1,7 +1,7 @@
 class Phone < ActiveRecord::Base
   belongs_to :profile
 
-  PHONE_TYPE_ENUM = [:smartphone, :dumpphone, :residential]
+  PHONE_TYPE_ENUM = [:smartphone, :dumbphone, :residential]
 
   enum phone_type: PHONE_TYPE_ENUM
 

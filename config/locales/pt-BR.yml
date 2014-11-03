@@ -119,10 +119,10 @@ pt-BR:
           not_informed: 'Não informado'
         phones:
           phone_type:
-            dumpphone: 'Celular'
+            dumbphone: 'Celular'
             residential: 'Residencial'
             smartphone: 'Smartphone'
-            dumpphone: 'Celular'
+            dumbphone: 'Celular'
   view:
     message:
       add_telefone: "Adicionar telefone"

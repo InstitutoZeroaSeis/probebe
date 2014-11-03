@@ -8,7 +8,7 @@ FactoryGirl.define do
       phone_type 0
     end
 
-    trait :dumpphone do
+    trait :dumbphone do
       phone_type 1
     end
 
