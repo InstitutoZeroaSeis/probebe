@@ -4,8 +4,6 @@ class CreateChildren < ActiveRecord::Migration
       t.string :name
       t.integer :gender
       t.date :birth_date
-      t.boolean :born
-      t.date :pregnancy_start_date
       t.references :profile
 
       t.timestamps

@@ -5,7 +5,7 @@ FactoryGirl.define do
     gender 'male'
     is_pregnant true
     is_mother false
-    children { create_list :child, 2 }
+    pregnancy_start_date { 3.months.ago }
     phones { create_list :phone, 2, :smartphone }
     user
 
@@ -23,6 +23,7 @@ FactoryGirl.define do
 
     trait :mother do
       is_mother true
+      with_children
     end
 
     trait :pregnant do

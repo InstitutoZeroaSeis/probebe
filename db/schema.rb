@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 20141031200225) do
     t.string   "name"
     t.integer  "gender"
     t.date     "birth_date"
-    t.boolean  "born"
-    t.date     "pregnancy_start_date"
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,4 +1,5 @@
 class Profile < ActiveRecord::Base
+  DAYS_IN_WEEK = 7
   GENDER_ENUM = [:male, :female, :not_informed]
 
   enum gender: GENDER_ENUM
@@ -9,16 +10,20 @@ class Profile < ActiveRecord::Base
   has_many :phones
   has_one :avatar
 
-  validate :has_children, on: :update
+  validate :has_children, on: :update, if: :is_mother?
   validate :has_dumpphone_or_smartphone, on: :update
   validate :is_mother_or_pregnant, on: :update
   validates_presence_of :first_name, :last_name, :user
+  validates_presence_of :pregnancy_start_date, if: :is_pregnant?
 
   accepts_nested_attributes_for :avatar
   accepts_nested_attributes_for :children, allow_destroy: true
   accepts_nested_attributes_for :phones, allow_destroy: true
 
   before_save :set_defaults
+
+  scope :mother, -> { where(is_mother: true) }
+  scope :pregnant, -> { where(is_pregnant: true) }
 
   def name
     "#{first_name} #{last_name}"
@@ -32,6 +37,10 @@ class Profile < ActiveRecord::Base
     unless self.avatar
       self.avatar = Avatar.create_from_url(url, profile: self)
     end
+  end
+
+  def pregnancy_age_in_weeks
+    (Date.today - pregnancy_start_date).to_i / DAYS_IN_WEEK
   end
 
   protected
