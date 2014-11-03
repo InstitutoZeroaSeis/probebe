@@ -4,7 +4,7 @@ SimpleForm.setup do |config|
   config.button_class = 'btn btn-default'
   config.boolean_label_class = nil
 
-  config.wrappers :bootstrap, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :bootstrap, tag: 'div', class: 'form-group form-group-sm', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -20,7 +20,7 @@ SimpleForm.setup do |config|
   end
 
 
-  config.wrappers :horizontal_file_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :horizontal_file_input, tag: 'div', class: 'form-group form-group-sm', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
