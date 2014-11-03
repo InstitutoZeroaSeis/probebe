@@ -21,7 +21,7 @@ class MessageSender
   def filter_already_sent_messages(profiles)
     profiles.select do |profile|
       profile.message_deliveries.none? do |delivery|
-        @message = delivery.message
+        @message == delivery.message
       end
     end
   end
