@@ -18,9 +18,7 @@ class ProfileFinder
 
   def find_by_profile
     Profile.send(@scope).select do |profile|
-      min_week = @message.minimum_valid_week || 0
-      max_week = @message.maximum_valid_week || Message::MAXIMUM_POSSIBLE_WEEK
-      (min_week..max_week).include? profile.pregnancy_age_in_weeks
+      @message.age_valid_for_message?(profile.pregnancy_age_in_weeks)
     end
   end
 

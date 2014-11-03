@@ -1,9 +1,9 @@
 class MessageSender
   attr_reader :message
 
-  def initialize(message)
-    @message = message
-    @profile_finder = ProfileFinder.new(message)
+  def initialize(profile_finder)
+    @message = profile_finder.message
+    @profile_finder = profile_finder
   end
 
   def send_messages

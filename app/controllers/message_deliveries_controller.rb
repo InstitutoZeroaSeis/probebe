@@ -12,7 +12,8 @@ class MessageDeliveriesController < ApplicationController
   end
 
   def send_message(message)
-    sender = MessageSender.new(message)
+    finder = ProfileFinder.new(message)
+    sender = MessageSender.new(finder)
     sender.send_messages
   end
 end

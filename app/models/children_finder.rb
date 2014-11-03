@@ -28,9 +28,7 @@ class ChildrenFinder
 
   def filter_by_age(children)
     children.to_a.select do |child|
-      min_week = @message.minimum_valid_week || 0
-      max_week = @message.maximum_valid_week || Message::MAXIMUM_POSSIBLE_WEEK
-      (min_week..max_week).include? child.age_in_weeks
+      message.age_valid_for_message?(child.age_in_weeks)
     end
   end
 
