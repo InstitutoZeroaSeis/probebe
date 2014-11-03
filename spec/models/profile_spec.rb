@@ -40,4 +40,9 @@ RSpec.describe Profile, :type => :model do
     subject { build_stubbed(:profile, :mother, :without_children) }
     it { is_expected.to be_invalid }
   end
+
+  context "without birth date" do
+    subject { build_stubbed(:profile, :without_birth_date) }
+    it { is_expected.to be_invalid }
+  end
 end

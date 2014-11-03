@@ -13,6 +13,7 @@ class Profile < ActiveRecord::Base
   validate :has_children, on: :update, if: :is_mother?
   validate :has_dumbphone_or_smartphone, on: :update
   validate :is_mother_or_pregnant, on: :update
+  validates_presence_of :birth_date, on: :update
   validates_presence_of :first_name, :last_name, :user
   validates_presence_of :pregnancy_start_date, if: :is_pregnant?
 
