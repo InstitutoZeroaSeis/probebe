@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20141031200225) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.integer  "personal_profile_id"
+    t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,23 +34,10 @@ ActiveRecord::Schema.define(version: 20141031200225) do
     t.string   "name"
     t.integer  "gender"
     t.date     "birth_date"
-    t.boolean  "born"
-    t.date     "pregnancy_start_date"
-    t.integer  "mother_profile_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "contact_profiles", force: true do |t|
     t.integer  "profile_id"
-    t.string   "state"
-    t.string   "city"
-    t.string   "street"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "contact_profiles", ["profile_id"], name: "index_contact_profiles_on_profile_id", using: :btree
 
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"
@@ -75,40 +62,27 @@ ActiveRecord::Schema.define(version: 20141031200225) do
     t.datetime "updated_at"
   end
 
-  create_table "mother_profiles", force: true do |t|
-    t.boolean  "is_mother",   default: true, null: false
-    t.boolean  "is_pregnant", default: true, null: false
-    t.integer  "profile_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "mother_profiles", ["profile_id"], name: "index_mother_profiles_on_profile_id", using: :btree
-
-  create_table "personal_profiles", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.integer  "gender",     default: 2
-    t.date     "birth_date"
-    t.string   "avatar"
-    t.integer  "profile_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "personal_profiles", ["profile_id"], name: "index_personal_profiles_on_profile_id", using: :btree
-
   create_table "phones", force: true do |t|
     t.string   "number"
-    t.integer  "phone_type",         default: 0
+    t.integer  "phone_type", default: 0
     t.string   "area_code"
-    t.integer  "contact_profile_id"
+    t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "profiles", force: true do |t|
+    t.boolean  "is_mother",            default: true,  null: false
+    t.boolean  "is_pregnant",          default: false, null: false
+    t.date     "birth_date"
+    t.date     "pregnancy_start_date"
+    t.integer  "gender",               default: 2
     t.integer  "user_id"
+    t.string   "city"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "state"
+    t.string   "street"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

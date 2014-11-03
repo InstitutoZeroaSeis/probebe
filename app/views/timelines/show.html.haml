@@ -1,0 +1,5 @@
+%h2= t('general.commom_words.timeline')
+%dl
+- @deliveries.each do |delivery|
+  %dt= l delivery.created_at
+  %dd= delivery.message.text

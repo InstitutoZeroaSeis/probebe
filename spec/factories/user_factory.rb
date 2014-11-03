@@ -4,7 +4,7 @@ FactoryGirl.define do
     password "12345678"
 
     trait :with_profile do
-      association :profile, :with_personal_profile
+      profile
     end
   end
 end

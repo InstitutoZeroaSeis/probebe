@@ -1,6 +1,6 @@
 class EnumInput < SimpleForm::Inputs::CollectionSelectInput
 
-  def input
+  def input(wrapper_options)
     options[:collection] ||= get_collection
     super
   end

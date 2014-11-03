@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  devise_scope :user do
-    get 'sign_out', to: 'devise/sessions#destroy'
-  end
-  root to: 'home#index'
+  root to: 'profiles#show'
 
-  resources :personal_profiles, except: [ :index ]
-  resource :mother_profile, except: [ :index ]
-  resource :contact_profile, except: [ :index ]
-  get 'timeline', to: 'timeline#show'
+  resource :profile, except: :index
+  resource :timeline, only: :show
+  resources :message_deliveries, only: :create
 
   mount_carnival_at 'admin'
   namespace :admin do

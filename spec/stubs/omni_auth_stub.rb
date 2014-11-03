@@ -1,4 +1,21 @@
-module OmniAuth
+module OmniAuthStub
+  module Google
+    BasicInfo = OmniAuth::AuthHash.new({
+      uid: '1337',
+      provider: 'google_oauth2',
+      info: {
+        email: 'name@example.com',
+        first_name: 'Name',
+        last_name: 'Surname'
+      }
+    })
+    WithoutEmail = OmniAuth::AuthHash.new({
+      uid: '1337',
+      provider: 'google_oauth2',
+      info: {
+      }
+    })
+  end
   MissingNameHash = OmniAuth::AuthHash.new({
     'provider' => 'google',
     'uid' => '12345678',

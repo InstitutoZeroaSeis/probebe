@@ -23,17 +23,25 @@ gem 'simple_form', '~> 3.1.0.rc2'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'jquery-ui-rails', '~> 5.0.2'
 
-group :development, :test do
+group :development do
   gem 'better_errors', '0.9.0'
-  gem 'binding_of_caller', '~> 0.7.2'
+  gem 'turbo_dev_assets', '~> 0.0.2'
   gem 'bullet'
-  gem 'byebug', '~> 3.4.0'
+end
+
+group :test do
+  gem 'poltergeist', require: false
   gem 'database_cleaner', '~> 1.3.0'
+  gem 'simplecov', require: false
+end
+
+group :development, :test do
+  gem 'binding_of_caller', '~> 0.7.2'
+  gem 'byebug', '~> 3.4.0'
   gem 'factory_girl', '~> 4.5.0', require: false
   gem 'pry-byebug', '~> 2.0.0'
-  gem 'simplecov', require: false
-  gem 'turbo_dev_assets', '~> 0.0.2'
   gem 'rspec', '~> 3.1.0'
   gem 'rspec-rails', '~> 3.1.0'
   gem "spring-commands-rspec", group: :development
+  gem 'guard-rspec', require: false
 end

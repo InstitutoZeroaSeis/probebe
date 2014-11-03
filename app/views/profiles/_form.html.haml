@@ -1,0 +1,39 @@
+= simple_form_for profile, url: profile_path, html: { class: 'form-horizontal' } do |f|
+  = f.error_notification
+  = render partial: 'base_errors', locals: { model: f.object }
+
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :gender, as: :enum, include_blank: false
+  = f.simple_fields_for :avatar, f.object.avatar || Avatar.new,  wrapper: :horizontal_file_input do |ff|
+    = ff.input :photo, as: :file
+
+  = f.input :is_pregnant
+  = f.input :is_mother
+  = f.input :pregnancy_start_date, as: :week_to_date
+
+  .col-sm-offset-2
+    %h3= t('general.commom_words.children')
+    %hr
+  = f.simple_fields_for :children do |ff|
+    = render partial: 'children/child_fields', locals: { f: ff }
+
+  .col-sm-offset-2.add_fields_container
+    %p.form-control-static
+      = add_fields_link('Incluir filho', f, :children, path: 'children/', callback: 'setupDateFromWeek')
+
+  .col-sm-offset-2
+    %h3= "#{Profile.human_attribute_name 'address'}"
+    %hr
+
+  = f.input :street
+  = f.input :state
+  = f.input :city
+
+  .col-sm-offset-2
+    %h3= "#{I18n.t('activerecord.models.phone').pluralize}"
+    %hr
+  = render partial: 'phones/form', locals: { form_builder: f }
+
+  .col-sm-offset-2
+    = f.button :submit

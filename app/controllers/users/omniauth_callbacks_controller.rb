@@ -2,19 +2,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def authenticate_user
     build_hash
-    User.transaction do
-      find_or_create_user
-      find_or_create_profile
-      find_or_create_personal_profile
-      create_profile_avatar
-    end
-
-    if @new_personal_profile
+    begin
+      User.transaction do
+        find_or_create_user
+        find_or_create_profile
+      end
       @user.skip_confirmation!
-      sign_in @user
-      redirect_to edit_personal_profile_path(@personal_profile)
-    else
       sign_in_and_redirect @user, event: :authentication
+    rescue ActiveRecord::RecordInvalid => e
+      flash[:notice] = I18n.t('controller.messages.could_not_sign_up_with_omniauth')
+      redirect_to new_user_session_path
     end
   end
 
@@ -30,32 +27,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def find_or_create_profile
-    @profile = @user.profile || @user.create_profile!
-  end
-
-  def find_or_create_personal_profile
-    if @profile.personal_profile
-      @personal_profile = @profile.personal_profile
-      @new_personal_profile = false
-    else
-      @personal_profile = @profile.create_personal_profile!(personal_profile_attributes)
-      @new_personal_profile = true
+    @profile = @user.profile || Profile.create!(profile_attributes)
+    if @omni_auth_hash.photo_url
+      @profile.update_avatar_from_url(@omni_auth_hash.photo_url)
     end
   end
 
-  def create_profile_avatar
-    if @new_personal_profile and @omni_auth_hash.photo_url
-      @personal_profile.create_avatar!
-      @personal_profile.avatar.from_url(@omni_auth_hash.photo_url)
-      @personal_profile.avatar.save!
-    end
-  end
-
-  def personal_profile_attributes
+  def profile_attributes
     {
       first_name: @omni_auth_hash.first_name,
       last_name: @omni_auth_hash.last_name,
-      gender: @omni_auth_hash.gender
+      gender: @omni_auth_hash.gender,
+      user: @user
     }
   end
 

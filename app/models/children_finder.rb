@@ -8,8 +8,7 @@ class ChildrenFinder
   end
 
   def find_childrens_for_message
-    children = filter_by_born_state(@children)
-    children = filter_by_gender(children)
+    children = filter_by_gender(@children)
     filter_by_age(children)
   end
 
@@ -18,10 +17,6 @@ class ChildrenFinder
   end
 
   protected
-
-  def filter_by_born_state(children)
-    children.where(born: @message.pregnancy? ? false: true)
-  end
 
   def filter_by_gender(children)
     if @message.gender != 'both'

@@ -2,19 +2,17 @@ ActiveRecord::Base.transaction do
   user = User.create!(email: "francisca@probebe.com.br", password: '12345678')
   user.skip_confirmation!
   user.save!
-  profile = user.create_profile!
-  profile.create_personal_profile!(first_name: 'Francisca', last_name: 'Matsumoto', gender: 'female')
-  profile.create_mother_profile!(is_mother: true, children_attributes: [name: 'Hideki', gender: 'male', birth_date: 6.months.ago, born: true])
+  profile = user.create_profile!(first_name: 'Francisca', last_name: 'Matsumoto', gender: 'female', is_mother: true,
+                                 children_attributes: [{name: 'Hideki', gender: 'male', birth_date: 6.months.ago}],
+                                 phones_attributes: [{area_code: '11', number: '12345678', phone_type: 'smartphone'}])
 
   user = User.create!(email: "eri@probebe.com.br", password: '12345678')
   user.skip_confirmation!
   user.save!
-  profile = user.create_profile!
-  profile.create_personal_profile!(first_name: 'Eri', last_name: 'Jonen', gender: 'female')
-  profile.create_mother_profile!(is_mother: true, children_attributes: [
-    { gender: 'male', birth_date: nil, born: false, pregnancy_start_date: 3.months.ago },
-    { name: 'Joana', gender: 'female', birth_date: nil, born: true, birth_date: (1.years + 6.months).ago }
-  ])
+  profile = user.create_profile!(first_name: 'Eri', last_name: 'Jonen', gender: 'female', is_mother: true, is_pregnant: true,
+                                 pregnancy_start_date: 3.months.ago,
+                                 children_attributes: [{ name: 'Joana', gender: 'female', birth_date: (1.years + 6.months).ago }],
+                                 phones_attributes: [{area_code: '11', number: '87654321', phone_type: 'dumbphone'}])
 
   prevention_category = Category.create!(name: 'Prevenção', parent_category: Category.create!(name: 'Saúde'))
   savings_category = Category.create!(name: 'Poupar', parent_category: Category.create!(name: 'Financeira'))
