@@ -22,8 +22,6 @@ pt-BR:
         name: "Nome"
         birth_date: "Data de nascimento"
         gender: "Gênero"
-        born: "Nasceu?"
-        pregnancy_start_date: "Idade da gestação"
       message:
         baby_target_type: "Tipo de bebê que a mensagem se aplica"
         category_name: "Categoria"
@@ -46,6 +44,7 @@ pt-BR:
         is_pregnant: "Está Grávida?"
         last_name: "Sobrenome"
         name: "Nome"
+        pregnancy_start_date: "Idade da gestação"
         state: "Estado"
         street: "Rua"
       phone:

@@ -8,9 +8,9 @@
   = f.simple_fields_for :avatar, f.object.avatar || Avatar.new,  wrapper: :horizontal_file_input do |ff|
     = ff.input :photo, as: :file
 
-
   = f.input :is_pregnant
   = f.input :is_mother
+  = f.input :pregnancy_start_date, as: :week_to_date
 
   .col-sm-offset-2
     %h3= t('general.commom_words.children')
