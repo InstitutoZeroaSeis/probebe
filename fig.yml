@@ -3,7 +3,7 @@ db:
     MYSQL_PASS: root
   image: tutum/mysql
   ports:
-    - 3306:3306
+    - 3306
   volumes:
     - .data:/var/lib/mysql
 
@@ -12,8 +12,15 @@ web:
   image: rails
   links:
     - db
+    - mail
   ports:
     - 3000:3000
   volumes:
     - .:/app
   working_dir: /app
+
+mail:
+  image: aegypius/mailcatcher
+  ports:
+    - 1025
+    - 3010:1080
