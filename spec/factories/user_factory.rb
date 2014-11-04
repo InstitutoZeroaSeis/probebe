@@ -6,5 +6,11 @@ FactoryGirl.define do
     trait :with_profile do
       profile
     end
+
+    trait :confirmed do
+      before(:create) do |user|
+        user.confirm!
+      end
+    end
   end
 end
