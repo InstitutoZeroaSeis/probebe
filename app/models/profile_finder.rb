@@ -7,12 +7,12 @@ class ProfileFinder
   end
 
   def find_profiles_by_message
-    find_children
+    find_profiles_by_children
   end
 
   protected
 
-  def find_children
+  def find_profiles_by_children
     Profile.select do |profile|
       children_finder = ChildrenFinder.new(message, profile.children)
       children_finder.any_children_found?

@@ -9,6 +9,7 @@ class ChildrenFinder
 
   def find_childrens_for_message
     children = filter_by_gender(@children)
+    children = filter_by_life_period(children)
     filter_by_age(children)
   end
 
@@ -23,6 +24,12 @@ class ChildrenFinder
       children.send(@message.gender)
     else
       children
+    end
+  end
+
+  def filter_by_life_period(children)
+    children.select do |child|
+      child.send("#{@message.baby_target_type}?")
     end
   end
 

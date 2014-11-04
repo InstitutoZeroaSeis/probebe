@@ -21,4 +21,22 @@ RSpec.describe ChildrenFinder, :type => :model do
     end
   end
 
+  context "with a message targeting pregnancies between 30 and 35 weeks" do
+    context "and with a born baby aged 32 weeks" do
+      subject { ChildrenFinder.new(@message, Child.all).find_childrens_for_message }
+      before { @message = create(:message, minimum_valid_week: 30, maximum_valid_week: 35, baby_target_type: 'pregnancy') }
+      before { @child = create(:child, birth_date: 32.weeks.ago) }
+      it { is_expected.to match_array([]) }
+    end
+  end
+
+  context "with a message targeting pregnancies between 30 and 35 weeks" do
+    context "and with a baby with about 32 weeks of pregnancy" do
+      subject { ChildrenFinder.new(@message, Child.all).find_childrens_for_message }
+      before { @message = create(:message, minimum_valid_week: 30, maximum_valid_week: 35, baby_target_type: 'pregnancy') }
+      before { @child = create(:child, birth_date: (Child::PREGNANCY_DURATION_IN_WEEKS - 32).weeks.from_now) }
+      it { is_expected.to match_array([@child]) }
+    end
+  end
+
 end

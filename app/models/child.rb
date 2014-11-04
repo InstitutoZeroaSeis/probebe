@@ -8,23 +8,23 @@ class Child < ActiveRecord::Base
   validates_presence_of :birth_date
 
   def age_in_weeks
-    if in_pregnancy?
+    if pregnancy?
       (Date.today - pregnancy_start_date).to_i / DAYS_IN_WEEK
     else
       (Date.today - birth_date.to_date).to_i / DAYS_IN_WEEK
     end
   end
 
-  def in_pregnancy?
+  def pregnancy?
     birth_date.future?
   end
 
   def born?
-    !in_pregnancy?
+    !pregnancy?
   end
 
   def pregnancy_start_date
-    if in_pregnancy?
+    if pregnancy?
       birth_date - PREGNANCY_DURATION_IN_WEEKS.weeks
     end
   end
