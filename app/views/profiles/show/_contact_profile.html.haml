@@ -15,7 +15,7 @@
     %table.table
       %thead
         %tr
-          %th= t('activerecord.models.cell_phone').pluralize
+          %th= t('activerecord.models.cell_phone').pluralize_current_locale
       %tbody
         - @profile.cell_phones.each do |phone|
           %tr
