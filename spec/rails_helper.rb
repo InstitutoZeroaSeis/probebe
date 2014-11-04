@@ -21,10 +21,11 @@ Dir[Rails.root.join("spec/stubs/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
 
+  config.include FactoryGirl::Syntax::Methods
+  config.include Features::OAuthHelper, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.clean_with :truncation
