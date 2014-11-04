@@ -124,3 +124,6 @@ pt-BR:
       remove: "Remover"
       send_messages: "Enviar mensagens"
       signed_in_as: "Logado como %{user_name}"
+  views:
+    profile:
+      create_profile: "Criar Perfil"
