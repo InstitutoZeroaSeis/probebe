@@ -29,6 +29,6 @@ feature "User creates new profile" do
   scenario "with invalid data" do
     click_button 'Criar Perfil'
 
-    expect(page).to have_content("Por favor corrija os problemas abaixo")
+    expect(page).to have_content(I18n.t('simple_form.error_notification.default_message'))
   end
 end

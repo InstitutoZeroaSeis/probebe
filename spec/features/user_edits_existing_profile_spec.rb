@@ -19,6 +19,6 @@ feature "User edits new profile" do
     fill_in "profile_first_name", with: ""
     click_button 'Atualizar Perfil'
 
-    expect(page).to have_content("Por favor corrija os problemas abaixo")
+    expect(page).to have_content(I18n.t('simple_form.error_notification.default_message'))
   end
 end
