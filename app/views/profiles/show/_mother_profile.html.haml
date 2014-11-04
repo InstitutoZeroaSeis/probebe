@@ -3,10 +3,6 @@
     %h4 Informações Maternas
   .panel-body
     %dl
-      %dt= Profile.human_attribute_name 'is_pregnant'
-      %dd= @profile.is_pregnant
-      %dt= Profile.human_attribute_name 'is_mother'
-      %dd= @profile.is_mother
       %dt= Profile.human_attribute_name 'pregnancy_start_date'
       %dd= distance_of_time_in_words_to_now @profile.pregnancy_start_date
     %strong= t('activerecord.models.child').pluralize_current_locale

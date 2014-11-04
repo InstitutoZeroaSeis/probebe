@@ -70,11 +70,8 @@ ActiveRecord::Schema.define(version: 20141031200225) do
   end
 
   create_table "profiles", force: true do |t|
-    t.boolean  "is_mother",            default: true,  null: false
-    t.boolean  "is_pregnant",          default: false, null: false
     t.date     "birth_date"
-    t.date     "pregnancy_start_date"
-    t.integer  "gender",               default: 2
+    t.integer  "gender",            default: 2
     t.integer  "user_id"
     t.string   "city"
     t.string   "first_name"

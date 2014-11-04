@@ -10,21 +10,16 @@ class Profile < ActiveRecord::Base
   has_many :cell_phones
   has_one :avatar
 
-  validate :has_children, on: :update, if: :is_mother?
+  validate :has_children, on: :update
   validate :has_cell_phone, on: :update
-  validate :is_mother_or_pregnant, on: :update
   validates_presence_of :birth_date, on: :update
   validates_presence_of :first_name, :last_name, :user
-  validates_presence_of :pregnancy_start_date, if: :is_pregnant?
 
   accepts_nested_attributes_for :avatar
   accepts_nested_attributes_for :children, allow_destroy: true
   accepts_nested_attributes_for :cell_phones, allow_destroy: true
 
   before_save :set_defaults
-
-  scope :mother, -> { where(is_mother: true) }
-  scope :pregnant, -> { where(is_pregnant: true) }
 
   def name
     "#{first_name} #{last_name}"
@@ -40,8 +35,9 @@ class Profile < ActiveRecord::Base
     end
   end
 
-  def pregnancy_age_in_weeks
-    (Date.today - pregnancy_start_date).to_i / DAYS_IN_WEEK
+  def pregnancy_start_date
+    child = children.first {|child| child.in_pregnancy? }
+    child.pregnancy_start_date
   end
 
   protected
@@ -60,12 +56,6 @@ class Profile < ActiveRecord::Base
     current_children = children.select {|c| !c.marked_for_destruction? }
     if current_children.empty?
       errors.add(:base, I18n.t('activerecord.errors.models.profile.base.has_no_children'))
-    end
-  end
-
-  def is_mother_or_pregnant
-    unless is_mother? or is_pregnant?
-      errors.add(:base, I18n.t('activerecord.errors.models.profile.base.needs_to_be_mother_or_pregnant'))
     end
   end
 

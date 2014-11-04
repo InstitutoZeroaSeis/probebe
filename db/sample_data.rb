@@ -2,15 +2,14 @@ ActiveRecord::Base.transaction do
   user = User.create!(email: "francisca@probebe.com.br", password: '12345678')
   user.skip_confirmation!
   user.save!
-  profile = user.create_profile!(first_name: 'Francisca', last_name: 'Matsumoto', gender: 'female', is_mother: true,
-                                 children_attributes: [{ name: 'Hideki', gender: 'male', birth_date: 6.months.ago }],
+  profile = user.create_profile!(first_name: 'Francisca', last_name: 'Matsumoto', gender: 'female',
+                                 children_attributes: [{name: 'Hideki', gender: 'male', birth_date: 6.months.ago}],
                                  cell_phones_attributes: [{ number: '12345678' }])
 
   user = User.create!(email: "eri@probebe.com.br", password: '12345678')
   user.skip_confirmation!
   user.save!
-  profile = user.create_profile!(first_name: 'Eri', last_name: 'Jonen', gender: 'female', is_mother: true, is_pregnant: true,
-                                 pregnancy_start_date: 6.months.ago,
+  profile = user.create_profile!(first_name: 'Eri', last_name: 'Jonen', gender: 'female',
                                  children_attributes: [{ name: 'Joana', gender: 'female', birth_date: (1.years + 6.months).ago }],
                                  cell_phones_attributes: [{ number: '87654321' }])
 

@@ -7,22 +7,12 @@ class ProfileFinder
   end
 
   def find_profiles_by_message
-    if @scope == 'pregnant'
-      find_by_profile
-    else
-      find_by_children
-    end
+    find_children
   end
 
   protected
 
-  def find_by_profile
-    Profile.send(@scope).select do |profile|
-      @message.age_valid_for_message?(profile.pregnancy_age_in_weeks)
-    end
-  end
-
-  def find_by_children
+  def find_children
     Profile.select do |profile|
       children_finder = ChildrenFinder.new(message, profile.children)
       children_finder.any_children_found?

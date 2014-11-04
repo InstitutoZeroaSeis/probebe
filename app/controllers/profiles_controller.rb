@@ -44,8 +44,8 @@ class ProfilesController < ApplicationController
   def permitted_params
     profile_params = params[:profile]
 
-    personal_attributes = [:first_name, :last_name, :gender, :birth_date, :is_pregnant, :is_mother, avatar_attributes: [:id, :photo]]
-    mother_attributes = [:is_mother, :is_pregnant, :pregnancy_start_date, children_attributes: [:id, :_destroy, :name, :birth_date, :gender]]
+    personal_attributes = [:first_name, :last_name, :gender, :birth_date, avatar_attributes: [:id, :photo]]
+    mother_attributes = [children_attributes: [:id, :_destroy, :name, :birth_date, :gender]]
     contact_attributes = [:state, :city, :street, cell_phones_attributes: [:id, :number, :_destroy]]
 
     profile_params ? profile_params.permit(personal_attributes + mother_attributes + contact_attributes) : {}
