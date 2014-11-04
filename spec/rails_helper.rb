@@ -26,6 +26,7 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include Features::OAuthHelper, type: :feature
+  config.include Formulaic::Dsl, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.clean_with :truncation
