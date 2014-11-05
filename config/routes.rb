@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :users
     resources :messages
     resources :categories
+    resources :authorial_articles
     post 'users/:id/impersonate' => 'users#impersonate', as: :impersonate_user
     get 'users/:id/stop_impersonating' => 'users#stop_impersonating', as: :stop_impersonating
   end

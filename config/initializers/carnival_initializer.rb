@@ -18,6 +18,10 @@ Carnival.configure do |config|
         {
           label: "messages",
           link: "/admin/messages"
+        },
+        {
+          label: "authorial_articles",
+          link: "/admin/authorial_articles"
         }
       ]
     },
