@@ -20,3 +20,5 @@ test:
 production:
   <<: *default
   database: probebe_production
+  host: localhost
+  password: v1z12010
