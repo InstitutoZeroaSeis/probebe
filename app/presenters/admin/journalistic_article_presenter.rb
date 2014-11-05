@@ -40,7 +40,7 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
         sortable: true,
         advanced_search: {operator: :like}
 
-  field :user_id,
+  field 'user.email',
         actions: [:index, :show],
         sortable: true,
         advanced_search: {operator: :like}

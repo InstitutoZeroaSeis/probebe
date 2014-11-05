@@ -34,7 +34,7 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
         sortable: true,
         advanced_search: {operator: :like}
 
-  field :user_id,
+  field 'user.email',
         actions: [:index, :show],
         sortable: true,
         advanced_search: {operator: :like}

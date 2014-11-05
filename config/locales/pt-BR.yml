@@ -6,12 +6,41 @@ pt-BR:
     timeline: "Linha do tempo"
     view: &view "Visualizar"
     weeks: "Semanas"
+    type: &type 'Tipo'
+    title: &title 'Título'
+    text: &text 'Texto'
+    summary: &summary 'Resumo'
+    category: &category 'Categoria'
+    category_id: &category_id 'Categoria'
+    category_name: &category_name 'Categoria'
+    parent_article_id: &parent_article_id 'Artigo Pai'
+    user_email: &user_email 'Email do Autor'
   _gender: &gender
     male: 'Masculino'
     female: 'Feminino'
     not_informed: 'Não informado'
   activerecord:
     attributes:
+      articles/authorial_article:
+        type: *type
+        title: *title
+        text: *text
+        summary: *summary
+        category_id: *category_id
+        category: *category
+        category_name: *category_name
+        parent_article_id: *parent_article_id
+        user_email: *user_email
+      articles/journalistic_article:
+        type: *type
+        title: *title
+        text: *text
+        summary: *summary
+        category_id: *category_id
+        category: *category
+        category_name: *category_name
+        parent_article_id: *parent_article_id
+        user_email: *user_email
       avatar:
         photo: "Foto"
       category:
@@ -78,8 +107,10 @@ pt-BR:
   carnival:
     impersonate: "Logar como"
     menu:
+      authorial_articles: "Artigo Autoral"
       administration: "Administração"
       categories: "Categorias"
+      journalistic_articles: "Artigo Jornalístico"
       messages: "Mensagens"
       users: "Usuários"
   controller:
