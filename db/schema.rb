@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031200225) do
+ActiveRecord::Schema.define(version: 20141104165245) do
+
+  create_table "articles", force: true do |t|
+    t.string   "type"
+    t.string   "title"
+    t.text     "text"
+    t.text     "summary"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.integer  "parent_article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "avatars", force: true do |t|
     t.string   "photo_file_name"
