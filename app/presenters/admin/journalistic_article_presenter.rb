@@ -20,6 +20,11 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
         actions: [:new, :edit],
         as: :category_grouped_select
 
+  field :tags,
+        actions: [:new, :show, :edit],
+        nested_form: true,
+        nested_form_modes: [:associate]
+
   field :title,
         actions: [:index, :show, :edit, :new],
         sortable: true,

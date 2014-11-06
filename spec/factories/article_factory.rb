@@ -5,6 +5,7 @@ FactoryGirl.define do
     type 'Articles::AuthorialArticle'
     user
     category
+    tags { [FactoryGirl.create(:tag)] }
   end
 
   trait :without_user do

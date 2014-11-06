@@ -4,6 +4,7 @@ FactoryGirl.define do
     sequence(:summary) {|n| "Summary#{n}"}
     user
     category
+    tags { [FactoryGirl.create(:tag)] }
   end
 
   trait :with_parent_authorial_article do 
