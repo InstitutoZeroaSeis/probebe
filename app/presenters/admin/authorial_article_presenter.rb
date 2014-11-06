@@ -11,8 +11,8 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
         advanced_search: {operator: :equal}
 
   field :category_id,
-        actions: [:new, :edit],
-        as: :category_grouped_select
+        as: :category_grouped_select,
+        actions: [:new, :edit]
 
   field :tags,
         actions: [:new, :show, :edit],
@@ -25,9 +25,9 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
         advanced_search: {operator: :like}
 
   field :text,
-        actions: [:index, :show, :edit, :new],
-        sortable: true,
-        advanced_search: {operator: :like}
+        as: :ckeditor,
+        actions: [:show, :edit, :new],
+        sortable: true
 
   field :summary,
         actions: [:index, :show, :edit, :new],

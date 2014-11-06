@@ -2,9 +2,6 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
 
   model_name 'Articles::JournalisticArticle'
 
-  field :id,
-        actions: [:index, :show], sortable: true,
-        advanced_search: {operator: :equal}
 
   field :parent_article_id,
         as: :string,
@@ -12,13 +9,17 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
         sortable: true,
         advanced_search: {operator: :equal}
 
+  field :id,
+        actions: [:index, :show], sortable: true,
+        advanced_search: {operator: :equal}
+
   field 'category.name',
         actions: [:show, :index],
         advanced_search: {operator: :equal}
 
   field :category_id,
-        actions: [:new, :edit],
-        as: :category_grouped_select
+        as: :category_grouped_select,
+        actions: [:new, :edit]
 
   field :tags,
         actions: [:new, :show, :edit],
@@ -31,24 +32,27 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
         advanced_search: {operator: :like}
 
   field :text,
-        actions: [:index, :show, :edit, :new],
-        sortable: true,
-        advanced_search: {operator: :like}
+        as: :ckeditor,
+        actions: [:show, :edit, :new],
+        sortable: true
 
   field :summary,
         actions: [:index, :show, :edit, :new],
         sortable: true,
         advanced_search: {operator: :like}
 
-  field :text,
-        actions: [:index, :show, :edit, :new],
-        sortable: true,
-        advanced_search: {operator: :like}
+  field :article_references,
+        actions: [:new, :show, :edit],
+        nested_form: true,
+        nested_form_modes: [:new],
+        nested_form_allow_destroy: true
 
   field 'user.email',
         actions: [:index, :show],
         sortable: true,
         advanced_search: {operator: :like}
+
+
 
   action :show
   action :edit
@@ -56,3 +60,4 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
   action :new
 
 end
+
