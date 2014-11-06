@@ -50,3 +50,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'formulaic'
 end
+
+group :production do
+  gem "non-stupid-digest-assets"
+end
