@@ -25,3 +25,5 @@
 vendor/bundle
 public/system
 tags
+/public/system
+/public/ckeditor_assets
