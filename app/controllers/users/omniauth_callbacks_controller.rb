@@ -7,7 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         find_or_create_user
         find_or_create_profile
       end
-      @user.skip_confirmation!
+      @user.confirm!
       sign_in_and_redirect @user, event: :authentication
     rescue ActiveRecord::RecordInvalid => e
       flash[:notice] = I18n.t('controller.messages.could_not_sign_up_with_omniauth')
