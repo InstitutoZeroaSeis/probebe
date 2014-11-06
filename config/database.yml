@@ -19,4 +19,7 @@ test:
 
 production:
   <<: *default
+  user: root
   database: probebe_production
+  host: localhost
+  password: v1z12010

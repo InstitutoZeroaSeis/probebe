@@ -17,7 +17,7 @@
 
   .col-sm-offset-2.add_fields_container
     %p.form-control-static
-      = add_fields_link('Incluir filho', f, :children, path: 'children/', callback: 'setupDateFromWeek')
+      = add_fields_link("#{t('general.commom_words.include')} #{t('activerecord.models.child')}", f, :children, path: 'children/', callback: 'setupDateFromWeek')
 
   .col-sm-offset-2
     %h3= "#{Profile.human_attribute_name 'address'}"
