@@ -26,6 +26,7 @@ gem 'unicorn'
 gem 'capistrano-rails', '~> 1.1.0'
 gem 'rvm1-capistrano3', require: false
 gem 'capistrano-bundler'
+gem 'ckeditor', '~> 4.1.0'
 
 group :development do
   gem 'better_errors', '0.9.0'
