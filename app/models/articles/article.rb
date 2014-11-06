@@ -6,7 +6,7 @@ class Articles::Article < ActiveRecord::Base
   has_many :article_references
   has_and_belongs_to_many :tags
 
-  accepts_nested_attributes_for :article_references
+  accepts_nested_attributes_for :article_references, allow_destroy: true
 
   validates_presence_of :text, :summary, :category, :user, :type
 

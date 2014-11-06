@@ -34,10 +34,11 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
         sortable: true,
         advanced_search: {operator: :like}
 
-  field :text,
-        actions: [:index, :show, :edit, :new],
-        sortable: true,
-        advanced_search: {operator: :like}
+  field :article_references,
+        actions: [:new, :show, :edit],
+        nested_form: true,
+        nested_form_modes: [:new],
+        nested_form_allow_destroy: true
 
   field 'user.email',
         actions: [:index, :show],

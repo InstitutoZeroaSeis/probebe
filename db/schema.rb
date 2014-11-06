@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20141106153304) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
+    t.integer  "article_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
