@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  skip_before_filter :check_profile_status, only: [:new, :create, :edit, :update]
+  before_filter :check_profile_status, except: [:new, :create, :edit, :update]
 
   def show
     @profile = current_profile
@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
   def new
     @profile = Profile.new
     @profile.cell_phones.build if @profile.cell_phones.empty?
-    render :new
+    redirect_to edit_profile_path if current_profile
   end
 
   def create
@@ -25,7 +25,9 @@ class ProfilesController < ApplicationController
   def edit
     @profile = current_profile
     @profile.cell_phones.build if @profile.cell_phones.empty?
-    render :edit
+    if current_profile.blank?
+      redirect_to new_profile_path
+    end
   end
 
   def update

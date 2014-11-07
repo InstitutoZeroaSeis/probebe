@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   impersonates :user
 
   before_filter :authenticate_user!
-  before_filter :check_profile_status
 
   protect_from_forgery with: :exception
 

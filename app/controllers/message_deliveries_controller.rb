@@ -1,4 +1,6 @@
 class MessageDeliveriesController < ApplicationController
+  before_filter :check_profile_status
+
   def create
     flash[:notice] = "Mensagens Enviadas!"
     messages.each {|msg| send_message(msg)}
