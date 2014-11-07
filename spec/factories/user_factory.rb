@@ -12,5 +12,13 @@ FactoryGirl.define do
         user.confirm!
       end
     end
+
+    trait :site_user do
+      role 'site_user'
+    end
+
+    trait :admin do
+      role 'admin'
+    end
   end
 end
