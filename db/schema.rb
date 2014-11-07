@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(version: 20141106172358) do
     t.integer  "baby_target_type"
     t.integer  "minimum_valid_week"
     t.integer  "maximum_valid_week"
+    t.integer  "messageable_id"
+    t.string   "messageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

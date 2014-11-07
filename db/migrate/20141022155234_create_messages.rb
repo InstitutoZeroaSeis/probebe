@@ -8,6 +8,8 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :baby_target_type
       t.integer :minimum_valid_week
       t.integer :maximum_valid_week
+      t.integer :messageable_id
+      t.string  :messageable_type
 
       t.timestamps
     end

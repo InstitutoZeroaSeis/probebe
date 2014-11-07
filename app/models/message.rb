@@ -9,6 +9,7 @@ class Message < ActiveRecord::Base
   enum baby_target_type: BABY_TARGET_TYPE_ENUM
 
   belongs_to :category
+  belongs_to :messageable, polymorphic: true
   has_many :message_deliveries
 
   validates_presence_of :text, :gender, :category, :baby_target_type
