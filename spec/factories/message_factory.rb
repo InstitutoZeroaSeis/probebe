@@ -4,6 +4,7 @@ FactoryGirl.define do
     gender 'both'
     baby_target_type 'pregnancy'
     category
+    minimum_valid_week 8
   end
 
   trait :without_minimum_valid_week do

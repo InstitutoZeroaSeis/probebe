@@ -20,5 +20,13 @@ FactoryGirl.define do
     trait :admin do
       role 'admin'
     end
+
+    trait :author do
+      role 'author'
+    end
+
+    trait :journalist do
+      role 'journalist'
+    end
   end
 end

@@ -5,18 +5,19 @@ FactoryGirl.define do
     user
     category
     tags { [FactoryGirl.create(:tag)] }
+    association :parent_article, factory: :authorial_article
   end
 
-  trait :with_parent_authorial_article do 
-    association :parent_article, factory: :authorial_article 
+  trait :with_parent_authorial_article do
+    association :parent_article, factory: :authorial_article
   end
 
-  trait :with_parent_journalistic_article do 
+  trait :with_parent_journalistic_article do
     association :parent_article, factory: :journalistic_article
   end
 
-  trait :without_parent_article do 
-     parent_article nil 
+  trait :without_parent_article do
+     parent_article nil
   end
 
 end

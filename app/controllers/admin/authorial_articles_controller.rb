@@ -9,10 +9,10 @@ class Admin::AuthorialArticlesController < Carnival::BaseAdminController
   private
 
   def permitted_params
-    permitted = params.permit(articles_authorial_article: 
-                              [:id, :text, :title, :summary, :category_id,:user_id, {tag_ids: []}, 
+    permitted = params.permit(articles_authorial_article:
+                              [:id, :text, :title, :summary, :category_id,:user_id, {tag_ids: []},
                                article_reference_attributes:[:id, :source, :_destroy]])
-    
+
     permitted[:articles_authorial_article].merge!(user_id: current_user.id) if permitted.present?
     permitted
   end
