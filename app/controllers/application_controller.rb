@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   before_filter :check_profile_status
 
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   def current_profile
@@ -14,15 +12,19 @@ class ApplicationController < ActionController::Base
   helper_method :current_profile
 
   def check_profile_status
-    if current_user
-      if current_profile
-        if current_profile.invalid?
-          flash[:notice] = I18n.t('controller.messages.complete_the_profile')
-          redirect_to edit_profile_path
-        end
-      else
-        redirect_to new_profile_path
+    if user_signed_in?
+      if profile_redirect_path
+        flash[:notice] = I18n.t('controller.messages.complete_the_profile')
+        redirect_to profile_redirect_path
       end
+    end
+  end
+
+  def profile_redirect_path
+    if current_profile.blank?
+      new_profile_path
+    elsif current_profile.invalid?
+      edit_profile_path
     end
   end
 end
