@@ -33,4 +33,5 @@ Carnival.configure do |config|
 
   config.custom_javascript_files = ["ckeditor/init"]
   config.use_full_model_name = false
+  config.root_action = 'admin/users#index'
 end
