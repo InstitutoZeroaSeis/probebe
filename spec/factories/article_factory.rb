@@ -4,7 +4,7 @@ FactoryGirl.define do
     sequence(:summary) {|n| "Summary#{n}"}
     type 'Articles::AuthorialArticle'
     user
-    category
+    association :category, factory: [:category, :with_parent]
     tags { [FactoryGirl.create(:tag)] }
   end
 

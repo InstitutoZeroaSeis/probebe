@@ -16,6 +16,5 @@ feature "Author create an authorial article" do
 
     expect(current_path).to eq(carnival_root_path)
     expect(page).to have_content(article_title)
-
   end
 end

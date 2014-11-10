@@ -3,6 +3,6 @@ FactoryGirl.define do
     sequence(:text) {|n| "Text#{n}"}
     sequence(:summary) {|n| "Summary#{n}"}
     user
-    category
+    association :category, factory: [:category, :with_parent]
   end
 end
