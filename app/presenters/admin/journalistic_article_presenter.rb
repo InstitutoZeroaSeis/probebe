@@ -52,6 +52,10 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
         sortable: true,
         advanced_search: {operator: :like}
 
+  field :messages,
+        actions: [:new, :show, :edit],
+        nested_form: true,
+        nested_form_modes: [:new]
 
 
   action :show
@@ -60,4 +64,3 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
   action :new
 
 end
-

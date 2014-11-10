@@ -2,14 +2,15 @@ class Admin::AuthorialArticlesController < Carnival::BaseAdminController
   defaults :resource_class => Articles::AuthorialArticle
 
   layout "carnival/admin"
-  
+
   private
-  
+
   def permitted_params
-    permitted = params.permit(articles_authorial_article: 
-                              [:id, :text, :title, :summary, :category_id,:user_id, {tag_ids: []}, 
-                               article_reference_attributes:[:id, :source, :_destroy]])
-    
+    permitted = params.permit(articles_authorial_article:
+                              [:id, :text, :title, :summary, :category_id,:user_id, {tag_ids:[]},
+                               article_reference_attributes:[:id, :source, :_destroy],
+                               messages_attributes:[:id, :text, :gender, :teenage_pregnancy, :category_id, :baby_target_type, :minimum_valid_week, :maximum_valid_week, :_destroy]])
+
     permitted[:articles_authorial_article].merge!(user_id: current_user.id) if permitted.present?
     permitted
   end
