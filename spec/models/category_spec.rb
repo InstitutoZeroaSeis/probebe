@@ -11,14 +11,14 @@ describe Category do
     it { is_expected.to be_invalid }
   end
 
-  context "With parent category equals to self" do
+  context "with parent category equals to self" do
     subject { build(:category, :with_parent_category_same_as_self) }
     it { is_expected.to be_invalid }
   end
 
-  context "Having children" do
+  context "having children" do
     subject { build(:category, :with_subcategories) }
-    it "Should not be destroyed" do
+    it "should not be destroyed" do
       subject.destroy
       expect(subject.destroyed?).to eq(false)
     end
