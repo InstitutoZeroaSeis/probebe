@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :article, class: Articles::Article do
     sequence(:text) {|n| "Text#{n}"}
+    sequence(:title) {|n| "Title#{n}"}
     sequence(:summary) {|n| "Summary#{n}"}
     type 'Articles::AuthorialArticle'
     user
@@ -24,4 +25,7 @@ FactoryGirl.define do
     type nil
   end
 
+  trait :without_title do
+    title nil
+  end
 end

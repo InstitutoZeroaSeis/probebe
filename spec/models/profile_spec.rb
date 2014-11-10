@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Profile, :type => :model do
-  context "Without cell phone" do
+  context "without cell phone" do
     subject { build_stubbed(:profile, :without_cell_phone) }
     it { is_expected.to be_invalid }
   end

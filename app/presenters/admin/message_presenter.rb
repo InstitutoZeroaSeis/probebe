@@ -39,8 +39,6 @@ class Admin::MessagePresenter < Carnival::BaseAdminPresenter
     actions: [:index, :new, :edit, :show],
     advanced_search: {:operator => :equal}
 
-
-
   field :created_at, :actions => [:index, :show]
 
   action :show

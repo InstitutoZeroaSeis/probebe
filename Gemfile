@@ -11,7 +11,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'pry'
 gem 'rails-i18n', '~> 4.0.0'
-gem 'carnival', :github => 'Vizir/carnival', :branch => 'master', ref: '8336d738bb070630742f09c019c01cdff1ce3e08'
+gem 'carnival', :github => 'Vizir/carnival', :branch => 'master'
 gem 'carnival_devise_views', :github => 'Vizir/carnival_devise_views', :branch => 'master'
 gem 'devise', '~> 3.4.0'
 gem 'devise-i18n', '~> 0.11.2'

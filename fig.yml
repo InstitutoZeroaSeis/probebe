@@ -8,7 +8,7 @@ db:
     - .data:/var/lib/mysql
 
 web:
-  command: bundle exec rails s
+  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec rails s"
   image: rails
   links:
     - db

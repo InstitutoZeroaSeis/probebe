@@ -7,7 +7,9 @@ feature "Author create an authorial article" do
     create(:category, parent_category: create(:category), name: 'Saúde')
     sign_in(user.email, user.password)
     visit new_admin_authorial_article_path
-    find('option', text: 'Saúde').select_option
+    within '#articles_authorial_article_category_id' do
+      find('option', text: 'Saúde').select_option
+    end
     fill_in "articles_authorial_article_title", with: article_title
     fill_in "articles_authorial_article_text", with: "Text"
     fill_in "articles_authorial_article_summary", with: "Summary"

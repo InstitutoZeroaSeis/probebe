@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :journalistic_article, class: Articles::JournalisticArticle do
     sequence(:text) {|n| "Text#{n}"}
+    sequence(:title) {|n| "Title#{n}"}
     sequence(:summary) {|n| "Summary#{n}"}
     user
     association :category, factory: [:category, :with_parent]
