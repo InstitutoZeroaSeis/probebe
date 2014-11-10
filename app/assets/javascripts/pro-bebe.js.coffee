@@ -35,7 +35,10 @@ replaceNameByCurrentTime = (jqElement) ->
     $(@).attr('name', new_name)
 
 setupDatePickers = ->
-  $('.datepicker').datepicker(beforeShow: ->
+  $('.datepicker').datepicker(
+    changeMonth: true
+    changeYear: true
+    beforeShow: ->
     setTimeout(->
       $('.ui-datepicker').css('z-index', 99)
     , 0)
@@ -43,6 +46,7 @@ setupDatePickers = ->
   )
 
 $ ->
+  $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] )
   $('body').on 'click', '.add_fields', addField
   $('body').on 'click', '.remove_fields', removeField
   setupDateFromWeek()
