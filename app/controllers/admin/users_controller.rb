@@ -2,6 +2,7 @@ class Admin::UsersController < Carnival::BaseAdminController
   layout "carnival/admin"
 
   before_filter :deny_site_user_access_on_admin
+  load_and_authorize_resource 'User'
 
   def impersonate
     user = User.find(params[:id])

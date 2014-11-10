@@ -4,7 +4,7 @@ feature "Author create an authorial article" do
   scenario "successfully" do
     user = create(:user, :confirmed, :author)
     article_title = "Test title see if index showing title"
-    category = create(:category, parent_category: create(:category), name: 'Saúde')
+    create(:category, parent_category: create(:category), name: 'Saúde')
     sign_in(user.email, user.password)
     visit new_admin_authorial_article_path
     find('option', text: 'Saúde').select_option
@@ -14,7 +14,7 @@ feature "Author create an authorial article" do
 
     click_on 'Criar'
 
-    expect(current_path).to eq(admin_authorial_articles_path)
+    expect(current_path).to eq(carnival_root_path)
     expect(page).to have_content(article_title)
 
   end

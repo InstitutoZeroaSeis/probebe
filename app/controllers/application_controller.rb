@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   impersonates :user
   before_filter :authenticate_user!
   protect_from_forgery with: :exception
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to carnival_root_path, :alert => exception.message
+  end
 
   def current_profile
     current_user.profile if current_user
@@ -10,18 +13,15 @@ class ApplicationController < ActionController::Base
 
   def check_profile_status
     if user_signed_in?
-      if profile_redirect_path
-        flash[:notice] = I18n.t('controller.messages.complete_the_profile')
-        redirect_to profile_redirect_path
-      end
+      redirect_to_profile(I18n.t('controller.messages.complete_the_profile'))
     end
   end
 
-  def profile_redirect_path
+  def redirect_to_profile(flash_notice)
     if current_profile.blank?
-      new_profile_path
+      redirect_to new_profile_path, notice: flash_notice
     elsif current_profile.invalid?
-      edit_profile_path
+      redirect_to edit_profile_path, notice: flash_notice
     end
   end
 

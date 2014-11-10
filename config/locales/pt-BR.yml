@@ -1,5 +1,6 @@
 pt-BR:
   _commom_words: &commom_words
+    article_references: &article_references "Referências"
     children: "Filhos"
     edit: &edit "Editar"
     include: "Incluir"
@@ -23,24 +24,26 @@ pt-BR:
   activerecord:
     attributes:
       articles/authorial_article:
-        type: *type
-        title: *title
-        text: *text
-        summary: *summary
-        category_id: *category_id
+        article_references: *article_references
         category: *category
+        category_id: *category_id
         category_name: *category_name
         parent_article_id: *parent_article_id
+        summary: *summary
+        text: *text
+        title: *title
+        type: *type
         user_email: *user_email
       articles/journalistic_article:
-        type: *type
-        title: *title
-        text: *text
-        summary: *summary
-        category_id: *category_id
+        article_references: *article_references
         category: *category
+        category_id: *category_id
         category_name: *category_name
         parent_article_id: *parent_article_id
+        summary: *summary
+        text: *text
+        title: *title
+        type: *type
         user_email: *user_email
       avatar:
         photo: "Foto"
@@ -148,6 +151,8 @@ pt-BR:
         gender:
           <<: *gender
           not_informed: 'Não informado'
+  unauthorized:
+    default: "Você não tem permissão para acessar a página solicitada"
   view:
     message:
       add_telefone: "Incluir Telefone"
