@@ -10,6 +10,6 @@ class Articles::Article < ActiveRecord::Base
 
   accepts_nested_attributes_for :article_references, allow_destroy: true
 
-  validates_presence_of :text, :summary, :category, :user, :type
+  validates_presence_of :text, :title, :category, :user, :type
 
 end
