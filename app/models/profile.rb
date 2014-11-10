@@ -36,7 +36,7 @@ class Profile < ActiveRecord::Base
   end
 
   def pregnancy_start_date
-    child = children.first {|child| child.pregnancy? }
+    child = children.find {|c| c.pregnancy? }
     child.pregnancy_start_date if child
   end
 
