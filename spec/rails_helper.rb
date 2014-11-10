@@ -25,7 +25,8 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.include FactoryGirl::Syntax::Methods
-  config.include Features::OAuthHelper, type: :feature
+  config.include Features::AuthenticationHelper, type: :feature
+  config.include Features::RegexHelper, type: :feature
   config.include Formulaic::Dsl, type: :feature
 
   config.before(:suite) do

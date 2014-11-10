@@ -1,5 +1,5 @@
 module Features
-  module OAuthHelper
+  module AuthenticationHelper
     def sign_in(email, password)
       visit root_path
       fill_in "Email", with: email
@@ -12,8 +12,8 @@ module Features
       click_on "Logar com Google Oauth2"
     end
 
-    def extract_link_from_text(link_class, text)
-      /<a class="#{link_class}" href="(.*)">/.match(text).captures.first
+    def sign_out
+      click_on 'Sair'
     end
   end
 end

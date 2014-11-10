@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :confirmable
 
-  ROLE_ENUM = [:admin, :site_user, :journalist, :author]
+  ROLE_ENUM = [:admin, :journalist, :author]
+  ALL_ROLES = ROLE_ENUM + [:site_user]
 
-  enum role: ROLE_ENUM
+  enum role: ALL_ROLES
 
   has_one :profile
 

@@ -86,6 +86,7 @@ pt-BR:
       user:
         id: "Id"
         email: "Email"
+        role: "Perfil de acesso"
     errors:
       models:
         category:
@@ -151,6 +152,11 @@ pt-BR:
         gender:
           <<: *gender
           not_informed: 'Não informado'
+      user:
+        role:
+          admin: "Administrador"
+          author: "Autor"
+          journalist: "Jornalista"
   unauthorized:
     default: "Você não tem permissão para acessar a página solicitada"
   view:
