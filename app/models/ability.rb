@@ -17,11 +17,21 @@ class Ability
     if user.author?
       can [:read, :create], Articles::AuthorialArticle
       can [:update], Articles::AuthorialArticle, user_id: user.id
+
+      can [:read], Articles::JournalisticArticle
+      can [:read], Message
+      can [:read], Category
     end
   end
 
   def set_journalist_permissions(user)
     if user.journalist?
+      can [:read, :create], Articles::JournalisticArticle
+      can [:update], Articles::JournalisticArticle, user_id: user.id
+
+      can [:read], Articles::AuthorialArticle
+      can [:read], Message
+      can [:read], Category
     end
   end
 
