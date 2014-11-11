@@ -7,17 +7,40 @@ class Admin::JournalisticArticlesController < Carnival::BaseAdminController
 
   layout "carnival/admin"
 
+
+  def build_resource
+    if action_name == "new"
+      new_journalist_article_from_authorial_article(params[:id], include_tags: true)
+    elsif action_name == "create"
+      new_journalist_article_from_authorial_article(params[:articles_journalistic_article][:parent_article_id]).tap do |article|
+        article.assign_attributes(permitted_params)
+      end
+    else
+      super
+    end
+  end
+
+  def new_journalist_article_from_authorial_article(authorial_article_id, include_tags: false)
+    authorial_article = Articles::AuthorialArticle.find(authorial_article_id)
+
+    @journalistic_article = Articles::JournalisticArticle.new do |a|
+      a.parent_article = authorial_article
+      a.category_id = authorial_article.category_id
+      a.original_author = authorial_article.user
+      a.tags = authorial_article.tags if include_tags
+    end
+  end
+
   private
 
   def permitted_params
-    permitted = params.permit(articles_journalistic_article:
-                              [:id, :text, :title, :summary, :category_id,:user_id, :parent_article_id, {tag_ids:[]},
-                               article_reference_attributes:[:id, :source, :_destroy],
-                               messages_attributes:[:id, :text, :gender, :teenage_pregnancy, :category_id, :baby_target_type, :minimum_valid_week, :maximum_valid_week, :_destroy]])
+    article_params = params[:articles_journalistic_article]
+    article_params = article_params ? article_params.permit([:text, :title, :summary, {tag_ids:[]},
+                                            article_reference_attributes:[:id, :source, :_destroy],
+                                            messages_attributes: [:id, :text, :_destroy]]) : {}
 
-
-    permitted[:articles_journalistic_article].merge!(user_id: current_user.id) if permitted.present?
-    permitted
+    article_params.merge!(user_id: current_user.id) if article_params
+    article_params
   end
 
 end

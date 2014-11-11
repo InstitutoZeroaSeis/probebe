@@ -8,6 +8,7 @@ class CreateArticles < ActiveRecord::Migration
       t.references :user
       t.references :category
       t.references :parent_article
+      t.references :original_author
       t.timestamps
     end
   end

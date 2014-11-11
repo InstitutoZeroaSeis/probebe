@@ -4,8 +4,8 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
 
 
   field :parent_article_id,
-        as: :string,
-        actions: [:index, :show, :edit, :new],
+        as: :hidden,
+        actions: [:index, :show, :new],
         sortable: true,
         advanced_search: {operator: :equal}
 
@@ -52,6 +52,15 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
         sortable: true,
         advanced_search: {operator: :like}
 
+  field 'original_author.email',
+        actions: [:index, :show],
+        sortable: true,
+        advanced_search: {operator: :like}
+
+  field :original_author_id,
+        as: :hidden,
+        action: [:new]
+
   field :messages,
         actions: [:new, :show, :edit],
         nested_form: true,
@@ -61,6 +70,5 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
   action :show
   action :edit
   action :destroy
-  action :new
 
 end

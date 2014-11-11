@@ -13,10 +13,11 @@ Rails.application.routes.draw do
     resources :categories
     resources :journalistic_articles
     resources :messages
-    resources :tags
     resources :users
-    post 'users/:id/impersonate' => 'users#impersonate', as: :impersonate_user
+    resources :tags
+    get 'authorial_articles/:id/create_journalistic_article' => 'authorial_articles#create_journalistic_article', as: :create_journalistic_article
     get 'users/:id/stop_impersonating' => 'users#stop_impersonating', as: :stop_impersonating
+    post 'users/:id/impersonate' => 'users#impersonate', as: :impersonate_user
   end
 
 end

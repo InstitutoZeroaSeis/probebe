@@ -3,6 +3,7 @@ class Articles::Article < ActiveRecord::Base
 
   belongs_to :category
   belongs_to :user
+  belongs_to :original_author, class_name: "User"
   has_many :article_references
 
 

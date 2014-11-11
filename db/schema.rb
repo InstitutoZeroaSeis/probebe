@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20141106185222) do
     t.string   "title"
     t.text     "text"
     t.text     "summary"
+    t.integer  "original_author_id"
     t.integer  "user_id"
     t.integer  "category_id"
     t.integer  "parent_article_id"

@@ -55,5 +55,7 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
   action :edit
   action :destroy
   action :new
+  action :create_journalistic_article
+
 
 end
