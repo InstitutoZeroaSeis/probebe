@@ -7,10 +7,10 @@ GIT
 
 GIT
   remote: git://github.com/cartolari/carnival.git
-  revision: 792283a02a7a1b9eb93fc4f01baa0371a33fd7b0
-  branch: simple_form_deprecation_warnings_fix
+  revision: 3258b5156942d44f1dc5a5c1eaeab8324e23644a
+  branch: master
   specs:
-    carnival (0.1.0)
+    carnival (0.1.4)
       haml
       haml-rails
       inherited_resources
