@@ -11,7 +11,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'pry'
 gem 'rails-i18n', '~> 4.0.0'
-gem 'carnival', :github => 'cartolari/carnival', :branch => 'simple_form_deprecation_warnings_fix'
+gem 'carnival', :github => 'Vizir/carnival', :branch => 'master'
 gem 'carnival_devise_views', :github => 'Vizir/carnival_devise_views', :branch => 'master'
 gem 'devise', '~> 3.4.0'
 gem 'devise-i18n', '~> 0.11.2'
