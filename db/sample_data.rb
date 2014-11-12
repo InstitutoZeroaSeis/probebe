@@ -1,4 +1,7 @@
 ActiveRecord::Base.transaction do
+  User.create!(email: 'admin@probebe.com.br', password: '12345678', role: 'admin').confirm!
+  User.create!(email: 'autor@probebe.com.br', password: '12345678', role: 'author').confirm!
+  User.create!(email: 'jornalista@probebe.com.br', password: '12345678', role: 'journalist').confirm!
   user = User.create!(email: "francisca@probebe.com.br", password: '12345678')
   user.skip_confirmation!
   user.save!
