@@ -28,7 +28,7 @@ class Ability
     if user.journalist?
       can [:read, :create], Articles::JournalisticArticle
       can [:update], Articles::JournalisticArticle, user_id: user.id
-
+      can [:create_journalistic_article], Articles::AuthorialArticle
       can [:read], Articles::AuthorialArticle
       can [:read], Message
       can [:read], Category

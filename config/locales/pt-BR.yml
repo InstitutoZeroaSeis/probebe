@@ -111,6 +111,7 @@ pt-BR:
       cell_phone: "Celular"
   carnival:
     impersonate: "Logar como"
+    create_journalistic_article: "Criar artigo jornalistico"
     menu:
       authorial_articles: "Artigo Autoral"
       administration: "Administração"
