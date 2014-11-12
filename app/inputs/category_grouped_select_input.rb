@@ -1,5 +1,5 @@
 class CategoryGroupedSelectInput < SimpleForm::Inputs::GroupedCollectionSelectInput
-  def input
+  def input(wrapper_options)
     set_options
     super
   end

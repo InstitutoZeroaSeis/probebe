@@ -24,9 +24,7 @@ class Child < ActiveRecord::Base
   end
 
   def pregnancy_start_date
-    if pregnancy?
-      birth_date - PREGNANCY_DURATION_IN_WEEKS.weeks
-    end
+    birth_date - PREGNANCY_DURATION_IN_WEEKS.weeks if pregnancy?
   end
 
 end

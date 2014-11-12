@@ -7,6 +7,25 @@ FactoryGirl.define do
     user
     association :category, factory: [:category, :with_parent]
     tags { [FactoryGirl.create(:tag)] }
+
+    factory :authorial_article, class: Articles::AuthorialArticle
+
+    factory :journalistic_article, class: Articles::JournalisticArticle do
+      with_parent_authorial_article
+
+      trait :with_parent_authorial_article do
+        association :parent_article, factory: :authorial_article
+      end
+
+      trait :with_parent_journalistic_article do
+        association :parent_article, factory: :journalistic_article
+      end
+
+      trait :without_parent_article do
+        parent_article nil
+      end
+
+    end
   end
 
   trait :without_user do
