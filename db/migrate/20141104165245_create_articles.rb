@@ -5,6 +5,12 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.text :text
       t.text :summary
+      t.integer :gender, default: 2
+      t.integer :category_id
+      t.boolean :teenage_pregnancy
+      t.integer :baby_target_type
+      t.integer :minimum_valid_week
+      t.integer :maximum_valid_week
       t.references :user
       t.references :category
       t.references :parent_article
