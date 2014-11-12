@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe ArticleReference, :type => :model do
+RSpec.describe Articles::ArticleReference, :type => :model do
 end
