@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  root to: 'profiles#show'
+  root to: 'posts#index'
 
   resource :profile, except: :index
   resource :timeline, only: :show
   resources :message_deliveries, only: :create
+  resources :posts, only: [:show, :index]
 
   mount_carnival_at 'admin'
   namespace :admin do

@@ -12,5 +12,9 @@ RSpec.describe Articles::JournalisticArticle, :type => :model do
     it { is_expected.to be_invalid }
   end
 
+  context "Without original author" do
+    subject { build_stubbed :journalistic_article, :without_original_author }
+    it { is_expected.to be_invalid }
+  end
 
 end

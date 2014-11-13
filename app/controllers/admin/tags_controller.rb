@@ -1,4 +1,5 @@
 class Admin::TagsController < Carnival::BaseAdminController
+  before_filter :authenticate_user!
 
   before_filter :deny_site_user_access_on_admin
   before_filter :deny_site_user_access_on_admin

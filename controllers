@@ -1,0 +1,12 @@
+app/controllers/timelines_controller.rb
+app/controllers/message_deliveries_controller.rb
+app/controllers/posts_controller.rb
+app/controllers/profiles_controller.rb
+app/controllers/users/omniauth_callbacks_controller.rb
+app/controllers/admin/authorial_articles_controller.rb
+app/controllers/admin/categories_controller.rb
+app/controllers/admin/article_references_controller.rb
+app/controllers/admin/users_controller.rb
+app/controllers/admin/tags_controller.rb
+app/controllers/admin/journalistic_articles_controller.rb
+app/controllers/admin/messages_controller.rb

@@ -11,9 +11,13 @@ FactoryGirl.define do
     association :category, factory: [:category, :with_parent]
     tags { [FactoryGirl.create(:tag)] }
 
-    factory :authorial_article, class: Articles::AuthorialArticle
+    factory :authorial_article, class: Articles::AuthorialArticle do
+      type 'Articles::AuthorialArticle'
+    end
 
     factory :journalistic_article, class: Articles::JournalisticArticle do
+      type 'Articles::JournalisticArticle'
+      association :original_author, factory: :user
       with_parent_authorial_article
 
       trait :with_parent_authorial_article do
@@ -26,6 +30,10 @@ FactoryGirl.define do
 
       trait :without_parent_article do
         parent_article nil
+      end
+
+      trait :without_original_author do
+        original_author nil
       end
 
     end

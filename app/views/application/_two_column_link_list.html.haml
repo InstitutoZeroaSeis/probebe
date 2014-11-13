@@ -1,0 +1,7 @@
+.row
+  - if list.size > 0
+    - list.each_slice([list.size / 2, 1].max) do |lists|
+      .col-lg-6
+        %ul.list-unstyled
+          - lists.each do |item|
+            = yield item

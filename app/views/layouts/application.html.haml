@@ -7,38 +7,7 @@
     = csrf_meta_tags
     = render partial: 'flash_messages'
   %body
-    .container
-      .navbar.navbar-default{:role => "navigation"}
-        .container-fluid
-          .navbar-header
-            %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-              %span.sr-only Toggle navigation
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            = link_to 'Pro Bebê', root_path, class: 'navbar-brand'
-          .navbar-collapse.collapse
-            %ul.nav.navbar-nav
-              %li.active= link_to 'Home', root_path
-              %li.dropdown
-                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                  Perfil
-                  %span.caret
-                %ul.dropdown-menu{:role => "menu"}
-                  %li= link_to "#{t('general.commom_words.view')} #{t('activerecord.models.profile')}", profile_path
-                  %li= link_to "#{t('general.commom_words.edit')} #{t('activerecord.models.profile')}", edit_profile_path
-              %li= link_to "#{t('view.message.send_messages')}", message_deliveries_path, method: :post
-              %li= link_to "#{t('general.commom_words.view')} #{t('general.commom_words.timeline')}", timeline_path
-            %ul.nav.navbar-nav.navbar-right
-              - if current_profile
-                %li
-                  %a{href: profile_path}
-                    %span.glyphicon.glyphicon-user
-                    = current_profile.name
-              %li
-                = link_to destroy_user_session_path, method: :delete do
-                  %span.glyphicon.glyphicon-off
-                  %span Sair
-
-      .main
-        = yield
+    .menu
+      = render partial: 'menu_for_site_user'
+    .main.container
+      = yield

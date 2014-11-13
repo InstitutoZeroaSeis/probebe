@@ -1,0 +1,16 @@
+.navbar.navbar-default{:role => "navigation"}
+  .container
+    .navbar-header
+      = render partial: 'toggle_menu_button'
+      = link_to t('views.application.name'), root_path, class: 'navbar-brand'
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if current_profile
+          %li
+            = link_to profile_path do
+              %span.glyphicon.glyphicon-user
+              = current_profile.name
+        %li
+          = link_to destroy_user_session_path, method: :delete do
+            %span.glyphicon.glyphicon-off
+              %span Sair
