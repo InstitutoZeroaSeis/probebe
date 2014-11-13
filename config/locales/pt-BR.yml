@@ -172,6 +172,7 @@ pt-BR:
   views:
     application:
       name: "Pro Bebê"
+      sign_in: "Login"
       toggle_navigation: "Abrir/Fechar Menu"
     blog:
       by: "por %{author}"

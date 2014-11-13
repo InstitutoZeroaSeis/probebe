@@ -12,14 +12,14 @@
     = csrf_meta_tags
     = render partial: 'flash_messages'
   %body
-    %nav.navbar.navbar-default
-      .container
-        .navbar-header
-          = render partial: 'toggle_menu_button'
-          = link_to t('views.application.name'), root_path, class: 'navbar-brand'
-        %ul.nav.navbar-nav
-          %li
-            = link_to 'Fazer login', new_user_session_path
+    .menu
+      - if user_signed_in?
+        - if current_user.site_user?
+          = render partial: 'menu_for_site_user'
+        - else
+          = render partial: 'menu_for_admin_site_user'
+      - else
+        = render partial: 'menu_for_anonymous_user'
     .container
       .row
         .col-md-8

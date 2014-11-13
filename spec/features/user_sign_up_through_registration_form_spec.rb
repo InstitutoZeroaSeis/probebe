@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "Standard registration" do
   scenario "User sign up through registration form" do
     visit root_path
-    click_on 'Fazer login'
+    click_on I18n.t('views.application.sign_in')
     click_on "Registrar"
     fill_in "Email", with: "someone@example.com"
     fill_in "Senha", with: "12345678"
