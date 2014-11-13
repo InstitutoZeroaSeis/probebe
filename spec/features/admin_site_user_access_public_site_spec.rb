@@ -6,7 +6,7 @@ feature "Admin site user access public site" do
   before { @user = create(:user, :admin, email: OmniAuthStub::Google::BasicInfo[:info][:email]) }
   scenario "and gets redirected to the admin root" do
     sign_in_through_oauth
-    visit root_path
+    visit profile_path
     expect(current_path).to eq(carnival_root_path)
   end
 end

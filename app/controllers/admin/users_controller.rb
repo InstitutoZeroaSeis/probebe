@@ -1,4 +1,5 @@
 class Admin::UsersController < Carnival::BaseAdminController
+  before_filter :authenticate_user!
   layout "carnival/admin"
 
   before_filter :deny_site_user_access_on_admin

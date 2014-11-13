@@ -1,0 +1,19 @@
+%h1= t('views.application.name')
+.posts
+  - @posts.each do |post|
+    .post
+      %hr
+      %h2.post_title= link_to post.title.titleize, '#'
+      %p.lead= t('views.blog.by', author: post.original_author.email)
+      %p
+        %span.glyphicon.glyphicon-time
+        = t('views.blog.date_posted', date: l(post.created_at))
+      %hr
+      %p
+        - if post.summary.blank?
+          = truncate Nokogiri::HTML(post.text).text, length: 500
+        - else
+          = post.summary
+      %a.btn.btn-primary{:href => "#"}
+        = t('views.blog.read_more')
+        %span.glyphicon.glyphicon-chevron-right

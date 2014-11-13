@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   impersonates :user
-  before_filter :authenticate_user!
   protect_from_forgery with: :exception
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to carnival_root_path, :alert => exception.message
@@ -18,10 +17,16 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_profile(flash_notice)
+    if get_profile_redirect_path
+      redirect_to get_profile_redirect_path, notice: flash_notice
+    end
+  end
+
+  def get_profile_redirect_path
     if current_profile.blank?
-      redirect_to new_profile_path, notice: flash_notice
+      new_profile_path
     elsif current_profile.invalid?
-      redirect_to edit_profile_path, notice: flash_notice
+      edit_profile_path
     end
   end
 
@@ -36,4 +41,19 @@ class ApplicationController < ActionController::Base
       redirect_to carnival_root_path unless current_user.site_user?
     end
   end
+
+  private
+
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    if resource_or_scope.site_user?
+      get_profile_redirect_path or root_path
+    else
+      carnival_root_path
+    end
+  end
+
 end

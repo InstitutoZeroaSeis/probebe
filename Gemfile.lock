@@ -225,6 +225,8 @@ GEM
     pry-byebug (2.0.0)
       byebug (~> 3.4)
       pry (~> 0.10)
+    puma (2.9.2)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -371,6 +373,7 @@ DEPENDENCIES
   pretender (~> 0.1.0)
   pry
   pry-byebug (~> 2.0.0)
+  puma
   rails (= 4.1.6)
   rails-i18n (~> 4.0.0)
   rspec (~> 3.1.0)

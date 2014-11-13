@@ -1,4 +1,5 @@
 class Admin::AuthorialArticlesController < Carnival::BaseAdminController
+  before_filter :authenticate_user!
   defaults :resource_class => Articles::AuthorialArticle
 
   before_filter :deny_site_user_access_on_admin

@@ -1,4 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  before_filter :authenticate_user!
 
   def authenticate_user
     build_hash

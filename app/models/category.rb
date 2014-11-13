@@ -12,6 +12,7 @@ class Category < ActiveRecord::Base
   before_destroy :check_has_no_child_categories
 
   scope :super_categories, -> { where(parent_category_id: nil)}
+  scope :sub_categories, -> { where.not(parent_category_id: nil)}
 
   def maximum_hierarchy_level
     hierarchy_level_count = 1

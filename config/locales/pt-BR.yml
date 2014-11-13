@@ -106,6 +106,7 @@ pt-BR:
             has_no_children: "Você precisa cadastrar ao menos um filho"
             needs_mobile_phone: "Precisa de pelo menos um celular"
     models:
+      category: "Categoria"
       child: "Filho"
       profile: "Perfil"
       cell_phone: "Celular"
@@ -168,5 +169,14 @@ pt-BR:
       send_messages: "Enviar mensagens"
       signed_in_as: "Logado como %{user_name}"
   views:
+    application:
+      name: "Pro Bebê"
+    blog:
+      by: "por %{author}"
+      date_posted: "Postado em %{date}"
+      newer_html: "Mais recentes &rarr;"
+      older_html: "&larr; Mais antigos"
+      read_more: "Leia Mais"
+      search: "Busca de posts"
     profile:
       create_profile: "Criar Perfil"

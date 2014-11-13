@@ -12,6 +12,6 @@ class Articles::JournalisticArticle < Articles::Article
 
   accepts_nested_attributes_for :messages, reject_if: proc { |attributes| attributes['text'].blank? }
 
-  validates_presence_of :parent_article
+  validates_presence_of :parent_article, :original_author
 
 end
