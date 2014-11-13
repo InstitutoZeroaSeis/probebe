@@ -14,7 +14,7 @@ class MessageSender
   protected
 
   def get_profiles
-    profiles = @profile_finder.find_profiles_by_message
+    profiles = @profile_finder.find_profiles_by_article
     filter_already_sent_messages(profiles)
   end
 
