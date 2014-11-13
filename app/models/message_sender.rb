@@ -1,5 +1,5 @@
 class MessageSender
-  attr_reader :message
+  attr_reader :article
 
   def initialize(profile_finder)
     @article = profile_finder.article

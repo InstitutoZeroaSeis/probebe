@@ -1,33 +1,45 @@
-ActiveRecord::Base.transaction do
-  User.create!(email: 'admin@probebe.com.br', password: '12345678', role: 'admin').confirm!
-  User.create!(email: 'autor@probebe.com.br', password: '12345678', role: 'author').confirm!
-  User.create!(email: 'jornalista@probebe.com.br', password: '12345678', role: 'journalist').confirm!
-  user = User.create!(email: "francisca@probebe.com.br", password: '12345678')
-  user.skip_confirmation!
-  user.save!
-  profile = user.create_profile!(first_name: 'Francisca', last_name: 'Matsumoto', gender: 'female', birth_date: 25.years.ago,
-                                 children_attributes: [{name: 'Hideki', gender: 'male', birth_date: 6.months.ago}],
-                                 cell_phones_attributes: [{ number: '12345678' }])
+require 'factory_girl'
+Dir.glob(Rails.root.join('spec/factories/**/*.rb')).each {|factory| require factory }
 
-  user = User.create!(email: "eri@probebe.com.br", password: '12345678')
-  user.skip_confirmation!
-  user.save!
-  profile = user.create_profile!(first_name: 'Eri', last_name: 'Jonen', gender: 'female', birth_date: 22.years.ago,
-                                 children_attributes: [{ name: 'Joana', gender: 'female', birth_date: (1.years + 6.months).ago }],
-                                 cell_phones_attributes: [{ number: '87654321' }])
+class SampleData
+  include FactoryGirl::Syntax::Methods
 
-  prevention_category = Category.create!(name: 'Prevenção', parent_category: Category.create!(name: 'Saúde'))
-  savings_category = Category.create!(name: 'Poupar', parent_category: Category.create!(name: 'Financeira'))
+  def seed
+    ActiveRecord::Base.transaction do
+      create(:category, name: "Prevenção", parent_category: create(:category, name: "Saúde"))
+      create(:category, name: "Poupar", parent_category: create(:category, name: "Financeira"))
+      admin = create(:user, :confirmed, :admin, email: 'admin@probebe.com.br')
+      journalist = create(:user, :confirmed, :journalist, email: 'journalistic@probebe.com.br')
+      author = create(:user, :confirmed, :author, email: 'author@probebe.com.br')
 
-  # # Bebe da Francisca
-  # Message.create!(text: 'Mensagem para bebê nascido do sexo masculino entre 5 e 7 meses', gender: 'male', baby_target_type: 'born', category: prevention_category, minimum_valid_week: 20, maximum_valid_week: 30)
-  # # Gestação da Eri
-  # Message.create!(text: 'Mensagem para bebê em gestação do sexo masculino de 5 a 7 meses', gender: 'male', baby_target_type: 'pregnancy', category: savings_category, minimum_valid_week: 20, maximum_valid_week: 30)
-  # # Bebe da Eri
-  # Message.create!(text: 'Mensagem para bebê nascido do sexo feminino de 1 a 2 anos', gender: 'female', baby_target_type: 'born', category: prevention_category, minimum_valid_week: 52, maximum_valid_week: 104)
-  # # Nenhum bebê
-  # Message.create!(text: 'Mensagem para bebê nascido do sexo feminino com menos de 1 anos', gender: 'female', baby_target_type: 'born', category: prevention_category, maximum_valid_week: 52)
-  # # Bebe da Francisca e bebe da Eri
-  # Message.create!(text: 'Mensagem para bebê nascido independente do sexo com mais de 6 meses', gender: 'both', baby_target_type: 'born', category: prevention_category, minimum_valid_week: 24)
+      francisca = create(:user, :confirmed, :site_user, email: 'francisca@probebe.com.br',
+                          profile: create(:profile, children: create_list(:child, 1, birth_date: 7.months.from_now, gender: 'male')))
+      eri = create(:user, :confirmed, :site_user, email: 'eri@probebe.com.br',
+                    profile: create(:profile, children: create_list(:child, 1, birth_date: 3.months.ago, gender: 'female')))
 
+      ana = create(:user, :confirmed, :site_user, email: 'ana@probebe.com.br',
+                    profile: create(:profile, children: create_list(:child, 1, birth_date: 3.months.ago, gender: 'male')))
+
+      article1 = create(:authorial_article, maximum_valid_week: 12, baby_target_type: 'pregnancy', user: author)
+      article2 = create(:authorial_article, maximum_valid_week: 16, baby_target_type: 'born', gender: 'both', user: admin)
+      article3 = create(:authorial_article, maximum_valid_week: 8, baby_target_type: 'born', gender: 'female', user: author)
+      article4 = create(:authorial_article, maximum_valid_week: 40, baby_target_type: 'pregnancy', user: author)
+
+
+      create(:journalistic_article, maximum_valid_week: 12, baby_target_type: 'pregnancy', parent_article: article1, original_author: article1.user, user: journalist, messages:
+              create_list(:message, 1, text: "Mensagem para bebê em gestação sexo masculino ate 3 meses"))
+      create(:journalistic_article, maximum_valid_week: 16, baby_target_type: 'born', parent_article: article2, original_author: article2.user, gender: 'both', user: admin, messages:
+              create_list(:message, 1, text: "Mensagem para bebê nascido de ambos sexo, em gestação de ate 5 meses"))
+      create(:journalistic_article, minimum_valid_week: 8, baby_target_type: 'born', parent_article: article3, original_author: article3.user, gender: 'female', user: journalist, messages:
+              create_list(:message, 1, text: "Mensagem para bebê nascido de sexo feminino, em gestação minima de 2 meses"))
+      create(:journalistic_article, maximum_valid_week: 40, baby_target_type: 'pregnancy', parent_article: article4, original_author: article4.user, user: journalist, messages:
+              create_list(:message, 1, text: "Mensagem para bebê em gestação do sexo masculino ate 9 meses"))
+
+
+
+    end
+
+  end
 end
+
+SampleData.new.seed

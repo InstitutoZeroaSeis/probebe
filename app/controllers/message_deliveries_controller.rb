@@ -4,18 +4,18 @@ class MessageDeliveriesController < ApplicationController
 
   def create
     flash[:notice] = "Mensagens Enviadas!"
-    messages.each {|msg| send_message(msg)}
+    articles.each {|article| send_message(article)}
     redirect_to root_path
   end
 
   protected
 
-  def messages
-    Message.all
+  def articles
+    Articles::AuthorialArticle.all
   end
 
-  def send_message(message)
-    finder = ProfileFinder.new(message)
+  def send_message(article)
+    finder = ProfileFinder.new(article)
     sender = MessageSender.new(finder)
     sender.send_messages
   end

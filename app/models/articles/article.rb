@@ -24,7 +24,6 @@ module Articles
 
     before_save :set_defaults
 
-
     def presence_of_maximum_or_minimum
       if (self.minimum_valid_week.blank? && self.maximum_valid_week.blank?)
         errors.add(:base, I18n.t('activerecord.errors.models.article.base.has_no_minimum_and_maximum_valid_week'))
@@ -41,7 +40,7 @@ module Articles
 
     def age_valid_for_article?(age_in_weeks)
       min_week = minimum_valid_week || 0
-      max_week = maximum_valid_week || Message::MAXIMUM_POSSIBLE_WEEK
+      max_week = maximum_valid_week || Articles::Article::MAXIMUM_POSSIBLE_WEEK
       (min_week..max_week).include? age_in_weeks
     end
 
