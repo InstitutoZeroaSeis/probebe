@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   private
 
   def build_pager
-    page = params[:page] || 0
+    page = params[:page] || 1
     @pager = Pager.new(Articles::JournalisticArticle.order(created_at: :desc), page, POSTS_PER_PAGE)
   end
 end

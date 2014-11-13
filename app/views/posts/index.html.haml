@@ -21,7 +21,7 @@
   %ul.pager
     - if @pager.has_next_step?
       %li.previous
-        %a{:href => "#"}= t('views.blog.older_html')
+        = link_to t('views.blog.older_html'), posts_path(page: @pager.page + 1)
     - if @pager.has_previous_step?
       %li.next
-        %a{:href => "#"}= t('views.blog.newer_html')
+        = link_to t('views.blog.newer_html'), posts_path(page: @pager.page - 1)

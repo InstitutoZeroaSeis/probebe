@@ -36,6 +36,10 @@ FactoryGirl.define do
         original_author nil
       end
 
+      trait :random_created_at do
+        created_at { rand(1..365).days.ago }
+      end
+
     end
   end
 
