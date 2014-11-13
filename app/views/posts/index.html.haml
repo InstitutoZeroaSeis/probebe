@@ -19,7 +19,9 @@
         %span.glyphicon.glyphicon-chevron-right
 
   %ul.pager
-    %li.previous
-      %a{:href => "#"}= t('views.blog.older_html')
-    %li.next
-      %a{:href => "#"}= t('views.blog.newer_html')
+    - if @pager.has_next_step?
+      %li.previous
+        %a{:href => "#"}= t('views.blog.older_html')
+    - if @pager.has_previous_step?
+      %li.next
+        %a{:href => "#"}= t('views.blog.newer_html')
