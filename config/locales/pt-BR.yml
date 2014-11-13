@@ -107,9 +107,10 @@ pt-BR:
             needs_mobile_phone: "Precisa de pelo menos um celular"
     models:
       category: "Categoria"
+      cell_phone: "Celular"
       child: "Filho"
       profile: "Perfil"
-      cell_phone: "Celular"
+      tag: "Tag"
   carnival:
     impersonate: "Logar como"
     create_journalistic_article: "Criar artigo jornalistico"
@@ -171,6 +172,7 @@ pt-BR:
   views:
     application:
       name: "Pro Bebê"
+      toggle_navigation: "Abrir/Fechar Menu"
     blog:
       by: "por %{author}"
       date_posted: "Postado em %{date}"

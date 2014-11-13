@@ -15,11 +15,7 @@
     %nav.navbar.navbar-default
       .container
         .navbar-header
-          %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
+          = render partial: 'toggle_menu_button'
           = link_to t('views.application.name'), root_path, class: 'navbar-brand'
         %ul.nav.navbar-nav
           %li
@@ -42,17 +38,13 @@
                   %button.btn.btn-default{:type => "button"}
                     %span.glyphicon.glyphicon-search
           .well
-            %h4= t('activerecord.models.category')
-            .row
-              - if Category.count > 0
-                - Category.sub_categories.all.each_slice([Category.sub_categories.count / 2, 1].max) do |categories|
-                  .col-lg-6
-                    %ul.list-unstyled
-                      - categories.each do |category|
-                        %li= link_to category.name, '#'
+            %h4= t('activerecord.models.category').pluralize_current_locale
+            = render layout: 'two_column_link_list', locals: { list: Category.sub_categories } do |category|
+              = link_to category.name, '#'
           .well
-            %h4= t('activerecord.models.tag')
-            %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.
+            %h4= t('activerecord.models.tag').pluralize_current_locale
+            = render layout: 'two_column_link_list', locals: { list: Tag.all } do |category|
+              = link_to category.name, '#'
       %hr
       %footer
         .row
