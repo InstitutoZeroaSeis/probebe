@@ -34,6 +34,28 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
         sortable: true,
         advanced_search: {operator: :like}
 
+  field :gender,
+        as: :enum,
+        actions: [:index, :new, :edit, :show],
+        advanced_search: {:operator => :equal}
+
+  field :teenage_pregnancy,
+        actions: [:index, :new, :edit, :show],
+        advanced_search: {:operator => :equal}
+
+  field :baby_target_type,
+        actions: [:index, :new, :edit, :show],
+        advanced_search: {:operator => :equal},
+        as: :enum
+
+  field :minimum_valid_week,
+        actions: [:index, :new, :edit, :show],
+        advanced_search: {:operator => :equal}
+
+  field :maximum_valid_week,
+        actions: [:index, :new, :edit, :show],
+        advanced_search: {:operator => :equal}
+
   field :article_references,
         actions: [:new, :show, :edit],
         nested_form: true,
