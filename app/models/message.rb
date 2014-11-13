@@ -6,11 +6,4 @@ class Message < ActiveRecord::Base
 
   validates_presence_of :text
 
-
-
-  def age_valid_for_message?(age_in_weeks)
-    min_week = minimum_valid_week || 0
-    max_week = maximum_valid_week || Message::MAXIMUM_POSSIBLE_WEEK
-    (min_week..max_week).include? age_in_weeks
-  end
 end
