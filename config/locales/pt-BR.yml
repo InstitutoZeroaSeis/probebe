@@ -18,7 +18,7 @@ pt-BR:
     parent_article_id: &parent_article_id 'Artigo Pai'
     user_email: &user_email 'Email do Autor'
     baby_target_type: &baby_target_type "Tipo de bebê que a mensagem se aplica"
-    gender: &gender "Sexo"
+    gender: &genders "Sexo"
     minimum_valid_week: &minimum_valid_week "Validade Inicial em Semana"
     maximum_valid_week: &maximum_valid_week "Validade Final em Semana"
     teenage_pregnancy: "Aplicável para gravidez na adolescência"
@@ -26,40 +26,31 @@ pt-BR:
     male: 'Masculino'
     female: 'Feminino'
     not_informed: 'Não informado'
+  _baby_target_type: &baby_target_type_enum
+    pregnancy: "Bebê em gestação"
+    born: "Bebê nascido"
   activerecord:
     attributes:
+      articles/article: &article
+        article_references: *article_references
+        baby_target_type: *baby_target_type
+        category: *category
+        category_id: *category_id
+        category_name: *category_name
+        gender: *genders
+        minimum_valid_week: *minimum_valid_week
+        maximum_valid_week: *maximum_valid_week
+        parent_article_id: *parent_article_id
+        summary: *summary
+        teenage_pregnancy: "Aplicável para gravidez na adolescência"
+        text: *text
+        title: *title
+        type: *type
+        user_email: *user_email
       articles/authorial_article:
-        article_references: *article_references
-        baby_target_type: *baby_target_type
-        category: *category
-        category_id: *category_id
-        category_name: *category_name
-        gender: *gender
-        minimum_valid_week: *minimum_valid_week
-        maximum_valid_week: *maximum_valid_week
-        parent_article_id: *parent_article_id
-        summary: *summary
-        teenage_pregnancy: "Aplicável para gravidez na adolescência"
-        text: *text
-        title: *title
-        type: *type
-        user_email: *user_email
+        <<: *article
       articles/journalistic_article:
-        article_references: *article_references
-        baby_target_type: *baby_target_type
-        category: *category
-        category_id: *category_id
-        category_name: *category_name
-        gender: *gender
-        minimum_valid_week: *minimum_valid_week
-        maximum_valid_week: *maximum_valid_week
-        parent_article_id: *parent_article_id
-        summary: *summary
-        teenage_pregnancy: "Aplicável para gravidez na adolescência"
-        text: *text
-        title: *title
-        type: *type
-        user_email: *user_email
+        <<: *article
       avatar:
         photo: "Foto"
       category:
@@ -150,13 +141,14 @@ pt-BR:
       children:
         gender:
           <<: *gender
-      message:
+      articles_authorial_article: &authotial_article_simple_form
         baby_target_type:
-          pregnancy: "Bebê em gestação"
-          born: "Bebê nascido"
+          <<: *baby_target_type_enum
         gender:
           <<: *gender
           both: 'Ambos'
+      articles_journalistic_article:
+        <<: *authotial_article_simple_form
       profile:
         gender:
           <<: *gender

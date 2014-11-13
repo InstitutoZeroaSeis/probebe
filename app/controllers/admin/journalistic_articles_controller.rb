@@ -35,9 +35,10 @@ class Admin::JournalisticArticlesController < Carnival::BaseAdminController
   def permitted_params
     article_params = params[:articles_journalistic_article]
     article_params = article_params ? article_params.permit([:text, :title, :summary, {tag_ids:[]},
-                                            article_references_attributes:[:id, :source, :_destroy],
-                                            messages_attributes: [:id, :text, :_destroy]]) : {}
-
+                                                            :gender, :teenage_pregnancy, :baby_target_type,
+                                                            :minimum_valid_week, :maximum_valid_week,
+                                                            article_references_attributes:[:id, :source, :_destroy],
+                                                            messages_attributes: [:id, :text, :_destroy]]) : {}
     article_params.merge!(user_id: current_user.id) if article_params
     article_params
   end

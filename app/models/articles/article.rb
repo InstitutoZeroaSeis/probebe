@@ -34,7 +34,7 @@ module Articles
     def minimum_not_higher_than_maximum
       if self.minimum_valid_week.present? and self.maximum_valid_week.present?
         if minimum_valid_week > maximum_valid_week
-          errors.add(:base, I18n.t('activerecord.errors.article.message.base.minimum_higher_than_maximum'))
+          errors.add(:base, I18n.t('activerecord.errors.models.article.base.minimum_higher_than_maximum'))
         end
       end
     end

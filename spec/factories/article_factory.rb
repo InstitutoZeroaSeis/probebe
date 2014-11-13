@@ -3,6 +3,9 @@ FactoryGirl.define do
     sequence(:text) {|n| "Text#{n}"}
     sequence(:title) {|n| "Title#{n}"}
     sequence(:summary) {|n| "Summary#{n}"}
+    gender 'both'
+    baby_target_type 'pregnancy'
+    minimum_valid_week 8
     type 'Articles::AuthorialArticle'
     user
     association :category, factory: [:category, :with_parent]
@@ -26,6 +29,22 @@ FactoryGirl.define do
       end
 
     end
+  end
+
+  trait :without_minimum_valid_week do
+    minimum_valid_week nil
+  end
+
+  trait :without_maximum_valid_week do
+    maximum_valid_week nil
+  end
+
+  trait :male do
+    gender 'male'
+  end
+
+  trait :female do
+    gender 'female'
   end
 
   trait :without_user do
