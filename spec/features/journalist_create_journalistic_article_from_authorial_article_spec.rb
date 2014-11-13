@@ -7,7 +7,6 @@ feature "Journalist create journalistic article from authorial article" do
     create(:authorial_article)
     sign_in(user.email, user.password)
     visit admin_authorial_articles_path
-
     click_on I18n.t('carnival.create_journalistic_article')
     expect(current_path).to eq(new_admin_journalistic_article_path)
     fill_in "articles_journalistic_article_title", with: article_title
