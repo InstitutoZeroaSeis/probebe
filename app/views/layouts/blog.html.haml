@@ -24,11 +24,6 @@
       .row
         .col-md-8
           = yield
-          %ul.pager
-            %li.previous
-              %a{:href => "#"}= t('views.blog.older_html')
-            %li.next
-              %a{:href => "#"}= t('views.blog.newer_html')
         .col-md-4
           .well
             %h4= t('views.blog.search')

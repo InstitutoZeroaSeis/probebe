@@ -3,7 +3,7 @@
   - @posts.each do |post|
     .post
       %hr
-      %h2.post_title= link_to post.title.titleize, '#'
+      %h2.post_title= link_to post.title.titleize, post_path(post)
       %p.lead= t('views.blog.by', author: post.original_author.email)
       %p
         %span.glyphicon.glyphicon-time
@@ -14,6 +14,12 @@
           = truncate Nokogiri::HTML(post.text).text, length: 500
         - else
           = post.summary
-      %a.btn.btn-primary{:href => "#"}
+      = link_to post_path(post), class: 'btn btn-primary' do
         = t('views.blog.read_more')
         %span.glyphicon.glyphicon-chevron-right
+
+  %ul.pager
+    %li.previous
+      %a{:href => "#"}= t('views.blog.older_html')
+    %li.next
+      %a{:href => "#"}= t('views.blog.newer_html')

@@ -1,0 +1,11 @@
+%h2.post_title= @post.title.titleize
+%p.lead= t('views.blog.by', author: @post.original_author.email)
+%p
+  %span.glyphicon.glyphicon-time
+  = t('views.blog.date_posted', date: l(@post.created_at))
+%hr
+%p
+  = raw @post.text
+%ul.pager
+  %li.previous
+    = link_to t('views.blog.back_html'), root_path

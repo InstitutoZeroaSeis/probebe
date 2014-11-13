@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resource :profile, except: :index
   resource :timeline, only: :show
   resources :message_deliveries, only: :create
-  resources :posts, only: :index
+  resources :posts, only: [:show, :index]
 
   mount_carnival_at 'admin'
   namespace :admin do

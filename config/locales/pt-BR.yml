@@ -175,6 +175,7 @@ pt-BR:
       sign_in: "Login"
       toggle_navigation: "Abrir/Fechar Menu"
     blog:
+      back_html: "&larr; Voltar"
       by: "por %{author}"
       date_posted: "Postado em %{date}"
       newer_html: "Mais recentes &rarr;"
