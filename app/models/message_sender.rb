@@ -2,26 +2,28 @@ class MessageSender
   attr_reader :message
 
   def initialize(profile_finder)
-    @message = profile_finder.message
+    @article = profile_finder.article
     @profile_finder = profile_finder
   end
 
   def send_messages
     profiles = get_profiles
-    message_delivery = MessageDelivery.create!(message: message, profiles: profiles)
+    @article.messages.each do |message|
+      filter_already_sent_messages(message, profiles)
+      message_delivery = MessageDelivery.create!(message: message, profiles: profiles)
+    end
   end
 
   protected
 
   def get_profiles
     profiles = @profile_finder.find_profiles_by_article
-    filter_already_sent_messages(profiles)
   end
 
-  def filter_already_sent_messages(profiles)
+  def filter_already_sent_messages(message, profiles)
     profiles.select do |profile|
       profile.message_deliveries.none? do |delivery|
-        @message == delivery.message
+        message == delivery.message
       end
     end
   end
