@@ -21,12 +21,16 @@ class Admin::JournalisticArticlesController < Carnival::BaseAdminController
 
   def new_journalist_article_from_authorial_article(authorial_article_id, include_tags: false)
     authorial_article = Articles::AuthorialArticle.find(authorial_article_id)
-
     @journalistic_article = Articles::JournalisticArticle.new do |a|
-      a.parent_article = authorial_article
+      a.baby_target_type = authorial_article.baby_target_type
       a.category_id = authorial_article.category_id
+      a.gender = authorial_article.gender
+      a.minimum_valid_week = authorial_article.minimum_valid_week
+      a.maximum_valid_week = authorial_article.maximum_valid_week
       a.original_author = authorial_article.user
+      a.parent_article = authorial_article
       a.tags = authorial_article.tags if include_tags
+      a.teenage_pregnancy = authorial_article.teenage_pregnancy
     end
   end
 
