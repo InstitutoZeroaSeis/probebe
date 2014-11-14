@@ -13,7 +13,7 @@ class Admin::JournalisticArticlesController < Carnival::BaseAdminController
       new_journalist_article_from_authorial_article(params[:id], include_tags: true)
     elsif action_name == "create"
       new_journalist_article_from_authorial_article(params[:articles_journalistic_article][:parent_article_id]).tap do |article|
-        article.assign_attributes(permitted_params)
+        article.assign_attributes(permitted_params[:articles_journalistic_article])
       end
     else
       super
@@ -38,14 +38,14 @@ class Admin::JournalisticArticlesController < Carnival::BaseAdminController
   private
 
   def permitted_params
-    article_params = params[:articles_journalistic_article]
-    article_params = article_params ? article_params.permit([:text, :title, :summary, {tag_ids:[]},
-                                                            :gender, :teenage_pregnancy, :baby_target_type,
-                                                            :minimum_valid_week, :maximum_valid_week,
-                                                            article_references_attributes:[:id, :source, :_destroy],
-                                                            messages_attributes: [:id, :text, :_destroy]]) : {}
-    article_params.merge!(user_id: current_user.id) if article_params
-    article_params
+    permitted = params.permit(articles_journalistic_article:
+                              [:id, :text, :title, :summary, :category_id, :user_id,
+                              :gender, :teenage_pregnancy, :baby_target_type,
+                              :minimum_valid_week, :maximum_valid_week, {tag_ids: []},
+                              article_references_attributes:[:id, :source, :_destroy],
+                              messages_attributes:[:id, :text, :_destroy]])
+    permitted[:articles_journalistic_article].merge!(user_id: current_user.id) if permitted.present?
+    permitted
   end
 
 end

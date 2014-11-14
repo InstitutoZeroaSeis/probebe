@@ -9,7 +9,7 @@ class SampleData
       create(:category, name: "Prevenção", parent_category: create(:category, name: "Saúde"))
       create(:category, name: "Poupar", parent_category: create(:category, name: "Financeira"))
       create(:user, :confirmed, :admin, email: 'admin@probebe.com.br')
-      create(:user, :confirmed, :journalist, email: 'journalistic@probebe.com.br')
+      create(:user, :confirmed, :journalist, email: 'journalist@probebe.com.br')
 
       create(:user, :confirmed, :author, email: 'author@probebe.com.br')
 

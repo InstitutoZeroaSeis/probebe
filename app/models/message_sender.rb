@@ -9,8 +9,8 @@ class MessageSender
   def send_messages
     profiles = get_profiles
     @article.messages.each do |message|
-      filter_already_sent_messages(message, profiles)
-      message_delivery = MessageDelivery.create!(message: message, profiles: profiles)
+      profiles_without_message = filter_already_sent_messages(message, profiles)
+      message_delivery = MessageDelivery.create!(message: message, profiles: profiles_without_message)
     end
   end
 
