@@ -12,6 +12,7 @@ pt-BR:
     title: &title 'Título'
     text: &text 'Texto'
     summary: &summary 'Resumo'
+    read_more: &read_more "Leia Mais"
     category: &category 'Categoria'
     category_id: &category_id 'Categoria'
     category_name: &category_name 'Categoria'
@@ -181,7 +182,9 @@ pt-BR:
       date_posted: "Postado em %{date}"
       newer_html: "Mais recentes &rarr;"
       older_html: "&larr; Mais antigos"
-      read_more: "Leia Mais"
+      read_more: *read_more
       search: "Busca de posts"
     profile:
       create_profile: "Criar Perfil"
+    timeline:
+      read_more: *read_more
