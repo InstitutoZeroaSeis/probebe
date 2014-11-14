@@ -5,6 +5,7 @@
       = link_to t('views.application.name'), root_path, class: 'navbar-brand'
     .navbar-collapse.collapse
       %ul.nav.navbar-nav.navbar-right
+        = link_to t('views.application.admin'), carnival_root_path, class: 'navbar-brand'
         - if current_profile
           %li
             = link_to profile_path do

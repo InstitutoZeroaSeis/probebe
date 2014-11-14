@@ -2,9 +2,9 @@ class Admin::UsersController < Carnival::BaseAdminController
   before_filter :authenticate_user!
   layout "carnival/admin"
 
-  before_filter :deny_site_user_access_on_admin
+  before_filter :deny_site_user_access_on_admin, except: :stop_impersonating
   after_filter :send_reset_password_email, only: [:create]
-  load_and_authorize_resource 'User'
+  load_and_authorize_resource 'User', except: :stop_impersonating
 
   def impersonate
     user = User.find(params[:id])
@@ -15,7 +15,7 @@ class Admin::UsersController < Carnival::BaseAdminController
 
   def stop_impersonating
     stop_impersonating_user
-    redirect_to root_path
+    redirect_to carnival_root_path
   end
 
   def send_reset_password_email

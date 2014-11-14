@@ -23,6 +23,7 @@ pt-BR:
     minimum_valid_week: &minimum_valid_week "Validade Inicial em Semana"
     maximum_valid_week: &maximum_valid_week "Validade Final em Semana"
     teenage_pregnancy: "Aplicável para gravidez na adolescência"
+    exit: &exit "Sair"
   _gender: &gender
     male: 'Masculino'
     female: 'Feminino'
@@ -167,15 +168,17 @@ pt-BR:
   view:
     message:
       add_telefone: "Incluir Telefone"
-      back_to_admin: "Voltar a acessar como Admin"
+      back_to_admin: "Voltar para Admin"
       remove: "Remover"
       send_messages: "Enviar mensagens"
       signed_in_as: "Logado como %{user_name}"
   views:
     application:
       name: "Pro Bebê"
+      admin: "Admin"
       sign_in: "Login"
       toggle_navigation: "Abrir/Fechar Menu"
+      exit: *exit
     blog:
       back_html: "&larr; Voltar"
       by: "por %{author}"
