@@ -47,6 +47,7 @@ pt-BR:
         title: *title
         type: *type
         user_email: *user_email
+        messages: "Mensagens"
       articles/authorial_article:
         <<: *article
       articles/journalistic_article:

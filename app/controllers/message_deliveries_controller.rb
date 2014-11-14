@@ -12,7 +12,7 @@ class MessageDeliveriesController < ApplicationController
   protected
 
   def articles
-    Articles::AuthorialArticle.all
+    Articles::JournalisticArticle.all
   end
 
   def send_message(article)
