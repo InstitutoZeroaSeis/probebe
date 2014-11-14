@@ -33,4 +33,17 @@ module ApplicationHelper
   end
   alias_method :time_ago_in_words, :distance_of_time_in_words_to_now
 
+
+  def previous_blog_page(current_page)
+    posts_path(page: current_page + 1, category_id: params[:category_id])
+  end
+
+  def next_blog_page(current_page)
+    posts_path(page: current_page - 1, category_id: params[:category_id])
+  end
+
+  def filter_blog_url(filter_name, id)
+    url_for(controller: 'posts', tag_id: params[:tag_id],
+            category_id: params[:category_id], filter_name => id)
+  end
 end

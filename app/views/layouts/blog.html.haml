@@ -35,11 +35,11 @@
           .well
             %h4= t('activerecord.models.category').pluralize_current_locale
             = render layout: 'two_column_link_list', locals: { list: Category.sub_categories } do |category|
-              = link_to category.name, '#'
+              = link_to category.name, filter_blog_url('category_id', category.id)
           .well
             %h4= t('activerecord.models.tag').pluralize_current_locale
-            = render layout: 'two_column_link_list', locals: { list: Tag.all } do |category|
-              = link_to category.name, '#'
+            = render layout: 'two_column_link_list', locals: { list: Tag.all } do |_tag|
+              = link_to _tag.name, filter_blog_url('tag_id', _tag.id)
       %hr
       %footer
         .row
