@@ -17,4 +17,6 @@
 //= require jquery-ui
 //= require jquery-ui/datepicker-pt-BR
 //= require_tree .
+//= require ./inputs/countable_input
+//= require ./inputs/week_to_date_input
 //= require ckeditor/init

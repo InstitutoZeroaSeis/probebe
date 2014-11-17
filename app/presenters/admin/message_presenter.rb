@@ -7,7 +7,8 @@ class Admin::MessagePresenter < Carnival::BaseAdminPresenter
 
   field :text,
     actions: [:index, :new, :edit, :show],
-    advanced_search: {:operator => :like}
+    advanced_search: {:operator => :like},
+    as: :char_countable
 
 
   field :created_at, :actions => [:index, :show]
