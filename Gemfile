@@ -29,6 +29,7 @@ gem 'capistrano-bundler'
 gem 'ckeditor', '~> 4.1.0'
 gem 'cancancan', '~> 1.9.2'
 gem 'puma'
+gem 'will_paginate'
 
 group :development do
   gem 'better_errors', '0.9.0'

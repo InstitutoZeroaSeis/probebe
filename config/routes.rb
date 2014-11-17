@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   resource :profile, except: :index
   resource :timeline, only: :show
   resources :message_deliveries, only: :create
-  resources :posts, only: [:show, :index]
+  resources(:posts, only: [:show, :index])
+  get 'posts/page/:page_id' => 'posts#index', as: :paged_posts
+  resources(:tags) { resources :posts, only: :index }
+  resources(:categories) { resources :posts, only: :index }
 
   mount_carnival_at 'admin'
   namespace :admin do

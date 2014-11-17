@@ -25,6 +25,12 @@ module Articles
 
     before_save :set_defaults
 
+    scope :ordered_by_creation_date, -> { order(created_at: :desc) }
+    scope :by_tag, ->(tag_name) { joins(:tags).merge(Tag.where(name: tag_name)) if tag_name }
+    scope :by_category, ->(category_name) { joins(:category).merge(Category.where(name: category_name)) if category_name }
+    scope :by_search_term, ->(search_term) { where(match_title(search_term).or(match_text(search_term))) if search_term }
+    scope :journalistic, -> { where(type: 'Articles::JournalisticArticle') }
+
     def presence_of_maximum_or_minimum
       if (self.minimum_valid_week.blank? && self.maximum_valid_week.blank?)
         errors.add(:base, I18n.t('activerecord.errors.models.article.base.has_no_minimum_and_maximum_valid_week'))
@@ -47,6 +53,14 @@ module Articles
 
     def set_defaults
       self.baby_target_type ||= 'pregnancy'
+    end
+
+    def self.match_title(search_term)
+      arel_table[:title].matches("%#{search_term}%")
+    end
+
+    def self.match_text(search_term)
+      arel_table[:text].matches("%#{search_term}%")
     end
   end
 end

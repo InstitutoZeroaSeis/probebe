@@ -10,7 +10,7 @@ module ApplicationHelper
 
   def template_for_association(form_builder, association, path='')
     new_object = form_builder.object.class.reflect_on_association(association).klass.new
-    fields = form_builder.simple_fields_for association,  new_object  do |builder|
+    form_builder.simple_fields_for association,  new_object  do |builder|
       render(path + association.to_s.singularize + "_fields", :f => builder)
     end
   end
@@ -33,17 +33,12 @@ module ApplicationHelper
   end
   alias_method :time_ago_in_words, :distance_of_time_in_words_to_now
 
-
   def previous_blog_page(current_page)
-    posts_path(page: current_page + 1, category_id: params[:category_id])
+    url_for(params.merge(page: current_page + 1))
   end
 
   def next_blog_page(current_page)
-    posts_path(page: current_page - 1, category_id: params[:category_id])
+    url_for(params.merge(page: current_page - 1))
   end
 
-  def filter_blog_url(filter_name, id)
-    url_for(controller: 'posts', tag_id: params[:tag_id],
-            category_id: params[:category_id], filter_name => id)
-  end
 end

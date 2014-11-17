@@ -26,20 +26,21 @@
           = yield
         .col-md-4
           .well
-            %h4= t('views.blog.search')
-            .input-group
-              %input.form-control{:type => "text"}
+            %form{action: posts_path, method: :get}
+              %h4= t('views.blog.search')
+              .input-group
+                %input.form-control{type: 'text', name: 'search'}
                 %span.input-group-btn
-                  %button.btn.btn-default{:type => "button"}
+                  %button.btn.btn-default{:type => "submit"}
                     %span.glyphicon.glyphicon-search
           .well
             %h4= t('activerecord.models.category').pluralize_current_locale
             = render layout: 'two_column_link_list', locals: { list: Category.sub_categories } do |category|
-              = link_to category.name, filter_blog_url('category_id', category.id)
+              = link_to category.name, category_posts_path(category.name)
           .well
             %h4= t('activerecord.models.tag').pluralize_current_locale
             = render layout: 'two_column_link_list', locals: { list: Tag.all } do |_tag|
-              = link_to _tag.name, filter_blog_url('tag_id', _tag.id)
+              = link_to _tag.name, tag_posts_path(_tag.name)
       %hr
       %footer
         .row

@@ -388,3 +388,4 @@ DEPENDENCIES
   turbo_dev_assets (~> 0.0.2)
   uglifier (>= 1.3.0)
   unicorn
+  will_paginate

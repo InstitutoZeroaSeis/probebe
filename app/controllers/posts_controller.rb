@@ -1,12 +1,14 @@
 class PostsController < ApplicationController
-  POSTS_PER_PAGE = 10
+  POSTS_PER_PAGE = 3
   layout "blog"
 
   def index
-    @posts = Articles::JournalisticArticle.default_scoped
-    sort_posts
-    filter_posts
-    build_pager(@posts)
+    @pager = build_pager Articles::JournalisticArticle.ordered_by_creation_date
+      .by_tag(params[:tag_id])
+      .by_category(params[:category_id])
+      .by_search_term(params[:search])
+      .journalistic
+
     @posts = @pager.paged
   end
 
@@ -14,23 +16,10 @@ class PostsController < ApplicationController
     @post = Articles::JournalisticArticle.find(params[:id])
   end
 
-  private
+  protected
 
-  def sort_posts
-    @posts = @posts.order(created_at: :desc)
-  end
-
-  def filter_posts
-    if params[:category_id]
-      @posts = @posts.where(category_id: params[:category_id])
-    end
-    if params[:tag_id]
-      @posts = @posts.includes(:tags).where(tags: { id: params[:tag_id] })
-    end
-  end
-
-  def build_pager(articles)
+  def build_pager(posts)
     page = params[:page] || 1
-    @pager = Pager.new(articles, page, POSTS_PER_PAGE)
+    Pager.new(posts, page, POSTS_PER_PAGE)
   end
 end
