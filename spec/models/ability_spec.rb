@@ -27,10 +27,10 @@ describe "User" do
     context "when is an journalist" do
       let(:user) { build_stubbed(:user, :journalist) }
 
-      it { is_expected.to have_abilities([:read, :create, :update, :create_journalistic_article], Articles::JournalisticArticle) }
+      it { is_expected.to have_abilities([:read, :create, :update], Articles::JournalisticArticle) }
       it { is_expected.to not_have_abilities(:destroy, Articles::JournalisticArticle) }
 
-      it { is_expected.to have_abilities({read: true, update: false, destroy: false}, Articles::AuthorialArticle) }
+      it { is_expected.to have_abilities({read: true, create_journalistic_article: true, update: false, destroy: false}, Articles::AuthorialArticle) }
       it { is_expected.to have_abilities({read: true, update: false, destroy: false}, Message) }
       it { is_expected.to have_abilities({read: true, update: false, destroy: false}, Category) }
       it { is_expected.to have_abilities({read: false, update: false, destroy: false}, User) }
