@@ -17,6 +17,7 @@ class CharCountableInput < SimpleForm::Inputs::TextInput
     base_options = super
     base_options[:onkeydown] = 'countChar(event)'
     base_options[:onkeyup] = 'countChar(event)'
+    base_options[:onfocus] = 'countChar(event)'
     base_options
   end
 end

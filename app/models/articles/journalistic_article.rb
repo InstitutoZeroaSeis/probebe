@@ -14,4 +14,15 @@ class Articles::JournalisticArticle < Articles::Article
 
   validates_presence_of :parent_article, :original_author
 
+  validate :length_of_messages
+
+  private
+
+  def length_of_messages
+    messages.each do |message|
+      if message.text.size > 150
+        errors.add(:base, I18n.t('activerecord.errors.models.articles/journalistic_article.base.messages_length'))
+      end
+    end
+  end
 end
