@@ -19,7 +19,7 @@ feature "Author create an authorial article" do
     fill_in "articles_authorial_article_summary", with: "Summary"
 
     within '#articles_authorial_article_baby_target_type' do
-      find('option', text: "Bebê nascido").select_option
+      find('option', text: "Nascido").select_option
     end
 
     fill_in "articles_authorial_article_minimum_valid_week", with: 10

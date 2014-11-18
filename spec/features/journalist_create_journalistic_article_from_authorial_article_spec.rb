@@ -12,7 +12,7 @@ feature "Journalist create journalistic article from authorial article" do
     expect(current_path).to eq(new_admin_journalistic_article_path)
     expect(page).to have_content(@authorial_article.category.name)
     expect(page).to have_content("Ambos")
-    expect(page).to have_content("Bebê em gestação")
+    expect(page).to have_content("Em gestação")
 
     fill_in "articles_journalistic_article_title", with: article_title
     fill_in "articles_journalistic_article_text", with: "Text"
