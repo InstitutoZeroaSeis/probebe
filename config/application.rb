@@ -21,10 +21,10 @@ module ProBebe
     # config.i18n.default_locale = :de
 
     config.autoload_paths << Rails.root.join('app/inputs')
+    config.autoload_paths << Rails.root.join('app/models/ckeditor')
+    config.autoload_paths << Rails.root.join('app/route_constraints/')
     config.autoload_paths << Rails.root.join('app/value_objects')
     config.autoload_paths << Rails.root.join('lib/')
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
-    config.autoload_paths << Rails.root.join('app/route_constraints/')
     require Rails.root.join('lib/extensions/string')
 
     config.i18n.available_locales = :pt, :'pt-BR', :en
