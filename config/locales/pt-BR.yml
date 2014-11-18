@@ -55,6 +55,7 @@ pt-BR:
         <<: *article
       articles/journalistic_article:
         <<: *article
+        parent_article_text: "Texto original"
       avatar:
         photo: "Foto"
       category:
@@ -158,6 +159,9 @@ pt-BR:
           both: 'Ambos'
       articles_journalistic_article:
         <<: *authotial_article_simple_form
+        teenage_pregnancy:
+          "true": 'Sim'
+          "false": 'Não'
       profile:
         gender:
           <<: *gender

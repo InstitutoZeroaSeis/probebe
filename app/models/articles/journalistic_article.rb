@@ -16,6 +16,14 @@ class Articles::JournalisticArticle < Articles::Article
 
   validate :length_of_messages
 
+  def category_name
+    category.name
+  end
+
+  def parent_article_text
+    parent_article.text
+  end
+
   private
 
   def length_of_messages
