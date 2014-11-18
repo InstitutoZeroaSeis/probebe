@@ -29,8 +29,8 @@ pt-BR:
     female: 'Feminino'
     not_informed: 'Não informado'
   _baby_target_type: &baby_target_type_enum
-    pregnancy: "Bebê em gestação"
-    born: "Bebê nascido"
+    pregnancy: "Em gestação"
+    born: "Nascido"
   activerecord:
     attributes:
       articles/article: &article
