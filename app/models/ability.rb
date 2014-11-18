@@ -26,10 +26,8 @@ class Ability
 
   def set_journalist_permissions(user)
     if user.journalist?
-      can [:read, :create], Articles::JournalisticArticle
-      can [:update], Articles::JournalisticArticle, user_id: user.id
-      can [:create_journalistic_article], Articles::AuthorialArticle
-      can [:read], Articles::AuthorialArticle
+      can [:read, :create, :update], Articles::JournalisticArticle
+      can [:read, :create_journalistic_article], Articles::AuthorialArticle
       can [:read], Message
       can [:read], Category
     end

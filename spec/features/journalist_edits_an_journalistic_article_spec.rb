@@ -16,17 +16,3 @@ feature "Journalist edit your own journalistic article" do
     expect(page).to have_content(article_title)
   end
 end
-
-  feature "A journalist tries to edit another jounalist article" do
-    scenario "Not permmited" do
-      user = create(:user, :confirmed, :journalist)
-      user2 = create(:user, :confirmed, :journalist)
-
-      journalistic_article = create(:journalistic_article, user: user)
-      sign_in(user2.email, user2.password)
-
-      article_title = "New title"
-      visit edit_admin_journalistic_article_path(journalistic_article)
-      expect(current_path).to eq(carnival_root_path)
-    end
-  end
