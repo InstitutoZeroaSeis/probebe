@@ -67,11 +67,19 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
         sortable: true,
         advanced_search: {operator: :like}
 
+  field :journalistic_articles_count,
+        actions: [:index, :show],
+        sortable: true
+
   field :messages,
         actions: [:new, :show, :edit],
         nested_form: true,
         nested_form_modes: [:new]
 
+  field :jounalistic_articles,
+        actions: [:index, :show],
+        show_as_list: true,
+        sortable: false
 
   action :show
   action :edit
@@ -79,5 +87,6 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
   action :new
   action :create_journalistic_article
 
+  index_as :list
 
 end

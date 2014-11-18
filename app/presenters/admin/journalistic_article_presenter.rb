@@ -80,4 +80,6 @@ field :messages,
   action :edit
   action :destroy
 
+  index_as :list
+
 end

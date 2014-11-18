@@ -25,12 +25,13 @@ ActiveRecord::Schema.define(version: 20141106185222) do
     t.string   "title"
     t.text     "text"
     t.text     "summary"
-    t.integer  "gender",             default: 2
+    t.integer  "gender",                      default: 2
     t.integer  "category_id"
     t.boolean  "teenage_pregnancy"
     t.integer  "baby_target_type"
     t.integer  "minimum_valid_week"
     t.integer  "maximum_valid_week"
+    t.integer  "journalistic_articles_count", default: 0, null: false
     t.integer  "user_id"
     t.integer  "parent_article_id"
     t.integer  "original_author_id"

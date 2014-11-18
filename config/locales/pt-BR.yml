@@ -40,6 +40,7 @@ pt-BR:
         category_id: *category_id
         category_name: *category_name
         gender: *genders
+        journalistic_articles_count: "Quantidade de artigos jornalístico"
         minimum_valid_week: *minimum_valid_week
         maximum_valid_week: *maximum_valid_week
         parent_article_id: *parent_article_id

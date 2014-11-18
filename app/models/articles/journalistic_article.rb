@@ -1,7 +1,7 @@
 class Articles::JournalisticArticle < Articles::Article
   include Carnival::ModelHelper
 
-  belongs_to :parent_article, class_name: "Articles::AuthorialArticle", foreign_key: :parent_article_id
+  belongs_to :parent_article, class_name: "Articles::AuthorialArticle", foreign_key: :parent_article_id, counter_cache: true, touch: true
   has_many :messages, as: :messageable do
     def build(*args, &block)
       item = super(*args, &block)

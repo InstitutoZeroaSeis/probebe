@@ -11,6 +11,7 @@ class CreateArticles < ActiveRecord::Migration
       t.integer :baby_target_type
       t.integer :minimum_valid_week
       t.integer :maximum_valid_week
+      t.integer :journalistic_articles_count, default: 0, null: false
       t.references :user
       t.references :category
       t.references :parent_article

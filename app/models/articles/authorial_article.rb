@@ -9,7 +9,8 @@ class Articles::AuthorialArticle < Articles::Article
     end
   end
 
-  has_many :sub_articles, class_name: "Articles::JournalisticArticle", foreign_key: :parent_article_id
+  has_many :jounalistic_articles, class_name: "Articles::JournalisticArticle", foreign_key: :parent_article_id
 
   accepts_nested_attributes_for :messages, reject_if: proc { |attributes| attributes['text'].blank? }
+
 end
