@@ -76,7 +76,7 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
         nested_form: true,
         nested_form_modes: [:new]
 
-  field :jounalistic_articles,
+  field :journalistic_articles,
         actions: [:index, :show],
         show_as_list: true,
         sortable: false

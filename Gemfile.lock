@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/cartolari/carnival.git
-  revision: 2bb85b541107383a92ee5f9325604a79126d477e
+  revision: 8e7ef6ff298caea0eecf9f587b91cd664a1e07d1
   branch: master
   specs:
     carnival (0.1.4)

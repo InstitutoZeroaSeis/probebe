@@ -53,6 +53,7 @@ pt-BR:
         messages: "Mensagens"
       articles/authorial_article:
         <<: *article
+        journalistic_articles: "Artigos Jornalísticos"
       articles/journalistic_article:
         <<: *article
         parent_article_text: "Texto original"
@@ -113,6 +114,8 @@ pt-BR:
             has_no_children: "Você precisa cadastrar ao menos um filho"
             needs_mobile_phone: "Precisa de pelo menos um celular"
     models:
+      articles/journalistic_article: "Artigo Jornalístico"
+      articles/journalistic_article_plural: "Artigos Jornalísticos"
       category: "Categoria"
       cell_phone: "Celular"
       child: "Filho"
