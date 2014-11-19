@@ -28,13 +28,13 @@ gem 'rvm1-capistrano3', require: false
 gem 'capistrano-bundler'
 gem 'ckeditor', '~> 4.1.0'
 gem 'cancancan', '~> 1.9.2'
-gem 'puma'
-gem 'will_paginate'
+gem 'papertrail', '~> 0.9.11'
 
 group :development do
   gem 'better_errors', '0.9.0'
   gem 'turbo_dev_assets', '~> 0.0.2'
   gem 'bullet'
+  gem 'puma'
 end
 
 group :test do
