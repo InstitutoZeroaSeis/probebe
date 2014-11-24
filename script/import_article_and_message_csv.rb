@@ -7,16 +7,15 @@ line_with_problem = []
 CSV.foreach('data/PlanilhaMensagens.csv', headers: true, col_sep: ";" ) do |row|
   line_of_csv += 1
   ActiveRecord::Base.transaction do
-    categories = row[0].split("/")
+    categories = row[0]
     parent_category_name = categories[0]
-    sub_category_name = categories[1]
 
     begin
       parent_category = Category.where("lower(name) = ?", parent_category_name.downcase).first
-      parent_category ||= Category.create!(name: parent_category_name)
+      parent_category ||= Category.create!(name: parent_category_name.capitalize)
 
-      sub_category = Category.where("lower(name) = ? AND parent_category_id = ?", sub_category_name.downcase, parent_category.id).first
-      sub_category ||= Category.create!(name: sub_category_name, parent_category: parent_category )
+      sub_category = Category.where("lower(name) = ? AND parent_category_id = ?", "Base", parent_category.id).first
+      sub_category ||= Category.create!(name: "Base", parent_category: parent_category )
 
       if row[1] == "A"
         gender = 'both'
@@ -26,7 +25,7 @@ CSV.foreach('data/PlanilhaMensagens.csv', headers: true, col_sep: ";" ) do |row|
         gender = 'female'
       end
 
-      baby_target_type = row[2] == "Gestação" ? 'pregnancy' : 'born'
+      baby_target_type = row[2] == "gestação" ? 'pregnancy' : 'born'
 
       minimum_valid_week = row[3]
       maximum_valid_week = row[4]
@@ -49,7 +48,7 @@ CSV.foreach('data/PlanilhaMensagens.csv', headers: true, col_sep: ";" ) do |row|
                                                                   parent_article: authorial_article,
                                                                   original_author: authorial_article.user)
 
-      journalistic_article.messages << Message.create!(text: message_text)
+      journalistic_article.messages << Message.create!(text: message_text, messageable_type: "Articles::JournalisticArticle" )
     rescue
       line_with_problem << (line_of_csv.to_s + row.to_s)
     end
