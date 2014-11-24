@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @pager = build_pager Articles::JournalisticArticle.ordered_by_creation_date
+      .publishable
       .by_tag(params[:tag_id])
       .by_category(params[:category_id])
       .by_search_term(params[:search])

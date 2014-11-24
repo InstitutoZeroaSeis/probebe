@@ -59,6 +59,10 @@ field :maximum_valid_week,
       actions: [:index, :new, :edit, :show],
       advanced_search: {:operator => :equal}
 
+field :publishable,
+      actions: [:index, :new, :edit, :show],
+      sortable: true
+
 field :article_references,
       actions: [:new, :show, :edit],
       nested_form: true,

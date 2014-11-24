@@ -18,6 +18,7 @@ FactoryGirl.define do
     factory :journalistic_article, class: Articles::JournalisticArticle do
       type 'Articles::JournalisticArticle'
       association :original_author, factory: :user
+      publishable true
       with_parent_authorial_article
 
       trait :with_parent_authorial_article do

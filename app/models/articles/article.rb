@@ -30,6 +30,8 @@ module Articles
     scope :by_category, ->(category_name) { joins(:category).merge(Category.where(name: category_name)) if category_name }
     scope :by_search_term, ->(search_term) { where(match_title(search_term).or(match_text(search_term))) if search_term }
     scope :journalistic, -> { where(type: 'Articles::JournalisticArticle') }
+    scope :publishable, -> { where(publishable: true) }
+
 
     def presence_of_maximum_or_minimum
       if (self.minimum_valid_week.blank? && self.maximum_valid_week.blank?)
