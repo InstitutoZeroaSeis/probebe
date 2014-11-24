@@ -84,7 +84,6 @@ GEM
       xpath (~> 2.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
-    chronic (0.10.2)
     ckeditor (4.1.0)
       mime-types
       orm_adapter (~> 0.5.0)
@@ -208,13 +207,14 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    paper_trail (3.0.6)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    papertrail (0.9.11)
-      chronic
     poltergeist (1.5.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -371,8 +371,8 @@ DEPENDENCIES
   non-stupid-digest-assets
   omniauth-facebook (~> 2.0.0)
   omniauth-google-oauth2 (~> 0.2.5)
+  paper_trail
   paperclip (~> 4.2.0)
-  papertrail (~> 0.9.11)
   poltergeist
   pretender (~> 0.1.0)
   pry

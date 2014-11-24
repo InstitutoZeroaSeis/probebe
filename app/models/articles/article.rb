@@ -31,6 +31,8 @@ module Articles
     scope :by_search_term, ->(search_term) { where(match_title(search_term).or(match_text(search_term))) if search_term }
     scope :journalistic, -> { where(type: 'Articles::JournalisticArticle') }
 
+    has_paper_trail
+
     def presence_of_maximum_or_minimum
       if (self.minimum_valid_week.blank? && self.maximum_valid_week.blank?)
         errors.add(:base, I18n.t('activerecord.errors.models.article.base.has_no_minimum_and_maximum_valid_week'))

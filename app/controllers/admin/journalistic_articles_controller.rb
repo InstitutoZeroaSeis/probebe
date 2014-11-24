@@ -1,4 +1,4 @@
-class Admin::JournalisticArticlesController < Carnival::BaseAdminController
+class Admin::JournalisticArticlesController < Admin::AdminController
   before_filter :authenticate_user!
   defaults :resource_class => Articles::JournalisticArticle
 
@@ -6,7 +6,6 @@ class Admin::JournalisticArticlesController < Carnival::BaseAdminController
   load_and_authorize_resource class: 'Articles::JournalisticArticle'
 
   layout "carnival/admin"
-
 
   def build_resource
     if action_name == "new"
@@ -34,7 +33,7 @@ class Admin::JournalisticArticlesController < Carnival::BaseAdminController
 
   def permitted_params
     permitted = params.permit(articles_journalistic_article:
-                              [:id, :text, :title, :summary, :category_id, :user_id,
+                              [:text, :title, :summary, :category_id, :user_id,
                               :gender, :teenage_pregnancy, :baby_target_type,
                               :minimum_valid_week, :maximum_valid_week, {tag_ids: []},
                               article_references_attributes:[:id, :source, :_destroy],

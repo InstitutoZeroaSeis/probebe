@@ -80,6 +80,7 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
   action :show
   action :edit
   action :destroy
+  action :show_activity_log
 
   index_as :list
 

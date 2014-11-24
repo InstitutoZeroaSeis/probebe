@@ -1,0 +1,18 @@
+%h2 Histórico
+.activity_log
+  - @activity_log.events.each do |event|
+    .activity_log__events
+      %h3.event= I18n.t("activity_log.views.events.#{event.type}", model_name: @activity_log.model_name, date: l(event.date))
+      %h3.event= "por = #{event.user}"
+      %table.events__diff.carnival-table
+        %thead
+          %tr
+            %th= t('activity_log.views.events.attribute_name')
+            %th= t('activity_log.views.events.before_change')
+            %th= t('activity_log.views.events.after_change')
+        %tbody
+          - event.changes.each do |change|
+            %tr
+              %td= change.attribute_name
+              %td= change.before_change
+              %td= change.after_change
