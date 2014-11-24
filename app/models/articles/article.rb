@@ -33,6 +33,8 @@ module Articles
     scope :publishable, -> { where(publishable: true) }
 
 
+    has_paper_trail
+
     def presence_of_maximum_or_minimum
       if (self.minimum_valid_week.blank? && self.maximum_valid_week.blank?)
         errors.add(:base, I18n.t('activerecord.errors.models.article.base.has_no_minimum_and_maximum_valid_week'))

@@ -15,6 +15,8 @@ class Category < ActiveRecord::Base
   scope :super_categories, -> { where(parent_category_id: nil)}
   scope :sub_categories, -> { where.not(parent_category_id: nil)}
 
+  has_paper_trail
+
   def maximum_hierarchy_level
     hierarchy_level_count = 1
     current_category = self

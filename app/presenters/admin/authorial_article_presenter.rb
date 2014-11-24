@@ -17,7 +17,8 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
   field :tags,
         actions: [:new, :show, :edit],
         nested_form: true,
-        nested_form_modes: [:associate]
+        nested_form_modes: [:associate],
+        show_as_list: true
 
   field :title,
         actions: [:index, :show, :edit, :new],
@@ -76,7 +77,7 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
         nested_form: true,
         nested_form_modes: [:new]
 
-  field :jounalistic_articles,
+  field :journalistic_articles,
         actions: [:index, :show],
         show_as_list: true,
         sortable: false

@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/cartolari/carnival.git
-  revision: 2bb85b541107383a92ee5f9325604a79126d477e
+  revision: 8169cc1418eadd7cab3e76d37649c73e582e7a6b
   branch: master
   specs:
     carnival (0.1.4)
@@ -155,7 +155,7 @@ GEM
       has_scope (~> 0.6.0.rc)
       railties (>= 3.2, < 4.2)
       responders (~> 1.0)
-    jbuilder (2.2.4)
+    jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.2)
@@ -164,9 +164,9 @@ GEM
     jquery-ui-rails (5.0.2)
       railties (>= 3.2.16)
     json (1.8.1)
-    jwt (1.0.0)
+    jwt (1.2.0)
     kgio (2.9.2)
-    listen (2.7.11)
+    listen (2.8.1)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -176,11 +176,11 @@ GEM
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.1)
-    minitest (5.4.2)
+    minitest (5.4.3)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.3.16)
+    mysql2 (0.3.17)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
@@ -207,6 +207,9 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    paper_trail (3.0.6)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -225,7 +228,7 @@ GEM
     pry-byebug (2.0.0)
       byebug (~> 3.4)
       pry (~> 0.10)
-    puma (2.9.2)
+    puma (2.10.0)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -298,7 +301,7 @@ GEM
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
     slop (3.6.0)
-    spring (1.1.3)
+    spring (1.2.0)
     spring-commands-rspec (1.0.2)
       spring (>= 0.9.1)
     sprockets (2.11.3)
@@ -306,7 +309,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.2.0)
+    sprockets-rails (2.2.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
@@ -368,6 +371,7 @@ DEPENDENCIES
   non-stupid-digest-assets
   omniauth-facebook (~> 2.0.0)
   omniauth-google-oauth2 (~> 0.2.5)
+  paper_trail
   paperclip (~> 4.2.0)
   poltergeist
   pretender (~> 0.1.0)
@@ -388,4 +392,3 @@ DEPENDENCIES
   turbo_dev_assets (~> 0.0.2)
   uglifier (>= 1.3.0)
   unicorn
-  will_paginate

@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
     redirect_to carnival_root_path, :alert => exception.message
   end
 
+  def user_for_paper_trail
+    current_user.email if user_signed_in?
+  end
+
   def current_profile
     current_user.profile if current_user
   end

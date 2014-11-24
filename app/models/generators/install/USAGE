@@ -1,0 +1,7 @@
+Description:
+  Install paper_trail_views
+
+Example:
+    rails generate paper_trail_views:install
+
+    This will create a config/locales/paper_trail_views.en.yml, required by paper_trail_views

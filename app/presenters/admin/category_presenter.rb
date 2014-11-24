@@ -10,8 +10,11 @@ class Admin::CategoryPresenter < Carnival::BaseAdminPresenter
         advanced_search: {:operator => :like}
 
   field :parent_category,
-        sortable: false,
         actions: [:edit, :new]
+
+  field 'parent_category.name',
+        sortable: false,
+        actions: [:index, :show]
 
   action :show
   action :edit
