@@ -1,8 +1,5 @@
-class Admin::CategoriesController < Carnival::BaseAdminController
-  before_filter :authenticate_user!
+class Admin::CategoriesController < Admin::AdminController
 
-  before_filter :deny_site_user_access_on_admin
-  before_filter :deny_site_user_access_on_admin
   load_and_authorize_resource
 
   layout "carnival/admin"

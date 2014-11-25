@@ -1,5 +1,3 @@
-class Admin::ArticleReferencesController < Carnival::BaseAdminController
-  before_filter :authenticate_user!
+class Admin::ArticleReferencesController < Admin::AdminController
   load_and_authorize_resource class: 'Articles::ArticleReference'
-
 end

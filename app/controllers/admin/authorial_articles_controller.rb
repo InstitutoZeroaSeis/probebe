@@ -1,12 +1,6 @@
-class Admin::AuthorialArticlesController < Carnival::BaseAdminController
-  before_filter :authenticate_user!
+class Admin::AuthorialArticlesController < Admin::AdminController
   defaults :resource_class => Articles::AuthorialArticle
-
-  before_filter :deny_site_user_access_on_admin
   load_and_authorize_resource class: 'Articles::AuthorialArticle'
-
-  layout "carnival/admin"
-
 
   def create_journalistic_article
     redirect_to controller: 'journalistic_articles', action: 'new',  id: params[:id]

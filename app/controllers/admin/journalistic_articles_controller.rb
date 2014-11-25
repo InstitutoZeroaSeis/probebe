@@ -1,8 +1,5 @@
 class Admin::JournalisticArticlesController < Admin::AdminController
-  before_filter :authenticate_user!
   defaults :resource_class => Articles::JournalisticArticle
-
-  before_filter :deny_site_user_access_on_admin
   load_and_authorize_resource class: 'Articles::JournalisticArticle'
 
   layout "carnival/admin"
