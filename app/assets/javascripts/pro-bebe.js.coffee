@@ -38,6 +38,7 @@ setupDatePickers = ->
   $('.datepicker').datepicker(
     changeMonth: true
     changeYear: true
+    yearRange: "-80:+0"
     beforeShow: ->
     setTimeout(->
       $('.ui-datepicker').css('z-index', 99)
