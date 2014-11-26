@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include HeaderAuthenticationConcern
   impersonates :user
   protect_from_forgery with: :exception
   rescue_from CanCan::AccessDenied do |exception|

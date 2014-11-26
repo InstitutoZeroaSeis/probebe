@@ -30,6 +30,7 @@ gem 'ckeditor', '~> 4.1.0'
 gem 'cancancan', '~> 1.9.2'
 gem 'paper_trail'
 gem 'savon', '~> 2.8.0'
+gem 'rack-cors'
 
 group :development do
   gem 'better_errors', '0.9.0'

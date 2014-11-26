@@ -5,5 +5,9 @@ class TimelinesController < ApplicationController
 
   def show
     @deliveries = current_profile.message_deliveries
+    respond_to do |format|
+      format.html
+      format.json { render json: @deliveries }
+    end
   end
 end
