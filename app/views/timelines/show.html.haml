@@ -3,5 +3,5 @@
 - @deliveries.each do |delivery|
   %dt= l delivery.created_at
   %dd= delivery.message.text
-  =link_to "#{I18n.t('views.timeline.read_more')}", post_path(delivery.article.id)
+  =link_to "#{I18n.t('views.timeline.read_more')}", post_path(delivery.article.id) if delivery.article.publishable
   %br
