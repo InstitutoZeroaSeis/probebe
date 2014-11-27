@@ -31,6 +31,7 @@ gem 'cancancan', '~> 1.9.2'
 gem 'savon', '~> 2.8.0'
 gem 'paper_trail', '~> 3.0.6'
 gem 'rack-cors', '~> 0.2.9'
+gem 'rpush', '~> 2.2.0'
 
 group :development do
   gem 'better_errors', '0.9.0'
