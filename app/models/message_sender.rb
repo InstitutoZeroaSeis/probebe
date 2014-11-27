@@ -1,30 +1,23 @@
 class MessageSender
-  attr_reader :article
+  attr_reader :child
 
-  def initialize(profile_finder)
-    @article = profile_finder.article
-    @profile_finder = profile_finder
+  def initialize(messages_finder)
+    @child = messages_finder.child
+    @messages_finder = messages_finder
   end
 
   def send_messages
-    profiles = get_profiles
-    @article.messages.each do |message|
-      profiles_without_message = filter_already_sent_messages(message, profiles)
-      message_delivery = MessageDelivery.create!(message: message, profiles: profiles_without_message)
-    end
+    random_message = get_random_message
+    message_delivery = MessageDelivery.create!(message: random_message, profile: @child.profile)
   end
 
   protected
 
-  def get_profiles
-    profiles = @profile_finder.find_profiles_by_article
+  def get_messages
+    messages = @messages_finder.find_message_for_child
   end
 
-  def filter_already_sent_messages(message, profiles)
-    profiles.select do |profile|
-      profile.message_deliveries.none? do |delivery|
-        message == delivery.message
-      end
-    end
+  def get_random_message
+    get_messages.sample
   end
 end
