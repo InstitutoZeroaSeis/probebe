@@ -28,9 +28,9 @@ gem 'rvm1-capistrano3', require: false
 gem 'capistrano-bundler'
 gem 'ckeditor', '~> 4.1.0'
 gem 'cancancan', '~> 1.9.2'
-gem 'paper_trail'
 gem 'savon', '~> 2.8.0'
-gem 'rack-cors'
+gem 'paper_trail', '~> 3.0.6'
+gem 'rack-cors', '~> 0.2.9'
 
 group :development do
   gem 'better_errors', '0.9.0'
