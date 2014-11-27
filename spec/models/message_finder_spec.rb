@@ -26,4 +26,16 @@ RSpec.describe MessageFinder, :type => :model do
       it { is_expected.to match_array([@message2]) }
     end
   end
+
+  context "with two message applicable for child" do
+    context "message from same article" do
+      subject { MessageFinder.new(@article_finder).find_message_for_child }
+      before { @profile = create(:profile, children: create_list(:child, 1, birth_date: 5.months.ago)) }
+      before { @article1 = create(:journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born', messages: create_list(:message, 2)) }
+      before { @message1 = @article1.messages.first}
+      before { @message2 = @article1.messages.second}
+      before { @article_finder = ArticlesFinder.new(Articles::JournalisticArticle.all, @profile.children.first) }
+      it { is_expected.to match_array([@message1, @message2]) }
+    end
+  end
 end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ArticlesFinder, :type => :model do
 
   context "with child born, male and five months old" do
-    context "and articles that applicable to that child" do
+    context "and articles that applicable for that child" do
       subject { ArticlesFinder.new(Articles::JournalisticArticle.all, @child).find_articles_for_child  }
       before { @child = create(:child, birth_date: 5.months.ago) }
       before { @article1 = create(:journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
@@ -23,7 +23,7 @@ RSpec.describe ArticlesFinder, :type => :model do
   end
 
   context "with pregnancy child, no gender specified, pregnancy for about 5 months" do
-    context "and articles that applicable to that child " do
+    context "and articles that applicable for that child " do
       subject { ArticlesFinder.new(Articles::JournalisticArticle.all, @child).find_articles_for_child  }
       before { @child = create(:child, birth_date: 7.months.from_now) }
       before { @article1 = create(:journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'pregnancy') }
@@ -33,7 +33,7 @@ RSpec.describe ArticlesFinder, :type => :model do
   end
 
   context "with pregnancy child, no gender specified, pregnancy for about 2 months" do
-    context "and 4 articles that, the two of them are applicable " do
+    context "and 4 articles that, the two of them are applicable" do
       subject { ArticlesFinder.new(Articles::JournalisticArticle.all, @child).find_articles_for_child  }
       before { @child = create(:child, birth_date: 7.months.from_now) }
       before { @article1 = create(:journalistic_article, :male, maximum_valid_week: 14, baby_target_type: 'pregnancy') }
