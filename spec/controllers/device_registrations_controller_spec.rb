@@ -2,10 +2,18 @@ require 'rails_helper'
 
 RSpec.describe DeviceRegistrationsController, :type => :controller do
   describe "POST create"  do
-    it "is expected to create a registration with the given device for the appropriate user" do
-      create(:user, :site_user)
+    it "is not expected to insert a new device register without authenticating" do
       registration = { "platform" => "android", "platform_code" => "android_platform_code" }
-      post :create, device_registration: registration.to_json, format: :json
+      post_data = { device_registration: registration }
+      post :create, post_data, format: :json
+      expect(response.status).to eq(403)
+    end
+
+    it "is expected to create a registration with the given device for the appropriate user" do
+      user = create(:user, :site_user)
+      registration = { "platform" => "android", "platform_code" => "android_platform_code" }
+      post_data = { email: user.email, password: user.password, device_registration: registration }
+      post :create, post_data, format: :json
       registration_response = JSON.parse(response.body).stringify_keys
       expect(registration_response['errors']).to be_nil
       expect(registration_response['platform']).to eq(registration['platform'])
