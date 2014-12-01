@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20141127220345) do
   create_table "device_registrations", force: true do |t|
     t.string   "platform"
     t.string   "platform_code"
+    t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -9,6 +9,7 @@ class Profile < ActiveRecord::Base
   has_many :children
   has_many :cell_phones
   has_one :avatar
+  has_one :device_registration
 
   validate :has_children, on: :update
   validate :has_cell_phone, on: :update
