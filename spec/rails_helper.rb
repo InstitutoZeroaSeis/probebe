@@ -29,6 +29,7 @@ RSpec.configure do |config|
   config.include Features::RegexHelper, type: :feature
   config.include Formulaic::Dsl, type: :feature
   config.include Devise::TestHelpers, type: :controller
+  config.include Controllers::ApiAuthenticationHelper, type: :controller
 
   config.before(:suite) do
     DatabaseCleaner.clean_with :truncation

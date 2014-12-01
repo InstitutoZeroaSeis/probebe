@@ -1,5 +1,6 @@
 class DeviceRegistrationsController < ApplicationController
-  protect_from_forgery with: :null_session
+  include HeaderAuthenticationConcern
+  skip_before_filter :verify_authenticity_token
 
   def show
     registration = DeviceRegistration.find_by(id: params[:id]) ||
@@ -12,9 +13,10 @@ class DeviceRegistrationsController < ApplicationController
   end
 
   def create
-    if User.find_by(email: params[:email]).try(:valid_password?, params[:password])
+    if user_signed_in?
       registration = DeviceRegistration.new
       registration.attributes = permitted_params
+      registration.profile = current_profile
       registration.save
       render json: registration
     else
