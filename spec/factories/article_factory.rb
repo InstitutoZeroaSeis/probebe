@@ -52,6 +52,10 @@ FactoryGirl.define do
     maximum_valid_week nil
   end
 
+  trait :both do
+    gender 'both'
+  end
+
   trait :male do
     gender 'male'
   end

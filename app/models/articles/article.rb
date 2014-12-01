@@ -31,6 +31,8 @@ module Articles
     scope :by_search_term, ->(search_term) { where(match_title(search_term).or(match_text(search_term))) if search_term }
     scope :journalistic, -> { where(type: 'Articles::JournalisticArticle') }
     scope :publishable, -> { where(publishable: true) }
+    scope :male_and_both, -> { where(gender:[0,2]) }
+    scope :female_and_both, -> { where(gender:[1,2]) }
 
 
     has_paper_trail
@@ -65,6 +67,14 @@ module Articles
 
     def self.match_text(search_term)
       arel_table[:text].matches("%#{search_term}%")
+    end
+
+    def born?
+      baby_target_type == 'born'
+    end
+
+    def pregnancy?
+      !born?
     end
   end
 end

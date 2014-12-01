@@ -6,4 +6,10 @@ class Message < ActiveRecord::Base
 
   validates_presence_of :text
 
+  def message_already_sent_for_profile(profile)
+    profile.message_deliveries.none? do |delivery|
+      self == delivery.message
+    end
+  end
+
 end

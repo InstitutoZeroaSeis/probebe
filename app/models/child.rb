@@ -27,4 +27,8 @@ class Child < ActiveRecord::Base
     birth_date - PREGNANCY_DURATION_IN_WEEKS.weeks if pregnancy?
   end
 
+  def profile
+    Profile.find(self.profile_id)
+  end
+
 end

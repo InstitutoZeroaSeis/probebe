@@ -103,13 +103,9 @@ ActiveRecord::Schema.define(version: 20141127220345) do
 
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"
+    t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "message_deliveries_profiles", id: false, force: true do |t|
-    t.integer "message_delivery_id", null: false
-    t.integer "profile_id",          null: false
   end
 
   create_table "messages", force: true do |t|

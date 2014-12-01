@@ -18,10 +18,10 @@ CSV.open("data/errorsfile.csv", "wb") do |csv|
       begin
         profile = CellPhone.find_by_number(row[1]).profile
         message = Message.find_by_text(message_text)
-        message_delivery = MessageDelivery.create(created_at: created_at, message: message) if message.present?
 
-        message_delivery.profiles << profile
-        message_delivery.save!
+        if message.present? and profile.present?
+          message_delivery = MessageDelivery.create(created_at: created_at, message: message, profile: profile)
+        end
       rescue
         profile_not_find = "Celular não encontrado" if profile.nil?
         message_not_find = "Mensagem não encontrada" if message.nil?
