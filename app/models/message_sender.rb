@@ -8,7 +8,7 @@ class MessageSender
 
   def send_messages
     random_message = get_random_message
-    message_delivery = MessageDelivery.create!(message: random_message, profile: @child.profile)
+    message_delivery = MessageDelivery.create!(message: random_message, profile: @child.profile) if random_message.present?
   end
 
   protected
