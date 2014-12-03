@@ -15,7 +15,7 @@ class Admin::UserPresenter < Carnival::BaseAdminPresenter
   action :show
   action :new
   action :impersonate,
-          remote: :true,
+          remote: :false,
           method: 'POST'
 
 end

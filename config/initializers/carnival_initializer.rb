@@ -31,7 +31,7 @@ Carnival.configure do |config|
     },
   }
 
-  config.custom_javascript_files = [ "ckeditor/init", "inputs/countable_input", "week_to_date_input"  ]
+  config.custom_javascript_files = [ "ckeditor/init", "inputs/countable_input"  ]
   config.use_full_model_name = false
   config.root_action = 'admin/authorial_articles#index'
 end

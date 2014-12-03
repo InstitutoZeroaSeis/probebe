@@ -11,8 +11,6 @@ class Profile < ActiveRecord::Base
   has_one :avatar
   has_one :device_registration
 
-  validate :has_children, on: :update
-  validate :has_cell_phone, on: :update
   validates_presence_of :birth_date, on: :update
   validates_presence_of :first_name, :last_name, :user
 
@@ -45,19 +43,6 @@ class Profile < ActiveRecord::Base
 
   def set_defaults
     self.gender ||= 'not_informed'
-  end
-
-  def has_cell_phone
-    if cell_phones.empty?
-      errors.add(:base, I18n.t('activerecord.errors.models.profile.base.needs_mobile_phone'))
-    end
-  end
-
-  def has_children
-    current_children = children.select {|c| !c.marked_for_destruction? }
-    if current_children.empty?
-      errors.add(:base, I18n.t('activerecord.errors.models.profile.base.has_no_children'))
-    end
   end
 
 end

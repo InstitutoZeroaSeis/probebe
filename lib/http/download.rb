@@ -8,7 +8,6 @@ class Http::Download
     current_path = path
     response_body = nil
     log("Downloading file #{path}")
-    binding.pry
     1.upto(5) do |n|
       res = Net::HTTP.get_response(URI(current_path))
       log("-- Current path #{current_path}")
