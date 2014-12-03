@@ -42,6 +42,12 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
     sortable: true,
     advanced_search: {operator: :like}
 
+  field :box,
+    actions: [:index, :show, :edit, :new],
+    sortable: true,
+    advanced_search: {operator: :like}
+
+
   field :gender,
     actions: [:index, :new, :edit, :show],
     advanced_search: {:operator => :equal},

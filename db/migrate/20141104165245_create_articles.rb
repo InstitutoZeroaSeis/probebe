@@ -5,6 +5,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.text :text
       t.text :summary
+      t.text :box
       t.integer :gender, default: 2
       t.integer :category_id
       t.boolean :teenage_pregnancy

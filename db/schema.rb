@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20141127220345) do
     t.string   "title"
     t.text     "text"
     t.text     "summary"
+    t.text     "box"
     t.integer  "gender",                      default: 2
     t.integer  "category_id"
     t.boolean  "teenage_pregnancy"
