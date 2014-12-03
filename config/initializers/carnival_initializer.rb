@@ -26,6 +26,10 @@ Carnival.configure do |config|
         {
           label: "journalistic_articles",
           link: "/admin/journalistic_articles"
+        },
+        {
+          label: "message_deliveries",
+          link: "/admin/message_deliveries"
         }
       ]
     },

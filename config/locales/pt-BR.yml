@@ -70,6 +70,8 @@ pt-BR:
       message:
         id: "Id"
         text: "Texto"
+      message_delivery:
+        delivery_date: "Data de envio"
       profile:
         address: "Endereço"
         avatar: "Avatar"
@@ -130,6 +132,7 @@ pt-BR:
       categories: "Categorias"
       journalistic_articles: "Artigo Jornalístico"
       messages: "Mensagens"
+      message_deliveries: "Mensagens Enviadas"
       users: "Usuários"
   controller:
     messages:

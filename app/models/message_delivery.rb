@@ -1,5 +1,7 @@
 class MessageDelivery < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  include Carnival::ModelHelper
+
   belongs_to :message
   belongs_to :profile
   after_create :send_message_to_device
@@ -7,6 +9,10 @@ class MessageDelivery < ActiveRecord::Base
 
   def article
     message.messageable
+  end
+
+  def profile_name
+    profile.name
   end
 
   def send_message_to_device

@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20141127220345) do
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"
     t.integer  "profile_id"
+    t.date     "delivery_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

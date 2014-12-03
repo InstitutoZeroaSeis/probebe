@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :journalistic_articles
     resources :messages
+    resources :message_deliveries
     resources :users
     resources :tags
     get 'authorial_articles/:id/create_journalistic_article' => 'authorial_articles#create_journalistic_article', as: :create_journalistic_article
