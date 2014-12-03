@@ -13,6 +13,7 @@ web:
   links:
     - db
     - mail
+    - rpush
   ports:
     - 3000:3000
   volumes:
@@ -24,3 +25,12 @@ mail:
   ports:
     - 1025
     - 3010:1080
+
+rpush:
+  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec rpush start --foreground --pid-file=/tmp/rpush.pid"
+  image: rails
+  links:
+    - db
+  volumes:
+    - .:/app
+  working_dir: /app
