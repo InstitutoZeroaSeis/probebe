@@ -17,7 +17,7 @@ class MessageDelivery < ActiveRecord::Base
 
   def send_message_to_device
     if profile.device_registration.nil?
-      SpringWsdl.send_message(self.profile.cell_phones.first.number, self.message.text)
+      # SpringWsdl.send_message(self.profile.cell_phones.first.number, self.message.text)
     else
       n = Rpush::Gcm::Notification.new
       n.app = Rpush::Gcm::App.find_by(name: "pro-bebe-android")

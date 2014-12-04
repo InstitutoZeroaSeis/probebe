@@ -7,28 +7,31 @@ class Child < ActiveRecord::Base
 
   validates_presence_of :birth_date
 
-  def age_in_weeks
-    if pregnancy?
-      (Date.today - pregnancy_start_date).to_i / DAYS_IN_WEEK
+  def age_in_weeks system_date = nil
+    system_date ||= SystemDate.new
+    if pregnancy?(system_date)
+      (system_date.date - pregnancy_start_date(system_date)).to_i / DAYS_IN_WEEK
     else
-      (Date.today - birth_date.to_date).to_i / DAYS_IN_WEEK
+      (system_date.date - birth_date.to_date).to_i / DAYS_IN_WEEK
     end
   end
 
-  def pregnancy?
-    birth_date.future?
+  def pregnancy? system_date = nil
+    system_date ||= SystemDate.new
+    birth_date > system_date.date
   end
 
-  def born?
-    !pregnancy?
+  def born? system_date = nil
+    system_date ||= SystemDate.new
+    !pregnancy?(system_date)
   end
 
-  def pregnancy_start_date
-    birth_date - PREGNANCY_DURATION_IN_WEEKS.weeks if pregnancy?
+  def pregnancy_start_date(system_date = nil)
+    system_date ||= SystemDate.new
+    birth_date - PREGNANCY_DURATION_IN_WEEKS.weeks if pregnancy?(system_date)
   end
 
   def profile
     Profile.find(self.profile_id)
   end
-
 end

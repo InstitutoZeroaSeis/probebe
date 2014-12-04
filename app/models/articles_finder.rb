@@ -1,10 +1,12 @@
 class ArticlesFinder
   attr_reader :articles
   attr_reader :child
+  attr_reader :system_date
 
-  def initialize(articles, child)
+  def initialize(articles, child, system_date)
     @child = child
     @articles = articles
+    @system_date = system_date
   end
 
   def find_articles_for_child
@@ -24,15 +26,16 @@ class ArticlesFinder
   end
 
   def filter_by_life_period(articles)
-    gender = child.pregnancy? ? 'pregnancy' : 'born'
+    gender = child.pregnancy?(@system_date) ? 'pregnancy' : 'born'
     articles.select do |article|
       article.send("#{gender}?")
     end
   end
 
   def filter_by_age(articles)
+    age_in_weeks = child.age_in_weeks(@system_date)
     articles.to_a.select do |article|
-      article.age_valid_for_article?(child.age_in_weeks)
+      article.age_valid_for_article?(age_in_weeks)
     end
   end
 
