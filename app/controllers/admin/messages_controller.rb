@@ -1,5 +1,6 @@
 class Admin::MessagesController < Admin::AdminController
   load_and_authorize_resource class: 'Message'
+  defaults :resource_class => Message
 
   private
 

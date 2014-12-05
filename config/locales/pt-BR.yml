@@ -34,6 +34,7 @@ pt-BR:
   activerecord:
     attributes:
       articles/article: &article
+        id: Id
         article_references: *article_references
         baby_target_type: *baby_target_type
         category: *category
@@ -63,6 +64,7 @@ pt-BR:
         id: "Id"
         name: "Nome"
         parent_category: "Categoria pai"
+        parent_category_name: "Categoria pai"
       child:
         name: "Nome"
         birth_date: "Data de nascimento"
@@ -70,8 +72,12 @@ pt-BR:
       message:
         id: "Id"
         text: "Texto"
+        messageable_id: "Artigo Id"
       message_delivery:
+        id: "Id"
+        profile_name: "Nome do destinatário"
         delivery_date: "Data de envio"
+        message_for_test: "Mensagem de teste"
       profile:
         address: "Endereço"
         avatar: "Avatar"
