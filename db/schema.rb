@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20141127220345) do
     t.integer  "message_id"
     t.integer  "profile_id"
     t.date     "delivery_date"
+    t.boolean  "message_for_test", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

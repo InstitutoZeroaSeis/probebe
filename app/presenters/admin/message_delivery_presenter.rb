@@ -17,7 +17,12 @@ class Admin::MessageDeliveryPresenter < Carnival::BaseAdminPresenter
     actions: [:index, :show],
     advanced_search: {operator: :like}
 
-  field :delivery_date, actions: [:new, :show, :index]
+  field :delivery_date,
+    advanced_search: {operator: :equal},
+    actions: [:new, :show, :index]
+
+  field :message_for_test,
+    actions: [:new, :show, :index]
 
   action :show
   action :new
