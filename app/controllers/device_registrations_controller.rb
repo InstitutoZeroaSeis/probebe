@@ -14,8 +14,8 @@ class DeviceRegistrationsController < ApplicationController
 
   def create
     if user_signed_in?
-      registration = DeviceRegistration.new
-      registration.attributes = permitted_params
+      registration = current_profile.device_registration || DeviceRegistration.new
+      registration.assign_attributes permitted_params
       registration.profile = current_profile
       registration.save
       render json: registration

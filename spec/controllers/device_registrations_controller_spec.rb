@@ -11,7 +11,7 @@ RSpec.describe DeviceRegistrationsController, :type => :controller do
     end
 
     it "is expected to create a registration with the given device for the appropriate user" do
-      user = create(:user, :site_user, :confirmed)
+      user = create(:user, :with_profile, :site_user, :confirmed)
       registration = build(:device_registration_hash)
       post_data = { device_registration: registration }
 
@@ -34,6 +34,21 @@ RSpec.describe DeviceRegistrationsController, :type => :controller do
       registration_response = JSON.parse(response.body).symbolize_keys
       expect(registration_response[:errors]).to be_nil
       expect(registration_response[:platform]).to eq(registration[:platform])
+      expect(registration_response[:profile_id]).to eq(user.profile.id)
+    end
+
+    it "is expected to update an existing device registration" do
+      user = create(:user, :site_user, :confirmed, :with_profile)
+      registration = create(:device_registration, profile: user.profile)
+      authenticate_through_headers(user.email, user.password)
+
+      post_data = { device_registration: registration.attributes.slice('platform', 'platform_code') }
+      post :create, post_data, format: :json
+
+      registration_response = JSON.parse(response.body).symbolize_keys
+      expect(registration_response[:errors]).to be_nil
+      expect(registration_response[:id]).to eq(registration.id)
+      expect(registration_response[:platform]).to eq(registration.platform)
       expect(registration_response[:profile_id]).to eq(user.profile.id)
     end
   end

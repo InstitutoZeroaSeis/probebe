@@ -7,7 +7,7 @@ class TimelinesController < ApplicationController
     @deliveries = current_profile.message_deliveries
     respond_to do |format|
       format.html
-      format.json { render json: @deliveries }
+      format.json { render json: @deliveries.as_json(include: :message) }
     end
   end
 end

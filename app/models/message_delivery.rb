@@ -28,7 +28,7 @@ class MessageDelivery < ActiveRecord::Base
       n = Rpush::Gcm::Notification.new
       n.app = Rpush::Gcm::App.find_by(name: "pro-bebe-android")
       n.registration_ids = [profile.device_registration.platform_code]
-      n.data = { message: message.text, article_url: post_url(message.article)  }
+      n.data = { message: message.text, article_url: post_url(article, host: '192.168.1.43', port: 3000) }
       n.save!
     end
   end

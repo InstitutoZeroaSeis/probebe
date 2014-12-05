@@ -37,7 +37,7 @@ module PaperTrailViews
         previous_attributes = version.reify(dup: true).attributes
         after_attributes = model.attributes
       else
-        previous_attributes = version.previous ? version.previous.reify(dup: true).attributes : nil
+        previous_attributes = version.previous ? version.previous.reify(dup: true).try(:attributes) : nil
         after_attributes = version.object ? YAML.load(version.object) : model.attributes
       end
       [previous_attributes, after_attributes]
