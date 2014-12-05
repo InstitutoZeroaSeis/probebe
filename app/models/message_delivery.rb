@@ -4,7 +4,7 @@ class MessageDelivery < ActiveRecord::Base
 
   belongs_to :message
   belongs_to :profile
-  after_create :send_message_to_device
+  after_create :send_message
 
 
   def article
@@ -13,6 +13,12 @@ class MessageDelivery < ActiveRecord::Base
 
   def profile_name
     profile.name
+  end
+
+  def send_message
+    unless self.message_for_test
+      send_message_to_device
+    end
   end
 
   def send_message_to_device

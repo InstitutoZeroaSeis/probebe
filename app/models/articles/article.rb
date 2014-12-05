@@ -76,5 +76,10 @@ module Articles
     def pregnancy?
       !born?
     end
+
+    def distance_for_maximum_valid_week(age_in_weeks)
+      max_week = maximum_valid_week || Articles::Article::MAXIMUM_POSSIBLE_WEEK
+      distance = max_week - age_in_weeks
+    end
   end
 end

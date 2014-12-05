@@ -6,10 +6,13 @@ class MessageSender
     @messages_finder = messages_finder
   end
 
-  def send_messages(date = nil)
+  def send_messages(date = nil, message_for_test)
     delivery_date = date || Date.today
-    random_message = get_random_message
-    message_delivery = MessageDelivery.create!(message: random_message, profile: @child.profile, delivery_date: delivery_date) if random_message.present?
+    message = get_first_message
+    message_delivery = MessageDelivery.create!(message: message,
+                                              profile: @child.profile,
+                                              delivery_date: delivery_date,
+                                              message_for_test: message_for_test) if message.present?
   end
 
   protected
@@ -18,7 +21,7 @@ class MessageSender
     messages = @messages_finder.find_message_for_child
   end
 
-  def get_random_message
-    get_messages.sample
+  def get_first_message
+    get_messages.first
   end
 end
