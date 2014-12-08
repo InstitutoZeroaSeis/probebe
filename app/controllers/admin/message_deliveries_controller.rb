@@ -14,21 +14,17 @@ class Admin::MessageDeliveriesController < Admin::AdminController
     Child.all
   end
 
-  def articles
-    Articles::JournalisticArticle.all
-  end
-
   def send_message(child)
     date = permitted_params[:message_delivery][:delivery_date]
-    message_for_test = permitted_params[:message_delivery][:message_for_test]
+    testing_mode = permitted_params[:message_delivery][:message_for_test]
+
     system_date = MessageDeliveries::SystemDate.new(date)
-    articles_matcher = MessageDeliveries::ArticlesMatcher.new(articles, child, system_date)
-    message_matcher = MessageDeliveries::MessageMatcher.new(articles_matcher)
-    sender = MessageDeliveries::MessageSender.new(message_matcher)
-    sender.send_messages(date, message_for_test)
+    sender = MessageDeliveries::MessageSender.new(child, system_date)
+
+    sender.send_message(testing_mode)
   end
 
   def permitted_params
-    params.permit(message_delivery:[:delivery_date, :message_for_test])
+    params.permit(message_delivery: [:delivery_date, :message_for_test])
   end
 end
