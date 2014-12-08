@@ -11,10 +11,14 @@ class Articles::JournalisticArticle < Articles::Article
   end
 
   accepts_nested_attributes_for :messages, reject_if: proc { |attributes| attributes['text'].blank? }
-
   validates_presence_of :parent_article, :original_author
-
   validate :length_of_messages
+
+  after_save :update_messages
+
+  def update_messages
+    Articles::MessageUpdater.update_many_from_article(messages, self)
+  end
 
   def category_name
     category.name
