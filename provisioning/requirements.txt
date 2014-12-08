@@ -1,0 +1,4 @@
+lxhunter.apt
+rvm_io.rvm1-ruby
+ANXS.mysql
+JasonGiedymin.nodejs
