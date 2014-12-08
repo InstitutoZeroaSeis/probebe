@@ -3,8 +3,8 @@ class DeviceRegistrationsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def show
-    registration = DeviceRegistration.find_by(id: params[:id]) ||
-      DeviceRegistration.find_by(platform_code: params[:id])
+    registration = MessageDeliveries::DeviceRegistration.find_by(id: params[:id]) ||
+      MessageDeliveries::DeviceRegistration.find_by(platform_code: params[:id])
     if registration
       render json: registration
     else
@@ -14,7 +14,7 @@ class DeviceRegistrationsController < ApplicationController
 
   def create
     if user_signed_in?
-      registration = current_profile.device_registration || DeviceRegistration.new
+      registration = current_profile.device_registration || MessageDeliveries::DeviceRegistration.new
       registration.assign_attributes permitted_params
       registration.profile = current_profile
       registration.save

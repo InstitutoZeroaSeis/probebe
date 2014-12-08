@@ -5,11 +5,11 @@ class Profile < ActiveRecord::Base
   enum gender: GENDER_ENUM
 
   belongs_to :user
-  has_many :message_deliveries
+  has_many :message_deliveries, class_name: "MessageDeliveries::MessageDelivery"
   has_many :children
   has_many :cell_phones
   has_one :avatar
-  has_one :device_registration
+  has_one :device_registration, class_name: "MessageDeliveries::DeviceRegistration"
 
   validates_presence_of :birth_date, on: :update
   validates_presence_of :first_name, :last_name, :user

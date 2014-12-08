@@ -27,4 +27,12 @@ class Admin::MessageDeliveryPresenter < Carnival::BaseAdminPresenter
   action :show
   action :new
 
+  def model_class
+    MessageDeliveries::MessageDelivery
+  end
+
+  def full_model_name
+    model_class.to_s
+  end
+
 end

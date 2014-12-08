@@ -1,5 +1,5 @@
 class Admin::MessageDeliveriesController < Admin::AdminController
-  defaults resource_class: MessageDelivery
+  defaults resource_class: MessageDeliveries::MessageDelivery
   skip_before_filter :deny_site_user_access_on_admin
 
   def create
@@ -21,10 +21,10 @@ class Admin::MessageDeliveriesController < Admin::AdminController
   def send_message(child)
     date = permitted_params[:message_delivery][:delivery_date]
     message_for_test = permitted_params[:message_delivery][:message_for_test]
-    system_date = SystemDate.new(date)
-    articles_matcher = ArticlesMatcher.new(articles, child, system_date)
-    message_matcher = MessageMatcher.new(articles_matcher)
-    sender = MessageSender.new(message_matcher)
+    system_date = MessageDeliveries::SystemDate.new(date)
+    articles_matcher = MessageDeliveries::ArticlesMatcher.new(articles, child, system_date)
+    message_matcher = MessageDeliveries::MessageMatcher.new(articles_matcher)
+    sender = MessageDeliveries::MessageSender.new(message_matcher)
     sender.send_messages(date, message_for_test)
   end
 

@@ -73,7 +73,7 @@ pt-BR:
         id: "Id"
         text: "Texto"
         messageable_id: "Artigo Id"
-      message_delivery:
+      message_deliveries/message_delivery:
         id: "Id"
         profile_name: "Nome do destinatário"
         delivery_date: "Data de envio"
