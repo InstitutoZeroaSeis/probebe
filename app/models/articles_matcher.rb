@@ -1,4 +1,4 @@
-class ArticlesFinder
+class ArticlesMatcher
   attr_reader :articles
   attr_reader :child
   attr_reader :system_date

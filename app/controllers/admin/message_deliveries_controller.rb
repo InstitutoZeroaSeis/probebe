@@ -22,8 +22,8 @@ class Admin::MessageDeliveriesController < Admin::AdminController
     date = permitted_params[:message_delivery][:delivery_date]
     message_for_test = permitted_params[:message_delivery][:message_for_test]
     system_date = SystemDate.new(date)
-    article_finder = ArticlesFinder.new(articles, child, system_date)
-    message_finder = MessageFinder.new(article_finder)
+    articles_matcher = ArticlesMatcher.new(articles, child, system_date)
+    message_finder = MessageFinder.new(articles_matcher)
     sender = MessageSender.new(message_finder)
     sender.send_messages(date, message_for_test)
   end

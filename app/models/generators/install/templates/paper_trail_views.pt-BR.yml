@@ -1,9 +1,0 @@
-pt-BR:
-  activity_log:
-    views:
-      events:
-        after_change: "Após a mudança"
-        attribute_name: "Atributo"
-        before_change: "Antes da mudança"
-        create: "%{model_name} foi criado em %{date}"
-        update: "%{model_name} foi atualizado em %{date}"
