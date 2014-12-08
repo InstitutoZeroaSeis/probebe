@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127220345) do
+ActiveRecord::Schema.define(version: 20141208193312) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -118,6 +118,12 @@ ActiveRecord::Schema.define(version: 20141127220345) do
     t.string   "messageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "gender"
+    t.integer  "teenage_pregnancy"
+    t.integer  "baby_target_type"
+    t.integer  "minimum_valid_week"
+    t.integer  "maximum_valid_week"
+    t.integer  "category_id"
   end
 
   create_table "profiles", force: true do |t|

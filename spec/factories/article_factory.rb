@@ -85,6 +85,6 @@ FactoryGirl.define do
   end
 
   trait :with_message do
-    messages { create_list :message }
+    messages { create_list :message, 2 }
   end
 end

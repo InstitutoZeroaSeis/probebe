@@ -27,4 +27,19 @@ RSpec.describe Articles::JournalisticArticle, :type => :model do
     it { is_expected.to be_valid }
   end
 
+  context "with messages" do
+    subject { build :journalistic_article, :with_message }
+    it "is expected to update the messages with the correct attributes" do
+      subject.save
+      subject.messages.each do |message|
+        expect(subject.gender).to eq(message.gender)
+        expect(subject.teenage_pregnancy).to eq(message.teenage_pregnancy)
+        expect(subject.baby_target_type).to eq(message.baby_target_type)
+        expect(subject.minimum_valid_week).to eq(message.minimum_valid_week)
+        expect(subject.maximum_valid_week).to eq(message.maximum_valid_week)
+        expect(subject.category).to eq(message.category)
+      end
+    end
+  end
+
 end

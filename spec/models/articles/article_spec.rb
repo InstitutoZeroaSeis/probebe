@@ -42,5 +42,4 @@ RSpec.describe Articles::Article, :type => :model do
     it { is_expected.to be_invalid }
   end
 
-
 end

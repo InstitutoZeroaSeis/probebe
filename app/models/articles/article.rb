@@ -25,6 +25,8 @@ module Articles
 
     before_save :set_defaults
 
+    after_save :update_messages
+
     scope :ordered_by_creation_date, -> { order(created_at: :desc) }
     scope :by_tag, ->(tag_name) { joins(:tags).merge(Tag.where(name: tag_name)) if tag_name }
     scope :by_category, ->(category_name) { joins(:category).merge(Category.where(name: category_name)) if category_name }
@@ -34,8 +36,20 @@ module Articles
     scope :male_and_both, -> { where(gender:[0,2]) }
     scope :female_and_both, -> { where(gender:[1,2]) }
 
-
     has_paper_trail
+
+    def update_messages
+      messages.each do |message|
+        message.gender = self.gender
+        message.teenage_pregnancy = self.teenage_pregnancy
+        message.baby_target_type = self.baby_target_type
+        message.minimum_valid_week = self.minimum_valid_week
+        message.maximum_valid_week = self.maximum_valid_week
+        message.category = self.category
+        message.save!
+      end
+    end
+
 
     def presence_of_maximum_or_minimum
       if (self.minimum_valid_week.blank? && self.maximum_valid_week.blank?)
@@ -79,7 +93,7 @@ module Articles
 
     def distance_for_maximum_valid_week(age_in_weeks)
       max_week = maximum_valid_week || Articles::Article::MAXIMUM_POSSIBLE_WEEK
-      distance = max_week - age_in_weeks
+      max_week - age_in_weeks
     end
   end
 end
