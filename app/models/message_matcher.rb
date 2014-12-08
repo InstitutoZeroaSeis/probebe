@@ -1,4 +1,4 @@
-class MessageFinder
+class MessageMatcher
   attr_reader :articles_finder
   attr_reader :child
   attr_reader :profile
