@@ -3,6 +3,8 @@ class Child < ActiveRecord::Base
   PREGNANCY_DURATION_IN_WEEKS = 42
   GENDER_ENUM = [:male, :female]
 
+  belongs_to :profile
+
   enum gender: GENDER_ENUM
 
   validates_presence_of :birth_date
@@ -29,9 +31,5 @@ class Child < ActiveRecord::Base
   def pregnancy_start_date(system_date = nil)
     system_date ||= SystemDate.new
     birth_date - PREGNANCY_DURATION_IN_WEEKS.weeks if pregnancy?(system_date)
-  end
-
-  def profile
-    Profile.find(self.profile_id)
   end
 end
