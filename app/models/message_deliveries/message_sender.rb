@@ -23,13 +23,12 @@ module MessageDeliveries
     protected
 
     def get_messages
-      articles_matcher = MessageDeliveries::ArticlesMatcher.new(articles, @child, @system_date)
-      message_matcher = MessageDeliveries::MessageMatcher.new(articles_matcher)
+      message_matcher = MessageDeliveries::MessageMatcher.new(messages, @child, @system_date )
       message_matcher.find_message_for_child
     end
 
-    def articles
-      Articles::JournalisticArticle.all
+    def messages
+      Message.journalistic
     end
 
   end

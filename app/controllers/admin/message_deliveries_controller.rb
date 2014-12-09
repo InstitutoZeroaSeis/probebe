@@ -15,8 +15,8 @@ class Admin::MessageDeliveriesController < Admin::AdminController
   end
 
   def send_message(child)
-    date = permitted_params[:message_delivery][:delivery_date]
-    testing_mode = permitted_params[:message_delivery][:message_for_test]
+    date = permitted_params[:message_deliveries_message_delivery][:delivery_date]
+    testing_mode = permitted_params[:message_deliveries_message_delivery][:message_for_test]
 
     system_date = MessageDeliveries::SystemDate.new(date)
     sender = MessageDeliveries::MessageSender.new(child, system_date)
@@ -25,6 +25,6 @@ class Admin::MessageDeliveriesController < Admin::AdminController
   end
 
   def permitted_params
-    params.permit(message_delivery: [:delivery_date, :message_for_test])
+    params.permit(message_deliveries_message_delivery: [:delivery_date, :message_for_test])
   end
 end

@@ -2,7 +2,6 @@ module Articles
   class Article < ActiveRecord::Base
     include Carnival::ModelHelper
 
-    MAXIMUM_POSSIBLE_WEEK = 5200
     GENDER_ENUM = [:male, :female, :both]
     BABY_TARGET_TYPE_ENUM = [:pregnancy, :born]
 
@@ -31,8 +30,6 @@ module Articles
     scope :by_search_term, ->(search_term) { where(match_title(search_term).or(match_text(search_term))) if search_term }
     scope :journalistic, -> { where(type: 'Articles::JournalisticArticle') }
     scope :publishable, -> { where(publishable: true) }
-    scope :male_and_both, -> { where(gender:[0,2]) }
-    scope :female_and_both, -> { where(gender:[1,2]) }
 
     has_paper_trail
 
@@ -48,12 +45,6 @@ module Articles
           errors.add(:base, I18n.t('activerecord.errors.models.article.base.minimum_higher_than_maximum'))
         end
       end
-    end
-
-    def age_valid_for_article?(age_in_weeks)
-      min_week = minimum_valid_week || 0
-      max_week = maximum_valid_week || Articles::Article::MAXIMUM_POSSIBLE_WEEK
-      (min_week..max_week).include? age_in_weeks
     end
 
     def set_defaults
@@ -76,9 +67,5 @@ module Articles
       !born?
     end
 
-    def distance_for_maximum_valid_week(age_in_weeks)
-      max_week = maximum_valid_week || Articles::Article::MAXIMUM_POSSIBLE_WEEK
-      max_week - age_in_weeks
-    end
   end
 end
