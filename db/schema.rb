@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20141208193312) do
     t.string   "messageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "gender"
+    t.integer  "gender",             default: 2
     t.integer  "teenage_pregnancy"
     t.integer  "baby_target_type"
     t.integer  "minimum_valid_week"
