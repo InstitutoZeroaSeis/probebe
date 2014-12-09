@@ -48,7 +48,10 @@ CSV.foreach('data/PlanilhaMensagens.csv', headers: true, col_sep: ";" ) do |row|
                                                                   parent_article: authorial_article,
                                                                   original_author: authorial_article.user)
 
-      journalistic_article.messages << Message.create!(text: message_text, messageable_type: "Articles::JournalisticArticle" )
+      journalistic_article.messages << Message.create!(text: message_text, messageable_type: "Articles::JournalisticArticle",
+                                                      category: journalistic_article.category, baby_target_type: journalistic_article.baby_target_type,
+                                                      minimum_valid_week: journalistic_article.minimum_valid_week,
+                                                      maximum_valid_week: journalistic_article.maximum_valid_week)
     rescue
       line_with_problem << (line_of_csv.to_s + row.to_s)
     end
