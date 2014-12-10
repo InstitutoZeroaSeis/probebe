@@ -7,14 +7,28 @@ module MessageDeliveries
 
     def send_to_device
       if @profile.device_registration.nil?
+        deliver_through_sms
+      else
+        deliver_through_app
+      end
+    end
+
+    protected
+
+    def deliver_through_sms
+      if ProBebeConfig.deliver_sms?
         SpringWsdl.send_message(@profile.cell_phones.first.number, @message.text)
       else
-        n = Rpush::Gcm::Notification.new
-        n.app = Rpush::Gcm::App.find_by(name: "pro-bebe-android")
-        n.registration_ids = [@profile.device_registration.platform_code]
-        n.data = { message: @message.text }
-        n.save
+        true
       end
+    end
+
+    def deliver_through_app(*args)
+      n = Rpush::Gcm::Notification.new
+      n.app = Rpush::Gcm::App.find_by(name: "pro-bebe-android")
+      n.registration_ids = [@profile.device_registration.platform_code]
+      n.data = { message: @message.text }
+      n.save
     end
   end
 end

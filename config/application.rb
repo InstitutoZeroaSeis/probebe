@@ -41,5 +41,9 @@ module ProBebe
       require 'pry'
       config.console = Pry
     end
+
+    # Application custom options
+    config.message_delivery = ActiveSupport::OrderedOptions.new
+    config.message_delivery.deliver_sms = false
   end
 end
