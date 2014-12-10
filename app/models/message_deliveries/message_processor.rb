@@ -3,7 +3,7 @@ module MessageDeliveries
     attr_reader :child
     attr_reader :testing_mode
 
-    def initialize(system_date, testing_mode = false)
+    def initialize(system_date, testing_mode: false)
       @system_date = system_date
       @testing_mode = testing_mode
     end
@@ -40,8 +40,12 @@ module MessageDeliveries
     end
 
     def send_to_device(child, message)
-      sender = MessageDeliveries::MessageSender.new(child.profile, message)
-      sender.send_to_device
+      if !testing_mode
+        sender = MessageDeliveries::MessageSender.new(child.profile, message)
+        sender.send_to_device
+      else
+        true
+      end
     end
   end
 end
