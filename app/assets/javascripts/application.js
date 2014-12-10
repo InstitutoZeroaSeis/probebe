@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.noty.packaged
-//= require bootstrap-sprockets
 //= require jquery-ui
 //= require jquery-ui/datepicker-pt-BR
 //= require_tree .

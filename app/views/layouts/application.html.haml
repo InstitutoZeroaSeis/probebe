@@ -2,11 +2,17 @@
 %html
   %head
     %title Pro Bebe
+
+    %link{:href => "http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic", :rel => "stylesheet", :type => "text/css"}/
+
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
+
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"}
+
     = csrf_meta_tags
     = render partial: 'flash_messages'
-  %body
+  %body{class: "#{params[:controller]}"}
     .menu
       = render partial: 'menu_for_site_user'
     .main.container

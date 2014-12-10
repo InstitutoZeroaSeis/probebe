@@ -1,7 +1,32 @@
-%h2= t('general.commom_words.timeline')
-%dl
-- @deliveries.each do |delivery|
-  %dt= l delivery.created_at
-  %dd= delivery.message.text
-  =link_to "#{I18n.t('views.timeline.read_more')}", post_path(delivery.article.id) if delivery.article.publishable
-  %br
+.col-md-8
+  %h1= t('general.commom_words.timeline')
+  %ul.col-md-8.timeline
+    - @deliveries.each do |delivery|
+      %li.timeline-entry
+        %dt= l delivery.created_at
+        %dd= delivery.message.text
+        .read-more-timelin
+          =link_to "#{I18n.t('views.timeline.read_more')}", post_path(delivery.article.id) if delivery.article.publishable
+        %br
+        %br
+
+
+
+.col-md-4
+  .well
+    %form{action: posts_path, method: :get}
+      %h4= t('views.blog.search')
+      .input-group
+        %input.form-control{type: 'text', name: 'search'}
+        %span.input-group-btn
+          %button.btn.btn-default{:type => "submit"}
+            %span.glyphicon.glyphicon-search
+  .well
+    %h4= t('activerecord.models.category').pluralize_current_locale
+    = render layout: 'two_column_link_list', locals: { list: Category.sub_categories } do |category|
+      = link_to category.name, category_posts_path(category.name)
+  .well
+    %h4= t('activerecord.models.tag').pluralize_current_locale
+    = render layout: 'two_column_link_list', locals: { list: Tag.all } do |_tag|
+      = link_to _tag.name, tag_posts_path(_tag.name)
+%hr

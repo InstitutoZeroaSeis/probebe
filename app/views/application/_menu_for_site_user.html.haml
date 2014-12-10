@@ -21,8 +21,9 @@
               %span.glyphicon.glyphicon-user
               = current_profile.name
         %li
+          - if true_user != current_user
+            = link_to "#{t('view.message.back_to_admin')}", admin_stop_impersonating_path(current_user)
+        %li
           = link_to destroy_user_session_path, method: :delete do
             %span.glyphicon.glyphicon-off
               %span= t('views.application.exit')
-          - if true_user != current_user
-            = link_to "#{t('view.message.back_to_admin')}", admin_stop_impersonating_path(current_user)
