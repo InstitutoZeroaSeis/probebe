@@ -15,6 +15,14 @@ class Message < ActiveRecord::Base
   scope :female_and_both, -> { where(gender:[1,2]) }
   scope :journalistic, -> { where(messageable_type: 'Articles::JournalisticArticle') }
 
+  before_save :set_messageable_type
+
+  def set_messageable_type
+    if messageable_type
+      self.messageable_type = messageable.class.to_s
+    end
+  end
+
   def message_already_sent_for_profile(profile)
     profile.message_deliveries.none? do |delivery|
       self == delivery.message

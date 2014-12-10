@@ -7,7 +7,7 @@ RSpec.describe Message, :type => :model do
                                 baby_target_type: 'pregnancy',
                                 messages: create_list(:message, 1)) }
 
-      subject {@messageable_type = @article.messages.first.messageable_type}
+      subject { @messageable_type = @article.messages.first.messageable_type }
       it { is_expected.to eq("Articles::JournalisticArticle") }
     end
   end
