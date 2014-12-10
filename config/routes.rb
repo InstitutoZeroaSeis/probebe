@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources(:tags) { resources :posts, only: :index }
   resources(:categories) { resources :posts, only: :index }
   resources :credentials, only: :create
-  resources :device_registrations, only: [:create, :show]
+  resources :device_registrations, only: [:create, :show, :destroy]
 
   mount_carnival_at 'admin'
   namespace :admin do

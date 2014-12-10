@@ -1,10 +1,14 @@
 class DeviceRegistrationsController < ApplicationController
   include HeaderAuthenticationConcern
   skip_before_filter :verify_authenticity_token
+  before_filter :check_authentication
+
+  def check_authentication
+    head 403 unless user_signed_in?
+  end
 
   def show
-    registration = MessageDeliveries::DeviceRegistration.find_by(id: params[:id]) ||
-      MessageDeliveries::DeviceRegistration.find_by(platform_code: params[:id])
+    registration = MessageDeliveries::DeviceRegistration.find_by(platform_code: params[:id])
     if registration
       render json: registration
     else
@@ -13,15 +17,17 @@ class DeviceRegistrationsController < ApplicationController
   end
 
   def create
-    if user_signed_in?
-      registration = current_profile.device_registration || MessageDeliveries::DeviceRegistration.new
-      registration.assign_attributes permitted_params
-      registration.profile = current_profile
-      registration.save
-      render json: registration
-    else
-      head 403
-    end
+    registration = current_profile.device_registration || MessageDeliveries::DeviceRegistration.new
+    registration.assign_attributes permitted_params
+    registration.profile = current_profile
+    registration.save
+    render json: registration
+  end
+
+  def destroy
+    registration = MessageDeliveries::DeviceRegistration.find_by(platform_code: params[:id])
+    registration.destroy
+    head 200
   end
 
   def permitted_params

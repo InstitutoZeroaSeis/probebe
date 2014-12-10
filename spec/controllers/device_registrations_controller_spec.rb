@@ -54,8 +54,14 @@ RSpec.describe DeviceRegistrationsController, :type => :controller do
   end
 
   describe "GET show" do
+    before(:each) do
+      user = create(:user, :site_user, :confirmed, :with_profile)
+      authenticate_through_headers(user.email, user.password)
+    end
+
     it "is expected to return nil if a device is not yet registered" do
       get :show, id: 'invalid_id', format: :json
+
       expect(response.status).to eq(404)
     end
 
@@ -66,6 +72,23 @@ RSpec.describe DeviceRegistrationsController, :type => :controller do
 
       registration_response = JSON.parse(response.body).symbolize_keys
       expect(registration_response[:platform_code]).to eq(registration.platform_code)
+    end
+  end
+
+  describe "DELETE destroy" do
+    before(:each) do
+      user = create(:user, :site_user, :confirmed, :with_profile)
+      authenticate_through_headers(user.email, user.password)
+    end
+
+    it "is expected to destroy the device registrations when signing out" do
+      device = create(:device_registration, :with_profile)
+      expect(MessageDeliveries::DeviceRegistration.all).to_not be_empty
+
+      delete :destroy, id: device.platform_code, format: :json
+
+      expect(response.status).to eq(200)
+      expect(MessageDeliveries::DeviceRegistration.all).to be_empty
     end
   end
 end
