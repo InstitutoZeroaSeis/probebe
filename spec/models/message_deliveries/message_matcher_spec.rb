@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MessageDeliveries::MessageMatcher, :type => :model do
   before(:each) { @system_date = MessageDeliveries::SystemDate.new }
   context "with two message applicable for child" do
-    subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @profile.children.first, @system_date).find_message_for_child }
+    subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @profile.children.first, @system_date).find_messages_for_child }
     before { @profile = create(:profile, children: create_list(:child, 1, birth_date: 5.months.ago)) }
     before { @message1 = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
     before { @message2 = create(:message, :with_journalistic_article, :both, minimum_valid_week: 10, baby_target_type: 'born') }
@@ -12,7 +12,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, :type => :model do
 
   context "with two message applicable for child" do
     context "one of message already sent for profile" do
-      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @profile.children.first, @system_date).find_message_for_child }
+      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @profile.children.first, @system_date).find_messages_for_child }
       before { @profile = create(:profile, children: create_list(:child, 1, birth_date: 5.months.ago)) }
       before { @message1 = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
       before { @message2 = create(:message, :with_journalistic_article, :both, minimum_valid_week: 10, baby_target_type: 'born') }
@@ -23,7 +23,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, :type => :model do
 
   context "with two message applicable for child" do
     context "message from same article" do
-      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @profile.children.first, @system_date).find_message_for_child }
+      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @profile.children.first, @system_date).find_messages_for_child }
       before { @profile = create(:profile, children: create_list(:child, 1, birth_date: 5.months.ago)) }
       before { @message1 = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
       before { @message2 = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
@@ -38,7 +38,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, :type => :model do
       before { @message2 = create(:message, :with_journalistic_article, :both, minimum_valid_week: 10, baby_target_type: 'born') }
       before { @system_date = MessageDeliveries::SystemDate.new }
 
-      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_message_for_child }
+      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_messages_for_child }
 
       it { is_expected.to match_array([@message1, @message2]) }
     end
@@ -51,7 +51,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, :type => :model do
       before { @message2 = create(:message, :with_journalistic_article, :both, maximum_valid_week: 10, baby_target_type: 'born') }
       before { @system_date = MessageDeliveries::SystemDate.new }
 
-      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_message_for_child }
+      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_messages_for_child }
 
       it { is_expected.to be_empty }
     end
@@ -64,7 +64,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, :type => :model do
       before { @message2 = create(:message, :with_journalistic_article, :male, minimum_valid_week: 10, maximum_valid_week: 25, baby_target_type: 'pregnancy') }
       before { @system_date = MessageDeliveries::SystemDate.new }
 
-      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_message_for_child }
+      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_messages_for_child }
 
       it { is_expected.to match_array([@message1, @message2]) }
     end
@@ -79,7 +79,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, :type => :model do
       before { @message4 = create(:message, :with_journalistic_article, :both, minimum_valid_week: 10, baby_target_type: 'born') }
       before { @system_date = MessageDeliveries::SystemDate.new }
 
-      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_message_for_child }
+      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_messages_for_child }
 
       it { is_expected.to match_array([@message1, @message2]) }
     end
@@ -93,7 +93,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, :type => :model do
       before { @message3 = create(:message, :with_journalistic_article, :male, minimum_valid_week: 7, maximum_valid_week: 12, baby_target_type: 'pregnancy') }
       before { @system_date = MessageDeliveries::SystemDate.new }
 
-      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_message_for_child }
+      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_messages_for_child }
 
       it { is_expected.to match_array([@message2, @message3, @message1]) }
     end
@@ -107,7 +107,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, :type => :model do
       before { @message3 = create(:message, :with_journalistic_article, :male, minimum_valid_week: 7, baby_target_type: 'pregnancy') }
       before { @system_date = MessageDeliveries::SystemDate.new(5.weeks.from_now.to_date.to_s) }
 
-      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_message_for_child }
+      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).find_messages_for_child }
 
       it { is_expected.to match_array([@message2, @message1, @message3]) }
     end

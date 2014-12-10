@@ -12,7 +12,7 @@ module MessageDeliveries
       @system_date = system_date
     end
 
-    def find_message_for_child
+    def find_messages_for_child
       messages = filter_by_gender(@messages, @child)
       messages = filter_by_life_period(messages)
       messages = filter_by_age(messages)
@@ -21,7 +21,7 @@ module MessageDeliveries
     end
 
     def any_message_found?
-      find_message_for_child.size > 0
+      find_messages_for_child.size > 0
     end
 
     protected
