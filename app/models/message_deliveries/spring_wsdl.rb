@@ -14,6 +14,7 @@ module MessageDeliveries
       client.call(:send, soap_action: false, message: { user: "sw_piloto2", password: "swwspiloto2", phone: cell_phone, messageText: message })
     rescue Savon::SOAPFault => e
       raise unless e.message.include? "SMS gateway blacklist"
+      false
     end
   end
 end
