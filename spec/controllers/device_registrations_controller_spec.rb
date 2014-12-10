@@ -2,54 +2,66 @@ require 'rails_helper'
 
 RSpec.describe DeviceRegistrationsController, :type => :controller do
   describe "POST create"  do
-    it "is not expected to insert a new device register without authenticating" do
-      post_data = { device_registration: build(:device_registration_hash) }
 
-      post :create, post_data, format: :json
+    context "unauthenticated" do
+      it "is not expected to insert a new device register without authenticating" do
+        post_data = { device_registration: build(:device_registration_hash) }
 
-      expect(response.status).to eq(403)
+        post :create, post_data, format: :json
+
+        expect(response.status).to eq(403)
+      end
     end
 
-    it "is expected to create a registration with the given device for the appropriate user" do
-      user = create(:user, :with_profile, :site_user, :confirmed)
-      registration = build(:device_registration_hash)
-      post_data = { device_registration: registration }
+    context "authenticated" do
+      before :each do
+        @user = create(:user, :with_profile, :site_user, :confirmed)
+        authenticate_through_headers(@user.email, @user.password)
+      end
 
-      authenticate_through_headers(user.email, user.password)
-      post :create, post_data, format: :json
+      it "is expected to create a registration with the given device for the appropriate user" do
+        registration = build(:device_registration_hash)
+        post_data = { device_registration: registration }
 
-      registration_response = JSON.parse(response.body).symbolize_keys
-      expect(registration_response[:errors]).to be_nil
-      expect(registration_response[:platform]).to eq(registration[:platform])
-    end
+        post :create, post_data, format: :json
 
-    it "is expected to associate the current user with the given device" do
-      user = create(:user, :site_user, :confirmed, :with_profile)
-      registration = build(:device_registration_hash)
-      authenticate_through_headers(user.email, user.password)
+        registration_response = JSON.parse(response.body).symbolize_keys
+        expect(registration_response[:errors]).to be_nil
+        expect(registration_response[:platform]).to eq(registration[:platform])
+      end
 
-      post_data = { device_registration: registration }
-      post :create, post_data, format: :json
+      it "is expected to associate the current user with the given device" do
+        registration = build(:device_registration_hash)
 
-      registration_response = JSON.parse(response.body).symbolize_keys
-      expect(registration_response[:errors]).to be_nil
-      expect(registration_response[:platform]).to eq(registration[:platform])
-      expect(registration_response[:profile_id]).to eq(user.profile.id)
-    end
+        post_data = { device_registration: registration }
+        post :create, post_data, format: :json
 
-    it "is expected to update an existing device registration" do
-      user = create(:user, :site_user, :confirmed, :with_profile)
-      registration = create(:device_registration, profile: user.profile)
-      authenticate_through_headers(user.email, user.password)
+        registration_response = JSON.parse(response.body).symbolize_keys
+        expect(registration_response[:errors]).to be_nil
+        expect(registration_response[:platform]).to eq(registration[:platform])
+        expect(registration_response[:profile_id]).to eq(@user.profile.id)
+      end
 
-      post_data = { device_registration: registration.attributes.slice('platform', 'platform_code') }
-      post :create, post_data, format: :json
+      it "is expected to not duplicate an existing device registration" do
+        registration = create(:device_registration, profile: @user.profile)
 
-      registration_response = JSON.parse(response.body).symbolize_keys
-      expect(registration_response[:errors]).to be_nil
-      expect(registration_response[:id]).to eq(registration.id)
-      expect(registration_response[:platform]).to eq(registration.platform)
-      expect(registration_response[:profile_id]).to eq(user.profile.id)
+        post_data = { device_registration: registration.attributes.slice('platform', 'platform_code') }
+        post :create, post_data, format: :json
+
+        expect(response.status).to eq(304)
+        expect(@user.profile.device_registrations.count).to eq(1)
+      end
+
+      it "is expected to create many devices" do
+        create(:device_registration, profile: @user.profile)
+        registration = build(:device_registration_hash)
+        post_data = { device_registration: registration }
+
+        post :create, post_data, format: :json
+
+        expect(response.status).to eq(200)
+        expect(@user.profile.device_registrations.count).to eq(2)
+      end
     end
   end
 

@@ -7,8 +7,8 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   has_many :children
   has_many :cell_phones
+  has_many :device_registrations, class_name: "MessageDeliveries::DeviceRegistration"
   has_one :avatar
-  has_one :device_registration, class_name: "MessageDeliveries::DeviceRegistration"
 
   validates_presence_of :birth_date, on: :update
   validates_presence_of :first_name, :last_name, :user

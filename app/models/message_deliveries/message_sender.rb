@@ -6,7 +6,7 @@ module MessageDeliveries
     end
 
     def send_to_device
-      if @profile.device_registration.nil?
+      if @profile.device_registrations.empty?
         deliver_through_sms
       else
         deliver_through_app
@@ -26,7 +26,7 @@ module MessageDeliveries
     def deliver_through_app(*args)
       n = Rpush::Gcm::Notification.new
       n.app = Rpush::Gcm::App.find_by(name: "pro-bebe-android")
-      n.registration_ids = [@profile.device_registration.platform_code]
+      n.registration_ids = [@profile.device_registrations.platform_code]
       n.data = { message: @message.text }
       n.save
     end

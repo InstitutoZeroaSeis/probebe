@@ -17,11 +17,19 @@ class DeviceRegistrationsController < ApplicationController
   end
 
   def create
-    registration = current_profile.device_registration || MessageDeliveries::DeviceRegistration.new
-    registration.assign_attributes permitted_params
-    registration.profile = current_profile
-    registration.save
-    render json: registration
+    registration = MessageDeliveries::DeviceRegistration.find_by(
+      platform_code: permitted_params[:platform_code],
+      platform: permitted_params[:platform]
+    )
+    if registration
+      head 304
+    else
+      registration = MessageDeliveries::DeviceRegistration.new
+      registration.assign_attributes permitted_params
+      registration.profile = current_profile
+      registration.save
+      render json: registration
+    end
   end
 
   def destroy
