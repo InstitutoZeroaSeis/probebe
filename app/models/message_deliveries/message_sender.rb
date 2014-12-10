@@ -26,7 +26,7 @@ module MessageDeliveries
     def deliver_through_app(*args)
       n = Rpush::Gcm::Notification.new
       n.app = Rpush::Gcm::App.find_by(name: "pro-bebe-android")
-      n.registration_ids = [@profile.device_registrations.platform_code]
+      n.registration_ids = @profile.device_registrations.map(&:platform_code)
       n.data = { message: @message.text }
       n.save
     end
