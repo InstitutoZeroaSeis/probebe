@@ -1,5 +1,5 @@
 module MessageDeliveries
-  class MessageSender
+  class MessageProcessor
     attr_reader :child
     attr_reader :testing_mode
 

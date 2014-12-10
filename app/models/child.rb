@@ -8,6 +8,8 @@ class Child < ActiveRecord::Base
 
   enum gender: GENDER_ENUM
 
+  delegate :device_registration, to: :profile
+
   validates_presence_of :birth_date
 
   def age_in_weeks system_date = nil

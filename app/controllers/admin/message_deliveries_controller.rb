@@ -7,7 +7,7 @@ class Admin::MessageDeliveriesController < Admin::AdminController
     testing_mode = permitted_params[:message_for_test]
 
     system_date = MessageDeliveries::SystemDate.new(date)
-    sender = MessageDeliveries::MessageSender.new(system_date)
+    sender = MessageDeliveries::MessageProcessor.new(system_date)
 
     sender.send_messages(testing_mode)
 
