@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20141208193312) do
 
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"
-    t.integer  "profile_id"
+    t.integer  "child_id"
     t.date     "delivery_date"
     t.boolean  "message_for_test", default: false
     t.datetime "created_at"

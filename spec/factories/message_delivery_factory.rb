@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :message_delivery, class: "MessageDeliveries::MessageDelivery" do
-    profile
+    child
     message
   end
 end

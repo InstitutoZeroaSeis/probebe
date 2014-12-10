@@ -4,6 +4,7 @@ class Child < ActiveRecord::Base
   GENDER_ENUM = [:male, :female]
 
   belongs_to :profile
+  has_many :message_deliveries, class_name: "MessageDeliveries::MessageDelivery"
 
   enum gender: GENDER_ENUM
 

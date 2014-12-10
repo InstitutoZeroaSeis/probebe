@@ -6,7 +6,7 @@ RSpec.describe MessageDeliveries::MessageSender, :type => :model do
   context "with only one message and already sent before" do
     before { @child = create(:child, :with_profile, birth_date: 5.months.ago) }
     before { @message = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
-    before { MessageDeliveries::MessageDelivery.create!(profile: @child.profile, message: @message) }
+    before { MessageDeliveries::MessageDelivery.create!(child: @child, message: @message) }
 
     subject { MessageDeliveries::MessageSender.new(@system_date).send_messages }
 
@@ -31,7 +31,7 @@ RSpec.describe MessageDeliveries::MessageSender, :type => :model do
       it "is expected to send a message for the given child" do
         expect(subject.count).to eq(1)
         expect(subject.first.message).to eq(@message)
-        expect(subject.first.profile).to eq(@child.profile)
+        expect(subject.first.child).to eq(@child)
       end
     end
   end

@@ -2,21 +2,19 @@ module MessageDeliveries
   class MessageMatcher
     attr_reader :messages
     attr_reader :child
-    attr_reader :profile
     attr_reader :system_date
 
     def initialize(messages, child, system_date)
       @messages = messages
       @child = child
-      @profile = @child.profile
       @system_date = system_date
     end
 
     def find_messages_for_child
-      messages = filter_by_gender(@messages, @child)
+      messages = filter_by_gender(@messages)
       messages = filter_by_life_period(messages)
       messages = filter_by_age(messages)
-      messages = filter_by_already_sent_message(messages, @profile)
+      messages = filter_by_already_sent_message(messages)
       order_by_ending_valid_date(messages, child)
     end
 
@@ -26,14 +24,14 @@ module MessageDeliveries
 
     protected
 
-    def filter_by_already_sent_message(messages, profile)
+    def filter_by_already_sent_message(messages)
       messages.to_a.select do |message|
-        !profile.message_deliveries.map(&:message).include? message
+        !child.message_deliveries.map(&:message).include? message
       end
     end
 
-    def filter_by_gender(messages, child)
-      if @child.gender.present?
+    def filter_by_gender(messages)
+      if child.gender.present?
         child.gender == 'male' ? messages.send('male_and_both') : messages.send('female_and_both')
       else
         messages

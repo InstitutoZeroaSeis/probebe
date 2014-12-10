@@ -4,15 +4,11 @@ module MessageDeliveries
     include Carnival::ModelHelper
 
     belongs_to :message, class_name: "Message"
-    belongs_to :profile, class_name: "Profile"
+    belongs_to :child, class_name: "Child"
     after_create :send_message
 
     def article
       message.messageable
-    end
-
-    def profile_name
-      profile.name
     end
 
     def send_message
@@ -21,16 +17,24 @@ module MessageDeliveries
       end
     end
 
+    def profile_id
+      child.profile.id
+    end
+
+    def profile_name
+      child.profile.name
+    end
+
     def send_message_to_device
-      if profile.device_registration.nil?
-        # SpringWsdl.send_message(self.profile.cell_phones.first.number, self.message.text)
-      else
-        n = Rpush::Gcm::Notification.new
-        n.app = Rpush::Gcm::App.find_by(name: "pro-bebe-android")
-        n.registration_ids = [profile.device_registration.platform_code]
-        n.data = { message: message.text, article_url: post_url(article, host: '192.168.1.43', port: 3000) }
-        n.save!
-      end
+      # if profile.device_registration.nil?
+      #   # SpringWsdl.send_message(self.profile.cell_phones.first.number, self.message.text)
+      # else
+      #   n = Rpush::Gcm::Notification.new
+      #   n.app = Rpush::Gcm::App.find_by(name: "pro-bebe-android")
+      #   n.registration_ids = [profile.device_registration.platform_code]
+      #   n.data = { message: message.text, article_url: post_url(article, host: '192.168.1.43', port: 3000) }
+      #   n.save!
+      # end
     end
   end
 end

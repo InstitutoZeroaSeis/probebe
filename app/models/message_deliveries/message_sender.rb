@@ -13,7 +13,7 @@ module MessageDeliveries
         if messages.count > 0
           MessageDelivery.create!(
             message: messages.first,
-            profile: child.profile,
+            child: child,
             delivery_date: @system_date.date,
             message_for_test: testing_mode
           )

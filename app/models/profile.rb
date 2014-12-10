@@ -5,7 +5,6 @@ class Profile < ActiveRecord::Base
   enum gender: GENDER_ENUM
 
   belongs_to :user
-  has_many :message_deliveries, class_name: "MessageDeliveries::MessageDelivery"
   has_many :children
   has_many :cell_phones
   has_one :avatar
