@@ -13,10 +13,7 @@ module MessageDeliveries
         message = find_message_for_child(child)
         if message.present?
           delivery = build_message_delivery(child, message)
-          # sent = send_to_device(delivery)
-          # if sent
-            delivery.save!
-          # end
+          delivery.save! if send_to_device(child, message)
         end
       end
     end
@@ -42,16 +39,9 @@ module MessageDeliveries
       Message.journalistic
     end
 
-    def send_to_device(delivery)
-      # if delivery.child..device_registration.nil?
-      #   SpringWsdl.send_message(self.profile.cell_phones.first.number, self.message.text)
-      # else
-      #   n = Rpush::Gcm::Notification.new
-      #   n.app = Rpush::Gcm::App.find_by(name: "pro-bebe-android")
-      #   n.registration_ids = [profile.device_registration.platform_code]
-      #   n.data = { message: message.text }
-      #   n.save
-      # end
+    def send_to_device(child, message)
+      sender = MessageDeliveries::MessageSender.new(child.profile, message)
+      sender.send_to_device
     end
   end
 end
