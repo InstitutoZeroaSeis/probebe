@@ -28,7 +28,7 @@ module MessageDeliveries
 
     def filter_by_already_sent_message(messages, profile)
       messages.to_a.select do |message|
-        message.message_already_sent_for_profile(profile)
+        !profile.message_deliveries.map(&:message).include? message
       end
     end
 

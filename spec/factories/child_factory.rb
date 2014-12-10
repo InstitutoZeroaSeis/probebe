@@ -12,5 +12,9 @@ FactoryGirl.define do
       birth_date nil
     end
 
+    trait :with_profile do
+      profile
+    end
+
   end
 end
