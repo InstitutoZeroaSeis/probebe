@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208193312) do
+ActiveRecord::Schema.define(version: 20141211191715) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20141208193312) do
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "area_code"
   end
 
   create_table "children", force: true do |t|

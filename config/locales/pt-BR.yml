@@ -67,6 +67,7 @@ pt-BR:
         parent_category_name: "Categoria pai"
       cell_phone:
         number: "Número"
+        area_code: "Código de área"
       child:
         name: "Nome"
         birth_date: "Data de nascimento"

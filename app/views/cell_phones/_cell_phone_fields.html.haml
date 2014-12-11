@@ -1,5 +1,5 @@
 .cell_phone_fields
-  = f.input :number
+  = f.input :area_code, input_html: { id: "area_code" }
+  = f.input :number, input_html: { id: "cell_phone_number" }
   .col-sm-offset-2
     = remove_fields_link(I18n.t('view.message.remove'), f, container_to_hide: '.cell_phone_fields')
-
