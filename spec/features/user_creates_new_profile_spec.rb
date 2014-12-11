@@ -17,7 +17,11 @@ feature "User creates new profile" do
     end
 
     within ".cell_phone_fields" do |child_fields|
-      find("input[name$='[number]']").set("12345678")
+      find("input[name$='[area_code]']").set("11")
+    end
+
+    within ".cell_phone_fields" do |child_fields|
+      find("input[name$='[number]']").set("1234-5678")
     end
 
     click_button 'Criar Perfil'
