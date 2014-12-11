@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://impl.webservice.gateway.springwireless.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://basic.webservice.gateway.springwireless.com/" name="BasicSourceSMS" targetNamespace="http://impl.webservice.gateway.springwireless.com/">
+  <wsdl:import location="http://pro-bebe:3020/BasicSourceMT?wsdl=BasicSourceMT.wsdl" namespace="http://basic.webservice.gateway.springwireless.com/">
+    </wsdl:import>
+  <wsdl:binding name="BasicSourceSMSSoapBinding" type="ns1:BasicSourceMT">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="checkStatus">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkStatus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MTException">
+        <soap:fault name="MTException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkStatusByClientsId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkStatusByClientsId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkStatusByClientsIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MTException">
+        <soap:fault name="MTException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="send">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="send">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MTException">
+        <soap:fault name="MTException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BasicSourceSMS">
+    <wsdl:port binding="tns:BasicSourceSMSSoapBinding" name="BasicSourceMT">
+      <soap:address location="http://webservice.springvas.com.br:50983/BasicSourceMT"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
