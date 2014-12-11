@@ -11,7 +11,7 @@ CSV.foreach('data/PlanilhaMae.csv', headers: true, col_sep: ";" ) do |row|
     cellphone_number = row[2]
     email = row[3].present? ? row[3] : (cellphone_number.to_s + "@probebe.com.br")
     child_name = row[4]
-    child_birth_date = row[5]
+    child_birth_date = row[5].gsub(/\/(\d\d)$/, '/20\1')
 
     if row[6] == 'M'
       child_gender = 'male'
