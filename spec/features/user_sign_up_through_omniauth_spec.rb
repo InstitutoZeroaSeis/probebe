@@ -7,7 +7,7 @@ feature "OAuth2 authentication" do
     before { OmniAuth.config.add_mock :google_oauth2, OmniAuthStub::Google::BasicInfo }
     scenario "user gets redirected to its profile edit page" do
       sign_in_through_oauth
-      expect(current_path).to eq(edit_profile_path)
+      expect(current_path).to eq(root_path)
     end
   end
 
