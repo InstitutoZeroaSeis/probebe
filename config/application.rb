@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require Rails.root.join('lib/extensions/string')
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -25,7 +26,6 @@ module ProBebe
     config.autoload_paths << Rails.root.join('app/route_constraints/')
     config.autoload_paths << Rails.root.join('app/value_objects')
     config.autoload_paths << Rails.root.join('lib/')
-    require Rails.root.join('lib/extensions/string')
 
     config.i18n.available_locales = :pt, :'pt-BR', :en
     config.i18n.default_locale = 'pt-BR'
