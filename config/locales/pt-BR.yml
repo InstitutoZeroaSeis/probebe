@@ -73,7 +73,7 @@ pt-BR:
         id: "Id"
         text: "Texto"
         messageable_id: "Artigo Id"
-      message_delivery:
+      message_deliveries/message_delivery:
         id: "Id"
         profile_name: "Nome do destinatário"
         delivery_date: "Data de envio"
@@ -190,7 +190,7 @@ pt-BR:
       add_telefone: "Incluir Telefone"
       back_to_admin: "Voltar para Admin"
       remove: "Remover"
-      send_messages: "Enviar mensagens"
+      send_message: "Enviar mensagens"
       signed_in_as: "Logado como %{user_name}"
   views:
     application:

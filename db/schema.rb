@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127220345) do
+ActiveRecord::Schema.define(version: 20141208193312) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20141127220345) do
 
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"
-    t.integer  "profile_id"
+    t.integer  "child_id"
     t.date     "delivery_date"
     t.boolean  "message_for_test", default: false
     t.datetime "created_at"
@@ -118,6 +118,12 @@ ActiveRecord::Schema.define(version: 20141127220345) do
     t.string   "messageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "gender",             default: 2
+    t.integer  "teenage_pregnancy"
+    t.integer  "baby_target_type"
+    t.integer  "minimum_valid_week"
+    t.integer  "maximum_valid_week"
+    t.integer  "category_id"
   end
 
   create_table "profiles", force: true do |t|

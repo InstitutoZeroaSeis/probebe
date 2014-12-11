@@ -5,5 +5,5 @@
     - { role: lxhunter.apt, apt_install_packages: ['git', 'libmysqld-dev', 'curl'] }
     - { role: rvm_io.rvm1-ruby, rvm1_rubies: ['2.1.3'] }
     - { role: ANXS.mysql, mysql_root_password: root }
-    #- { role: JasonGiedymin.nodejs, nodejs_version: '0.10.32' }
     - { role: franklinkim.hosts, hosts: [{ip: '127.0.0.1', domain: 'db_1'}] }
+    #- { role: JasonGiedymin.nodejs, nodejs_version: '0.10.32' }
