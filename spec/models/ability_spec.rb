@@ -20,7 +20,8 @@ describe "User" do
 
       it { is_expected.to have_abilities({read: true, update: false, destroy: false}, Articles::JournalisticArticle) }
       it { is_expected.to have_abilities({read: true, update: false, destroy: false}, Message) }
-      it { is_expected.to have_abilities({read: true, update: false, destroy: false}, Category) }
+      it { is_expected.to have_abilities({create: true, read: true, update: true, destroy: false}, Category) }
+      it { is_expected.to have_abilities({create: true, read: true, update: true, destroy: false}, Tag) }
       it { is_expected.to have_abilities({read: false, update: false, destroy: false}, User) }
     end
 
@@ -32,7 +33,8 @@ describe "User" do
 
       it { is_expected.to have_abilities({read: true, create_journalistic_article: true, update: false, destroy: false}, Articles::AuthorialArticle) }
       it { is_expected.to have_abilities({read: true, update: false, destroy: false}, Message) }
-      it { is_expected.to have_abilities({read: true, update: false, destroy: false}, Category) }
+      it { is_expected.to have_abilities({create: true, read: true, update: true, destroy: false}, Category) }
+      it { is_expected.to have_abilities({create: true, read: true, update: true, destroy: false}, Tag) }
       it { is_expected.to have_abilities({read: false, update: false, destroy: false}, User) }
     end
   end
