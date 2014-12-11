@@ -7,14 +7,13 @@ line_with_problem = []
 CSV.foreach('data/PlanilhaMensagens.csv', headers: true, col_sep: ";" ) do |row|
   line_of_csv += 1
   ActiveRecord::Base.transaction do
-    categories = row[0]
-    parent_category_name = categories[0]
+    parent_category_name = row[0]
 
     begin
       parent_category = Category.where("lower(name) = ?", parent_category_name.downcase).first
       parent_category ||= Category.create!(name: parent_category_name.capitalize)
 
-      sub_category = Category.where("lower(name) = ? AND parent_category_id = ?", "Base", parent_category.id).first
+      sub_category = Category.where("lower(name) = ? AND parent_category_id = ?", "base", parent_category.id).first
       sub_category ||= Category.create!(name: "Base", parent_category: parent_category )
 
       if row[1] == "A"

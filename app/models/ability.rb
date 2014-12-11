@@ -20,7 +20,8 @@ class Ability
 
       can [:read], Articles::JournalisticArticle
       can [:read], Message
-      can [:read], Category
+      can [:read, :update, :create], Category
+      can [:read, :update, :create], Tag
     end
   end
 
@@ -29,7 +30,8 @@ class Ability
       can [:read, :create, :update], Articles::JournalisticArticle
       can [:read, :create_journalistic_article], Articles::AuthorialArticle
       can [:read], Message
-      can [:read], Category
+      can [:read, :update, :create], Category
+      can [:read, :update, :create], Tag
     end
   end
 
