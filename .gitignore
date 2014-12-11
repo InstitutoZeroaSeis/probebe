@@ -30,3 +30,4 @@ tags
 /public/ckeditor_assets
 provisioning/roles/*
 /path/
+.capistrano/
