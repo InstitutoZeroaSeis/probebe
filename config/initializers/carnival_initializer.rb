@@ -28,6 +28,10 @@ Carnival.configure do |config|
           link: "/admin/journalistic_articles"
         },
         {
+          label: "tags",
+          link: "/admin/tags"
+        },
+        {
           label: "message_deliveries",
           link: "/admin/message_deliveries"
         }

@@ -65,6 +65,8 @@ pt-BR:
         name: "Nome"
         parent_category: "Categoria pai"
         parent_category_name: "Categoria pai"
+      cell_phone:
+        number: "Número"
       child:
         name: "Nome"
         birth_date: "Data de nascimento"
@@ -94,8 +96,9 @@ pt-BR:
         pregnancy_start_date: "Idade da gestação"
         state: "Estado"
         street: "Rua"
-      cell_phone:
-        number: "Número"
+      tag:
+        id: "Id"
+        name: "Nome"
       user:
         id: "Id"
         email: "Email"
