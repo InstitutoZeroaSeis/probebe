@@ -7,12 +7,12 @@ feature "Admin user creates another user" do
     new_user_password = '12345678'
 
     sign_in(user.email, user.password)
-    visit new_admin_user_path
+    visit new_admin_admin_site_user_path
     fill_in 'user[email]', with: new_user_email
     find('option', text: 'Administrador').select_option
     click_on I18n.t('create')
 
-    expect(current_path).to eq(admin_users_path)
+    expect(current_path).to eq(admin_admin_site_users_path)
     expect(page).to have_content(new_user_email)
 
     sign_out
