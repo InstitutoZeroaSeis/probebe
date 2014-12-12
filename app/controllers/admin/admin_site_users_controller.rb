@@ -2,6 +2,8 @@ class Admin::AdminSiteUsersController < Admin::AdminController
   layout "carnival/admin"
 
   after_filter :send_reset_password_email, only: [:create]
+  skip_before_filter :deny_site_user_access_on_admin
+  load_and_authorize_resource 'User'
 
   defaults :resource_class => User
 
