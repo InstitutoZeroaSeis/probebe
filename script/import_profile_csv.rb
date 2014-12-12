@@ -8,10 +8,13 @@ CSV.foreach('data/PlanilhaMae.csv', headers: true, col_sep: ";" ) do |row|
   ActiveRecord::Base.transaction do
     first_name = row[0]
     last_name = row[1].present? ? row[1] : row[0]
-    cellphone_number = row[2]
-    email = row[3].present? ? row[3] : (cellphone_number.to_s + "@probebe.com.br")
+    email = row[3].present? ? row[3] : (row[2].to_s + "@probebe.com.br")
     child_name = row[4]
     child_birth_date = row[5].gsub(/\/(\d\d)$/, '/20\1')
+
+    match_data = row[2].match /(\d\d)(\d{4,5})(\d{4})/
+    area_code = match_data[1]
+    cell_phone_number = "#{match_data[2]}-#{match_data[3]}"
 
     if row[6] == 'M'
       child_gender = 'male'
@@ -28,7 +31,7 @@ CSV.foreach('data/PlanilhaMae.csv', headers: true, col_sep: ";" ) do |row|
 
       profile.children << Child.create!(name: child_name, birth_date: child_birth_date, gender: child_gender)
 
-      profile.cell_phones << CellPhone.create!(number: cellphone_number)
+      profile.cell_phones << CellPhone.create!(area_code: area_code, number: cell_phone_number)
     rescue
       line_with_problem << (line_of_profile.to_s + row.to_s)
     end

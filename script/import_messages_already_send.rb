@@ -16,7 +16,9 @@ CSV.open("data/errorsfile.csv", "wb") do |csv|
         end
       end
       begin
-        profile = CellPhone.find_by_number(row[1]).profile
+        match_data = row[1].match /(\d\d)(\d{4,5})(\d{4})/
+        cell_phone_number = "#{match_data[2]}-#{match_data[3]}"
+        profile = CellPhone.find_by_number(cell_phone_number).profile
         message = Message.find_by_text(message_text)
 
         if message.present? and profile.present?
