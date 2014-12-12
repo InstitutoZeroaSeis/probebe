@@ -7,9 +7,9 @@ class Admin::MessageDeliveriesController < Admin::AdminController
     testing_mode = permitted_params[:message_for_test]
 
     system_date = MessageDeliveries::SystemDate.new(date)
-    sender = MessageDeliveries::MessageProcessor.new(system_date)
+    sender = MessageDeliveries::MessageProcessor.new(system_date, testing_mode: testing_mode)
 
-    sender.send_messages(testing_mode)
+    sender.send_messages
 
     flash[:notice] = "Mensagens Enviadas!"
     redirect_to admin_message_deliveries_path
@@ -18,6 +18,10 @@ class Admin::MessageDeliveriesController < Admin::AdminController
   protected
 
   def permitted_params
-    params.require(:message_deliveries_message_delivery).permit(:delivery_date, :message_for_test)
+    if params[:message_deliveries_message_delivery]
+      params.require(:message_deliveries_message_delivery).permit(:delivery_date, :message_for_test)
+    else
+      {}
+    end
   end
 end
