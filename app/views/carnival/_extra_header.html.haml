@@ -7,6 +7,6 @@
 
 .sign_out= link_to t('logout'), destroy_user_session_path, :method => :delete
 .salute
-  = link_to edit_admin_user_path(true_user.id) do
+  = link_to edit_admin_site_user_path(true_user.id) do
     .email
       = true_user.email

@@ -8,6 +8,6 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( carnival_devise_views.css )
 Rails.application.config.assets.precompile += %w( admin.css )
 
-Rails.application.config.assets.precompile += %w( users.js )
+Rails.application.config.assets.precompile += %w( site_users.js )
 Rails.application.config.assets.precompile += %w( inputs/countable_input.js )
 Rails.application.config.assets.precompile += %w( inputs/week_to_date_input.js )

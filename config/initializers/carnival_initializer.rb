@@ -8,8 +8,12 @@ Carnival.configure do |config|
       class: 'administracao',
       subs: [
         {
-          label: "users",
-          link: "/admin/users"
+          label: "admin_site_users",
+          link: "/admin/admin_site_users"
+        },
+        {
+          label: "site_users",
+          link: "/admin/site_users"
         },
         {
           label: "categories",

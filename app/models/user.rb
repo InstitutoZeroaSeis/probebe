@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   ROLE_ENUM = [:admin, :journalist, :author]
   ALL_ROLES = ROLE_ENUM + [:site_user]
 
+  scope :admin_site_user, -> { where(role: [0, 1 ,2]) }
+
   enum role: ALL_ROLES
 
   has_one :profile

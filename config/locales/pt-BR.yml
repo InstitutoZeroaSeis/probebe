@@ -138,11 +138,13 @@ pt-BR:
     create_journalistic_article: "Criar artigo jornalistico"
     menu:
       authorial_articles: "Artigo Autoral"
+      admin_site_users: "Administradores"
       administration: "Administração"
       categories: "Categorias"
       journalistic_articles: "Artigo Jornalístico"
       messages: "Mensagens"
       message_deliveries: "Mensagens Enviadas"
+      site_users: "Usuários do Site"
       users: "Usuários"
   controller:
     messages:
