@@ -4,4 +4,12 @@ class CellPhone < ActiveRecord::Base
   validates_format_of :number, with: /\A\d{4,5}\-\d{4,4}\Z/
   validates_format_of :area_code, with: /\A\d\d\Z/
 
+  def full_number
+    area_code + clean_number
+  end
+
+  def clean_number
+    number.delete!("^0-9")
+  end
+
 end
