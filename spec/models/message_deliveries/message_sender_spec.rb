@@ -12,7 +12,6 @@ RSpec.describe MessageDeliveries::MessageSender, :type => :model do
 
       expect(sender.send_to_device).to eq(true)
     end
-
   end
 
   context "with a profile that has one registered device" do
@@ -27,5 +26,27 @@ RSpec.describe MessageDeliveries::MessageSender, :type => :model do
       expect(Rpush::Gcm::Notification.count).to eq(1)
     end
 
+  end
+
+  context "with ProBebeConfig.deliver_sms set to false" do
+    let (:profile) { create(:profile) }
+    let (:message) { create(:message) }
+    it "is expected to not deliver sms" do
+      expect(ProBebeConfig).to receive(:deliver_sms?).and_return(false)
+      sender = MessageDeliveries::MessageSender.new(profile, message)
+      expect(MessageDeliveries::SpringWsdl).to_not receive(:send_message)
+      sender.send_to_device
+    end
+  end
+
+  context "with ProBebeConfig.deliver_sms set to true" do
+    let (:profile) { create(:profile) }
+    let (:message) { create(:message) }
+    it "is expected to deliver sms" do
+      expect(ProBebeConfig).to receive(:deliver_sms?).and_return(true)
+      sender = MessageDeliveries::MessageSender.new(profile, message)
+      expect(MessageDeliveries::SpringWsdl).to receive(:send_message)
+      sender.send_to_device
+    end
   end
 end
