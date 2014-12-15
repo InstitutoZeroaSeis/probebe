@@ -33,6 +33,7 @@ gem 'rack-cors', '~> 0.2.9'
 gem 'rpush', '~> 2.2.0'
 gem 'active_model_serializers', '~> 0.9.1'
 gem 'sidekiq', '~> 3.3.0'
+gem 'sinatra', '>= 1.3.0', :require => nil
 
 group :development do
   gem 'better_errors', '0.9.0'

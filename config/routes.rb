@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -20,6 +22,9 @@ Rails.application.routes.draw do
 
   mount_carnival_at 'admin'
   namespace :admin do
+    authenticate :user, lambda {|u| u.admin? }  do
+      mount Sidekiq::Web => '/sidekiq'
+    end
     resources :activity_logs, only: [:index, :show]
     resources :admin_site_users
     resources :authorial_articles
