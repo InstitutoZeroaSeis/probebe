@@ -35,6 +35,8 @@ GEM
       activesupport (= 4.1.6)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    active_model_serializers (0.9.1)
+      activemodel (>= 3.2)
     activemodel (4.1.6)
       activesupport (= 4.1.6)
       builder (~> 3.1)
@@ -384,6 +386,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers (~> 0.9.1)
   better_errors (= 0.9.0)
   binding_of_caller (~> 0.7.2)
   bullet

@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   resources :credentials, only: :create
   resources :device_registrations, only: [:create, :show, :destroy]
 
+  namespace :api do
+    resources :messages, only: :show
+    resources :children, only: :index
+  end
+
   mount_carnival_at 'admin'
   namespace :admin do
     resources :activity_logs, only: [:index, :show]

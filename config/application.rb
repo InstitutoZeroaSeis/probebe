@@ -8,10 +8,8 @@ Bundler.require(*Rails.groups)
 
 module ProBebe
   class Application < Rails::Application
-    config.autoload_paths << Rails.root.join('app/inputs')
-    config.autoload_paths << Rails.root.join('app/models/ckeditor')
-    config.autoload_paths << Rails.root.join('app/value_objects')
-    config.autoload_paths << Rails.root.join('lib/')
+    config.autoload_paths += %W{#{config.root}/app}
+    config.autoload_paths += %W{#{config.root}/lib}
     config.i18n.available_locales = :pt, :'pt-BR', :en
     config.i18n.default_locale = 'pt-BR'
     console { config.console = Pry }
