@@ -7,9 +7,8 @@ RSpec.describe MessageDeliveries::MessageSender, :type => :model do
 
     it "is expected to send the message to that phone" do
       allow(ProBebeConfig).to receive(:deliver_sms?).and_return(true)
-      expect(MessageDeliveries::SpringWsdl).to receive(:send_message).with(profile.cell_phones.first.number, message.text).and_return(true)
+      expect(MessageDeliveries::SpringWsdl).to receive(:send_message).with(profile.cell_phones.first.full_number, message.text).and_return(true)
       sender = MessageDeliveries::MessageSender.new(profile, message)
-
       expect(sender.send_to_device).to eq(true)
     end
   end

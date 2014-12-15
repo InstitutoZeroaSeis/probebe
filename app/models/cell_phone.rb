@@ -9,7 +9,7 @@ class CellPhone < ActiveRecord::Base
   end
 
   def clean_number
-    number.delete!("^0-9")
+    number.delete("^0-9")
   end
 
 end
