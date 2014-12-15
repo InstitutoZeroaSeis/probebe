@@ -89,7 +89,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  Rails.application.routes.default_url_options[:host] = 'probebe.vzr.com.br'
+  Rails.application.routes.default_url_options[:host] = 'www.probebe.org.br'
 
-  config.message_delivery.deliver_sms = true
+  config.message_delivery.deliver_sms = false
 end
