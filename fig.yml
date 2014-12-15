@@ -46,6 +46,7 @@ sidekiq:
   image: rails
   links:
     - redis
+    - db
   volumes:
     - .:/app
   working_dir: /app

@@ -6,10 +6,7 @@ class Admin::MessageDeliveriesController < Admin::AdminController
     date = permitted_params[:delivery_date]
     testing_mode = permitted_params[:message_for_test]
 
-    system_date = MessageDeliveries::SystemDate.new(date)
-    sender = MessageDeliveries::MessageProcessor.new(system_date, testing_mode: testing_mode)
-
-    sender.send_messages
+    MessageSenderWorker.perform_async(date, testing_mode)
 
     flash[:notice] = "Mensagens Enviadas!"
     redirect_to admin_message_deliveries_path
