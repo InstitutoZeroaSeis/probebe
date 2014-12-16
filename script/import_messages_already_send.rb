@@ -6,7 +6,7 @@ CSV.open("data/errorsfile.csv", "wb") do |csv|
   CSV.foreach('data/PlanilhaMensagemEnviadas.csv', headers: true, col_sep: "," ) do |row|
     line_with_problem = []
     ActiveRecord::Base.transaction do
-      created_at = row[0]
+      created_at = row[0].gsub(/\/(\d\d)$/, '/20\1')
       codigo_message = row[3]
       message_text = nil
       CSV.foreach('data/PlanilhaMensagens.csv', headers: true, col_sep: ";" ) do |row_mensagens|
@@ -22,7 +22,7 @@ CSV.open("data/errorsfile.csv", "wb") do |csv|
         message = Message.find_by_text(message_text)
 
         if message.present? and profile.present?
-          message_delivery = MessageDeliveries::MessageDelivery.create(created_at: created_at, message: message, child: profile.children.first)
+          message_delivery = MessageDeliveries::MessageDelivery.create(created_at: created_at, message: message, child: profile.children.first, delivery_date: created_at)
         end
       rescue
         profile_not_find = "Celular não encontrado" if profile.nil?
