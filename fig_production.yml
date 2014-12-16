@@ -17,6 +17,7 @@ web:
     - redis
   volumes:
     - /tmp/probebe
+    - ./log:/app/log
 
 rpush:
   command: bundle exec rpush start --rails-env=production --foreground --pid-file=/tmp/rpush.pid
@@ -25,6 +26,8 @@ rpush:
     RAILS_ENV: production
   links:
     - db
+  volumes:
+    - ./log:/app/log
 
 redis:
   image: redis
@@ -39,6 +42,8 @@ sidekiq:
   links:
     - redis
     - db
+  volumes:
+    - ./log:/app/log
 
 nginx:
   image: nginx
