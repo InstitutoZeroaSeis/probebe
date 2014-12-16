@@ -53,5 +53,6 @@ nginx:
     - 80:80
   volumes:
     - docker/nginx/conf.d:/etc/nginx/conf.d
+    - ./presentation:/presentation
   volumes_from:
     - web
