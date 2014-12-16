@@ -7,7 +7,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'pry'
 gem 'rails-i18n', '~> 4.0.0'
@@ -21,10 +20,6 @@ gem 'paperclip', '~> 4.2.0'
 gem 'pretender', '~> 0.1.0'
 gem 'simple_form', '~> 3.1.0.rc2'
 gem 'jquery-ui-rails', '~> 5.0.2'
-# gem 'unicorn'
-gem 'capistrano-rails', '~> 1.1.0'
-gem 'rvm1-capistrano3', require: false
-gem 'capistrano-bundler'
 gem 'ckeditor', '~> 4.1.0'
 gem 'cancancan', '~> 1.9.2'
 gem 'savon', '~> 2.8.0'
@@ -57,9 +52,4 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem "spring-commands-rspec", group: :development
   gem 'guard-rspec', require: false
-  gem 'formulaic'
-end
-
-group :production do
-  gem "non-stupid-digest-assets"
 end
