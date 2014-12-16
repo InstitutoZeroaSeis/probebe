@@ -6,7 +6,7 @@ CSV.open("data/errorsfile.csv", "wb") do |csv|
   CSV.foreach('data/PlanilhaMensagemEnviadas.csv', headers: true, col_sep: "," ) do |row|
     line_with_problem = []
     ActiveRecord::Base.transaction do
-      created_at = row[0].gsub(/\/(\d\d)$/, '/20\1')
+      created_at = row[0].gsub(/\A(\d{2,2})\/(\d{2,2})\/(\d{4,4})\Z/, '\2/\1/\3')
       codigo_message = row[3]
       message_text = nil
       CSV.foreach('data/PlanilhaMensagens.csv', headers: true, col_sep: ";" ) do |row_mensagens|
