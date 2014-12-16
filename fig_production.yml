@@ -5,7 +5,7 @@ db:
   ports:
     - 3306
   volumes:
-    - .data:/var/lib/mysql
+    - /var/lib/probebe_mysql:/var/lib/mysql
 
 web:
   command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec puma -b unix:///tmp/probebe/probebe.sock"
