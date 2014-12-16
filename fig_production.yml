@@ -8,7 +8,7 @@ db:
     - /var/lib/probebe_mysql:/var/lib/mysql
 
 web:
-  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec puma -b unix:///tmp/probebe/probebe.sock"
+  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec puma -t 8:16 -w 2 --preload -b unix:///tmp/probebe/probebe.sock"
   environment:
     RAILS_ENV: production
   image: rails
