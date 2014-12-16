@@ -8,29 +8,23 @@ db:
     - /var/lib/probebe_mysql:/var/lib/mysql
 
 web:
-  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec puma -t 8:16 -w 2 --preload -b unix:///tmp/probebe/probebe.sock"
   environment:
     RAILS_ENV: production
-  image: rails
+  image: vizir/probebe
   links:
     - db
     - rpush
     - redis
   volumes:
-    - .:/app
     - /tmp/probebe
-  working_dir: /app
 
 rpush:
-  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec rpush start --rails-env=production --foreground --pid-file=/tmp/rpush.pid"
+  command: bundle exec rpush start --rails-env=production --foreground --pid-file=/tmp/rpush.pid
+  image: vizir/probebe
   environment:
     RAILS_ENV: production
-  image: rails
   links:
     - db
-  volumes:
-    - .:/app
-  working_dir: /app
 
 redis:
   image: redis
@@ -38,16 +32,13 @@ redis:
     - 6379
 
 sidekiq:
-  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec sidekiq --pidfile=/tmp/sidekiq.pid"
+  command: bundle exec sidekiq --pidfile=/tmp/sidekiq.pid
+  image: vizir/probebe
   environment:
     RAILS_ENV: production
-  image: rails
   links:
     - redis
     - db
-  volumes:
-    - .:/app
-  working_dir: /app
 
 nginx:
   image: nginx
