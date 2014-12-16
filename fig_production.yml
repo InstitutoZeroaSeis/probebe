@@ -1,0 +1,61 @@
+db:
+  environment:
+    MYSQL_PASS: root
+  image: tutum/mysql
+  ports:
+    - 3306
+  volumes:
+    - .data:/var/lib/mysql
+
+web:
+  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec puma -b unix:///tmp/probebe/probebe.sock"
+  environment:
+    RAILS_ENV: production
+  image: rails
+  links:
+    - db
+    - rpush
+    - redis
+  volumes:
+    - .:/app
+    - /tmp/probebe
+  working_dir: /app
+
+rpush:
+  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec rpush start --foreground --pid-file=/tmp/rpush.pid"
+  environment:
+    RAILS_ENV: production
+  image: rails
+  links:
+    - db
+  volumes:
+    - .:/app
+  working_dir: /app
+
+redis:
+  image: redis
+  ports:
+    - 6379
+
+sidekiq:
+  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec sidekiq --pidfile=/tmp/sidekiq.pid"
+  environment:
+    RAILS_ENV: production
+  image: rails
+  links:
+    - redis
+    - db
+  volumes:
+    - .:/app
+  working_dir: /app
+
+nginx:
+  image: nginx
+  links:
+    - web
+  ports:
+    - 80:80
+  volumes:
+    - docker/nginx/conf.d:/etc/nginx/conf.d
+  volumes_from:
+    - web

@@ -21,7 +21,7 @@ gem 'paperclip', '~> 4.2.0'
 gem 'pretender', '~> 0.1.0'
 gem 'simple_form', '~> 3.1.0.rc2'
 gem 'jquery-ui-rails', '~> 5.0.2'
-gem 'unicorn'
+# gem 'unicorn'
 gem 'capistrano-rails', '~> 1.1.0'
 gem 'rvm1-capistrano3', require: false
 gem 'capistrano-bundler'
@@ -34,12 +34,12 @@ gem 'rpush', '~> 2.2.0'
 gem 'active_model_serializers', '~> 0.9.1'
 gem 'sidekiq', '~> 3.3.0'
 gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'puma'
 
 group :development do
   gem 'better_errors', '0.9.0'
   gem 'turbo_dev_assets', '~> 0.0.2'
   gem 'bullet'
-  gem 'puma'
 end
 
 group :test do
