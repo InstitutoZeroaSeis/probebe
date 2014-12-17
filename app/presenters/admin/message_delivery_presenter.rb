@@ -3,15 +3,11 @@ class Admin::MessageDeliveryPresenter < Carnival::BaseAdminPresenter
   field :id,
     actions: [:index, :show],
     sortable: false,
-    advanced_search: {operator: :equal}
-
-  field :profile_id,
-    actions: [:index, :show],
-    advanced_search: {operator: :equal}
+    searchable: false
 
   field 'profile_name',
     actions: [:index, :show],
-    advanced_search: {operator: :like}
+    searchable: false
 
   field 'message.text',
     actions: [:index, :show],
