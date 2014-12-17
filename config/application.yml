@@ -1,0 +1,19 @@
+default: &default
+  message_delivery:
+    deliver_sms: false
+    wsdl_url: http://probebe.org.br:3020/BasicSourceMT?wsdl
+    wsdl_end_point: http://probebe.org.br:3020/BasicSourceMT
+    wsdl_name_space: http://basic.webservice.gateway.springwireless.com/
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  message_delivery:
+    deliver_sms: false
+    wsdl_url: http://webservice.springvas.com.br:50983/BasicSourceMT?WSDL
+    wsdl_end_point: http://webservice.springvas.com.br:50983/BasicSourceMT

@@ -27,7 +27,6 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Features::AuthenticationHelper, type: :feature
   config.include Features::RegexHelper, type: :feature
-  config.include Formulaic::Dsl, type: :feature
   config.include Devise::TestHelpers, type: :controller
   config.include Controllers::ApiAuthenticationHelper, type: :controller
 
