@@ -8,9 +8,9 @@ db:
     - /var/lib/probebe_mysql:/var/lib/mysql
 
 web:
+  build: .
   environment:
     RAILS_ENV: production
-  image: vizir/probebe
   links:
     - db
     - rpush
@@ -20,8 +20,8 @@ web:
     - ./log:/app/log
 
 rpush:
+  build: .
   command: bundle exec rpush start --rails-env=production --foreground --pid-file=/tmp/rpush.pid
-  image: vizir/probebe
   environment:
     RAILS_ENV: production
   links:
@@ -35,8 +35,8 @@ redis:
     - 6379
 
 sidekiq:
+  build: .
   command: bundle exec sidekiq --pidfile=/tmp/sidekiq.pid
-  image: vizir/probebe
   environment:
     RAILS_ENV: production
   links:
