@@ -33,4 +33,8 @@ class Child < ActiveRecord::Base
     system_date ||= MessageDeliveries::SystemDate.new
     birth_date - PREGNANCY_DURATION_IN_WEEKS.weeks if pregnancy?(system_date)
   end
+
+  def name_or_date
+    name || birth_date
+  end
 end
