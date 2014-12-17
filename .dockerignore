@@ -1,0 +1,9 @@
+.data
+.git
+.gitignore
+.rspec
+bin/phantomjs
+coverage
+log/*
+tmp/*
+vendor/bundle
