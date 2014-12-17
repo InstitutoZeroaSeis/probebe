@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: 'posts#index'
 
   resource :profile, except: :index
-  resource :timeline, only: :show
+  resources :timelines, only: :show
   resources :message_deliveries, only: :create
   resources(:posts, only: [:show, :index])
   get 'posts/page/:page_id' => 'posts#index', as: :paged_posts

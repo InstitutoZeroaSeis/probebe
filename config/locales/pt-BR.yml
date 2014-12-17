@@ -1,29 +1,30 @@
 pt-BR:
   _commom_words: &commom_words
     article_references: &article_references "Referências"
-    children: "Filhos"
-    edit: &edit "Editar"
-    include: "Incluir"
-    new: &new "Novo"
-    timeline: "Linha do tempo"
-    view: &view "Visualizar"
-    weeks: "Semanas"
-    type: &type 'Tipo'
-    title: &title 'Título'
-    text: &text 'Texto'
-    summary: &summary 'Resumo'
-    read_more: &read_more "Leia Mais"
+    baby_target_type: &baby_target_type "Tipo de bebê que a mensagem se aplica"
     category: &category 'Categoria'
     category_id: &category_id 'Categoria'
     category_name: &category_name 'Categoria'
-    parent_article_id: &parent_article_id 'Artigo Pai'
-    user_email: &user_email 'Email do Autor'
-    baby_target_type: &baby_target_type "Tipo de bebê que a mensagem se aplica"
-    gender: &genders "Sexo"
-    minimum_valid_week: &minimum_valid_week "Validade Inicial em Semana"
-    maximum_valid_week: &maximum_valid_week "Validade Final em Semana"
-    teenage_pregnancy: "Aplicável para gravidez na adolescência"
+    children: "Filhos"
+    edit: &edit "Editar"
     exit: &exit "Sair"
+    gender: &genders "Sexo"
+    include: "Incluir"
+    maximum_valid_week: &maximum_valid_week "Validade Final em Semana"
+    minimum_valid_week: &minimum_valid_week "Validade Inicial em Semana"
+    my_children: "Meus Filhos"
+    new: &new "Novo"
+    parent_article_id: &parent_article_id 'Artigo Pai'
+    read_more: &read_more "Leia Mais"
+    summary: &summary 'Resumo'
+    teenage_pregnancy: "Aplicável para gravidez na adolescência"
+    text: &text 'Texto'
+    timeline: "Linha do tempo"
+    title: &title 'Título'
+    type: &type 'Tipo'
+    user_email: &user_email 'Email do Autor'
+    view: &view "Visualizar"
+    weeks: "Semanas"
   _gender: &gender
     male: 'Masculino'
     female: 'Feminino'

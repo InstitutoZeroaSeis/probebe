@@ -13,7 +13,7 @@ class SampleData
       create(:user, :confirmed, :author, email: 'author@probebe.com.br')
 
       create(:user, :confirmed, :site_user, email: 'francisca@probebe.com.br',
-                          profile: create(:profile, children: create_list(:child, 1, birth_date: 7.months.from_now, gender: 'male')))
+                          profile: create(:profile, children: create_list(:child, 2, birth_date: 7.months.from_now, gender: 'male')))
       create(:user, :confirmed, :site_user, email: 'eri@probebe.com.br',
                     profile: create(:profile, children: create_list(:child, 1, birth_date: 3.months.ago, gender: 'female')))
 

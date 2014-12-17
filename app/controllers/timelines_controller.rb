@@ -4,6 +4,7 @@ class TimelinesController < ApplicationController
   before_filter :check_profile_status
 
   def show
-    @deliveries = current_profile.children.first.message_deliveries
+    @child = Child.find(params[:id])
+    @deliveries = @child.message_deliveries.order_by_delivery_date
   end
 end
