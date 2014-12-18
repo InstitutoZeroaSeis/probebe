@@ -9,6 +9,9 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
         actions: [:index, :show], :sortable => true,
         advanced_search: {:operator => :like}
 
+  field 'profile.name',
+        actions: [:index, :show]
+
   action :show
   action :impersonate,
           remote: :false,

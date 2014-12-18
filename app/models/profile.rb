@@ -17,10 +17,7 @@ class Profile < ActiveRecord::Base
   accepts_nested_attributes_for :cell_phones, allow_destroy: true
 
   before_save :set_defaults
-
-  def name
-    "#{first_name} #{last_name}"
-  end
+  before_save :update_name
 
   def avatar_url
     avatar.photo.url if avatar
@@ -43,4 +40,7 @@ class Profile < ActiveRecord::Base
     self.gender ||= 'not_informed'
   end
 
+  def update_name
+    self.name = "#{first_name} #{last_name}"
+  end
 end

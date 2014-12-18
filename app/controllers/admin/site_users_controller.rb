@@ -6,7 +6,7 @@ class Admin::SiteUsersController < Admin::AdminController
   defaults :resource_class => User
 
   def table_items
-    User.site_user
+    User.site_user.includes(:profile)
   end
 
   def impersonate
