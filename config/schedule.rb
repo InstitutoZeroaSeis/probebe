@@ -1,3 +1,3 @@
-every [:monday , :wednesday, :friday],  :at => "4pm" do
-  runner "MessageSenderWorker(Date.today)"
+every 1.minute do
+  runner "MessageSenderWorker.perform_async(Date.today)"
 end

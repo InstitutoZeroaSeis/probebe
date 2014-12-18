@@ -45,6 +45,17 @@ sidekiq:
   volumes:
     - ./log:/app/log
 
+cron:
+  build: .
+  command: cron -f
+  environment:
+    RAILS_ENV: production
+  links:
+    - redis
+    - db
+  volumes:
+    - ./log:/app/log
+
 nginx:
   image: nginx
   links:

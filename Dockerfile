@@ -8,7 +8,11 @@ ADD Gemfile.lock /app/Gemfile.lock
 RUN bundle install
 ADD . /app
 
-RUN bundle exec rake assets:precompile && \
-  bundle exec rake probebe:non_digested
+RUN rake assets:precompile && \
+  rake probebe:non_digested
+
+RUN apt-get update && apt-get install -qy cron
+
+RUN whenever -w
 
 CMD bundle exec puma -t 8:16 -w 2 --preload -b unix:///tmp/probebe/probebe.sock
