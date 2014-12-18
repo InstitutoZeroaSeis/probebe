@@ -1,9 +1,6 @@
 class Admin::MessageDeliveryPresenter < Carnival::BaseAdminPresenter
 
-  field :id,
-    actions: [:index, :show],
-    sortable: false,
-    searchable: false
+  field :id
 
   field 'profile_name',
     actions: [:index, :show],
