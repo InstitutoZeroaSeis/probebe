@@ -105,6 +105,7 @@ pt-BR:
         id: "Id"
         email: "Email"
         role: "Perfil de acesso"
+        profile_name: "Nome"
     errors:
       models:
         article:
