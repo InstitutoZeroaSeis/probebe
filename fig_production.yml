@@ -30,9 +30,11 @@ rpush:
     - ./log:/app/log
 
 redis:
-  image: redis
+  image: dockerfile/redis
   ports:
     - 6379
+  volumes:
+    - /var/lib/redis_probebe:/data
 
 sidekiq:
   build: .
@@ -56,3 +58,15 @@ nginx:
     - presentation:/presentation
   volumes_from:
     - web
+
+cron:
+  build: .
+  command: cron -f
+  environment:
+    RAILS_ENV: production
+  links:
+    - redis
+    - db
+    - nginx
+  volumes:
+    - ./log:/app/log
