@@ -30,9 +30,11 @@ rpush:
     - ./log:/app/log
 
 redis:
-  image: redis
+  image: dockerfile/redis
   ports:
     - 6379
+  volumes:
+    - /var/lib/redis_probebe:/data
 
 sidekiq:
   build: .
