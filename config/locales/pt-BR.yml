@@ -53,6 +53,7 @@ pt-BR:
         type: *type
         user_email: *user_email
         messages: "Mensagens"
+        publishable: "Publicável"
       articles/authorial_article:
         <<: *article
         journalistic_articles: "Artigos Jornalísticos"
@@ -75,6 +76,7 @@ pt-BR:
         gender: "Gênero"
       message:
         id: "Id"
+        created_at: "Criado em"
         text: "Texto"
         messageable_id: "Artigo Id"
       message_deliveries/message_delivery:
@@ -139,8 +141,9 @@ pt-BR:
       profile: "Perfil"
       tag: "Tag"
   carnival:
-    impersonate: "Logar como"
     create_journalistic_article: "Criar artigo jornalistico"
+    impersonate: "Logar como"
+    show_activity_log: "Mostrar log de atividade"
     menu:
       authorial_articles: "Artigo Autoral"
       admin_site_users: "Administradores"

@@ -2,7 +2,6 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
 
   model_name 'Articles::JournalisticArticle'
 
-
   field :parent_article_id,
     as: :hidden,
     actions: [:index, :show, :new],
