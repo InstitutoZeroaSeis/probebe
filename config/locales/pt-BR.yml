@@ -115,6 +115,9 @@ pt-BR:
         articles/journalistic_article:
           base:
             messages_length: "O comprimento máximo de cada mensagem dever ser de até 150 caracteres"
+        child:
+          base:
+            maximum_permited_pregnancy_date: "A data de gestação ultrapassará os 9 meses"
         category:
           base:
             has_child_categories: "Categoria não pode ser deletada por conter subcategoria"

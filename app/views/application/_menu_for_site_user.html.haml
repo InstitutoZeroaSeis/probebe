@@ -20,7 +20,7 @@
           %ul.dropdown-menu{:role => "menu"}
             -if current_profile.present?
               - current_profile.children.each do |child|
-                %li= link_to "#{child.name_or_date}", timeline_path(id: child.id)
+                %li= link_to child.name.present? ? child.name : l(child.birth_date), timeline_path(id: child.id)
       %ul.nav.navbar-nav.navbar-right
         - if current_profile
           %li

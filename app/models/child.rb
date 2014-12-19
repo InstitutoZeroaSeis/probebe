@@ -9,6 +9,7 @@ class Child < ActiveRecord::Base
   enum gender: GENDER_ENUM
 
   validates_presence_of :birth_date
+  validate :maximum_permited_pregnancy_date?
 
   def age_in_weeks system_date = nil
     system_date ||= MessageDeliveries::SystemDate.new
@@ -34,7 +35,14 @@ class Child < ActiveRecord::Base
     birth_date - PREGNANCY_DURATION_IN_WEEKS.weeks if pregnancy?(system_date)
   end
 
-  def name_or_date
-    name || birth_date
+  protected
+
+  def maximum_permited_pregnancy_date?
+    if birth_date.present?
+      if birth_date > PREGNANCY_DURATION_IN_WEEKS.weeks.from_now
+        errors.add(:birth_date, I18n.t('activerecord.errors.models.child.base.maximum_permited_pregnancy_date'))
+      end
+    end
   end
+
 end
