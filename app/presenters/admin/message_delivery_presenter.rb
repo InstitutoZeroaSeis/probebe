@@ -6,8 +6,11 @@ class Admin::MessageDeliveryPresenter < Carnival::BaseAdminPresenter
     actions: [:index, :show],
     searchable: false
 
+  field 'profile_cell_phone',
+    actions: [:csv]
+
   field 'message.text',
-    actions: [:index, :show],
+    actions: [:index, :show, :csv],
     advanced_search: {operator: :like}
 
   field :delivery_date,
@@ -19,6 +22,7 @@ class Admin::MessageDeliveryPresenter < Carnival::BaseAdminPresenter
 
   action :show
   action :new
+  action :csv
 
   def model_class
     MessageDeliveries::MessageDelivery

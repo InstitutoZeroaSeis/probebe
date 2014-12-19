@@ -26,5 +26,9 @@ module MessageDeliveries
       child.profile.name
     end
 
+    def profile_cell_phone
+      child.profile.cell_phones.first.full_number
+    end
+
   end
 end
