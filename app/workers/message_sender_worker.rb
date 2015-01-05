@@ -3,8 +3,8 @@ class MessageSenderWorker
 
   def perform(date, testing_mode = false)
     system_date = MessageDeliveries::SystemDate.new(date)
-    processor = MessageDeliveries::MessageProcessor.new(system_date, testing_mode: testing_mode)
-    processor.send_messages
+    processor = MessageDeliveries::MessageDeliveryCreator.new(system_date, testing_mode: testing_mode)
+    processor.create_deliveries_for_all_children
   end
 
 end

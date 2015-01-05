@@ -1,5 +1,5 @@
 module MessageDeliveries
-  class MessageProcessor
+  class MessageDeliveryCreator
     attr_reader :child
     attr_reader :testing_mode
 
@@ -8,7 +8,7 @@ module MessageDeliveries
       @testing_mode = testing_mode
     end
 
-    def send_messages
+    def create_deliveries_for_all_children
       Child.all.each do |child|
         message = find_message_for_child(child)
         if message.present?

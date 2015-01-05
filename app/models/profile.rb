@@ -38,6 +38,14 @@ class Profile < ActiveRecord::Base
     cell_phones.first.full_number
   end
 
+  def delivery_method
+    if device_registrations.any?
+      :app
+    else
+      :sms
+    end
+  end
+
   protected
 
   def set_defaults
