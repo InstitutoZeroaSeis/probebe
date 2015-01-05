@@ -5,6 +5,7 @@ module MessageDeliveries
 
     belongs_to :message, class_name: "Message"
     belongs_to :child, class_name: "Child"
+    delegate :profile, to: :child
 
     scope :order_by_delivery_date, -> { order(delivery_date: :desc) }
 

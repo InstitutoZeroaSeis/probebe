@@ -32,5 +32,9 @@ FactoryGirl.define do
       birth_date nil
     end
 
+    trait :with_device_registration do
+      device_registrations { create_list :device_registration, 1 }
+    end
+
   end
 end

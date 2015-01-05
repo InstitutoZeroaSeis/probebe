@@ -13,7 +13,7 @@ module MessageDeliveries
         message = find_message_for_child(child)
         if message.present?
           delivery = build_message_delivery(child, message)
-          delivery.save! if send_to_device(child, message)
+          delivery.save
         end
       end
     end
@@ -32,20 +32,12 @@ module MessageDeliveries
     def find_message_for_child(child)
       message_matcher = MessageDeliveries::MessageMatcher.new(messages_to_send, child, @system_date )
       messages = message_matcher.find_messages_for_child
-      messages.first if messages.count > 0
+      messages.first
     end
 
     def messages_to_send
       Message.journalistic
     end
 
-    def send_to_device(child, message)
-      if !testing_mode
-        sender = MessageDeliveries::MessageSender.new(child.profile, message)
-        sender.send_to_device
-      else
-        true
-      end
-    end
   end
 end

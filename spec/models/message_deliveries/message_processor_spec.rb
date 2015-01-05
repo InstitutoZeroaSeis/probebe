@@ -41,29 +41,4 @@ RSpec.describe MessageDeliveries::MessageProcessor, :type => :model do
     end
   end
 
-  context "with messages to be sent" do
-    before { @child = create(:child, :with_profile, birth_date: (Child::PREGNANCY_DURATION_IN_WEEKS.weeks - 5.months).from_now) }
-    before { @message = create(:message, :with_journalistic_article, :male, maximum_valid_week: 24, baby_target_type: 'pregnancy') }
-
-    it "is expected to send create message deliveries but send no one if is in test mode" do
-      expect(MessageDeliveries::MessageSender).to_not receive(:new)
-      MessageDeliveries::MessageProcessor.new(@system_date, testing_mode: true).send_messages
-      expect(MessageDeliveries::MessageDelivery.count).to eq(1)
-      expect(MessageDeliveries::MessageDelivery.first.message).to eq(@message)
-      expect(MessageDeliveries::MessageDelivery.first.child).to eq(@child)
-    end
-  end
-
-  context "with messages to be sent" do
-    before { @child = create(:child, :with_profile, birth_date: (Child::PREGNANCY_DURATION_IN_WEEKS.weeks - 5.months).from_now) }
-    before { @message = create(:message, :with_journalistic_article, :male, maximum_valid_week: 24, baby_target_type: 'pregnancy') }
-
-    it "is expected to deliver the messages if it's not in test mode" do
-      expect(MessageDeliveries::MessageSender).to receive(:new).with(@child.profile, @message).and_call_original
-      MessageDeliveries::MessageProcessor.new(@system_date, testing_mode: false).send_messages
-      expect(MessageDeliveries::MessageDelivery.count).to eq(1)
-      expect(MessageDeliveries::MessageDelivery.first.message).to eq(@message)
-      expect(MessageDeliveries::MessageDelivery.first.child).to eq(@child)
-    end
-  end
 end
