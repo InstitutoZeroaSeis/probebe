@@ -3,17 +3,6 @@ FactoryGirl.define do
     child
     message
 
-    trait :with_profile do
-      transient do
-        profile nil
-      end
-
-      after(:build) do |message_delivery, evaluator|
-        message_delivery.child.profile = evaluator.profile ||
-          create(:profile, :with_cell_phone)
-      end
-    end
-
     trait :sent do
       status 'sent'
     end
