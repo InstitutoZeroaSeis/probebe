@@ -1,6 +1,6 @@
 class Admin::MessageDeliveriesController < Admin::AdminController
   defaults resource_class: MessageDeliveries::MessageDelivery
-  skip_before_filter :deny_site_user_access_on_admin
+  skip_before_action :deny_site_user_access_on_admin
 
   def create
     date = permitted_params[:delivery_date]

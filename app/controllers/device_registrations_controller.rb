@@ -1,7 +1,7 @@
 class DeviceRegistrationsController < ApplicationController
   include HeaderAuthenticationConcern
-  skip_before_filter :verify_authenticity_token
-  before_filter :check_authentication
+  skip_before_action :verify_authenticity_token
+  before_action :check_authentication
 
   def check_authentication
     head 403 unless user_signed_in?

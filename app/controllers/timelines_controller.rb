@@ -1,7 +1,7 @@
 class TimelinesController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :deny_admin_site_user_access_on_public_site
-  before_filter :check_profile_status
+  before_action :authenticate_user!
+  before_action :deny_admin_site_user_access_on_public_site
+  before_action :check_profile_status
 
   def show
     @child = Child.find(params[:id])
