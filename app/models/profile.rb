@@ -34,6 +34,10 @@ class Profile < ActiveRecord::Base
     child.pregnancy_start_date if child
   end
 
+  def primary_cell_phone
+    cell_phones.first.full_number
+  end
+
   protected
 
   def set_defaults
