@@ -12,12 +12,6 @@ module MessageDeliveries
       message.messageable
     end
 
-    def send_message
-      unless self.message_for_test
-        send_message_to_device
-      end
-    end
-
     def profile_id
       child.profile.id
     end
