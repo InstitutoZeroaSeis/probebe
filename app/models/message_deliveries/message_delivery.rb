@@ -1,13 +1,15 @@
 module MessageDeliveries
   class MessageDelivery < ActiveRecord::Base
-    include Rails.application.routes.url_helpers
     include Carnival::ModelHelper
 
     belongs_to :message, class_name: "Message"
     belongs_to :child, class_name: "Child"
     delegate :profile, to: :child
 
+    enum status: [:not_sent, :sent, :failed]
+
     scope :order_by_delivery_date, -> { order(delivery_date: :desc) }
+    scope :created_today, -> { where(created_at: Date.today.beginning_of_day..Date.today.end_of_day) }
 
     def article
       message.messageable

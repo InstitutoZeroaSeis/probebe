@@ -13,5 +13,13 @@ FactoryGirl.define do
           create(:profile, :with_cell_phone)
       end
     end
+
+    trait :sent do
+      status 'sent'
+    end
+
+    trait :not_sent do
+      status 'not_sent'
+    end
   end
 end
