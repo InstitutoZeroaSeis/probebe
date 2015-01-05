@@ -11,22 +11,21 @@ module MessageDeliveries
     def create_deliveries_for_all_children
       Child.all.each do |child|
         message = find_message_for_child(child)
-        if message.present?
-          delivery = build_message_delivery(child, message)
-          delivery.save
-        end
+        create_message_delivery(child, message)
       end
     end
 
     protected
 
-    def build_message_delivery(child, message)
-      MessageDelivery.new(
-        message: message,
-        child: child,
-        delivery_date: @system_date.date,
-        message_for_test: testing_mode
-      )
+    def create_message_delivery(child, message)
+      if message
+        MessageDelivery.create(
+          message: message,
+          child: child,
+          delivery_date: @system_date.date,
+          message_for_test: testing_mode
+        )
+      end
     end
 
     def find_message_for_child(child)
