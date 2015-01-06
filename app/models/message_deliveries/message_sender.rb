@@ -31,5 +31,6 @@ module MessageDeliveries
       n.data = { message: @message.text }
       n.save
     end
+
   end
 end
