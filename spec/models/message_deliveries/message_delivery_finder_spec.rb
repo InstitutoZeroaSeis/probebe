@@ -3,7 +3,7 @@ require 'rails_helper'
 describe MessageDeliveries::MessageDeliveryFinder, type: :model do
 
   describe ".find_and_deliver_messages" do
-    subject { create(:message_delivery, :not_sent, :with_profile) }
+    subject { create(:message_delivery, :not_sent) }
 
     it "is expected to set the delivery date when delivering" do
       expect(subject.delivery_date).to be_nil
@@ -17,8 +17,8 @@ describe MessageDeliveries::MessageDeliveryFinder, type: :model do
   end
 
   context "with two messages to be sent" do
-    before { create_list(:message_delivery, 4, :sent, :with_profile) }
-    before { create(:message_delivery, :not_sent, :with_profile) }
+    before { create_list(:message_delivery, 4, :sent) }
+    before { create(:message_delivery, :not_sent) }
 
     it "is expected to deliver them to the user devices" do
       finder = MessageDeliveries::MessageDeliveryFinder.new

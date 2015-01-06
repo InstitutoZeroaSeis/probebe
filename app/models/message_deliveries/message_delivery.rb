@@ -5,7 +5,7 @@ module MessageDeliveries
     belongs_to :message, class_name: "Message"
     belongs_to :child, class_name: "Child"
     has_and_belongs_to_many :device_registrations
-    delegate :profile, to: :child
+    delegate :text, to: :message
 
     enum status: [:not_sent, :sent, :failed]
 

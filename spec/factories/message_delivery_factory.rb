@@ -11,10 +11,9 @@ FactoryGirl.define do
       status 'not_sent'
     end
 
-    trait :with_profile do
-      after(:build) do |obj|
-        obj.child = create(:child, :with_profile)
-      end
+    trait :with_device_registrations do
+      device_registrations { create_list(:device_registration, 1) }
     end
+
   end
 end
