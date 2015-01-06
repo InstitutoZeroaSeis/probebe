@@ -23,7 +23,8 @@ module MessageDeliveries
           message: message,
           child: child,
           message_for_test: @testing_mode,
-          cell_phone_number: child.primary_cell_phone_number
+          cell_phone_number: child.primary_cell_phone_number,
+          device_registrations: child.device_registrations
         )
       end
     end

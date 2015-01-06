@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106152019) do
+ActiveRecord::Schema.define(version: 20150106163943) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -102,6 +102,11 @@ ActiveRecord::Schema.define(version: 20150106152019) do
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "device_registrations_message_deliveries", id: false, force: true do |t|
+    t.integer "device_registration_id", null: false
+    t.integer "message_delivery_id",    null: false
   end
 
   create_table "message_deliveries", force: true do |t|

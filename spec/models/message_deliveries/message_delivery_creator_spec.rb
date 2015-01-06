@@ -13,6 +13,7 @@ RSpec.describe MessageDeliveries::MessageDeliveryCreator, :type => :model do
       expect(subject.first.child).to eq(@child)
       expect(subject.first.message_for_test).to be false
       expect(subject.first.cell_phone_number).to eq(@child.primary_cell_phone_number)
+      expect(subject.first.device_registrations).to eq(@child.device_registrations)
       expect(subject.first.status).to eq('not_sent')
     end
   end
