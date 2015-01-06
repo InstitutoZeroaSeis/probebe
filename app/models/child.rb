@@ -11,6 +11,8 @@ class Child < ActiveRecord::Base
   validates_presence_of :birth_date
   validate :maximum_permited_pregnancy_date?
 
+  delegate :primary_cell_phone_number, to: :profile
+
   def age_in_weeks system_date = nil
     system_date ||= MessageDeliveries::SystemDate.new
     if pregnancy?(system_date)

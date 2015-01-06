@@ -1,7 +1,5 @@
 module MessageDeliveries
   class MessageDeliveryCreator
-    attr_reader :child
-    attr_reader :testing_mode
 
     def initialize(system_date, testing_mode: false)
       @system_date = system_date
@@ -9,9 +7,11 @@ module MessageDeliveries
     end
 
     def create_deliveries_for_all_children
-      Child.all.each do |child|
+      Child.all.map do |child|
         message = find_message_for_child(child)
         create_message_delivery(child, message)
+      end.select do |item|
+        item.present?
       end
     end
 
@@ -22,8 +22,8 @@ module MessageDeliveries
         MessageDelivery.create(
           message: message,
           child: child,
-          delivery_date: @system_date.date,
-          message_for_test: testing_mode
+          message_for_test: @testing_mode,
+          cell_phone_number: child.primary_cell_phone_number
         )
       end
     end

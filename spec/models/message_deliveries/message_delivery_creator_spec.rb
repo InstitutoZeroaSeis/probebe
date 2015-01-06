@@ -3,6 +3,20 @@ require 'rails_helper'
 RSpec.describe MessageDeliveries::MessageDeliveryCreator, :type => :model do
   before(:each) { @system_date = MessageDeliveries::SystemDate.new }
 
+  describe ".create_deliveries_for_all_children" do
+    before { @child = create(:child, birth_date: 5.months.ago, profile: create(:profile, :with_cell_phone)) }
+    before { @message = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
+    subject { MessageDeliveries::MessageDeliveryCreator.new(@system_date).create_deliveries_for_all_children }
+    it "is expected to correctly create the message delivery" do
+      expect(subject.count).to eq(1)
+      expect(subject.first.message).to eq(@message)
+      expect(subject.first.child).to eq(@child)
+      expect(subject.first.message_for_test).to be false
+      expect(subject.first.cell_phone_number).to eq(@child.primary_cell_phone_number)
+      expect(subject.first.status).to eq('not_sent')
+    end
+  end
+
   context "with only one message and already sent before" do
     before { @child = create(:child, :with_profile, birth_date: 5.months.ago) }
     before { @message = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
