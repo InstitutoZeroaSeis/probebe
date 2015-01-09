@@ -35,7 +35,7 @@ class Profile < ActiveRecord::Base
   end
 
   def primary_cell_phone_number
-    cell_phones.first.full_number
+    cell_phones.first.full_number unless cell_phones.empty?
   end
 
   protected
