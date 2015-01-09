@@ -25,6 +25,7 @@ pt-BR:
     user_email: &user_email 'Email do Autor'
     view: &view "Visualizar"
     weeks: "Semanas"
+    home_phone_number: "Telefone residencial"
   _gender: &gender
     male: 'Masculino'
     female: 'Feminino'
