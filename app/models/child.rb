@@ -1,7 +1,7 @@
 class Child < ActiveRecord::Base
   DAYS_IN_WEEK = 7
   PREGNANCY_DURATION_IN_WEEKS = 42
-  GENDER_ENUM = [:male, :female]
+  GENDER_ENUM = [:male, :female, :not_informed]
 
   belongs_to :profile
   has_many :message_deliveries, class_name: "MessageDeliveries::MessageDelivery"
@@ -10,6 +10,8 @@ class Child < ActiveRecord::Base
 
   validates_presence_of :birth_date
   validate :maximum_permited_pregnancy_date?
+
+  before_save :set_defaults
 
   def age_in_weeks system_date = nil
     system_date ||= MessageDeliveries::SystemDate.new
@@ -44,5 +46,10 @@ class Child < ActiveRecord::Base
       end
     end
   end
+
+  def set_defaults
+    self.gender ||= 'not_informed'
+  end
+
 
 end
