@@ -6,7 +6,7 @@ pt-BR:
     mailer:
       welcome: Bem Vindo
       hello: Oi
-      confirm_message: Você pode confirmar a sua conta de email atravéd do link abaixo 
+      confirm_message: Você pode confirmar a sua conta de email atravéd do link abaixo
       confirm_account: Confirme a minha conta
       change_message: Alguém solicitou um link para alterar a sua senha. Você pode fazer isso através do link abaixo
       change: Mudar a minha senha
@@ -19,7 +19,7 @@ pt-BR:
       new: Nova senha
       confirm: Confime nova senha
       change_message: Alterar sua senha
-      forgot: Esqueci minha senha
+      forgot: Esqueceu sua senha
       send_reset_instruction: Me envie as instruções de resetar senha
       change: Alterar minha senha
     registrations:
@@ -38,7 +38,7 @@ pt-BR:
       remember_me: Permanecer conectado
     shared:
       enter: Entrar
-      forgot: Esqueci minha senha
+      forgot: Esqueceu sua senha
       omni: Logar com
       register: Registrar
       resend: Reenviar confirmação
