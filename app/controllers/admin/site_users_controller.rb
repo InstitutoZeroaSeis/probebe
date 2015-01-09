@@ -1,7 +1,7 @@
 class Admin::SiteUsersController < Admin::AdminController
   layout "carnival/admin"
 
-  skip_before_filter :deny_site_user_access_on_admin, only: [:stop_impersonating]
+  skip_before_action :deny_site_user_access_on_admin, only: [:stop_impersonating]
   load_and_authorize_resource 'User', except: :stop_impersonating
   defaults :resource_class => User
 

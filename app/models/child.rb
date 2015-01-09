@@ -13,6 +13,9 @@ class Child < ActiveRecord::Base
 
   before_save :set_defaults
 
+  delegate :primary_cell_phone_number, to: :profile
+  delegate :device_registrations, to: :profile
+
   def age_in_weeks system_date = nil
     system_date ||= MessageDeliveries::SystemDate.new
     if pregnancy?(system_date)

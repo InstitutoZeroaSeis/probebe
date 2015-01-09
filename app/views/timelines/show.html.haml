@@ -3,7 +3,7 @@
   %ul.col-md-8.timeline
     - @deliveries.each do |delivery|
       %li.timeline-entry
-        %dt= l delivery.created_at
+        %dt= l delivery.delivery_date
         %dd= delivery.message.text
         .read-more-timelin
           =link_to "#{I18n.t('views.timeline.read_more')}", post_path(delivery.article.id) if delivery.article.publishable

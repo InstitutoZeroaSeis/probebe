@@ -104,13 +104,20 @@ ActiveRecord::Schema.define(version: 20150109143405) do
     t.datetime "updated_at"
   end
 
+  create_table "device_registrations_message_deliveries", id: false, force: true do |t|
+    t.integer "device_registration_id", null: false
+    t.integer "message_delivery_id",    null: false
+  end
+
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"
     t.integer  "child_id"
     t.date     "delivery_date"
-    t.boolean  "message_for_test", default: false
+    t.boolean  "message_for_test",  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status",            default: 0
+    t.string   "cell_phone_number"
   end
 
   create_table "messages", force: true do |t|

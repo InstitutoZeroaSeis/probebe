@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :deny_admin_site_user_access_on_public_site
-  before_filter :check_profile_status, except: [:new, :create, :edit, :update]
+  before_action :authenticate_user!
+  before_action :deny_admin_site_user_access_on_public_site
+  before_action :check_profile_status, except: [:new, :create, :edit, :update]
 
   def show
     @profile = current_profile

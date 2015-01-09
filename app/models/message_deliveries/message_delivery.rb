@@ -1,21 +1,23 @@
 module MessageDeliveries
   class MessageDelivery < ActiveRecord::Base
-    include Rails.application.routes.url_helpers
     include Carnival::ModelHelper
 
     belongs_to :message, class_name: "Message"
     belongs_to :child, class_name: "Child"
+    has_and_belongs_to_many :device_registrations
+    delegate :text, to: :message
+    delegate :profile, to: :child
+
+    enum status: [:not_sent, :sent, :failed]
+
+    before_save :set_defaults
+    before_update :update_delivery_date
 
     scope :order_by_delivery_date, -> { order(delivery_date: :desc) }
+    scope :created_today, -> { where(created_at: Date.today.beginning_of_day..Date.today.end_of_day) }
 
     def article
       message.messageable
-    end
-
-    def send_message
-      unless self.message_for_test
-        send_message_to_device
-      end
     end
 
     def profile_id
@@ -26,8 +28,16 @@ module MessageDeliveries
       child.profile.name
     end
 
-    def profile_cell_phone
-      child.profile.cell_phones.first.full_number
+    protected
+
+    def set_defaults
+      self.status ||= :not_sent
+    end
+
+    def update_delivery_date
+      if status_changed? and status == 'sent'
+        self.delivery_date = DateTime.now
+      end
     end
 
   end
