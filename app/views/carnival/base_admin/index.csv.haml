@@ -1,4 +1,4 @@
 - csv = CSV.generate do |csv|
   - @records.each do |record|
-    - csv << [record.profile_cell_phone, record.message.text]
+    - csv << [record.profile.primary_cell_phone_number, record.message.text]
 = raw csv
