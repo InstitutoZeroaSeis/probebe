@@ -9,7 +9,6 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = Profile.new
-    @profile.cell_phones.build if @profile.cell_phones.empty?
     redirect_to edit_profile_path if current_profile
   end
 
@@ -26,7 +25,6 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = current_profile
-    @profile.cell_phones.build if @profile.cell_phones.empty?
     if current_profile.blank?
       redirect_to new_profile_path
     end
