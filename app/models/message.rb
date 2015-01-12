@@ -4,7 +4,6 @@ class Message < ActiveRecord::Base
 
   belongs_to :category
   belongs_to :messageable, polymorphic: true
-  has_many :message_deliveries
 
   enum gender: [:male, :female, :both]
   enum baby_target_type: [:pregnancy, :born]

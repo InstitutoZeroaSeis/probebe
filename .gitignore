@@ -31,3 +31,4 @@ tags
 provisioning/roles/*
 /path/
 .capistrano/
+dump.sql

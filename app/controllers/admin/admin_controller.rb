@@ -1,6 +1,6 @@
 class Admin::AdminController < Carnival::BaseAdminController
-  before_filter :authenticate_user!
-  before_filter :deny_site_user_access_on_admin
+  before_action :authenticate_user!
+  before_action :deny_site_user_access_on_admin
   layout "carnival/admin"
 
   def show_activity_log

@@ -22,4 +22,12 @@ public
     APP_CONFIG['message_delivery']['wsdl_name_space']
   end
 
+  def self.spring_user
+    APP_CONFIG['message_delivery']['spring_user']
+  end
+
+  def self.spring_password
+    APP_CONFIG['message_delivery']['spring_password']
+  end
+
 end

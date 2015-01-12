@@ -23,4 +23,13 @@ RSpec.describe Child, :type => :model do
     it { is_expected.to eq(17) }
   end
 
+  context "with a baby that will born more than 42 weeks from now" do
+    subject { build_stubbed :child, birth_date: 43.weeks.from_now }
+    it { is_expected.to be_invalid }
+  end
+
+  context "with a baby that will born less than 42 weeks from now" do
+    subject { build_stubbed :child, birth_date: 41.weeks.from_now }
+    it { is_expected.to be_valid }
+  end
 end

@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :deny_admin_site_user_access_on_public_site
-  before_filter :check_profile_status, except: [:new, :create, :edit, :update]
+  before_action :authenticate_user!
+  before_action :deny_admin_site_user_access_on_public_site
+  before_action :check_profile_status, except: [:new, :create, :edit, :update]
 
   def show
     @profile = current_profile
@@ -9,7 +9,6 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = Profile.new
-    @profile.cell_phones.build if @profile.cell_phones.empty?
     redirect_to edit_profile_path if current_profile
   end
 
@@ -26,7 +25,6 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = current_profile
-    @profile.cell_phones.build if @profile.cell_phones.empty?
     if current_profile.blank?
       redirect_to new_profile_path
     end

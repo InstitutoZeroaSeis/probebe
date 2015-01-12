@@ -34,11 +34,16 @@ replaceNameByCurrentTime = (jqElement) ->
     new_name = name.replace(pattern, "$1[#{time}]$3")
     $(@).attr('name', new_name)
 
+    id = $(@).attr('id')
+    pattern = /^(.*)(\d+)(.*)$/g
+    new_id = id.replace(pattern, "$1[#{time}]$3")
+    $(@).attr('id', new_id)
+
 setupDatePickers = ->
   $('.datepicker').datepicker(
     changeMonth: true
     changeYear: true
-    yearRange: "-80:+0"
+    yearRange: "-80:+1"
     beforeShow: ->
     setTimeout(->
       $('.ui-datepicker').css('z-index', 99)

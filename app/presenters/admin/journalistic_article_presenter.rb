@@ -2,7 +2,6 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
 
   model_name 'Articles::JournalisticArticle'
 
-
   field :parent_article_id,
     as: :hidden,
     actions: [:index, :show, :new],
@@ -47,35 +46,32 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
     sortable: true,
     advanced_search: {operator: :like}
 
-
   field :gender,
     actions: [:index, :new, :edit, :show],
     advanced_search: {:operator => :equal},
-    as: :readonly
+    as: :enum
 
   field :teenage_pregnancy,
     actions: [:index, :new, :edit, :show],
-    advanced_search: {:operator => :equal},
-    as: :readonly
+    advanced_search: {:operator => :equal}
 
   field :baby_target_type,
     actions: [:index, :new, :edit, :show],
+    actions: [:index, :new, :edit, :show],
     advanced_search: {:operator => :equal},
-    as: :readonly
+    as: :enum
 
   field :minimum_valid_week,
     actions: [:index, :new, :edit, :show],
-    advanced_search: {:operator => :equal},
-    as: :readonly
+    advanced_search: {:operator => :equal}
 
   field :maximum_valid_week,
     actions: [:index, :new, :edit, :show],
-    advanced_search: {:operator => :equal},
-    as: :readonly
+    advanced_search: {:operator => :equal}
 
   field :publishable,
-        actions: [:index, :new, :edit, :show],
-        sortable: true
+    actions: [:index, :new, :edit, :show],
+    sortable: true
 
   field 'user.email',
     actions: [:index, :show],

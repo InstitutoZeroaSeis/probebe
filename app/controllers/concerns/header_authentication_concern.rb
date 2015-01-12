@@ -2,7 +2,7 @@ module HeaderAuthenticationConcern
   extend ActiveSupport::Concern
 
   included do
-    before_filter :check_authentication_headers
+    before_action :check_authentication_headers
   end
 
   def check_authentication_headers

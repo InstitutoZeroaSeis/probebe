@@ -16,6 +16,7 @@ feature "User creates new profile" do
       find("input[name$='[birth_date]']").set(1.year.ago.strftime("%d/%m/%Y"))
     end
 
+    click_on 'Incluir Telefone'
     within ".cell_phone_fields" do |child_fields|
       find("input[name$='[area_code]']").set("11")
     end

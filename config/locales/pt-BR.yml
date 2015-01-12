@@ -25,6 +25,7 @@ pt-BR:
     user_email: &user_email 'Email do Autor'
     view: &view "Visualizar"
     weeks: "Semanas"
+    home_phone_number: "Telefone residencial"
   _gender: &gender
     male: 'Masculino'
     female: 'Feminino'
@@ -53,6 +54,7 @@ pt-BR:
         type: *type
         user_email: *user_email
         messages: "Mensagens"
+        publishable: "Publicável"
       articles/authorial_article:
         <<: *article
         journalistic_articles: "Artigos Jornalísticos"
@@ -75,6 +77,7 @@ pt-BR:
         gender: "Gênero"
       message:
         id: "Id"
+        created_at: "Criado em"
         text: "Texto"
         messageable_id: "Artigo Id"
       message_deliveries/message_delivery:
@@ -115,6 +118,9 @@ pt-BR:
         articles/journalistic_article:
           base:
             messages_length: "O comprimento máximo de cada mensagem dever ser de até 150 caracteres"
+        child:
+          base:
+            maximum_permited_pregnancy_date: "A data de gestação ultrapassará os 9 meses"
         category:
           base:
             has_child_categories: "Categoria não pode ser deletada por conter subcategoria"
@@ -136,8 +142,9 @@ pt-BR:
       profile: "Perfil"
       tag: "Tag"
   carnival:
-    impersonate: "Logar como"
     create_journalistic_article: "Criar artigo jornalistico"
+    impersonate: "Logar como"
+    show_activity_log: "Mostrar log de atividade"
     menu:
       authorial_articles: "Artigo Autoral"
       admin_site_users: "Administradores"
