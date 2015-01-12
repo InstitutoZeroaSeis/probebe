@@ -1,6 +1,8 @@
 default: &default
   message_delivery:
     deliver_sms: false
+    spring_user: "zero6"
+    spring_password: "zero6ws"
     wsdl_url: http://probebe.org.br:3020/BasicSourceMT?wsdl
     wsdl_end_point: http://probebe.org.br:3020/BasicSourceMT
     wsdl_name_space: http://basic.webservice.gateway.springwireless.com/

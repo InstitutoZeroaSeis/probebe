@@ -17,7 +17,7 @@ module MessageDeliveries
 
     def deliver_through_sms
       if ProBebeConfig.deliver_sms?
-        MessageDeliveries::SpringWsdl.send_message(@message_delivery.cell_phone_number, @message_delivery.text)
+        MessageDeliveries::SpringWsdl.send_message(@message_delivery.cell_phone_number, @message_delivery.text, @message_delivery.id)
       else
         true
       end

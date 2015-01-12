@@ -5,7 +5,7 @@ RSpec.describe MessageDeliveries::MessageSender, :type => :model do
     let (:message_delivery) { build_stubbed(:message_delivery) }
     it "is expected to send the message via sms" do
       expect(ProBebeConfig).to receive(:deliver_sms?).and_return(true)
-      expect(MessageDeliveries::SpringWsdl).to receive(:send_message).with(message_delivery.cell_phone_number, message_delivery.text).and_return(true)
+      expect(MessageDeliveries::SpringWsdl).to receive(:send_message).with(message_delivery.cell_phone_number, message_delivery.text, message_delivery.id).and_return(true)
 
       sender = MessageDeliveries::MessageSender.new(message_delivery)
 
