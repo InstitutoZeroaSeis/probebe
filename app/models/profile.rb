@@ -1,4 +1,6 @@
 class Profile < ActiveRecord::Base
+  include Carnival::ModelHelper
+
   DAYS_IN_WEEK = 7
   GENDER_ENUM = [:male, :female, :not_informed]
 

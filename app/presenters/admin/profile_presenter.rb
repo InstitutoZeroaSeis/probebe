@@ -38,11 +38,13 @@ class Admin::ProfilePresenter < Carnival::BaseAdminPresenter
     actions: [:index, :show]
 
   field :cell_phones,
+    actions: [:new, :edit],
     nested_form: true,
     nested_form_allow_destroy: true,
     nested_form_modes: [:new, :edit]
 
-  field :avatars,
+  field :avatar,
+    actions: [:new, :edit],
     nested_form: true,
     nested_form_allow_destroy: true,
     nested_form_modes: [:new, :edit]

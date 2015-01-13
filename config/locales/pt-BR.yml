@@ -143,6 +143,8 @@ pt-BR:
       tag: "Tag"
   carnival:
     create_journalistic_article: "Criar artigo jornalistico"
+    create_profile: "Criar perfil"
+    edit_profile: "Editar perfil"
     impersonate: "Logar como"
     show_activity_log: "Mostrar log de atividade"
     menu:

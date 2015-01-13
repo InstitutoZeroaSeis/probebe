@@ -1,4 +1,6 @@
 class CellPhone < ActiveRecord::Base
+  include Carnival::ModelHelper
+
   belongs_to :profile
   validates_presence_of :number, :area_code
   validates_format_of :number, with: /\A\d{4,5}\-\d{4,4}\Z/
