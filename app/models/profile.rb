@@ -19,6 +19,8 @@ class Profile < ActiveRecord::Base
   before_save :set_defaults
   before_save :update_name
 
+  scope :admin_site_user_profiles, -> { joins(:user).merge(User.admin_site_user) }
+
   def avatar_url
     avatar.photo.url if avatar
   end
