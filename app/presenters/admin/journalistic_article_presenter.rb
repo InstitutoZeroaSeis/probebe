@@ -57,7 +57,6 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
 
   field :baby_target_type,
     actions: [:index, :new, :edit, :show],
-    actions: [:index, :new, :edit, :show],
     advanced_search: {:operator => :equal},
     as: :enum
 
