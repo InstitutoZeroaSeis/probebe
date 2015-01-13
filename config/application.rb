@@ -12,6 +12,7 @@ module ProBebe
     config.autoload_paths += %W{#{config.root}/lib}
     config.i18n.available_locales = :pt, :'pt-BR', :en
     config.i18n.default_locale = 'pt-BR'
+    config.initialize_on_precompile = false
     console { config.console = Pry }
   end
 end
