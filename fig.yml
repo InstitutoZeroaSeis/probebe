@@ -8,8 +8,8 @@ db:
     - .data:/var/lib/mysql
 
 web:
-  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec rails s --pid=/tmp/server.pid"
-  image: rails
+  build: docker/development_image
+  command: bundle exec rails s --pid=/tmp/server.pid
   links:
     - db
     - mail
@@ -28,8 +28,8 @@ mail:
     - 3010:1080
 
 rpush:
-  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec rpush start --foreground --pid-file=/tmp/rpush.pid"
-  image: rails
+  build: docker/development_image
+  command: bundle exec rpush start --foreground --pid-file=/tmp/rpush.pid
   links:
     - db
   volumes:
@@ -39,11 +39,11 @@ rpush:
 redis:
   image: redis
   ports:
-    - 6379:6379
+    - 6379
 
 sidekiq:
-  command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec sidekiq --pidfile=/tmp/sidekiq.pid"
-  image: rails
+  build: docker/development_image
+  command: bundle exec sidekiq --pidfile=/tmp/sidekiq.pid
   links:
     - redis
     - db

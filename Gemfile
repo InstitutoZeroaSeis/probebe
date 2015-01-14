@@ -41,7 +41,7 @@ group :development do
 end
 
 group :test do
-  gem 'poltergeist', require: false
+  gem 'capybara-webkit'
   gem 'simplecov', require: false
 end
 
