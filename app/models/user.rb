@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def name_or_email
-    profile.name || email
+    profile.present? ? profile.name : email
   end
 
 end

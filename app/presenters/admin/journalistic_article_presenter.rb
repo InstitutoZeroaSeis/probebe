@@ -17,8 +17,9 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
     actions: [:show, :index],
     advanced_search: {operator: :equal}
 
-  field :category_name,
-    actions: [:new, :edit]
+  field :category_id,
+        as: :category_grouped_select,
+        actions: [:new, :edit]
 
   field :tags,
     actions: [:new, :show, :edit],
