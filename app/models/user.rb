@@ -35,4 +35,12 @@ class User < ActiveRecord::Base
     !has_profile?
   end
 
+  def to_label
+    name_or_email
+  end
+
+  def name_or_email
+    profile.name || email
+  end
+
 end

@@ -8,12 +8,16 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
     sortable: true,
     advanced_search: {operator: :equal}
 
+  field :original_author_id,
+    as: :admin_site_user_collection,
+    actions: [:new, :edit],
+    advanced_search: {operator: :like}
+
   field 'category.name',
     actions: [:show, :index],
     advanced_search: {operator: :equal}
 
   field :category_name,
-    as: :readonly,
     actions: [:new, :edit]
 
   field :tags,
@@ -73,7 +77,7 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
     actions: [:index, :new, :edit, :show],
     sortable: true
 
-  field 'user.email',
+  field 'original_author_name',
     actions: [:index, :show],
     sortable: true,
     advanced_search: {operator: :like}

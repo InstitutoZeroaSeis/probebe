@@ -30,7 +30,7 @@ class Admin::JournalisticArticlesController < Admin::AdminController
 
   def permitted_params
     permitted = params.permit(articles_journalistic_article:
-                              [:id, :text, :title, :summary, :category_id, :user_id,
+                              [:id, :text, :title, :summary, :category_id, :user_id, :original_author_id,
                               :gender, :teenage_pregnancy, :baby_target_type, :publishable,
                               :box, :minimum_valid_week, :maximum_valid_week, {tag_ids: []},
                               article_references_attributes:[:id, :source, :_destroy],

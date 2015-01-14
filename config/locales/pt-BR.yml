@@ -9,11 +9,13 @@ pt-BR:
     edit: &edit "Editar"
     exit: &exit "Sair"
     gender: &genders "Sexo"
+    home_phone_number: "Telefone residencial"
     include: "Incluir"
     maximum_valid_week: &maximum_valid_week "Validade Final em Semana"
     minimum_valid_week: &minimum_valid_week "Validade Inicial em Semana"
     my_children: "Meus Filhos"
     new: &new "Novo"
+    original_author_name: &original_author_name "Nome do Autor"
     parent_article_id: &parent_article_id 'Artigo Pai'
     read_more: &read_more "Leia Mais"
     summary: &summary 'Resumo'
@@ -25,7 +27,6 @@ pt-BR:
     user_email: &user_email 'Email do Autor'
     view: &view "Visualizar"
     weeks: "Semanas"
-    home_phone_number: "Telefone residencial"
   _gender: &gender
     male: 'Masculino'
     female: 'Feminino'
@@ -46,6 +47,7 @@ pt-BR:
         journalistic_articles_count: "Quantidade de artigos jornalístico"
         minimum_valid_week: *minimum_valid_week
         maximum_valid_week: *maximum_valid_week
+        original_author_name: *original_author_name
         parent_article_id: *parent_article_id
         summary: *summary
         teenage_pregnancy: "Aplicável para gravidez na adolescência"
