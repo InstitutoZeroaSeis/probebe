@@ -2,4 +2,4 @@
 
 /etc/init.d/xvfb start
 
-/bin/bash -c $*
+/bin/bash -c "$*"
