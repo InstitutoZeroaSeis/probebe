@@ -5,8 +5,8 @@ module MessageDeliveries
     belongs_to :message, class_name: "Message"
     belongs_to :child, class_name: "Child"
     has_and_belongs_to_many :device_registrations
+    has_one :profile, through: :child
     delegate :text, to: :message
-    delegate :profile, to: :child
 
     enum status: [:not_sent, :sent, :failed]
 
@@ -18,14 +18,6 @@ module MessageDeliveries
 
     def article
       message.messageable
-    end
-
-    def profile_id
-      child.profile.id
-    end
-
-    def profile_name
-      child.profile.name
     end
 
     protected

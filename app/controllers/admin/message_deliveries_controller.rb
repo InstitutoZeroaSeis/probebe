@@ -2,6 +2,10 @@ class Admin::MessageDeliveriesController < Admin::AdminController
   defaults resource_class: MessageDeliveries::MessageDelivery
   skip_before_action :deny_site_user_access_on_admin
 
+  def table_items
+    MessageDeliveries::MessageDelivery.includes(:message, :child, :profile)
+  end
+
   def create
     date = permitted_params[:delivery_date]
     testing_mode = permitted_params[:message_for_test]

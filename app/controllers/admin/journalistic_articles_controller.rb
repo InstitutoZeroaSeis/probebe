@@ -4,6 +4,10 @@ class Admin::JournalisticArticlesController < Admin::AdminController
 
   layout "carnival/admin"
 
+  def table_items
+    Articles::JournalisticArticle.includes(:category, :user)
+  end
+
   def build_resource
     if action_name == "new"
       authorial_article = find_authorial_article(params[:id])
