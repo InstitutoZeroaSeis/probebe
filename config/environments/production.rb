@@ -92,5 +92,5 @@ Rails.application.configure do
 
   Rails.application.routes.default_url_options[:host] = 'www.probebe.org.br'
 
-  config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
+  config.action_controller.asset_host = "//elasticbeanstalk-us-east-1-119499395752.s3.amazonaws.com"
 end
