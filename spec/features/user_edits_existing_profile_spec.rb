@@ -4,7 +4,7 @@ feature "User edits new profile" do
   before { @user = create(:user, :confirmed, :with_profile) }
   before { sign_in(@user.email, @user.password) }
 
-  scenario "successfully", js: true do
+  scenario "successfully" do
     visit edit_profile_path
     fill_in "profile_first_name", with: "New name"
 

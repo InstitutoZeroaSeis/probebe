@@ -8,8 +8,7 @@ describe MessageDeliveries::MessageDeliveryFinder, type: :model do
     it "is expected to set the delivery date when delivering" do
       expect(subject.delivery_date).to be_nil
 
-      finder = MessageDeliveries::MessageDeliveryFinder.new
-      finder.find_and_deliver_messages
+      MessageDeliveries::MessageDeliveryFinder.find_and_deliver_messages
 
       subject.reload
       expect(subject.delivery_date).to_not be_nil
@@ -21,8 +20,7 @@ describe MessageDeliveries::MessageDeliveryFinder, type: :model do
     before { create(:message_delivery, :not_sent) }
 
     it "is expected to deliver them to the user devices" do
-      finder = MessageDeliveries::MessageDeliveryFinder.new
-      finder.find_and_deliver_messages
+      MessageDeliveries::MessageDeliveryFinder.find_and_deliver_messages
       expect(MessageDeliveries::MessageDelivery.sent.count).to eq(5)
       expect(MessageDeliveries::MessageDelivery.not_sent.count).to eq(0)
     end

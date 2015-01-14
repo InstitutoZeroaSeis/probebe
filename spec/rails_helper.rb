@@ -5,12 +5,8 @@ require 'rspec/rails'
 
 require 'factory_girl'
 require 'simplecov'
-require 'capybara/poltergeist'
 
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, { phantomjs: Rails.root.join('bin/phantomjs').to_s })
-end
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :webkit
 
 SimpleCov.start do
   add_filter 'vendor/'

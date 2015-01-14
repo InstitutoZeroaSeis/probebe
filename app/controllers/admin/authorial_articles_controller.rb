@@ -2,6 +2,10 @@ class Admin::AuthorialArticlesController < Admin::AdminController
   defaults :resource_class => Articles::AuthorialArticle
   load_and_authorize_resource class: 'Articles::AuthorialArticle'
 
+  def table_items
+    Articles::AuthorialArticle.includes(:category, :user)
+  end
+
   def create_journalistic_article
     redirect_to controller: 'journalistic_articles', action: 'new',  id: params[:id]
   end

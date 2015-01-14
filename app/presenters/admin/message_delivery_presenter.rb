@@ -2,7 +2,7 @@ class Admin::MessageDeliveryPresenter < Carnival::BaseAdminPresenter
 
   field :id
 
-  field 'profile_name',
+  field 'profile.name',
     actions: [:index, :show],
     searchable: false
 
