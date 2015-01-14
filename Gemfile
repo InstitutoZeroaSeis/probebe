@@ -32,6 +32,7 @@ gem 'sidekiq', '~> 3.3.0'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'puma'
 gem 'whenever', '~> 0.9.4'
+gem 'json', '1.8.1'
 
 group :development do
   gem 'better_errors', '0.9.0'
