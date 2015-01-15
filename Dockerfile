@@ -13,4 +13,6 @@ RUN whenever -w
 
 RUN echo America/Sao_Paulo > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 
+ENV RAILS_ENV production
+
 CMD bundle exec puma -t 16:16 --preload -b unix:///tmp/probebe/probebe.sock
