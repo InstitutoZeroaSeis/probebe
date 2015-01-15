@@ -15,7 +15,3 @@ test:
 
 production:
   <<: *default
-  message_delivery:
-    deliver_sms: false
-    wsdl_url: http://webservice.springvas.com.br:50983/BasicSourceMT?WSDL
-    wsdl_end_point: http://webservice.springvas.com.br:50983/BasicSourceMT
