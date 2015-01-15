@@ -1,8 +1,8 @@
 class Admin::ProfilesController < Admin::AdminController
-  layout "carnival/admin"
+  defaults :resource_class => Profile
+  load_and_authorize_resource class: 'Profile'
 
   skip_before_action :deny_site_user_access_on_admin
-  defaults :resource_class => Profile
 
   def build_resource
     if action_name == "new"
@@ -13,6 +13,12 @@ class Admin::ProfilesController < Admin::AdminController
     else
       super
     end
+  end
+
+  def update
+    @profile.update_attributes(permitted_params)
+    flash[:notice] = t('messages.updated')
+    redirect_to admin_profiles_path
   end
 
   private
@@ -32,8 +38,8 @@ class Admin::ProfilesController < Admin::AdminController
   def permitted_params
     profile_params = params[:profile]
 
-    personal_attributes = [:user_id, :first_name, :last_name, :gender, :birth_date, avatar_attributes: [:id, :photo, :_destroy]]
-    contact_attributes = [:state, :city, :street, cell_phones_attributes: [:id, :area_code, :number, :_destroy]]
+    personal_attributes = [:id, :user_id, :first_name, :last_name, :gender, :birth_date, avatar_attributes: [:id, :photo, :_destroy]]
+    contact_attributes = [:state, :city, :street, :home_phone_number, cell_phones_attributes: [:id, :area_code, :number, :_destroy]]
     profile_params ? profile_params.permit(personal_attributes + contact_attributes) : {}
   end
 
