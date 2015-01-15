@@ -15,4 +15,4 @@ RUN echo America/Sao_Paulo > /etc/timezone && dpkg-reconfigure --frontend nonint
 
 ENV RAILS_ENV production
 
-CMD bundle exec puma -t 16:16 --preload -b unix:///tmp/probebe/probebe.sock
+CMD bundle exec puma -e production -t 16:16 --preload -b unix:///tmp/probebe/probebe.sock
