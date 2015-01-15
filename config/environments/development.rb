@@ -42,7 +42,7 @@ Rails.application.configure do
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0" if defined? BetterErrors && Rails.env == :development
 
   config.after_initialize do
-    Bullet.enable = false
+    Bullet.enable = true
     Bullet.alert = false
     Bullet.bullet_logger = true
     Bullet.console = true

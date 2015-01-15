@@ -26,4 +26,21 @@ class User < ActiveRecord::Base
   def set_defaults
     self.role ||= :site_user
   end
+
+  def has_profile?
+    profile.present?
+  end
+
+  def has_no_profile?
+    !has_profile?
+  end
+
+  def to_label
+    name_or_email
+  end
+
+  def name_or_email
+    profile.present? ? profile.name : email
+  end
+
 end

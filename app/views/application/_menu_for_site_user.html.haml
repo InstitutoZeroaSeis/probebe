@@ -13,7 +13,11 @@
           %ul.dropdown-menu{:role => "menu"}
             %li= link_to "#{t('general.commom_words.view')} #{t('activerecord.models.profile')}", profile_path
             %li= link_to "#{t('general.commom_words.edit')} #{t('activerecord.models.profile')}", edit_profile_path
-        %li.dropdown
+            -if current_user.encrypted_password.present?
+              %li= link_to "Change password", edit_user_registration_path
+            -else
+              -# %li= link_to "Mudar o acesso", edit_oauth_user_registration_path
+        %li.dropdow
           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
             = t('general.commom_words.my_children')
             %span.caret

@@ -1,4 +1,4 @@
-source 'http://production.cf.rubygems.org/'
+source 'http://rubygems.org/'
 
 gem 'rails', '4.1.6'
 gem 'mysql2'
@@ -11,8 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'spring',        group: :development
 gem 'pry'
 gem 'rails-i18n', '~> 4.0.0'
-gem 'carnival', :github => 'cartolari/carnival', :branch => 'master'
-gem 'carnival_devise_views', :github => 'Vizir/carnival_devise_views', :branch => 'master'
+gem 'carnival', '~> 0.1.5'
+gem 'carnival_devise_views', '~> 0.0.4'
 gem 'devise', '~> 3.4.0'
 gem 'devise-i18n', '~> 0.11.2'
 gem 'omniauth-facebook', '~> 2.0.0'
@@ -32,6 +32,7 @@ gem 'sidekiq', '~> 3.3.0'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'puma'
 gem 'whenever', '~> 0.9.4'
+gem 'json', '1.8.1'
 
 group :development do
   gem 'better_errors', '0.9.0'
@@ -40,7 +41,7 @@ group :development do
 end
 
 group :test do
-  gem 'poltergeist', require: false
+  gem 'capybara-webkit'
   gem 'simplecov', require: false
 end
 

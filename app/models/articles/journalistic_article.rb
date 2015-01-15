@@ -28,6 +28,10 @@ class Articles::JournalisticArticle < Articles::Article
     parent_article.text
   end
 
+  def original_author_name
+    original_author.name_or_email
+  end
+
   private
 
   def length_of_messages

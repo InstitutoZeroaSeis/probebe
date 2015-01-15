@@ -1,0 +1,10 @@
+{
+  "app/presenters/*_presenter.rb": {
+    "type": "presenter",
+    "template": ["class %SPresenter < Carnival::BaseAdminPresenter\n\n\tfield :id, actions: [:index, :show]\n\n\taction :index\n\taction :edit\n\taction :show\n\taction :new\nend"]
+  },
+  "app/workers/*_worker.rb": {
+    "type": "worker",
+    "template": ["class %SWorker\n\tinclude Sidekiq::Worker\n\n\tdef perform\n\tend\nend"]
+  }
+}

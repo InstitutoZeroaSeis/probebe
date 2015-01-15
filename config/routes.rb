@@ -33,11 +33,14 @@ Rails.application.routes.draw do
     resources :journalistic_articles
     resources :messages
     resources :message_deliveries
+    resources :profiles
     resources :site_users
     resources :tags
     get 'authorial_articles/:id/create_journalistic_article' => 'authorial_articles#create_journalistic_article', as: :create_journalistic_article
     get 'journalistic_articles/:id/show_activity_log' => 'journalistic_articles#show_activity_log'
     get 'site_users/:id/stop_impersonating' => 'site_users#stop_impersonating', as: :stop_impersonating
+    get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile
+    get 'admin_site_users/:id/create_profile' => 'admin_site_users#create_profile', as: :create_profile
     post 'site_users/:id/impersonate' => 'site_users#impersonate', as: :impersonate_user
   end
 

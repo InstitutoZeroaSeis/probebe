@@ -10,7 +10,7 @@ feature "Admin site user visit one message delivery view page" do
     expect(page).to have_content(I18n.t('activerecord.attributes.message_deliveries/message_delivery.profile_name'))
     expect(page).to have_content(I18n.t('activerecord.attributes.message_deliveries/message_delivery.delivery_date'))
     expect(page).to have_content(I18n.t('activerecord.attributes.message_deliveries/message_delivery.message_for_test'))
-    expect(page).to have_content(message_delivery.profile_name)
+    expect(page).to have_content(message_delivery.profile.name)
     expect(page).to have_content(message_delivery.delivery_date)
     expect(page).to have_content(message_delivery.message_for_test)
   end
