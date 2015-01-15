@@ -13,6 +13,8 @@ ENV RAILS_ENV production
 
 ADD . /app
 
+RUN cd /app && bundle exec rake assets:precompile
+
 RUN whenever -w
 
 CMD bundle exec puma -e production -t 16:16 --preload -b unix:///tmp/probebe/probebe.sock
