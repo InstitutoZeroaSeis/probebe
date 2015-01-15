@@ -32,6 +32,7 @@ Rails.application.configure do
   # Generate digests for assets URLs.
   config.assets.digest = true
   config.assets.enabled = true
+  config.assets.debug = false
 
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
@@ -54,9 +55,6 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
-
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
@@ -92,5 +90,5 @@ Rails.application.configure do
 
   Rails.application.routes.default_url_options[:host] = 'www.probebe.org.br'
 
-  config.action_controller.asset_host = "//elasticbeanstalk-us-east-1-119499395752.s3.amazonaws.com"
+  config.action_controller.asset_host = "http://s3.amazonaws.com/elasticbeanstalk-us-east-1-119499395752/"
 end
