@@ -18,7 +18,7 @@ class Admin::ProfilesController < Admin::AdminController
   def update
     @profile.update_attributes(permitted_params)
     flash[:notice] = t('messages.updated')
-    redirect_to admin_profiles_path
+    update!
   end
 
   private
@@ -40,6 +40,7 @@ class Admin::ProfilesController < Admin::AdminController
 
     personal_attributes = [:id, :user_id, :first_name, :last_name, :gender, :birth_date, avatar_attributes: [:id, :photo, :_destroy]]
     contact_attributes = [:state, :city, :street, :home_phone_number, cell_phones_attributes: [:id, :area_code, :number, :_destroy]]
+
     profile_params ? profile_params.permit(personal_attributes + contact_attributes) : {}
   end
 
