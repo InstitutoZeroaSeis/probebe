@@ -21,7 +21,7 @@ test:
 production:
   <<: *default
   database: <%= ENV['RDS_DB_NAME'] || 'probebe_production' %>
-  username: <%= ENV['RDS_USERNAME'] || 'admin' %>
+  username: <%= ENV['RDS_USERNAME'] || 'root' %>
   password: <%= ENV['RDS_PASSWORD'] || 'root' %>
   host: <%= ENV['RDS_HOSTNAME'] || 'db' %>
   port: <%= ENV['RDS_PORT'] || '3306' %>
