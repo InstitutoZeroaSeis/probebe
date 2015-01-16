@@ -1,5 +1,5 @@
 default: &default
-  message_delivery:
+  message_delivery: &message_delivery
     deliver_sms: false
     spring_user: "zero6"
     spring_password: "zero6ws"
@@ -14,4 +14,8 @@ test:
   <<: *default
 
 production:
-  <<: *default
+  message_delivery:
+    <<: *message_delivery
+    deliver_sms: true
+    wsdl_url: http://webservice.springvas.com.br:50983/BasicSourceMT?WSDL
+    wsdl_end_point: http://webservice.springvas.com.br:50983/BasicSourceMT
