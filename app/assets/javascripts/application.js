@@ -20,3 +20,4 @@
 //= require inputs/week_to_date_input
 //= require ckeditor/init
 //= require jquery.mask
+//= require vendor/html5shiv
