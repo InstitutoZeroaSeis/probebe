@@ -1,7 +1,7 @@
 db:
   environment:
-    MYSQL_PASS: root
-  image: tutum/mysql
+    MYSQL_ROOT_PASSWORD: root
+  image: centurylink/mysql
   ports:
     - 3306
   volumes:
