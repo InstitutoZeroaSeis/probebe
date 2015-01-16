@@ -1,33 +1,17 @@
 = stylesheet_link_tag "timeline"
 .timeline-start
 %ul.timeline
-  -# -@deliveries.each do |delivery|
-    %li.timeline-steps.step-01
+  - steps = (1..20).cycle
+  - directions = ['right', 'left'].cycle
+  -@deliveries.each do |delivery|
+    %li.timeline-steps{class: "step-#{steps.next.to_s.rjust(2, '0')}"}
       .day-data
-        .day
-          06
-        .month
-          nov
-        .year
-          2014
+        .day= delivery.delivery_date.day
+        .month= delivery.delivery_date.strftime "%b"
+        .year= delivery.delivery_date.strftime "%Y"
         %ul.timeline-step-bullets
           %li
-            %a href=""
-        .entry.right
-          %p
-            = delivery.message.text
-
-  - 1.upto 5 do
-    - 1.upto 20 do |x|
-      - stepNumber = x
-      - if (stepNumber < 10)
-        - stepNumber = "0"+stepNumber.to_s
-
-      %li.timeline-steps{class: "step-#{stepNumber}"}
-        .day-data
-          .day 06
-          .month nov
-          .year 2014
-          %ul.timeline-step-bullets
-            %li
-              %a{ href:'' }
+            %a{href: '#'}
+      .entry{ class: directions.next }
+        %p
+          = delivery.message.text
