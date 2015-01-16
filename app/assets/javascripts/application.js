@@ -15,9 +15,8 @@
 //= require jquery.noty.packaged
 //= require jquery-ui
 //= require jquery-ui/datepicker-pt-BR
-//= require_tree .
-//= require ./inputs/countable_input
-//= require ./inputs/week_to_date_input
+//= require pro-bebe
+//= require inputs/countable_input
+//= require inputs/week_to_date_input
 //= require ckeditor/init
 //= require jquery.mask
-//= require jquery.mask.min

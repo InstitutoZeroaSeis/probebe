@@ -4266,7 +4266,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .navbar-brand {
     color: #fff;
-    background-image: url(logo.png);
+    background-image: image-url("logo.png");
     text-indent: -9999px;
     width: 168px;
     background-repeat: no-repeat;
