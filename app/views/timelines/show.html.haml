@@ -1,9 +1,33 @@
-.col-md-8
-  %h1= t('general.commom_words.timeline')
-  %ul.col-md-8.timeline
-    - @deliveries.each do |delivery|
-      %li.timeline-entry
-        %dt= l delivery.delivery_date
-        %dd= delivery.message.text
-        .read-more-timelin
-          =link_to "#{I18n.t('views.timeline.read_more')}", post_path(delivery.article.id) if delivery.article.publishable
+= stylesheet_link_tag "timeline"
+.timeline-start
+%ul.timeline
+  -# -@deliveries.each do |delivery|
+    %li.timeline-steps.step-01
+      .day-data
+        .day
+          06
+        .month
+          nov
+        .year
+          2014
+        %ul.timeline-step-bullets
+          %li
+            %a href=""
+        .entry.right
+          %p
+            = delivery.message.text
+
+  - 1.upto 5 do
+    - 1.upto 20 do |x|
+      - stepNumber = x
+      - if (stepNumber < 10)
+        - stepNumber = "0"+stepNumber.to_s
+
+      %li.timeline-steps{class: "step-#{stepNumber}"}
+        .day-data
+          .day 06
+          .month nov
+          .year 2014
+          %ul.timeline-step-bullets
+            %li
+              %a{ href:'' }
