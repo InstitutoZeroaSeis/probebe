@@ -1,4 +1,4 @@
-%li.timeline-steps{class: "step-#{@timeline_step.next_step}"}
+%li.timeline-steps{class: "step-#{@timeline_step.next_step}", id: dom_id(timeline_day)}
   .day-data
     .day= l timeline_day.date, format: :day
     .month= l timeline_day.date, format: :month_name

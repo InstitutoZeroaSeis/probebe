@@ -13,17 +13,22 @@ feature "Site user access timeline" do
   scenario "successfully" do
     visit timeline_path(child)
 
-    within "li.timeline-steps.step-01 .day-data" do
-      expect(page).to have_css('.day', text: "")
+    within_timeline_date(Date.today) do
+      expect(page).to have_day_without_text
     end
-    within "li.timeline-steps.step-02 .day-data" do
-      expect(page).to have_css('.day', text: Date.yesterday.strftime("%d").rjust(2, '0'))
+
+    within_timeline_date(Date.yesterday) do
+      day = day_with_leading_zero Date.yesterday
+      expect(page).to have_day_with_text(day)
     end
-    within "li.timeline-steps.step-03 .day-data" do
-      expect(page).to have_css('.day', text: "")
+
+    within_timeline_date(2.days.ago) do
+      expect(page).to have_day_without_text
     end
-    within "li.timeline-steps.step-04 .day-data" do
-      expect(page).to have_css('.day', text: 3.days.ago.strftime("%d").rjust(2, '0'))
+
+    within_timeline_date(3.days.ago) do
+      day = day_with_leading_zero 3.days.ago
+      expect(page).to have_day_with_text(day)
     end
   end
 
