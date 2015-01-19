@@ -5,15 +5,16 @@ WORKDIR /app
 ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
 
-RUN bundle install
-ADD . /app
-
-RUN rake assets:precompile && \
-  rake probebe:non_digested
-
+RUN bundle install --without development test
 RUN apt-get update && apt-get install -qy cron
-RUN whenever -w
 
 RUN echo America/Sao_Paulo > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
+ENV RAILS_ENV production
 
-CMD bundle exec puma -t 8:16 -w 2 --preload -b unix:///tmp/probebe/probebe.sock
+ADD . /app
+
+RUN cd /app && bundle exec rake assets:precompile
+
+RUN whenever -w
+
+CMD bundle exec puma -e production -t 16:16 --preload -b unix:///tmp/probebe/probebe.sock

@@ -4,4 +4,5 @@ class MessageDeliveryFinderWorker
   def perform
     MessageDeliveries::MessageDeliveryFinder.find_and_deliver_messages
   end
+
 end

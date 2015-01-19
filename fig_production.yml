@@ -1,7 +1,7 @@
 db:
   environment:
-    MYSQL_PASS: root
-  image: tutum/mysql
+    MYSQL_ROOT_PASSWORD: root
+  image: centurylink/mysql
   ports:
     - 3306
   volumes:
@@ -9,8 +9,6 @@ db:
 
 web:
   build: .
-  environment:
-    RAILS_ENV: production
   links:
     - db
     - rpush
@@ -22,8 +20,6 @@ web:
 rpush:
   build: .
   command: bundle exec rpush start --rails-env=production --foreground --pid-file=/tmp/rpush.pid
-  environment:
-    RAILS_ENV: production
   links:
     - db
   volumes:
@@ -39,8 +35,6 @@ redis:
 sidekiq:
   build: .
   command: bundle exec sidekiq --pidfile=/tmp/sidekiq.pid
-  environment:
-    RAILS_ENV: production
   links:
     - redis
     - db
@@ -62,8 +56,6 @@ nginx:
 cron:
   build: .
   command: cron -f
-  environment:
-    RAILS_ENV: production
   links:
     - redis
     - db

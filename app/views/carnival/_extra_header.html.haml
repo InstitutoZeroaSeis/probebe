@@ -1,10 +1,3 @@
-=stylesheet_link_tag 'admin'
-.impersonate_user
-  -if true_user != current_user
-    = "#{I18n.t('view.message.signed_in_as', user_name: current_user.email)}"
-    %br
-    = link_to "#{I18n.t('view.message.back_to_admin')}", admin_stop_impersonating_path(current_user)
-
 .sign_out= link_to t('logout'), destroy_user_session_path, :method => :delete
 .salute
   = link_to edit_admin_site_user_path(true_user.id) do

@@ -1,0 +1,128 @@
+body.timelines {
+  background: #b8e3e8 !important;
+  padding-top: 80px;
+}
+
+body.timelines h1{
+  color: rgba(0, 0, 0 ,0.5)
+}
+
+body.timelines .well{
+  background: #fff;
+  border-color: transparent;
+}
+
+body.timelines .navbar-brand {
+  color: #fff;
+  background-image: url(logo-laranja.png);
+  text-indent: -9999px;
+  width: 168px;
+  background-repeat: no-repeat;
+  height: 55px;
+  background-size: 140px;
+  background-position: 10px 5px;
+}
+
+body.timelines .navbar-default {
+  background: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+}
+
+body.timelines .navbar-default a {
+  color: #ee7421 !important;
+}
+
+.read-more-timelin {
+  margin: 0px 10px;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-size: 12px;
+  float: right;
+  transition: all 0.3s ease;
+}
+
+.read-more-timelin:hover {
+  background: rgba(0, 0, 0, 0.17);
+}
+
+.read-more-timelin a {
+  color: #fff;
+}
+
+.read-more-timelin a:hover {
+  text-decoration: none;
+}
+
+ul.col-md-8.timeline {
+  border-left: 2px solid #fff;
+  padding: 50px 0px 50px 30px;
+  margin: 10px 0px 0px 0px;
+  width: 80%;
+}
+
+li.timeline-entry {
+  list-style: none;
+  margin: 0px 0px 30px 0px;
+  padding: 0px;
+  border-radius: 4px;
+  font-size: 16px;
+  background: #DDF8FC !important;
+  color: rgba(6, 0, 0, 0.55);
+  font-weight: 300;
+  border: 6px solid rgba(255, 255, 255, 0.74) !important;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+li.timeline-entry:nth-child(even) {
+  background: #ffefcf !important;
+}
+
+li.timeline-entry dt {
+  border-radius: 4px 4px 0px 0px;
+  font-size: 13px;
+  margin: 0px;
+  color: rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.11);
+  background: rgba(255, 255, 255, 0.28);
+  padding: 10px;
+}
+
+li.timeline-entry dd {
+  padding: 10px;
+}
+
+li.timeline-entry {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+li.timeline-entry:after, li.timeline-entry:before {
+  left: -38px;
+  top: 20px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+li.timeline-entry:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-left-color: #b8e3e8 !important;
+  border-width: 6px;
+  margin-top: -6px;
+}
+
+li.timeline-entry:before {
+  border-color: rgba(204, 204, 204, 0);
+  border-left-color: #fff;
+  border-width: 9px;
+  margin-top: -9px;
+}
