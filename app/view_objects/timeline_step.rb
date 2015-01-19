@@ -1,7 +1,7 @@
 class TimelineStep
   def initialize(steps = 20)
     @steps = steps
-    @steps_enumerator = (1..20).cycle
+    @steps_enumerator = (1..@steps).cycle
   end
 
   def next_step

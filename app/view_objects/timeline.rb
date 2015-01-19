@@ -1,8 +1,6 @@
 class Timeline
-  def initialize(child)
-    @child = child
-    @deliveries = @child.message_deliveries.order_by_delivery_date.includes(:message)
-    @last_date = @deliveries.last.delivery_date
+  def initialize(deliveries)
+    @deliveries = deliveries.sort_by{|d| d.delivery_date}.reverse
   end
 
   def timeline_days
@@ -14,11 +12,15 @@ class Timeline
 
   protected
 
+  def start_date
+    @deliveries.last.delivery_date
+  end
+
   def find_event_for_date(date)
     @deliveries.find {|d| d.delivery_date == date }
   end
 
   def ordered_days_till_now
-    (@last_date..Date.today).to_a.reverse
+    (start_date..Date.today).to_a.reverse
   end
 end

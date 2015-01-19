@@ -45,6 +45,7 @@ end
 group :test do
   gem 'capybara-webkit'
   gem 'simplecov', require: false
+  gem 'rspec-its', '~> 1.1.0'
 end
 
 group :development, :test do
