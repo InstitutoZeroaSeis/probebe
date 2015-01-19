@@ -1,17 +1,5 @@
 = stylesheet_link_tag "timeline"
+
 .timeline-start
 %ul.timeline
-  - steps = (1..20).cycle
-  - directions = ['right', 'left'].cycle
-  -@deliveries.each do |delivery|
-    %li.timeline-steps{class: "step-#{steps.next.to_s.rjust(2, '0')}"}
-      .day-data
-        .day= delivery.delivery_date.day
-        .month= delivery.delivery_date.strftime "%b"
-        .year= delivery.delivery_date.strftime "%Y"
-        %ul.timeline-step-bullets
-          %li
-            %a{href: '#'}
-      .entry{ class: directions.next }
-        %p
-          = delivery.message.text
+  = render @timeline.timeline_days

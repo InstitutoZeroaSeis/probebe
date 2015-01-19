@@ -69,10 +69,10 @@ Author's custom styles
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(114, 164, 223);
+  background-color: rgb(114, 164, 223) !important;
   background-image: image-url("site-bg.jpg");
   background-size: 100%;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
 }
 
 .timeline{

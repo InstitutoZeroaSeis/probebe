@@ -56,6 +56,6 @@ $ ->
   $('body').on 'click', '.add_fields', addField
   $('body').on 'click', '.remove_fields', removeField
   $('#area_code').mask("00")
-  $('#cell_phone_number').mask('00000-0000', {reverse: true});
+  $('#cell_phone_number').mask('00000-0000', {reverse: true})
   setupDateFromWeek()
   setupDatePickers()

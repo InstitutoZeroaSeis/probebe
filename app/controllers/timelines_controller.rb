@@ -5,6 +5,7 @@ class TimelinesController < ApplicationController
 
   def show
     @child = Child.find(params[:id])
-    @deliveries = @child.message_deliveries.order_by_delivery_date.includes(:message)
+    @timeline = Timeline.new(@child)
+    @timeline_step = TimelineStep.new
   end
 end
