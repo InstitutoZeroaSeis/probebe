@@ -1,0 +1,11 @@
+%li.timeline-steps{class: "step-#{@timeline_step.next_step}", id: dom_id(timeline_day)}
+  .day-data
+    .day= l timeline_day.date, format: :day
+    .month= l timeline_day.date, format: :month_name
+    .year= l timeline_day.date, format: :full_year
+    %ul.timeline-step-bullets
+      %li
+        %a{href: '#'}
+  - if timeline_day.has_event?
+    .entry
+      %p= link_to timeline_day.event_content, timeline_day.event_url

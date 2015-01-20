@@ -4,7 +4,14 @@ class TimelinesController < ApplicationController
   before_action :check_profile_status
 
   def show
-    @child = Child.find(params[:id])
-    @deliveries = @child.message_deliveries.order_by_delivery_date
+    @timeline = Timeline.new find_deliveries
+    @timeline_step = TimelineStep.new
+  end
+
+  protected
+
+  def find_deliveries
+    child = Child.find(params[:id])
+    MessageDeliveryTimelineDecorator.from_child(child)
   end
 end

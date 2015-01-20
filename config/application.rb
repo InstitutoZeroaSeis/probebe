@@ -10,6 +10,7 @@ module ProBebe
   class Application < Rails::Application
     config.autoload_paths += %W{#{config.root}/app}
     config.autoload_paths += %W{#{config.root}/lib}
+    config.autoload_paths += %W{#{config.root}/view_objects}
     config.i18n.available_locales = :pt, :'pt-BR', :en
     config.i18n.default_locale = 'pt-BR'
     config.initialize_on_precompile = false

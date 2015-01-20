@@ -41,6 +41,14 @@ FactoryGirl.define do
         created_at { rand(1..365).days.ago }
       end
 
+      trait :published do
+        publishable true
+      end
+
+      trait :unpublished do
+        publishable false
+      end
+
     end
   end
 
