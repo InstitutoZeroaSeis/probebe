@@ -6,5 +6,8 @@
   "app/workers/*_worker.rb": {
     "type": "worker",
     "template": ["class %SWorker\n\tinclude Sidekiq::Worker\n\n\tdef perform\n\tend\nend"]
+  },
+  "app/view_objects/*.rb": {
+    "type": "view_object"
   }
 }

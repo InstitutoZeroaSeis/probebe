@@ -1,13 +1,35 @@
 require 'rails_helper'
 
 feature "Site user access timeline" do
-  before { OmniAuth.config.test_mode = true }
-  before { OmniAuth.config.add_mock :google_oauth2, OmniAuthStub::Google::BasicInfo }
-  before { @user = create(:user, :site_user, email: OmniAuthStub::Google::BasicInfo[:info][:email]) }
-  before { @profile = create(:profile, user: @user, children: create_list(:child, 1)) }
-  scenario "successfully" do
-    sign_in_through_oauth
-    visit timeline_path(@profile.children.first.id)
-    expect(page).to have_content(I18n.t('general.commom_words.timeline'))
+  before { @user = create(:user, :confirmed, :with_profile) }
+  before { sign_in(@user.email, @user.password) }
+  let(:child) do
+    create :child, message_deliveries: [
+      create(:message_delivery, delivery_date: 3.days.ago),
+      create(:message_delivery, delivery_date: 1.days.ago)
+    ]
   end
+
+  scenario "successfully" do
+    visit timeline_path(child)
+
+    within_timeline_date(Date.today) do
+      expect(page).to have_day_without_text
+    end
+
+    within_timeline_date(Date.yesterday) do
+      day = day_with_leading_zero Date.yesterday
+      expect(page).to have_day_with_text(day)
+    end
+
+    within_timeline_date(2.days.ago) do
+      expect(page).to have_day_without_text
+    end
+
+    within_timeline_date(3.days.ago) do
+      day = day_with_leading_zero 3.days.ago
+      expect(page).to have_day_with_text(day)
+    end
+  end
+
 end

@@ -1,4 +1,9 @@
 pt-BR:
+  date:
+    formats:
+      day: ! '%d'
+      full_year: ! '%Y'
+      month_name: ! '%b'
   _commom_words: &commom_words
     article_references: &article_references "Referências"
     baby_target_type: &baby_target_type "Tipo de bebê que a mensagem se aplica"
