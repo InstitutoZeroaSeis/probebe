@@ -22,5 +22,10 @@ RSpec.describe Timeline do
         expect(dates).to eq expected_dates
       end
     end
+
+    context 'with an empty deliveries' do
+      subject { Timeline.new([]) }
+      its(:timeline_days) { should eq([]) }
+    end
   end
 end
