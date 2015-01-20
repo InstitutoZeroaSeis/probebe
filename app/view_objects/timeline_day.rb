@@ -15,6 +15,10 @@ class TimelineDay
     @event.text
   end
 
+  def event_url
+    @event.url
+  end
+
   def to_partial_path
     'timelines/timeline_day'
   end
