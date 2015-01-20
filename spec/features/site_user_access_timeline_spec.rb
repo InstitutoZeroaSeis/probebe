@@ -3,6 +3,7 @@ require 'rails_helper'
 feature "Site user access timeline" do
   before { @user = create(:user, :confirmed, :with_profile) }
   before { sign_in(@user.email, @user.password) }
+
   let(:child) do
     create :child, message_deliveries: [
       create(:message_delivery, delivery_date: 3.days.ago),
@@ -10,7 +11,7 @@ feature "Site user access timeline" do
     ]
   end
 
-  scenario "successfully" do
+  scenario "and sees its children events" do
     visit timeline_path(child)
 
     within_timeline_date(Date.today) do
