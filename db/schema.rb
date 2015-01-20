@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109143405) do
+ActiveRecord::Schema.define(version: 20150120210222) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -136,14 +136,13 @@ ActiveRecord::Schema.define(version: 20150109143405) do
 
   create_table "profiles", force: true do |t|
     t.date     "birth_date"
-    t.integer  "gender",            default: 2
+    t.integer  "gender",     default: 2
     t.integer  "user_id"
     t.string   "city"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "state"
     t.string   "street"
-    t.string   "home_phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"

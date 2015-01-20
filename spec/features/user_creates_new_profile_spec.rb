@@ -27,7 +27,6 @@ feature "User creates new profile" do
 
     click_button 'Criar Perfil'
 
-    expect(page).to have_content("Informações Pessoais")
     expect(current_path).to eq(profile_path)
   end
 

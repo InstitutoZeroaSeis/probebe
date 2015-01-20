@@ -28,11 +28,6 @@
   = f.input :city
 
   .col-sm-offset-2
-    %h3= t('general.commom_words.home_phone_number')
-    %hr
-  = f.input :home_phone_number
-
-  .col-sm-offset-2
     %h3= "#{I18n.t('activerecord.models.cell_phone').pluralize_current_locale}"
     %hr
   = f.simple_fields_for :cell_phones do |phone_builder|

@@ -31,9 +31,6 @@ class Admin::ProfilePresenter < Carnival::BaseAdminPresenter
   field :street,
     actions: [:index, :show, :new, :edit]
 
-  field :home_phone_number,
-    actions: [:index, :show, :new, :edit]
-
   field 'primary_cell_phone_number',
     actions: [:index, :show]
 
