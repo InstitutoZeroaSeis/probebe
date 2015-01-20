@@ -1,24 +1,19 @@
 .panel-heading
-  %h3 Informações de Contato
-.panel.panel-default.col-sm-6
+  %h3
+    = t('views.profile.contact_informations')
+  %hr
+.panel.panel-default.col-sm-6.contact-border.contact-address
   .panel-body
-    %dl
-      %dt= Profile.human_attribute_name 'address'
-      %dd
-        %dl
-          %dt= Profile.human_attribute_name 'street'
-          %dd= @profile.street
-          %dt= Profile.human_attribute_name 'city'
-          %dd= @profile.city
-          %dt= Profile.human_attribute_name 'state'
-          %dd= @profile.state
-.panel.panel-default.col-sm-6
+    %h3.contact-border-title= Profile.human_attribute_name 'address'
+    %dt= Profile.human_attribute_name 'street'
+    %dd= @profile.street
+    %dt= Profile.human_attribute_name 'city'
+    %dd= @profile.city
+    %dt= Profile.human_attribute_name 'state'
+    %dd= @profile.state
+.panel.panel-default.col-sm-6.contact-border
   .panel-body
-    %table.table
-      %thead
-        %tr
-          %th= t('activerecord.models.cell_phone').pluralize_current_locale
-      %tbody
-        - @profile.cell_phones.each do |phone|
-          %tr
-            %td= phone.number
+    %h3.contact-border-title
+      = t('views.profile.cell_phones')
+    - @profile.cell_phones.each do |phone|
+      %dd= phone.format_number

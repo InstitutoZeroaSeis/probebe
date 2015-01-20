@@ -75,8 +75,8 @@ pt-BR:
         area_code: "Código de área"
       child:
         name: "Nome"
-        birth_date: "Data de nascimento"
-        gender: "Gênero"
+        birth_date: "Data de Nascimento"
+        gender: "Sexo"
       message:
         id: "Id"
         created_at: "Criado em"
@@ -227,6 +227,12 @@ pt-BR:
       read_more: *read_more
       search: "Busca de posts"
     profile:
+      cell_phone: "Celular"
+      cell_phones: "Celulares"
+      contact_informations: "Informações de Contato"
       create_profile: "Criar Perfil"
+      my_children: "Meus Filhos"
+      personal_information: "Informações Pessoais"
+      phones: "Telefones"
     timeline:
       read_more: *read_more

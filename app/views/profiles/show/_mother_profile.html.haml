@@ -1,15 +1,15 @@
 .panel-heading
   %h3
-    Meus
-    = t('activerecord.models.child').pluralize_current_locale
+    = t('views.profile.my_children')
+  %hr
 %ul.profile-child
   - @profile.children.each do |child|
-    %li
-      .panel.panel-default.col-sm-8
+    %li.child-entry
+      .panel.panel-default.col-sm-8.profile-child-info.child-name
         .panel-body.name
           %dt= Child.human_attribute_name 'name'
           %dd= child.name
-      .panel.panel-default.col-sm-4
+      .panel.panel-default.col-sm-4.profile-child-info
         .panel-body.info
           -if child.born?
             .col-sm-6

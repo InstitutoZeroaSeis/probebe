@@ -4,16 +4,72 @@
   list-style: none;
 }
 
+.profile dd{
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.profile dt {
+  font-weight: 400;
+  font-size: 13px;
+}
+
 .profile-child li{
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.profile-child li dd{
-
+@mixin profile-border {
+  border-style: solid;
+  border-width: 4px;
+  height: 88px;
 }
 
-.profile-child li dt{
+.profile-personal-info{
+  @include profile-border;
+  background-color: #EEF8FA;
+  border-color: #D4EBF1;
+}
 
+.profile-name{
+  margin-right: 12px;
+}
+
+li.child-entry:nth-child(odd) .profile-child-info{
+  @include profile-border;
+  background-color: #FFF8F0;
+  border-color: #FAEBD8;
+}
+
+li.child-entry:nth-child(even) .profile-child-info{ @include profile-border; background-color: #FCFFEE; border-color: #EAF4D1; } li.child-entry:nth-child(odd) .child-name{ margin-right: 12px; width: 50%; }
+li.child-entry:nth-child(even) .child-name{
+  margin-right: 12px;
+  width: 53%;
+}
+.profile h3{
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.contact-border{
+  border-style: solid;
+  border-width: 4px;
+  border-color: #EAEAEA;
+  width: 42%;
+}
+
+.contact-address{
+  margin-right: 12px;
+}
+
+.contact-border-title{
+  background-color: #EAEAEA;
+  margin-left: -30px;
+  margin-bottom: 11px;
+  padding-right: 438px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+  margin-top: -15px;
 }

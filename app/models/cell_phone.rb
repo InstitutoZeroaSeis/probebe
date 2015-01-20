@@ -14,4 +14,7 @@ class CellPhone < ActiveRecord::Base
     number.delete("^0-9")
   end
 
+  def format_number
+    "(#{area_code})#{number}"
+  end
 end

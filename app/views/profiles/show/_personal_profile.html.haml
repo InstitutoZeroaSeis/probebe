@@ -1,12 +1,18 @@
-.panel-heading
-  %h3 Informações Pessoais
-.panel.panel-default.col-sm-8
-  .panel-body
-    %dt= Profile.human_attribute_name 'name'
-    %dd= @profile.name
-.panel.panel-default.col-sm-4
-  .panel-body
-  %dt= Profile.human_attribute_name 'gender'
-  %dd= t("general.gender.#{@profile.gender}")
-.col-sm-6
-  .pull-right= image_tag @profile.avatar_url
+.profile-personal
+  .panel-heading
+    %h3= t('views.profile.personal_information')
+    %hr
+  .panel.panel-default.col-sm-6.profile-personal-info.profile-name
+    .panel-body
+      %dt= Profile.human_attribute_name 'name'
+      %dd= @profile.name
+  .panel.panel-default.col-sm-4.profile-personal-info
+    .panel-body
+    .col-sm-6
+      %dt= Profile.human_attribute_name 'birth_date'
+      %dd= l @profile.birth_date
+    .col-sm-6
+      %dt= Profile.human_attribute_name 'gender'
+      %dd= t("general.gender.#{@profile.gender}")
+  .col-sm-6
+    .pull-right= image_tag @profile.avatar_url
