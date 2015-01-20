@@ -1,6 +1,6 @@
-.panel.panel-default
-  .panel-heading
-    %h4 Informações de Contato
+.panel-heading
+  %h3 Informações de Contato
+.panel.panel-default.col-sm-6
   .panel-body
     %dl
       %dt= Profile.human_attribute_name 'address'
@@ -12,6 +12,8 @@
           %dd= @profile.city
           %dt= Profile.human_attribute_name 'state'
           %dd= @profile.state
+.panel.panel-default.col-sm-6
+  .panel-body
     %table.table
       %thead
         %tr

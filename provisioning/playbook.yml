@@ -2,7 +2,7 @@
 - hosts: all
   sudo: yes
   roles:
-    - { role: lxhunter.apt, apt_install_packages: ['git', 'libmysqld-dev', 'curl', 'nodejs', 'npm'] }
+    - { role: lxhunter.apt, apt_install_packages: ['git', 'libmysqld-dev', 'curl', 'nodejs', 'npm' "qt5-default" "libqt5-webkit5-dev" "xvfb"] }
     - { role: ANXS.mysql, mysql_root_password: root, mysql_users: [ { name: 'admin', pass: 'root', priv: '*.*:ALL', host: '%' } ] }
     - { role: rvm_io.rvm1-ruby, rvm1_rubies: ['2.1.3'] }
     - { role: franklinkim.hosts, hosts: [{ip: '127.0.0.1', domain: 'db_1'}] }

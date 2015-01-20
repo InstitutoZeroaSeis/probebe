@@ -1,20 +1,25 @@
-.panel.panel-default
-  .panel-heading
-    %h4 Informações Maternas
-  .panel-body
-    %dl
-      %dt= Profile.human_attribute_name 'pregnancy_start_date'
-      %dd= distance_of_time_in_words_to_now @profile.pregnancy_start_date
-    %strong= t('activerecord.models.child').pluralize_current_locale
-    %table.table
-      %thead
-        %tr
-          %th= Child.human_attribute_name 'name'
-          %th= Child.human_attribute_name 'birth_date'
-          %th= Child.human_attribute_name 'gender'
-      %tbody
-        - @profile.children.each do |child|
-          %tr
-            %td= child.name
-            %td= l child.birth_date
-            %td= t("general.gender.#{child.gender}")
+.panel-heading
+  %h3
+    Meus
+    = t('activerecord.models.child').pluralize_current_locale
+%ul.profile-child
+  - @profile.children.each do |child|
+    %li
+      .panel.panel-default.col-sm-8
+        .panel-body.name
+          %dt= Child.human_attribute_name 'name'
+          %dd= child.name
+      .panel.panel-default.col-sm-4
+        .panel-body.info
+          -if child.born?
+            .col-sm-6
+              %dt= Child.human_attribute_name 'birth_date'
+              %dd= l child.birth_date
+          - else
+            .col-sm-6
+              %dt= Profile.human_attribute_name 'pregnancy_start_date'
+              %dd= distance_of_time_in_words_to_now @profile.pregnancy_start_date
+
+          .col-sm-6
+            %dt= Child.human_attribute_name 'gender'
+            %dd= t("general.gender.#{child.gender}")

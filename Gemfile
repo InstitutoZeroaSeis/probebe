@@ -49,7 +49,7 @@ end
 
 group :development, :test do
   gem 'binding_of_caller', '~> 0.7.2'
-  gem 'byebug', '~> 3.4.0'
+# gem 'byebug', '~> 3.4.0'
   gem 'factory_girl', '~> 4.5.0', require: false
   gem 'pry-byebug', '~> 2.0.0'
   gem 'rspec', '~> 3.1.0'

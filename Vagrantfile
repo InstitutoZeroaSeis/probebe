@@ -5,7 +5,11 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "hashicorp/precise32"
+  config.vm.box = "ubuntu/trusty64"
+
+  config.vm.provider "virtualbox" do |v|
+   v.memory = 1024
+  end
 
   config.ssh.forward_agent = true
   config.vm.synced_folder ".", "/app", nfs: true
