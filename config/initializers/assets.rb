@@ -12,3 +12,4 @@ Rails.application.config.assets.precompile += %w( inputs/countable_input.js inpu
 Rails.application.config.assets.precompile += %w( message_deliveries.js )
 Rails.application.config.assets.precompile += %w( jquery-ui.css jquery-ui/datepicker-pt-BR.js )
 Rails.application.config.assets.precompile += %w( timeline.css )
+Rails.application.config.assets.precompile += %w( timeline.js )
