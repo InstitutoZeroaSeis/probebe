@@ -12,6 +12,6 @@ class TimelinesController < ApplicationController
 
   def find_deliveries
     child = Child.find(params[:id])
-    MessageDeliveryTimelineDecorator.from_child(child).order_by_delivery_date.includes(:message)
+    MessageDeliveryTimelineDecorator.from_child(child)
   end
 end
