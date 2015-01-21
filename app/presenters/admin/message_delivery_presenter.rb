@@ -17,11 +17,6 @@ class Admin::MessageDeliveryPresenter < Carnival::BaseAdminPresenter
     advanced_search: {operator: :equal},
     actions: [:new, :show, :index]
 
-  field :message_for_test,
-    actions: [:new, :show, :index]
-
-  action :show
-  action :new
   action :csv
 
   def model_class

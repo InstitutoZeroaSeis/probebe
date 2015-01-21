@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   resource :profile, except: :index
   resources :timelines, only: :show
-  resources :message_deliveries, only: :create
   resources(:posts, only: [:show, :index])
   get 'posts/page/:page_id' => 'posts#index', as: :paged_posts
   resources(:tags) { resources :posts, only: :index }
@@ -32,7 +31,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :journalistic_articles
     resources :messages
-    resources :message_deliveries
+    resources :message_deliveries, only: :index
     resources :profiles
     resources :site_users
     resources :tags
