@@ -2,6 +2,7 @@ class Avatar < ActiveRecord::Base
   include Carnival::ModelHelper
 
   belongs_to :profile
+  belongs_to :child
 
   has_attached_file :photo, styles: { full: '640x480', thumb: '160x120'}
 

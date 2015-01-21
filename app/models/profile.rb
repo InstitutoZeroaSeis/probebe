@@ -24,7 +24,7 @@ class Profile < ActiveRecord::Base
   scope :admin_site_user_profiles, -> { joins(:user).merge(User.admin_site_user) }
 
   def avatar_url
-    avatar.photo.url if avatar
+    avatar.photo.url(:thumb) if avatar
   end
 
   def update_avatar_from_url(url)

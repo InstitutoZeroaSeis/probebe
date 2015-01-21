@@ -5,7 +5,7 @@ class Child < ActiveRecord::Base
 
   belongs_to :profile
   has_many :message_deliveries, class_name: "MessageDeliveries::MessageDelivery"
-
+  has_one :avatar
   enum gender: GENDER_ENUM
 
   validates_presence_of :birth_date
@@ -23,6 +23,10 @@ class Child < ActiveRecord::Base
     else
       (system_date.date - birth_date.to_date).to_i / DAYS_IN_WEEK
     end
+  end
+
+  def avatar_url
+    avatar.photo.url(:thumb) if avatar
   end
 
   def pregnancy? system_date = nil

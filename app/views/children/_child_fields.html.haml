@@ -2,5 +2,7 @@
   = f.input :name
   = f.input :birth_date, as: :date_picker, input_html: { format: :short }
   = f.input :gender, as: :enum
+  = f.simple_fields_for :avatar, f.object.avatar || Avatar.new,  wrapper: :horizontal_file_input do |ff|
+    = ff.input :photo, as: :file
   .col-sm-offset-2.form-control-static
     = remove_fields_link('Remover', f, container_to_hide: '.child_fields')

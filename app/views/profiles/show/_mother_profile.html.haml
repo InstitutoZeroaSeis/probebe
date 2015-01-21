@@ -5,6 +5,7 @@
 %ul.profile-child
   - @profile.children.each do |child|
     %li.child-entry
+      = image_tag child.avatar_url
       .panel.panel-default.col-sm-8.profile-child-info.child-name
         .panel-body.name
           %dt= Child.human_attribute_name 'name'
