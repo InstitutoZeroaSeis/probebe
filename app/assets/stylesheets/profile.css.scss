@@ -18,6 +18,9 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  float: left;
+  width: 100%;
+  position: relative;
 }
 
 @mixin profile-border {
@@ -33,7 +36,12 @@
 }
 
 .profile-name{
+  width: 55%;
   margin-right: 12px;
+}
+
+.profile-text{
+  margin-left: 50px;
 }
 
 li.child-entry:nth-child(odd) .profile-child-info{
@@ -42,11 +50,26 @@ li.child-entry:nth-child(odd) .profile-child-info{
   border-color: #FAEBD8;
 }
 
-li.child-entry:nth-child(even) .profile-child-info{ @include profile-border; background-color: #FCFFEE; border-color: #EAF4D1; } li.child-entry:nth-child(odd) .child-name{ margin-right: 12px; width: 50%; }
+li.child-entry:nth-child(even) .profile-child-info{
+  @include profile-border;
+  background-color: #FCFFEE;
+  border-color: #EAF4D1;
+}
+
+li.child-entry:nth-child(odd) .child-name{
+  margin-right: 12px;
+  width: 52%;
+}
+
 li.child-entry:nth-child(even) .child-name{
   margin-right: 12px;
-  width: 53%;
+  width: 54%;
 }
+
+.child-text-name{
+  margin-left: 10px;
+}
+
 .profile h3{
   text-transform: uppercase;
   font-weight: 300;
@@ -56,20 +79,59 @@ li.child-entry:nth-child(even) .child-name{
   border-style: solid;
   border-width: 4px;
   border-color: #EAEAEA;
-  width: 42%;
+  width: 47%;
 }
 
 .contact-address{
-  margin-right: 12px;
+  margin-right: 14px;
+  margin-left: 25px;
 }
 
 .contact-border-title{
   background-color: #EAEAEA;
   margin-left: -30px;
   margin-bottom: 11px;
-  padding-right: 438px;
+  padding-right: 495px;
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 20px;
   margin-top: -15px;
+}
+
+.profile figure {
+  position: absolute;
+  z-index:9;
+  overflow: hidden;
+  border-radius: 1000px;
+  float: left;
+  border: 3px solid #BBB;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.08);
+}
+
+.profile-personal figure {
+  height: 130px;
+  width: 130px;
+  top: 88px;
+  left: 42px;
+}
+
+.profile-personal figure img {
+  position: relative;
+  min-width: 130px;
+  min-height: 130px;
+  right: 50%;
+}
+
+.profile-mother figure {
+  height: 100px;
+  width: 100px;
+  top: -6px;
+  left: 19px;
+}
+
+.profile-mother figure img {
+  position: relative;
+  min-width: 100px;
+  min-height: 100px;
+  right: 50%;
 }
