@@ -33,15 +33,11 @@ class Admin::AdminSiteUsersController < Admin::AdminController
   end
 
   def edit_profile
-    profile = find_profile(params[:id])
-    redirect_to controller: 'profiles', action: 'edit', id: profile.id
+    profile = User.find(id).profile
+    redirect_to edit_profile_path(profile)
   end
 
   private
-
-  def find_profile(id)
-    User.find(id).profile
-  end
 
   def permitted_params
     params.permit(user: [:email, :role]) || {}

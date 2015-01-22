@@ -1,5 +1,6 @@
 class Profile < ActiveRecord::Base
   include Carnival::ModelHelper
+  include RejectAttributesConcern
 
   DAYS_IN_WEEK = 7
   GENDER_ENUM = [:male, :female, :not_informed]
@@ -15,8 +16,8 @@ class Profile < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :user
 
   accepts_nested_attributes_for :avatar
-  accepts_nested_attributes_for :children, allow_destroy: true, reject_if: proc { |child| (child[:name].blank? and child[:birth_date].blank?) }
-  accepts_nested_attributes_for :cell_phones, allow_destroy: true, reject_if: proc { |cell_phone| (cell_phone[:area_code].blank? and cell_phone[:number].blank?) }
+  accepts_nested_attributes_for :children, allow_destroy: true, reject_if: all_blank?(:name, :birth_date)
+  accepts_nested_attributes_for :cell_phones, allow_destroy: true, reject_if: all_blank?(:area_code, :number)
 
   before_save :set_defaults
   before_save :update_name
