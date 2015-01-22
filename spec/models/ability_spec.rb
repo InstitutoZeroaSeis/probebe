@@ -37,5 +37,13 @@ describe "User" do
       it { is_expected.to have_abilities({create: true, read: true, update: true, destroy: false}, Tag) }
       it { is_expected.to have_abilities({read: false, update: false, destroy: false}, User) }
     end
+
+    context "when is an site user" do
+      let(:user) { build_stubbed(:user, :site_user, :with_profile) }
+      let(:child) { build_stubbed(:child, profile: user.profile) }
+
+      it { is_expected.to have_abilities({show: true}, Child) }
+      it { is_expected.to have_abilities({create: true, read: true, update: true, destroy: false}, Profile) }
+    end
   end
 end

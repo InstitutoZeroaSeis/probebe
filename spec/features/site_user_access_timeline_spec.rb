@@ -7,7 +7,7 @@ feature "Site user access timeline" do
   context 'with two events' do
 
     let(:child) do
-      create :child, message_deliveries: [
+      create :child, profile: @user.profile,  message_deliveries: [
         create(:message_delivery, delivery_date: 3.days.ago),
         create(:message_delivery, delivery_date: 1.days.ago)
       ]
@@ -39,7 +39,8 @@ feature "Site user access timeline" do
   context "with one message derived from a published article" do
     let(:journalistic_article) { create(:journalistic_article, :published) }
     let(:message) { create(:message, messageable: journalistic_article) }
-    let(:message_delivery) { create(:message_delivery, message: message, delivery_date: Date.today) }
+    let(:child) { create(:child, profile: @user.profile) }
+    let(:message_delivery) { create(:message_delivery, message: message, delivery_date: Date.today, child: child) }
 
     scenario "and sees a link for a blog post in the message box" do
       visit timeline_path(message_delivery.child)
@@ -55,7 +56,8 @@ feature "Site user access timeline" do
   context "with one message derived from a non published article" do
     let(:journalistic_article) { create(:journalistic_article, :unpublished) }
     let(:message) { create(:message, messageable: journalistic_article) }
-    let(:message_delivery) { create(:message_delivery, message: message, delivery_date: Date.today) }
+    let(:child) { create(:child, profile: @user.profile) }
+    let(:message_delivery) { create(:message_delivery, message: message, delivery_date: Date.today, child: child) }
 
     scenario "and doesn't see a link for a blog post in the message box" do
       visit timeline_path(message_delivery.child)
