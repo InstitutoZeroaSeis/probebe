@@ -12,5 +12,4 @@
   .panel-body
     %h3.contact-border-title
       = t('views.profile.cell_phones')
-    - @profile.cell_phones.each do |phone|
-      %dd= phone.format_number
+    = render @profile.cell_phones
