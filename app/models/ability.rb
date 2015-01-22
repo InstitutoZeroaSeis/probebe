@@ -5,6 +5,7 @@ class Ability
     set_admin_permissions(user)
     set_author_permissions(user)
     set_journalist_permissions(user)
+    set_site_user_permissions(user)
   end
 
   def set_admin_permissions(user)
@@ -32,6 +33,13 @@ class Ability
       can [:read], Message
       can [:read, :update, :create], Category
       can [:read, :update, :create], Tag
+    end
+  end
+
+  def set_site_user_permissions(user)
+    if user.site_user?
+      can [:read, :create, :update], Profile
+      can :show, Child, profile_id: user.profile_id
     end
   end
 

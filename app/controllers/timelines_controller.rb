@@ -1,17 +1,14 @@
 class TimelinesController < ApplicationController
+  load_and_authorize_resource class: "Child"
+
   before_action :authenticate_user!
   before_action :deny_admin_site_user_access_on_public_site
   before_action :check_profile_status
 
   def show
-    @timeline = Timeline.new find_deliveries
-    @timeline_step = TimelineStep.new
-  end
-
-  protected
-
-  def find_deliveries
     child = Child.find(params[:id])
-    MessageDeliveryTimelineDecorator.from_child(child)
+    deliveries = MessageDeliveryTimelineDecorator.from_child(child)
+    @timeline = Timeline.new deliveries
+    @timeline_step = TimelineStep.new
   end
 end

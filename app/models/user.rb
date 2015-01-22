@@ -43,4 +43,7 @@ class User < ActiveRecord::Base
     profile.present? ? profile.name : email
   end
 
+  def profile_id
+    profile.id
+  end
 end
