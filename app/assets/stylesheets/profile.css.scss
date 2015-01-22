@@ -33,10 +33,11 @@
   @include profile-border;
   background-color: #EEF8FA;
   border-color: #D4EBF1;
+  width: 36%;
 }
 
 .profile-name{
-  width: 55%;
+  width: 52%;
   margin-right: 12px;
 }
 
@@ -48,22 +49,24 @@ li.child-entry:nth-child(odd) .profile-child-info{
   @include profile-border;
   background-color: #FFF8F0;
   border-color: #FAEBD8;
+  width: 36%;
 }
 
 li.child-entry:nth-child(even) .profile-child-info{
   @include profile-border;
   background-color: #FCFFEE;
   border-color: #EAF4D1;
+  width: 36%;
 }
 
 li.child-entry:nth-child(odd) .child-name{
   margin-right: 12px;
-  width: 52%;
+  width: 50%;
 }
 
 li.child-entry:nth-child(even) .child-name{
   margin-right: 12px;
-  width: 54%;
+  width: 52%;
 }
 
 .child-text-name{
