@@ -3,19 +3,15 @@
     = image_tag child.avatar_url
   .panel.panel-default.col-sm-offset-1.col-sm-8.profile-child-info.child-name
     .panel-body.child-text-name
-      %dt= Child.human_attribute_name 'name'
-      %dd= child.name
+      = definition_list_item Child.human_attribute_name('name'), child.name
   .panel.panel-default.col-sm-4.profile-child-info
     .panel-body
       -if child.born?
         .col-sm-6
-          %dt= Child.human_attribute_name 'birth_date'
-          %dd= l child.birth_date
+          = definition_list_item Child.human_attribute_name('birth_date'), l(child.birth_date)
       - else
         .col-sm-6
-          %dt= Profile.human_attribute_name 'pregnancy_start_date'
-          %dd= distance_of_time_in_words_to_now @profile.pregnancy_start_date
+          = definition_list_item Child.human_attribute_name('pregnancy_start_date'), distance_of_time_in_words_to_now(@profile.pregnancy_start_date)
 
       .col-sm-6
-        %dt= Child.human_attribute_name 'gender'
-        %dd= t("general.gender.#{child.gender}")
+        = definition_list_item Child.human_attribute_name('gender'), t("general.gender.#{child.gender}")

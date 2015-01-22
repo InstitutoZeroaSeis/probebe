@@ -5,12 +5,9 @@
 .panel.panel-default.col-sm-6.contact-border.contact-address
   .panel-body
     %h3.contact-border-title= Profile.human_attribute_name 'address'
-    %dt= Profile.human_attribute_name 'street'
-    %dd= @profile.street
-    %dt= Profile.human_attribute_name 'city'
-    %dd= @profile.city
-    %dt= Profile.human_attribute_name 'state'
-    %dd= @profile.state
+    = definition_list_item Profile.human_attribute_name('street'), @profile.street
+    = definition_list_item Profile.human_attribute_name('city'), @profile.city
+    = definition_list_item Profile.human_attribute_name('state'), @profile.state
 .panel.panel-default.col-sm-6.contact-border
   .panel-body
     %h3.contact-border-title
