@@ -20,3 +20,4 @@
 //= require inputs/week_to_date_input
 //= require jquery.mask
 //= require html5shiv
+//= require bootstrap.min
