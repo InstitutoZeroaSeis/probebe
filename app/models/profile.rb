@@ -13,7 +13,7 @@ class Profile < ActiveRecord::Base
   has_many :device_registrations, class_name: "MessageDeliveries::DeviceRegistration"
   has_one :avatar
 
-  validates_presence_of :first_name, :last_name, :user
+  validates_presence_of :first_name, :last_name
 
   accepts_nested_attributes_for :avatar
   accepts_nested_attributes_for :children, allow_destroy: true, reject_if: all_blank?(:name, :birth_date)

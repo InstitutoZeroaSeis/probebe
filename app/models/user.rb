@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
   include Carnival::ModelHelper
+  include RejectAttributesConcern
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :confirmable
@@ -15,9 +16,11 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
+  accepts_nested_attributes_for :profile,allow_destroy: true, reject_if: all_blank?(:first_name, :last_name)
+
   before_save :set_defaults
 
-  validates_presence_of :email
+  validates_presence_of :profile
 
   def password_required?
     false

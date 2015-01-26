@@ -1,12 +1,18 @@
 .login-container
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = simple_form_for resource, :url => registration_path(resource_name) do |f|
     %h2= t('carnival_devise.sign_up')
     = devise_error_messages!
+    = f.simple_fields_for :profile, Profile.new do |p|
+      %div
+        = p.input :first_name, :autofocus => true, :placeholder =>t('activerecord.attributes.profile.first_name'), label: false
+      %div
+        = p.input :last_name, :placeholder =>t('activerecord.attributes.profile.last_name'), label: false
     %div
-      = f.email_field :email, :autofocus => true, :placeholder => t('carnival_devise.new.email')
+      = f.email_field :email, :placeholder => t('carnival_devise.new.email')
     %div
       = f.password_field :password, :placeholder => t('carnival_devise.new.password')
     %div
       = f.password_field :password_confirmation, :placeholder => t('carnival_devise.new.password_confirmation')
     %div= f.submit t('carnival_devise.sign_up'), :class => "button"
     = render "devise/shared/links"
+

@@ -31,6 +31,8 @@ en:
     back: Back
     sign_up: Sign up
     new:
+      first_name: "Nome"
+      last_name: "Sobrenome"
       email: Email
       password: Password
       login_btn: Login
