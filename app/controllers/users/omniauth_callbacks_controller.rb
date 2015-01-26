@@ -24,11 +24,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def find_or_create_user
-    @user = User.find_or_create_by!(email: @omni_auth_hash.email)
+    @user = User.find_by(email: @omni_auth_hash.email) || User.new(email: @omni_auth_hash.email)
   end
 
   def find_or_create_profile
-    @profile = @user.profile || Profile.create!(profile_attributes)
+    @profile = @user.profile || @user.profile = Profile.create!(profile_attributes)
     if @omni_auth_hash.photo_url
       @profile.update_avatar_from_url(@omni_auth_hash.photo_url)
     end
