@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
   root to: 'posts#index'
 
   resource :profile, except: :index
@@ -39,7 +39,6 @@ Rails.application.routes.draw do
     get 'journalistic_articles/:id/show_activity_log' => 'journalistic_articles#show_activity_log'
     get 'site_users/:id/stop_impersonating' => 'site_users#stop_impersonating', as: :stop_impersonating
     get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile
-    get 'admin_site_users/:id/create_profile' => 'admin_site_users#create_profile', as: :create_profile
     post 'site_users/:id/impersonate' => 'site_users#impersonate', as: :impersonate_user
   end
 

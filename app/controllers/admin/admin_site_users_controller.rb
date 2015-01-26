@@ -28,19 +28,15 @@ class Admin::AdminSiteUsersController < Admin::AdminController
     end
   end
 
-  def create_profile
-    redirect_to controller: 'profiles', action: 'new',  id: params[:id]
-  end
-
   def edit_profile
-    profile = User.find(id).profile
-    redirect_to edit_profile_path(profile)
+    profile = User.find(params[:id]).profile
+    redirect_to edit_admin_profile_path(profile)
   end
 
   private
 
   def permitted_params
-    params.permit(user: [:email, :role]) || {}
+    params.permit(user: [:email, :role, { profile_attributes: [:first_name, :last_name] }]) || {}
   end
 
 end

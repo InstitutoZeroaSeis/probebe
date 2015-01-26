@@ -2,10 +2,6 @@ class Admin::ProfilePresenter < Carnival::BaseAdminPresenter
 
   field :id
 
-  field :user_id,
-    as: :hidden,
-    actions: [:new]
-
   field :name,
     actions: [:index, :show]
 

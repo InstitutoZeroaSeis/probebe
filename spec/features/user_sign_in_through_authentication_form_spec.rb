@@ -4,7 +4,7 @@ feature "Standard Authentication" do
   scenario "confirmed user authenticates through registration form" do
     user = create(:user, :confirmed)
     sign_in(user.email, user.password)
-    expect(current_path).to eq(new_profile_path)
+    expect(current_path).to eq(root_path)
   end
 
   scenario "User with complete profile authenticates through registration form" do

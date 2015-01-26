@@ -5,7 +5,7 @@ feature "OAuth2 authentication" do
 
   context "with valid credentials" do
     before { OmniAuth.config.add_mock :google_oauth2, OmniAuthStub::Google::BasicInfo }
-    scenario "user gets redirected to its profile edit page" do
+    scenario "user gets redirected to home" do
       sign_in_through_oauth
       expect(current_path).to eq(root_path)
     end

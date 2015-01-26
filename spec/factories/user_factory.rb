@@ -3,6 +3,7 @@ FactoryGirl.define do
     sequence(:email) {|n| "email#{n}@server.com"}
     role 'site_user'
     password "12345678"
+    profile
 
     trait :with_profile do
       profile

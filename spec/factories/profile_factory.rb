@@ -5,7 +5,6 @@ FactoryGirl.define do
     gender 'male'
     birth_date {20.years.ago}
     cell_phones { create_list :cell_phone, 2 }
-    user
     children { create_list :child, 2 }
 
     trait :with_cell_phone do

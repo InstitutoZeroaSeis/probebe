@@ -12,11 +12,6 @@ RSpec.describe Profile, :type => :model do
     it { is_expected.to be_invalid }
   end
 
-  context "without user" do
-    subject { build_stubbed(:profile, user: nil) }
-    it { is_expected.to be_invalid }
-  end
-
   it "is expected to set the name attribute when creating" do
     profile = build_stubbed(:profile)
     profile.run_callbacks(:save)

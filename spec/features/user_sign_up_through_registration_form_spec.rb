@@ -5,6 +5,8 @@ feature "Standard registration" do
     visit root_path
     click_on I18n.t('views.application.sign_in')
     click_on "Registrar"
+    fill_in "Nome", with: "Nome"
+    fill_in "Sobrenome", with: "Sobrenome"
     fill_in "Email", with: "someone@example.com"
     fill_in "Senha", with: "12345678"
     fill_in "Confirmação de Senha", with: "12345678"
@@ -16,6 +18,6 @@ feature "Standard registration" do
 
     sign_in("someone@example.com", "12345678")
 
-    expect(current_path).to eq(new_profile_path)
+    expect(current_path).to eq(root_path)
   end
 end
