@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121134637) do
+ActiveRecord::Schema.define(version: 20150127160904) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(version: 20150121134637) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.integer  "parent_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_category"
   end
 
   create_table "cell_phones", force: true do |t|
@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(version: 20150121134637) do
     t.datetime "updated_at"
   end
 
-  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
-  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
 
   create_table "device_registrations", force: true do |t|
     t.string   "platform"
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 20150121134637) do
     t.string   "name"
   end
 
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "rpush_apps", force: true do |t|
     t.string   "name",                                null: false
@@ -168,48 +168,48 @@ ActiveRecord::Schema.define(version: 20150121134637) do
   end
 
   create_table "rpush_feedback", force: true do |t|
-    t.string   "device_token", limit: 64, null: false
-    t.datetime "failed_at",               null: false
+    t.string   "device_token", limit: 64,  null: false
+    t.datetime "failed_at",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "app_id"
+    t.integer  "app_id",       limit: 255
   end
 
-  add_index "rpush_feedback", ["device_token"], name: "index_rpush_feedback_on_device_token", using: :btree
+  add_index "rpush_feedback", ["device_token"], name: "index_rpush_feedback_on_device_token"
 
   create_table "rpush_notifications", force: true do |t|
     t.integer  "badge"
     t.string   "device_token",      limit: 64
-    t.string   "sound",                              default: "default"
+    t.string   "sound",                         default: "default"
     t.string   "alert"
     t.text     "data"
-    t.integer  "expiry",                             default: 86400
-    t.boolean  "delivered",                          default: false,     null: false
+    t.integer  "expiry",                        default: 86400
+    t.boolean  "delivered",                     default: false,     null: false
     t.datetime "delivered_at"
-    t.boolean  "failed",                             default: false,     null: false
+    t.boolean  "failed",                        default: false,     null: false
     t.datetime "failed_at"
     t.integer  "error_code"
-    t.text     "error_description"
+    t.text     "error_description", limit: 255
     t.datetime "deliver_after"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "alert_is_json",                      default: false
-    t.string   "type",                                                   null: false
+    t.boolean  "alert_is_json",                 default: false
+    t.string   "type",                                              null: false
     t.string   "collapse_key"
-    t.boolean  "delay_while_idle",                   default: false,     null: false
-    t.text     "registration_ids",  limit: 16777215
-    t.integer  "app_id",                                                 null: false
-    t.integer  "retries",                            default: 0
+    t.boolean  "delay_while_idle",              default: false,     null: false
+    t.text     "registration_ids"
+    t.integer  "app_id",                                            null: false
+    t.integer  "retries",                       default: 0
     t.string   "uri"
     t.datetime "fail_after"
-    t.boolean  "processing",                         default: false,     null: false
+    t.boolean  "processing",                    default: false,     null: false
     t.integer  "priority"
     t.text     "url_args"
     t.string   "category"
   end
 
-  add_index "rpush_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi", using: :btree
-  add_index "rpush_notifications", ["delivered", "failed"], name: "index_rpush_notifications_multi", using: :btree
+  add_index "rpush_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi"
+  add_index "rpush_notifications", ["delivered", "failed"], name: "index_rpush_notifications_multi", where: "NOT delivered AND NOT failed"
 
   create_table "tags", force: true do |t|
     t.string   "name"
@@ -235,8 +235,8 @@ ActiveRecord::Schema.define(version: 20150121134637) do
     t.integer  "role"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "versions", force: true do |t|
     t.string   "item_type",  null: false
@@ -247,6 +247,6 @@ ActiveRecord::Schema.define(version: 20150121134637) do
     t.datetime "created_at"
   end
 
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
 end

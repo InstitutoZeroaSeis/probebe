@@ -8,7 +8,7 @@ FactoryGirl.define do
     minimum_valid_week 8
     type 'Articles::AuthorialArticle'
     user
-    association :category, factory: [:category, :with_parent]
+    association :category, factory: [:category]
     tags { [FactoryGirl.create(:tag)] }
 
     factory :authorial_article, class: Articles::AuthorialArticle do

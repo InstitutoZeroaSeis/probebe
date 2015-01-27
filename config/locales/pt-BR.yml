@@ -39,6 +39,12 @@ pt-BR:
   _baby_target_type: &baby_target_type_enum
     pregnancy: "Em gestação"
     born: "Nascido"
+  _parent_category: &parent_category
+    education: 'Educação'
+    finance: 'Finança'
+    health: 'Saúde'
+    socio_emotional: 'Socio emocional'
+    security: 'Segurança'
   activerecord:
     attributes:
       articles/article: &article
@@ -198,6 +204,9 @@ pt-BR:
         teenage_pregnancy:
           "true": 'Sim'
           "false": 'Não'
+      category:
+        parent_category:
+          <<: *parent_category
       profile:
         gender:
           <<: *gender
