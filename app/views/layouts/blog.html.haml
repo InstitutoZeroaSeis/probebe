@@ -36,14 +36,6 @@
                 %span.input-group-btn
                   %button.btn.btn-default{:type => "submit"}
                     %span.glyphicon.glyphicon-search
-          .well
-            %h4= t('activerecord.models.category').pluralize_current_locale
-            = render layout: 'two_column_link_list', locals: { list: Category.sub_categories } do |category|
-              = link_to category.name, category_posts_path(category.name)
-          .well
-            %h4= t('activerecord.models.tag').pluralize_current_locale
-            = render layout: 'two_column_link_list', locals: { list: Tag.all } do |_tag|
-              = link_to _tag.name, tag_posts_path(_tag.name)
       %hr
       %footer
         .row
