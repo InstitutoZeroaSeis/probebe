@@ -24,10 +24,10 @@ CSV.foreach('data/PlanilhaMae.csv', headers: true, col_sep: ";" ) do |row|
       child_gender = nil
     end
     begin
-      user = User.create!(email: email, role: 'site_user')
+      user = User.create!(email: email, role: 'site_user', profile:(Profile.create!(first_name: first_name, last_name: last_name, user: user)))
       user.confirm!
 
-      profile = Profile.create!(first_name: first_name, last_name: last_name, user: user)
+      profile = user.profile
 
       profile.children << Child.create!(name: child_name, birth_date: child_birth_date, gender: child_gender)
 
