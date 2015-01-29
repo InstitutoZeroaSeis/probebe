@@ -5,6 +5,8 @@ class Message < ActiveRecord::Base
   belongs_to :category
   belongs_to :messageable, polymorphic: true
 
+  delegate :parent_category, to: :category
+
   enum gender: [:male, :female, :both]
   enum baby_target_type: [:pregnancy, :born]
 
@@ -28,8 +30,7 @@ class Message < ActiveRecord::Base
     (min_week..max_week).include? age_in_weeks
   end
 
-
-  def distance_for_maximum_valid_week(age_in_weeks)
+  def remaining_weeks_till_due_date(age_in_weeks)
     max_week = maximum_valid_week || Message::MAXIMUM_POSSIBLE_WEEK
     max_week - age_in_weeks
   end
