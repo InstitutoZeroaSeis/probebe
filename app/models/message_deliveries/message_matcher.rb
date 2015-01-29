@@ -13,7 +13,7 @@ module MessageDeliveries
     def match_message_for_child
       messages = filter_messages_for_child
       if messages.present?
-        messages = find_group_messages_for_child(messages)
+        messages = create_group_messages_for_child(messages)
         match_message_from_category(messages)
       end
     end
@@ -55,7 +55,7 @@ module MessageDeliveries
       end
     end
 
-    def find_group_messages_for_child(messages)
+    def create_group_messages_for_child(messages)
       messages_by_remaining_weeks =  group_by_maximum_valid_week(messages, @child)
       find_messages_with_nearest_due_date(messages_by_remaining_weeks)
     end
