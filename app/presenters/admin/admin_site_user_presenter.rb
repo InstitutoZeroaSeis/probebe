@@ -13,6 +13,10 @@ class Admin::AdminSiteUserPresenter < Carnival::BaseAdminPresenter
         actions: [:index, :show, :new, :edit], sortable: true,
         as: :enum
 
+  field :profile_fields,
+        actions: [:new],
+        as: :partial
+
   action :show
   action :new
   action :destroy
