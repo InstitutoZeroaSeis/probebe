@@ -1,19 +1,26 @@
 FactoryGirl.define do
   factory :category do
     sequence(:name) {|n| "#{n}category"}
+    parent_category 'health'
   end
 
-  trait :with_parent do
-    association :parent_category, factory: :category
+  trait :with_health_parent do
+    parent_category 'health'
   end
 
-  trait :with_parent_category_same_as_self do
-    after(:build) do |category|
-      category.parent_category = category
-    end
+  trait :with_education_parent do
+    parent_category 'education'
   end
 
-  trait :with_subcategories do
-    sub_categories { create_list(:category, 2) }
+  trait :with_security_parent do
+    parent_category 'security'
+  end
+
+  trait :with_finance_parent do
+    parent_category 'finance'
+  end
+
+  trait :with_socio_emotional_parent do
+    parent_category 'socio_emotional'
   end
 end

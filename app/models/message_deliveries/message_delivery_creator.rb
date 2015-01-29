@@ -31,8 +31,7 @@ module MessageDeliveries
 
     def find_message_for_child(child)
       message_matcher = MessageDeliveries::MessageMatcher.new(messages_to_send, child, @system_date )
-      messages = message_matcher.find_messages_for_child
-      messages.first
+      message_matcher.match_message_for_child
     end
 
     def messages_to_send

@@ -10,25 +10,22 @@ module MessageDeliveries
       @system_date = system_date
     end
 
-    def find_messages_for_child
+    def match_message_for_child
+      messages = filter_messages_for_child
+      if messages.present?
+        messages = create_group_messages_for_child(messages)
+        match_message_from_category(messages)
+      end
+    end
+
+    def filter_messages_for_child
       messages = filter_by_gender(@messages)
       messages = filter_by_life_period(messages)
       messages = filter_by_age(messages)
-      messages = filter_by_already_sent_message(messages)
-      order_by_ending_valid_date(messages, child)
-    end
-
-    def any_message_found?
-      find_messages_for_child.size > 0
+      filter_by_already_sent_message(messages)
     end
 
     protected
-
-    def filter_by_already_sent_message(messages)
-      messages.to_a.select do |message|
-        !child.message_deliveries.map(&:message).include? message
-      end
-    end
 
     def filter_by_gender(messages)
       if child.gender.present?
@@ -47,14 +44,43 @@ module MessageDeliveries
 
     def filter_by_age(messages)
       age_in_weeks = child.age_in_weeks(@system_date)
-      messages.to_a.select do |message|
+      messages.select do |message|
         message.age_valid_for_message?(age_in_weeks)
       end
     end
 
-    def order_by_ending_valid_date(messages, child)
+    def filter_by_already_sent_message(messages)
+      messages.select do |message|
+        !child.message_deliveries.map(&:message).include? message
+      end
+    end
+
+    def create_group_messages_for_child(messages)
+      messages_by_remaining_weeks =  group_by_maximum_valid_week(messages, @child)
+      find_messages_with_nearest_due_date(messages_by_remaining_weeks)
+    end
+
+    def group_by_maximum_valid_week(messages, child)
       age_in_weeks = child.age_in_weeks(@system_date)
-      messages.sort_by {|message| message.distance_for_maximum_valid_week(age_in_weeks)}
+      messages.group_by {|message| message.remaining_weeks_till_due_date(age_in_weeks) }
+    end
+
+    def find_messages_with_nearest_due_date(grouped_messages)
+      least_amount_key = grouped_messages.keys.min
+      grouped_messages[least_amount_key]
+    end
+
+    def match_message_from_category(messages)
+      category = category_for_child
+      matched_message = messages.find do |message|
+        message.parent_category == category
+      end
+      matched_message || messages.first
+    end
+
+    def category_for_child
+      category_matcher = MessageDeliveries::CategoryMatcher.new(@child)
+      category = category_matcher.find_least_delivered_category
     end
   end
 end

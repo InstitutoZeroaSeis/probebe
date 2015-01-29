@@ -10,8 +10,7 @@ class Admin::AuthorialArticlePresenter < Carnival::BaseAdminPresenter
         actions: [:show, :index],
         advanced_search: {operator: :equal}
 
-  field :category_id,
-        as: :category_grouped_select,
+  field :category,
         actions: [:new, :edit]
 
   field :tags,

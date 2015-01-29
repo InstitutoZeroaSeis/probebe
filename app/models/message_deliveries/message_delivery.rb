@@ -15,6 +15,7 @@ module MessageDeliveries
 
     scope :order_by_delivery_date, -> { order(delivery_date: :desc) }
     scope :created_today, -> { where(created_at: Date.today.beginning_of_day..Date.today.end_of_day) }
+    scope :created_in_a_month, -> { where(created_at: 1.month.ago.beginning_of_day..Date.today.end_of_day) }
 
     def article
       message.messageable

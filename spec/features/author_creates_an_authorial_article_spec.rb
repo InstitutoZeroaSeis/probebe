@@ -4,7 +4,7 @@ feature "Author create an authorial article" do
   scenario "successfully" do
     article_title = "Test title see if index showing title"
     user = create(:user, :confirmed, :author)
-    create(:category, parent_category: create(:category), name: 'Saúde')
+    create(:category, name: 'Saúde')
 
     sign_in(user.email, user.password)
 

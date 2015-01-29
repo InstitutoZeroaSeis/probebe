@@ -4,17 +4,14 @@ class Admin::CategoryPresenter < Carnival::BaseAdminPresenter
         actions: [:index, :show], :sortable => false,
         advanced_search: {:operator => :equal}
 
+  field :parent_category,
+        as: :enum,
+        actions: [:index, :show, :edit, :new]
+
   field :name,
         actions: [:index, :show, :edit, :new],
         sortable: false,
         advanced_search: {:operator => :like}
-
-  field :parent_category,
-        actions: [:edit, :new]
-
-  field 'parent_category.name',
-        sortable: false,
-        actions: [:index, :show]
 
   action :show
   action :edit
