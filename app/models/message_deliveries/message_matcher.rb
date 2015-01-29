@@ -12,15 +12,17 @@ module MessageDeliveries
 
     def match_message_for_child
       messages = filter_messages_for_child
-      messages = find_group_messages_for_child(messages)
-      match_message_from_category(messages)
+      if messages.present?
+        messages = find_group_messages_for_child(messages)
+        match_message_from_category(messages)
+      end
     end
 
     def filter_messages_for_child
       messages = filter_by_gender(@messages)
       messages = filter_by_life_period(messages)
       messages = filter_by_age(messages)
-      messages = filter_by_already_sent_message(messages)
+      filter_by_already_sent_message(messages)
     end
 
     protected
@@ -65,7 +67,7 @@ module MessageDeliveries
 
     def find_messages_with_nearest_due_date(grouped_messages)
       least_amount_key = grouped_messages.keys.min
-      grouped_messages[least_amount_key].last
+      grouped_messages[least_amount_key]
     end
 
     def match_message_from_category(messages)

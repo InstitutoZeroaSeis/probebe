@@ -10,7 +10,7 @@ class Message < ActiveRecord::Base
   enum gender: [:male, :female, :both]
   enum baby_target_type: [:pregnancy, :born]
 
-  validates_presence_of :text
+  validates_presence_of :text, :category
 
   scope :male_and_both, -> { where(gender:[0,2]) }
   scope :female_and_both, -> { where(gender:[1,2]) }
