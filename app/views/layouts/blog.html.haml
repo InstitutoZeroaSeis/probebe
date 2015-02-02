@@ -1,4 +1,4 @@
-!!!
+!!!5
 %html
   %head
     %meta{:charset => "utf-8"}
@@ -9,8 +9,6 @@
     %title= t('views.application.name')
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
-
-    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"}
 
     = csrf_meta_tags
     = render partial: 'flash_messages'
