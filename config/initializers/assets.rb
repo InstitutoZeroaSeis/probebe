@@ -14,3 +14,4 @@ Rails.application.config.assets.precompile += %w( jquery-ui.css jquery-ui/datepi
 Rails.application.config.assets.precompile += %w( timeline.css )
 Rails.application.config.assets.precompile += %w( timeline.js )
 Rails.application.config.assets.precompile += %w( authorial_articles.js journalistic_articles.js )
+Rails.application.config.assets.precompile += %w( ckeditor/* )
