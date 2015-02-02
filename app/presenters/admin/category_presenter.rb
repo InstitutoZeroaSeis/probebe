@@ -1,4 +1,5 @@
 class Admin::CategoryPresenter < Carnival::BaseAdminPresenter
+  model_name 'CategoryTranslationDecorator'
 
   field :id,
         actions: [:index, :show], :sortable => false,
