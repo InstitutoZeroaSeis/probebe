@@ -227,11 +227,12 @@ pt-BR:
       signed_in_as: "Logado como %{user_name}"
   views:
     application:
-      name: "Pro Bebê"
       admin: "Admin"
+      back_to_home: 'Voltar ao início'
+      exit: *exit
+      name: "Pro Bebê"
       sign_in: "Login"
       toggle_navigation: "Abrir/Fechar Menu"
-      exit: *exit
     blog:
       back_html: "&larr; Voltar"
       by: "por %{author}"
@@ -240,6 +241,10 @@ pt-BR:
       older_html: "&larr; Mais antigos"
       read_more: *read_more
       search: "Busca de posts"
+    errors:
+      forbidden: "Acesso não autorizado"
+      internal_server_error: "Ocorreu um erro ao processar a requisição"
+      not_found: "Página não encontrada"
     profile:
       cell_phone: "Celular"
       cell_phones: "Celulares"

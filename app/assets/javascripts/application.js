@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.noty.packaged
-//= require jquery-ui
+//= require jquery-ui/datepicker
 //= require jquery-ui/datepicker-pt-BR
 //= require pro-bebe
 //= require inputs/countable_input

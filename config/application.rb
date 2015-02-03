@@ -14,6 +14,10 @@ module ProBebe
     config.i18n.available_locales = :pt, :'pt-BR', :en
     config.i18n.default_locale = 'pt-BR'
     config.initialize_on_precompile = false
+
+    config.exceptions_app = self.routes
+    config.action_dispatch.rescue_responses['ActionController::RoutingError'] = :not_found
+
     console { config.console = Pry }
   end
 end
