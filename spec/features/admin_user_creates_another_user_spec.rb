@@ -10,6 +10,8 @@ feature "Admin user creates another user" do
     visit new_admin_admin_site_user_path
     fill_in 'user[email]', with: new_user_email
     find('option', text: 'Administrador').select_option
+    fill_in 'user[profile_attributes][first_name]', with: "first_name"
+    fill_in 'user[profile_attributes][last_name]', with: "last_name"
     click_on I18n.t('create')
     expect(current_path).to eq(admin_admin_site_users_path)
     expect(page).to have_content(new_user_email)
