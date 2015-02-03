@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe DeviceRegistrationsController, :type => :controller do
+RSpec.describe Api::DeviceRegistrationsController, :type => :controller do
   describe "POST create"  do
 
     context "unauthenticated" do

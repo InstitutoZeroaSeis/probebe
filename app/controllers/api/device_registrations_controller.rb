@@ -1,4 +1,4 @@
-class DeviceRegistrationsController < ApplicationController
+class Api::DeviceRegistrationsController < ApplicationController
   include HeaderAuthenticationConcern
   skip_before_action :verify_authenticity_token
   before_action :check_authentication
