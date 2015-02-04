@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
   root to: 'posts#index'
 
+  match ':status', to: 'errors#show', constraints: {status: /\d{3}/}, via: [:get, :post]
   resource :profile, except: :index
   resources :timelines, only: :show
   resources(:posts, only: [:show, :index])
