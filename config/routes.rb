@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :credentials, only: :create
-    resources :device_registrations, only: [:create, :show, :destroy]
+    resources :device_registrations, only: [:create, :show, :destroy], id: /[^\/]+/, param: :platform_code
     resources :messages, only: :show
     resources :children, only: :index
     post 'd3d4b74ea38c163c820cd84b25f5/a8eecbf2d604ff6769fd64f1a491' => 'message_deliveries#create'

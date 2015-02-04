@@ -72,7 +72,7 @@ RSpec.describe Api::DeviceRegistrationsController, :type => :controller do
     end
 
     it "is expected to return nil if a device is not yet registered" do
-      get :show, id: 'invalid_id', format: :json
+      get :show, platform_code: 'invalid_id', format: :json
 
       expect(response.status).to eq(404)
     end
@@ -80,7 +80,7 @@ RSpec.describe Api::DeviceRegistrationsController, :type => :controller do
     it "is expected to return the registration if it exists" do
       registration = create(:device_registration)
 
-      get :show, id: registration.platform_code, format: :json
+      get :show, platform_code: registration.platform_code, format: :json
 
       registration_response = JSON.parse(response.body).symbolize_keys
       expect(registration_response[:platform_code]).to eq(registration.platform_code)
@@ -97,7 +97,7 @@ RSpec.describe Api::DeviceRegistrationsController, :type => :controller do
       device = create(:device_registration, :with_profile)
       expect(MessageDeliveries::DeviceRegistration.all).to_not be_empty
 
-      delete :destroy, id: device.platform_code, format: :json
+      delete :destroy, platform_code: device.platform_code, format: :json
 
       expect(response.status).to eq(200)
       expect(MessageDeliveries::DeviceRegistration.all).to be_empty

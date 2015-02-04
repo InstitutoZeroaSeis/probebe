@@ -8,7 +8,7 @@ class Api::DeviceRegistrationsController < ApplicationController
   end
 
   def show
-    registration = MessageDeliveries::DeviceRegistration.find_by(platform_code: params[:id])
+    registration = MessageDeliveries::DeviceRegistration.find_by(platform_code: params[:platform_code])
     if registration
       render json: registration
     else
@@ -33,7 +33,7 @@ class Api::DeviceRegistrationsController < ApplicationController
   end
 
   def destroy
-    registration = MessageDeliveries::DeviceRegistration.find_by(platform_code: params[:id])
+    registration = MessageDeliveries::DeviceRegistration.find_by(platform_code: params[:platform_code])
     registration.destroy
     head 200
   end
