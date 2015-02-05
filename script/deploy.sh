@@ -8,6 +8,7 @@ echo "Finished assets compilation"
 
 echo "Adding assets to git"
 git add -A public/assets
+git commit -m "EBS deploy"
 
 echo "Deploying to Elastic Beanstalk"
 eb deploy
