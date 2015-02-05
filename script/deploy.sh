@@ -11,7 +11,7 @@ git add -A public/assets
 git commit -m "EBS deploy"
 
 echo "Deploying to Elastic Beanstalk"
-eb deploy
+eb deploy || true
 
 echo "Reseting your git repo"
 git reset --hard HEAD~1
