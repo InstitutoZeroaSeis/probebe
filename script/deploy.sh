@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+echo "Compiling assets..."
+docker run -ti -e "RAILS_ENV=production" -e "BUNDLE_APP_CONFIG=/app/.bundle" -v $PWD:/app -w /app rails:4.1.6 bundle exec rake assets:precompile
+echo "Finished assets compilation"
+
+echo "Adding assets to git"
+git add -A public/assets
+
+echo "Deploying to Elastic Beanstalk"
+eb deploy
+
+echo "Reseting your git repo"
+git reset --hard HEAD~1
