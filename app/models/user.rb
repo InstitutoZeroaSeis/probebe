@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :profile
 
+  delegate :id, :name, :city, :state, :street, :birth_date, :primary_cell_phone_number, to: :profile, prefix: true
+
   def password_required?
     false
   end
@@ -30,23 +32,6 @@ class User < ActiveRecord::Base
     self.role ||= :site_user
   end
 
-  def has_profile?
-    profile.present?
-  end
+  alias_attribute :to_label, :name
 
-  def has_no_profile?
-    !has_profile?
-  end
-
-  def to_label
-    name_or_email
-  end
-
-  def name_or_email
-    profile.present? ? profile.name : email
-  end
-
-  def profile_id
-    profile.id
-  end
 end

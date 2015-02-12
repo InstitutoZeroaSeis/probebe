@@ -30,7 +30,7 @@ class Articles::JournalisticArticle < Articles::Article
   end
 
   def original_author_name
-    original_author.name_or_email
+    original_author.profile_name
   end
 
   private

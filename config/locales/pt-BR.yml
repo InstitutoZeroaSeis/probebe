@@ -122,6 +122,11 @@ pt-BR:
         email: "Email"
         role: "Perfil de acesso"
         profile_name: "Nome"
+        profile_birth_date: "Data de nascimento"
+        profile_state: "Estado"
+        profile_city: "Cidade"
+        profile_street: "Rua"
+        profile_primary_cell_phone_number: "Celular"
     errors:
       models:
         article:
