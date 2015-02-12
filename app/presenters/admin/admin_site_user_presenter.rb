@@ -20,6 +20,6 @@ class Admin::AdminSiteUserPresenter < Carnival::BaseAdminPresenter
   action :show
   action :new
   action :destroy
-  action :edit_profile, show_func: :has_profile?
+  action :edit_profile
 
 end
