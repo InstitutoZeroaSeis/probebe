@@ -12,6 +12,7 @@ feature "Author edits an authorial article" do
 
     click_on I18n.t('update')
 
+    visit carnival_root_path
     expect(current_path).to eq(carnival_root_path)
     expect(page).to have_content(article_title)
   end

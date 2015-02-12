@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = current_profile
     if @profile.update_attributes(permitted_params)
-      redirect_to back_or_model_path
+      redirect_to profile_path
     else
       render :edit
     end

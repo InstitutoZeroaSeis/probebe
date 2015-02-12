@@ -26,6 +26,7 @@ feature "Author create an authorial article" do
 
     click_on 'Criar'
 
+    visit carnival_root_path
     expect(current_path).to eq(carnival_root_path)
     expect(page).to have_content(article_title)
   end
