@@ -5,7 +5,7 @@ class Admin::AdminSiteUsersController < Admin::AdminController
   skip_before_action :deny_site_user_access_on_admin
   load_and_authorize_resource 'User'
 
-  defaults :resource_class => User
+  defaults :resource_class => User, instance_name: :user
 
   def table_items
     User.admin_site_user
