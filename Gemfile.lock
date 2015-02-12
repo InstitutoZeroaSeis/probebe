@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/cartolari/carnival.git
-  revision: 4cacb3487cd425844a955081e1abac1bc1502549
+  revision: b8e3f4d6480b7e2942445768a9641d1ea52a33bf
   branch: bug_fixes
   specs:
     carnival (0.1.4)

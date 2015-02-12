@@ -18,7 +18,7 @@ class Admin::ProfilesController < Admin::AdminController
   def update
     @profile.update_attributes(permitted_params)
     flash[:notice] = t('messages.updated')
-    update!
+    super
   end
 
   private
