@@ -10,22 +10,25 @@ db:
 web:
   build: docker/development_image
   command: bundle exec rails s --pid=/tmp/server.pid
+  environment:
+    VIRTUAL_HOST: web.probebe.dev
   links:
     - db
     - mail
     - rpush
     - redis
   ports:
-    - 3000:3000
+    - 3000
   volumes:
     - .:/app
+    - ../carnival:/carnival
   working_dir: /app
 
 mail:
-  image: aegypius/mailcatcher
-  ports:
-    - 1025
-    - 3010:1080
+  image: schickling/mailcatcher
+  environment:
+    VIRTUAL_HOST: mail.probebe.dev
+    VIRTUAL_PORT: 1080
 
 rpush:
   build: docker/development_image
@@ -34,6 +37,7 @@ rpush:
     - db
   volumes:
     - .:/app
+    - ../carnival:/carnival
   working_dir: /app
 
 redis:
@@ -49,4 +53,5 @@ sidekiq:
     - db
   volumes:
     - .:/app
+    - ../carnival:/carnival
   working_dir: /app
