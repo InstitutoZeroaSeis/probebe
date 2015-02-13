@@ -14,4 +14,4 @@ echo "Deploying to Elastic Beanstalk"
 eb deploy || true
 
 echo "Reseting your git repo"
-docker-compose run -ti web "rm -rf public/assets" && git reset --hard HEAD~1
+docker-compose run web "rm -rf public/assets" && git reset --hard HEAD~1
