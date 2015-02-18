@@ -17,5 +17,5 @@ production:
   message_delivery:
     <<: *message_delivery
     deliver_sms: true
-    wsdl_url: http://webservice.springvas.com.br:50983/BasicSourceMT?WSDL
-    wsdl_end_point: http://webservice.springvas.com.br:50983/BasicSourceMT
+    wsdl_url: http://54.208.151.164/BasicSourceMT?WSDL
+    wsdl_end_point: http://54.208.151.164/BasicSourceMT
