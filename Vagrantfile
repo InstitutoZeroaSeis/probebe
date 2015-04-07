@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.ssh.forward_agent = true
-  config.vm.synced_folder ".", "/app", nfs: true
+  config.vm.synced_folder ".", "/app", nfs: false
 
   config.vm.network :forwarded_port, guest: 3000, host: 3000
   config.vm.network :forwarded_port, guest: 3010, host: 3010
