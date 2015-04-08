@@ -12,8 +12,9 @@
 
     = csrf_meta_tags
     = render partial: 'flash_messages'
+
   %body
-    .menu
+    %header.site-header
       - if user_signed_in?
         - if current_user.site_user?
           = render partial: 'menu_for_site_user'
@@ -21,6 +22,31 @@
           = render partial: 'menu_for_admin_site_user'
       - else
         = render partial: 'menu_for_anonymous_user'
+    .site-banner
+      %ul.site-banner-list
+        %li.site-banner-item
+          %header.site-banner-header
+            %h1 Você Sabia?
+            %p Dar leite de caixinha para o seu filho antes dois anos, pode prejudiar o seu desenvolvimento?
+          %figure.site-banner-image
+            = image_tag 'img-banner-probebe.jpg'
+        %li.site-banner-item
+          %header.site-banner-header
+            %h1 Você Sabia?
+            %p Dar leite de caixinha para o seu filho antes dois anos, pode prejudiar o seu desenvolvimento?
+        %li.site-banner-item
+          %header.site-banner-header
+            %h1 Você Sabia?
+            %p Dar leite de caixinha para o seu filho antes dois anos, pode prejudiar o seu desenvolvimento?
+        %li.site-banner-item
+          %header.site-banner-header
+            %h1 Você Sabia?
+            %p Dar leite de caixinha para o seu filho antes dois anos, pode prejudiar o seu desenvolvimento?
+        %li.site-banner-item
+          %header.site-banner-header
+            %h1 Você Sabia?
+            %p Dar leite de caixinha para o seu filho antes dois anos, pode prejudiar o seu desenvolvimento?
+
     .container
       .row
         .col-md-8

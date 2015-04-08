@@ -1,0 +1,34 @@
+.site-banner {
+  background: black;
+  width: 100%;
+}
+
+.site-banner-list {
+  margin: 0;
+  padding: 0;
+  float: left;
+  width: 100%;
+}
+
+.site-banner-item {
+  float: left;
+  height: 500px;
+  list-style: none;
+  margin: 0;
+  padding: 60px 0 0;
+  width: 100%;
+}
+
+.site-banner-header {
+  position: relative;
+  z-index: 9;
+}
+
+.site-banner-image {
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

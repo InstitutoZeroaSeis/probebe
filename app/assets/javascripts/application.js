@@ -21,3 +21,5 @@
 //= require jquery.mask
 //= require html5shiv
 //= require bootstrap.min
+//= require owl.carousel
+//= require site-banner
