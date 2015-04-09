@@ -1,0 +1,131 @@
+.site-body {
+  margin-top: 50px;
+}
+
+.site-body-how-it-works-heading {
+  font-weight: 200;
+  font-size: 44px;
+}
+
+.site-body-how-it-works-list {
+  margin-top: 40px;
+  list-style: none;
+  position: relative;
+}
+
+.site-body-how-it-works-item {
+  float: left;
+  margin-left: 20px;
+  text-align: center;
+  position: relative;
+  width: 200px;
+
+  figure {
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    height: 150px;
+    margin: 0 auto;
+    position: relative;
+    width: 150px;
+  }
+
+  p {
+    margin-top: 20px;
+  }
+}
+
+.site-body-categories-list {
+  border-color: #ccc;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px 1px 8px;
+  box-shadow: 0 2px 40px #ccc;
+  float: right;
+  list-style-type: none;
+  margin-right: 20px;
+  padding-bottom: 20px;
+  width: 250px;
+}
+
+.site-body-categories-item {
+  line-height: 50px;
+  font-size: 22px;
+  margin: 0;
+  padding: 0;
+
+  &:after {
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-bottom-color: #ccc;
+    margin-bottom: 5px;
+    margin-left: -15px;
+    content: '';
+    display: block;
+    width: 90%;
+  }
+}
+
+.category-health {
+  border-bottom-color: $red;
+
+  .is-active {
+    color: $red;
+
+    &:after {
+      border-bottom-color: $red;
+      border-bottom-style: solid;
+    }
+  }
+}
+
+.category-education {
+  border-bottom-color: $orange;
+
+  .is-active {
+    color: $orange;
+
+    &:after {
+      border-bottom-color: $orange;
+      border-bottom-style: solid;
+    }
+  }
+}
+
+.category-socioemotional {
+  border-bottom-color: $purple;
+
+  .is-active {
+    color: $purple;
+
+    &:after {
+      border-bottom-color: $purple;
+      border-bottom-style: solid;
+    }
+  }
+}
+
+.category-finance {
+  border-bottom-color: $green;
+
+  .is-active {
+    color: $green;
+
+    &:after {
+      border-bottom-color: $green;
+      border-bottom-style: solid;
+    }
+  }
+}
+
+.category-security {
+  border-bottom-color: $yellow;
+
+  .is-active {
+    color: $yellow;
+
+    &:after {
+      border-bottom-color: $yellow;
+      border-bottom-style: solid;
+    }
+  }
+}
