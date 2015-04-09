@@ -1,21 +1,21 @@
-.site-body {
+.how-it-works {
   margin-top: 50px;
 }
 
-.site-body-how-it-works-header {
+.how-it-works-header {
   font-weight: 300;
   font-size: 35px;
   text-transform: uppercase;
 }
 
-.site-body-how-it-works-list {
+.how-it-works-list {
   margin-top: 40px;
   list-style: none;
   padding: 0;
   position: relative;
 }
 
-.site-body-how-it-works-item {
+.how-it-works-item {
   float: left;
   margin-right: 20px;
   text-align: center;
@@ -36,7 +36,7 @@
   }
 }
 
-.site-body-categories-list {
+.categories-list {
   border-color: #ccc;
   border-radius: 5px;
   border-style: solid;
@@ -45,12 +45,13 @@
   float: right;
   list-style-type: none;
   margin-right: 20px;
+  margin-top: 50px;
   padding: 20px 25px 30px;
   position: relative;
   width: 250px;
 }
 
-.site-body-categories-item {
+.categories-item {
   line-height: 50px;
   font-size: 22px;
   margin: 0;

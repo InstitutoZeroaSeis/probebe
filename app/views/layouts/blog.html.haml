@@ -88,38 +88,41 @@
           12 a 15 meses
 
     .clearfix
-    .site-body.container
-      .site-body-how-it-works
-        %h1.site-body-how-it-works-header Como Funciona?
-        %ul.site-body-how-it-works-list
-          %li.site-body-how-it-works-item
+    %nav.categories
+      %ul.categories-list.category-health
+        %li.categories-item.is-active
+          Saúde
+        %li.categories-item
+          Educação
+        %li.categories-item
+          Socioemocional
+        %li.categories-item
+          Finanças
+        %li.categories-item
+          Segurança
+
+        .categories-arrow
+
+    %section.how-it-works.container-fluid
+      .container
+        %h1.how-it-works-header Como Funciona?
+        %ul.how-it-works-list
+          %li.how-it-works-item
             %figure
               %img
             %p Lorem ipsum dolor sit amet
-          %li.site-body-how-it-works-item
+          %li.how-it-works-item
             %figure
               %img
             %p Lorem ipsum dolor sit amet
-          %li.site-body-how-it-works-item
+          %li.how-it-works-item
             %figure
               %img
             %p Lorem ipsum dolor sit amet
 
-      %nav.site-body-categories
-        %ul.site-body-categories-list.category-health
-          %li.site-body-categories-item.is-active
-            Saúde
-          %li.site-body-categories-item
-            Educação
-          %li.site-body-categories-item
-            Socioemocional
-          %li.site-body-categories-item
-            Finanças
-          %li.site-body-categories-item
-            Segurança
-
-          .site-body-categories-arrow
-
+      .subjects
+        .subjects-health
+          %h2.subject-health-header
     .container
       .row
         .col-md-8
