@@ -2,20 +2,22 @@
   margin-top: 50px;
 }
 
-.site-body-how-it-works-heading {
-  font-weight: 200;
-  font-size: 44px;
+.site-body-how-it-works-header {
+  font-weight: 300;
+  font-size: 35px;
+  text-transform: uppercase;
 }
 
 .site-body-how-it-works-list {
   margin-top: 40px;
   list-style: none;
+  padding: 0;
   position: relative;
 }
 
 .site-body-how-it-works-item {
   float: left;
-  margin-left: 20px;
+  margin-right: 20px;
   text-align: center;
   position: relative;
   width: 200px;
@@ -43,7 +45,8 @@
   float: right;
   list-style-type: none;
   margin-right: 20px;
-  padding-bottom: 20px;
+  padding: 20px 25px 30px;
+  position: relative;
   width: 250px;
 }
 
@@ -54,14 +57,15 @@
   padding: 0;
 
   &:after {
-    border-bottom-width: 1px;
-    border-bottom-style: dashed;
     border-bottom-color: #ccc;
-    margin-bottom: 5px;
-    margin-left: -15px;
+    border-bottom-style: dashed;
+    border-bottom-width: 1px;
+    border-bottom: 1px dashed #CCC;
     content: '';
     display: block;
-    width: 90%;
+    left: 10%;
+    position: absolute;
+    width: 80%;
   }
 }
 
