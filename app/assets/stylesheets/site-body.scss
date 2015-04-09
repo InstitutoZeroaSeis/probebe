@@ -65,67 +65,29 @@
   }
 }
 
+@mixin category-color($color) {
+  border-bottom-color: $color;
+  .is-active {
+    color: $color;
+    &:after {
+      border-bottom-color: $color;
+      border-bottom-style: solid;
+    }
+  }
+}
+
 .category-health {
-  border-bottom-color: $red;
-
-  .is-active {
-    color: $red;
-
-    &:after {
-      border-bottom-color: $red;
-      border-bottom-style: solid;
-    }
-  }
+  @include category-color($red);
 }
-
 .category-education {
-  border-bottom-color: $orange;
-
-  .is-active {
-    color: $orange;
-
-    &:after {
-      border-bottom-color: $orange;
-      border-bottom-style: solid;
-    }
-  }
+  @include category-color($orange);
 }
-
 .category-socioemotional {
-  border-bottom-color: $purple;
-
-  .is-active {
-    color: $purple;
-
-    &:after {
-      border-bottom-color: $purple;
-      border-bottom-style: solid;
-    }
-  }
+  @include category-color($purple);
 }
-
 .category-finance {
-  border-bottom-color: $green;
-
-  .is-active {
-    color: $green;
-
-    &:after {
-      border-bottom-color: $green;
-      border-bottom-style: solid;
-    }
-  }
+  @include category-color($green);
 }
-
 .category-security {
-  border-bottom-color: $yellow;
-
-  .is-active {
-    color: $yellow;
-
-    &:after {
-      border-bottom-color: $yellow;
-      border-bottom-style: solid;
-    }
-  }
+  @include category-color($yellow);
 }
