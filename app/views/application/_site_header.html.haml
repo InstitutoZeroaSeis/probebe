@@ -1,0 +1,23 @@
+%header.site-header
+  .navbar.navbar-default{ role: 'navigation' }
+    .container-fluid
+      .navbar-header
+        = render partial: 'toggle_menu_button'
+        = link_to t('views.application.name'), root_path, class: 'navbar-brand'
+      .navbar-collapse.collapse
+        %ul.nav.navbar-nav
+          %li= link_to 'Quem Somos', '#'
+          %li= link_to 'O que é o ProBebê', '#'
+          %li= link_to 'Parceiros', '#'
+          %li= link_to 'Histórico', '#'
+
+        %ul.nav.navbar-nav.navbar-right.navbar-form
+          .input-group
+            %input.form-control{ type: 'text', name: 'search' }
+            %span.input-group-btn
+              %button.btn.btn-default{ type: 'submit' }
+                %span.glyphicon.glyphicon-search
+          %li.pull-right
+            = link_to 'Login', '#'
+
+= render 'site_banner'
