@@ -1,11 +1,11 @@
 !!!5
 %html
   %head
-    %meta{ charset: "utf-8" }
-    %meta{ content: "IE=edge", "http-equiv" => "X-UA-Compatible" }
-    %meta{ content: "width=device-width, initial-scale=1", :name => "viewport" }
-    %meta{ content: "", :name => "description" }
-    %meta{ content: "", :name => "author" }
+    %meta{ charset: 'utf-8' }
+    %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }
+    %meta{ content: 'width=device-width, initial-scale=1', name: 'viewport' }
+    %meta{ content: '', name: 'description' }
+    %meta{ content: '', name: 'author' }
     %title= t('views.application.name')
     %link{ href: 'http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic', rel: 'stylesheet', type: 'text/css' }/
 
@@ -17,7 +17,7 @@
 
   %body
     %header.site-header
-      .navbar.navbar-default{:role => "navigation"}
+      .navbar.navbar-default{ role: 'navigation' }
         .container-fluid
           .navbar-header
             = render partial: 'toggle_menu_button'
@@ -35,9 +35,9 @@
 
             %ul.nav.navbar-nav.navbar-right.navbar-form
               .input-group
-                %input.form-control{type: 'text', name: 'search'}
+                %input.form-control{ type: 'text', name: 'search' }
                 %span.input-group-btn
-                  %button.btn.btn-default{:type => "submit"}
+                  %button.btn.btn-default{ type: 'submit' }
                     %span.glyphicon.glyphicon-search
               %li.pull-right
                 = link_to 'Log In', '#'
