@@ -88,20 +88,20 @@
           12 a 15 meses
 
     .clearfix
-    %nav.categories
-      %ul.categories-list.category-health
-        %li.categories-item.is-active
+    %nav.home-categories
+      %ul.home-categories-list.category-health
+        %li.home-categories-item.is-active
           Saúde
-        %li.categories-item
+        %li.home-categories-item
           Educação
-        %li.categories-item
+        %li.home-categories-item
           Socioemocional
-        %li.categories-item
+        %li.home-categories-item
           Finanças
-        %li.categories-item
+        %li.home-categories-item
           Segurança
 
-        .categories-arrow
+        .home-categories-arrow
 
     %section.how-it-works.container-fluid
       .container
@@ -120,10 +120,67 @@
               %img
             %p Lorem ipsum dolor sit amet
 
-      .subjects
-        .subjects-health
-          %h2.subject-health-header
-    .container
+    %section.subjects.container
+      .subject.subject-health.col-md-9
+        .row.col-md-12
+          .subject-header.subject-health
+            %h2
+              Fique atenta a sua
+              %span.highlight saúde
+
+        .col-md-4
+          .subject-picture
+            %figure
+              %img
+            .subject-picture-description
+              %p
+                Lorem ipsum dolor sit amet
+                Lorem ipsum dolor sit amet
+
+        .col-md-8
+          .subject-description
+            .subject-description-header.subject-description-header-health
+              %h3
+                Mais de
+                %span.highlight 300
+                dicas
+              %p
+                para ajudar na saúde da sua gestação
+          .subject-description-buttons
+            %button.subject-description-buttons-sign-in-health
+              Cadastre-se
+            %button.subject-description-buttons-read-health
+              Leia
+
+      .subject.subject-education.col-md-9
+        .row.col-md-12
+          .subject-header.subject-education
+            %h2
+              %span.highlight Educação
+              começa na barriga
+
+        .col-md-4.pull-right
+          .subject-picture
+            %figure
+              %img
+            .subject-picture-description
+              %p
+                Lorem ipsum dolor sit amet
+                Lorem ipsum dolor sit amet
+
+        .col-md-8
+          .subject-description
+            .subject-description-header.subject-description-header-education
+              %p
+                A educação do seu filho começa ainda na barriga da mãe.
+                %span.highlight Sabe por que?
+          .subject-description-buttons
+            %button.subject-description-buttons-sign-in-education
+              Cadastre-se
+            %button.subject-description-buttons-read-education
+              Leia
+
+    -# .container
       .row
         .col-md-8
           = yield

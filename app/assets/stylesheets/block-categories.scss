@@ -1,0 +1,176 @@
+.subject-header {
+  h2 {
+    border-radius: 5px;
+    border: 1px solid $border-gray;
+    font-weight: 300;
+    line-height: 60px;
+    margin: 20px auto 50px;
+    position: relative;
+    text-align: center;
+    width: 70%;
+
+    &:before {
+      border: 1px dashed $border-gray;
+      content: ' ';
+      display: block;
+      left: -15%;
+      position: absolute;
+      top: 50%;
+      width: 10%;
+    }
+
+    &:after {
+      border: 1px dashed $border-gray;
+      content: ' ';
+      display: block;
+      position: absolute;
+      right: -15%;
+      top: 50%;
+      width: 10%;
+    }
+
+    .highlight {
+      font-weight: 400;
+    }
+  }
+}
+
+@mixin subject($bg-color, $color) {
+  h2 {
+    background: $bg-color;
+  }
+  .highlight {
+    color: $color;
+  }
+}
+
+.subject-health {
+  @include subject($bg-red, $red);
+}
+
+.subject-education {
+  @include subject($bg-orange, $orange);
+}
+
+.subject-soctionemotional {
+  @include subject($bg-purple, $purple);
+}
+
+.subject-finance {
+  @include subject($bg-green, $green);
+}
+
+.subject-security {
+  @include subject($bg-yellow, $yellow);
+}
+
+.subject-picture {
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid $border-gray;
+  position: relative;
+  text-align: center;
+  width: 250px;
+  z-index: 5px;
+
+  figure {
+    height: 200px;
+    border-bottom: 4px solid $border-gray;
+  }
+
+  p {
+    padding-top: 20px;
+  }
+
+  &:before {
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    content: ' ';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transform: rotate(-5deg) translate(9px, 0);
+    width: 100%;
+    z-index: -10;
+  }
+}
+
+.subject-description-header {
+  h3 {
+    font-size: 40px;
+    font-weight: 300;
+  }
+
+  .highlight {
+    font-weight: 400;
+  }
+
+  p {
+    font-size: 28px;
+  }
+}
+
+.subject-description-header-health {
+  .highlight {
+    color: $red;
+  }
+}
+
+.subject-description-header-education {
+  .highlight {
+    color: $orange;
+  }
+}
+
+.subject-description-buttons {
+  button {
+    border-radius: 4px;
+    border: 1px solid;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    padding: 9px 14px 8px;
+    text-align: center;
+    width: 150px;
+  }
+}
+
+@mixin subject-description-buttons-sign-in($color) {
+  background-color: $color;
+  color: #fff;
+
+  &:hover {
+    border: 1px solid $color;
+    background-color: #fff;
+    color: $color;
+  }
+}
+
+@mixin subject-description-buttons-read($color) {
+  background-color: #fff;
+  color: $color;
+
+  &:hover {
+    border: 1px solid $color;
+    background-color: $color;
+    color: #fff;
+  }
+}
+
+.subject-description-buttons-sign-in-health {
+  @include subject-description-buttons-sign-in($red);
+}
+
+.subject-description-buttons-read-health {
+  @include subject-description-buttons-read($red);
+}
+
+.subject-description-buttons-sign-in-education {
+  @include subject-description-buttons-sign-in($orange);
+}
+
+.subject-description-buttons-read-education {
+  @include subject-description-buttons-read($orange);
+}
