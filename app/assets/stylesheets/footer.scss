@@ -1,10 +1,14 @@
 .footer {
   background: #222;
   color: #fff;
-  height: 400px;
+  min-height: 60px;
   margin-top: 20px;
   padding-top: 20px;
   position: relative;
+}
+
+.footer-sign-up {
+  margin-bottom: 100px;
 }
 
 .footer-label {
