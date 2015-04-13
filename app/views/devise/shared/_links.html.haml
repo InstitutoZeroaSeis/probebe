@@ -10,8 +10,3 @@
 - if devise_mapping.confirmable?
   .resend_confirmation_link
     = link_to t('carnival_devise.shared.resend'), new_user_confirmation_path(resource_name)
-- if devise_mapping.omniauthable?
-  .oauth
-    - resource_class.omniauth_providers.each do |provider|
-      %div{class: provider}
-        = link_to "#{t('carnival_devise.shared.omni')} #{provider.to_s.titleize}", user_omniauth_authorize_path(provider: provider)

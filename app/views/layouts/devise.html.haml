@@ -2,9 +2,42 @@
 %html
   %head
     %title Pro Bebe
-    = stylesheet_link_tag 'carnival_devise_views.css'
+
+    %link{:href => "http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic", :rel => "stylesheet", :type => "text/css"}/
+
+    = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
+
     = csrf_meta_tags
     = render partial: 'flash_messages'
-  %body
-    = yield
+
+    = yield :head
+  %body{class: "#{params[:controller]}"}
+    %header.site-header
+      .navbar.navbar-default{:role => "navigation"}
+        .container-fluid
+          .navbar-header
+            = render partial: 'toggle_menu_button'
+            = link_to t('views.application.name'), root_path, class: 'navbar-brand'
+          .navbar-collapse.collapse
+            %ul.nav.navbar-nav
+              %li
+                = link_to 'Quem Somos', '#'
+              %li
+                = link_to 'O que é o ProBebê', '#'
+              %li
+                = link_to 'Parceiros', '#'
+              %li
+                = link_to 'Histórico', '#'
+
+            %ul.nav.navbar-nav.navbar-right.navbar-form
+              .input-group
+                %input.form-control{type: 'text', name: 'search'}
+                %span.input-group-btn
+                  %button.btn.btn-default{:type => "submit"}
+                    %span.glyphicon.glyphicon-search
+              %li.pull-right
+                = link_to 'Log In', '#'
+    .main.container
+      = yield
+
