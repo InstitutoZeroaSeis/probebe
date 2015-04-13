@@ -1,0 +1,36 @@
+%section.subjects.container
+  .subject.col-md-9
+    .row.col-md-12
+      = render 'subject_header_health'
+    .col-md-4
+      = render 'subject_picture', img_path: '', content: 'Lorem ipsum dolor sit amet'
+
+    .col-md-8
+      .subject-description
+        .subject-description-header.subject-description-header-health
+          %h3
+            Mais de
+            %span.highlight 300
+            dicas
+          %p
+            para ajudar na saúde da sua gestação
+      .subject-description-buttons
+        %button.subject-description-buttons-sign-in-health Cadastre-se
+        %button.subject-description-buttons-read-health Leia
+
+  .subject.col-md-9
+    .row.col-md-12
+      = render 'subject_header_education'
+    .col-md-4.pull-right
+      = render 'subject_picture', img_path: '', content: 'Lorem ipsum dolor sit amet'
+
+    .col-md-8
+      .subject-description
+        .subject-description-header.subject-description-header-education
+          %p
+            A educação do seu filho começa ainda na barriga da mãe.
+            %span.highlight Sabe por que?
+      .subject-description-buttons
+        %button.subject-description-buttons-sign-in-education Cadastre-se
+        %button.subject-description-buttons-read-education Leia
+
