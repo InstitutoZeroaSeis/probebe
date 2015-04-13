@@ -43,13 +43,12 @@
 %section.born-or-not
   .form-block
     .col-sm-6.input-gestante
-      %label
-        Gestante
-      %input{:type => "radio"}/    
+      %label Gestante
+      %input{ type: 'radio' }
     .col-sm-6.input-ja-nasceu
-        Já nasceu
-      %input{:type => "radio"}/    
-    
+      Já nasceu
+      %input{ type: 'radio' }
+
 
 %section.edit-profile-form
   = simple_form_for profile, url: profile_path, wrapper: :custom_forms, html: { class: 'form-horizontal new-children-form' } do |f|
@@ -69,7 +68,7 @@
         = f.simple_fields_for :avatar, f.object.avatar || Avatar.new,  wrapper: :horizontal_file_input do |ff|
           = ff.input :photo, as: :file
 
-    
+
     %h3= t('general.commom_words.children')
     %hr
     = f.simple_fields_for :children do |ff|
@@ -79,7 +78,7 @@
       %p.form-control-static
         = add_fields_link("#{t('general.commom_words.include')} #{t('activerecord.models.child')}", f, :children, path: 'children/', callback: 'setupDateFromWeek')
 
-    
+
     %h3= "#{Profile.human_attribute_name 'address'}"
     %hr
 
@@ -87,7 +86,7 @@
     = f.input :state
     = f.input :city
 
-    
+
     %h3= "#{I18n.t('activerecord.models.cell_phone').pluralize_current_locale}"
     %hr
     = f.simple_fields_for :cell_phones do |phone_builder|
@@ -96,6 +95,6 @@
       %p.form-control-static
         = add_fields_link(I18n.t('view.message.add_telefone'), f, :cell_phones, path: 'cell_phones/')
 
-    
+
       = f.button :submit
-  
+

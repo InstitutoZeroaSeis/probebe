@@ -3,7 +3,7 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, :controllers => { registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
-  root to: 'posts#index'
+  root to: 'home#index'
 
   match ':status', to: 'errors#show', constraints: {status: /\d{3}/}, via: [:get, :post]
   resource :profile, except: :index

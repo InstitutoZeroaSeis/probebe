@@ -5,6 +5,18 @@ require 'rspec/rails'
 
 require 'factory_girl'
 require 'simplecov'
+SimpleCov.start 'rails' do
+  add_filter 'vendor/'
+  add_filter 'spec/matchers/cancan_custom_matchers.rb'
+  add_group 'Presenters', 'app/presenters'
+  add_group 'Forms', 'app/forms/'
+  add_group 'Inputs', 'app/inputs/'
+  add_group 'View Objects', 'app/view_objects/'
+end
+# Requires all files with ActiveSupport require_dependency, so we can
+# have 100% coverage and the Rails autoload feature will still works
+Dir[Rails.root.join('app/**/*.rb')].each { |f| require_dependency f }
+Dir[Rails.root.join('lib/**/*.rb')].each { |f| require_dependency f }
 
 Capybara.javascript_driver = :webkit
 
