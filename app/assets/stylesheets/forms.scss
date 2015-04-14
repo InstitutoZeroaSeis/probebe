@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .form-block{
   border: 1px dashed #ccc;
   padding: 20px 20px 30px;
@@ -50,9 +52,8 @@
   }
 
   input + .custom-check-box {
-    border: 1px solid $orange;
+    border: 1px solid $border-gray;
     background-color: transparent;
-    border-color: $orange;
     border-radius: 50%;
     content: ' ';
     display: block;
@@ -65,5 +66,13 @@
 
   input:checked + .custom-check-box {
     background-color: $orange;
+    border-color: $orange;
   }
+}
+
+.profile-form-save-button {
+  @include default-button;
+  border: 0;
+  background-color: $orange;
+  color: #fff;
 }
