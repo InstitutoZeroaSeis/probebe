@@ -43,12 +43,13 @@ group :development do
 end
 
 group :test do
-  gem 'capybara-webkit'
   gem 'simplecov', require: false
   gem 'rspec-its', '~> 1.1.0'
 end
 
 group :development, :test do
+  gem 'capybara-webkit'
+  gem 'teaspoon'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'factory_girl', '~> 4.5.0', require: false
   gem 'pry-byebug', '~> 2.0.0'
