@@ -17,25 +17,6 @@
     = f.error_notification
     = render partial: 'base_errors', locals: { model: f.object }
 
-    %section.profile-form-child.form-block.row
-      .col-sm-4
-        = f.input :first_name
-      .col-sm-3
-        = f.input :birth_date, as: :date_picker, input_html: { format: :short }
-      .col-sm-3
-        %label.profile-form-block-label Sexo
-        %label.radio-inline.profile-form-radio
-          %input{type: 'radio', name: 'gender'}
-          %span.custom-check-box
-          Masculino
-        %label.radio-inline.profile-form-radio
-          %input{type: 'radio', name: 'gender'}
-          %span.custom-check-box
-          Feminino
-      .col-sm-2
-        %label.profile-form-block-label &nbsp;
-        %button.profile-form-save-button Salvar
-
     %h3= t('general.commom_words.children')
     %hr
     = f.simple_fields_for :children do |ff|
