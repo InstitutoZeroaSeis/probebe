@@ -17,30 +17,67 @@
     = f.error_notification
     = render partial: 'base_errors', locals: { model: f.object }
 
-    %h3= t('general.commom_words.children')
-    %hr
-    = f.simple_fields_for :children do |ff|
-      = render partial: 'children/child_fields', locals: { f: ff }
+    %h3 Dados de Contato
 
-    .add_fields_container
-      %p.form-control-static
-        = add_fields_link("#{t('general.commom_words.include')} #{t('activerecord.models.child')}", f, :children, path: 'children/', callback: 'setupDateFromWeek')
+    %form.edit-profile-form-address
+      %fieldset.edit-profile-form-address-fieldset
+        .row
+          .col-sm-2
+            %label CEP
+            %input.form-control
+          .col-sm-10
+            %label Endereço
+            %input.form-control
+
+        .row
+          .col-sm-2
+            %label Complemento
+            %input.form-control
+          .col-sm-6
+            %label Cidade
+            %input.form-control
+          .col-sm-2
+            %label Estado
+            %input.form-control
+          .col-sm-2
+            %label.profile-form-block-label &nbsp;
+            %button.profile-form-save-button Salvar
 
 
-    %h3= Profile.human_attribute_name 'address'
-    %hr
+    %h3 Telefones
+    %form.edit-profile-form-address
+      %fieldset.edit-profile-form-address-fieldset
+        .row
+          .col-sm-3
+            %label Celular
+            %input.form-control
+          .col-sm-3
+            %label Residencial
+            %input.form-control
+          .col-sm-3
+            %label Profissional
+            %input.form-control
+          .col-sm-3
+            %label.profile-form-block-label &nbsp;
+            %button.profile-form-save-button Salvar
 
-    = f.input :street
-    = f.input :state
-    = f.input :city
-
-    %h3= I18n.t('activerecord.models.cell_phone').pluralize_current_locale
-    %hr
-    = f.simple_fields_for :cell_phones do |phone_builder|
-      = render partial: 'cell_phones/cell_phone_fields', locals: { f: phone_builder  }
-    .add_fields_container
-      %p.form-control-static
-        = add_fields_link(I18n.t('view.message.add_telefone'), f, :cell_phones, path: 'cell_phones/')
-
+    %h3 Sistema do Celular
+    %form.edit-profile-form-address
+      %fieldset.edit-profile-form-address-fieldset
+        .row
+          .col-sm-3
+            %label
+              %input{type: 'radio'}
+              iOS
+          .col-sm-3
+            %label
+              %input{type: 'radio'}
+              Android
+          .col-sm-3
+            %label
+              %input{type: 'radio'}
+              Outros
+          .col-sm-3
+            %button.profile-form-save-button Salvar
 
       = f.button :submit
