@@ -20,10 +20,6 @@ Dir[Rails.root.join('lib/**/*.rb')].each { |f| require_dependency f }
 
 Capybara.javascript_driver = :webkit
 
-SimpleCov.start do
-  add_filter 'vendor/'
-end
-
 Dir.glob(Rails.root.join('spec/factories/**/*.rb')).each {|factory| require factory }
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 Dir[Rails.root.join("spec/stubs/**/*.rb")].each { |f| require f }
