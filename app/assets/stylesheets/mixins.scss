@@ -1,0 +1,12 @@
+@mixin default-button() {
+  border-radius: 4px;
+  border: 1px solid;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857;
+  padding: 9px 14px 8px;
+  text-align: center;
+  width: 150px;
+}

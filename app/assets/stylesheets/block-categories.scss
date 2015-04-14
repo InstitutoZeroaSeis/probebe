@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .subject-header {
   h2 {
     border-radius: 5px;
@@ -99,15 +101,10 @@
 }
 
 .subject-picture-split-see-all-posts {
-  border-radius: 4px;
-  border: 0;
+  @include default-button();
   color: white;
-  cursor: pointer;
   display: block;
   font-size: 20px;
-  font-weight: normal;
-  height: 45px;
-  padding: 9px 14px 8px;
   width: 50%;
 }
 
@@ -158,16 +155,7 @@
 
 .subject-description-buttons {
   button {
-    border-radius: 4px;
-    border: 1px solid;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.42857;
-    padding: 9px 14px 8px;
-    text-align: center;
-    width: 150px;
+    @include default-button;
   }
 }
 
