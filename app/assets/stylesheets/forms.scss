@@ -1,4 +1,69 @@
-	.form-block{
-	  border: 1px dashed #ccc;
- 		padding: 20px 20px 30px;
- }
+.form-block{
+  border: 1px dashed #ccc;
+  padding: 20px 20px 30px;
+}
+
+.born-or-not-pregnancy, .born-or-not-born {
+  background-color: $orange;
+  border-radius: 5px;
+  border: 0;
+  color: #fff;
+  float: left;
+  font-size: 18px;
+  font-weight: 300;
+  height: 60px;
+  width: 48%;
+}
+
+.born-or-not-born {
+  margin-left: 4%;
+}
+
+.born-or-not-or {
+  background-color: #fff;
+  border-radius: 100%;
+  float: left;
+  font-size: 18px;
+  font-weight: 300;
+  height: 66px;
+  left: 50%;
+  line-height: 66px;
+  margin: -3px 0 0 -20px;
+  position: absolute;
+  text-align: center;
+  width: 66px;
+}
+
+.edit-profile-form {
+  margin-top: 50px;
+}
+
+.profile-form-block-label {
+  display: block;
+}
+
+.profile-form-radio {
+  position: relative;
+
+  input {
+    display: none;
+  }
+
+  input + .custom-check-box {
+    border: 1px solid $orange;
+    background-color: transparent;
+    border-color: $orange;
+    border-radius: 50%;
+    content: ' ';
+    display: block;
+    height: 15px;
+    left: 0;
+    position: absolute;
+    top: 35%;
+    width: 15px;
+  }
+
+  input:checked + .custom-check-box {
+    background-color: $orange;
+  }
+}

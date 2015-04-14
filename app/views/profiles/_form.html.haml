@@ -1,31 +1,39 @@
 %section.born-or-not
-  .form-block
-    .col-sm-6.input-gestante
-      %label Gestante
-      %input{ type: 'radio' }
-    .col-sm-6.input-ja-nasceu
+  .form-block.row
+    %button.born-or-not-pregnancy
+      Gestante
+    %span.born-or-not-or
+      Ou
+    %button.born-or-not-born
       Já nasceu
-      %input{ type: 'radio' }
 
-
+.clearfix
 %section.edit-profile-form
-  = simple_form_for profile, url: profile_path, wrapper: :custom_forms, html: { class: 'form-horizontal new-children-form' } do |f|
+  = simple_form_for profile,
+    url: profile_path,
+    wrapper: :custom_forms,
+    html: { class: 'form-horizontal new-children-form' } do |f|
+
     = f.error_notification
     = render partial: 'base_errors', locals: { model: f.object }
 
-    .form-block.row
-      .col-sm-2
-        = f.input :birth_date, as: :date_picker, input_html: { format: :short }
-      .col-sm-2
+    %section.profile-form-child.form-block.row
+      .col-sm-4
         = f.input :first_name
+      .col-sm-3
+        = f.input :birth_date, as: :date_picker, input_html: { format: :short }
+      .col-sm-3
+        %label.profile-form-block-label Sexo
+        %label.radio-inline.profile-form-radio
+          %input{type: 'radio', name: 'gender'}
+          %span.custom-check-box
+          Masculino
+        %label.radio-inline.profile-form-radio
+          %input{type: 'radio', name: 'gender'}
+          %span.custom-check-box
+          Feminino
       .col-sm-2
-        = f.input :last_name
-      .col-sm-2
-        = f.input :gender, as: :enum, include_blank: false
-      .col-sm-2
-        = f.simple_fields_for :avatar, f.object.avatar || Avatar.new,  wrapper: :horizontal_file_input do |ff|
-          = ff.input :photo, as: :file
-
+        %button Salvar
 
     %h3= t('general.commom_words.children')
     %hr
@@ -37,7 +45,7 @@
         = add_fields_link("#{t('general.commom_words.include')} #{t('activerecord.models.child')}", f, :children, path: 'children/', callback: 'setupDateFromWeek')
 
 
-    %h3= "#{Profile.human_attribute_name 'address'}"
+    %h3= Profile.human_attribute_name 'address'
     %hr
 
     = f.input :street
