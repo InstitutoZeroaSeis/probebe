@@ -1,0 +1,27 @@
+%section.form-block.child_fields.profile-form-child{ 'ng-if' => 'editing_new_child' }
+  %form
+    %fieldset
+      %input{ type: 'hidden', 'ng-model' => 'child.id' }
+      .row
+        .col-sm-6.col-md-4
+          %label.profile-form-block-label Nome
+          %input#child_name{ 'ng-model' => 'child.name' }
+        .col-sm-6.col-md-3{ 'ng-if' => '!child.born' }
+          %label.profile-form-block-label Idade da gestação (em semanas)
+          %input#child_pregnancy_age_in_weeks{ 'ng-model' => 'child.pregnancy_age_in_weeks' }
+        .col-sm-6.col-md-3{ 'ng-if' => 'child.born' }
+          %label.profile-form-block-label Data de Nascimento
+          %input#child_birth_date{ 'ng-model' => 'child.birth_date' }
+        .col-sm-6.col-md-3
+          %label.profile-form-block-label Sexo
+          %label.radio-inline.profile-form-radio
+            %input{ value: 'male', checked: 'checked', type: 'radio', name: 'gender', 'ng-model' => 'child.gender' }
+            %span.custom-check-box
+            Masculino
+          %label.radio-inline.profile-form-radio
+            %input{ value: 'female', type: 'radio', name: 'gender', 'ng-model' => 'child.gender' }
+            %span.custom-check-box
+            Feminino
+        .col-sm-6.col-md-2
+          %label.profile-form-block-label &nbsp;
+          %button.profile-form-save-button.save-child{ 'ng-click' => 'saveChild(child)' } Salvar

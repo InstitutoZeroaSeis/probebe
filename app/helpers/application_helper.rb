@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   @@date_helper = Class.new do
     include ActionView::Helpers::DateHelper
   end.new
@@ -8,28 +7,31 @@ module ApplicationHelper
     I18n.localize(value, *args) if value
   end
 
-  def template_for_association(form_builder, association, path='')
+  def template_for_association(form_builder, association, path = '')
     new_object = form_builder.object.class.reflect_on_association(association).klass.new
     form_builder.simple_fields_for association,  new_object  do |builder|
-      render(path + association.to_s.singularize + "_fields", :f => builder)
+      render(path + association.to_s.singularize + '_fields', f: builder)
     end
   end
 
-  def add_fields_link(name, form_builder, association, path: "", callback: "")
+  def add_fields_link(name, form_builder, association, path: '', callback: '')
     fields = template_for_association(form_builder, association, path)
-    link_to name, '#', class: 'add_fields',
-      data: {fields: fields.gsub("\n", ""), callback: callback}
+    link_to name, '#',
+            class: 'add_fields',
+            data: { fields: fields.gsub("\n", ''), callback: callback }
   end
 
-  def remove_fields_link(name, form_builder, container_to_hide: '', css_class: '')
+  def remove_fields_link(name, form_builder, container_to_hide: '')
     form_builder.hidden_field(:_destroy, value: false) +
-      link_to(name, '#', class: 'remove_fields ' + css_class, data: { container_to_hide: container_to_hide })
+      link_to(name, '#',
+              class: 'remove_fields',
+              data: { container_to_hide: container_to_hide }
+      )
   end
 
   def distance_of_time_in_words_to_now(time, *args)
-    if time
-      @@date_helper.distance_of_time_in_words_to_now(time, *args)
-    end
+    return unless time
+    @@date_helper.distance_of_time_in_words_to_now(time, *args)
   end
   alias_method :time_ago_in_words, :distance_of_time_in_words_to_now
 
@@ -40,5 +42,4 @@ module ApplicationHelper
   def next_blog_page(current_page)
     url_for(params.merge(page: current_page - 1))
   end
-
 end

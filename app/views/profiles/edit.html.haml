@@ -1,5 +1,72 @@
-%header.profile-form
-	%h2 Cadastrar Filhos
-	%p Você pode adicionar mais filhos apenas clicando em um dos botões desejados
+= content_for :head do
+  = javascript_include_tag 'angular'
+  = javascript_include_tag 'angular-resource'
+  = javascript_include_tag 'moment'
+  = javascript_include_tag 'profile'
 
-.container= render partial: 'form', locals: { profile: @profile }
+%header.profile-form
+  .container{ 'ng-app' => 'profile' }
+    %section.edit-profile-form
+      = render 'children'
+
+      %h3 Dados de Contato
+
+      %form.edit-profile-form-address
+        %fieldset.edit-profile-form-address-fieldset
+          .row
+            .col-sm-2
+              %label CEP
+              %input.form-control
+            .col-sm-10
+              %label Endereço
+              %input.form-control
+
+          .row
+            .col-sm-2
+              %label Complemento
+              %input.form-control
+            .col-sm-6
+              %label Cidade
+              %input.form-control
+            .col-sm-2
+              %label Estado
+              %input.form-control
+            .col-sm-2
+              %label.profile-form-block-label &nbsp;
+              %button.profile-form-save-button Salvar
+
+        %h3 Telefones
+        %form.edit-profile-form-address
+          %fieldset.edit-profile-form-address-fieldset
+            .row
+              .col-sm-3
+                %label Celular
+                %input.form-control
+              .col-sm-3
+                %label Residencial
+                %input.form-control
+              .col-sm-3
+                %label Profissional
+                %input.form-control
+              .col-sm-3
+                %label.profile-form-block-label &nbsp;
+                %button.profile-form-save-button Salvar
+
+        %h3 Sistema do Celular
+        %form.edit-profile-form-address
+          %fieldset.edit-profile-form-address-fieldset
+            .row
+              .col-sm-3
+                %label
+                  %input{ type: 'radio' }
+                  iOS
+              .col-sm-3
+                %label
+                  %input{ type: 'radio' }
+                  Android
+              .col-sm-3
+                %label
+                  %input{ type: 'radio' }
+                  Outros
+              .col-sm-3
+                %button.profile-form-save-button Salvar
