@@ -16,6 +16,7 @@
 //= require jquery-ui/datepicker
 //= require jquery-ui/datepicker-pt-BR
 //= require pro-bebe
+//= require scrollTo
 //= require inputs/countable_input
 //= require inputs/week_to_date_input
 //= require jquery.mask

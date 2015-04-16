@@ -120,13 +120,21 @@
   bottom: -55px;
 }
 
+.home-categories-item a{
+  color: #333;
+  text-decoration: none;
+}
+
 @mixin category-color($color) {
   border-bottom-color: $color;
-  .is-active {
+  &.is-active {
     color: $color;
     &:after {
       border-bottom-color: $color;
       border-bottom-style: solid;
+    }
+    a{
+      color: $color;
     }
   }
 }
@@ -137,12 +145,12 @@
 .category-education {
   @include category-color($orange);
 }
-.category-socioemotional {
+.category-emotional {
   @include category-color($purple);
 }
-.category-finance {
+.category-finances {
   @include category-color($green);
 }
-.category-security {
+.category-safety {
   @include category-color($yellow);
 }
