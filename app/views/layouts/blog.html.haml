@@ -17,7 +17,8 @@
 
   %body
     = render 'site_header'
-    %section.main.container= yield
+    %section.main.container-fluid
+      = yield
     %footer.footer
       = render 'sign_up_footer' unless current_user
       %section.footer-copyright

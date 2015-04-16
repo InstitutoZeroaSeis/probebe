@@ -14,3 +14,9 @@ $ ->
     correct_index = event.item.index - 2
     $(".site-banner-dot").removeClass('is-active')
     $(".step-#{correct_index}").addClass('is-active')
+
+  $(window).scroll ->
+    if $(@).scrollTop() >= 570
+      $('.home-categories').addClass('is-fixed')
+    else 
+      $('.home-categories').removeClass('is-fixed')
