@@ -1,3 +1,5 @@
+#= require nested_forms/form_remover
+
 $ ->
 addField =  (event) ->
   event.preventDefault()
@@ -14,16 +16,6 @@ addField =  (event) ->
   if Object.prototype.toString.call(fn) == "[object Function]"
     fn(new_element)
   setupDatePickers()
-
-removeField = (event) ->
-  event.preventDefault()
-
-  $(@).prev('input[type=hidden]').val("1")
-  containerToHide = $(@).data('containerToHide')
-  if (containerToHide)
-    $(@).closest(containerToHide).hide()
-  else
-    $(@).parent().hide()
 
 replaceNameByCurrentTime = (jqElement) ->
   time = new Date().getTime()
@@ -54,8 +46,7 @@ setupDatePickers = ->
 $ ->
   $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] )
   $('body').on 'click', '.add_fields', addField
-  $('body').on 'click', '.remove_fields', removeField
-  $('#area_code').mask("00")
-  $('#cell_phone_number').mask('00000-0000', {reverse: true})
-  setupDateFromWeek()
   setupDatePickers()
+
+  nested_remover = new NestedForms.FormRemover('.remove_fields', document)
+  nested_remover.bind()
