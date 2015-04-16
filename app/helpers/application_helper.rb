@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   @@date_helper = Class.new do
     include ActionView::Helpers::DateHelper
   end.new
@@ -41,4 +40,10 @@ module ApplicationHelper
     url_for(params.merge(page: current_page - 1))
   end
 
+  def options_to_gender_enum
+    [
+      ['male', t('general.gender.male')],
+      ['female', t('general.gender.female')]
+    ]
+  end
 end

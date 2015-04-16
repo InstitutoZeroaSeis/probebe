@@ -1,5 +1,5 @@
 %section.form-block.child_fields.profile-form-child
-  .col-sm-4
+  .col-sm-6
     = f.input :name
   .col-sm-3
     = f.input :birth_date, as: :date_picker, input_html: { format: :short }
@@ -13,8 +13,5 @@
       %input{id: 'female', type: 'radio', name: 'gender'}
       %span.custom-check-box
       Feminino
-  .col-sm-2
-    %label.profile-form-block-label &nbsp;
-    %button.profile-form-save-button Salvar
   .form-control-static
     = remove_fields_link('Remover', f, container_to_hide: '.child_fields')

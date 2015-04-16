@@ -77,7 +77,9 @@
   color: #fff;
 }
 
-.edit-profile-form-address-fieldset {
-  border: 1px dashed $border-gray;
-  padding: 20px;
+.edit-profile-form {
+  fieldset {
+    border: 1px dashed $border-gray;
+    padding: 20px;
+  }
 }
