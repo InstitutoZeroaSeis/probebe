@@ -58,11 +58,6 @@ ActiveRecord::Schema.define(version: 20150417195940) do
     t.integer  "child_id"
   end
 
-  create_table "banners", force: true do |t|
-    t.string "code"
-    t.string "url"
-  end
-
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -114,18 +109,6 @@ ActiveRecord::Schema.define(version: 20150417195940) do
   create_table "device_registrations_message_deliveries", id: false, force: true do |t|
     t.integer "device_registration_id", null: false
     t.integer "message_delivery_id",    null: false
-  end
-
-  create_table "home_timeline_articles", force: true do |t|
-    t.integer "home_timeline_item_id"
-    t.integer "journalistic_article_id"
-    t.string  "url"
-    t.string  "index"
-  end
-
-  create_table "home_timeline_items", force: true do |t|
-    t.string "period"
-    t.string "index"
   end
 
   create_table "message_deliveries", force: true do |t|
