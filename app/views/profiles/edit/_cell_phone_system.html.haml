@@ -1,0 +1,17 @@
+%h3 Sistema do Celular
+%fieldset.edit-profile-form-address
+  .row
+    .col-sm-3
+      %label
+        %input{type: 'radio'}
+        iOS
+    .col-sm-3
+      %label
+        %input{type: 'radio'}
+        Android
+    .col-sm-3
+      %label
+        %input{type: 'radio'}
+        Outros
+    .col-sm-3
+      = f.submit class: 'profile-form-save-button pull-right'

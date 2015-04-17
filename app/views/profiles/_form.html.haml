@@ -1,3 +1,4 @@
+= javascript_include_tag 'week_to_date'
 %section.edit-profile-form
   = simple_form_for profile,
     url: profile_path,
@@ -5,70 +6,11 @@
     html: { class: 'form-horizontal new-children-form' } do |f|
 
     = f.error_notification
-    = render partial: 'base_errors', locals: { model: f.object }
+    = render 'base_errors', model: @profile
 
-    %section.born-or-not
-      .form-block.row
-        %button.born-or-not-pregnancy.add_fields{ data: { fields: template_for_association(f, :children, 'children/') } }
-          Gestante
-        %span.born-or-not-or
-          Ou
-        %button.born-or-not-born
-          Já nasceu
-      = f.simple_fields_for :children do |ff|
-        = render 'children/child_fields', f: ff
-
-    %h3 Informações Pessoais
-    %fieldset.edit-profile-form-personal-information
-      .row
-        .col-sm-3= f.input :first_name
-        .col-sm-3= f.input :last_name
-        .col-sm-2= f.input :birth_date, as: :date_picker
-        .col-sm-4
-          %label.profile-form-block-label Sexo
-          = f.collection_radio_buttons :gender, options_to_gender_enum, :first, :last do |b|
-            = content_tag(:span, class: 'radio-inline profile-form-radio') do
-              = b.radio_button
-              = b.text
-              = tag(:span, class: 'custom-check-box')
-
-    %h3 Dados de Contato
-    %fieldset.edit-profile-form-address
-      .row
-        .col-sm-2= f.input :postal_code
-        .col-sm-10= f.input :street
-      .row
-        .col-sm-2= f.input :address_complement
-        .col-sm-8= f.input :city
-        .col-sm-2= f.input :state
-
-    %h3 Telefones
-    %fieldset.edit-profile-form-address
-      .row
-        .col-sm-4
-          %label Celular
-          %input.form-control
-        .col-sm-4
-          %label Residencial
-          %input.form-control
-        .col-sm-4
-          %label Profissional
-          %input.form-control
-
-    %h3 Sistema do Celular
-    %fieldset.edit-profile-form-address
-      .row
-        .col-sm-3
-          %label
-            %input{type: 'radio'}
-            iOS
-        .col-sm-3
-          %label
-            %input{type: 'radio'}
-            Android
-        .col-sm-3
-          %label
-            %input{type: 'radio'}
-            Outros
-        .col-sm-3
-          = f.submit class: 'profile-form-save-button pull-right'
+    = render 'profiles/edit/personal_information', profile: @profile, f: f
+    = render 'profiles/edit/children', profile: @profile, f: f
+    = render 'profiles/edit/contact_information', profile: @profile, f: f
+    = render 'profiles/edit/phones', profile: @profile, f: f
+    = render 'profiles/edit/phones', profile: @profile, f: f
+    = render 'profiles/edit/cell_phone_system', profile: @profile, f: f
