@@ -1,8 +1,10 @@
-%h3 Sistema do Celular
+%h3= @profile.cell_phone_system_text
 %fieldset.edit-profile-form-address
   .row
-    - options = [['ios', 'iOS'], ['android', 'Android'], ['other', 'Outros']]
-    = f.collection_radio_buttons :cell_phone_system, options, :first, :last, item_wrapper_class: 'col-sm-3' do |b|
+    = f.collection_radio_buttons :cell_phone_system,
+      @profile.options_to_cell_phone_system,
+      :first, :last,
+      item_wrapper_class: 'col-sm-3' do |b|
       %label.radio-inline.profile-form-radio
         = b.text
         = b.radio_button

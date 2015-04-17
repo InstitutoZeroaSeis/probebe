@@ -190,6 +190,10 @@ pt-BR:
         users:
           impersonate: "Logado com usuário %{user_name}"
   general:
+    cell_phone_systems:
+      android: Android
+      ios: iOS
+      other: Outros
     commom_words:
       <<: *commom_words
     gender:
@@ -253,12 +257,13 @@ pt-BR:
       internal_server_error: "Ocorreu um erro ao processar a requisição"
       not_found: "Página não encontrada"
     profile:
-      cell_phone: "Celular"
-      cell_phones: "Celulares"
-      children: "Filhos"
-      contact_informations: "Dados de Contato"
-      create_profile: "Criar Perfil"
-      personal_information: "Informações Pessoais"
-      phones: "Telefones"
+      cell_phone: Celular
+      cell_phones: Celulares
+      cell_phone_system: Sistema do Celular
+      children: Filhos
+      contact_informations: Dados de Contato
+      create_profile: Criar Perfil
+      personal_information: Informações Pessoais
+      phones: Telefones
     timeline:
       read_more: *read_more
