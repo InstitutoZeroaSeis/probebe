@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     @pager = build_pager Articles::JournalisticArticle.ordered_by_creation_date
       .publishable
-      .by_tag(params[:tag_id])
+      .by_tag(params[:tag_name])
       .by_search_term(params[:search])
       .journalistic
 
@@ -14,6 +14,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Articles::JournalisticArticle.find(params[:id])
+    @related_post = Blog::RelatedPostFinder.new(@post.id).find_related
+    @author_profile = @post.original_author.profile
   end
 
   protected

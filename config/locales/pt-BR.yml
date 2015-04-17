@@ -245,6 +245,7 @@ pt-BR:
       newer_html: "Mais recentes &rarr;"
       older_html: "&larr; Mais antigos"
       read_more: *read_more
+      related_post: "Posts Relacionados"
       search: "Busca de posts"
     errors:
       forbidden: "Acesso não autorizado"

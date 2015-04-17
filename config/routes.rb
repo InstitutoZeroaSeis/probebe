@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :timelines, only: :show
   resources(:posts, only: [:show, :index])
   get 'posts/page/:page_id' => 'posts#index', as: :paged_posts
-  resources(:tags) { resources :posts, only: :index }
+  resources(:tags, param: :name) { resources :posts, only: :index }
   resources(:categories) { resources :posts, only: :index }
   resources :children, only: [:index, :create]
 
