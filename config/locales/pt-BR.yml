@@ -255,9 +255,9 @@ pt-BR:
     profile:
       cell_phone: "Celular"
       cell_phones: "Celulares"
-      contact_informations: "Informações de Contato"
+      children: "Filhos"
+      contact_informations: "Dados de Contato"
       create_profile: "Criar Perfil"
-      my_children: "Meus Filhos"
       personal_information: "Informações Pessoais"
       phones: "Telefones"
     timeline:

@@ -1,3 +1,7 @@
+.footer-sin-up h2{
+  font-weight: 300;
+}
+
 .footer {
   background: #222;
   color: #fff;
@@ -5,6 +9,7 @@
   margin-top: 20px;
   padding-top: 20px;
   position: relative;
+  z-index: 9;
 }
 
 .footer-sign-up {
@@ -14,20 +19,22 @@
 .footer-label {
   display: block;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 100;
 }
 
 .footer-input {
-  border: 1px solid $border-gray;
+  border: none;
   border-radius: 3px;
   color: black;
-  height: 35px;
   width: 100%;
+  padding: 15px 15px;
+  outline: none;
+  margin-bottom: 10px;
 }
 
 .footer-form-group {
   border: 1px dashed #999;
-  padding: 20px;
+  padding: 30px 30px 40px;
   margin-top: 30px;
 }
 
@@ -36,6 +43,7 @@
   border: $orange;
   color: #fff;
   margin-top: 25px;
+  padding: 16px 15px;
   width: 100%;
 
   &:hover {

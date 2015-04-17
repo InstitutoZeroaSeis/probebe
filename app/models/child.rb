@@ -57,6 +57,4 @@ class Child < ActiveRecord::Base
   def set_defaults
     self.gender ||= 'not_informed'
   end
-
-
 end

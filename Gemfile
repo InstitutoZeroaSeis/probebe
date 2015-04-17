@@ -36,12 +36,6 @@ gem 'json', '1.8.1'
 gem "fog", "~>1.20", require: "fog/aws/storage"
 gem 'asset_sync', '~> 1.1.0'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-angular', '~> 1.3.15'
-  gem 'rails-assets-angular-resource', '~> 1.3.15'
-  gem 'rails-assets-moment', '~> 2.10.2'
-end
-
 group :development do
   gem 'better_errors', '0.9.0'
   gem 'turbo_dev_assets', '~> 0.0.2'

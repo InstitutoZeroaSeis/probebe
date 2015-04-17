@@ -10,25 +10,26 @@
     position: relative;
     text-align: center;
     width: 70%;
+    font-size: 24px;
 
     &:before {
-      border: 1px dashed $border-gray;
+      border-top: 1px dashed $border-gray;
       content: ' ';
       display: block;
-      left: -15%;
+      left: -23%;
       position: absolute;
       top: 50%;
-      width: 10%;
+      width: 20%;
     }
 
     &:after {
-      border: 1px dashed $border-gray;
+      border-top: 1px dashed #cccccc;
       content: ' ';
       display: block;
       position: absolute;
-      right: -15%;
+      right: -23%;
       top: 50%;
-      width: 10%;
+      width: 20%;
     }
 
     .highlight {
@@ -74,7 +75,7 @@
   z-index: 5px;
 
   p {
-    padding-top: 20px;
+    padding-top: 10px;
   }
 }
 
@@ -102,14 +103,20 @@
 
 .subject-picture-split-see-all-posts {
   @include default-button();
-  color: white;
+  color: #fff;
   display: block;
   font-size: 20px;
   width: 50%;
+  margin: 30px 0 0 25%;
+  float: left
 }
 
 .health-button {
   background-color: $red;
+}
+
+.education-button {
+  background-color: $orange;
 }
 
 .subject-picture-back-shadow {
@@ -195,4 +202,10 @@
 
 .subject-description-buttons-read-education {
   @include subject-description-buttons-read($orange);
+}
+
+
+.subject-description{
+  margin-top: 20px;
+  margin-bottom: 30px;
 }

@@ -1,11 +1,38 @@
+.main.container-fluid{
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1000px !important;
+}
+
 .home-categories {
   position: absolute;
   right: 50%;
-  margin-right: -570px;
+  margin-right: -590px;
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0) 6%, rgba(0,0,0,0.04) 33%, rgba(0,0,0,0.04) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(6%,rgba(0,0,0,0)), color-stop(33%,rgba(0,0,0,0.04)), color-stop(100%,rgba(0,0,0,0.04))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 6%,rgba(0,0,0,0.04) 33%,rgba(0,0,0,0.04) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 6%,rgba(0,0,0,0.04) 33%,rgba(0,0,0,0.04) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 6%,rgba(0,0,0,0.04) 33%,rgba(0,0,0,0.04) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 6%,rgba(0,0,0,0.04) 33%,rgba(0,0,0,0.04) 100%); /* W3C */
+  padding: 20px 25px;
+  height: 100%;
+  z-index: 9;
+
+  &.is-fixed{
+    position: fixed;
+    top: 0;
+  }
 }
 
 .how-it-works {
-  margin-top: 50px;
+  margin: 50px 0;
+  padding-bottom: 100px;
+  float: left;
+  width: 100%;
+  background: url(default-shade-bg.png) no-repeat center bottom;
 }
 
 .how-it-works-header {
@@ -23,7 +50,7 @@
 
 .how-it-works-item {
   float: left;
-  margin-right: 20px;
+  margin-right: 40px;
   text-align: center;
   position: relative;
   width: 200px;
@@ -39,6 +66,8 @@
 
   p {
     margin-top: 20px;
+    font-size: 12px;
+    color: #000;
   }
 }
 
@@ -53,7 +82,8 @@
   margin-top: 50px;
   padding: 20px 25px 30px;
   position: relative;
-  width: 250px;
+  width: 265px;
+  background: #fff;
 }
 
 .home-categories-item {
@@ -75,13 +105,36 @@
   }
 }
 
+.subject {
+  margin-bottom: 85px;
+  position: relative;
+}
+
+.subject:after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 1060px;
+  background: #eee;
+  position: absolute;
+  bottom: -55px;
+}
+
+.home-categories-item a{
+  color: #333;
+  text-decoration: none;
+}
+
 @mixin category-color($color) {
   border-bottom-color: $color;
-  .is-active {
+  &.is-active {
     color: $color;
     &:after {
       border-bottom-color: $color;
       border-bottom-style: solid;
+    }
+    a{
+      color: $color;
     }
   }
 }
@@ -92,12 +145,12 @@
 .category-education {
   @include category-color($orange);
 }
-.category-socioemotional {
+.category-emotional {
   @include category-color($purple);
 }
-.category-finance {
+.category-finances {
   @include category-color($green);
 }
-.category-security {
+.category-safety {
   @include category-color($yellow);
 }

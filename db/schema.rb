@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 20150417195940) do
 
   create_table "profiles", force: true do |t|
     t.date     "birth_date"
-    t.integer  "gender",     default: 2
+    t.integer  "gender",             default: 2
     t.integer  "user_id"
     t.string   "city"
     t.string   "first_name"
@@ -165,6 +165,8 @@ ActiveRecord::Schema.define(version: 20150417195940) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "address_complement"
+    t.string   "postal_code"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
