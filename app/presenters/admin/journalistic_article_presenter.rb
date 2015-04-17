@@ -76,10 +76,6 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
     actions: [:index, :new, :edit, :show],
     sortable: true
 
-  field :show_author,
-    actions: [:index, :new, :edit, :show],
-    sortable: true
-
   field 'original_author_name',
     actions: [:index, :show],
     sortable: true,
