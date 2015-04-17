@@ -1,9 +1,10 @@
-%h3= @profile.contact_information_text
-%fieldset.edit-profile-form-address
-  .row
-    .col-sm-2= f.input :postal_code
-    .col-sm-10= f.input :street
-  .row
-    .col-sm-2= f.input :address_complement
-    .col-sm-8= f.input :city
-    .col-sm-2= f.input :state
+.container
+  %h3= @profile.contact_information_text
+  %fieldset.edit-profile-form-address
+    .row
+      .col-sm-2= f.input :postal_code
+      .col-sm-10= f.input :street
+    .row
+      .col-sm-2= f.input :address_complement
+      .col-sm-8= f.input :city
+      .col-sm-2= f.input :state

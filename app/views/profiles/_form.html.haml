@@ -7,10 +7,13 @@
 
     = f.error_notification
     = render 'base_errors', model: @profile
-
-    = render 'profiles/edit/personal_information', profile: @profile, f: f
-    = render 'profiles/edit/children', profile: @profile, f: f
-    = render 'profiles/edit/contact_information', profile: @profile, f: f
-    = render 'profiles/edit/phones', profile: @profile, f: f
-    = render 'profiles/edit/phones', profile: @profile, f: f
-    = render 'profiles/edit/cell_phone_system', profile: @profile, f: f
+    %section.user-profile-personal-info
+      = render 'profiles/edit/personal_information', profile: @profile, f: f
+    %section.user-profile-children
+      = render 'profiles/edit/children', profile: @profile, f: f
+    %section.user-profile-contact-information
+      = render 'profiles/edit/contact_information', profile: @profile, f: f
+    %section.user-profile-phones
+      = render 'profiles/edit/phones', profile: @profile, f: f
+    %section.user-profile-cell-phone
+      = render 'profiles/edit/cell_phone_system', profile: @profile, f: f

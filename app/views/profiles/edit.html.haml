@@ -1,5 +1,5 @@
-%header.profile-form
-	%h2 Cadastrar Filhos
-	%p Você pode adicionar mais filhos apenas clicando em um dos botões desejados
+%header.profile-form.container
+	%h3 Meu Perfil
+	%p Adicione filhos, edite telefone e-mail e dados pessoais aqui
 
-.container= render partial: 'form', locals: { profile: @profile }
+= render partial: 'form', locals: { profile: @profile }

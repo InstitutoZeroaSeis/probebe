@@ -1,9 +1,10 @@
-%h3= @profile.personal_information_text
-%fieldset.edit-profile-form-personal-information
-  .row
-    .col-sm-3= f.input :first_name
-    .col-sm-3= f.input :last_name
-    .col-sm-2= f.input :birth_date, as: :date_picker
-    .col-sm-4
-      = render 'gender_radio_buttons',
-                form: f, options: @profile.options_to_gender_enum
+.container 
+  %h3= @profile.personal_information_text
+  %fieldset.edit-profile-form-personal-information
+    .row
+      .col-sm-3= f.input :first_name
+      .col-sm-3= f.input :last_name
+      .col-sm-3= f.input :birth_date, as: :date_picker
+      .col-sm-3
+        = render 'gender_radio_buttons',
+                  form: f, options: @profile.options_to_gender_enum
