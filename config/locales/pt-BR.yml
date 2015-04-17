@@ -48,26 +48,27 @@ pt-BR:
   activerecord:
     attributes:
       articles/article: &article
-        id: Id
         article_references: *article_references
         baby_target_type: *baby_target_type
         category: *category
         category_id: *category_id
         category_name: *category_name
         gender: *genders
+        id: Id
         journalistic_articles_count: "Quantidade de artigos jornalístico"
-        minimum_valid_week: *minimum_valid_week
         maximum_valid_week: *maximum_valid_week
+        messages: "Mensagens"
+        minimum_valid_week: *minimum_valid_week
         original_author_name: *original_author_name
         parent_article_id: *parent_article_id
+        publishable: "Publicável"
+        show_author: "Mostrar autor no post"
         summary: *summary
         teenage_pregnancy: "Aplicável para gravidez na adolescência"
         text: *text
         title: *title
         type: *type
         user_email: *user_email
-        messages: "Mensagens"
-        publishable: "Publicável"
       articles/authorial_article:
         <<: *article
         journalistic_articles: "Artigos Jornalísticos"
