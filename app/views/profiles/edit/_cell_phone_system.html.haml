@@ -1,18 +1,12 @@
-.container
-  %h3 Sistema do Celular
-  %fieldset.edit-profile-form-address
-    .row
-      .col-sm-3
-        %label
-          %input{type: 'radio'}
-          iOS
-      .col-sm-3
-        %label
-          %input{type: 'radio'}
-          Android
-      .col-sm-3
-        %label
-          %input{type: 'radio'}
-          Outros
-      .col-sm-3
-        = f.submit class: 'profile-form-save-button pull-right'
+%h3 Sistema do Celular
+%fieldset.edit-profile-form-address
+  .row
+    - options = [['ios', 'iOS'], ['android', 'Android'], ['other', 'Outros']]
+    = f.collection_radio_buttons :cell_phone_system, options, :first, :last, item_wrapper_class: 'col-sm-3' do |b|
+      %label.radio-inline.profile-form-radio
+        = b.text
+        = b.radio_button
+        = tag(:span, class: 'custom-check-box')
+
+    .col-sm-3
+      = f.submit class: 'profile-form-save-button pull-right'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416215312) do
+ActiveRecord::Schema.define(version: 20150417175438) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20150416215312) do
     t.string   "name"
     t.string   "address_complement"
     t.string   "postal_code"
+    t.integer  "cell_phone_system",  default: 2
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
