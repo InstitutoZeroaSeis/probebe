@@ -21,6 +21,9 @@ FactoryGirl.define do
       publishable true
       with_parent_authorial_article
 
+      factory :post do
+      end
+
       trait :with_parent_authorial_article do
         association :parent_article, factory: :authorial_article
       end
