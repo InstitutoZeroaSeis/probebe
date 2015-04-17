@@ -1,37 +1,7 @@
 #= require nested_forms/form_remover
+#= require nested_forms/form_adder
 
-$ ->
-addField =  (event) ->
-  event.preventDefault()
-
-  new_element = $($(@).data('fields'))
-  replaceNameByCurrentTime(new_element)
-  parent_container = $(@).closest('.add_fields_container')
-  if (parent_container.length > 0)
-    $(parent_container).before(new_element)
-  else
-    $(@).parent().append(new_element)
-
-  fn = window[$(@).data('callback')]
-  if Object.prototype.toString.call(fn) == "[object Function]"
-    fn(new_element)
-  setupDatePickers()
-
-replaceNameByCurrentTime = (jqElement) ->
-  time = new Date().getTime()
-  form_elements = jqElement.find('input, select, textarea')
-  form_elements.each ->
-    name = $(@).attr('name')
-    pattern = /^(.*)(\[\d+\])(.*)$/g
-    new_name = name.replace(pattern, "$1[#{time}]$3")
-    $(@).attr('name', new_name)
-
-    id = $(@).attr('id')
-    pattern = /^(.*)(\d+)(.*)$/g
-    new_id = id.replace(pattern, "$1[#{time}]$3")
-    $(@).attr('id', new_id)
-
-setupDatePickers = ->
+@setupDatePickers = ->
   $('.datepicker').datepicker(
     changeMonth: true
     changeYear: true
@@ -45,8 +15,7 @@ setupDatePickers = ->
 
 $ ->
   $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] )
-  $('body').on 'click', '.add_fields', addField
   setupDatePickers()
 
-  nested_remover = new NestedForms.FormRemover('.remove_fields', document)
-  nested_remover.bind()
+  new NestedForms.FormRemover('.remove_fields', document).bind()
+  new NestedForms.FormAdder('.add_fields', document).bind()

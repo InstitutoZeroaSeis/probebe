@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20150417195940) do
     t.string   "name"
     t.string   "address_complement"
     t.string   "postal_code"
+    t.integer  "cell_phone_system",  default: 2
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree

@@ -4,8 +4,10 @@ class Profile < ActiveRecord::Base
 
   DAYS_IN_WEEK = 7
   GENDER_ENUM = [:male, :female, :not_informed]
+  CELL_PHONE_SYSTEM_ENUM = [:ios, :android, :other]
 
   enum gender: GENDER_ENUM
+  enum cell_phone_system: CELL_PHONE_SYSTEM_ENUM
 
   belongs_to :user
   has_many :children
