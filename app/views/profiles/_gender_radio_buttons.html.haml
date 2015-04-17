@@ -1,0 +1,6 @@
+%label.profile-form-block-label Sexo
+= form.collection_radio_buttons :gender, options, :first, :last do |b|
+  = content_tag(:label, class: 'radio-inline profile-form-radio') do
+    = b.text
+    = b.radio_button
+    = tag(:span, class: 'custom-check-box')

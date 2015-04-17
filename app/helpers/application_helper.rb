@@ -7,26 +7,19 @@ module ApplicationHelper
     I18n.localize(value, *args) if value
   end
 
-  def template_for_association(form_builder, association, path = '')
-    new_object = form_builder.object.class.reflect_on_association(association).klass.new
-    form_builder.simple_fields_for association,  new_object  do |builder|
-      render(path + association.to_s.singularize + '_fields', f: builder)
+  def template_for_association(form, association, partial)
+    new_object =
+      form.object.class.reflect_on_association(association).klass.new
+
+    form.simple_fields_for association, new_object do |builder|
+      render partial, f: builder
     end
   end
 
-  def add_fields_link(name, form_builder, association, path: '', callback: '')
-    fields = template_for_association(form_builder, association, path)
-    link_to name, '#',
-            class: 'add_fields',
-            data: { fields: fields.gsub("\n", ''), callback: callback }
-  end
-
   def remove_fields_link(name, form_builder, container_to_hide: '')
+    html_data = { container_to_hide: container_to_hide }
     form_builder.hidden_field(:_destroy, value: false) +
-      link_to(name, '#',
-              class: 'remove_fields',
-              data: { container_to_hide: container_to_hide }
-      )
+      link_to(name, '#', class: 'remove_fields', data: html_data)
   end
 
   def distance_of_time_in_words_to_now(time, *args)
