@@ -1,0 +1,12 @@
+.born-or-not.container
+  %h3 Cadastrar Filhos
+  %p Você pode adicionar mais filhos apenas clicando em um dos botões desejados
+  .form-block
+    %button.born-or-not-pregnancy.add_fields{ data: { fields: template_for_association(f, :children, 'children/pregnancy_child_fields') } }
+      Gestante
+    %span.born-or-not-or
+      Ou
+    %button.born-or-not-born.add_fields{ data: { fields: template_for_association(f, :children, 'children/born_child_fields') } }
+      Já nasceu
+    = f.simple_fields_for :children do |ff|
+      = render 'children/born_child_fields', f: ff

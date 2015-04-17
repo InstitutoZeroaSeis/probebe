@@ -1,0 +1,15 @@
+.container
+  %h3= @profile.cell_phone_system_text
+  %fieldset.edit-profile-form-address
+    .row
+      = f.collection_radio_buttons :cell_phone_system,
+        @profile.options_to_cell_phone_system,
+        :first, :last,
+        item_wrapper_class: 'col-sm-3' do |b|
+        %label.radio-inline.profile-form-radio
+          = b.text
+          = b.radio_button
+          = tag(:span, class: 'custom-check-box')
+
+      .col-sm-3
+        = f.submit class: 'profile-form-save-button pull-right'

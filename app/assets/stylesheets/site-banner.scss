@@ -108,50 +108,63 @@
   font-weight: 300;
   line-height: 65px;
   text-align: center;
+  position: relative;
+  padding-left: 5%;
 
   &.step-0 {
     border-bottom-color: $red;
     color: $red;
+    &:after{background-position: -0px 0px;}
 
     &.is-active {
       background: $red;
       border-bottom-color: $dark-red;
+      &:before{background-position: -31px 0px;}
     }
   }
 
   &.step-1 {
     border-bottom-color: $orange;
     color: $orange;
+    &:after{background-position: -290px 0px;}
 
     &.is-active {
       background: $orange;
       border-bottom-color: $dark-orange;
+      &:before{background-position: -61px 0px;}
     }
   }
 
   &.step-2 {
     border-bottom-color: $purple;
     color: $purple;
+    &:after{background-position: -600px 0px;}
 
     &.is-active {
       background: $purple;
       border-bottom-color: $dark-purple;
+      &:before{background-position: -93px 0px;}
     }
   }
 
   &.step-3 {
     border-bottom-color: $green;
     color: $green;
+    &:after{background-position: -910px 0px;}
 
     &.is-active {
       background: $green;
       border-bottom-color: $dark-green;
+      &:before{background-position: -124px 0px;}
     }
   }
 
   &.step-4 {
     border-bottom-color: $yellow;
     color: $yellow;
+    
+    &:before{display: none;}
+    &:after{background-position: -1235px 0px;}
 
     &.is-active {
       background: $yellow;
@@ -161,5 +174,29 @@
 
   &.is-active {
     color: #fff;
+  }
+
+  &:before{
+    content: '';
+    display: block;
+    position: absolute;
+    right: -12px;
+    width: 15px;
+    height: 66px;
+    background-image: image-url('banner-bullets.png');
+    background-repeat: no-repeat;
+    z-index: 9;
+  }
+
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 21%;
+    width: 80px;
+    height: 66px;
+    top: -5px;
+    background-image: image-url('banner-bullets-icons.png');
+    background-repeat: no-repeat;    
   }
 }

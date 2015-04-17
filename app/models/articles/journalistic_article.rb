@@ -16,6 +16,7 @@ class Articles::JournalisticArticle < Articles::Article
   validate :length_of_messages
 
   after_save :update_messages
+  before_save :set_defaults
 
   def update_messages
     Articles::MessageUpdater.update_many_from_article(messages, self)

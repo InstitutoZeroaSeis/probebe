@@ -1,0 +1,12 @@
+%h2= t('views.blog.related_post')
+
+- @related_post.each do |related_post|
+  %p
+    = link_to related_post.title, post_path(related_post)
+  %p
+    = related_post.title
+  %p
+    - if related_post.summary.blank?
+      = truncate Nokogiri::HTML(related_post.text).text, length: 500
+    - else
+      = related_post.summary

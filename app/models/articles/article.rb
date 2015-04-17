@@ -65,6 +65,5 @@ module Articles
     def pregnancy?
       !born?
     end
-
   end
 end

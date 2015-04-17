@@ -9,7 +9,6 @@
           %li= link_to 'Quem Somos', '#'
           %li= link_to 'O que é o ProBebê', '#'
           %li= link_to 'Parceiros', '#'
-          %li= link_to 'Histórico', '#'
           %li.dropdown
             %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
               = t('activerecord.models.profile')
@@ -29,28 +28,24 @@
                 - current_profile.children.each do |child|
                   - if child.persisted?
                     %li= link_to child.name.present? ? child.name : l(child.birth_date), timeline_path(id: child.id)
-          %ul.nav.navbar-nav.navbar-right
-            - if current_profile
-              %li
-                %a{ href: profile_path }
-                  %span.glyphicon.glyphicon-user
-                  = current_profile.name
-              %li
-                = link_to destroy_user_session_path, method: :delete do
-                  %span.glyphicon.glyphicon-off
-                    %span= t('views.application.exit')
-            - else
-              %li= link_to 'Login', new_user_session_path
-
+        %ul.nav.navbar-nav.navbar-right
+          - if current_profile
             %li
-              - if true_user != current_user
-                = link_to "#{t('view.message.back_to_admin')}", admin_stop_impersonating_path(current_user)
-
+              %a{ href: profile_path }
+                %span.glyphicon.glyphicon-user
+                = current_profile.name
             %li
               .input-group
                 %input.form-control{ type: 'text', name: 'search' }
                 %span.input-group-btn
                   %button.btn.btn-default{ type: 'submit' }
                     %span.glyphicon.glyphicon-search
+            
+            %li
+              = link_to destroy_user_session_path, method: :delete do
+                %span.glyphicon.glyphicon-off
+                  %span= t('views.application.exit')
+          - else
+            %li= link_to 'Login', new_user_session_path
 
 = render 'site_banner'

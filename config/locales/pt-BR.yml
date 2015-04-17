@@ -49,26 +49,27 @@ pt-BR:
   activerecord:
     attributes:
       articles/article: &article
-        id: Id
         article_references: *article_references
         baby_target_type: *baby_target_type
         category: *category
         category_id: *category_id
         category_name: *category_name
         gender: *genders
+        id: Id
         journalistic_articles_count: "Quantidade de artigos jornalístico"
-        minimum_valid_week: *minimum_valid_week
         maximum_valid_week: *maximum_valid_week
+        messages: "Mensagens"
+        minimum_valid_week: *minimum_valid_week
         original_author_name: *original_author_name
         parent_article_id: *parent_article_id
+        publishable: "Publicável"
+        show_author: "Mostrar autor no post"
         summary: *summary
         teenage_pregnancy: "Aplicável para gravidez na adolescência"
         text: *text
         title: *title
         type: *type
         user_email: *user_email
-        messages: "Mensagens"
-        publishable: "Publicável"
       articles/authorial_article:
         <<: *article
         journalistic_articles: "Artigos Jornalísticos"
@@ -190,6 +191,10 @@ pt-BR:
         users:
           impersonate: "Logado com usuário %{user_name}"
   general:
+    cell_phone_systems:
+      android: Android
+      ios: iOS
+      other: Outros
     commom_words:
       <<: *commom_words
     gender:
@@ -246,18 +251,20 @@ pt-BR:
       newer_html: "Mais recentes &rarr;"
       older_html: "&larr; Mais antigos"
       read_more: *read_more
+      related_post: "Posts Relacionados"
       search: "Busca de posts"
     errors:
       forbidden: "Acesso não autorizado"
       internal_server_error: "Ocorreu um erro ao processar a requisição"
       not_found: "Página não encontrada"
     profile:
-      cell_phone: "Celular"
-      cell_phones: "Celulares"
-      contact_informations: "Informações de Contato"
-      create_profile: "Criar Perfil"
-      my_children: "Meus Filhos"
-      personal_information: "Informações Pessoais"
-      phones: "Telefones"
+      cell_phone: Celular
+      cell_phones: Celulares
+      cell_phone_system: Sistema do Celular
+      children: Filhos
+      contact_informations: Dados de Contato
+      create_profile: Criar Perfil
+      personal_information: Informações Pessoais
+      phones: Telefones
     timeline:
       read_more: *read_more

@@ -1,7 +1,17 @@
 %nav.home-categories
   %ul.home-categories-list.category-health
-    %li.home-categories-item.is-active Saúde
-    %li.home-categories-item Educação
-    %li.home-categories-item Socioemocional
-    %li.home-categories-item Finanças
-    %li.home-categories-item Segurança
+    %li.home-categories-item.category-health.is-active
+      %a{:href => "#health"}
+        Saúde
+    %li.home-categories-item.category-education
+      %a{:href => "#education"}
+        Educação
+    %li.home-categories-item.category-emotional
+      %a{:href => "#emotional"}
+        Socioemocional
+    %li.home-categories-item.category-finances
+      %a{:href => "#finances"}
+        Finanças
+    %li.home-categories-item.category-safety
+      %a{:href => "#safety"}
+        Segurança
