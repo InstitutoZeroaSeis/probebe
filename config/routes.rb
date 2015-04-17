@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   match ':status', to: 'errors#show', constraints: {status: /\d{3}/}, via: [:get, :post]
   resource :profile, except: :index
   resources :timelines, only: :show
+  get 'timelines/:id/monthly/:date' => 'timelines#monthly', as: :timeline_monthly
   resources(:posts, only: [:show, :index])
   get 'posts/page/:page_id' => 'posts#index', as: :paged_posts
   resources(:tags) { resources :posts, only: :index }

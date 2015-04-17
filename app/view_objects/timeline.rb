@@ -1,6 +1,8 @@
 class Timeline
-  def initialize(deliveries)
-    @deliveries = deliveries.sort_by{|delivery| delivery.delivery_date}.reverse
+  def initialize(deliveries, period)
+    @all_deliveries = deliveries
+    @deliveries = @all_deliveries.delivered_in_period(period).sort_by{|delivery| delivery.delivery_date}.reverse
+    @period = period
   end
 
   def timeline_days
@@ -10,10 +12,28 @@ class Timeline
     end
   end
 
+  def timeline_months
+    delivered_months.map do |date|
+      TimelineMonth.new(date)
+    end
+  end
+
   protected
 
-  def start_date
-    @deliveries.last.delivery_date
+  def delivered_months
+    if @all_deliveries.any?
+      (start_month_date..end_month_date).map{ |d| Date.new(d.year, d.month, 1) }.uniq.reverse
+    else
+      []
+    end
+  end
+
+  def start_month_date
+    @all_deliveries.last.delivery_date
+  end
+
+  def end_month_date
+    @period.first.ago(1.month)
   end
 
   def find_event_for_date(date)
@@ -21,10 +41,7 @@ class Timeline
   end
 
   def ordered_days_till_now
-    if @deliveries.any?
-      (start_date..Date.today).to_a.reverse
-    else
-      []
-    end
+    @period.to_a.reverse
   end
+
 end
