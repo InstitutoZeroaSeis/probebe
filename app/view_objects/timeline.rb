@@ -1,8 +1,8 @@
 class Timeline
   def initialize(deliveries, period)
     @all_deliveries = deliveries
-    @deliveries = @all_deliveries.delivered_in_period(period).sort_by{|delivery| delivery.delivery_date}.reverse
     @period = period
+    @deliveries = ordered_deliveries_by_period
   end
 
   def timeline_days
@@ -38,6 +38,14 @@ class Timeline
 
   def find_event_for_date(date)
     @deliveries.find {|delivery| delivery.delivery_date == date }
+  end
+
+  def ordered_deliveries_by_period
+    if @all_deliveries.any?
+      @all_deliveries.delivered_in_period(@period).sort_by{|delivery| delivery.delivery_date}.reverse
+    else
+      []
+    end
   end
 
   def ordered_days_till_now
