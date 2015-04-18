@@ -1,6 +1,5 @@
 = render @post.tags
-%figure
-  = image_tag @author_profile.avatar_url
+%figure= image_tag @author_profile.avatar_url
 
 %p.lead= t('views.blog.by', author: @author_profile.name)
 = l(@post.created_at)
