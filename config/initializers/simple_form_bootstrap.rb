@@ -20,7 +20,7 @@ SimpleForm.setup do |config|
   end
 
 
-  config.wrappers :custom_forms do |b|
+  config.wrappers :custom_forms, error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
