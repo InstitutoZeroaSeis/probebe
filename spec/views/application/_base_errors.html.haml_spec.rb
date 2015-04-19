@@ -8,6 +8,16 @@ describe 'application/_base_errors.html.haml' do
 
     render 'application/base_errors', model: model
 
+    expect(rendered).to have_text('some error')
+  end
+
+  it 'renders the wrapper div with appropriate error classes' do
+    errors = ActiveModel::Errors.new(nil)
+    model = double(errors: errors)
+    errors.add(:base, 'some error')
+
+    render 'application/base_errors', model: model
+
     expect(rendered).to have_selector('.alert.alert-danger')
   end
 
