@@ -5,8 +5,9 @@
     wrapper: :custom_forms,
     html: { class: 'form-horizontal new-children-form' } do |f|
 
-    = f.error_notification
-    = render 'base_errors', model: @profile
+    .container
+      = f.error_notification
+      = render 'base_errors', model: @profile
     %section.user-profile-personal-info
       = render 'profiles/edit/personal_information', profile: @profile, f: f
     %section.user-profile-children

@@ -1,4 +1,4 @@
-- if model.errors.size > 0
-  .alert.alert-danger.col-sm-offset-2
+- unless model.errors[:base].empty?
+  .alert.alert-danger
     - model.errors.full_messages_for(:base).each do |message|
       %p= message

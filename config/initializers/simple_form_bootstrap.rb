@@ -1,6 +1,6 @@
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
-  config.error_notification_class = 'alert alert-danger col-sm-offset-2 col-sm-10'
+  config.error_notification_class = 'alert alert-danger'
   config.button_class = 'btn btn-default'
   config.boolean_label_class = nil
 
@@ -20,7 +20,7 @@ SimpleForm.setup do |config|
   end
 
 
-  config.wrappers :custom_forms do |b|
+  config.wrappers :custom_forms, error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
