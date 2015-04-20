@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417195940) do
+ActiveRecord::Schema.define(version: 20150420202159) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -40,6 +40,10 @@ ActiveRecord::Schema.define(version: 20150417195940) do
     t.datetime "updated_at"
     t.boolean  "publishable",                 default: false
     t.boolean  "show_author",                 default: true
+    t.string   "image_cover_file_name"
+    t.string   "image_cover_content_type"
+    t.integer  "image_cover_file_size"
+    t.datetime "image_cover_updated_at"
   end
 
   create_table "articles_tags", id: false, force: true do |t|

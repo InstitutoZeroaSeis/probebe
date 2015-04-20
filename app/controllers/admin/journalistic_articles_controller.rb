@@ -36,7 +36,7 @@ class Admin::JournalisticArticlesController < Admin::AdminController
     permitted = params.permit(articles_journalistic_article:
                               [:id, :text, :title, :summary, :category_id, :user_id, :original_author_id,
                               :gender, :teenage_pregnancy, :baby_target_type, :publishable, :show_author,
-                              :box, :minimum_valid_week, :maximum_valid_week, {tag_ids: []},
+                              :box, :minimum_valid_week, :maximum_valid_week, :image_cover, {tag_ids: []},
                               article_references_attributes:[:id, :source, :_destroy],
                               messages_attributes:[:id, :text, :_destroy]])
     permitted[:articles_journalistic_article].merge!(user_id: current_user.id) if permitted.present?
