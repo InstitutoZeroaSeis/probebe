@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417195940) do
+ActiveRecord::Schema.define(version: 20150420232219) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -63,14 +63,6 @@ ActiveRecord::Schema.define(version: 20150417195940) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_category"
-  end
-
-  create_table "cell_phones", force: true do |t|
-    t.string   "number"
-    t.integer  "profile_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "area_code"
   end
 
   create_table "children", force: true do |t|
@@ -151,6 +143,9 @@ ActiveRecord::Schema.define(version: 20150417195940) do
     t.string   "address_complement"
     t.string   "postal_code"
     t.integer  "cell_phone_system",  default: 2
+    t.string   "cell_phone"
+    t.string   "home_phone"
+    t.string   "business_phone"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
