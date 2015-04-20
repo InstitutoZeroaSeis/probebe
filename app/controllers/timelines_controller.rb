@@ -7,14 +7,14 @@ class TimelinesController < ApplicationController
   before_action :load_timeline
 
   def show
-    deliveries = MessageDeliveryTimelineDecorator.from_child(@child)
-    @timeline = Timeline.new deliveries, MessageDeliveryTimelineDecorator.default_period
+    period = MessageDeliveryTimelineDecorator.default_period
+    @timeline = MessageDeliveryTimelineDecorator.timeline(@child, period)
   end
 
   def monthly
-    deliveries = MessageDeliveryTimelineDecorator.from_child(@child)
     month = DateTime.parse(params[:date])
-    @timeline = Timeline.new deliveries, MessageDeliveryTimelineDecorator.month_period(month)
+    period = MessageDeliveryTimelineDecorator.month_period(month)
+    @timeline = MessageDeliveryTimelineDecorator.timeline(@child, period)
     @timeline_month = TimelineMonth.new(month.to_date)
 
     respond_to do |format|
