@@ -1,15 +1,14 @@
 class PostsController < ApplicationController
-  POSTS_PER_PAGE = 5
+  POSTS_PER_PAGE = 3
   layout "blog"
 
   def index
-    @pager = build_pager Articles::JournalisticArticle.ordered_by_creation_date
-      .publishable
-      .by_tag(params[:tag_name])
-      .by_search_term(params[:search])
-      .by_category(params[:category])
-      .journalistic
-
+    ordered_post = Blog::PostOrderByCreation.new(Blog::Post.all).order
+    publishable_post = Blog::PostPublishableFinder.new(ordered_post).find
+    post_by_search_name = Blog::PostSearchTermFinder.new(params[:search], publishable_post).find
+    post_by_category = Blog::PostByCategoryFinder.new(params[:category], post_by_search_name).find
+    post_by_tag = Blog::PostByTagFinder.new(params[:tag_name], post_by_category).find
+    @pager = build_pager post_by_tag
     @posts = @pager.paged
   end
 
