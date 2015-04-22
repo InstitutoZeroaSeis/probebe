@@ -22,10 +22,6 @@ module Articles
     validate :presence_of_maximum_or_minimum
     validate :minimum_not_higher_than_maximum
 
-    has_attached_file :image_cover, styles: { full: '640x480', thumb: '160x120'}, if: :jornalistic?
-    validates_attachment_content_type :image_cover, :content_type => /\Aimage\/.*\Z/, if: :jornalistic?
-    validates_attachment_size :image_cover, :in => 0..1.megabyte, if: :jornalistic?
-
     before_save :set_defaults
 
     scope :journalistic, -> { where(type: 'Articles::JournalisticArticle') }
@@ -56,10 +52,6 @@ module Articles
 
     def self.match_text(search_term)
       arel_table[:text].matches("%#{search_term}%")
-    end
-
-    def jornalistic?
-      type == 'Articles::JournalisticArticle'
     end
 
     def born?

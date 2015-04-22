@@ -6,11 +6,11 @@ class CategorySampleArticlesDecorator < Category
 
   def self.two_ordered_articles_from_category parent_category
     categories = from_parent_category(parent_category)
-    Articles::Article.journalistic.where(category: categories).sample(2)
+    Articles::JournalisticArticle.where(category: categories).sample(2)
   end
 
   def self.from_parent_category parent_category
-    where(parent_category: parent_category)
+    where(parent_category: Category::parent_categories[parent_category])
   end
 
 end

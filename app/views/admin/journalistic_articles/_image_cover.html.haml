@@ -1,0 +1,4 @@
+= f.input :image_cover, as: :hidden
+%img#image-cover-preview{width: 300, height: 200, src: @model.image_cover, class: show_image_class}
+%a#add-image-cover.carnival-action-button.novo.link * Imagem de Capa
+%p.help O tamanho da imagem será redimensionada para 200 x 300 pixels

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420232219) do
+ActiveRecord::Schema.define(version: 20150422174335) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -39,10 +39,7 @@ ActiveRecord::Schema.define(version: 20150420232219) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "publishable",                 default: false
-    t.string   "image_cover_file_name"
-    t.string   "image_cover_content_type"
-    t.integer  "image_cover_file_size"
-    t.datetime "image_cover_updated_at"
+    t.string   "image_cover"
   end
 
   create_table "articles_tags", id: false, force: true do |t|
@@ -59,11 +56,6 @@ ActiveRecord::Schema.define(version: 20150420232219) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "child_id"
-  end
-
-  create_table "banners", force: true do |t|
-    t.string "code"
-    t.string "url"
   end
 
   create_table "categories", force: true do |t|
@@ -109,18 +101,6 @@ ActiveRecord::Schema.define(version: 20150420232219) do
   create_table "device_registrations_message_deliveries", id: false, force: true do |t|
     t.integer "device_registration_id", null: false
     t.integer "message_delivery_id",    null: false
-  end
-
-  create_table "home_timeline_articles", force: true do |t|
-    t.integer "home_timeline_item_id"
-    t.integer "journalistic_article_id"
-    t.string  "url"
-    t.string  "index"
-  end
-
-  create_table "home_timeline_items", force: true do |t|
-    t.string "period"
-    t.string "index"
   end
 
   create_table "message_deliveries", force: true do |t|
