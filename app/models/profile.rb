@@ -11,38 +11,47 @@ class Profile < ActiveRecord::Base
 
   belongs_to :user
   has_many :children
-  has_many :cell_phones
-  has_many :device_registrations, class_name: "MessageDeliveries::DeviceRegistration"
+  has_many(
+    :device_registrations, class_name: 'MessageDeliveries::DeviceRegistration'
+  )
   has_one :avatar
 
-  validates_presence_of :first_name, :last_name
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  with_options(
+    format: { with: /\A\d{2}\s\d{4,5}\-\d{4,4}\Z/, allow_blank: true }
+  ) do |format|
+    format.validates :cell_phone
+    format.validates :home_phone
+    format.validates :business_phone
+  end
 
   accepts_nested_attributes_for :avatar
-  accepts_nested_attributes_for :children, allow_destroy: true, reject_if: all_blank?(:name, :birth_date)
-  accepts_nested_attributes_for :cell_phones, allow_destroy: true, reject_if: all_blank?(:area_code, :number)
+  accepts_nested_attributes_for(
+    :children, allow_destroy: true, reject_if: all_blank?(:name, :birth_date)
+  )
 
   before_save :set_defaults
   before_save :update_name
 
-  scope :admin_site_user_profiles, -> { joins(:user).merge(User.admin_site_user) }
+  scope :admin_site_user_profiles, lambda {
+    joins(:user).merge(User.admin_site_user)
+  }
+
+  alias_attribute :primary_cell_phone_number, :cell_phone
 
   def avatar_url
     avatar.photo.url(:thumb) if avatar
   end
 
   def update_avatar_from_url(url)
-    unless self.avatar
-      self.avatar = Avatar.create_from_url(url, profile: self)
-    end
+    self.avatar ||=
+      Avatar.create_from_url(url, profile: self)
   end
 
   def pregnancy_start_date
-    child = children.find {|c| c.pregnancy? }
+    child = children.find(&:pregnancy?)
     child.pregnancy_start_date if child
-  end
-
-  def primary_cell_phone_number
-    cell_phones.first.full_number unless cell_phones.empty?
   end
 
   protected

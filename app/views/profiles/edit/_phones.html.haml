@@ -3,11 +3,8 @@
   %fieldset.edit-profile-form-address
     .row
       .col-sm-4
-        %label Celular
-        %input.form-control
+        = f.input :cell_phone
       .col-sm-4
-        %label Residencial
-        %input.form-control
+        = f.input :home_phone
       .col-sm-4
-        %label Profissional
-        %input.form-control
+        = f.input :business_phone

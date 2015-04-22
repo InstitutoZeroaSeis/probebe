@@ -16,11 +16,14 @@ class Articles::JournalisticArticle < Articles::Article
   validates_attachment_size :image_cover, :in => 0..1.megabyte
 
   accepts_nested_attributes_for :messages, reject_if: all_blank?(:text)
-  validates_presence_of :parent_article, :original_author, :image_cover
+
+  validates :parent_article, presence: true
+  validates :original_author, presence: true
+  validates :image_cover, presence: true
   validate :length_of_messages
 
   after_save :update_messages
-  before_save :set_defaults
+  before_validation :verify_original_author
 
   def update_messages
     Articles::MessageUpdater.update_many_from_article(messages, self)
@@ -36,6 +39,10 @@ class Articles::JournalisticArticle < Articles::Article
 
   def original_author_name
     original_author.profile_name
+  end
+
+  def verify_original_author
+    self.original_author ||= Author::DefaultAuthor.find_default_author
   end
 
   private
