@@ -1,4 +1,5 @@
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+@import 'mixins';
 
 html,
 button,
@@ -555,6 +556,54 @@ body {
   .entry{
     background: #fff5f6;
     border: 4px solid #ffdfe4;
+  }
+}
+
+
+.timeline-months{
+  list-style: none;
+  padding: 0px;
+
+  .timeline-month{
+    text-align: center;
+    font-size: 17px;
+    @include timeline-bg-pag(1);
+
+    a{
+      color: #fff;
+      padding: 15px;
+      width: 100%;
+      float: left;
+      background: inherit;
+
+      &:hover{
+        text-decoration: none;
+      }
+   }
+  }
+
+  .month-step-01, .month-step-11{
+    @include timeline-bg-pag(1);
+  }
+
+  .month-step-02, .month-step-10, .month-step-12, .month-step-20{
+    @include timeline-bg-pag(0.83);
+  }
+
+  .month-step-03, .month-step-09, .month-step-13, .month-step-19{
+    @include timeline-bg-pag(0.67);
+  }
+
+  .month-step-04, .month-step-08, .month-step-14, .month-step-18{
+    @include timeline-bg-pag(0.50);
+  }
+
+  .month-step-05, .month-step-07, .month-step-15, .month-step-17{
+    @include timeline-bg-pag(0.34);
+  }
+
+  .month-step-06, .month-step-16{
+    @include timeline-bg-pag(0.17);
   }
 }
 

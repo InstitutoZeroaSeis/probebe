@@ -10,3 +10,7 @@
   text-align: center;
   width: 150px;
 }
+
+@mixin timeline-bg-pag($opacity){
+  background: rgba(78,131,175, $opacity)
+}

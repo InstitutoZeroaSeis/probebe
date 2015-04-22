@@ -6,8 +6,8 @@ class SampleData
 
   def seed
     ActiveRecord::Base.transaction do
-      create(:category, name: "Prevenção", parent_category: create(:category, name: "Saúde"))
-      create(:category, name: "Poupar", parent_category: create(:category, name: "Financeira"))
+      create(:category, name: "Prevenção", parent_category: :health)
+      create(:category, name: "Poupar", parent_category: :finance)
       create(:user, :confirmed, :journalist, email: 'journalist@probebe.com.br')
 
       create(:user, :confirmed, :author, email: 'author@probebe.com.br')

@@ -1,5 +1,6 @@
 pt-BR:
   date:
+    month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
     formats:
       day: ! '%d'
       full_year: ! '%Y'
@@ -100,21 +101,23 @@ pt-BR:
         delivery_date: "Data de envio"
         message_for_test: "Mensagem de teste"
       profile:
-        address: "Endereço"
-        avatar: "Avatar"
-        birth_date: "Data de Nascimento"
-        city: "Cidade"
-        first_name: "Nome"
-        gender: "Sexo"
-        home_phone_number: "Telefone residencial"
-        id: "Id"
-        is_mother: "Já é mãe?"
-        is_pregnant: "Está Grávida?"
-        last_name: "Sobrenome"
-        name: "Nome"
-        pregnancy_start_date: "Idade da gestação"
-        state: "Estado"
-        street: "Rua"
+        address: Endereço
+        address_complement: Complemento
+        avatar: Avatar
+        birth_date: Data de Nascimento
+        city: Cidade
+        first_name: Nome
+        gender: Sexo
+        home_phone_number: Telefone residencial
+        id: Id
+        is_mother: Já é mãe?
+        is_pregnant: Está Grávida?
+        last_name: Sobrenome
+        name: Nome
+        postal_code: CEP
+        pregnancy_start_date: Idade da gestação
+        state: Estado
+        street: Rua
       tag:
         id: "Id"
         name: "Nome"
