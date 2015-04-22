@@ -41,7 +41,7 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
     sortable: true
 
   field :image_cover,
-    as: :file,
+    as: :partial,
     actions: [:edit, :new]
 
   field :summary,

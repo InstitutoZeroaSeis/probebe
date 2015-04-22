@@ -44,7 +44,7 @@ Carnival.configure do |config|
   }
 
   config.custom_javascript_files = [ "ckeditor/init", "inputs/countable_input", "jquery-ui/datepicker-pt-BR"  ]
-  config.custom_css_files = [ "jquery-ui" ]
+  config.custom_css_files = [ "jquery-ui", "admin" ]
   config.use_full_model_name = false
   config.root_action = 'admin/authorial_articles#index'
 end
