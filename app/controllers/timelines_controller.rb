@@ -1,9 +1,7 @@
 class TimelinesController < ApplicationController
-  load_and_authorize_resource class: "Child"
+  load_and_authorize_resource class: 'Child'
 
   before_action :authenticate_user!
-  before_action :deny_admin_site_user_access_on_public_site
-  before_action :check_profile_status
   before_action :load_timeline
 
   def show
@@ -18,7 +16,7 @@ class TimelinesController < ApplicationController
     @timeline_month = TimelineMonth.new(month.to_date)
 
     respond_to do |format|
-      format.js { }
+      format.js
     end
   end
 
@@ -29,5 +27,4 @@ class TimelinesController < ApplicationController
     @timeline_step = TimelineStep.new
     @month_step = TimelineStep.new
   end
-
 end
