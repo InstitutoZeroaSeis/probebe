@@ -15,7 +15,6 @@ class Articles::JournalisticArticle < Articles::Article
 
   validates :parent_article, presence: true
   validates :original_author, presence: true
-  validates :image_cover, presence: true
   validate :length_of_messages
 
   after_save :update_messages

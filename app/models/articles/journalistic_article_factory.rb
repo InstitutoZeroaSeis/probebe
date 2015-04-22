@@ -1,7 +1,7 @@
 module Articles
   class JournalisticArticleFactory
     def self.from_authorial_article(authorial_article)
-      Articles::JournalisticArticle.new do |a|
+      Articles::JournalisticArticleWithCover.new do |a|
         properties = [:baby_target_type, :category_id, :gender,
                       :minimum_valid_week, :maximum_valid_week,
                       :tags, :teenage_pregnancy]
