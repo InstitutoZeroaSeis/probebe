@@ -8,9 +8,7 @@ module Blog
 
     def find
       if @term
-        @relation.where(
-          match_title.or(match_text)
-        )
+        @relation.where(match_title.or(match_text))
       else
         @relation
       end

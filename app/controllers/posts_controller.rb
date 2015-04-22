@@ -3,12 +3,7 @@ class PostsController < ApplicationController
   layout "blog"
 
   def index
-    ordered_post = Blog::PostOrderByCreation.new(Blog::Post.all).sort
-    publishable_post = Blog::PostPublishableFinder.new(ordered_post).find
-    post_by_search_name = Blog::PostSearchTermFinder.new(params[:search], publishable_post).find
-    post_by_category = Blog::PostByCategoryFinder.new(params[:category], post_by_search_name).find
-    post_by_tag = Blog::PostByTagFinder.new(params[:tag_name], post_by_category).find
-    @pager = build_pager post_by_tag
+    @pager = build_pager Blog::PostFinder.new(params[:search], params[:category], params[:tag_name]).find
     @posts = @pager.paged
   end
 
