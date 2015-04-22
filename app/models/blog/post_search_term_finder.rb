@@ -9,7 +9,7 @@ module Blog
     def find
       if @term
         @relation.where(
-          match_title(@term).or(match_text(@term))
+          match_title.or(match_text)
         )
       else
         @relation

@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   layout "blog"
 
   def index
-    ordered_post = Blog::PostOrderByCreation.new(Blog::Post.all).order
+    ordered_post = Blog::PostOrderByCreation.new(Blog::Post.all).sort
     publishable_post = Blog::PostPublishableFinder.new(ordered_post).find
     post_by_search_name = Blog::PostSearchTermFinder.new(params[:search], publishable_post).find
     post_by_category = Blog::PostByCategoryFinder.new(params[:category], post_by_search_name).find

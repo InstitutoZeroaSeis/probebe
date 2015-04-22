@@ -4,7 +4,7 @@ module Blog
       @relation = relation
     end
 
-    def order
+    def sort
       @relation.order(created_at: :desc)
     end
   end
