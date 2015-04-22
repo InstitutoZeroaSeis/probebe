@@ -72,7 +72,8 @@ body {
   padding: 0;
   background-color: rgb(114, 164, 223) !important;
   background-image: image-url("site-bg.jpg");
-  background-size: 100%;
+  background-size: 1920px;
+  background-position:  center top;
   background-repeat: no-repeat;
 }
 
@@ -589,8 +590,8 @@ body {
     width: 100%;
 
     .month-timeline{
-      background: #73A5E1 image-url("site-bg.jpg") no-repeat 0px 0px !important;
-      background-size: 100% !important;
+      background: #73A5E1 image-url("site-bg.jpg") no-repeat center top !important;
+      background-size: 1920px !important;
       margin-top: 54px;
     }
 
