@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update_attributes(permitted_params)
-      redirect_to profile_path
+      redirect_to root_path
     else
       render :edit
     end
@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
   protected
 
   def instantiate_profile
-    @profile = ProfilePresenter.new(current_profile || Profile.new)
+    @profile = ProfilePresenter.new(current_profile)
   end
 
   def permitted_params
