@@ -11,8 +11,12 @@ class Articles::JournalisticArticle < Articles::Article
     end
   end
 
+  has_attached_file :image_cover, styles: { full: '640x480', thumb: '160x120'}
+  validates_attachment_content_type :image_cover, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_size :image_cover, :in => 0..1.megabyte
+
   accepts_nested_attributes_for :messages, reject_if: all_blank?(:text)
-  validates_presence_of :parent_article, :original_author
+  validates_presence_of :parent_article, :original_author, :image_cover
   validate :length_of_messages
 
   after_save :update_messages

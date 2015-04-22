@@ -16,6 +16,7 @@ class Admin::JournalisticArticlesController < Admin::AdminController
       authorial_article = find_authorial_article(params[:articles_journalistic_article][:parent_article_id])
       Articles::JournalisticArticleFactory.from_authorial_article(authorial_article).tap do |article|
         article.assign_attributes journalistic_article_attributes
+        raise
       end
     else
       super

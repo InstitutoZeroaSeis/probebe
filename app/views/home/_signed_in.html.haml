@@ -1,20 +1,20 @@
 = render 'home_categories'
 
 %section.subjects.container
-- @categories_articles.each do |category|
-  .subject.col-md-9
-    .row.col-md-12
-      = render "subject_header_#{category[:category]}"
-    - category[:articles].each do |article|
-      .col-md-6
-        .subject-picture-split
-          %figure
-            %img
-          .subject-picture-split-description
-            %p
-              - if article.summary.blank?
-                = truncate Nokogiri::HTML(article.text).text, length: 500
-              - else
-                = article.summary
-    %button.subject-picture-split-see-all-posts.health-button.center-block
-      Ver todos os posts na categoria
+  - @categories_articles.each do |category|
+    .subject.col-md-9{id: category[:category] }
+      .row.col-md-12
+        = render "subject_header_#{category[:category]}"
+      - category[:articles].each do |article|
+        .col-md-6
+          .subject-picture-split
+            %figure
+              %img
+            .subject-picture-split-description
+              %p
+                - if article.summary.blank?
+                  = truncate Nokogiri::HTML(article.text).text, length: 500
+                - else
+                  = article.summary
+      %button.subject-picture-split-see-all-posts.health-button.center-block
+        Ver todos os posts na categoria
