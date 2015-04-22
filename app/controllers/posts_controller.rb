@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  POSTS_PER_PAGE = 3
+  POSTS_PER_PAGE = 5
   layout "blog"
 
   def index
@@ -7,6 +7,7 @@ class PostsController < ApplicationController
       .publishable
       .by_tag(params[:tag_name])
       .by_search_term(params[:search])
+      .by_category(params[:category])
       .journalistic
 
     @posts = @pager.paged

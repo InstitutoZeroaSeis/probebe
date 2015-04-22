@@ -3,11 +3,9 @@
   - @posts.each do |post|
     .post
       %hr
+      %p= l(post.created_at)
       %h2.post_title= link_to post.title.titleize, post_path(post)
-      %p.lead= t('views.blog.by', author: post.original_author.email)
-      %p
-        %span.glyphicon.glyphicon-time
-        = t('views.blog.date_posted', date: l(post.created_at))
+      %p= post.category_name
       %hr
       %p
         - if post.summary.blank?
