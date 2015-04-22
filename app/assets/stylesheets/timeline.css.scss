@@ -87,6 +87,18 @@ body {
   position: relative;
   padding-bottom: 200px;
   padding-top: 33px;
+  
+  &:before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: #72A4DF;
+    height: 80px;
+    box-shadow: 0px -40px 60px #72A4DF;
+  }
+
 }
 
 .timeline-start{
@@ -519,6 +531,7 @@ body {
   float: left;
   width: 80%;
   margin-left: 10%;
+  display: none;
 
   li{
     margin: 0;
@@ -763,3 +776,4 @@ Print styles
     page-break-after: avoid;
   }
 }
+
