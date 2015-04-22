@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :instantiate_profile
-  layout 'blog'
 
   def update
     if @profile.update_attributes(permitted_params)

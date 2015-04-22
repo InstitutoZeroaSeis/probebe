@@ -1,6 +1,7 @@
 class TimelinesController < ApplicationController
   load_and_authorize_resource class: 'Child'
-
+  layout "timeline"
+  
   before_action :authenticate_user!
   before_action :load_timeline
 
