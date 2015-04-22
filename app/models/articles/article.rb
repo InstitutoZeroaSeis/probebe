@@ -28,12 +28,7 @@ module Articles
 
     before_save :set_defaults
 
-    scope :ordered_by_creation_date, -> { order(created_at: :desc) }
-    scope :by_category, ->(category) { joins(:category).merge(Category.send(category)) if category }
-    scope :by_tag, ->(tag_name) { joins(:tags).merge(Tag.where(name: tag_name)) if tag_name }
-    scope :by_search_term, ->(search_term) { where(match_title(search_term).or(match_text(search_term))) if search_term }
     scope :journalistic, -> { where(type: 'Articles::JournalisticArticle') }
-    scope :publishable, -> { where(publishable: true) }
 
     has_paper_trail
 
