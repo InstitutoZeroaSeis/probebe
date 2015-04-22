@@ -25,4 +25,16 @@ class ProfilePresenter < SimpleDelegator
   def children_text
     I18n.t 'views.profile.children'
   end
+
+  def cell_phone_system_text
+    I18n.t 'views.profile.cell_phone_system'
+  end
+
+  def options_to_cell_phone_system
+    [
+      ['ios', I18n.t('general.cell_phone_systems.ios')],
+      ['android', I18n.t('general.cell_phone_systems.android')],
+      ['other', I18n.t('general.cell_phone_systems.other')],
+    ]
+  end
 end

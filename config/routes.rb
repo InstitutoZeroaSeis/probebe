@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   match ':status', to: 'errors#show', constraints: {status: /\d{3}/}, via: [:get, :post]
   resource :profile, except: :index
   resources :timelines, only: :show
+  get 'timelines/:id/monthly/:date' => 'timelines#monthly', as: :timeline_monthly
   resources(:posts, only: [:show, :index])
   get 'posts/page/:page_id' => 'posts#index', as: :paged_posts
   resources(:tags, param: :name) { resources :posts, only: :index }
@@ -42,5 +43,4 @@ Rails.application.routes.draw do
     get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile
     post 'site_users/:id/impersonate' => 'site_users#impersonate', as: :impersonate_user
   end
-
 end

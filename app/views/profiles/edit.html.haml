@@ -1,5 +1,25 @@
+= content_for :head do
+  = javascript_include_tag 'week_to_date'
 %header.profile-form.container
-	%h3 Meu Perfil
-	%p Adicione filhos, edite telefone e-mail e dados pessoais aqui
+  %h3 Meu Perfil
+  %p Adicione filhos, edite telefone e-mail e dados pessoais aqui
 
-= render partial: 'form', locals: { profile: @profile }
+%section.edit-profile-form
+  = simple_form_for @profile,
+    url: profile_path,
+    wrapper: :custom_forms,
+    html: { class: 'form-horizontal new-children-form' } do |f|
+
+    .container
+      = f.error_notification
+      = render 'base_errors', model: @profile
+    %section.user-profile-personal-info
+      = render 'profiles/edit/personal_information', profile: @profile, f: f
+    %section.user-profile-children
+      = render 'profiles/edit/children', profile: @profile, f: f
+    %section.user-profile-contact-information
+      = render 'profiles/edit/contact_information', profile: @profile, f: f
+    %section.user-profile-phones
+      = render 'profiles/edit/phones', profile: @profile, f: f
+    %section.user-profile-cell-phone
+      = render 'profiles/edit/cell_phone_system', profile: @profile, f: f

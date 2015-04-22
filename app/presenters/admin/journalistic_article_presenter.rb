@@ -40,6 +40,10 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
     actions: [:show, :edit, :new],
     sortable: true
 
+  field :image_cover,
+    as: :file,
+    actions: [:edit, :new]
+
   field :summary,
     actions: [:index, :show, :edit, :new],
     sortable: true,

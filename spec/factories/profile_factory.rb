@@ -4,15 +4,14 @@ FactoryGirl.define do
     sequence(:last_name) {|n| "Surname#{n}"}
     gender 'male'
     birth_date {20.years.ago}
-    cell_phones { create_list :cell_phone, 2 }
     children { create_list :child, 2 }
 
     trait :with_cell_phone do
-      cell_phones { create_list :cell_phone, 2 }
+      cell_phone '1112345678'
     end
 
     trait :without_cell_phone do
-      cell_phones []
+      cell_phone nil
     end
 
     trait :with_children do
