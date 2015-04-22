@@ -1,8 +1,5 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :deny_admin_site_user_access_on_public_site
-  before_action :check_profile_status, except: [:new, :create, :edit, :update]
-  before_action :instantiate_profile
   layout 'blog'
 
   def show
