@@ -10,8 +10,14 @@
 }
 
 .navbar-default{
-	height: 55px;
+  height: 55px;
 }
+
+.timelines .navbar-default{
+  height: 55px;
+  background: rgba(0, 0, 0, 0.09);
+}
+
 
 .input-group {
   width: 200px;
