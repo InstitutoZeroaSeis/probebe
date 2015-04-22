@@ -108,6 +108,9 @@ pt-BR:
         city: Cidade
         first_name: Nome
         gender: Sexo
+        cell_phone: Celular
+        home_phone: Telefone Residencial
+        business_phone: Telefone Comercial
         home_phone_number: Telefone residencial
         id: Id
         is_mother: Já é mãe?
