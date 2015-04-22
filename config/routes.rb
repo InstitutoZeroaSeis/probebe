@@ -43,5 +43,4 @@ Rails.application.routes.draw do
     get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile
     post 'site_users/:id/impersonate' => 'site_users#impersonate', as: :impersonate_user
   end
-
 end
