@@ -6,7 +6,6 @@
       %p= l(post.created_at)
       %h2.post_title= link_to post.title.titleize, post_path(post)
       %p= post.category_name
-      %p= post.period_date
       %hr
       %p
         - if post.summary.blank?
