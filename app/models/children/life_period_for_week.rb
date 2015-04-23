@@ -42,26 +42,19 @@ module Children
       if [@start_week, @end_week].include? nil
         @start_week || @end_week
       else
-        smallest_distance.last
+        most_common_range.last
       end
     end
 
-    def smallest_distance
-      distance.sort_by(&:first).first
+    def most_common_range
+      common_items_in_range.sort_by(&:first).last
     end
 
-    def distance
+    def common_items_in_range
       RANGES.map do |range|
-        smallest_from_start = min_distance_from_start_or_end(range.first)
-        smallest_from_end = min_distance_from_start_or_end(range.last)
-        smallest_distance = [smallest_from_start, smallest_from_end].min
-
-        [smallest_distance, range]
+        common_items = range.to_a & (@start_week..@end_week).to_a
+        [common_items, range]
       end
-    end
-
-    def min_distance_from_start_or_end(value)
-      [(value - @start_week).abs, (value - @end_week).abs].min
     end
   end
 end
