@@ -1,6 +1,6 @@
 @mixin default-button() {
   border-radius: 4px;
-  border: 1px solid;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   display: inline-block;
   font-size: 14px;

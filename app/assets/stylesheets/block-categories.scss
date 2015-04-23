@@ -55,7 +55,7 @@
   @include subject($bg-orange, $orange);
 }
 
-.subject-soctionemotional {
+.subject-socio_emotional {
   @include subject($bg-purple, $purple);
 }
 
@@ -103,12 +103,15 @@
 
 .subject-picture-split-see-all-posts {
   @include default-button();
-  color: #fff;
   display: block;
   font-size: 20px;
   width: 50%;
   margin: 30px 0 0 25%;
-  float: left
+  float: left;
+}
+
+.subject-picture-split-see-all-posts a{
+    color: #fff !important;
 }
 
 .health-button {
@@ -117,6 +120,18 @@
 
 .education-button {
   background-color: $orange;
+}
+
+.security-button {
+  background-color: $yellow;
+}
+
+.finance-button {
+  background-color: $green;
+}
+
+.socio_emotional-button {
+  background-color: $purple;
 }
 
 .subject-picture-back-shadow {
@@ -202,6 +217,30 @@
 
 .subject-description-buttons-read-education {
   @include subject-description-buttons-read($orange);
+}
+
+.subject-description-buttons-sign-in-socio_emocional {
+  @include subject-description-buttons-sign-in($purple);
+}
+
+.subject-description-buttons-read-socio_emocional {
+  @include subject-description-buttons-read($purple);
+}
+
+.subject-description-buttons-sign-in-finance {
+  @include subject-description-buttons-sign-in($green);
+}
+
+.subject-description-buttons-read-finance {
+  @include subject-description-buttons-read($green);
+}
+
+.subject-description-buttons-sign-in-security {
+  @include subject-description-buttons-sign-in($yellow);
+}
+
+.subject-description-buttons-read-security {
+  @include subject-description-buttons-read($yellow);
 }
 
 
