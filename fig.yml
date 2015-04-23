@@ -21,7 +21,6 @@ web:
     - 3000
   volumes:
     - .:/app
-    - ../carnival:/carnival
   working_dir: /app
 
 mail:
@@ -37,7 +36,6 @@ rpush:
     - db
   volumes:
     - .:/app
-    - ../carnival:/carnival
   working_dir: /app
 
 redis:
@@ -53,5 +51,4 @@ sidekiq:
     - db
   volumes:
     - .:/app
-    - ../carnival:/carnival
   working_dir: /app
