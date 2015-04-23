@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   POSTS_PER_PAGE = 3
-  layout "blog"
+  # layout "blog"
 
   def index
     @pager = build_pager Blog::PostFinder.new(params_to_finder).find

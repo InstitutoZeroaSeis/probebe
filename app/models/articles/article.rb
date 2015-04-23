@@ -46,14 +46,6 @@ module Articles
       self.baby_target_type ||= 'pregnancy'
     end
 
-    def self.match_title(search_term)
-      arel_table[:title].matches("%#{search_term}%")
-    end
-
-    def self.match_text(search_term)
-      arel_table[:text].matches("%#{search_term}%")
-    end
-
     def born?
       baby_target_type == 'born'
     end
