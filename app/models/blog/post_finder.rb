@@ -1,9 +1,9 @@
 module Blog
   class Blog::PostFinder
-    def initialize(search, category, tag_name)
-      @search = search
-      @category = category
-      @tag_name = tag_name
+    def initialize(options = {})
+      @search = options[:search]
+      @category = options[:category]
+      @tag_name = options[:tag_name]
     end
 
     def find
