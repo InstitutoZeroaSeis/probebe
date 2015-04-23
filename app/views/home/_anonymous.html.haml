@@ -22,8 +22,6 @@
         %button.subject-description-buttons-read-health Leia
 
 
-
-
   .subject.col-md-9#education
     .row.col-md-12
       = render 'subject_header_education'
@@ -40,58 +38,32 @@
         %button.subject-description-buttons-sign-in-education Cadastre-se
         %button.subject-description-buttons-read-education Leia
 
-
-
-  .subject.col-md-9#emotional
+  .subject.col-md-9#finance
     .row.col-md-12
-      = render 'subject_header_health'
-    .col-md-5
-      = render 'subject_picture', img_path: '', content: 'Lorem ipsum dolor sit amet'
-
-    .col-md-7
-      .subject-description
-        .subject-description-header.subject-description-header-health
-          %h3
-            Mais de
-            %span.highlight 300
-            dicas
-          %p
-            para ajudar na saúde da sua gestação
-      .subject-description-buttons
-        %button.subject-description-buttons-sign-in-health Cadastre-se
-        %button.subject-description-buttons-read-health Leia
-
-
-
-
-  .subject.col-md-9#finances
-    .row.col-md-12
-      = render 'subject_header_education'
+      = render 'subject_header_finance'
     .col-md-5.pull-right
       = render 'subject_picture', img_path: '', content: 'Lorem ipsum dolor sit amet'
 
     .col-md-7
       .subject-description
-        .subject-description-header.subject-description-header-education
+        .subject-description-header.subject-description-header-finance
           %p
             A educação do seu filho começa ainda na barriga da mãe.
             %span.highlight Sabe por que?
       .subject-description-buttons
-        %button.subject-description-buttons-sign-in-education Cadastre-se
-        %button.subject-description-buttons-read-education Leia
+        %button.subject-description-buttons-sign-in-finance Cadastre-se
+        %button.subject-description-buttons-read-finance Leia
 
 
-
-
-  .subject.col-md-9#safety
+  .subject.col-md-9#socio_emotional
     .row.col-md-12
-      = render 'subject_header_health'
+      = render 'subject_header_socio_emotional'
     .col-md-5
       = render 'subject_picture', img_path: '', content: 'Lorem ipsum dolor sit amet'
 
     .col-md-7
       .subject-description
-        .subject-description-header.subject-description-header-health
+        .subject-description-header.subject-description-header-socio_emocional
           %h3
             Mais de
             %span.highlight 300
@@ -99,8 +71,24 @@
           %p
             para ajudar na saúde da sua gestação
       .subject-description-buttons
-        %button.subject-description-buttons-sign-in-health Cadastre-se
-        %button.subject-description-buttons-read-health Leia
+        %button.subject-description-buttons-sign-in-socio_emocional Cadastre-se
+        %button.subject-description-buttons-read-socio_emocional Leia
 
+  .subject.col-md-9#security
+    .row.col-md-12
+      = render 'subject_header_security'
+    .col-md-5
+      = render 'subject_picture', img_path: '', content: 'Lorem ipsum dolor sit amet'
 
-
+    .col-md-7
+      .subject-description
+        .subject-description-header.subject-description-header-security
+          %h3
+            Mais de
+            %span.highlight 300
+            dicas
+          %p
+            para ajudar na saúde da sua gestação
+      .subject-description-buttons
+        %button.subject-description-buttons-sign-in-security Cadastre-se
+        %button.subject-description-buttons-read-security Leia

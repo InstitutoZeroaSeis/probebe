@@ -16,5 +16,6 @@
                   = truncate Nokogiri::HTML(article.text).text, length: 500
                 - else
                   = article.summary
-      %button.subject-picture-split-see-all-posts.health-button.center-block
-        Ver todos os posts na categoria
+      %button.subject-picture-split-see-all-posts.center-block{:class => "#{category[:category]}-button"}
+        = link_to "Ver todos os posts na categoria",posts_path(category: category[:category])        
+        

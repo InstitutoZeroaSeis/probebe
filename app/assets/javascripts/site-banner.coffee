@@ -40,11 +40,11 @@ $ ->
     else if $(@).scrollTop() >= $('#education').offset().top-85 && $(@).scrollTop() <= $('#education').offset().top+$('#education').height()
       homeMenuActive('.home-categories-item.category-education a')        
 
-    else if $(@).scrollTop() >= $('#emotional').offset().top-85 && $(@).scrollTop() <= $('#emotional').offset().top+$('#emotional').height()
+    else if $(@).scrollTop() >= $('#socio_emotional').offset().top-85 && $(@).scrollTop() <= $('#socio_emotional').offset().top+$('#socio_emotional').height()
       homeMenuActive('.home-categories-item.category-emotional a')      
 
-    else if $(@).scrollTop() >= $('#finances').offset().top-85 && $(@).scrollTop() <= $('#finances').offset().top+$('#finances').height()
+    else if $(@).scrollTop() >= $('#finance').offset().top-85 && $(@).scrollTop() <= $('#finance').offset().top+$('#finance').height()
       homeMenuActive('.home-categories-item.category-finances a')      
 
-    else if $(@).scrollTop() >= $('#safety').offset().top-85 && $(@).scrollTop() <= $('#safety').offset().top+$('#safety').height()
+    else if $(@).scrollTop() >= $('#security').offset().top-85 && $(@).scrollTop() <= $('#security').offset().top+$('#security').height()
       homeMenuActive('.home-categories-item.category-safety a')          
