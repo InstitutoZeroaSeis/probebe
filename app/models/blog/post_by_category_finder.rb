@@ -6,7 +6,7 @@ module Blog
     end
 
     def find
-      if(@category_name)
+      if @category_name
         @relation.joins(:category).merge(Category.send(@category_name))
       else
         @relation
