@@ -24,7 +24,8 @@ class PostsController < ApplicationController
     {
       search: params[:search],
       category: params[:category],
-      tag_name: params[:tag_name]
+      tag_name: params[:tag_name],
+      life_period: params[:life_period]
     }
   end
 end
