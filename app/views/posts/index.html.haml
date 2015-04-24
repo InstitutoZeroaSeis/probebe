@@ -1,14 +1,13 @@
 %section.subjects.container
   .posts.subject.col-md-9
-    %h1= t('views.application.name')    
     - @posts.each do |post|
       .post.col-md-6
         %hr
-        %p= l(post.created_at)
-        %h2.post_title= link_to post.title.titleize, post_path(post)
+        %p.created-at= l(post.created_at)
+        %h2.post-title= link_to post.title.titleize, post_path(post)
+        %p= post.category_name
         %figure
           %img{width: 300, height: 200, src: post.image_cover}
-        %p= post.category_name
         %hr
         %p
           - if post.summary.blank?
