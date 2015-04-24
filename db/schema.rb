@@ -134,8 +134,6 @@ ActiveRecord::Schema.define(version: 20150424132747) do
     t.integer  "gender",             default: 2
     t.integer  "user_id"
     t.string   "city"
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "state"
     t.string   "street"
     t.datetime "created_at"

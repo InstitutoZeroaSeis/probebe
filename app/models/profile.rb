@@ -16,8 +16,7 @@ class Profile < ActiveRecord::Base
   )
   has_one :avatar
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :name, presence: true
   with_options(
     format: { with: /\A\d{2}\s\d{4,5}\-\d{4,4}\Z/, allow_blank: true }
   ) do |format|
@@ -32,7 +31,6 @@ class Profile < ActiveRecord::Base
   )
 
   before_save :set_defaults
-  before_save :update_name
 
   scope :admin_site_user_profiles, lambda {
     joins(:user).merge(User.admin_site_user)
@@ -58,9 +56,5 @@ class Profile < ActiveRecord::Base
 
   def set_defaults
     self.gender ||= 'not_informed'
-  end
-
-  def update_name
-    self.name = "#{first_name} #{last_name}"
   end
 end

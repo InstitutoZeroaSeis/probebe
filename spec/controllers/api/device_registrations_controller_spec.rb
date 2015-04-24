@@ -15,7 +15,7 @@ RSpec.describe Api::DeviceRegistrationsController, :type => :controller do
 
     context "authenticated" do
       before :each do
-        @user = create(:user, :with_profile, :site_user, :confirmed)
+        @user = create(:user, :with_profile, :site_user)
         authenticate_through_headers(@user.email, @user.password)
       end
 
@@ -67,7 +67,7 @@ RSpec.describe Api::DeviceRegistrationsController, :type => :controller do
 
   describe "GET show" do
     before(:each) do
-      user = create(:user, :site_user, :confirmed, :with_profile)
+      user = create(:user, :site_user, :with_profile)
       authenticate_through_headers(user.email, user.password)
     end
 
@@ -89,7 +89,7 @@ RSpec.describe Api::DeviceRegistrationsController, :type => :controller do
 
   describe "DELETE destroy" do
     before(:each) do
-      user = create(:user, :site_user, :confirmed, :with_profile)
+      user = create(:user, :site_user, :with_profile)
       authenticate_through_headers(user.email, user.password)
     end
 

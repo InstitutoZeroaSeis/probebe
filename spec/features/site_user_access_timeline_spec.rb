@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "Site user access timeline" do
-  before { @user = create(:user, :confirmed, :with_profile) }
+  before { @user = create(:user, :with_profile) }
   before { sign_in(@user.email, @user.password) }
 
   context 'with two events' do
