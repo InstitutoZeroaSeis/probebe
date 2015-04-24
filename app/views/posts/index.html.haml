@@ -1,4 +1,5 @@
 %h1= t('views.application.name')
+= render 'post_for_period'
 .posts
   - @posts.each do |post|
     .post
@@ -6,6 +7,7 @@
       %p= l(post.created_at)
       %h2.post_title= link_to post.title.titleize, post_path(post)
       %p= post.category_name
+      %p= t("views.blog.#{post.pregnancy_or_child_life_period}")
       %hr
       %p
         - if post.summary.blank?
