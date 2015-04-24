@@ -1,8 +1,23 @@
-= render 'header'
-= render 'body'
-= render 'footer'
-= render 'related_post'
+%section.subjects.container
+  .posts.subject.col-md-9
+    .single-post.col-md-12
+      %h2.post_title= @post.title.titleize
+      %p= @post.category_name
+      %p= t("views.blog.#{@post.pregnancy_or_child_life_period}")
+      %hr
+      %p
+        = raw @post.text
 
-%ul.pager
-  %li.previous
-    = link_to t('views.blog.back_html'), root_path
+      = render @post.tags
+      %figure= image_tag @author_profile.avatar_url
+
+      %p.lead= t('views.blog.by', author: @author_profile.name)
+      = l(@post.created_at)
+
+      = render 'related_post'
+
+      %ul.pager
+        %li.previous
+          = link_to t('views.blog.back_html'), root_path
+
+  = render 'sidebar'

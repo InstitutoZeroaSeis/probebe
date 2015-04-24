@@ -15,6 +15,15 @@ section.main.container-fuild {
   width: 100%;
 }
 
+.home .col-md-6, .home .col-md-12, .home .col-md-7, .home .col-md-5, .home .col-md-9 {
+  margin-left: 0;
+  padding: 0 30px 0 0px;
+}
+
+.blog-sidebar{
+	margin-top: 20px;
+}
+
 @import 'header';
 @import 'site-banner';
 @import 'site-body';

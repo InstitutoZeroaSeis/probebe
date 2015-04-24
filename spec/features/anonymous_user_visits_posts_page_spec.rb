@@ -5,7 +5,7 @@ feature "Anonymous user visits posts page" do
     posts = create_list(:journalistic_article, 3)
     visit posts_path
     posts.each do |post|
-      expect(page).to have_selector('h2.post_title', text: post.title)
+      expect(page).to have_selector('.post-title', text: post.title)
     end
   end
 end

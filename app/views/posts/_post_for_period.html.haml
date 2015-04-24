@@ -1,17 +1,17 @@
-%nav
-  %ul
-    %li
+%nav.blog-time-range
+  %ul.home-categories-list.category-health
+    %li.home-categories-item.category-health
       = link_to t('views.blog.pregnancy'),
         posts_path(life_period: 'pregnancy')
-    %li
+    %li.home-categories-item.category-health
       = link_to t('views.blog.first_to_fourth'),
         posts_path(life_period: 'first_to_fourth')
-    %li
+    %li.home-categories-item.category-health
       = link_to t('views.blog.fifth_to_eighth'),
         posts_path(life_period: 'fifth_to_eighth')
-    %li
+    %li.home-categories-item.category-health
       = link_to t('views.blog.nineth_to_twelfth'),
         posts_path(life_period: 'nineth_to_twelfth')
-    %li
+    %li.home-categories-item.category-health
       = link_to t('views.blog.thirteenth_to_fifteenth'),
         posts_path(life_period: 'thirteenth_to_fifteenth')
