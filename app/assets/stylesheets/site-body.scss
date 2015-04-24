@@ -110,6 +110,18 @@
   position: relative;
 }
 
+.subject.posts {
+  margin-bottom: 85px;
+  position: relative;
+  padding: 0 !important;
+}
+
+.subject.posts .post{
+  padding: 0 10px 0 0px;
+  margin-right: 30px;
+  width: 44% !important;
+}
+
 .subject:after {
   content: '';
   display: block;

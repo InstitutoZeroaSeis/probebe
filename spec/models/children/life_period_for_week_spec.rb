@@ -81,4 +81,14 @@ RSpec.describe Children::LifePeriodForWeek do
 
     expect(checker.life_period).to eq(:thirteenth_to_fifteenth)
   end
+
+  it 'is the range that covers more fo the time in weeks specified' do
+    start_week = 15
+    end_week = 25
+    pregnancy = false
+
+    checker = Children::LifePeriodForWeek.new(start_week, end_week, pregnancy)
+
+    expect(checker.life_period).to eq(:fifth_to_eighth)
+  end
 end

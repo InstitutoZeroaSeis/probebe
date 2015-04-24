@@ -1,27 +1,32 @@
-%h1= t('views.application.name')
+%section.subjects.container
 = render 'post_for_period'
-.posts
-  - @posts.each do |post|
-    .post
-      %hr
-      %p= l(post.created_at)
-      %h2.post_title= link_to post.title.titleize, post_path(post)
-      %p= post.category_name
-      %p= t("views.blog.#{post.pregnancy_or_child_life_period}")
-      %hr
-      %p
-        - if post.summary.blank?
-          = truncate Nokogiri::HTML(post.text).text, length: 500
-        - else
-          = post.summary
-      = link_to post_path(post), class: 'btn btn-primary' do
-        = t('views.blog.read_more')
-        %span.glyphicon.glyphicon-chevron-right
+  .posts.subject.col-md-9
+    %h1= t('views.application.name')
+    - @posts.each do |post|
+      .post.col-md-6
+        %hr
+        %p= l(post.created_at)
+        %p= t("views.blog.#{post.pregnancy_or_child_life_period}")
+        %h2.post_title= link_to post.title.titleize, post_path(post)
+        %figure
+          %img{width: 300, height: 200, src: post.image_cover}
+        %p= post.category_name
+        %hr
+        %p
+          - if post.summary.blank?
+            = truncate Nokogiri::HTML(post.text).text, length: 500
+          - else
+            = post.summary
+        = link_to post_path(post), class: 'btn btn-primary' do
+          = t('views.blog.read_more')
+          %span.glyphicon.glyphicon-chevron-right
 
-  %ul.pager
-    - if @pager.has_next_step?
-      %li.previous
-        = link_to t('views.blog.older_html'), previous_blog_page(@pager.page)
-    - if @pager.has_previous_step?
-      %li.next
-        = link_to t('views.blog.newer_html'), next_blog_page(@pager.page)
+    %ul.pager
+      - if @pager.has_next_step?
+        %li.previous
+          = link_to t('views.blog.older_html'), previous_blog_page(@pager.page)
+      - if @pager.has_previous_step?
+        %li.next
+          = link_to t('views.blog.newer_html'), next_blog_page(@pager.page)
+
+  = render 'sidebar'
