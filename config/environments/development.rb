@@ -19,6 +19,7 @@
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { address: 'mail_1', port: 1025 }
   config.action_mailer.default_url_options = { host: 'web.probebe.dev' }
+  Rails.application.routes.default_url_options[:host] = 'web.probebe.dev'
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

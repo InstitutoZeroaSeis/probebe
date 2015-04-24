@@ -1,0 +1,13 @@
+.post.col-md-6
+  %hr
+  %p.created-at= l(post.created_at)
+  %h2.post-title= link_to post.titleized_title, post_path(post)
+  %p= post.category_name
+  %p= t("views.blog.#{post.pregnancy_or_child_life_period}")
+  %figure
+    %img{width: 300, height: 200, src: post.image_cover}
+  %hr
+  %p= post.post_summary
+  = link_to post_path(post), class: 'btn btn-primary' do
+    = t('views.blog.read_more')
+    %span.glyphicon.glyphicon-chevron-right

@@ -1,7 +1,7 @@
 %section.subjects.container
   .posts.subject.col-md-9
     .single-post.col-md-12
-      %h2.post_title= @post.title.titleize
+      %h2.post_title= @post.titleized_title
       %p= @post.category_name
       %p= t("views.blog.#{@post.pregnancy_or_child_life_period}")
       %hr
@@ -9,15 +9,17 @@
         = raw @post.text
 
       = render @post.tags
-      %figure= image_tag @author_profile.avatar_url
+      %figure
+        %img{width: 50, height: 50, src: @post.author_photo_url}
 
-      %p.lead= t('views.blog.by', author: @author_profile.name)
+      %p.lead= t('views.blog.by', author: @post.author_name)
       = l(@post.created_at)
 
-      = render 'related_post'
+      %h2= t('views.blog.related_post')
+      = render partial: 'related_post', collection: @post.related_posts
 
       %ul.pager
         %li.previous
           = link_to t('views.blog.back_html'), root_path
 
-  = render 'sidebar'
+  = render 'sidebar', tags: @post.tags

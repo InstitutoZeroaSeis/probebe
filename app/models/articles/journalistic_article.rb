@@ -21,6 +21,8 @@ class Articles::JournalisticArticle < Articles::Article
   before_save :set_child_life_period
   before_validation :verify_original_author
 
+  delegate :profile, to: :original_author
+
   def update_messages
     Articles::MessageUpdater.update_many_from_article(messages, self)
   end
