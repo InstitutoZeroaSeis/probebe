@@ -1,10 +1,8 @@
-= render 'sidebar'
-
 %section.subjects.container
-  %h1= t('views.application.name')
   .posts.subject.col-md-9
+    %h1= t('views.application.name')    
     - @posts.each do |post|
-      .post
+      .post.col-md-6
         %hr
         %p= l(post.created_at)
         %h2.post_title= link_to post.title.titleize, post_path(post)
@@ -28,3 +26,5 @@
       - if @pager.has_previous_step?
         %li.next
           = link_to t('views.blog.newer_html'), next_blog_page(@pager.page)
+  
+  = render 'sidebar'
