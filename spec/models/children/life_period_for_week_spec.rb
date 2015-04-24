@@ -87,7 +87,7 @@ RSpec.describe Children::LifePeriodForWeek do
     end_week = 25
     pregnancy = false
 
-    checker = Children::LifePeriodForWeek.new(start_week, end_week, pregnancy)
+    checker = Children::LifePeriodForWeek.new(start_week, end_week)
 
     expect(checker.life_period).to eq(:fifth_to_eighth)
   end
