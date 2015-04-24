@@ -250,7 +250,9 @@ pt-BR:
       name: "Pro Bebê"
       sign_in: "Login"
       toggle_navigation: "Abrir/Fechar Menu"
+      show_all_post_from_this_category: "Ver todos os posts na categoria"
     blog:
+      parent_category: *parent_category
       back_html: "&larr; Voltar"
       by: "por %{author}"
       date_posted: "Postado em %{date}"
