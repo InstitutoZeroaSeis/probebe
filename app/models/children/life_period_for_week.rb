@@ -7,23 +7,12 @@ module Children
       PERIOD_FOR_THIRTEENTH_TO_FIFTEENTH_MONTH = 49..60
     ]
 
-    def initialize(start_week, end_week, pregnancy)
+    def initialize(start_week, end_week)
       @start_week = start_week
       @end_week = end_week
-      @pregnancy = pregnancy
     end
 
     def life_period
-      if @pregnancy
-        :pregnancy
-      else
-        born_period
-      end
-    end
-
-    protected
-
-    def born_period
       case to_compare
       when PERIOD_FOR_FIRST_TO_FOURTH_MONTH
         :first_to_fourth
@@ -37,6 +26,8 @@ module Children
         :thirteenth_to_fifteenth
       end
     end
+
+    protected
 
     def to_compare
       if [@start_week, @end_week].include? nil

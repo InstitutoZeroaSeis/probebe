@@ -4,9 +4,12 @@ module Articles
 
     GENDER_ENUM = [:male, :female, :both]
     BABY_TARGET_TYPE_ENUM = [:pregnancy, :born]
+    CHILD_LIFE_PERIOD_ENUM = [:first_to_fourth, :fifth_to_eighth,
+                              :nineth_to_twelfth, :thirteenth_to_fifteenth]
 
     enum gender: GENDER_ENUM
     enum baby_target_type: BABY_TARGET_TYPE_ENUM
+    enum child_life_period: CHILD_LIFE_PERIOD_ENUM
 
     belongs_to :category
     belongs_to :user

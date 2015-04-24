@@ -254,11 +254,16 @@ pt-BR:
       back_html: "&larr; Voltar"
       by: "por %{author}"
       date_posted: "Postado em %{date}"
+      fifth_to_eighth: '5 a 8 messes'
+      first_to_fourth: '1 a 4 meses'
       newer_html: "Mais recentes &rarr;"
+      nineth_to_twelfth: '9 a 12 meses'
       older_html: "&larr; Mais antigos"
+      pregnancy: 'Gravidez'
       read_more: *read_more
       related_post: "Posts Relacionados"
       search: "Busca de posts"
+      thirteenth_to_fifteenth: '13 a 15 meses'
     errors:
       forbidden: "Acesso não autorizado"
       internal_server_error: "Ocorreu um erro ao processar a requisição"

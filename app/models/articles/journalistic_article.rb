@@ -18,6 +18,7 @@ class Articles::JournalisticArticle < Articles::Article
   validate :length_of_messages
 
   after_save :update_messages
+  before_save :set_child_life_period
   before_validation :verify_original_author
 
   def update_messages
@@ -36,16 +37,28 @@ class Articles::JournalisticArticle < Articles::Article
     original_author.profile_name
   end
 
-  def verify_original_author
-    self.original_author ||= Author::DefaultAuthor.find_default_author
+  def pregnancy_or_child_life_period
+    born? ? child_life_period : baby_target_type
   end
 
   private
 
+  def set_child_life_period
+    if born?
+      self.child_life_period = Children::LifePeriodForWeek
+        .new(minimum_valid_week, maximum_valid_week).life_period
+    end
+  end
+
+  def verify_original_author
+    self.original_author ||= Author::DefaultAuthor.find_default_author
+  end
+
   def length_of_messages
     messages.each do |message|
       if message.text.size > 150
-        errors.add(:base, I18n.t('activerecord.errors.models.articles/journalistic_article.base.messages_length'))
+        errors.add(:base,
+          I18n.t('activerecord.errors.models.articles/journalistic_article.base.messages_length'))
       end
     end
   end
