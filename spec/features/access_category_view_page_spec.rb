@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "Admin site user visit one category view page" do
   scenario "successfully" do
-    user = create(:user, :confirmed, :admin)
+    user = create(:user, :admin)
     category = create(:category)
     sign_in(user.email, user.password)
     visit admin_category_path(category)

@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "Author create an authorial article" do
   scenario "successfully" do
     article_title = "Test title see if index showing title"
-    user = create(:user, :confirmed, :author)
+    user = create(:user, :author)
     create(:category, name: 'Saúde')
 
     sign_in(user.email, user.password)

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "Admin site user visit one tag view page" do
   scenario "successfully" do
-    user = create(:user, :confirmed, :admin)
+    user = create(:user, :admin)
     tag = create(:tag)
     sign_in(user.email, user.password)
     visit admin_tag_path(tag)

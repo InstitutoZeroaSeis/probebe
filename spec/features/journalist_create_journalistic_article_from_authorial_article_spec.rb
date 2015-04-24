@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Journalist create journalistic article from authorial article' do
-  let(:user) { create(:user, :confirmed, :journalist) }
+  let(:user) { create(:user, :journalist) }
   before { sign_in(user.email, user.password) }
 
   scenario 'successfully' do

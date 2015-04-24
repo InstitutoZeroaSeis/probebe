@@ -29,11 +29,11 @@ gem 'rack-cors', '~> 0.2.9'
 gem 'rpush', '~> 2.2.0'
 gem 'active_model_serializers', '~> 0.9.1'
 gem 'sidekiq', '~> 3.3.0'
-gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'sinatra', '>= 1.3.0', require: nil
 gem 'puma'
 gem 'whenever', '~> 0.9.4'
 gem 'json', '1.8.1'
-gem "fog", "~>1.20", require: "fog/aws/storage"
+gem 'fog', '~>1.20', require: 'fog/aws/storage'
 gem 'asset_sync', '~> 1.1.0'
 
 group :development do
@@ -48,13 +48,14 @@ group :test do
 end
 
 group :development, :test do
-  gem 'capybara-webkit'
-  gem 'teaspoon'
+  gem 'spring-commands-rspec', group: :development
   gem 'binding_of_caller', '~> 0.7.2'
+  gem 'capybara-webkit'
   gem 'factory_girl', '~> 4.5.0', require: false
+  gem 'guard-rspec', require: false
   gem 'pry-byebug', '~> 2.0.0'
   gem 'rspec', '~> 3.1.0'
   gem 'rspec-rails', '~> 3.1.0'
-  gem "spring-commands-rspec", group: :development
-  gem 'guard-rspec', require: false
+  gem 'selenium-webdriver', '~> 2.45.0'
+  gem 'teaspoon', '~> 0.9.1'
 end

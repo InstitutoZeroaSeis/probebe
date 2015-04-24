@@ -52,4 +52,20 @@ RSpec.configure do |config|
   config.include Features::TimelineHelper, type: :feature
   config.include Devise::TestHelpers, type: :controller
   config.include Controllers::ApiAuthenticationHelper, type: :controller
+
+  config.before(:each) do
+    Capybara.current_driver = :rack_test
+  end
+
+  config.before(:each, :js) do
+    Capybara.current_driver = :webkit
+  end
+
+  config.before(:each, :selenium) do
+    Capybara.current_driver = :selenium
+  end
+
+  config.after(:each) do
+    Capybara.current_driver = :webkit
+  end
 end

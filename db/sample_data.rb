@@ -8,16 +8,16 @@ class SampleData
     ActiveRecord::Base.transaction do
       create(:category, name: "Prevenção", parent_category: :health)
       create(:category, name: "Poupar", parent_category: :finance)
-      create(:user, :confirmed, :journalist, email: 'journalist@probebe.com.br')
+      create(:user, :journalist, email: 'journalist@probebe.com.br')
 
-      create(:user, :confirmed, :author, email: 'author@probebe.com.br')
+      create(:user, :author, email: 'author@probebe.com.br')
 
-      create(:user, :confirmed, :site_user, email: 'francisca@probebe.com.br',
+      create(:user, :site_user, email: 'francisca@probebe.com.br',
                           profile: create(:profile, children: create_list(:child, 2, birth_date: 7.months.from_now, gender: 'male')))
-      create(:user, :confirmed, :site_user, email: 'eri@probebe.com.br',
+      create(:user, :site_user, email: 'eri@probebe.com.br',
                     profile: create(:profile, children: create_list(:child, 1, birth_date: 3.months.ago, gender: 'female')))
 
-      create(:user, :confirmed, :site_user, email: 'ana@probebe.com.br',
+      create(:user, :site_user, email: 'ana@probebe.com.br',
                     profile: create(:profile, children: create_list(:child, 1, birth_date: 3.months.ago, gender: 'male')))
 
       create(:journalistic_article, maximum_valid_week: 12, baby_target_type: 'pregnancy', messages:

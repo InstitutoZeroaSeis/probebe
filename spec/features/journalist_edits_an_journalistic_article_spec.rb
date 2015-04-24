@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Journalist edit his own journalistic article' do
-  let(:user) { create(:user, :confirmed, :journalist) }
+  let(:user) { create(:user, :journalist) }
   before { sign_in(user.email, user.password) }
 
   scenario 'successfully' do

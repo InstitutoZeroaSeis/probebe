@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "Author edits an authorial article" do
   scenario "successfully" do
-    user = create(:user, :confirmed, :author)
+    user = create(:user, :author)
     authorial_article = create(:authorial_article, user: user)
     sign_in(user.email, user.password)
 
