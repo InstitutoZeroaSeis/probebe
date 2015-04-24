@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Vizir/carnival.git
-  revision: 6d729c5d2ebaad5e976faa7ae7ab49893a17cd98
+  revision: cc5fae194d096ac47e4965ad295359fdd65c7f5f
   specs:
     carnival (0.2.3)
       coffee-rails (>= 4.0.0)
