@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "User paginates blog pages" do
   scenario "successfully" do
-    per_page = PostsController::POSTS_PER_PAGE
+    per_page = PostsPresenter::POSTS_PER_PAGE
     current_page = 2
     posts = create_list(:journalistic_article, per_page * 3, :random_created_at)
     post_titles = posts.sort_by(&:created_at).reverse.map(&:title)

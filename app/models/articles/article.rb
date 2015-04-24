@@ -13,7 +13,7 @@ module Articles
 
     belongs_to :category
     belongs_to :user
-    belongs_to :original_author, class_name: "User"
+    belongs_to :original_author, class_name: 'User'
     has_many :article_references
     has_and_belongs_to_many :tags
 

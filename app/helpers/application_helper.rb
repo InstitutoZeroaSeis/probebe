@@ -27,12 +27,4 @@ module ApplicationHelper
     @@date_helper.distance_of_time_in_words_to_now(time, *args)
   end
   alias_method :time_ago_in_words, :distance_of_time_in_words_to_now
-
-  def previous_blog_page(current_page)
-    url_for(params.merge(page: current_page + 1))
-  end
-
-  def next_blog_page(current_page)
-    url_for(params.merge(page: current_page - 1))
-  end
 end
