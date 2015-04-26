@@ -1,8 +1,8 @@
 :javascript
   $(function() {
-    $('.footer-sign-up form').bind('ajax:success', function(evt, data, status, xhr) {
+    $('.footer-sign-up form').bind('ajax:success', function() {
       location.href = '/profile/edit';
-    }).bind('ajax:error', function(evt, data, status, xhr) {
+    }).bind('ajax:error', function(evt, data) {
       var errors = data.responseJSON.errors;
       var target = $(evt.target);
       target.find('.has-error').removeClass('has-error');
@@ -32,15 +32,14 @@
   });
 .footer-sign-up.container
   %h2 Faça seu cadastro
-  - resource = local_assigns[:resource] || User.new
   %section.footer-sign-up
-    = simple_form_for resource,
+    = simple_form_for User.new,
       url: user_registration_path,
       remote: true,
       wrapper: :custom_forms do |f|
       %fieldset.footer-form-group
         .col-md-6
-          = f.simple_fields_for :profile, resource.profile || Profile.new, wrapper: :custom_forms do |p|
+          = f.simple_fields_for :profile, Profile.new, wrapper: :custom_forms do |p|
             = p.input :name
         .col-md-6= f.input :email
         .col-md-8= f.input :password
