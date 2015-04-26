@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
-  validates :password, presence: true, on: :sign_up
   validates :profile, presence: true
 
   accepts_nested_attributes_for :profile
@@ -23,7 +22,7 @@ class User < ActiveRecord::Base
            :primary_cell_phone_number, to: :profile, prefix: true
 
   def password_required?
-    false
+    true
   end
 
   def set_defaults

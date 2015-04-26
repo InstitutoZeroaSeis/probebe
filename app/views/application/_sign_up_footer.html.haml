@@ -1,47 +1,17 @@
-:javascript
-  $(function() {
-    $('.footer-sign-up form').bind('ajax:success', function(evt, data, status, xhr) {
-      location.href = '/profile/edit';
-    }).bind('ajax:error', function(evt, data, status, xhr) {
-      var errors = data.responseJSON.errors;
-      var target = $(evt.target);
-      target.find('.has-error').removeClass('has-error');
-      target.find('.help-block').remove();
+= javascript_include_tag 'sign_up'
 
-      if (errors['email']) {
-        target.find('div.user_email').addClass('has-error');
-        target.find('input#user_email').next('help-block').remove();
-        var help= $('<span></span>').addClass('help-block').text(errors['email']);
-        target.find('input#user_email').after(help);
-      }
-
-      if (errors['profile.name']) {
-        target.find('div.user_profile_name').addClass('has-error');
-        target.find('input#user_profile_attributes_name').next('help-block').remove();
-        var help= $('<span></span>').addClass('help-block').text(errors['profile.name']);
-        target.find('input#user_profile_attributes_name').after(help);
-      }
-
-      if (errors['password']) {
-        target.find('div.user_password').addClass('has-error');
-        target.find('input#user_password').next('help-block').remove();
-        var help= $('<span></span>').addClass('help-block').text(errors['password']);
-        target.find('input#user_password').after(help);
-      }
-    });
-  });
 .footer-sign-up.container
   %h2 Faça seu cadastro
-  - resource = local_assigns[:resource] || User.new
   %section.footer-sign-up
-    = simple_form_for resource,
+    = simple_form_for User.new,
       url: user_registration_path,
       remote: true,
-      wrapper: :custom_forms do |f|
+      wrapper: :custom_forms,
+      html: { class: 'sign-up-form' } do |f|
       %fieldset.footer-form-group
         .col-md-6
-          = f.simple_fields_for :profile, resource.profile || Profile.new, wrapper: :custom_forms do |p|
-            = p.input :name
+          = f.simple_fields_for :profile, Profile.new, wrapper: :custom_forms do |p|
+            = p.input :name, input_html: { class: 'name' }, wrapper_html: { class: 'name' }
         .col-md-6= f.input :email
         .col-md-8= f.input :password
         .form-group.col-md-4
