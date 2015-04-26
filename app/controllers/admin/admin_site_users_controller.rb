@@ -1,5 +1,5 @@
 class Admin::AdminSiteUsersController < Admin::AdminController
-  layout "carnival/admin"
+  layout 'carnival/admin'
 
   after_action :send_reset_password_email, only: [:create]
   skip_before_action :deny_site_user_access_on_admin
@@ -17,7 +17,9 @@ class Admin::AdminSiteUsersController < Admin::AdminController
 
   def build_resource
     if action_name == 'create'
-      @user = User.new(permitted_params[:user])
+      create_user = Users::CreateAdminUser.new(permitted_params[:user])
+      create_user.save
+      @user = create_user.user
     else
       super
     end

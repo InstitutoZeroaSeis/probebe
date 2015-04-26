@@ -3,16 +3,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   clear_respond_to
   respond_to :json
 
-  def new
-    super
-  end
-
-  def create
-    super do |resource|
-      resource.valid? :sign_up
-    end
-  end
-
   protected
 
   def configure_permitted_parameters
