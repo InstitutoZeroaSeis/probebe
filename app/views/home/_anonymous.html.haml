@@ -18,7 +18,8 @@
             para ajudar na saúde da sua gestação
       .subject-description-buttons
         %button.subject-description-buttons-sign-in-health Cadastre-se
-        %button.subject-description-buttons-read-health Leia
+        = link_to  posts_path(category: 'health') do
+          %button.subject-description-buttons-read-health Leia
 
 
   .subject.col-md-9#education
@@ -35,7 +36,8 @@
             %span.highlight Sabe por que?
       .subject-description-buttons
         %button.subject-description-buttons-sign-in-education Cadastre-se
-        %button.subject-description-buttons-read-education Leia
+        = link_to posts_path(category: 'education') do
+          %button.subject-description-buttons-read-education Leia
 
   .subject.col-md-9#security
     .row.col-md-12
@@ -54,7 +56,8 @@
             Para manter o seu beê seguro em casa
       .subject-description-buttons
         %button.subject-description-buttons-sign-in-security Cadastre-se
-        %button.subject-description-buttons-read-security Leia
+        = link_to posts_path(category: 'security') do
+          %button.subject-description-buttons-read-security Leia
 
   .subject.col-md-9#finance
     .row.col-md-12
@@ -71,7 +74,8 @@
             Respostas para as dúvidas mais comuns dos pais
       .subject-description-buttons
         %button.subject-description-buttons-sign-in-finance Cadastre-se
-        %button.subject-description-buttons-read-finance Leia
+        = link_to posts_path(category: 'finance') do
+          %button.subject-description-buttons-read-finance Leia
 
   .subject.col-md-9#socio_emotional
     .row.col-md-12
@@ -90,4 +94,5 @@
             Para guiar você e o seu filho para uma vida com corpo e mente saudável
       .subject-description-buttons
         %button.subject-description-buttons-sign-in-socio_emocional Cadastre-se
-        %button.subject-description-buttons-read-socio_emocional Leia
+        = link_to posts_path(category: 'socio_emotional') do
+          %button.subject-description-buttons-read-socio_emocional Leia
