@@ -171,3 +171,15 @@
 .category-safety {
   @include category-color($yellow);
 }
+
+.category-security {
+  @include category-color($yellow);
+}
+
+.category-finance {
+  @include category-color($green);
+}
+
+.category-socio_emotional {
+  @include category-color($purple);
+}
