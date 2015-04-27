@@ -14,17 +14,7 @@
     = yield :head
   %body{class: "#{params[:controller]}"}
     = render 'site_menu'
-    .site-banner
-      %ul.site-banner-list
-        %li.site-banner-item
-          %figure.site-banner-image
-            = image_tag 'img-banner-probebe.jpg'
-        %li.site-banner-item
-          %figure.site-banner-image
-            = image_tag 'img-banner-probebe.jpg'
-    
-    %section.main.container-fuild
-      = yield
+    = yield
     %footer.footer
       = render 'sign_up_footer' unless current_user
       %section.footer-copyright

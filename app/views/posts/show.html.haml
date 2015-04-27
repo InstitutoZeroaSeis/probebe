@@ -1,25 +1,35 @@
-%section.subjects.container{class: "#{@post.category_name.parameterize}"}
-  .posts.subject.col-md-9
-    .single-post.col-md-12
-      %h2.post_title= @post.titleized_title
-      %p.periodo-label{class: "priodo-#{@post.pregnancy_or_child_life_period}"}= t("views.blog.#{@post.pregnancy_or_child_life_period}")
-      %p.categoria-label= @post.category_name
-      %hr
-      %p
-        = raw @post.text
+.site-banner
+  %ul.site-banner-list
+    %li.site-banner-item
+      %figure.site-banner-image{style: "background-image: url(#{@post.image_cover})"}
+        %img{src: @post.image_cover}
+    %li.site-banner-item
+      %figure.site-banner-image{style: "background-image: url(#{@post.image_cover})"}
+        %img{src: @post.image_cover}
 
-      = render @post.tags
-      %figure
-        %img{width: 50, height: 50, src: @post.author_photo_url}
+%section.main.container-fuild
+  %section.subjects.container{class: "#{@post.category_name.parameterize}"}
+    .posts.subject.col-md-9
+      .single-post.col-md-12
+        %h2.post_title= @post.titleized_title
+        %p.periodo-label{class: "priodo-#{@post.pregnancy_or_child_life_period}"}= t("views.blog.#{@post.pregnancy_or_child_life_period}")
+        %p.categoria-label= @post.category_name
+        %hr
+        %p
+          = raw @post.text
 
-      %p.lead= t('views.blog.by', author: @post.author_name)
-      = l(@post.created_at)
+        = render @post.tags
+        %figure
+          %img{width: 50, height: 50, src: @post.author_photo_url}
 
-      %h2= t('views.blog.related_post')
-      = render partial: 'related_post', collection: @post.related_posts
+        %p.lead= t('views.blog.by', author: @post.author_name)
+        = l(@post.created_at)
 
-      %ul.pager
-        %li.previous
-          = link_to t('views.blog.back_html'), root_path
+        %h2= t('views.blog.related_post')
+        = render partial: 'related_post', collection: @post.related_posts
 
-  = render 'sidebar', tags: @post.tags
+        %ul.pager
+          %li.previous
+            = link_to t('views.blog.back_html'), root_path
+
+    = render 'sidebar', tags: @post.tags
