@@ -1,7 +1,4 @@
 -f.object.build_profile
-= f.simple_fields_for :profile do |p|
-  .row
-    = p.input :first_name
-  .row
-    = p.input :last_name
+= f.simple_fields_for :profile do |ff|
+  .row= ff.input :name
 

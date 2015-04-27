@@ -1,16 +1,22 @@
-.footer-sin-up.container
+= javascript_include_tag 'sign_up'
+
+.footer-sign-up.container
   %h2 Faça seu cadastro
   %section.footer-sign-up
-    %form
+    = simple_form_for User.new,
+      url: user_registration_path,
+      remote: true,
+      wrapper: :custom_forms,
+      html: { class: 'sign-up-form' } do |f|
       %fieldset.footer-form-group
-        .col-md-5.form-group
-          %label.footer-label Nome Completo
-          %input.footer-input{ type: 'text' }
-        .col-md-5.form-group
-          %label.footer-label Seu e-mail
-          %input.footer-input{ type: 'text' }
-        .form-group.col-md-2
-          %button.btn.btn-default.footer-sign-up-button Cadastrar-se
+        .col-md-6
+          = f.simple_fields_for :profile, Profile.new, wrapper: :custom_forms do |p|
+            = p.input :name, input_html: { class: 'name' }, wrapper_html: { class: 'name' }
+        .col-md-6= f.input :email
+        .col-md-8= f.input :password
+        .form-group.col-md-4
+          %button.btn.btn-default.footer-sign-up-button
+            Cadastrar-se
 
         .footer-sign-up-oauth.col-md-12
           %button.footer-sign-up-facebook

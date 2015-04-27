@@ -1,44 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Profile, type: :model do
-  it 'is valid with first name' do
-    profile = Profile.new(first_name: 'Name')
+  it 'is valid with name' do
+    profile = Profile.new(name: 'Name')
 
     profile.valid?
 
-    expect(profile.errors[:first_name]).to_not include('não pode ser vazio')
+    expect(profile.errors[:name]).to_not include('não pode ser vazio')
   end
 
-  it 'is valid with last name' do
-    profile = Profile.new(last_name: 'Name')
+  it 'is invalid without name' do
+    profile = Profile.new(name: '')
 
     profile.valid?
 
-    expect(profile.errors[:last_name]).to_not include('não pode ser vazio')
-  end
-
-  it 'is invalid without first name' do
-    profile = Profile.new(first_name: '')
-
-    profile.valid?
-
-    expect(profile.errors[:first_name]).to include('não pode ser vazio')
-  end
-
-  it 'is invalid without last name' do
-    profile = Profile.new(last_name: '')
-
-    profile.valid?
-
-    expect(profile.errors[:last_name]).to include('não pode ser vazio')
-  end
-
-  it 'is expected to set the name attribute when creating' do
-    profile = build_stubbed(:profile)
-
-    profile.run_callbacks(:save)
-
-    expect(profile.name).to eq("#{profile.first_name} #{profile.last_name}")
+    expect(profile.errors[:name]).to include('não pode ser vazio')
   end
 
   ['11 1234-5678', '11 91234-5678'].each do |number|

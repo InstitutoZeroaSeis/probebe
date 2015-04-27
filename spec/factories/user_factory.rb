@@ -9,12 +9,6 @@ FactoryGirl.define do
       profile
     end
 
-    trait :confirmed do
-      before(:create) do |user|
-        user.confirm!
-      end
-    end
-
     trait :site_user do
       role 'site_user'
     end

@@ -1,9 +1,8 @@
 FactoryGirl.define do
   factory :profile do
-    sequence(:first_name) {|n| "Name#{n}"}
-    sequence(:last_name) {|n| "Surname#{n}"}
+    sequence(:name) { |n| "Name #{n}" }
     gender 'male'
-    birth_date {20.years.ago}
+    birth_date { 20.years.ago }
     children { create_list :child, 2 }
 
     trait :with_cell_phone do
@@ -23,7 +22,7 @@ FactoryGirl.define do
     end
 
     trait :with_birth_date do
-      birth_date {20.years.ago}
+      birth_date { 20.years.ago }
     end
 
     trait :without_birth_date do
@@ -33,6 +32,5 @@ FactoryGirl.define do
     trait :with_device_registration do
       device_registrations { create_list :device_registration, 1 }
     end
-
   end
 end

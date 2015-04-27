@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "Admin visit one admin site user view page" do
   scenario "successfully" do
-    user = create(:user, :confirmed, :admin, :with_profile)
+    user = create(:user, :admin, :with_profile)
     sign_in(user.email, user.password)
     visit admin_admin_site_user_path(user)
     expect(current_path).to eq(admin_admin_site_user_path(user))

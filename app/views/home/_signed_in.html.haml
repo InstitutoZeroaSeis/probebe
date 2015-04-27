@@ -1,6 +1,6 @@
 = render 'home_categories'
 
-%section.subjects.container
+%section.subjects.container.signed-in
   - @categories_articles.each do |category|
     .subject.col-md-9{id: category[:category] }
       .row.col-md-12

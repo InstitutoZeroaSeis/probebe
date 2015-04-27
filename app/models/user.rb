@@ -1,31 +1,28 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable
   include Carnival::ModelHelper
-  include RejectAttributesConcern
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable,
+         :rememberable, :trackable, :validatable, :omniauthable
 
   ROLE_ENUM = [:admin, :journalist, :author]
   ALL_ROLES = ROLE_ENUM + [:site_user]
 
-  scope :admin_site_user, -> { where(role: [0, 1 ,2]) }
-
-  enum role: ALL_ROLES
-
   has_one :profile
 
-  accepts_nested_attributes_for :profile,allow_destroy: true, reject_if: all_blank?(:first_name, :last_name)
+  validates :profile, presence: true
+
+  accepts_nested_attributes_for :profile
 
   before_save :set_defaults
 
-  validates_presence_of :profile
+  scope :admin_site_user, -> { where(role: [0, 1, 2]) }
 
-  delegate :id, :name, :city, :state, :street, :birth_date, :primary_cell_phone_number, to: :profile, prefix: true
+  enum role: ALL_ROLES
+
+  delegate :id, :name, :city, :state, :street, :birth_date,
+           :primary_cell_phone_number, to: :profile, prefix: true
 
   def password_required?
-    false
+    true
   end
 
   def set_defaults
@@ -33,5 +30,4 @@ class User < ActiveRecord::Base
   end
 
   alias_attribute :to_label, :name
-
 end

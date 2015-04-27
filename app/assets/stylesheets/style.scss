@@ -24,6 +24,11 @@ section.main.container-fuild {
 	margin-top: 20px;
 }
 
+.signed-in{
+	margin-top: 30px;
+	margin-bottom: 280px;
+}
+
 @import 'header';
 @import 'site-banner';
 @import 'site-body';
@@ -31,3 +36,136 @@ section.main.container-fuild {
 @import 'block-categories';
 @import 'blog';
 @import 'footer';
+
+.blog-time-range{
+	
+}
+
+.blog-time-range li{
+	position: relative;
+	padding-left: 34px;
+}
+
+.blog-time-range li:after {
+  border-bottom-color: #cccccc;
+  border-bottom-style: dashed;
+  border-bottom-width: 1px;
+  border-bottom: 1px dashed #CCC;
+  content: '';
+  display: block;
+  left: 0%;
+  position: absolute;
+  width: 100%;
+}
+
+.blog-time-range li:before{
+  content: '';
+  display: block;
+  position: absolute;
+  left: -8%;
+  width: 80px;
+  height: 66px;
+  top: 3px;
+  background-image: url(/assets/banner-bullets-icons-pb.png);
+  background-repeat: no-repeat;
+  background-size: 850px;
+}
+
+.blog-time-range li.time-02:before{background-position: -189px 0px;}
+.blog-time-range li.time-03:before{background-position: -386px 0px;}
+.blog-time-range li.time-04:before{background-position: -588px 0px;}
+.blog-time-range li.time-05:before{background-position: -794px 0px;}
+
+.btn-list{
+	background: #fff;
+	border-color: #f69343 !important;
+	color: #f69343 !important;
+	width: 50%;
+	margin-left: 25%;
+}
+
+.btn-list:hover{
+	background: #f69343 !important;
+	color: #fff !important;
+}
+
+.periodo-label{
+	color: #333; 
+	float: left;
+	font-size: 13px;
+	padding: 4px 14px 4px 35px;	
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.periodo-label:before{
+  content: '';
+  display: block;
+  position: absolute;
+  left: -12%;
+  width: 80px;
+  height: 66px;
+  top: -13px;
+  background-image: url(/assets/banner-bullets-icons-pb.png);
+  background-repeat: no-repeat;
+  background-size: 850px;
+}
+
+.priodo-first_to_fourth.periodo-label:before{background-position: -185px 0px;}
+.priodo-fifth_to_eighth.periodo-label:before{background-position: -383px 0px;}
+.priodo-nineth_to_twelfth.periodo-label:before{background-position: -585px 0px;}
+.priodo-thirteenth_to_fifteenth.periodo-label:before{background-position: -791px 0px;}
+
+
+.categoria-label{
+	font-size: 13px;
+	float: left;
+	background: #ca3343;
+	padding: 4px 8px;	
+	color: white;
+	margin-bottom: 10px;
+	border-radius: 3px;
+}
+
+.educacao .categoria-label{
+	background: #f69343;
+}
+
+.financa .categoria-label{
+	background: #39868c;
+}
+
+.seguranca .categoria-label{
+	background: #fabe67;
+}
+
+.socio-emocional .categoria-label{
+	background: #6859aa;
+}
+
+nav ul h3{
+	font-size: 18px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	font-weight: 400;
+	opacity: .8;
+}
+
+.blog-time-range ul.home-categories-list.category-education {
+  border-bottom-color: #39868C;
+}
+
+.single-post hr {
+    float: left;
+    width: 100%;
+}
+
+.single-post p:not(.categoria-label) {
+    float: left;
+    width: 100%;
+}
+
+.single-post p.periodo-label {
+    float: left;
+    width: auto;
+}

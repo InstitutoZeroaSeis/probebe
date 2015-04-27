@@ -12,9 +12,11 @@
       %li.home-categories-item.category-safety
         = link_to t('views.blog.parent_category.security'), posts_path(category: 'security')
 
-  = render 'post_for_period'
-
   %nav.blog-tags
-    %ul.home-categories-list.category-health
+    %ul.home-categories-list.category-education
+      %h3 
+        Tags
       %li.home-categories-item
         = render tags
+
+  = render 'post_for_period'

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "Admin site user visit one message view page" do
   scenario "successfully" do
-    user = create(:user, :confirmed, :admin)
+    user = create(:user, :admin)
     message = create(:message)
     sign_in(user.email, user.password)
     visit admin_message_path(message)

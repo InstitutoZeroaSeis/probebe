@@ -59,6 +59,11 @@ ActiveRecord::Schema.define(version: 20150424132747) do
     t.integer  "child_id"
   end
 
+  create_table "banners", force: true do |t|
+    t.string "code"
+    t.string "url"
+  end
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -104,6 +109,18 @@ ActiveRecord::Schema.define(version: 20150424132747) do
     t.integer "message_delivery_id",    null: false
   end
 
+  create_table "home_timeline_articles", force: true do |t|
+    t.integer "home_timeline_item_id"
+    t.integer "journalistic_article_id"
+    t.string  "url"
+    t.string  "index"
+  end
+
+  create_table "home_timeline_items", force: true do |t|
+    t.string "period"
+    t.string "index"
+  end
+
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"
     t.integer  "child_id"
@@ -134,8 +151,6 @@ ActiveRecord::Schema.define(version: 20150424132747) do
     t.integer  "gender",             default: 2
     t.integer  "user_id"
     t.string   "city"
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "state"
     t.string   "street"
     t.datetime "created_at"
