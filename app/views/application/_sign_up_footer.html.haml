@@ -13,7 +13,7 @@
           = f.simple_fields_for :profile, Profile.new, wrapper: :custom_forms do |p|
             = p.input :name, input_html: { class: 'name' }, wrapper_html: { class: 'name' }
         .col-md-6= f.input :email
-        .col-md-8= f.input :password
+        .col-md-8.senha= f.input :password
         .form-group.col-md-4
           %button.btn.btn-default.footer-sign-up-button
             Cadastrar-se

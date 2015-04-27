@@ -19,7 +19,7 @@ $ ->
     item =$(btn).attr('href').replace("#", "")
     $('.home-categories-item a').parent().removeClass('is-active')
     $(btn).parent().addClass('is-active')
-    $('.home-categories-list').removeClass('category-health category-education category-emotional category-finances category-safety')
+    $('.home-categories-list').removeClass('category-health category-education category-socio_emotional category-finance category-security')
     $('.home-categories-list').addClass('category-'+item)
 
   $('.home-categories-item a').on 'click', -> 
