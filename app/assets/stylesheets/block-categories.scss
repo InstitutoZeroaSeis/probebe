@@ -86,8 +86,35 @@
   figure {
     height: 200px;
     border-bottom: 4px solid $border-gray;
+    background-image: url("home-anoynous-images.jpg");
   }
 }
+
+#health .subject-picture figure{
+  background-size: 280px;
+  background-position: -30px 0px;
+}
+
+#education .subject-picture figure{
+  background-size: 350px;
+  background-position: -30px -262px;
+}
+
+#security .subject-picture figure{
+  background-size: 330px;
+  background-position: 0px 197px;
+}
+
+#finance .subject-picture figure{
+  background-size: 280px;
+  background-position: 0px -720px;
+}
+
+#socio_emotional .subject-picture figure{
+  background-size: 331px;
+  background-position: 0px -560px;
+}
+
 
 .subject-picture-split {
   position: relative;
@@ -113,6 +140,14 @@
 
 .home .subject a{
     color: #fff !important;
+}
+
+.home .subject-picture-split-description a {
+  color: #333 !important;
+  margin: 10px 0;
+  float: left;
+  width: 100%;
+  cursor: pointer;
 }
 
 .health-button {
@@ -173,6 +208,24 @@
 .subject-description-header-education {
   .highlight {
     color: $orange;
+  }
+}
+
+.subject-description-header-finance {
+  .highlight {
+    color: $green;
+  }
+}
+
+.subject-description-header-socio_emocional {
+  .highlight {
+    color: $purple;
+  }
+}
+
+.subject-description-header-security {
+  .highlight {
+    color: $yellow;
   }
 }
 

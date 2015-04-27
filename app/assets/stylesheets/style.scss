@@ -63,7 +63,7 @@ section.main.container-fuild {
   display: block;
   position: absolute;
   left: -8%;
-  width: 80px;
+  width: 50px;
   height: 66px;
   top: 3px;
   background-image: url(/assets/banner-bullets-icons-pb.png);
@@ -168,4 +168,27 @@ nav ul h3{
 .single-post p.periodo-label {
     float: left;
     width: auto;
+}
+
+nav.blog-tags ul li a {
+    float: left;
+    width: auto;
+    display: inline;
+    line-height: initial;
+    font-size: 14px;
+    margin: 10px 5px 0px 0px;
+    padding: 0px 5px 0px 0px;
+    border-right: 1px solid #ccc;
+}
+
+nav.blog-tags ul li {
+    border: none !important;
+}
+
+.lead{
+	font-size: 18px;
+}
+
+.anonymous{
+	margin-top: 30px;
 }
