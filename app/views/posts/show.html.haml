@@ -1,9 +1,9 @@
-%section.subjects.container
+%section.subjects.container{class: "#{@post.category_name.parameterize}"}
   .posts.subject.col-md-9
     .single-post.col-md-12
       %h2.post_title= @post.titleized_title
-      %p= @post.category_name
-      %p= t("views.blog.#{@post.pregnancy_or_child_life_period}")
+      %p.periodo-label{class: "priodo-#{@post.pregnancy_or_child_life_period}"}= t("views.blog.#{@post.pregnancy_or_child_life_period}")
+      %p.categoria-label= @post.category_name
       %hr
       %p
         = raw @post.text

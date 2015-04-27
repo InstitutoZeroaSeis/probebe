@@ -14,7 +14,15 @@
     = yield :head
   %body{class: "#{params[:controller]}"}
     = render 'site_menu'
-    = render 'site_banner'
+    .site-banner
+      %ul.site-banner-list
+        %li.site-banner-item
+          %figure.site-banner-image
+            = image_tag 'img-banner-probebe.jpg'
+        %li.site-banner-item
+          %figure.site-banner-image
+            = image_tag 'img-banner-probebe.jpg'
+    
     %section.main.container-fuild
       = yield
     %footer.footer

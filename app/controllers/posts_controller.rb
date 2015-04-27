@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def show
     @post = PostPresenter.new(Blog::Post.find(params[:id]))
-    render layout: "timeline"
+    render layout: "single-post"
   end
 
   protected
