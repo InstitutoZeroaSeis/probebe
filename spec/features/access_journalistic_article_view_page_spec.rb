@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "Admin site user visit one journalistic article view page" do
   scenario "successfully" do
-    user = create(:user, :confirmed, :admin)
+    user = create(:user, :admin)
     article = create(:journalistic_article)
     sign_in(user.email, user.password)
     visit admin_journalistic_article_path(article)
