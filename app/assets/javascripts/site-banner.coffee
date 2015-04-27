@@ -22,9 +22,13 @@ $ ->
     $('.home-categories-list').removeClass('category-health category-education category-socio_emotional category-finance category-security')
     $('.home-categories-list').addClass('category-'+item)
 
-  $('.home-categories-item.home-categories a').on 'click', -> 
+  $('.home-categories-item.home-categories-click a').on 'click', -> 
     event.preventDefault();
     $(window).scrollTo($(@).attr('href'), '800')
+
+  $('.cadastre-se').on 'click', -> 
+    event.preventDefault();
+    $(window).scrollTo(5000, '800')
 
   $(window).scroll ->
     # Fixa o menu da home após scroll passar o banner
