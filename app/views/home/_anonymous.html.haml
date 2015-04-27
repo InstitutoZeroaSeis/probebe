@@ -1,7 +1,6 @@
-= render 'how_it_works'
 = render 'home_categories'
 
-%section.subjects.container
+%section.subjects.container.anonymous
   .subject.col-md-9#health
     .row.col-md-12
       = render 'subject_header_health'
@@ -49,10 +48,10 @@
         .subject-description-header.subject-description-header-security
           %h3
             Mais de
-            %span.highlight 300
+            %span.highlight 100
             dicas
           %p
-            para ajudar na saúde da sua gestação
+            Para manter o seu beê seguro em casa
       .subject-description-buttons
         %button.subject-description-buttons-sign-in-security Cadastre-se
         %button.subject-description-buttons-read-security Leia
@@ -66,9 +65,10 @@
     .col-md-7
       .subject-description
         .subject-description-header.subject-description-header-finance
+          %h3
+            %span.highlight Finanças:
           %p
-            A educação do seu filho começa ainda na barriga da mãe.
-            %span.highlight Sabe por que?
+            Respostas para as dúvidas mais comuns dos pais
       .subject-description-buttons
         %button.subject-description-buttons-sign-in-finance Cadastre-se
         %button.subject-description-buttons-read-finance Leia
@@ -84,10 +84,10 @@
         .subject-description-header.subject-description-header-socio_emocional
           %h3
             Mais de
-            %span.highlight 300
+            %span.highlight 400
             dicas
           %p
-            para ajudar na saúde da sua gestação
+            Para guiar você e o seu filho para uma vida com corpo e mente saudável
       .subject-description-buttons
         %button.subject-description-buttons-sign-in-socio_emocional Cadastre-se
         %button.subject-description-buttons-read-socio_emocional Leia
