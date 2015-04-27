@@ -63,7 +63,7 @@ section.main.container-fuild {
   display: block;
   position: absolute;
   left: -8%;
-  width: 80px;
+  width: 50px;
   height: 66px;
   top: 3px;
   background-image: url(/assets/banner-bullets-icons-pb.png);
@@ -183,4 +183,8 @@ nav.blog-tags ul li a {
 
 nav.blog-tags ul li {
     border: none !important;
+}
+
+.lead{
+	font-size: 18px;
 }

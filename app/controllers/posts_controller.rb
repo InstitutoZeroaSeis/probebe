@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @tags = Tag.all
     @post = PostPresenter.new(Blog::Post.find(params[:id]))
     render layout: "single-post"
   end

@@ -11,6 +11,7 @@
   %section.subjects.container{class: "#{@post.category_name.parameterize}"}
     .posts.subject.col-md-9
       .single-post.col-md-12
+        %p.created-at= l(@post.created_at)
         %h2.post_title= @post.titleized_title
         %p.periodo-label{class: "priodo-#{@post.pregnancy_or_child_life_period}"}= t("views.blog.#{@post.pregnancy_or_child_life_period}")
         %p.categoria-label= @post.category_name
@@ -19,11 +20,10 @@
           = raw @post.text
 
         = render @post.tags
-        %figure
-          %img{width: 50, height: 50, src: @post.author_photo_url}
-
-        %p.lead= t('views.blog.by', author: @post.author_name)
-        = l(@post.created_at)
+        %hr
+        %p.lead
+          = "Publicado"
+          = t('views.blog.by', author: @post.author_name)
 
         %h2= t('views.blog.related_post')
         = render partial: 'related_post', collection: @post.related_posts
@@ -32,4 +32,4 @@
           %li.previous
             = link_to t('views.blog.back_html'), root_path
 
-    = render 'sidebar', tags: @post.tags
+    = render 'sidebar', tags: Tag.all
