@@ -38,6 +38,25 @@
         %button.subject-description-buttons-sign-in-education Cadastre-se
         %button.subject-description-buttons-read-education Leia
 
+  .subject.col-md-9#security
+    .row.col-md-12
+      = render 'subject_header_security'
+    .col-md-5
+      = render 'subject_picture', img_path: '', content: 'Lorem ipsum dolor sit amet'
+
+    .col-md-7
+      .subject-description
+        .subject-description-header.subject-description-header-security
+          %h3
+            Mais de
+            %span.highlight 300
+            dicas
+          %p
+            para ajudar na saúde da sua gestação
+      .subject-description-buttons
+        %button.subject-description-buttons-sign-in-security Cadastre-se
+        %button.subject-description-buttons-read-security Leia
+
   .subject.col-md-9#finance
     .row.col-md-12
       = render 'subject_header_finance'
@@ -53,7 +72,6 @@
       .subject-description-buttons
         %button.subject-description-buttons-sign-in-finance Cadastre-se
         %button.subject-description-buttons-read-finance Leia
-
 
   .subject.col-md-9#socio_emotional
     .row.col-md-12
@@ -73,22 +91,3 @@
       .subject-description-buttons
         %button.subject-description-buttons-sign-in-socio_emocional Cadastre-se
         %button.subject-description-buttons-read-socio_emocional Leia
-
-  .subject.col-md-9#security
-    .row.col-md-12
-      = render 'subject_header_security'
-    .col-md-5
-      = render 'subject_picture', img_path: '', content: 'Lorem ipsum dolor sit amet'
-
-    .col-md-7
-      .subject-description
-        .subject-description-header.subject-description-header-security
-          %h3
-            Mais de
-            %span.highlight 300
-            dicas
-          %p
-            para ajudar na saúde da sua gestação
-      .subject-description-buttons
-        %button.subject-description-buttons-sign-in-security Cadastre-se
-        %button.subject-description-buttons-read-security Leia
