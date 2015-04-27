@@ -22,7 +22,7 @@ $ ->
     $('.home-categories-list').removeClass('category-health category-education category-socio_emotional category-finance category-security')
     $('.home-categories-list').addClass('category-'+item)
 
-  $('.home-categories-item a').on 'click', -> 
+  $('.home-categories-item.home-categories a').on 'click', -> 
     event.preventDefault();
     $(window).scrollTo($(@).attr('href'), '800')
 
