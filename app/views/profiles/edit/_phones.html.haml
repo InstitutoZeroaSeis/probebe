@@ -2,9 +2,5 @@
   %h3= @profile.phones_text
   %fieldset.edit-profile-form-address
     .row
-      .col-sm-4
+      .col-sm-12
         = f.input :cell_phone, input_html: { class: 'phone' }
-      .col-sm-4
-        = f.input :home_phone, input_html: { class: 'phone' }
-      .col-sm-4
-        = f.input :business_phone, input_html: { class: 'phone' }

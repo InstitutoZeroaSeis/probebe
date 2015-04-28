@@ -15,7 +15,6 @@ pt-BR:
     edit: &edit "Editar"
     exit: &exit "Sair"
     gender: &genders "Sexo"
-    home_phone_number: "Telefone residencial"
     include: "Incluir"
     maximum_valid_week: &maximum_valid_week "Validade Final em Semana"
     minimum_valid_week: &minimum_valid_week "Validade Inicial em Semana"
@@ -110,9 +109,6 @@ pt-BR:
         first_name: Nome
         gender: Sexo
         cell_phone: Celular
-        home_phone: Telefone Residencial
-        business_phone: Telefone Comercial
-        home_phone_number: Telefone residencial
         id: Id
         is_mother: Já é mãe?
         is_pregnant: Está Grávida?
