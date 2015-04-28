@@ -137,10 +137,11 @@ pt-BR:
         profile_primary_cell_phone_number: "Celular"
     errors:
       models:
-        article:
-          base:
-            has_no_minimum_and_maximum_valid_week: "Tem que definir pelo menos validade inicial ou final"
-            minimum_higher_than_maximum: "Validade Inicial não pode ser maior que a final"
+        articles/article:
+          attributes:
+            base:
+              has_no_minimum_and_maximum_valid_week: "Tem que definir pelo menos validade inicial ou final"
+              minimum_higher_than_maximum: "Validade Inicial não pode ser maior que a final"
         articles/journalistic_article:
           base:
             messages_length: "O comprimento máximo de cada mensagem dever ser de até 150 caracteres"
