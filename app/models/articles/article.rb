@@ -32,15 +32,14 @@ module Articles
     has_paper_trail
 
     def presence_of_maximum_or_minimum
-      return if minimum_and_valid_week_present?
+      return unless minimum_valid_week.blank? && maximum_valid_week.blank?
       errors.add(:base, :has_no_minimum_and_maximum_valid_week)
     end
 
     def minimum_not_higher_than_maximum
-      return unless minimum_and_valid_week_present?
-      if minimum_valid_week > maximum_valid_week
-        errors.add(:base, :minimum_higher_than_maximum)
-      end
+      return unless minimum_valid_week.present? && maximum_valid_week.present?
+      return unless minimum_valid_week > maximum_valid_week
+      errors.add(:base, :minimum_higher_than_maximum)
     end
 
     def set_defaults
@@ -53,12 +52,6 @@ module Articles
 
     def pregnancy?
       !born?
-    end
-
-    protected
-
-    def minimum_and_valid_week_present?
-      minimum_valid_week.present? && maximum_valid_week.present?
     end
   end
 end
