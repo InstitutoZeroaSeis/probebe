@@ -1,0 +1,27 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+    - name: install the latest Docker version
+      yum: name=docker state=latest
+
+    - name: install Python Pip
+      yum: name=python-pip state=latest
+
+    - name: install docker-py
+      pip: name=docker-py state=latest
+
+    - name: copy docker authentication file to remote machine
+      copy: src=files/dockercfg dest=~/.dockercfg
+
+    - name: ensure docker is started
+      service: name=docker state=started
+
+    - name: run the application inside a Docker container
+      docker:
+        name: spring_proxy
+        image: vizir/probebe_spring_proxy
+        state: reloaded
+        pull: always
+        ports:
+          - "80:80"
