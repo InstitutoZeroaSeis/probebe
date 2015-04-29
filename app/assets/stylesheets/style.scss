@@ -221,10 +221,72 @@ ul.nav.navbar-nav {
   position: fixed;
   background: #fff;
   z-index: 999;
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 600px;
   top: 45%;
-  margin-top: -150px;
+  margin-top: -300px;
   left: 50%;
-  margin-left: -150px;
+  margin-left: -250px;
+  padding: 10px 50px 50px 50px;
+}
+
+.modal-signin input{
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-signin input[type="submit"]{
+  background: #F69343;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.modal-signin input[type="checkbox"]{
+  width: auto;
+  float: left;
+  margin-right: 8px;
+}
+
+.modal-signin .footer-sign-up-google-plus, .modal-signin .footer-sign-up-facebook{
+  width: 100%;
+  color: #fff;
+  margin-left: 0;
+  margin-bottom: 15px;
+}
+
+.modal-signin .footer-form-group{
+  padding-bottom: 20px;
+}
+
+a.vzr-modal-btn-close{
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  right: -1px;
+  top: -35px;
+  color: #fff;
+  background: none;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
+  line-height: 21px;
+  text-align: center;
+  border: 2px solid #fff;
+  padding-left: 1px;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.stay-connected{
+  margin-top: -14px;
+  margin-bottom: 6px;
+}
+
+.stay-connected label{
+  font-weight: 300 !important;
 }
