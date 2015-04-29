@@ -9,6 +9,12 @@ class PostsController < ApplicationController
     render layout: "single-post"
   end
 
+  def raw
+    @post = PostPresenter.new(Blog::Post.find(params[:id]))
+    @tags = Tag.all
+    render layout: "raw-single-post"
+  end
+
   protected
 
   def post_search_params

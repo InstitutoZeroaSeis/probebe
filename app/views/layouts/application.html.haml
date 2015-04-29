@@ -7,6 +7,7 @@
 
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
+    = javascript_include_tag 'home'
 
     = csrf_meta_tags
     = render partial: 'flash_messages'
@@ -24,5 +25,10 @@
         .container
           Pro Bebê &copy;
 
-
-
+  :javascript
+    window.onload = function() {
+      var modal = vzr.modal(
+        '.vzr-modal',
+        '.open-modal'
+      )
+    }

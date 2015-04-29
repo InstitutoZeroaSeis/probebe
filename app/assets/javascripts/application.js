@@ -25,10 +25,3 @@
 //= require bootstrap.min
 //= require owl.carousel
 //= require site-banner
-
-window.onload = function() {
-      var modal = vzr.modal(
-        '.vzr-modal',
-        '.open-modal'
-      )
-    }

@@ -13,17 +13,6 @@
 
     = yield :head
   %body{class: "#{params[:controller]}"}
-    .timeline-modal-bg
-    .timeline-modal-close
-    .timeline-modal
-      oi
-    = render 'sign_in'
-    = render 'site_menu'
-    %section.main.container-fuild
-      = yield
-    %footer.footer
-      = render 'sign_up_footer' unless current_user
-      %section.footer-copyright
-        .container
-          Pro Bebê &copy;
+    = yield
+
 

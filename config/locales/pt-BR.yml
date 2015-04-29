@@ -2,6 +2,7 @@ pt-BR:
   date:
     month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
     formats:
+      month_name_year: '%B %Y'
       day: ! '%d'
       full_year: ! '%Y'
       month_name: ! '%b'

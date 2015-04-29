@@ -19,3 +19,4 @@ Rails.application.config.assets.precompile += %w( authorial_articles.js journali
 Rails.application.config.assets.precompile += %w( ckeditor/* )
 Rails.application.config.assets.precompile += %w( profile.js )
 Rails.application.config.assets.precompile += %w( sign_up.js )
+Rails.application.config.assets.precompile += %w( home.js )

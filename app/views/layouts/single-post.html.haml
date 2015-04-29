@@ -13,6 +13,7 @@
 
     = yield :head
   %body{class: "#{params[:controller]}"}
+    = render 'sign_in'
     = render 'site_menu'
     = yield
     %footer.footer
@@ -22,4 +23,11 @@
           Pro Bebê &copy;
 
 
+  :javascript
+    window.onload = function() {
+      var modal = vzr.modal(
+        '.vzr-modal',
+        '.open-modal'
+      )
+    }
 

@@ -28,7 +28,7 @@ class MessageDeliveryTimelineDecorator < MessageDeliveries::MessageDelivery
 
   def url
     if article.try :publishable
-      posts_path(id: article.id)
+      raw_post_path(id: article.id)
     else
       '#'
     end
