@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424132747) do
+ActiveRecord::Schema.define(version: 20150428221437) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -59,11 +59,6 @@ ActiveRecord::Schema.define(version: 20150424132747) do
     t.integer  "child_id"
   end
 
-  create_table "banners", force: true do |t|
-    t.string "code"
-    t.string "url"
-  end
-
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -109,18 +104,6 @@ ActiveRecord::Schema.define(version: 20150424132747) do
     t.integer "message_delivery_id",    null: false
   end
 
-  create_table "home_timeline_articles", force: true do |t|
-    t.integer "home_timeline_item_id"
-    t.integer "journalistic_article_id"
-    t.string  "url"
-    t.string  "index"
-  end
-
-  create_table "home_timeline_items", force: true do |t|
-    t.string "period"
-    t.string "index"
-  end
-
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"
     t.integer  "child_id"
@@ -160,8 +143,6 @@ ActiveRecord::Schema.define(version: 20150424132747) do
     t.string   "postal_code"
     t.integer  "cell_phone_system",  default: 2
     t.string   "cell_phone"
-    t.string   "home_phone"
-    t.string   "business_phone"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree

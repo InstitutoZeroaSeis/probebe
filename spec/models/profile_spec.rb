@@ -18,30 +18,22 @@ RSpec.describe Profile, type: :model do
   end
 
   ['11 1234-5678', '11 91234-5678'].each do |number|
-    [:cell_phone, :home_phone, :business_phone].each do |phone_type|
-      it "is valid with #{number} set to #{phone_type}" do
-        profile = Profile.new(
-          phone_type => number
-        )
+    it "is valid with #{number} set to cell_phone" do
+      profile = Profile.new(cell_phone: number)
 
-        profile.valid?
+      profile.valid?
 
-        expect(profile.errors[phone_type]).to_not include('não é válido')
-      end
+      expect(profile.errors[:cell_phone]).to_not include('não é válido')
     end
   end
 
   ['1234-5678', '111234-5678'].each do |number|
-    [:cell_phone, :home_phone, :business_phone].each do |phone_type|
-      it "is invalid with #{number} set to #{phone_type}" do
-        profile = Profile.new(
-          phone_type => number
-        )
+    it "is invalid with #{number} set to cell_phone" do
+      profile = Profile.new(cell_phone: number)
 
-        profile.valid?
+      profile.valid?
 
-        expect(profile.errors[phone_type]).to include('não é válido')
-      end
+      expect(profile.errors[:cell_phone]).to include('não é válido')
     end
   end
 end

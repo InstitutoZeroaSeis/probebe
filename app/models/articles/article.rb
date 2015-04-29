@@ -32,17 +32,14 @@ module Articles
     has_paper_trail
 
     def presence_of_maximum_or_minimum
-      if (self.minimum_valid_week.blank? && self.maximum_valid_week.blank?)
-        errors.add(:base, I18n.t('activerecord.errors.models.article.base.has_no_minimum_and_maximum_valid_week'))
-      end
+      return unless minimum_valid_week.blank? && maximum_valid_week.blank?
+      errors.add(:base, :has_no_minimum_and_maximum_valid_week)
     end
 
     def minimum_not_higher_than_maximum
-      if self.minimum_valid_week.present? and self.maximum_valid_week.present?
-        if minimum_valid_week > maximum_valid_week
-          errors.add(:base, I18n.t('activerecord.errors.models.article.base.minimum_higher_than_maximum'))
-        end
-      end
+      return unless minimum_valid_week.present? && maximum_valid_week.present?
+      return unless minimum_valid_week > maximum_valid_week
+      errors.add(:base, :minimum_higher_than_maximum)
     end
 
     def set_defaults
