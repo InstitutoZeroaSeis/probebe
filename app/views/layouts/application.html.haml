@@ -13,6 +13,7 @@
 
     = yield :head
   %body{class: "#{params[:controller]}"}
+    = render 'sign_in'
     = render 'site_menu'
     = render 'site_banner'
     %section.main.container-fuild

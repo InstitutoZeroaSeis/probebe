@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require vzr-modal
 //= require jquery
 //= require jquery_ujs
 //= require jquery.noty.packaged
@@ -24,3 +25,10 @@
 //= require bootstrap.min
 //= require owl.carousel
 //= require site-banner
+
+window.onload = function() {
+      var modal = vzr.modal(
+        '.vzr-modal',
+        '.open-modal'
+      )
+    }
