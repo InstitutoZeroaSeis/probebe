@@ -14,3 +14,11 @@ $ ->
     correct_index = event.item.index - 2
     $(".site-banner-dot").removeClass('is-active')
     $(".step-#{correct_index}").addClass('is-active')
+
+  if $('.blog-tags ul').outerHeight() > 160 
+    $('.blog-tags').addClass('collapsed')
+  
+
+  $('.more').on 'click', -> 
+    event.preventDefault();
+    $('.blog-tags').removeClass('collapsed')

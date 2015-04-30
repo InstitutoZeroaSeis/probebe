@@ -86,6 +86,56 @@
   background: #fff;
 }
 
+.blog-tags{
+  float: right;
+}
+
+.blog-tags .home-categories-list {
+  border-color: #cccccc;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px 1px 8px;
+  box-shadow: 0 2px 40px #cccccc;
+  float: right;
+  list-style-type: none;
+  margin-top: 30px;
+  padding: 20px 25px 30px;
+  position: relative;
+  width: 222px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.blog-tags.collapsed .home-categories-list{
+  max-height: 172px;
+}
+
+.blog-tags .more{
+  display: none;
+}
+
+.collapsed.blog-tags .more{
+  cursor: pointer;
+  content: '+';
+  display: block;
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  margin-left: -22px;
+  border: 1px solid #ccc;
+  width: 30px;
+  height: 26px;
+  border-radius: 0px 0px 100% 100%;
+  background: #fff;
+  z-index: 99;
+  line-height: 24px;
+  text-align: center;
+  font-size: 18px;
+  color: #999;
+  border-top: none;
+}
+
+
 .home-categories-item {
   line-height: 50px;
   font-size: 20px;
