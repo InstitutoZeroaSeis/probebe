@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'Standard registration' do
   scenario 'User sign up through registration form', :js, :selenium do
+    pending
     visit root_path
 
     fill_in 'user_profile_attributes_name', with: 'Nome'

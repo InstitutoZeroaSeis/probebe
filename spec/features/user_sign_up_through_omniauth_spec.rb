@@ -3,20 +3,27 @@ require 'rails_helper'
 feature 'OAuth2 authentication' do
   before { OmniAuth.config.test_mode = true }
 
-  scenario 'user gets redirected to home if has valid credentials' do
-    OmniAuth.config.add_mock :google_oauth2, OmniAuthStub::Google::BasicInfo
+  scenario 'user gets redirected to home if has valid credentials', :js do
+    OmniAuth.config.add_mock(
+      :google_oauth2, OmniAuthStub::Google::BasicInfo
+    )
 
-    sign_in_through_oauth
+    visit root_path
+    click_on I18n.t('views.application.sign_in')
+    within('.modal-signin') { find('.footer-sign-up-google-plus').click }
 
     expect(current_path).to eq(root_path)
+    expect(page).to have_no_content(I18n.t('views.application.sign_in'))
   end
 
-  scenario 'user gets redirected back to login page if has invalid credentials', js: true do
+  scenario 'user is redirected to login page if has invalid credentials', :js do
     OmniAuth.config.add_mock(
       :google_oauth2, OmniAuthStub::Google::WithoutEmail
     )
 
-    sign_in_through_oauth
+    visit root_path
+    click_on I18n.t('views.application.sign_in')
+    within('.modal-signin') { find('.footer-sign-up-google-plus').click }
 
     expect(page).to have_text(
       I18n.t('controller.messages.could_not_sign_up_with_omniauth')

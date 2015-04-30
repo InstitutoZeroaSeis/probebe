@@ -1,7 +1,7 @@
 class TimelinesController < ApplicationController
   load_and_authorize_resource class: 'Child'
-  layout "timeline"
-  
+  layout 'timeline'
+
   before_action :authenticate_user!
   before_action :load_timeline
 
@@ -21,7 +21,7 @@ class TimelinesController < ApplicationController
     end
   end
 
-  private
+  protected
 
   def load_timeline
     @child = Child.find(params[:id])

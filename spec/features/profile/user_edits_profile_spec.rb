@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 feature 'User edits new profile' do
-  let(:user) { create(:user, :with_profile) }
-  before { sign_in(user.email, user.password) }
+  before { login_as create(:user) }
 
   scenario 'successfully' do
     visit edit_profile_path

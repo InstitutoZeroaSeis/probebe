@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe Users::CreateAdminUser do
+describe Users::CreateUserWithRandomPassword do
   it 'creates a user with a default random password' do
     user_attributes = {
       email: 'test@example.com',
       role: :journalist,
       profile_attributes: { name: 'Test' }
     }
-    create_user = Users::CreateAdminUser.new(user_attributes)
+    create_user = Users::CreateUserWithRandomPassword.new(user_attributes)
 
     create_user.save
 

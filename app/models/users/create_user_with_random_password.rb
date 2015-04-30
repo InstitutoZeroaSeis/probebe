@@ -1,4 +1,4 @@
-class Users::CreateAdminUser
+class Users::CreateUserWithRandomPassword
   attr_reader :user
 
   def initialize(params)
@@ -7,6 +7,7 @@ class Users::CreateAdminUser
 
   def save
     @user = User.new(params_for_create)
+    @user.save
   end
 
   def params_for_create

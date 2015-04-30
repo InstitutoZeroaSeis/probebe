@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin user creates another user' do
-  let(:user) { create(:user, :admin) }
-  before { sign_in(user.email, user.password) }
+  before { login_as create(:user, :admin) }
 
   scenario 'and the user is shown in the user list' do
     new_user_email = 'new-journalist@probebe.com.br'
@@ -19,7 +18,6 @@ feature 'Admin user creates another user' do
 
   scenario 'and an email is sent to the new user' do
     new_user_email = 'new-journalist@probebe.com.br'
-    new_user_password = '12345678'
 
     visit new_admin_admin_site_user_path
     fill_in 'user[email]', with: new_user_email

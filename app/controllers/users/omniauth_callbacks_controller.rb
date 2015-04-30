@@ -16,13 +16,22 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   alias_method :google_oauth2, :authenticate_user
   alias_method :facebook, :authenticate_user
 
+  protected
+
   def build_hash
     @omni_auth_hash = ::OmniAuthHashWrapper.new(request.env['omniauth.auth'])
   end
 
   def find_or_create_user
-    @user = User.find_by(email: @omni_auth_hash.email) ||
-            User.new(email: @omni_auth_hash.email)
+    @user = User.find_by(email: @omni_auth_hash.email) || create_user
+  end
+
+  def create_user
+    create_with_password = Users::CreateUserWithRandomPassword.new(
+      email: @omni_auth_hash.email
+    )
+    create_with_password.save
+    create_with_password.user
   end
 
   def find_or_create_profile

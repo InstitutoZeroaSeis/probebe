@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 feature 'Journalist create journalistic article from authorial article' do
-  let(:user) { create(:user, :journalist) }
-  before { sign_in(user.email, user.password) }
+  before { login_as create(:user, :journalist) }
 
   scenario 'successfully' do
     article_title = 'Test title see if index showing title'

@@ -1,15 +1,17 @@
 require 'rails_helper'
 
-feature "OAuth2 authentication" do
+feature 'user sign in through omniauth' do
   before { OmniAuth.config.test_mode = true }
-  before { OmniAuth.config.add_mock :google_oauth2, OmniAuthStub::Google::BasicInfo }
-  before { @user = create(:user, email: OmniAuthStub::Google::BasicInfo[:info][:email]) }
 
-  context "With a complete profile" do
-    before { create(:profile, user: @user) }
-    scenario "Gets redirected to its profile page" do
-      sign_in_through_oauth
-      expect(current_path).to eq(root_path)
-    end
+  scenario 'successfully', :js do
+    OmniAuth.config.add_mock :google_oauth2, OmniAuthStub::Google::BasicInfo
+    user = create(:user, :with_profile, email: OmniAuthStub::Google::BasicInfo[:info][:email])
+
+    visit root_path
+    click_on I18n.t('views.application.sign_in')
+    within('.modal-signin') { find('.footer-sign-up-google-plus').click }
+
+    expect(current_path).to eq(root_path)
+    expect(page).to have_no_content(I18n.t('views.application.sign_in'))
   end
 end

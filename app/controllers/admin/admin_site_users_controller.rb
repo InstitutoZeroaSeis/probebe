@@ -17,7 +17,7 @@ class Admin::AdminSiteUsersController < Admin::AdminController
 
   def build_resource
     if action_name == 'create'
-      create_user = Users::CreateAdminUser.new(permitted_params[:user])
+      create_user = Users::CreateUserWithRandomPassword.new(permitted_params[:user])
       create_user.save
       @user = create_user.user
     else

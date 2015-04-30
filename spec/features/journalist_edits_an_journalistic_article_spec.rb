@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 feature 'Journalist edit his own journalistic article' do
-  let(:user) { create(:user, :journalist) }
-  before { sign_in(user.email, user.password) }
+  before { login_as create(:user, :journalist) }
 
   scenario 'successfully' do
     article_title = 'New title'
-    journalistic_article = create(:journalistic_article, user: user)
-    visit edit_admin_journalistic_article_path(journalistic_article)
+    journalistic_article = create(:journalistic_article)
+    user = create(:user, :author)
 
+    visit edit_admin_journalistic_article_path(journalistic_article, user: user)
     fill_in 'articles_journalistic_article_title', with: article_title
-    select user.profile.name,
+    select user.profile_name,
            from: 'articles_journalistic_article_original_author_id'
     click_on I18n.t('update')
     visit admin_journalistic_articles_path

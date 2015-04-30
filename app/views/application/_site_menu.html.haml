@@ -9,12 +9,12 @@
           %li= link_to 'Quem Somos', '#'
           %li= link_to 'O que é o ProBebê', '#'
           %li= link_to 'Parceiros', '#'
-          %li.dropdow
-            %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
-              = t('general.commom_words.my_children')
-              %span.caret
-            %ul.dropdown-menu{ role: 'menu' }
-              - if current_profile.present?
+          - if current_profile.present?
+            %li.dropdow
+              %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
+                = t('general.commom_words.my_children')
+                %span.caret
+              %ul.dropdown-menu{ role: 'menu' }
                 - current_profile.children.each do |child|
                   - if child.persisted?
                     %li= link_to child.name.present? ? child.name : l(child.birth_date), timeline_path(id: child.id)
