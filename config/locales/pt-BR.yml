@@ -92,10 +92,10 @@ pt-BR:
         birth_date: "Data de Nascimento"
         gender: "Sexo"
       message:
-        id: "Id"
-        created_at: "Criado em"
-        text: "Texto"
-        messageable_id: "Artigo Id"
+        created_at: Criado em
+        id: Id
+        messageable_name: Artigo
+        text: Texto
       message_deliveries/message_delivery:
         id: "Id"
         profile_name: "Nome do destinatário"
