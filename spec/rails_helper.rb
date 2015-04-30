@@ -52,6 +52,19 @@ RSpec.configure do |config|
   config.include Features::TimelineHelper, type: :feature
   config.include Devise::TestHelpers, type: :controller
   config.include Controllers::ApiAuthenticationHelper, type: :controller
+  config.include Warden::Test::Helpers, type: :feature
+
+  config.before(:each, :feature) do
+    Warden.test_mode!
+  end
+
+  config.before(:each, :feature, :skip_auth) do
+    Warden.test_reset!
+  end
+
+  config.after(:each, type: :feature) do
+    Warden.test_reset!
+  end
 
   config.before(:each) do
     Capybara.current_driver = :rack_test
