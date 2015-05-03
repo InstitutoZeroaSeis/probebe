@@ -7,7 +7,7 @@
       url: user_registration_path,
       remote: true,
       wrapper: :custom_forms,
-      html: { class: 'sign-up-form' } do |f|
+      html: { class: 'sign-up-form', 'data-type' => 'json' } do |f|
       %fieldset.footer-form-group
         .col-md-6
           = f.simple_fields_for :profile, Profile.new, wrapper: :custom_forms do |p|
