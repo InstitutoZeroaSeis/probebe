@@ -16,11 +16,5 @@
             = f.check_box :remember_me
             = f.label t('carnival_devise.new.remember_me')
           .social-login
-            = link_to user_omniauth_authorize_path(provider: :facebook) do
-              %button.footer-sign-up-facebook{ type: 'button' }
-                Entrar com
-                %span.highlight Facebook
-            = link_to user_omniauth_authorize_path(provider: :google_oauth2) do
-              %button.footer-sign-up-google-plus{ type: 'button' }
-                Entrar com
-                %span.highlight Google Plus
+            = render 'facebook_sign_up_button'
+            = render 'google_sign_up_button'

@@ -19,11 +19,6 @@
             Cadastrar-se
 
         .footer-sign-up-oauth.col-md-12
-          %button.footer-sign-up-facebook
-            Usar meu
-            %span.highlight Facebook
-          %span.footer-sign-up-or
-            ou
-          %button.footer-sign-up-google-plus
-            Usar meu
-            %span.highlight Google Plus
+          = render 'facebook_sign_up_button'
+          %span.footer-sign-up-or ou
+          = render 'google_sign_up_button'
