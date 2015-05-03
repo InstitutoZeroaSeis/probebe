@@ -3,6 +3,8 @@ require 'rails_helper'
 feature 'Site user access timeline' do
   let!(:user) { create(:user) }
   before { login_as user }
+  before { Timecop.freeze Date.new(2015, 5, 15) }
+  after { Timecop.return }
 
   context 'with two events' do
     let!(:child) do

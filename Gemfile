@@ -48,7 +48,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'spring-commands-rspec', group: :development
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'capybara-webkit'
   gem 'factory_girl', '~> 4.5.0', require: false
@@ -57,5 +56,7 @@ group :development, :test do
   gem 'rspec', '~> 3.1.0'
   gem 'rspec-rails', '~> 3.1.0'
   gem 'selenium-webdriver', '~> 2.45.0'
+  gem 'spring-commands-rspec', group: :development
   gem 'teaspoon', '~> 0.9.1'
+  gem 'timecop', '~> 0.7.3'
 end
