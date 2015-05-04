@@ -35,6 +35,16 @@ class Profile < ActiveRecord::Base
 
   alias_attribute :primary_cell_phone_number, :cell_phone
 
+  def authorize_receive_sms!
+    self.authorized_receive_sms = true
+    save!
+  end
+
+  def unauthorize_receive_sms!
+    self.authorized_receive_sms = false
+    save!
+  end
+
   def avatar_url
     avatar.photo.url(:thumb) if avatar
   end

@@ -126,6 +126,7 @@ pt-BR:
         email: Email
         id: Id
         password: Senha
+        profile_authorized_receive_sms?: Autorizado o recebimento de SMS?
         profile_birth_date: Data de nascimento
         profile_city: Cidade
         profile_name: Nome

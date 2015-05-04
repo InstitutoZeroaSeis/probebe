@@ -2,10 +2,13 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  devise_for :users, :controllers => { registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
   root to: 'home#index'
 
-  match ':status', to: 'errors#show', constraints: {status: /\d{3}/}, via: [:get, :post]
+  match ':status', to: 'errors#show', constraints: { status: /\d{3}/ }, via: [:get, :post]
   resource :profile, except: :index
   resources :timelines, only: :show
   get 'timelines/:id/monthly/:date' => 'timelines#monthly', as: :timeline_monthly
@@ -26,7 +29,7 @@ Rails.application.routes.draw do
 
   mount_carnival_at 'admin'
   namespace :admin do
-    authenticate :user, lambda {|u| u.admin? }  do
+    authenticate :user, ->(u) { u.admin? }  do
       mount Sidekiq::Web => '/sidekiq'
     end
     resources :activity_logs, only: [:index, :show]
@@ -37,7 +40,10 @@ Rails.application.routes.draw do
     resources :messages
     resources :message_deliveries, only: :index
     resources :profiles
-    resources :site_users
+    resources :site_users do
+      get :authorize_receive_sms, on: :member
+      get :unauthorize_receive_sms, on: :member
+    end
     resources :tags
     get 'authorial_articles/:id/create_journalistic_article' => 'authorial_articles#create_journalistic_article', as: :create_journalistic_article
     get 'journalistic_articles/:id/show_activity_log' => 'journalistic_articles#show_activity_log'

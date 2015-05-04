@@ -1,12 +1,14 @@
 pt-BR:
 
   carnival:
-    show: Visualizar
-    new: Novo
-    edit: Editar
-    destroy: Apagar
     errors:
       invalid_field:  "As actions '%{actions}' não são válidas para o campo '%{field}' do presenter '%{presenter}'"
+    authorize_receive_sms: Autorizar do Envio de SMS
+    destroy: Apagar
+    edit: Editar
+    new: Novo
+    show: Visualizar
+    unauthorize_receive_sms: Remover do Envio de SMS
 
   nested_form:
     open: Abrir
