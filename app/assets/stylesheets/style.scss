@@ -294,3 +294,20 @@ a.vzr-modal-btn-close{
 .raw-container{
   margin-top: 30px;
 }
+
+.form-control-static {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-bottom: 0;
+  position: relative;
+}
+
+a.remove_fields {
+  position: absolute;
+  bottom: -113px;
+  right: 0;
+  background: #fff;
+  padding: 10px 15px;
+  color: #D87575;
+  font-weight: 400;
+}
