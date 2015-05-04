@@ -3,6 +3,7 @@ RUN mkdir /app
 WORKDIR /app
 
 ENV RAILS_ENV staging
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -qy cron
 
