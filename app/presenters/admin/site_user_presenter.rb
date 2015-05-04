@@ -26,16 +26,13 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   field 'profile.primary_cell_phone_number',
         actions: [:show]
 
-  field 'profile.authorized_receive_sms?',
-        actions: [:show, :index]
-
   action :show
-
   action :impersonate
-
   action :authorize_receive_sms
-
   action :unauthorize_receive_sms
+
+  scope :authorized_receive_sms
+  scope :unauthorized_receive_sms
 
   def render_action?(record, record_action, _page_action)
     action = record_action.name.to_sym

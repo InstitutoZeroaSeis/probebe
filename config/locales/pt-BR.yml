@@ -126,6 +126,7 @@ pt-BR:
         email: Email
         id: Id
         password: Senha
+        profile_name: Nome
         role: Perfil de acesso
     errors:
       models:

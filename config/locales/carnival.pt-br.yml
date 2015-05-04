@@ -1,5 +1,9 @@
 pt-BR:
 
+  user:
+    scope:
+      authorized_receive_sms: Autorizados a receber SMS
+      unauthorized_receive_sms: Não autorizados a receber SMS
   carnival:
     errors:
       invalid_field:  "As actions '%{actions}' não são válidas para o campo '%{field}' do presenter '%{presenter}'"
