@@ -1,6 +1,8 @@
-%section.form-block.child_fields.profile-form-child
+%fieldset.form-block.child_fields.profile-form-child
   .col-sm-6
     = f.input :name
+  .col-sm-3
+    = f.input :born, input_html: { class: 'born_child' }
   .col-sm-3
     = f.input :birth_date, as: :week_to_date, input_html: { format: :short }
   .col-sm-3

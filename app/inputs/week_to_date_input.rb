@@ -6,11 +6,15 @@ class WeekToDateInput < SimpleForm::Inputs::Base
   def input(wrapper_options)
     content_tag :div, class: 'form-group' do
       content_tag :div, class: 'input-group' do
-        hidden_field +
+        datepicker_field +
           number_field(wrapper_options) +
           content_tag(:div, class: 'input-group-addon') { I18n.t('general.commom_words.weeks') }
       end
     end
+  end
+
+  def datepicker_field
+    @builder.input attribute_name, as: :date_picker, input_html: input_html_options
   end
 
   def hidden_field
@@ -20,7 +24,9 @@ class WeekToDateInput < SimpleForm::Inputs::Base
   def number_field(wrapper_options)
     merged_input_options = merge_wrapper_options(input_html_options, wrapper_options)
     merged_input_options[:class] ||= []
-    merged_input_options[:class] << ' week_to_date'
+    merged_input_options[:class] << ' week_to_date_number'
+    merged_input_options[:onchange] = 'setDateFromWeek(event)'
+
     number_field_tag("#{attribute_name}", get_date_in_weeks, merged_input_options)
   end
 

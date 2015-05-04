@@ -5,11 +5,8 @@ weeksToDate = (weeks) ->
   new Date(date.getTime() - weeks * MILLIS_IN_WEEK)
 
 
-setDateFromWeek = ->
-  weeks = $(@).val()
+@setDateFromWeek = (event) ->
+  weeks = $(event.target).val()
   date = weeksToDate(weeks)
   console.log(date.toISOString())
-  $(@).prev('input:hidden').val(date.toISOString())
-
-@setupDateFromWeek = ->
-  $('input.week_to_date').change(setDateFromWeek)
+  $(event.target).parents('.form-block').find('.datepicker').val(date.toISOString())

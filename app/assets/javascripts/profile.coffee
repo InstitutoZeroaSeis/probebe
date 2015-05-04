@@ -9,3 +9,13 @@ $ ->
   $(".phone").mask phoneMask,
     onKeyPress: (phone, e, currentField, options) ->
       $(currentField).mask(phoneMask(phone), options)
+
+  $('body').on 'change', '.born_child', (event) ->
+    form = $(@).parents('.form-block')
+    if @checked
+      form.find('.week_to_date_number').hide()
+      form.find('.datepicker').show()
+    else
+      form.find('.week_to_date_number').show()
+      form.find('.datepicker').hide()
+    return

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504020730) do
+ActiveRecord::Schema.define(version: 20150504182036) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150504020730) do
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "born",       default: false
   end
 
   create_table "ckeditor_assets", force: true do |t|
