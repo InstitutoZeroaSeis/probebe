@@ -49,7 +49,7 @@ end
 
 group :development, :test do
   gem 'binding_of_caller', '~> 0.7.2'
-  gem 'capybara-webkit'
+  gem 'capybara-webkit', '~> 1.5.1'
   gem 'factory_girl', '~> 4.5.0', require: false
   gem 'guard-rspec', require: false
   gem 'pry-byebug', '~> 2.0.0'
