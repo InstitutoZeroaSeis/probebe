@@ -65,11 +65,11 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.smtp_settings = {
-    :address => "smtp.sendgrid.net",
-    :port => "587",
-    :authentication => :plain,
-    :user_name => "antonioams",
-    :password => "Ib$cJ3l0"
+    address: "smtp.sendgrid.net",
+    port: "587",
+    authentication: :plain,
+    user_name: "antonioams",
+    password: "Ib$cJ3l0"
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
