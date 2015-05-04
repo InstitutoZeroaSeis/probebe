@@ -19,3 +19,10 @@ $ ->
       form.find('.week_to_date_number').show()
       form.find('.datepicker').hide()
     return
+
+  $('.born_child').trigger 'change'
+
+  $('.add_fields').click ->
+    setTimeout (->
+      $('.born_child').trigger 'change'
+    ), 300
