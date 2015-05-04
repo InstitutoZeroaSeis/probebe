@@ -18,9 +18,7 @@ class User < ActiveRecord::Base
 
   enum role: ALL_ROLES
 
-  delegate :id, :name, :city, :state, :street, :birth_date,
-           :primary_cell_phone_number, :authorized_receive_sms?,
-           to: :profile, prefix: true
+  delegate :id, :name, to: :profile, prefix: true
 
   def password_required?
     true
