@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503214146) do
+ActiveRecord::Schema.define(version: 20150504020730) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20150503214146) do
     t.datetime "updated_at"
     t.integer  "status",            default: 0
     t.string   "cell_phone_number"
+    t.boolean  "sms_allowed",       default: false
   end
 
   create_table "messages", force: true do |t|
