@@ -1,0 +1,17 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Authentication": {
+    "Bucket": "probebe",
+    "Key": ".dockercfg"
+  },
+  "Image": {
+    "Name": "vizir/probebe:staging",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "80"
+    }
+  ],
+  "Logging": "/app/log"
+}
