@@ -4,6 +4,7 @@ default: &default
   timeout: 5000
   username: root
   password: root
+  host: db
 
 development:
   <<: *default
