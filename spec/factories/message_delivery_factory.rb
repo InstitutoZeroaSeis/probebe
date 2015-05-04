@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :message_delivery, class: "MessageDeliveries::MessageDelivery" do
     child
     message
+    sms_allowed true
 
     trait :sent do
       status 'sent'

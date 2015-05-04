@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428221437) do
+ActiveRecord::Schema.define(version: 20150504020730) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20150428221437) do
     t.datetime "updated_at"
     t.integer  "status",            default: 0
     t.string   "cell_phone_number"
+    t.boolean  "sms_allowed",       default: false
   end
 
   create_table "messages", force: true do |t|
@@ -131,7 +132,7 @@ ActiveRecord::Schema.define(version: 20150428221437) do
 
   create_table "profiles", force: true do |t|
     t.date     "birth_date"
-    t.integer  "gender",             default: 2
+    t.integer  "gender",                 default: 2
     t.integer  "user_id"
     t.string   "city"
     t.string   "state"
@@ -141,8 +142,9 @@ ActiveRecord::Schema.define(version: 20150428221437) do
     t.string   "name"
     t.string   "address_complement"
     t.string   "postal_code"
-    t.integer  "cell_phone_system",  default: 2
+    t.integer  "cell_phone_system",      default: 2
     t.string   "cell_phone"
+    t.boolean  "authorized_receive_sms", default: false
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree

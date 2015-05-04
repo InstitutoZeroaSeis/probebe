@@ -1,12 +1,18 @@
 pt-BR:
 
+  user:
+    scope:
+      authorized_receive_sms: Autorizados a receber SMS
+      unauthorized_receive_sms: Não autorizados a receber SMS
   carnival:
-    show: Visualizar
-    new: Novo
-    edit: Editar
-    destroy: Apagar
     errors:
       invalid_field:  "As actions '%{actions}' não são válidas para o campo '%{field}' do presenter '%{presenter}'"
+    authorize_receive_sms: Autorizar do Envio de SMS
+    destroy: Apagar
+    edit: Editar
+    new: Novo
+    show: Visualizar
+    unauthorize_receive_sms: Remover do Envio de SMS
 
   nested_form:
     open: Abrir

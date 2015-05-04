@@ -15,6 +15,7 @@ class Child < ActiveRecord::Base
 
   delegate :primary_cell_phone_number, to: :profile
   delegate :device_registrations, to: :profile
+  delegate :authorized_receive_sms, to: :profile
 
   def age_in_weeks system_date = nil
     system_date ||= MessageDeliveries::SystemDate.new
