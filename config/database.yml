@@ -4,7 +4,6 @@ default: &default
   timeout: 5000
   username: root
   password: root
-  host: db
 
 development:
   <<: *default
@@ -25,3 +24,4 @@ production:
   password: <%= ENV['RDS_PASSWORD'] || 'root' %>
   host: <%= ENV['RDS_HOSTNAME'] || 'db' %>
   port: <%= ENV['RDS_PORT'] || '3306' %>
+  host: db
