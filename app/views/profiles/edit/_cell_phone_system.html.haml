@@ -1,15 +1,20 @@
 .container
-  %h3= @profile.cell_phone_system_text
+  %h3= @profile.phones_text
   %fieldset.edit-profile-form-address
-    .row
-      = f.collection_radio_buttons :cell_phone_system,
-        @profile.options_to_cell_phone_system,
-        :first, :last,
-        item_wrapper_class: 'col-sm-3' do |b|
-        %label.radio-inline.profile-form-radio
-          = b.text
-          = b.radio_button
-          = tag(:span, class: 'custom-check-box')
+    .col-sm-3
+      = f.input :cell_phone, input_html: { class: 'phone' }
 
-      .col-sm-3
-        = f.submit class: 'profile-form-save-button pull-right'
+    %label.sistema{:for => ""}
+      = @profile.cell_phone_system_text
+
+    = f.collection_radio_buttons :cell_phone_system,
+      @profile.options_to_cell_phone_system,
+      :first, :last,
+      item_wrapper_class: 'col-sm-3' do |b|
+      %label.radio-inline.profile-form-radio
+        = b.text
+        = b.radio_button
+        = tag(:span, class: 'custom-check-box')
+
+  .submit-update
+    = f.submit class: 'profile-form-save-button pull-right'
