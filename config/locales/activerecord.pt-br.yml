@@ -42,7 +42,7 @@ pt-BR:
         area_code: Código de área
       child:
         birth_date: Data de Nascimento
-        bornt: Já nasceu?
+        born: Já nasceu?
         gender: Sexo
         name: Nome
       message:

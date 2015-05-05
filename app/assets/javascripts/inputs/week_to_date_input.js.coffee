@@ -8,5 +8,6 @@ weeksToDate = (weeks) ->
 @setDateFromWeek = (event) ->
   weeks = $(event.target).val()
   date = weeksToDate(weeks)
-  console.log(date.toISOString())
-  $(event.target).parent().prev().find('.datepicker').val(date.toISOString())
+  formattedDate = $.datepicker.formatDate('dd/mm/yy', date)
+  console.log(formattedDate)
+  $(event.target).parent().prev().find('.datepicker').val(formattedDate)
