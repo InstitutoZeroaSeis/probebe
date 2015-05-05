@@ -7,185 +7,68 @@ pt-BR:
       full_year: ! '%Y'
       month_name: ! '%b'
   _commom_words: &commom_words
-    article_references: &article_references "Referências"
-    baby_target_type: &baby_target_type "Tipo de bebê que a mensagem se aplica"
-    category: &category 'Categoria'
-    category_id: &category_id 'Categoria'
-    category_name: &category_name 'Categoria'
-    children: "Filhos"
-    edit: &edit "Editar"
-    exit: &exit "Sair"
-    gender: &genders "Sexo"
-    include: "Incluir"
-    maximum_valid_week: &maximum_valid_week "Validade Final em Semana"
-    minimum_valid_week: &minimum_valid_week "Validade Inicial em Semana"
-    my_children: "Meus Filhos"
-    new: &new "Novo"
-    original_author_name: &original_author_name "Nome do Autor"
-    parent_article_id: &parent_article_id 'Artigo Pai'
-    read_more: &read_more "Leia Mais"
-    summary: &summary 'Resumo'
-    teenage_pregnancy: "Aplicável para gravidez na adolescência"
-    text: &text 'Texto'
-    timeline: "Linha do tempo"
-    title: &title 'Título'
-    type: &type 'Tipo'
-    user_email: &user_email 'Email do Autor'
-    view: &view "Visualizar"
-    weeks: "Semanas"
+    article_references: Referências
+    baby_target_type: Tipo de bebê que a mensagem se aplica
+    category: Categoria
+    category_id: Categoria
+    category_name: Categoria
+    children: Filhos
+    edit: Editar
+    exit: Sair
+    gender: Sexo
+    include: Incluir
+    maximum_valid_week: Validade Final em Semana
+    minimum_valid_week: Validade Inicial em Semana
+    my_children: Meus Filhos
+    new: Novo
+    original_author_name: Nome do Autor
+    parent_article_id: Artigo Pai
+    read_more: Leia Mais
+    summary: Resumo
+    teenage_pregnancy: Aplicável para gravidez na adolescência
+    text: Texto
+    timeline: Linha do tempo
+    title: Título
+    type: Tipo
+    user_email: Email do Autor
+    view: Visualizar
+    weeks: Semanas
   _gender: &gender
-    male: 'Masculino'
-    female: 'Feminino'
-    not_informed: 'Não informado'
+    male: Masculino
+    female: Feminino
+    not_informed: Não informado
   _baby_target_type: &baby_target_type_enum
-    pregnancy: "Em gestação"
-    born: "Nascido"
+    pregnancy: Em gestação
+    born: Nascido
   _parent_category: &parent_category
-    education: 'Educação'
-    finance: 'Finança'
-    health: 'Saúde'
-    socio_emotional: 'Socio emocional'
-    security: 'Segurança'
-  activerecord:
-    attributes:
-      articles/article: &article
-        article_references: *article_references
-        baby_target_type: *baby_target_type
-        category: *category
-        category_id: *category_id
-        category_name: *category_name
-        gender: *genders
-        id: Id
-        journalistic_articles_count: "Quantidade de artigos jornalístico"
-        maximum_valid_week: *maximum_valid_week
-        messages: "Mensagens"
-        minimum_valid_week: *minimum_valid_week
-        original_author_name: *original_author_name
-        parent_article_id: *parent_article_id
-        publishable: "Publicável"
-        show_author: "Mostrar autor no post"
-        summary: *summary
-        teenage_pregnancy: "Aplicável para gravidez na adolescência"
-        text: *text
-        title: *title
-        type: *type
-        user_email: *user_email
-      articles/authorial_article:
-        <<: *article
-        journalistic_articles: "Artigos Jornalísticos"
-      articles/journalistic_article:
-        <<: *article
-        parent_article_text: "Texto original"
-        image_cover: "Imagem de capa"
-      avatar:
-        photo: "Foto"
-      category:
-        id: "Id"
-        name: "Nome"
-        parent_category: "Categoria pai"
-        parent_category_name: "Categoria pai"
-      cell_phone:
-        number: "Número"
-        area_code: "Código de área"
-      child:
-        name: "Nome"
-        birth_date: "Data de Nascimento"
-        gender: "Sexo"
-        born: "Já nasceu?"
-      message:
-        created_at: Criado em
-        id: Id
-        messageable_name: Artigo
-        text: Texto
-      message_deliveries/message_delivery:
-        id: "Id"
-        profile_name: "Nome do destinatário"
-        delivery_date: "Data de envio"
-        message_for_test: "Mensagem de teste"
-      profile:
-        address: Endereço
-        address_complement: Complemento
-        avatar: Avatar
-        birth_date: Data de Nascimento
-        city: Cidade
-        first_name: Nome
-        gender: Sexo
-        cell_phone: Celular
-        id: Id
-        is_mother: Já é mãe?
-        is_pregnant: Está Grávida?
-        last_name: Sobrenome
-        name: Nome
-        postal_code: CEP
-        pregnancy_start_date: Idade da gestação
-        state: Estado
-        street: Rua
-      tag:
-        id: "Id"
-        name: "Nome"
-      user:
-        email: Email
-        id: Id
-        password: Senha
-        profile_name: Nome
-        role: Perfil de acesso
-    errors:
-      models:
-        articles/article:
-          attributes:
-            base:
-              has_no_minimum_and_maximum_valid_week: "Tem que definir pelo menos validade inicial ou final"
-              minimum_higher_than_maximum: "Validade Inicial não pode ser maior que a final"
-        articles/journalistic_article:
-          base:
-            messages_length: "O comprimento máximo de cada mensagem dever ser de até 150 caracteres"
-        child:
-          base:
-            maximum_permited_pregnancy_date: "A data de gestação ultrapassará os 9 meses"
-        category:
-          base:
-            has_child_categories: "Categoria não pode ser deletada por conter subcategoria"
-          attributes:
-            parent_category:
-              hierarchy_too_big: "Só é permitido um nível de subcategoria"
-              hierarchy_has_cycles: "A subcategoria não pode ser igual a categoria"
-        profile:
-          base:
-            needs_to_be_mother_or_pregnant: "Você precisa ser mãe ou estar grávida"
-            has_no_children: "Você precisa cadastrar ao menos um filho"
-            needs_mobile_phone: "Precisa de pelo menos um celular"
-    models:
-      articles/journalistic_article: "Artigo Jornalístico"
-      articles/journalistic_article_plural: "Artigos Jornalísticos"
-      category: "Categoria"
-      cell_phone: "Celular"
-      child: "Filho"
-      profile: "Perfil"
-      tag: "Tag"
+    education: Educação
+    finance: Finança
+    health: Saúde
+    socio_emotional: Socio emocional
+    security: Segurança
   carnival:
-    create_journalistic_article: "Criar artigo jornalistico"
-    create_profile: "Criar perfil"
-    edit_profile: "Editar perfil"
-    impersonate: "Logar como"
-    show_activity_log: "Mostrar log de atividade"
+    create_journalistic_article: Criar artigo jornalistico
+    create_profile: Criar perfil
+    edit_profile: Editar perfil
+    impersonate: Logar como
+    show_activity_log: Mostrar log de atividade
     menu:
-      authorial_articles: "Artigo Autoral"
-      admin_site_users: "Administradores"
-      administration: "Administração"
-      categories: "Categorias"
-      journalistic_articles: "Artigo Jornalístico"
-      messages: "Mensagens"
-      message_deliveries: "Mensagens Enviadas"
-      site_users: "Usuários do Site"
-      users: "Usuários"
+      authorial_articles: Artigo Autoral
+      admin_site_users: Administradores
+      administration: Administração
+      categories: Categorias
+      journalistic_articles: Artigo Jornalístico
+      messages: Mensagens
+      message_deliveries: Mensagens Enviadas
+      site_users: Usuários do Site
+      users: Usuários
   controller:
     messages:
-      complete_the_profile: "Complete o perfil para continuar"
-      could_not_sign_up_with_omniauth: "Não foi possível realizar a autencação com o seu provedor"
+      could_not_sign_up_with_omniauth: Não foi possível realizar a autencação com o seu provedor
   errors:
     controllers:
       omniauth_callbacks:
-        authenticate: "Não foi possível autenticar com o método escolhido"
+        authenticate: Não foi possível autenticar com o método escolhido
   success:
     controllers:
       admin:
@@ -241,7 +124,7 @@ pt-BR:
     application:
       admin: "Admin"
       back_to_home: 'Voltar ao início'
-      exit: *exit
+      exit: Sair
       name: "Pro Bebê"
       sign_in: "Login"
       toggle_navigation: "Abrir/Fechar Menu"
@@ -257,7 +140,7 @@ pt-BR:
       nineth_to_twelfth: '9 a 12 meses'
       older_html: "&larr; Mais antigos"
       pregnancy: 'Gravidez'
-      read_more: *read_more
+      read_more: Leai Mais
       related_post: "Posts Relacionados"
       search: "Busca de posts"
       thirteenth_to_fifteenth: '13 a 15 meses'
@@ -275,4 +158,4 @@ pt-BR:
       personal_information: Informações Pessoais
       phones: Telefones
     timeline:
-      read_more: *read_more
+      read_more: Leia Mais

@@ -1,0 +1,117 @@
+pt-BR:
+  activerecord:
+    attributes:
+      articles/article: &article
+        article_references: Referências
+        baby_target_type: Tipo de bebê que a mensagem se aplica
+        category: Categoria
+        category_id: Categoria
+        category_name: Categoria
+        gender: Sexo
+        id: Id
+        journalistic_articles_count: Quantidade de artigos jornalístico
+        maximum_valid_week: Semana final
+        messages: Mensagens
+        minimum_valid_week: Semana inicial
+        original_author_name: Autor Original
+        parent_article_id: Aritigo autoral
+        publishable: Publicável
+        show_author: Mostrar autor no post
+        summary: Resumo
+        teenage_pregnancy: Aplicável para gravidez na adolescência
+        text: Texto
+        title: Título
+        type: Tipo
+        user_email: E-mail
+      articles/authorial_article:
+        <<: *article
+        journalistic_articles: Artigos Jornalísticos
+      articles/journalistic_article:
+        <<: *article
+        parent_article_text: Texto original
+        image_cover: Imagem de capa
+      avatar:
+        photo: Foto
+      category:
+        id: Id
+        name: Nome
+        parent_category: Categoria pai
+        parent_category_name: Categoria pai
+      cell_phone:
+        number: Número
+        area_code: Código de área
+      child:
+        birth_date: Data de Nascimento
+        bornt: Já nasceu?
+        gender: Sexo
+        name: Nome
+      message:
+        created_at: Criado em
+        id: Id
+        messageable_name: Artigo
+        text: Texto
+      message_deliveries/message_delivery:
+        id: Id
+        profile_name: Nome do destinatário
+        delivery_date: Data de envio
+        message_for_test: Mensagem de teste
+      profile:
+        address: Endereço
+        address_complement: Complemento
+        avatar: Avatar
+        birth_date: Data de Nascimento
+        city: Cidade
+        first_name: Nome
+        gender: Sexo
+        cell_phone: Celular
+        id: Id
+        is_mother: Já é mãe?
+        is_pregnant: Está Grávida?
+        last_name: Sobrenome
+        name: Nome
+        postal_code: CEP
+        pregnancy_start_date: Idade da gestação
+        state: Estado
+        street: Rua
+      tag:
+        id: Id
+        name: Nome
+      user:
+        email: Email
+        id: Id
+        password: Senha
+        profile_name: Nome
+        role: Perfil de acesso
+    errors:
+      models:
+        articles/article:
+          attributes:
+            base:
+              has_no_minimum_and_maximum_valid_week: Tem que definir pelo menos validade inicial ou final
+              minimum_higher_than_maximum: Validade Inicial não pode ser maior que a final
+        articles/journalistic_article:
+          base:
+            messages_length: O comprimento máximo de cada mensagem dever ser de até 150 caracteres
+        child:
+          base:
+            maximum_permited_pregnancy_date: A data de gestação ultrapassará os 9 meses
+        category:
+          base:
+            has_child_categories: Categoria não pode ser deletada por conter subcategoria
+          attributes:
+            parent_category:
+              hierarchy_too_big: Só é permitido um nível de subcategoria
+              hierarchy_has_cycles: A subcategoria não pode ser igual a categoria
+        profile:
+          base:
+            needs_to_be_mother_or_pregnant: Você precisa ser mãe ou estar grávida
+            has_no_children: Você precisa cadastrar ao menos um filho
+            needs_mobile_phone: Precisa de pelo menos um celular
+    models:
+      articles/journalistic_article: Artigo Jornalístico
+      articles/journalistic_article_plural: Artigos Jornalísticos
+      category: Categoria
+      cell_phone: Celular
+      child: Filho
+      profile: Perfil
+      tag: Tag
