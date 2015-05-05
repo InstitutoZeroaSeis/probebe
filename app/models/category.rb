@@ -10,7 +10,6 @@ class Category < ActiveRecord::Base
   has_many :messages
 
   validates :name, presence: true
-  validates :parent_category, presence: true
 
   has_paper_trail
 end

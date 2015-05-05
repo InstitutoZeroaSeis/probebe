@@ -16,21 +16,4 @@ describe Category do
 
     expect(category.errors[:name]).to include('não pode ser vazio')
   end
-
-  it 'is valid with parent_category' do
-    category = Category.new(parent_category: Category.new)
-
-    category.valid?
-
-    expect(category.errors[:parent_category])
-      .to_not include('não pode ser vazio')
-  end
-
-  it 'is invalid without parent_category' do
-    category = Category.new(parent_category: nil)
-
-    category.valid?
-
-    expect(category.errors[:parent_category]).to include('não pode ser vazio')
-  end
 end
