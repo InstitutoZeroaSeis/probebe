@@ -45,6 +45,10 @@ class Child < ActiveRecord::Base
     birth_date - PREGNANCY_DURATION_IN_WEEKS.weeks if pregnancy?(system_date)
   end
 
+  def category_ids
+    message_deliveries.joins(message: :category).pluck(:category_id)
+  end
+
   protected
 
   def maximum_permited_pregnancy_date?
