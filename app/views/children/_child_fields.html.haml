@@ -4,7 +4,7 @@
   .col-sm-3
     = f.input :born, input_html: { class: 'born_child' }
   .col-sm-3
-    = f.input :birth_date, as: :week_to_date, input_html: { format: :short }
+    = f.input :birth_date, as: :week_to_date, input_html: { format: :short }, label: false
   .col-sm-3
     = render 'gender_radio_buttons',
               form: f, options: @profile.options_to_gender_enum

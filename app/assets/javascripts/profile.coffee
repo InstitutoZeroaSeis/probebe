@@ -12,13 +12,24 @@ $ ->
 
   $('body').on 'change', '.born_child', (event) ->
     form = $(@).parents('.form-block')
+    clearWeeksToDateFields(form)
+
     if @checked
-      form.find('.week_to_date_number').hide()
-      form.find('.datepicker').show()
+      showBirthDate(form)
     else
-      form.find('.week_to_date_number').show()
-      form.find('.datepicker').hide()
-    return
+      showWeeksToBorn(form)
+
+  clearWeeksToDateFields = (form) ->
+    form.find('.week_to_date_number input').val("")
+    form.find('.date_picker input').val("")
+
+  showBirthDate = (form) ->
+    form.find('.week_to_date_number').hide()
+    form.find('.date_picker').show()
+
+  showWeeksToBorn = (form) ->
+    form.find('.week_to_date_number').show()
+    form.find('.date_picker').hide()
 
   $('.born_child').trigger 'change'
 

@@ -9,4 +9,4 @@ weeksToDate = (weeks) ->
   weeks = $(event.target).val()
   date = weeksToDate(weeks)
   console.log(date.toISOString())
-  $(event.target).parents('.form-block').find('.datepicker').val(date.toISOString())
+  $(event.target).parent().prev().find('.datepicker').val(date.toISOString())

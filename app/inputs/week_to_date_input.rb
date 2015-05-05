@@ -7,18 +7,21 @@ class WeekToDateInput < SimpleForm::Inputs::Base
     content_tag :div, class: 'form-group' do
       content_tag :div, class: 'input-group' do
         datepicker_field +
-          number_field(wrapper_options) +
-          content_tag(:div, class: 'input-group-addon') { I18n.t('general.commom_words.weeks') }
+        week_to_date_content(wrapper_options)
       end
     end
   end
 
   def datepicker_field
+    input_html_options[:value] = object.send(attribute_name)
     @builder.input attribute_name, as: :date_picker, input_html: input_html_options
   end
 
-  def hidden_field
-    @builder.hidden_field(attribute_name)
+  def week_to_date_content(wrapper_options)
+    content_tag :div, class: 'week_to_date_number' do
+      number_field(wrapper_options) +
+      content_tag(:div, class: 'input-group-addon') { I18n.t('general.commom_words.weeks') }
+    end
   end
 
   def number_field(wrapper_options)

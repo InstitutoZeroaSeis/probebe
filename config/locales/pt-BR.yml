@@ -91,6 +91,7 @@ pt-BR:
         name: "Nome"
         birth_date: "Data de Nascimento"
         gender: "Sexo"
+        born: "Já nasceu?"
       message:
         created_at: Criado em
         id: Id

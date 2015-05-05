@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
     profile_params = params[:profile]
 
     personal_attributes = [:name, :gender, :birth_date, :cell_phone_system, avatar_attributes: [:id, :photo]]
-    mother_attributes = [children_attributes: [:id, :_destroy, :name, :birth_date, :gender, avatar_attributes: [:id, :photo]]]
+    mother_attributes = [children_attributes: [:id, :_destroy, :name, :born, :birth_date, :gender, avatar_attributes: [:id, :photo]]]
     contact_attributes = [:state, :city, :street, :postal_code, :address_complement, :cell_phone]
 
     profile_params ? profile_params.permit(personal_attributes + mother_attributes + contact_attributes) : {}
