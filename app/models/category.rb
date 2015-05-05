@@ -1,14 +1,16 @@
 class Category < ActiveRecord::Base
   include Carnival::ModelHelper
-  PARENT_CATEGORY_ENUM = [:health, :education, :security, :finance, :socio_emotional]
+  [
+    :health, :education, :security, :finance, :socio_emotional
+  ]
 
+  belongs_to :parent_category, class_name: 'Category'
+  has_many :articles, class_name: 'Articles::Article'
+  has_many :categories
   has_many :messages
-  has_many :articles, class_name: "Articles::Article"
 
-  validates_presence_of :name, :parent_category
-
-  enum parent_category: PARENT_CATEGORY_ENUM
+  validates :name, presence: true
+  validates :parent_category, presence: true
 
   has_paper_trail
-
 end
