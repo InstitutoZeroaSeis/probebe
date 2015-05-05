@@ -11,17 +11,12 @@ $ ->
       $(currentField).mask(phoneMask(phone), options)
 
   $('body').on 'change', '.born_child', (event) ->
-    form = $(@).parents('.form-block')
-    clearWeeksToDateFields(form)
+    form = $(@).parents('fieldset.form-block')
 
     if @checked
       showBirthDate(form)
     else
       showWeeksToBorn(form)
-
-  clearWeeksToDateFields = (form) ->
-    form.find('.week_to_date_number input').val("")
-    form.find('.date_picker input').val("")
 
   showBirthDate = (form) ->
     form.find('.week_to_date_number').hide()
@@ -36,4 +31,9 @@ $ ->
   $('.add_fields').click ->
     setTimeout (->
       $('.born_child').trigger 'change'
+    ), 400
+
+  $('.born-or-not-born').click ->
+    setTimeout (->
+      $('.born_child:last').prop('checked', true)
     ), 300

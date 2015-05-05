@@ -13,7 +13,6 @@ class WeekToDateInput < SimpleForm::Inputs::Base
   end
 
   def datepicker_field
-    input_html_options[:value] = object.send(attribute_name)
     @builder.input attribute_name, as: :date_picker, input_html: input_html_options
   end
 
