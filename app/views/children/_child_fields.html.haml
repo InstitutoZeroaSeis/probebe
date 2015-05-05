@@ -1,12 +1,12 @@
 %fieldset.form-block.child_fields.profile-form-child
-  .col-sm-6
+  .col-sm-4
     = f.input :name
-  .col-sm-3
-    = f.input :born, input_html: { class: 'born_child' }
-  .col-sm-3
+  .col-sm-3.birth-or-born-date
     = f.input :birth_date, as: :week_to_date, input_html: { format: :short }, label: false
   .col-sm-3
     = render 'gender_radio_buttons',
               form: f, options: @profile.options_to_gender_enum
+  .col-sm-2.birth-or-born
+    = f.input :born, input_html: { class: 'born_child' }
   .form-control-static
     = remove_fields_link('Remover', f, container_to_hide: '.child_fields')

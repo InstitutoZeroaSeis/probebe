@@ -304,10 +304,42 @@ a.vzr-modal-btn-close{
 
 a.remove_fields {
   position: absolute;
-  bottom: -113px;
+  bottom: -131px;
   right: 0;
   background: #fff;
   padding: 10px 15px;
   color: #D87575;
   font-weight: 400;
+}
+
+.gender-input .radio-inline {
+  padding: 23px 17px;
+}
+
+.gender-input .custom-check-box {
+  position: absolute !important;
+  top: 25px !important;
+  left: -6px !important;
+}
+
+.birth-or-born input{
+  margin-top: 20px;
+}
+
+.birth-or-born-date{
+  position: relative;
+  margin-top: -10px;
+}
+
+.input-group-addon {
+  position: absolute;
+  background: none;
+  border: none;
+  left: -6px;
+  font-weight: 300;
+  top: 4px;
+}
+
+input#birth_date {
+  margin-top: 32px;
 }

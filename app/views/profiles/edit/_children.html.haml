@@ -5,7 +5,7 @@
     %button.born-or-not-pregnancy.add_fields{ data: { fields: template_for_association(f, :children, 'children/child_fields') } }
       Gestante
     %span.born-or-not-or
-      Ou
+      ou
     %button.born-or-not-born.add_fields{ data: { fields: template_for_association(f, :children, 'children/child_fields') } }
       Já nasceu
     = f.simple_fields_for :children do |ff|
