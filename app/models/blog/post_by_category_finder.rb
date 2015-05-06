@@ -7,7 +7,7 @@ module Blog
 
     def find
       if @category_name
-        @relation.joins(:category).merge(Category.send(@category_name))
+        @relation.joins(:category).merge(Category.where(name: @category_name))
       else
         @relation
       end
