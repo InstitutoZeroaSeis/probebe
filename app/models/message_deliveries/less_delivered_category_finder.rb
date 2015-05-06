@@ -5,21 +5,26 @@ module MessageDeliveries
     end
 
     def find
-      if deliveries.keys.first
-        Category.find(deliveries.keys.first)
-      else
-        nil
-      end
+      Category
+        .select(Arel.star, count_subquery)
+        .base_categories
+        .joins(:categories)
+        .order('categories_count asc')
+        .first
     end
 
     protected
 
-    def deliveries
-      @found_deliveries ||=
-        @deliveries_relation.joins(message: [category: :parent_category])
-        .group(Category.arel_table[:id])
-        .order(Arel::Table.new(:parent_categories_categories)[:id].count)
-        .count
+    def count_subquery
+      %(
+        (
+          SELECT COUNT(*) FROM messages
+          INNER JOIN message_deliveries
+          ON messages.id = message_deliveries.message_id
+          WHERE messages.category_id = categories_categories.id
+        )
+        AS categories_count
+      )
     end
   end
 end

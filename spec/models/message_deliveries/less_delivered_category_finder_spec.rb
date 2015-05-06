@@ -26,4 +26,15 @@ RSpec.describe MessageDeliveries::LessDeliveredCategoryFinder, type: :model do
 
     expect(found_category).to eq(nil)
   end
+
+  it 'finds categories without deliveries' do
+    category = create(:category, :with_parent)
+
+    category_matcher = MessageDeliveries::LessDeliveredCategoryFinder.new(
+      MessageDeliveries::MessageDelivery.default_scoped
+    )
+    found_category = category_matcher.find
+
+    expect(found_category.name).to eq(category.name)
+  end
 end

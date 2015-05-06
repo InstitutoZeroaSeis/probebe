@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
 
   belongs_to :parent_category, class_name: 'Category'
   has_many :articles, class_name: 'Articles::Article'
-  has_many :categories
+  has_many :categories, foreign_key: :parent_category_id
   has_many :messages
 
   validates :name, presence: true
@@ -14,6 +14,10 @@ class Category < ActiveRecord::Base
   has_paper_trail
 
   protected
+
+  def self.base_categories
+    where(parent_category_id: nil)
+  end
 
   def parent_category_is_not_equals_self
     return unless parent_category == self
