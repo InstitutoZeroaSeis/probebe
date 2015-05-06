@@ -12,11 +12,13 @@ module MessageDeliveries
 
     def match_message_for_child
       messages = filter_messages_for_child
-      if messages.present?
-        messages = create_group_messages_for_child(messages)
-        match_message_from_category(messages)
-      end
+      return if messages.empty?
+
+      messages = create_group_messages_for_child(messages)
+      match_message_from_category(messages)
     end
+
+    protected
 
     def filter_messages_for_child
       messages = filter_by_gender(@messages)
@@ -25,20 +27,22 @@ module MessageDeliveries
       filter_by_already_sent_message(messages)
     end
 
-    protected
-
     def filter_by_gender(messages)
       if child.gender.present?
-        child.gender == 'male' ? messages.send('male_and_both') : messages.send('female_and_both')
+        if child.gender == 'male'
+          messages.male_and_both
+        else
+          messages.female_and_both
+        end
       else
         messages
       end
     end
 
     def filter_by_life_period(messages)
-      gender = child.pregnancy?(@system_date) ? 'pregnancy' : 'born'
+      life_period = child.pregnancy?(@system_date) ? 'pregnancy' : 'born'
       messages.select do |message|
-        message.send("#{gender}?")
+        message.send("#{life_period}?")
       end
     end
 
@@ -62,7 +66,9 @@ module MessageDeliveries
 
     def group_by_maximum_valid_week(messages, child)
       age_in_weeks = child.age_in_weeks(@system_date)
-      messages.group_by {|message| message.remaining_weeks_till_due_date(age_in_weeks) }
+      messages.group_by do |message|
+        message.remaining_weeks_till_due_date(age_in_weeks)
+      end
     end
 
     def find_messages_with_nearest_due_date(grouped_messages)
@@ -79,8 +85,10 @@ module MessageDeliveries
     end
 
     def category_for_child
-      category_matcher = MessageDeliveries::CategoryMatcher.new(@child)
-      category = category_matcher.find_least_delivered_category
+      less_delivered_finder =
+        MessageDeliveries::LessDeliveredCategoryFinder
+        .new(@child.message_deliveries)
+      less_delivered_finder.find
     end
   end
 end

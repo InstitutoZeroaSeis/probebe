@@ -3,6 +3,10 @@ FactoryGirl.define do
     text "Test"
     category
 
+    factory :message_for_delivery do
+      with_journalistic_article
+    end
+
     trait :with_journalistic_article do
       association :messageable, factory: :journalistic_article
     end
