@@ -76,4 +76,15 @@ describe Category do
     expect(parent_category.errors[:parent_category])
       .to include('não pode ser igual a uma subcategoria')
   end
+
+  it 'is invalid if a category with children is updated with a parent' do
+    parent_category = create(:category)
+    children_category = create_pair(:category, parent_category: parent_category)
+    parent_category.parent_category = Category.new
+
+    parent_category.valid?
+
+    expect(parent_category.errors[:parent_category])
+      .to include('não pode ter mais que dois níveis')
+  end
 end

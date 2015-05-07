@@ -10,13 +10,13 @@ class Category < ActiveRecord::Base
   validate :parent_category_is_not_equals_self
   validate :parent_category_is_at_most_two_levels_deep
   validate :parent_category_cannot_be_a_children
+  validate :with_children_cannot_have_parent
 
   enum original_category_type: [
     :health, :education, :security, :finance, :socio_emotional
   ]
 
   has_paper_trail
-
 
   def self.base_categories
     where(parent_category_id: nil)
@@ -45,5 +45,10 @@ class Category < ActiveRecord::Base
   def parent_category_cannot_be_a_children
     return unless parent_category.try(:parent_category) == self
     errors.add(:parent_category, 'não pode ser igual a uma subcategoria')
+  end
+
+  def with_children_cannot_have_parent
+    return unless categories.any? && parent_category.present?
+    errors.add(:parent_category, 'não pode ter mais que dois níveis')
   end
 end
