@@ -28,7 +28,7 @@ class Articles::JournalisticArticle < Articles::Article
   end
 
   def category_name
-    I18n.t("_parent_category.#{category.parent_category}")
+    I18n.t("_parent_category.#{category.parent_category_type}")
   end
 
   def parent_article_text

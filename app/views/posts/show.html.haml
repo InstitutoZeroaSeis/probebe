@@ -1,19 +1,20 @@
 .site-banner
   %ul.site-banner-list
     %li.site-banner-item
-      %figure.site-banner-image{style: "background-image: url(#{@post.image_cover})"}
-        %img{src: @post.image_cover}
+      %figure.site-banner-image{ style: "background-image: url(#{@post.image_cover})" }
+        %img{ src: @post.image_cover }
     %li.site-banner-item
-      %figure.site-banner-image{style: "background-image: url(#{@post.image_cover})"}
-        %img{src: @post.image_cover}
+      %figure.site-banner-image{ style: "background-image: url(#{@post.image_cover})" }
+        %img{ src: @post.image_cover }
 
 %section.main.container-fuild
-  %section.subjects.container{class: "#{@post.category_name.parameterize}"}
+  %section.subjects.container{ class: @post.category_type }
     .posts.subject.col-md-9
       .single-post.col-md-12
         %p.created-at= l(@post.created_at)
         %h2.post_title= @post.titleized_title
-        %p.periodo-label{class: "period-#{@post.pregnancy_or_child_life_period}"}= t("views.blog.#{@post.pregnancy_or_child_life_period}")
+        %p.periodo-label{ class: "period-#{@post.pregnancy_or_child_life_period}" }
+          = t("views.blog.#{@post.pregnancy_or_child_life_period}")
         %p.categoria-label= @post.category_name
         %hr
         %p
@@ -22,7 +23,7 @@
         = render @post.tags
         %hr
         %p.lead
-          = "Publicado"
+          Publicado
           = t('views.blog.by', author: @post.author_name)
 
         %h2= t('views.blog.related_post')

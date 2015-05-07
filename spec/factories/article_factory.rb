@@ -22,6 +22,7 @@ FactoryGirl.define do
       with_parent_authorial_article
 
       factory :post do
+        category { create(:category, :with_parent) }
       end
 
       trait :with_parent_authorial_article do

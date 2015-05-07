@@ -1,16 +1,16 @@
 = render 'home_categories'
 
 %section.subjects.container.signed-in
-  - @categories_articles.each do |category|
-    .subject.col-md-9{id: category[:category] }
+  - @categories_articles.each do |category, articles|
+    .subject.col-md-9{ id: category.original_category_type  }
       .row.col-md-12
-        = render "subject_header_#{category[:category]}"
-      - category[:articles].each do |article|
+        = render "subject_header_#{ category.original_category_type }"
+      - articles.each do |article|
         .col-md-6
           .subject-picture-split
             = link_to post_path(article) do
               %figure
-                %img{width: 300, height: 200, src: article.image_cover}
+                %img{ width: 300, height: 200, src: article.image_cover }
             .subject-picture-split-description
               = link_to post_path(article) do
                 %p
@@ -18,6 +18,6 @@
                     = truncate Nokogiri::HTML(article.text).text, length: 500
                   - else
                     = article.summary
-      = link_to posts_path(category: category[:category]) do
-        %button.subject-picture-split-see-all-posts.center-block{:class => "#{category[:category]}-button"}
+      = link_to posts_path(category: category.original_category_type) do
+        %button.subject-picture-split-see-all-posts.center-block{ class: "#{category.original_category_type}-button" }
           = t('views.application.show_all_post_from_this_category')

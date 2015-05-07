@@ -11,13 +11,26 @@ class Category < ActiveRecord::Base
   validate :parent_category_is_at_most_two_levels_deep
   validate :parent_category_cannot_be_a_children
 
+  enum original_category_type: [
+    :health, :education, :security, :finance, :socio_emotional
+  ]
+
   has_paper_trail
 
-  protected
 
   def self.base_categories
     where(parent_category_id: nil)
   end
+
+  def self.original_categories
+    where.not(original_category_type: nil).order(:original_category_type)
+  end
+
+  def parent_category_type
+    parent_category.try(:original_category_type)
+  end
+
+  protected
 
   def parent_category_is_not_equals_self
     return unless parent_category == self

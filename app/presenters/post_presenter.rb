@@ -1,6 +1,10 @@
 class PostPresenter < SimpleDelegator
   TEXT_MAXIMUM_LENGTH = 500
 
+  def category_type
+    category.parent_category_type
+  end
+
   def post_summary
     summary.presence || Nokogiri::HTML(text).text.truncate(TEXT_MAXIMUM_LENGTH)
   end

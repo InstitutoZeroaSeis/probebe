@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505182631) do
+ActiveRecord::Schema.define(version: 20150506185211) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 20150505182631) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "parent_category"
     t.integer  "parent_category_id"
     t.string   "color"
+    t.integer  "original_category_type"
   end
 
   add_index "categories", ["parent_category_id"], name: "index_categories_on_parent_category_id", using: :btree
