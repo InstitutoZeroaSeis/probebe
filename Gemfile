@@ -29,12 +29,10 @@ gem 'rack-cors', '~> 0.2.9'
 gem 'rpush', '~> 2.2.0'
 gem 'active_model_serializers', '~> 0.9.1'
 gem 'sidekiq', '~> 3.3.0'
-gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'sinatra', '>= 1.3.0', require: nil
 gem 'puma'
 gem 'whenever', '~> 0.9.4'
 gem 'json', '1.8.1'
-gem "fog", "~>1.20", require: "fog/aws/storage"
-gem 'asset_sync', '~> 1.1.0'
 
 group :development do
   gem 'better_errors', '0.9.0'
@@ -54,6 +52,6 @@ group :development, :test do
   gem 'pry-byebug', '~> 2.0.0'
   gem 'rspec', '~> 3.1.0'
   gem 'rspec-rails', '~> 3.1.0'
-  gem "spring-commands-rspec", group: :development
+  gem 'spring-commands-rspec', group: :development
   gem 'guard-rspec', require: false
 end
