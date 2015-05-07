@@ -33,8 +33,7 @@ gem 'sinatra', '>= 1.3.0', require: nil
 gem 'puma'
 gem 'whenever', '~> 0.9.4'
 gem 'json', '1.8.1'
-gem 'fog', '~>1.20', require: 'fog/aws/storage'
-gem 'asset_sync', '~> 1.1.0'
+gem 'aws-sdk', '< 2.0'
 
 group :development do
   gem 'better_errors', '0.9.0'

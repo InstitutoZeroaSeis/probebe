@@ -91,4 +91,12 @@ Rails.application.configure do
   Rails.application.routes.default_url_options[:host] = 'www.probebe.org.br'
 
   # config.action_controller.asset_host = "http://s3.amazonaws.com/elasticbeanstalk-us-east-1-119499395752/"
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV['S3_BUCKET_NAME'],
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end
