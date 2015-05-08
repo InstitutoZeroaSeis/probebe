@@ -12,16 +12,15 @@ class Message < ActiveRecord::Base
 
   validates_presence_of :text
 
-  scope :male_and_both, -> { where(gender:[0,2]) }
-  scope :female_and_both, -> { where(gender:[1,2]) }
+  scope :male_and_both, -> { where(gender: [0, 2]) }
+  scope :female_and_both, -> { where(gender: [1, 2]) }
   scope :journalistic, -> { where(messageable_type: 'Articles::JournalisticArticle') }
 
-  before_save :set_messageable_type
+  before_save :update_messageable_type
 
-  def set_messageable_type
-    if messageable_type
-      self.messageable_type = messageable.class.to_s
-    end
+  def update_messageable_type
+    return unless messageable_type
+    self.messageable_type = messageable.class.to_s
   end
 
   def age_valid_for_message?(age_in_weeks)
@@ -34,5 +33,4 @@ class Message < ActiveRecord::Base
     max_week = maximum_valid_week || Message::MAXIMUM_POSSIBLE_WEEK
     max_week - age_in_weeks
   end
-
 end
