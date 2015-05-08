@@ -27,6 +27,10 @@ class PostPresenter < SimpleDelegator
     )
   end
 
+  def pregnancy_or_child_life_period
+    born? ? child_life_period : baby_target_type
+  end
+
   def self.wrap(posts)
     posts.map do |post|
       new(post)

@@ -39,10 +39,6 @@ class Articles::JournalisticArticle < Articles::Article
     original_author.profile_name
   end
 
-  def pregnancy_or_child_life_period
-    born? ? child_life_period : baby_target_type
-  end
-
   private
 
   def set_child_life_period
