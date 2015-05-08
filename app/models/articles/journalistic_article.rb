@@ -18,7 +18,7 @@ class Articles::JournalisticArticle < Articles::Article
   validate :length_of_messages
 
   after_save :update_messages
-  before_save :set_child_life_period
+  before_save :update_child_life_period
   before_validation :verify_original_author
 
   delegate :profile, to: :original_author
@@ -41,11 +41,10 @@ class Articles::JournalisticArticle < Articles::Article
 
   private
 
-  def set_child_life_period
-    if born?
-      self.child_life_period = Children::LifePeriodForWeek
-        .new(minimum_valid_week, maximum_valid_week).life_period
-    end
+  def update_child_life_period
+    return unless born?
+    self.child_life_period = Children::LifePeriodForWeek
+      .new(minimum_valid_week, maximum_valid_week).life_period
   end
 
   def verify_original_author
