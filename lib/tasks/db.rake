@@ -12,7 +12,8 @@ namespace :db do
   task restore: :environment do |file|
     command = "mysql #{command_options} < #{FILE}"
     puts 'Warning: This will delete all of your current data'
-    puts 'If you really want to restore the database knowing you can loss your data. Type restore: '
+    puts 'If you want to stop press Ctrl-C in 10s'
+    sleep 10
     puts "Restoring from #{file}"
     system command
   end
