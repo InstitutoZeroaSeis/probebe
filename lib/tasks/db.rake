@@ -1,20 +1,20 @@
 namespace :db do
-  FILE = 'tmp/dump.sql'
+  DUMP_FILE = 'tmp/dump.sql'
 
   desc 'Dumps the database to tmp/dump.sql'
   task dump: :environment do
-    command = "mysqldump #{command_options} > #{FILE}"
-    puts "Dumping to #{FILE}"
+    command = "mysqldump #{command_options} > #{DUMP_FILE}"
+    puts "Dumping to #{DUMP_FILE}"
     system command
   end
 
   desc 'Restore the databse from tmp/dump.sql'
-  task restore: :environment do |file|
-    command = "mysql #{command_options} < #{FILE}"
+  task restore: :environment do
+    command = "mysql #{command_options} < #{DUMP_FILE}"
     puts 'Warning: This will delete all of your current data'
     puts 'If you want to stop press Ctrl-C in 10s'
     sleep 10
-    puts "Restoring from #{file}"
+    puts "Restoring from #{DUMP_FILE}"
     system command
   end
 
