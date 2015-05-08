@@ -1,12 +1,9 @@
 class Admin::CategoryPresenter < Carnival::BaseAdminPresenter
-  model_name 'CategoryTranslationDecorator'
-
   field :id,
         actions: [:index, :show], :sortable => false,
         advanced_search: { operator: :equal }
 
   field :parent_category,
-        as: :enum,
         actions: [:edit, :new]
 
   field 'parent_category.name',
@@ -22,5 +19,4 @@ class Admin::CategoryPresenter < Carnival::BaseAdminPresenter
   action :edit
   action :destroy
   action :new
-
 end
