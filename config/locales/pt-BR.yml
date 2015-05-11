@@ -132,7 +132,7 @@ pt-BR:
     blog:
       parent_category: *parent_category
       back_html: "&larr; Voltar"
-      by: "por %{author}"
+      by: "Publicado por %{author}"
       date_posted: "Postado em %{date}"
       fifth_to_eighth: '5 a 8 messes'
       first_to_fourth: '1 a 4 meses'
