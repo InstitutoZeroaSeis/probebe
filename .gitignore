@@ -26,8 +26,8 @@
 vendor/bundle
 public/system
 tags
-/public/system
-/public/ckeditor_assets
+public/system
+public/ckeditor_assets
 provisioning/roles/*
 /path/
 .capistrano/
