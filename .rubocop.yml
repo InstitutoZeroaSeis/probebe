@@ -1,0 +1,19 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'config.ru'
+    - 'coverage/**/*'
+    - 'db/**/*'
+    - 'spec/matchers/cancan_custom_matchers.rb'
+    - 'Vagrantfile'
+    - 'vendor/**/*'
+  RunRailsCops: true
+
+HasAndBelongsToMany:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
