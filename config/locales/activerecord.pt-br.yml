@@ -7,6 +7,7 @@ pt-BR:
         category: Categoria
         category_id: Categoria
         category_name: Categoria
+        created_at: Data de criação
         gender: Sexo
         id: Id
         journalistic_articles_count: Quantidade de artigos jornalístico
