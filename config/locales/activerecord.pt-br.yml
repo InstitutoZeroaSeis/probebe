@@ -28,7 +28,6 @@ pt-BR:
         journalistic_articles: Artigos Jornalísticos
       articles/journalistic_article:
         <<: *article
-        parent_article_text: Texto original
         image_cover: Imagem de capa
       avatar:
         photo: Foto
