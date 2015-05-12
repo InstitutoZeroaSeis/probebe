@@ -5,6 +5,7 @@ module Articles
       :minimum_valid_week, :maximum_valid_week,
       :tags, :teenage_pregnancy, :text, :title
     ]
+
     def initialize(authorial_article)
       @authorial_article = authorial_article
     end

@@ -9,11 +9,7 @@ class Admin::JournalisticArticlesController < Admin::AdminController
   end
 
   def build_resource
-    if needs_custom_article?
-      build_custom_article
-    else
-      super
-    end
+    needs_custom_article? ? build_custom_article : super
   end
 
   protected
@@ -33,12 +29,7 @@ class Admin::JournalisticArticlesController < Admin::AdminController
 
   def find_authorial_article
     return unless needs_custom_article?
-    id =
-      if action_name == 'new'
-        params[:id]
-      else
-        params[:articles_journalistic_article][:parent_article_id]
-      end
+    id = params[:articles_journalistic_article][:parent_article_id]
     Articles::AuthorialArticle.find(id)
   end
 
