@@ -1,0 +1,40 @@
+.about.container
+  %h2= t('about.who_are_we')
+
+  .about-zero-a-seis-logo
+    %figure
+      %img.about-zero-a-seis-logo-img{ src: image_path('logo-zero-a-seis.png') }
+
+  %p.about-zero-a-seis-description
+    %p.lead= t('about.first_paragraph')
+    %p.lead= t('about.second_paragraph')
+    %p.lead= t('about.third_paragraph')
+    %p.lead= t('about.fourth_paragraph')
+    %p.lead= t('about.fifth_paragraph')
+
+  %p.about-zero-a-seis-coordinators
+    %p.lead
+      %strong= t('about.coordinators')
+    %p.about-zero-a-seis-coordinator
+      %p.lead
+        %strong= t('about.people.figueiro.name')
+        \-
+        = t('about.people.figueiro.role')
+      %p.lead
+        = t('about.people.figueiro.description')
+    %p.about-zero-a-seis-coordinator
+      %p.lead
+        %strong= t('about.people.stabel.name')
+        \-
+        = t('about.people.stabel.role')
+      %p.lead
+        = t('about.people.stabel.description')
+    %p.about-zero-a-seis-coordinator
+      %p.lead
+        %strong= t('about.people.guimaro.name')
+        \-
+        = t('about.people.guimaro.role')
+      %p.lead
+        = t('about.people.guimaro.description')
+
+  %p.lead= link_to 'www.zeroaseis.org.br', 'http://www.zeroaseis.org.br'
