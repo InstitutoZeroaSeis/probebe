@@ -31,10 +31,6 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
     sortable: true,
     advanced_search: {operator: :like}
 
-  field :parent_article_text,
-    actions: [:new, :edit],
-    as: :readonly_raw
-
   field :text,
     as: :ckeditor,
     actions: [:show, :edit, :new],

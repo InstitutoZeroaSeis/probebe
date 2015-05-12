@@ -32,10 +32,6 @@ class Articles::JournalisticArticle < Articles::Article
     I18n.t("_parent_category.#{category.parent_category_type}")
   end
 
-  def parent_article_text
-    parent_article.text
-  end
-
   def original_author_name
     original_author.profile_name
   end
