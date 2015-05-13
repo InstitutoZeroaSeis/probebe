@@ -134,3 +134,53 @@ pt-BR:
         incorporação de questões socioambientais na gestão e avaliação de
         investimentos e compartilha conhecimento por meio de pesquisas e
         publicações.
+
+  what:
+    body:
+      first_paragraph:
+        >
+          ProBebê, serviço inovador que leva, gratuitamente, informações sobre
+          os cuidados básicos do bebê à mãe, ao pai ou ao cuidador, por meio de
+          mensagens via celular.
+      second_paragraph:
+        >
+          Aplicativo que envia, pelo celular, orientações semanais à mãe
+          durante a gravidez e acompanhando o crescimento do bebê até os seus
+          18 meses de vida. Tudo de forma simples, objetiva e personalizada.
+      third_paragraph:
+        >
+          É muito fácil. Basta preencher o cadastro - disponível aqui no site -
+          indicando a data do nascimento do bebê ou a data prevista para o
+          nascimento dele e o número do celular a ser registrado.
+      fourth_paragraph:
+        >
+          Pronto! Mensagens semanais passam a ser enviadas (pelo menos três por
+          semana), trazendo informações sobre cada etapa da gravidez ou
+          ajustadas a cada momento de vida do bebê.
+      fifth_paragraph:
+        >
+          Dentro da Linha do Tempo, espaço que o site do ProBebê oferece aos
+          usuários do aplicativo, será possível encontrar o detalhamento das
+          mensagens enviadas (ou apenas rever as que recebeu). Há ainda a
+          possibilidade de se colar ali fotos e adicionar textos, tornando esse
+          espaço um verdadeiro álbum de família.
+      sixth_paragraph:
+        >
+          As mensagens e os artigos do ProBebê  contam com a participação de
+          qualificada equipe de especialistas, responsável por reunir
+          conhecimento atualizado sobre as várias áreas abordadas: saúde,
+          educação, comportamento, segurança, finanças, entre outras.
+      seventh_paragraph:
+        >
+          Toda essa estrutura visa possibilitar aumento no grau de segurança e
+          de autoconfiança, sobretudo das mães, para cuidar, nutrir e fazer com
+          que o bebê tenha condições essenciais para um saudável crescimento.
+      eighth_paragraph:
+        >
+          ProBebê  - projeto premiado no Desafio de Impacto Social Google | Brasil
+
+    header:
+      1_right_message: Mensagem certa,
+      2_right_person: para a pessoa certa,
+      3_right_hour: na hora certa!
+    title: O que é o ProBebê
