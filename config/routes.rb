@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources(:tags, param: :name) { resources :posts, only: :index }
   resources(:categories) { resources :posts, only: :index }
   get :about, to: 'static_pages#about'
+  get :partners, to: 'static_pages#partners'
 
   namespace :api do
     resources :credentials, only: :create
