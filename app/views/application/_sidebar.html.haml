@@ -1,22 +1,15 @@
 %aside.blog-sidebar.col-md-3
   %nav.blog-nav
     %ul.home-categories-list.category-health
-      %li.home-categories-item.category-health.is-active
-        = link_to t('views.blog.parent_category.health'), posts_path(category: 'health')
-      %li.home-categories-item.category-education
-        = link_to t('views.blog.parent_category.education'), posts_path(category: 'education')
-      %li.home-categories-item.category-emotional
-        = link_to t('views.blog.parent_category.socio_emotional'), posts_path(category: 'socio_emotional')
-      %li.home-categories-item.category-finances
-        = link_to t('views.blog.parent_category.finance'), posts_path(category: 'finance')
-      %li.home-categories-item.category-safety
-        = link_to t('views.blog.parent_category.security'), posts_path(category: 'security')
+      - categories.each do |category|
+        %li.home-categories-item
+          = link_to category.name, posts_path(category_id: category.id)
 
   = render 'post_for_period'
 
   %nav.blog-tags
     %ul.home-categories-list.category-education
-      %h3 
+      %h3
         Tags
       %li.home-categories-item
         = render tags

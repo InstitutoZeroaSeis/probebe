@@ -31,6 +31,14 @@ class PostPresenter < SimpleDelegator
     born? ? child_life_period : baby_target_type
   end
 
+  def tags_for_sidebar
+    Tag.all
+  end
+
+  def categories_for_sidebar
+    Category.base_categories
+  end
+
   def self.wrap(posts)
     posts.map do |post|
       new(post)

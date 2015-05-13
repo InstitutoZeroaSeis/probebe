@@ -29,8 +29,12 @@ class PostsPresenter
     url_for(@post_params.merge(page: current_page - 1, controller: POSTS_CONTROLLER))
   end
 
-  def tags
+  def tags_for_sidebar
     Tag.all
+  end
+
+  def categories_for_sidebar
+    Category.base_categories
   end
 
   protected
