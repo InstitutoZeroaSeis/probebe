@@ -9,10 +9,6 @@ class PostPresenter < SimpleDelegator
     summary.presence || Nokogiri::HTML(text).text.truncate(TEXT_MAXIMUM_LENGTH)
   end
 
-  def titleized_title
-    title.titleize
-  end
-
   def author_name
     profile.name
   end

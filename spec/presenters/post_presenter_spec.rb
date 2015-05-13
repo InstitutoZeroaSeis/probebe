@@ -19,15 +19,6 @@ RSpec.describe PostPresenter do
     expect(post_presenter.post_summary.length).to be <= PostPresenter::TEXT_MAXIMUM_LENGTH
   end
 
-  it 'is title to be titleize' do
-    title = 'post presenter spec'
-    post = double(title: title)
-
-    post_presenter = PostPresenter.new(post)
-
-    expect(post_presenter.titleized_title).to eq('Post Presenter Spec')
-  end
-
   it 'it should return author name' do
     profile = double(name: 'profile')
     post = double(profile: profile)
