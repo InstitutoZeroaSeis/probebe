@@ -1,6 +1,8 @@
 class Admin::JournalisticArticlesController < Admin::AdminController
-  defaults resource_class: Articles::JournalisticArticleWithCover
-  load_and_authorize_resource class: 'Articles::JournalisticArticleWithCover'
+  defaults resource_class: Articles::JournalisticArticleWithImageCover
+  load_and_authorize_resource(
+    class: 'Articles::JournalisticArticleWithImageCover'
+  )
 
   layout 'carnival/admin'
 
@@ -36,9 +38,9 @@ class Admin::JournalisticArticlesController < Admin::AdminController
   def build_resource_params
     [
       params.require(:articles_journalistic_article).permit(
-        :id, :text, :title, :summary, :category_id, :user_id, :original_author_id,
+        :text, :title, :summary, :category_id, :user_id, :original_author_id,
         :gender, :teenage_pregnancy, :baby_target_type, :publishable, :image_cover,
-        :box, :minimum_valid_week, :maximum_valid_week, { tag_ids: [] },
+        :box, :minimum_valid_week, :maximum_valid_week, :tag_names,
         article_references_attributes: [:id, :source, :_destroy],
         messages_attributes: [:id, :text, :_destroy]
       ).merge(user_id: current_user.id)

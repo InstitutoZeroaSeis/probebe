@@ -1,5 +1,5 @@
 class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
-  model_name 'Articles::JournalisticArticle'
+  model_name 'Articles::JournalisticArticleWithImageCover'
 
   field :parent_article_id,
         as: :hidden,
@@ -19,11 +19,8 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
   field :category,
         actions: [:new, :edit]
 
-  field :tags,
-        actions: [:new, :show, :edit],
-        nested_form: true,
-        nested_form_modes: [:associate],
-        show_as_list: true
+  field :tag_names,
+        actions: [:new, :show, :edit]
 
   field :title,
         actions: [:index, :show, :edit, :new],

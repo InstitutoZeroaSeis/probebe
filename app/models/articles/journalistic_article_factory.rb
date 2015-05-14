@@ -11,7 +11,7 @@ module Articles
     end
 
     def build
-      Articles::JournalisticArticleWithCover.new do |a|
+      Articles::JournalisticArticleWithImageCover.new do |a|
         copy_properties(a)
 
         a.original_author = @authorial_article.user

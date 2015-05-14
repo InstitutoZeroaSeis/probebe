@@ -36,6 +36,20 @@ class Articles::JournalisticArticle < Articles::Article
     Articles::MessageUpdater.update_many_from_article(messages, self)
   end
 
+  def tag_names
+    tags.map(&:name).join(', ')
+  end
+
+  def tag_names=(tags)
+    split_tag_names =
+      tags
+      .split(',')
+      .map(&:strip)
+      .select(&:present?)
+
+    self.tags = Articles::TagByNameCreator.new(split_tag_names).find_or_create_tags
+  end
+
   private
 
   def ensure_presence_of_original_author
