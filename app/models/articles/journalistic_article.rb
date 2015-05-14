@@ -41,13 +41,10 @@ class Articles::JournalisticArticle < Articles::Article
   end
 
   def tag_names=(tag_names)
-    split_tag_names =
-      tag_names
-      .split(',')
-      .map(&:strip)
-      .select(&:present?)
-
-    self.tags = Articles::TagByNameCreator.new(split_tag_names).find_or_create_tags
+    split_tag_names = Articles::TagSplitter.new(tag_names).split_by_comma
+    self.tags =
+      Articles::TagByNameCreator.new(split_tag_names)
+      .find_or_create_tags
   end
 
   private
