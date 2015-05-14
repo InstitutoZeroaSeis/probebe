@@ -40,9 +40,9 @@ class Articles::JournalisticArticle < Articles::Article
     tags.map(&:name).join(', ')
   end
 
-  def tag_names=(tags)
+  def tag_names=(tag_names)
     split_tag_names =
-      tags
+      tag_names
       .split(',')
       .map(&:strip)
       .select(&:present?)
