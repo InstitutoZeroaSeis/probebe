@@ -20,7 +20,8 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
         actions: [:new, :edit]
 
   field :tag_names,
-        actions: [:new, :show, :edit]
+        actions: [:new, :show, :edit],
+        as: :text_with_tag_data
 
   field :title,
         actions: [:index, :show, :edit, :new],

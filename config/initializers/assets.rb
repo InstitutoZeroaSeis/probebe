@@ -21,6 +21,7 @@ Rails.application.config.assets.precompile += %w( ckeditor/* )
 Rails.application.config.assets.precompile += %w( profile.js )
 Rails.application.config.assets.precompile += %w( sign_up.js )
 Rails.application.config.assets.precompile += %w( home.js )
+Rails.application.config.assets.precompile += %w( jquery.tagit.js jquery.tagit.css article_tags.js )
 
 Rails.application.config.assets.precompile += %w(
   roboto.2tsd397wLxj96qwHyNIkxPesZW2xOQ-xsNqO47m55DA.woff2
