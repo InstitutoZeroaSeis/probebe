@@ -30,6 +30,7 @@ pt-BR:
       articles/journalistic_article:
         <<: *article
         image_cover: Imagem de capa
+        tag_names: Tags
       avatar:
         photo: Foto
       category:
