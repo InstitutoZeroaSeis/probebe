@@ -20,13 +20,9 @@ class Articles::JournalisticArticle < Articles::Article
 
   after_save :update_messages
   before_save :update_child_life_period
-  before_validation :verify_original_author
+  before_validation :ensure_presence_of_original_author
 
   delegate :profile, to: :original_author
-
-  def update_messages
-    Articles::MessageUpdater.update_many_from_article(messages, self)
-  end
 
   def category_name
     I18n.t("_parent_category.#{category.parent_category_type}")
@@ -36,24 +32,24 @@ class Articles::JournalisticArticle < Articles::Article
     original_author.profile_name
   end
 
+  def update_messages
+    Articles::MessageUpdater.update_many_from_article(messages, self)
+  end
+
   private
+
+  def ensure_presence_of_original_author
+    self.original_author ||= Author::DefaultAuthor.find_default_author
+  end
+
+  def length_of_messages
+    return unless messages.find { |message| message.text_size > 150 }
+    errors.add(:base, :messages_length)
+  end
 
   def update_child_life_period
     return unless born?
     self.child_life_period = Children::LifePeriodForWeek
       .new(minimum_valid_week, maximum_valid_week).life_period
-  end
-
-  def verify_original_author
-    self.original_author ||= Author::DefaultAuthor.find_default_author
-  end
-
-  def length_of_messages
-    messages.each do |message|
-      if message.text.size > 150
-        errors.add(:base,
-          I18n.t('activerecord.errors.models.articles/journalistic_article.base.messages_length'))
-      end
-    end
   end
 end

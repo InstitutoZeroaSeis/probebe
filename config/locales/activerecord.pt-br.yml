@@ -90,8 +90,9 @@ pt-BR:
               has_no_minimum_and_maximum_valid_week: Tem que definir pelo menos validade inicial ou final
               minimum_higher_than_maximum: Validade Inicial não pode ser maior que a final
         articles/journalistic_article:
-          base:
-            messages_length: O comprimento máximo de cada mensagem dever ser de até 150 caracteres
+          attributes:
+            base:
+              messages_length: O comprimento máximo de cada mensagem dever ser de até 150 caracteres
         child:
           base:
             maximum_permited_pregnancy_date: A data de gestação ultrapassará os 9 meses
