@@ -28,6 +28,10 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
         sortable: true,
         advanced_search: { operator: :like }
 
+  field :intro_text,
+        actions: [:index, :new, :edit, :show],
+        sortable: true
+
   field :text,
         as: :ckeditor,
         actions: [:show, :edit, :new],
@@ -65,6 +69,10 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
         advanced_search: { operator: :equal }
 
   field :publishable,
+        actions: [:index, :new, :edit, :show],
+        sortable: true
+
+  field :intro_text,
         actions: [:index, :new, :edit, :show],
         sortable: true
 

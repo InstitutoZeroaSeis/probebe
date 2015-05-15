@@ -38,9 +38,10 @@ class Admin::JournalisticArticlesController < Admin::AdminController
   def build_resource_params
     [
       params.require(:articles_journalistic_article).permit(
-        :text, :title, :summary, :category_id, :user_id, :original_author_id,
-        :gender, :teenage_pregnancy, :baby_target_type, :publishable, :image_cover,
-        :box, :minimum_valid_week, :maximum_valid_week, :tag_names,
+        :text, :title, :intro_text, :summary, :category_id, :user_id,
+        :original_author_id, :gender, :teenage_pregnancy, :baby_target_type,
+        :publishable, :image_cover, :box, :minimum_valid_week,
+        :maximum_valid_week, :tag_names,
         article_references_attributes: [:id, :source, :_destroy],
         messages_attributes: [:id, :text, :_destroy]
       ).merge(user_id: current_user.id)

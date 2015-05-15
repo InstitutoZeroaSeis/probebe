@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506185211) do
+ActiveRecord::Schema.define(version: 20150515224941) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150506185211) do
     t.boolean  "publishable",                 default: false
     t.string   "image_cover"
     t.integer  "child_life_period"
+    t.string   "intro_text"
   end
 
   create_table "articles_tags", id: false, force: true do |t|
