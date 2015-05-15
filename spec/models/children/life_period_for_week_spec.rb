@@ -28,22 +28,22 @@ RSpec.describe Children::LifePeriodForWeek do
     expect(checker.life_period).to eq(:nineth_to_twelfth)
   end
 
-  it 'is thirteenth_to_fifteenth if life period is between 13 to 15 months' do
+  it 'is thirteenth_to_eighteenth if life period is between 13 to 15 months' do
     start_week =  49
     end_week = 60
 
     checker = Children::LifePeriodForWeek.new(start_week, end_week)
 
-    expect(checker.life_period).to eq(:thirteenth_to_fifteenth)
+    expect(checker.life_period).to eq(:thirteenth_to_eighteenth)
   end
 
-  it 'is thirteenth_to_fifteenth if life period is greater than 15 months' do
+  it 'is thirteenth_to_eighteenth if life period is greater than 15 months' do
     start_week =  61
     end_week = 62
 
     checker = Children::LifePeriodForWeek.new(start_week, end_week)
 
-    expect(checker.life_period).to eq(:thirteenth_to_fifteenth)
+    expect(checker.life_period).to eq(:thirteenth_to_eighteenth)
   end
 
   it 'uses start_week if end_week is nil' do
@@ -61,7 +61,7 @@ RSpec.describe Children::LifePeriodForWeek do
 
     checker = Children::LifePeriodForWeek.new(start_week, end_week)
 
-    expect(checker.life_period).to eq(:thirteenth_to_fifteenth)
+    expect(checker.life_period).to eq(:thirteenth_to_eighteenth)
   end
 
   it 'is fifth_to_eigth if the given range is near it' do
@@ -73,13 +73,13 @@ RSpec.describe Children::LifePeriodForWeek do
     expect(checker.life_period).to eq(:fifth_to_eighth)
   end
 
-  it 'is thirteenth_to_fifteenth if the given range exceeds the limits' do
+  it 'is thirteenth_to_eighteenth if the given range exceeds the limits' do
     start_week = 90
     end_week = 100
 
     checker = Children::LifePeriodForWeek.new(start_week, end_week)
 
-    expect(checker.life_period).to eq(:thirteenth_to_fifteenth)
+    expect(checker.life_period).to eq(:thirteenth_to_eighteenth)
   end
 
   it 'is the range that covers more fo the time in weeks specified' do

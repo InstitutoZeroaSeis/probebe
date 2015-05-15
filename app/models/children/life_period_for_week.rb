@@ -4,7 +4,7 @@ module Children
       PERIOD_FOR_FIRST_TO_FOURTH_MONTH = 0..16,
       PERIOD_FOR_FIFTH_TO_EIGHTH_MONTH = 17..32,
       PERIOD_FOR_NINETH_TO_TWELFTH_MONTH = 33..48,
-      PERIOD_FOR_THIRTEENTH_TO_FIFTEENTH_MONTH = 49..60
+      PERIOD_FOR_THIRTEENTH_TO_EIGHTEENTH_MONTH = 49..60
     ]
 
     def initialize(start_week, end_week)
@@ -20,10 +20,10 @@ module Children
         :fifth_to_eighth
       when PERIOD_FOR_NINETH_TO_TWELFTH_MONTH
         :nineth_to_twelfth
-      when PERIOD_FOR_THIRTEENTH_TO_FIFTEENTH_MONTH
-        :thirteenth_to_fifteenth
+      when PERIOD_FOR_THIRTEENTH_TO_EIGHTEENTH_MONTH
+        :thirteenth_to_eighteenth
       else
-        :thirteenth_to_fifteenth
+        :thirteenth_to_eighteenth
       end
     end
 

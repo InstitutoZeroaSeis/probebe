@@ -30,10 +30,11 @@
         %p Dar leite de caixinha para o seu filho antes dois anos, pode prejudiar o seu desenvolvimento?
       %figure.site-banner-image
         = image_tag 'img-banner-probebe.jpg'
+
   .site-banner-arrow
   .site-banner-dots
-    .site-banner-dot.step-0.is-active Gravidêz
-    .site-banner-dot.step-1 1 a 4 meses
-    .site-banner-dot.step-2 5 a 8 meses
-    .site-banner-dot.step-3 9 a 12 meses
-    .site-banner-dot.step-4 12 a 15 meses
+    .site-banner-dot.step-0.is-active= t('views.blog.pregnancy')
+    .site-banner-dot.step-1= t('views.blog.first_to_fourth')
+    .site-banner-dot.step-2= t('views.blog.fifth_to_eighth')
+    .site-banner-dot.step-3= t('views.blog.nineth_to_twelfth')
+    .site-banner-dot.step-4= t('views.blog.thirteenth_to_eighteenth')

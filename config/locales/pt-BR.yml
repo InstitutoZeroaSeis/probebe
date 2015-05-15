@@ -143,7 +143,7 @@ pt-BR:
       read_more: Leai Mais
       related_post: "Posts Relacionados"
       search: "Busca de posts"
-      thirteenth_to_fifteenth: '13 a 15 meses'
+      thirteenth_to_eighteenth: '13 a 18 meses'
     errors:
       forbidden: "Acesso não autorizado"
       internal_server_error: "Ocorreu um erro ao processar a requisição"
