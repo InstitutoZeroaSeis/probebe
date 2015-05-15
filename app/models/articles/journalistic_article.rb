@@ -25,7 +25,7 @@ class Articles::JournalisticArticle < Articles::Article
   delegate :profile, to: :original_author
 
   def category_name
-    I18n.t("_parent_category.#{category.parent_category_type}")
+    category.name
   end
 
   def original_author_name
