@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get :raw, on: :member
   end
   get 'posts/page/:page_id' => 'posts#index', as: :paged_posts
-  resources(:tags, param: :name) { resources :posts, only: :index }
+  resources(:tags, param: :name, only: []) { resources :posts, only: :index }
   resources(:categories) { resources :posts, only: :index }
   get :about, to: 'static_pages#about'
   get :partners, to: 'static_pages#partners'
