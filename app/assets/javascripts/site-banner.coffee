@@ -1,8 +1,8 @@
 $ ->
   $('.site-banner-list').owlCarousel
-    autoplay: false
+    autoplay: true
     autoplayHoverPause: true
-    autoplayTimeout: 1000
+    autoplayTimeout: 4000
     center: true
     dots: false
     items: 1

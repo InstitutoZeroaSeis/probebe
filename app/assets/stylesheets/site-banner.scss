@@ -54,6 +54,7 @@
 }
 
 .site-banner-image {
+  background: image-url('img-banner-probebe.jpg') center top;
   left: 0;
   margin: 0;
   padding: 0;
@@ -61,7 +62,6 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: image-url('img-banner-probebe.jpg') center top;
   background-size: 1920px;
 
   img {
@@ -79,6 +79,26 @@
     background: image-url('site-banner-texture.png');
     z-index: 2;
   }
+}
+
+.site-banner-image-pregnancy {
+  background: transparent image-url('banner-1.jpg') repeat scroll center -360px;
+}
+
+.site-banner-image-first-to-fourth-month {
+  background: transparent image-url('banner-2.jpg') repeat scroll center -500px;
+}
+
+.site-banner-image-fifth-to-eighth-month {
+  background: transparent image-url('banner-3.jpg') repeat scroll center -150px;
+}
+
+.site-banner-image-nineth-to-twelfth-month {
+  background: transparent image-url('banner-4.jpg') repeat scroll center -350px;
+}
+
+.site-banner-image-thirteenth-to-eightteenth-month {
+  background: transparent image-url('banner-5.jpg') repeat scroll center -280px;
 }
 
 .site-banner-arrow {
@@ -162,7 +182,7 @@
   &.step-4 {
     border-bottom-color: $yellow;
     color: $yellow;
-    
+
     &:before{display: none;}
     &:after{background-position: -1235px 0px;}
 
@@ -197,6 +217,6 @@
     height: 66px;
     top: -5px;
     background-image: image-url('banner-bullets-icons.png');
-    background-repeat: no-repeat;    
+    background-repeat: no-repeat;
   }
 }
