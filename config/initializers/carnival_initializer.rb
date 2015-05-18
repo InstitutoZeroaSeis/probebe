@@ -51,5 +51,5 @@ Carnival.configure do |config|
   )
   config.custom_css_files = %w(jquery-ui admin jquery.tagit.css)
   config.use_full_model_name = false
-  config.root_action = 'admin/authorial_articles#index'
+  config.root_action = 'admin/journalistic_articles#index'
 end
