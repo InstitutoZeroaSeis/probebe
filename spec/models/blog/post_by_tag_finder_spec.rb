@@ -7,7 +7,7 @@ RSpec.describe Blog::PostByTagFinder do
       post_with_tag = create(:post, tags: [tag])
       post_with_another_tag = create(:post)
 
-      finder = Blog::PostByTagFinder.new(tag.name, Blog::Post)
+      finder = Blog::PostByTagFinder.new(tag.id, Blog::Post)
 
       expect(finder.find).to eq([post_with_tag])
     end
