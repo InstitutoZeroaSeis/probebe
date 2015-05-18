@@ -31,7 +31,7 @@ class Category < ActiveRecord::Base
   end
 
   def to_param
-    [id, name.parameterize].join('-')
+    Slug.from_args(id, name)
   end
 
   protected
