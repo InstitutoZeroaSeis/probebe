@@ -26,6 +26,16 @@ RSpec.describe Articles::JournalisticArticle, type: :model do
     it { is_expected.to be_valid }
   end
 
+  it 'is ordered from the newest to oldest by default' do
+    older_post = create(:journalistic_article)
+    newer_post = create(:journalistic_article)
+
+    all_posts = Articles::JournalisticArticle.all
+
+    expect(all_posts.map(&:title))
+      .to eq([newer_post.title, older_post.title])
+  end
+
   context 'with messages' do
     subject { build :journalistic_article, :with_message }
     it 'is expected to update the messages with the correct attributes' do

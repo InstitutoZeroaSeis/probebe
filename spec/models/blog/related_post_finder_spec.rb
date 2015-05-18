@@ -10,7 +10,7 @@ RSpec.describe Blog::RelatedPostFinder do
       finder = Blog::RelatedPostFinder.new(post.id)
 
       expect(finder.find_related.map(&:title))
-        .to eq(related_posts.map(&:title))
+        .to match_array(related_posts.map(&:title))
     end
 
     it 'does not include unrelated posts' do

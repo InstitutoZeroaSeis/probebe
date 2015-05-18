@@ -2,6 +2,8 @@ class Articles::JournalisticArticle < Articles::Article
   include Carnival::ModelHelper
   include RejectAttributesConcern
 
+  default_scope -> { order(created_at: :desc) }
+
   belongs_to :parent_article,
              class_name: 'Articles::AuthorialArticle',
              foreign_key: :parent_article_id,
