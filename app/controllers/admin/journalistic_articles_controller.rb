@@ -14,6 +14,10 @@ class Admin::JournalisticArticlesController < Admin::AdminController
     needs_custom_article? ? build_custom_article : super
   end
 
+  def show
+    redirect_to post_path(params[:id])
+  end
+
   protected
 
   def build_custom_article
