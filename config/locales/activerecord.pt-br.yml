@@ -32,6 +32,10 @@ pt-BR:
         image_cover: Imagem de capa
         intro_text: Linha fina
         tag_names: Tags
+      authors/author:
+        name: Nome
+        bio: Bio
+        photo: Foto
       avatar:
         photo: Foto
       category:
@@ -114,6 +118,7 @@ pt-BR:
       articles/authorial_article: Artigo Autoral
       articles/journalistic_article: Artigo Jornalístico
       articles/journalistic_article_plural: Artigos Jornalísticos
+      authors/author: Autor
       category: Categoria
       cell_phone: Celular
       child: Filho

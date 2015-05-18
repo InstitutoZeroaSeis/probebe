@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515224941) do
+ActiveRecord::Schema.define(version: 20150518210543) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 20150515224941) do
   create_table "articles_tags", id: false, force: true do |t|
     t.integer "article_id", null: false
     t.integer "tag_id",     null: false
+  end
+
+  create_table "authors", force: true do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "avatars", force: true do |t|
