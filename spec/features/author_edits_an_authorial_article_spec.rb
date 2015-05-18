@@ -10,9 +10,8 @@ feature 'Author edits an authorial article' do
     visit edit_admin_authorial_article_path(authorial_article)
     fill_in 'articles_authorial_article_title', with: article_title
     click_on I18n.t('update')
-    visit carnival_root_path
+    visit admin_authorial_articles_path
 
-    expect(current_path).to eq(carnival_root_path)
     expect(page).to have_content(article_title)
   end
 end

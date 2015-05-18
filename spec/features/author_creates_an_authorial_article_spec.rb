@@ -19,9 +19,8 @@ feature 'Author create an authorial article' do
     end
     fill_in 'articles_authorial_article_minimum_valid_week', with: 10
     click_on 'Criar'
-    visit carnival_root_path
+    visit admin_authorial_articles_path
 
-    expect(current_path).to eq(carnival_root_path)
     expect(page).to have_content(article_title)
   end
 end
