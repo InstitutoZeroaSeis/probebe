@@ -20,20 +20,20 @@ RSpec.describe PostPresenter do
   end
 
   it 'it should return author name' do
-    profile = double(name: 'profile')
-    post = double(profile: profile)
+    author = double(name: 'author')
+    post = double(original_author: author)
 
     post_presenter = PostPresenter.new(post)
 
-    expect(post_presenter.author_name).to eq(profile.name)
+    expect(post_presenter.author_name).to eq(author.name)
   end
 
   it 'it should return author photo url' do
-    profile = double(avatar_url: 'avatar/url')
-    post = double(profile: profile)
+    author = double(photo_url: 'avatar/url')
+    post = double(original_author: author)
 
     post_presenter = PostPresenter.new(post)
 
-    expect(post_presenter.author_photo_url).to eq(profile.avatar_url)
+    expect(post_presenter.author_photo_url).to eq(author.photo_url)
   end
 end

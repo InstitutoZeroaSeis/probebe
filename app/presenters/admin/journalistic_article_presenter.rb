@@ -7,8 +7,7 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
         sortable: true,
         advanced_search: { operator: :equal }
 
-  field :original_author_id,
-        as: :admin_site_user_collection,
+  field :original_author,
         actions: [:new, :edit],
         advanced_search: { operator: :like }
 
@@ -76,7 +75,7 @@ class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
         actions: [:index, :new, :edit, :show],
         sortable: true
 
-  field 'original_author_name',
+  field :original_author_name,
         actions: [:index, :show],
         sortable: true,
         advanced_search: { operator: :like }

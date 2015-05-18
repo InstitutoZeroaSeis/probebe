@@ -18,7 +18,7 @@ RSpec.describe Articles::JournalisticArticle, type: :model do
   end
 
   it 'is valid with original_author' do
-    article = Articles::JournalisticArticle.new(original_author: User.new)
+    article = Articles::JournalisticArticle.new(original_author: Authors::Author.new)
 
     article.valid?
 

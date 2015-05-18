@@ -37,6 +37,10 @@ Carnival.configure do |config|
         {
           label: 'message_deliveries',
           link: '/admin/message_deliveries'
+        },
+        {
+          label: 'authors',
+          link: '/admin/authors'
         }
       ]
     }

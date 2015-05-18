@@ -22,14 +22,14 @@ class Articles::JournalisticArticle < Articles::Article
   before_save :update_child_life_period
   before_validation :ensure_presence_of_original_author
 
-  delegate :profile, to: :original_author
-
   def category_name
+    # TODO: Change to delegate
     category.name
   end
 
   def original_author_name
-    original_author.profile_name
+    # TODO: Change to delegate
+    original_author.name
   end
 
   def update_messages

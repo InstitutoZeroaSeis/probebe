@@ -10,11 +10,11 @@ class PostPresenter < SimpleDelegator
   end
 
   def author_name
-    profile.name
+    original_author.name
   end
 
   def author_photo_url
-    profile.avatar_url
+    original_author.photo_url
   end
 
   def related_posts

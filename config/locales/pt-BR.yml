@@ -54,6 +54,7 @@ pt-BR:
     show_activity_log: Mostrar log de atividade
     menu:
       authorial_articles: Artigo Autoral
+      authors: Autores
       admin_site_users: Administradores
       administration: Administração
       categories: Categorias

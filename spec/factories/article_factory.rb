@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :article, class: Articles::Article do
-    sequence(:text) {|n| "Text#{n}"}
-    sequence(:title) {|n| "Title#{n}"}
-    sequence(:summary) {|n| "Summary#{n}"}
+    sequence(:text) { |n| "Text#{n}" }
+    sequence(:title) { |n| "Title#{n}" }
+    sequence(:summary) { |n| "Summary#{n}" }
     gender 'both'
     baby_target_type 'pregnancy'
     minimum_valid_week 8
@@ -17,7 +17,7 @@ FactoryGirl.define do
 
     factory :journalistic_article, class: Articles::JournalisticArticle do
       type 'Articles::JournalisticArticle'
-      original_author { create(:user, :author) }
+      original_author { create(:author) }
       publishable true
       with_parent_authorial_article
 
@@ -52,7 +52,6 @@ FactoryGirl.define do
       trait :unpublished do
         publishable false
       end
-
     end
   end
 

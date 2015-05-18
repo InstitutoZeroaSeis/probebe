@@ -14,7 +14,6 @@ module Articles
       Articles::JournalisticArticleWithImageCover.new do |a|
         copy_properties(a)
 
-        a.original_author = @authorial_article.user
         a.parent_article = @authorial_article
 
         @authorial_article.messages.each do |message|
