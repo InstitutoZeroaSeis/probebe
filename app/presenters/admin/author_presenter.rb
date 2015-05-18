@@ -10,6 +10,7 @@ class Admin::AuthorPresenter < Carnival::BaseAdminPresenter
   field :photo, actions: [:index, :show, :new, :edit]
 
   action :new
+  action :edit
   action :show
 
   index_as :list
