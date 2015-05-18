@@ -3,7 +3,7 @@ $ ->
     item =$(btn).attr('href').replace("#", "")
     $('.home-categories-item a').parent().removeClass('is-active')
     $(btn).parent().addClass('is-active')
-    $('.home-categories-list').removeClass('category-health category-education category-socio_emotional category-finance category-security')
+    $('.home-categories-list').removeClass('category-health category-education category-behavior category-finance category-security')
     $('.home-categories-list').addClass('category-'+item)
 
   $('.home-categories-item.home-categories-click a').on 'click', -> 
@@ -28,7 +28,7 @@ $ ->
     else if $(@).scrollTop() >= $('#education').offset().top-85 && $(@).scrollTop() <= $('#education').offset().top+$('#education').height()
       homeMenuActive('.home-categories-item.category-education a')        
 
-    else if $(@).scrollTop() >= $('#socio_emotional').offset().top-85 && $(@).scrollTop() <= $('#socio_emotional').offset().top+$('#socio_emotional').height()
+    else if $(@).scrollTop() >= $('#behavior').offset().top-85 && $(@).scrollTop() <= $('#behavior').offset().top+$('#behavior').height()
       homeMenuActive('.home-categories-item.category-emotional a')      
 
     else if $(@).scrollTop() >= $('#finance').offset().top-85 && $(@).scrollTop() <= $('#finance').offset().top+$('#finance').height()

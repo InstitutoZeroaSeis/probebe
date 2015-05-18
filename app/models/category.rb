@@ -13,7 +13,7 @@ class Category < ActiveRecord::Base
   validate :with_children_cannot_have_parent
 
   enum original_category_type: [
-    :health, :education, :security, :finance, :socio_emotional
+    :health, :education, :security, :finance, :behavior
   ]
 
   has_paper_trail

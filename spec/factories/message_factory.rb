@@ -27,8 +27,8 @@ FactoryGirl.define do
       association :category, factory: [:category, :with_finance_parent]
     end
 
-    trait :with_socio_emotional_category do
-      association :category, factory: [:category, :with_socio_emotional_parent]
+    trait :with_behavior_category do
+      association :category, factory: [:category, :with_behavior_parent]
     end
   end
 end

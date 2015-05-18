@@ -77,15 +77,15 @@
         = link_to posts_path(category: 'finance') do
           %button.subject-description-buttons-read-finance Leia
 
-  .subject.col-md-9#socio_emotional
+  .subject.col-md-9#behavior
     .row.col-md-12
-      = render 'subject_header_socio_emotional'
+      = render 'subject_header_behavior'
     .col-md-5
       = render 'subject_picture', img_path: '', content: 'Lorem ipsum dolor sit amet'
 
     .col-md-7
       .subject-description
-        .subject-description-header.subject-description-header-socio_emocional
+        .subject-description-header.subject-description-header-behavior
           %h3
             Mais de
             %span.highlight 400
@@ -93,6 +93,6 @@
           %p
             Para guiar você e o seu filho para uma vida com corpo e mente saudável
       .subject-description-buttons
-        %button.cadastre-se.subject-description-buttons-sign-in-socio_emocional Cadastre-se
-        = link_to posts_path(category: 'socio_emotional') do
-          %button.subject-description-buttons-read-socio_emocional Leia
+        %button.cadastre-se.subject-description-buttons-sign-in-behavior Cadastre-se
+        = link_to posts_path(category: 'behavior') do
+          %button.subject-description-buttons-read-behavior Leia

@@ -55,7 +55,7 @@
   @include subject($bg-orange, $orange);
 }
 
-.subject-socio_emotional {
+.subject-behavior {
   @include subject($bg-purple, $purple);
 }
 
@@ -110,7 +110,7 @@
   background-position: 0px -720px;
 }
 
-#socio_emotional .subject-picture figure{
+#behavior .subject-picture figure{
   background-size: 331px;
   background-position: 0px -560px;
 }
@@ -166,7 +166,7 @@
   background-color: $green;
 }
 
-.socio_emotional-button {
+.behavior-button {
   background-color: $purple;
 }
 
@@ -217,7 +217,7 @@
   }
 }
 
-.subject-description-header-socio_emocional {
+.subject-description-header-behavior {
   .highlight {
     color: $purple;
   }
@@ -273,11 +273,11 @@
   @include subject-description-buttons-read($orange);
 }
 
-.subject-description-buttons-sign-in-socio_emocional {
+.subject-description-buttons-sign-in-behavior {
   @include subject-description-buttons-sign-in($purple);
 }
 
-.subject-description-buttons-read-socio_emocional {
+.subject-description-buttons-read-behavior {
   @include subject-description-buttons-read($purple);
 }
 
