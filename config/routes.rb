@@ -12,12 +12,18 @@ Rails.application.routes.draw do
   resource :profile, except: :index
   resources :timelines, only: :show
   get 'timelines/:id/monthly/:date' => 'timelines#monthly', as: :timeline_monthly
-  resources(:posts, only: [:show, :index]) do
-    get :raw, on: :member
+  constraints(id: /\d+/) do
+    resources(:posts, only: [:show, :index]) do
+      collection do
+        scope :categories do
+          get ':category_id', to: 'posts#index', as: :categories
+        end
+      end
+      get :raw, on: :member
+    end
   end
   get 'posts/page/:page_id' => 'posts#index', as: :paged_posts
   resources(:tags, param: :name) { resources :posts, only: :index }
-  resources(:categories) { resources :posts, only: :index }
 
   namespace :api do
     resources :credentials, only: :create

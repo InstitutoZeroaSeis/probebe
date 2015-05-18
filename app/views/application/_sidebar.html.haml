@@ -3,7 +3,7 @@
     %ul.home-categories-list.category-health
       - categories.each do |category|
         %li.home-categories-item
-          = link_to category.name, posts_path(category_id: category.id)
+          = link_to category.name, categories_posts_path(category_id: category)
 
   = render 'post_for_period'
 

@@ -30,6 +30,10 @@ class Category < ActiveRecord::Base
     parent_category.try(:original_category_type)
   end
 
+  def to_param
+    [id, name.parameterize].join('-')
+  end
+
   protected
 
   def parent_category_is_not_equals_self
