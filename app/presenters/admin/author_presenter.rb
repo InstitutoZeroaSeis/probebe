@@ -11,4 +11,6 @@ class Admin::AuthorPresenter < Carnival::BaseAdminPresenter
 
   action :new
   action :show
+
+  index_as :list
 end

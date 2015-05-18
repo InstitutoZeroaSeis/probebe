@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     resources :activity_logs, only: [:index, :show]
     resources :admin_site_users
     resources :authorial_articles
-    resources :authors, only: [:new, :index, :create, :show]
+    resources :authors, only: [:new, :index, :edit, :update, :create, :show]
     resources :categories
     resources :journalistic_articles
     resources :messages
