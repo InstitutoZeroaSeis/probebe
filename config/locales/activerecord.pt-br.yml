@@ -111,6 +111,7 @@ pt-BR:
             has_no_children: Você precisa cadastrar ao menos um filho
             needs_mobile_phone: Precisa de pelo menos um celular
     models:
+      articles/authorial_article: Artigo Autoral
       articles/journalistic_article: Artigo Jornalístico
       articles/journalistic_article_plural: Artigos Jornalísticos
       category: Categoria
