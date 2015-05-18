@@ -9,10 +9,6 @@ class PostPresenter < SimpleDelegator
     summary.presence || Nokogiri::HTML(text).text.truncate(TEXT_MAXIMUM_LENGTH)
   end
 
-  def titleized_title
-    title.titleize
-  end
-
   def author_name
     profile.name
   end
@@ -29,6 +25,14 @@ class PostPresenter < SimpleDelegator
 
   def pregnancy_or_child_life_period
     born? ? child_life_period : baby_target_type
+  end
+
+  def tags_for_sidebar
+    Tag.all
+  end
+
+  def categories_for_sidebar
+    Category.base_categories
   end
 
   def self.wrap(posts)

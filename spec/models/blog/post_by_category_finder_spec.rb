@@ -2,14 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Blog::PostByCategoryFinder do
   it 'finds posts of the given category_name' do
-    health_category = create(:category, name: 'health')
-    education_category = create(:category)
-    health_post = create(:post, category: health_category)
-    create(:post, category: education_category)
+    category = create(:category, :with_parent)
+    post = create(:post, category: category)
 
-    finder = Blog::PostByCategoryFinder.new('health', Blog::Post.default_scoped)
+    finder = Blog::PostByCategoryFinder.new(category.parent_category_id, Blog::Post.default_scoped)
 
-    expect(finder.find).to eq([health_post])
+    expect(finder.find.map(&:title)).to match_array([post.title])
   end
 
   it 'does not include unrelated posts' do
@@ -23,10 +21,10 @@ RSpec.describe Blog::PostByCategoryFinder do
   end
 
   it 'includes all posts if no category name is given' do
-    posts = create_pair(:post)
+    relation_double = double
 
-    finder = Blog::PostByCategoryFinder.new(nil, Blog::Post.default_scoped)
+    finder = Blog::PostByCategoryFinder.new(nil, relation_double)
 
-    expect(finder.find).to match_array(posts)
+    expect(finder.find).to eq(relation_double)
   end
 end

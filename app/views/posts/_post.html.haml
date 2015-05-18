@@ -1,6 +1,6 @@
 .post.col-md-6{ class: post.category_type }
   %hr
-  %h2.post-title= link_to post.titleized_title, post_path(post)
+  %h2.post-title= link_to post.title, post_path(post)
   %p.periodo-label{ class: "period-#{post.pregnancy_or_child_life_period}" }
     = t("views.blog.#{post.pregnancy_or_child_life_period}")
   %p.categoria-label= post.category_name

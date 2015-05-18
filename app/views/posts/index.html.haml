@@ -10,4 +10,6 @@
         %li.next
           = link_to t('views.blog.newer_html'), @presenter.next_blog_page
 
-  = render 'sidebar', tags: @presenter.tags
+  = render 'sidebar',
+    tags: @presenter.tags_for_sidebar,
+    categories: @presenter.categories_for_sidebar

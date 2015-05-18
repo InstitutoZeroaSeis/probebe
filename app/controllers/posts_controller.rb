@@ -5,19 +5,17 @@ class PostsController < ApplicationController
 
   def show
     @post = PostPresenter.new(Blog::Post.find(params[:id]))
-    @tags = Tag.all
-    render layout: "single-post"
+    render layout: 'single-post'
   end
 
   def raw
     @post = PostPresenter.new(Blog::Post.find(params[:id]))
-    @tags = Tag.all
-    render layout: "raw-single-post"
+    render layout: 'raw-single-post'
   end
 
   protected
 
   def post_search_params
-    params.slice(:search, :category, :tag_name, :life_period, :page)
+    params.slice(:search, :category_id, :tag_name, :life_period, :page)
   end
 end

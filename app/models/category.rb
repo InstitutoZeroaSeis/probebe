@@ -30,6 +30,10 @@ class Category < ActiveRecord::Base
     parent_category.try(:original_category_type)
   end
 
+  def to_param
+    Slug.from_args(id, name)
+  end
+
   protected
 
   def parent_category_is_not_equals_self
