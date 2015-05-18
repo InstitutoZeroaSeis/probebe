@@ -50,7 +50,7 @@ class Articles::JournalisticArticle < Articles::Article
   private
 
   def ensure_presence_of_original_author
-    self.original_author ||= Author::DefaultAuthor.find_default_author
+    self.original_author ||= Authors::DefaultAuthor.find_default_author
   end
 
   def length_of_messages

@@ -1,4 +1,4 @@
-class Author::DefaultAuthor
+class Authors::DefaultAuthor
   DEFAULT_PROBEBE_AUTHOR_EMAIL = 'contato@probebe.com.br'
 
   def self.find_default_author
