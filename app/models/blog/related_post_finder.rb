@@ -15,8 +15,8 @@ module Blog
     protected
 
     def find_related_post_ids(post)
-      tags_name = post.tags.map(&:name)
-      select_randomly(publishable_and_by_tag_posts(tags_name).pluck(:id))
+      tag_ids = post.tags.map(&:id)
+      select_randomly(publishable_and_by_tag_posts(tag_ids).pluck(:id))
     end
 
     def select_randomly(post_ids)
