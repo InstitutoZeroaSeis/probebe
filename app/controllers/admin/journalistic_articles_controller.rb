@@ -18,7 +18,32 @@ class Admin::JournalisticArticlesController < Admin::AdminController
     redirect_to post_path(params[:id])
   end
 
+  def create
+    create! do |success, failure|
+      success.html do
+        flash[:notice] = I18n.t('messages.created')
+        redirect_to action: :edit, id: @journalistic_article.id
+      end
+      failure.html { instantiate_model && render('new') }
+    end
+  end
+
+  def update
+    update! do |success, failure|
+      success.html do
+        flash[:notice] = I18n.t('messages.updated')
+        redirect_to action: :edit
+      end
+      failure.html { instantiate_model && render('edit') }
+    end
+  end
+
   protected
+
+  def create_resource(resource)
+    @journalistic_article = resource
+    @journalistic_article.save
+  end
 
   def build_custom_article
     factory = Articles::JournalisticArticleFactory.new(find_authorial_article)
