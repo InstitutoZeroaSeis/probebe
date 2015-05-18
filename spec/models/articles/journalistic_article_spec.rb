@@ -53,16 +53,6 @@ RSpec.describe Articles::JournalisticArticle, type: :model do
       .to include('O comprimento máximo de cada mensagem dever ser de até 150 caracteres')
   end
 
-  it 'is ordered from the newest to oldest by default' do
-    older_post = create(:journalistic_article)
-    newer_post = create(:journalistic_article)
-
-    all_posts = Articles::JournalisticArticle.all
-
-    expect(all_posts.map(&:title))
-      .to eq([newer_post.title, older_post.title])
-  end
-
   it 'is expected to update the messages with the correct attributes' do
     article = build(:journalistic_article, :with_message)
 

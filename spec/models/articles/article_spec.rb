@@ -40,4 +40,14 @@ RSpec.describe Articles::Article, type: :model do
     subject { build_stubbed(:article, minimum_valid_week: 12, maximum_valid_week: 10) }
     it { is_expected.to be_invalid }
   end
+
+  it 'is ordered from the newest to oldest by default' do
+    older_post = create(:article)
+    newer_post = create(:article)
+
+    all_posts = Articles::Article.all
+
+    expect(all_posts.map(&:title))
+      .to eq([newer_post.title, older_post.title])
+  end
 end
