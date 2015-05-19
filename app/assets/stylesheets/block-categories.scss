@@ -84,35 +84,30 @@
   width: 250px;
 
   figure {
+    background-size: 280px;
     height: 200px;
     border-bottom: 4px solid $border-gray;
-    background-image: url("home-anoynous-images.jpg");
   }
 }
 
-#health .subject-picture figure{
-  background-size: 280px;
-  background-position: -30px 0px;
+.subject-picture-health {
+  background-image: image-url('category-health.jpg');
 }
 
-#education .subject-picture figure{
-  background-size: 350px;
-  background-position: -30px -262px;
+.subject-picture-education {
+  background-image: image-url('category-education.jpg');
 }
 
-#security .subject-picture figure{
-  background-size: 330px;
-  background-position: 0px 197px;
+.subject-picture-security {
+  background-image: image-url('category-security.jpg');
 }
 
-#finance .subject-picture figure{
-  background-size: 280px;
-  background-position: 0px -720px;
+.subject-picture-finance {
+  background-image: image-url('category-finance.jpg');
 }
 
-#behavior .subject-picture figure{
-  background-size: 331px;
-  background-position: 0px -560px;
+.subject-picture-behavior {
+  background-image: image-url('category-behavior.jpg');
 }
 
 

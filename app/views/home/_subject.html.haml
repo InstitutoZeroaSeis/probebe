@@ -3,7 +3,7 @@
 
   .col-md-5
     .subject-picture.subject-picture-back-shadow
-      %figure
+      %figure{ class: "subject-picture-#{subject}" }
         %img
       .subject-picture-description
         %p= t("views.home.anonymous.#{subject}.picture_legend")
