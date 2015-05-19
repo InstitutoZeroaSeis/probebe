@@ -174,8 +174,12 @@
   max-height: 500px;
 }
 
-.single-post{
+.single-post {
   padding: 0 30px 0 0;
+
+  p {
+    font-weight: 300;
+  }
 }
 
 .subject:after {
