@@ -14,7 +14,7 @@ pt-BR:
       toggle_navigation: 'Abrir/Fechar Menu'
       show_all_post_from_this_category: Ver todos os posts na categoria
     blog:
-      parent_category: *parent_category
+      parent_category: Categoria
       back_html: "&larr; Voltar"
       by: "Publicado por %{author}"
       date_posted: "Postado em %{date}"
@@ -33,6 +33,42 @@ pt-BR:
       forbidden: Acesso não autorizado
       internal_server_error: Ocorreu um erro ao processar a requisição
       not_found: Página não encontrada
+    home:
+      anonymous:
+        read: Leia
+        sign_up: Cadastre-se
+        behavior:
+          header_html: <span class="highlight">Desenvolvimento</span> e cuidados com a mente do bebê
+          description:
+            >
+              Descubra como acontece o fantástico desenvolvimento dos bebês,
+              desde o útero, e o que você pode fazer para torná-lo ainda
+              melhor.
+        education:
+          header_html: ''
+          description:
+            >
+              Educar uma criança exige dedicação, mas não é um bicho de sete cabeças.
+              Aprenda com nossos especialistas.
+        finance:
+          header_html: Finanças
+          description:
+            >
+              Não é fácil criar um filho hoje em dia. Mas, com a ajuda de
+              nossos especialistas, você vai aprender a fazer seu dinheiro
+              render muito mais.
+        health:
+          header_html: Mais de <span class="highlight">300</span> artigos
+          description:
+            >
+              com orientações simples e práticas para garantir uma gestação
+              tranquila e o nascimento de um bebê saudável.
+        security:
+          header_html: Mais de <span class="highlight">100</span> dicas
+          description:
+            >
+              Você pode proteger melhor o seu filho. Veja como tornar a sua
+              casa mais segura
     profile:
       cell_phone: Celular
       cell_phones: Celulares
