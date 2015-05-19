@@ -1,0 +1,46 @@
+pt-BR:
+  view:
+    message:
+      back_to_admin: Voltar para Admin
+      remove: Remover
+      send_message: Enviar mensagens
+  views:
+    application:
+      admin: Admin
+      back_to_home: Voltar ao início
+      exit: Sair
+      name: Pro Bebê
+      sign_in: Login
+      toggle_navigation: 'Abrir/Fechar Menu'
+      show_all_post_from_this_category: Ver todos os posts na categoria
+    blog:
+      parent_category: *parent_category
+      back_html: "&larr; Voltar"
+      by: "Publicado por %{author}"
+      date_posted: "Postado em %{date}"
+      fifth_to_eighth: 5 a 8 messes
+      first_to_fourth: 1 a 4 meses
+      newer_html: "Mais recentes &rarr;"
+      nineth_to_twelfth: 9 a 12 meses
+      older_html: "&larr; Mais antigos"
+      pregnancy: Gravidez
+      read_more: Leia Mais
+      related_post: Posts Relacionados
+      search: Busca de posts
+      tags: Tags
+      thirteenth_to_eighteenth: 13 a 18 meses
+    errors:
+      forbidden: Acesso não autorizado
+      internal_server_error: Ocorreu um erro ao processar a requisição
+      not_found: Página não encontrada
+    profile:
+      cell_phone: Celular
+      cell_phones: Celulares
+      cell_phone_system: Sistema do Celular
+      children: Filhos
+      contact_informations: Dados de Contato
+      create_profile: Criar Perfil
+      personal_information: Informações Pessoais
+      phones: Telefones
+    timeline:
+      read_more: Leia Mais
