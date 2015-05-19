@@ -1,8 +1,13 @@
 class HomeController < ApplicationController
   def index
-    return unless current_user
-    @categories_posts = posts_grouped_by_category.map do |category, posts|
-      [category, PostPresenter.wrap(posts)]
+    if current_user
+      @categories_posts = posts_grouped_by_category.map do |category, posts|
+        [category, PostPresenter.wrap(posts)]
+      end
+    else
+      @categories = Category.original_categories.map do |category|
+        [category.original_category_type, category]
+      end.to_h
     end
   end
 

@@ -15,6 +15,6 @@
     .subject-description-buttons
       %button.sign-up{ class: "subject-description-buttons-sign-in-#{subject}" }
         = t('views.home.anonymous.sign_up')
-      = link_to posts_path(category: subject) do
+      = link_to categories_posts_path(category_id: category) do
         %button{ class: "subject-description-buttons-read-#{subject}" }
           = t('views.home.anonymous.read')
