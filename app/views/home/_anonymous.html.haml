@@ -1,8 +1,8 @@
 = render 'home_categories'
 
 %section.subjects.container.anonymous
-  = render template: 'home/subject', locals: { subject: 'health' }
-  = render template: 'home/subject', locals: { subject: 'education' }
-  = render template: 'home/subject', locals: { subject: 'security' }
-  = render template: 'home/subject', locals: { subject: 'finance' }
-  = render template: 'home/subject', locals: { subject: 'behavior' }
+  = render 'subject', subject: 'health'
+  = render 'subject', subject: 'education'
+  = render 'subject', subject: 'security'
+  = render 'subject', subject: 'finance'
+  = render 'subject', subject: 'behavior'
