@@ -1,78 +1,8 @@
 = render 'home_categories'
 
 %section.subjects.container.anonymous
-
-  .subject.col-md-9#health
-    .row.col-md-12= render 'subject_header_health'
-    .col-md-5= render 'subject_picture', content: 'Lorem ipsum dolor sit amet'
-    .col-md-7
-      .subject-description
-        .subject-description-header.subject-description-header-health
-          %h3= t('views.home.anonymous.health.header_html')
-          %p= t('views.home.anonymous.health.description')
-      .subject-description-buttons
-        %button.sign-up.subject-description-buttons-sign-in-health
-          = t('views.home.anonymous.sign_up')
-        = link_to posts_path(category: 'health') do
-          %button.subject-description-buttons-read-health
-            = t('views.home.anonymous.read')
-
-  .subject.col-md-9#education
-    .row.col-md-12= render 'subject_header_education'
-    .col-md-5.pull-right= render 'subject_picture', content: 'Lorem ipsum dolor sit amet'
-    .col-md-7
-      .subject-description
-        .subject-description-header.subject-description-header-education
-          %h3= t('views.home.anonymous.education.header_html')
-          %p= t('views.home.anonymous.education.description')
-      .subject-description-buttons
-        %button.sign-up.subject-description-buttons-sign-in-education
-          = t('views.home.anonymous.sign_up')
-        = link_to posts_path(category: 'education') do
-          %button.subject-description-buttons-read-education
-            = t('views.home.anonymous.sign_up')
-
-  .subject.col-md-9#security
-    .row.col-md-12= render 'subject_header_security'
-    .col-md-5= render 'subject_picture', content: 'Lorem ipsum dolor sit amet'
-    .col-md-7
-      .subject-description
-        .subject-description-header.subject-description-header-security
-          %h3= t('views.home.anonymous.security.header_html')
-          %p= t('views.home.anonymous.security.description')
-      .subject-description-buttons
-        %button.sign-up.subject-description-buttons-sign-in-security
-          = t('views.home.anonymous.sign_up')
-        = link_to posts_path(category: 'security') do
-          %button.subject-description-buttons-read-security
-            = t('views.home.anonymous.read')
-
-  .subject.col-md-9#finance
-    .row.col-md-12= render 'subject_header_finance'
-    .col-md-5.pull-right= render 'subject_picture', content: 'Lorem ipsum dolor sit amet'
-    .col-md-7
-      .subject-description
-        .subject-description-header.subject-description-header-finance
-          %h3= t('views.home.anonymous.finance.header_html')
-          %p= t('views.home.anonymous.finance.description')
-      .subject-description-buttons
-        %button.sign-up.subject-description-buttons-sign-in-finance
-          = t('views.home.anonymous.sign_up')
-        = link_to posts_path(category: 'finance') do
-          %button.subject-description-buttons-read-finance
-            = t('views.home.anonymous.read')
-
-  .subject.col-md-9#behavior
-    .row.col-md-12= render 'subject_header_behavior'
-    .col-md-5= render 'subject_picture', content: 'Lorem ipsum dolor sit amet'
-    .col-md-7
-      .subject-description
-        .subject-description-header.subject-description-header-behavior
-          %h3= t('views.home.anonymous.behavior.header_html')
-          %p= t('views.home.anonymous.behavior.description')
-      .subject-description-buttons
-        %button.sign-up.subject-description-buttons-sign-in-behavior
-          = t('views.home.anonymous.sign_up')
-        = link_to posts_path(category: 'behavior') do
-          %button.subject-description-buttons-read-behavior
-            = t('views.home.anonymous.read')
+  = render template: 'home/subject', locals: { subject: 'health' }
+  = render template: 'home/subject', locals: { subject: 'education' }
+  = render template: 'home/subject', locals: { subject: 'security' }
+  = render template: 'home/subject', locals: { subject: 'finance' }
+  = render template: 'home/subject', locals: { subject: 'behavior' }

@@ -1,0 +1,22 @@
+.subject.col-md-9{ id: subject }
+  .row.col-md-12= render "subject_header_#{subject}"
+
+  .col-md-5
+    .subject-picture.subject-picture-back-shadow
+      %figure
+        %img
+      .subject-picture-description
+        %p
+          Lorem ipsum dolor sit amet
+          Lorem ipsum dolor sit amet
+  .col-md-7
+    .subject-description
+      .subject-description-header{ class: "subject-description-header-#{subject}" }
+        %h3= t("views.home.anonymous.#{subject}.header_html")
+        %p= t("views.home.anonymous.#{subject}.description")
+    .subject-description-buttons
+      %button.sign-up{ class: "subject-description-buttons-sign-in-#{subject}" }
+        = t('views.home.anonymous.sign_up')
+      = link_to posts_path(category: subject) do
+        %button{ class: "subject-description-buttons-read-#{subject}" }
+          = t('views.home.anonymous.read')
