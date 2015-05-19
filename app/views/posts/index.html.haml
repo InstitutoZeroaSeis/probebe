@@ -2,7 +2,7 @@
   .posts.subject.col-md-9
     = render partial: 'post', collection: @presenter.posts
 
-    %ul.pager
+    %ul.pager.col-md-12
       - if @presenter.render_next_step?
         %li.previous
           = link_to t('views.blog.older_html'), @presenter.previous_blog_page

@@ -7,6 +7,7 @@
   %figure
     %img{width: 300, height: 200, src: post.image_cover}
   %hr
-  %p= post.post_summary
+  %p.post-summary
+    = post.post_summary
   = link_to post_path(post), class: "btn btn-primary education-button btn-list" do
     = t('views.blog.read_more')
