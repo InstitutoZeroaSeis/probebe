@@ -44,12 +44,20 @@ pt-BR:
               Descubra como acontece o fantástico desenvolvimento dos bebês,
               desde o útero, e o que você pode fazer para torná-lo ainda
               melhor.
+          picture_legend:
+            >
+              O cérebro do bebê não nasce totalmente formado. Cabe aos pais
+              terminar essa delicada tarefa.
         education:
           header_html: ''
           description:
             >
               Educar uma criança exige dedicação, mas não é um bicho de sete cabeças.
               Aprenda com nossos especialistas.
+          picture_legend:
+            >
+              Com poucos meses, o bebê já consegue distinguir entre bons e maus
+              comportamentos.
         finance:
           header_html: Finanças
           description:
@@ -57,18 +65,29 @@ pt-BR:
               Não é fácil criar um filho hoje em dia. Mas, com a ajuda de
               nossos especialistas, você vai aprender a fazer seu dinheiro
               render muito mais.
+          picture_legend:
+            >
+              Quanto custa ter um filho? Você já fez as contas?
         health:
           header_html: Mais de <span class="highlight">300</span> artigos
           description:
             >
               com orientações simples e práticas para garantir uma gestação
               tranquila e o nascimento de um bebê saudável.
+          picture_legend:
+            >
+              Você acha que precisa comer por dois? Esqueça disso e veja como
+              se alimentar de forma correta.
         security:
           header_html: Mais de <span class="highlight">100</span> dicas
           description:
             >
               Você pode proteger melhor o seu filho. Veja como tornar a sua
               casa mais segura
+          picture_legend:
+            >
+              No Brasil, os acidentes são a principal causa de morte de
+              crianças de até 9 anos.
     profile:
       cell_phone: Celular
       cell_phones: Celulares
