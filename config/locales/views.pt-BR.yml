@@ -13,6 +13,25 @@ pt-BR:
       sign_in: Login
       toggle_navigation: 'Abrir/Fechar Menu'
       show_all_post_from_this_category: Ver todos os posts na categoria
+    banner:
+      did_you_know: Você Sabia?
+      pregnancy:
+        >
+          Você sabia que a partir do quarto mês de gestação o bebê já consegue
+          ouvir a sua voz?
+      first_to_fourth_month:
+        >
+          Que o recém nascido possui 300 ossos e quando cresce esse
+          volume diminui para 206 ossos?
+      fifth_to_eighth_month:
+        >
+          Que com 5 meses os bebês já reconhecem o próprio nome?
+      nineth_to_twelfth_month:
+        >
+          Que bebês não podem ingerir mel até completarem um ano de idade?
+      thirteenth_to_eighteenth_month:
+        >
+          Aos 18 meses, o bebê já tem um vocabulário com cerca de 50 palavras.
     blog:
       parent_category: Categoria
       back_html: "&larr; Voltar"
