@@ -114,3 +114,14 @@
   text-align: center;
   width: 100%;
 }
+
+.footer-sign-up {
+  .has-error {
+    input {
+      border: 0;
+    }
+    label, span.help-block {
+      color: #D5D557 !important;
+    }
+  }
+}
