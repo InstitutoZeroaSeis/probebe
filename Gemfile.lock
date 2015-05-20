@@ -430,6 +430,7 @@ DEPENDENCIES
   rspec (~> 3.1.0)
   rspec-its (~> 1.1.0)
   rspec-rails (~> 3.1.0)
+  rubyzip (~> 1.1.7)
   sass-rails (~> 4.0.3)
   savon (~> 2.8.0)
   selenium-webdriver (~> 2.45.0)

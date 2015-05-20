@@ -37,8 +37,9 @@ gem 'aws-sdk', '< 2.0'
 
 group :development do
   gem 'better_errors', '0.9.0'
-  gem 'turbo_dev_assets', '~> 0.0.2'
   gem 'bullet'
+  gem 'rubyzip', '~> 1.1.7'
+  gem 'turbo_dev_assets', '~> 0.0.2'
 end
 
 group :test do
