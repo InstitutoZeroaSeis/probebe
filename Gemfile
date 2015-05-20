@@ -34,6 +34,7 @@ gem 'puma'
 gem 'whenever', '~> 0.9.4'
 gem 'json', '1.8.1'
 gem 'aws-sdk', '< 2.0'
+gem 'sshkit'
 
 group :development do
   gem 'better_errors', '0.9.0'

@@ -1,3 +1,5 @@
+require 'sshkit/dsl'
+
 class BeanstalkDeploy
   FILES_TO_ZIP = [
     'Dockerrun.aws.json'
@@ -9,6 +11,7 @@ class BeanstalkDeploy
   end
 
   def deploy
+    build_docker_image
     remove_existing_zip_file
     create_zip_file
     send_to_s3
@@ -37,6 +40,29 @@ class BeanstalkDeploy
   def remove_existing_zip_file
     return unless File.exist?(current_version_tmp_file_name)
     FileUtils.rm(current_version_tmp_file_name)
+  end
+
+  def build_docker_image
+    SSHKit::Backend::Netssh.configure do |ssh|
+      ssh.ssh_options = {
+        user: 'root',
+        keys: %w(/app/ssh/probebe_build_rsa)
+      }
+    end
+
+    git_root = '/root/pro-bebe'
+    on '45.55.217.11' do
+      within ('/root') do
+        next if test("[ -d pro-bebe ]")
+        execute('git clone git@bitbucket.org:myvizir/pro-bebe.git')
+      end
+
+      within('/root/pro-bebe') do
+        execute("git -C #{git_root} pull")
+        execute("#{git_root}/deploy/staging/build.sh")
+        execute("#{git_root}/deploy/staging/deploy.sh")
+      end
+    end
   end
 
   def create_zip_file
