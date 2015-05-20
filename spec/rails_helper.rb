@@ -21,7 +21,7 @@ end
 Dir[Rails.root.join('app/**/*.rb')].each { |f| require_dependency f }
 Dir[Rails.root.join('lib/**/*.rb')].each { |f| require_dependency f }
 
-Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :selenium
 
 Dir[Rails.root.join('spec/factories/**/*.rb')].each {|factory| require factory }
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -64,21 +64,5 @@ RSpec.configure do |config|
 
   config.after(:each, type: :feature) do
     Warden.test_reset!
-  end
-
-  config.before(:each) do
-    Capybara.current_driver = :rack_test
-  end
-
-  config.before(:each, :js) do
-    Capybara.current_driver = :webkit
-  end
-
-  config.before(:each, :selenium) do
-    Capybara.current_driver = :selenium
-  end
-
-  config.after(:each) do
-    Capybara.current_driver = :webkit
   end
 end
