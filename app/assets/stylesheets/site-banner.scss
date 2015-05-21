@@ -181,15 +181,15 @@
   }
 
   &.step-4 {
-    border-bottom-color: $yellow;
-    color: $yellow;
+    border-bottom-color: $cyan;
+    color: $cyan;
 
     &:before{display: none;}
     &:after{background-position: -1235px 0px;}
 
     &.is-active {
-      background: $yellow;
-      border-bottom-color: $dark-yellow;
+      background: $cyan;
+      border-bottom-color: $dark-cyan;
     }
   }
 
