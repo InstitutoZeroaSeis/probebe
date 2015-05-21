@@ -1,0 +1,4 @@
+= f.input :thumb_image_cover, as: :admin_previewable_file
+%img#image-cover-preview{width: 300, height: 200, src: @model.thumb_image_cover, class: show_image_class}
+%a#add-image-cover.carnival-action-button.novo.link * #{@model.class.human_attribute_name :thumb_image_cover}
+%p.help= t('views.admin.journalistic_article.thumb_cover_help')

@@ -8,6 +8,11 @@ class Articles::JournalisticArticle < Articles::Article
              counter_cache: true,
              touch: true
 
+  has_attached_file :cover,
+                    styles: { content: '1920>', thumb: '118x100#' }
+  has_attached_file :thumb_image_cover,
+                    styles: { content: '300x200', thumb: '118x100#' }
+
   has_many :messages,
            -> { where(messageable_type: 'Articles::JournalisticArticle') },
            foreign_key: 'messageable_id'
@@ -18,19 +23,15 @@ class Articles::JournalisticArticle < Articles::Article
   validates :original_author, presence: true
   validate :length_of_messages
 
+  validates_attachment_content_type :cover, content_type: /\Aimage/
+  validates_attachment_content_type :thumb_image_cover, content_type: /\Aimage/
+
   after_save :update_messages
   before_save :update_child_life_period
   before_validation :ensure_presence_of_original_author
 
-  def category_name
-    # TODO: Change to delegate
-    category.name
-  end
-
-  def original_author_name
-    # TODO: Change to delegate
-    original_author.name
-  end
+  delegate :name, to: :category, prefix: true
+  delegate :name, to: :original_author, prefix: true
 
   def update_messages
     Articles::MessageUpdater.update_many_from_article(messages, self)

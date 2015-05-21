@@ -29,7 +29,8 @@ pt-BR:
         journalistic_articles: Artigos Jornalísticos
       articles/journalistic_article:
         <<: *article
-        image_cover: Imagem de capa
+        cover: Imagem de capa
+        thumb_image_cover: Imagem para listagem do blog
         intro_text: Linha fina
         tag_names: Tags
       authors/author:

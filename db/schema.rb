@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518210543) do
+ActiveRecord::Schema.define(version: 20150521002016) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -26,22 +26,30 @@ ActiveRecord::Schema.define(version: 20150518210543) do
     t.text     "text"
     t.text     "summary"
     t.text     "box"
-    t.integer  "gender",                      default: 2
+    t.integer  "gender",                         default: 2
     t.integer  "category_id"
     t.boolean  "teenage_pregnancy"
     t.integer  "baby_target_type"
     t.integer  "minimum_valid_week"
     t.integer  "maximum_valid_week"
-    t.integer  "journalistic_articles_count", default: 0,     null: false
+    t.integer  "journalistic_articles_count",    default: 0,     null: false
     t.integer  "user_id"
     t.integer  "parent_article_id"
     t.integer  "original_author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "publishable",                 default: false
+    t.boolean  "publishable",                    default: false
     t.string   "image_cover"
     t.integer  "child_life_period"
     t.string   "intro_text"
+    t.string   "thumb_image_cover_file_name"
+    t.string   "thumb_image_cover_content_type"
+    t.integer  "thumb_image_cover_file_size"
+    t.datetime "thumb_image_cover_updated_at"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   create_table "articles_tags", id: false, force: true do |t|

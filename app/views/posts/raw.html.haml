@@ -1,11 +1,11 @@
 .site-banner
   %ul.site-banner-list
     %li.site-banner-item
-      %figure.site-banner-image{ style: "background-image: url(#{@post.image_cover})" }
-        %img{ src: @post.image_cover }
+      %figure.site-banner-image{ style: "background-image: url(#{@post.cover})" }
+        %img{ src: @post.cover }
     %li.site-banner-item
-      %figure.site-banner-image{ style: "background-image: url(#{@post.image_cover})" }
-        %img{ src: @post.image_cover }
+      %figure.site-banner-image{ style: "background-image: url(#{@post.cover})" }
+        %img{ src: @post.cover }
 
 %section.main.container-fuild.raw-container
   %section.subjects.container{ class: @post.category_name.parameterize }

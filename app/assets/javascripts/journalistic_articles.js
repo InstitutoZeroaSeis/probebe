@@ -4,7 +4,7 @@ $(document).ready(function () {
   
 
   var imageCoveUploadFunction = CKEDITOR.tools.addFunction(function(url){
-    $('#articles_journalistic_article_image_cover').val(url);
+    $('#articles_journalistic_article_cover').val(url);
     $('#image-cover-preview').attr('src', window.location.origin + url).show();;
   });  
 
