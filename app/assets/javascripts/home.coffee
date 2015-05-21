@@ -16,13 +16,12 @@ $ ->
       scrollTop: $('.footer-sign-up').offset().top
     , 800
 
-  $(window).scroll ->
-    # Fixa o menu da home após scroll passar o banner
-    if $(@).scrollTop() >= 570
-      $('.home-categories').addClass('is-fixed')
-    else
-      $('.home-categories').removeClass('is-fixed')
+  $('.home-categories').scrollToFixed
+    marginTop: 10
+    limit: $('footer').offset().top - 450
+    zIndex: 9
 
+  $(window).scroll ->
     # Função para ativar e desativar itens do menu no scroll
     if $(@).scrollTop() >= $('#health').offset().top-85 && $(@).scrollTop() <= $('#health').offset().top+$('#health').height()
       homeMenuActive('.home-categories-item.category-health a')
