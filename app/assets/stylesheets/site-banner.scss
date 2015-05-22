@@ -120,6 +120,18 @@
   position: relative;
 }
 
+@mixin site-banner-step($color, $active-bottom-color, $initial-bg-x, $initial-bg-y, $active-bg-x, $active-bg-y) {
+  border-bottom-color: $color;
+  color: $color;
+  &:after{ background-position: $initial-bg-x $initial-bg-y; }
+
+  &.is-active {
+    background: $color;
+    border-bottom-color: $active-bottom-color;
+    &:before{ background-position: $active-bg-x $active-bg-y; }
+  }
+}
+
 .site-banner-dot {
   float: left;
   height: 70px;;
@@ -134,64 +146,23 @@
   padding-left: 5%;
 
   &.step-0 {
-    border-bottom-color: $red;
-    color: $red;
-    &:after{background-position: -0px 0px;}
-
-    &.is-active {
-      background: $red;
-      border-bottom-color: $dark-red;
-      &:before{background-position: -31px 0px;}
-    }
+    @include site-banner-step($red, $dark-red, 0, 0, -31px, 0)
   }
 
   &.step-1 {
-    border-bottom-color: $orange;
-    color: $orange;
-    &:after{background-position: -290px 0px;}
-
-    &.is-active {
-      background: $orange;
-      border-bottom-color: $dark-orange;
-      &:before{background-position: -61px 0px;}
-    }
+    @include site-banner-step($orange, $dark-orange, -290px, 0, -61px, 0)
   }
 
   &.step-2 {
-    border-bottom-color: $purple;
-    color: $purple;
-    &:after{background-position: -600px 0px;}
-
-    &.is-active {
-      background: $purple;
-      border-bottom-color: $dark-purple;
-      &:before{background-position: -93px 0px;}
-    }
+    @include site-banner-step($purple, $dark-purple, -600px, 0, -93px, 0)
   }
 
   &.step-3 {
-    border-bottom-color: $green;
-    color: $green;
-    &:after{background-position: -910px 0px;}
-
-    &.is-active {
-      background: $green;
-      border-bottom-color: $dark-green;
-      &:before{background-position: -124px 0px;}
-    }
+    @include site-banner-step($green, $dark-green, -910px, 0, -124px, 0)
   }
 
   &.step-4 {
-    border-bottom-color: $cyan;
-    color: $cyan;
-
-    &:before{display: none;}
-    &:after{background-position: -1235px 0px;}
-
-    &.is-active {
-      background: $cyan;
-      border-bottom-color: $dark-cyan;
-    }
+    @include site-banner-step($cyan, $dark-cyan, -1235px, 0, -124px, 0)
   }
 
   &.is-active {
@@ -214,11 +185,23 @@
     content: '';
     display: block;
     position: absolute;
-    left: 21%;
     width: 80px;
     height: 66px;
     top: -5px;
+    left: 5%;
     background-image: image-url('banner-bullets-icons.png');
     background-repeat: no-repeat;
+  }
+
+  @media (min-width: 1366px) {
+    &:after {
+      left: 21%;
+    }
+  }
+
+  @media (min-width: 1100px) and (max-width: 1365px) {
+    &:after {
+      left: 10%;
+    }
   }
 }
