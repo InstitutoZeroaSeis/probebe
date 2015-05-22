@@ -13,6 +13,10 @@ class PostPresenter < SimpleDelegator
     original_author.name
   end
 
+  def author_bio
+    original_author.bio
+  end
+
   def author_photo_url
     original_author.photo_url
   end

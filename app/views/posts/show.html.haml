@@ -25,6 +25,10 @@
         %p.lead
           %img{width: 50, height: 50, src: @post.author_photo_url}
           = t('views.blog.by', author: @post.author_name)
+        %p
+          = @post.author_bio
+
+        %hr
 
         .single-post-tags
           %p
