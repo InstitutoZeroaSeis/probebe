@@ -9,8 +9,10 @@ class Articles::JournalisticArticle < Articles::Article
              touch: true
 
   has_attached_file :cover,
+                    path: 'articles/journalistic_articles/:attachment/:id_partition/:style/:filename',
                     styles: { content: '1920>', thumb: '118x100#' }
   has_attached_file :thumb_image_cover,
+                    path: 'articles/journalistic_articles/:attachment/:id_partition/:style/:filename',
                     styles: { content: '300x200', thumb: '118x100#' }
 
   has_many :messages,
