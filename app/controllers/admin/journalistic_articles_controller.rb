@@ -47,11 +47,11 @@ class Admin::JournalisticArticlesController < Admin::AdminController
 
   def build_custom_article
     factory = Articles::JournalisticArticleFactory.new(find_authorial_article)
-    journalistic_article = factory.build
-    if action_name == 'create'
-      journalistic_article.assign_attributes(*build_resource_params)
+    factory.build.tap do |article|
+      if action_name == 'create'
+        article.assign_attributes(*build_resource_params)
+      end
     end
-    journalistic_article
   end
 
   def needs_custom_article?
@@ -60,8 +60,9 @@ class Admin::JournalisticArticlesController < Admin::AdminController
 
   def find_authorial_article
     return unless needs_custom_article?
-    id = params[:articles_journalistic_article][:parent_article_id]
-    Articles::AuthorialArticle.find(id)
+    Articles::AuthorialArticle.find(
+      params[:articles_journalistic_article][:parent_article_id]
+    )
   end
 
   def build_resource_params
