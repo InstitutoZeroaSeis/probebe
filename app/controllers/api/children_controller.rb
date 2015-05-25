@@ -1,6 +1,6 @@
 module Api
   class ChildrenController < ApplicationController
-    before_action :authenticate_user!
+    include HeaderAuthenticationConcern
 
     def index
       children = current_profile.children

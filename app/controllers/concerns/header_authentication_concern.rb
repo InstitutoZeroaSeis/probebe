@@ -3,17 +3,18 @@ module HeaderAuthenticationConcern
 
   included do
     before_action :check_authentication_headers
+    protect_from_forgery with: :null_session
   end
 
   def check_authentication_headers
-    unless user_signed_in?
-      email = request.headers['X-User-Email']
-      password = request.headers['X-User-Password']
-      user = User.find_by(email: email)
-      if user and user.valid_password?(password)
-        sign_in user
-      end
+    email = request.headers['X-User-Email']
+    password = request.headers['X-User-Password']
+    user = User.find_by(email: email)
+    if user.try(:valid_password?, password)
+      sign_out
+      sign_in user
+    else
+      head :unauthorized
     end
   end
-
 end

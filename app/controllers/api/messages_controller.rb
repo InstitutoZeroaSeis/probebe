@@ -1,6 +1,6 @@
 module Api
   class MessagesController < ApplicationController
-    before_action :authenticate_user!
+    include HeaderAuthenticationConcern
 
     def show
       message = MessageDeliveries::MessageDelivery.find(params[:id])
