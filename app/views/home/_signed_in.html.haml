@@ -10,7 +10,7 @@
           .subject-picture-split
             = link_to post_path(post) do
               %figure
-                %img{ width: 300, height: 200, src: post.cover }
+                %img{ width: 300, height: 200, src: post.thumb_image_cover }
             .subject-picture-split-description
               = link_to post_path(post) do
                 %p= post.post_summary
