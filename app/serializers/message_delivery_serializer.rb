@@ -1,7 +1,15 @@
 class MessageDeliverySerializer < ActiveModel::Serializer
-  attributes :id, :text, :delivery_date
+  include Rails.application.routes.url_helpers
+
+  attributes :id, :text, :delivery_date, :url
 
   def text
-    object.message.text
+    object.text
+  end
+
+  def url
+    if object.article.try(:publishable?)
+      post_url(id: object.article)
+    end
   end
 end
