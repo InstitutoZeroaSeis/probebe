@@ -1,6 +1,10 @@
 require 'sshkit/dsl'
 
 class BeanstalkDeploy
+  BEANSTALK_ENVIRONMENTS = {
+    staging: 'staging',
+    production: 'production-docker'
+  }
   FILES_TO_ZIP = [
     'Dockerrun.aws.json'
   ]
@@ -51,7 +55,7 @@ class BeanstalkDeploy
     end
 
     git_root = '/root/pro-bebe'
-    environment = @environment
+    environment = BEANSTALK_ENVIRONMENTS[@environment]
     on '45.55.217.11' do
       within ('/root') do
         next if test("[ -d pro-bebe ]")
