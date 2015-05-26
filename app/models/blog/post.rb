@@ -1,5 +1,7 @@
-class Blog::Post
-  def self.method_missing(name, *args, &block)
-    Articles::JournalisticArticle.send(name, *args, &block)
+class Blog::Post < Articles::JournalisticArticle
+  default_scope -> { where(publishable: true) }
+
+  def self.sti_name
+    'Articles::JournalisticArticle'
   end
 end

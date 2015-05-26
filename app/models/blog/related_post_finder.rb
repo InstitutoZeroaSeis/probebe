@@ -16,7 +16,7 @@ module Blog
 
     def find_related_post_ids(post)
       tag_ids = post.tags.map(&:id)
-      select_randomly(publishable_and_by_tag_posts(tag_ids).pluck(:id))
+      select_randomly(posts_by_tags(tag_ids).pluck(:id))
     end
 
     def select_randomly(post_ids)
@@ -25,9 +25,8 @@ module Blog
       end.sample(NUMBER_NECESSARY_OF_RELATED_POST)
     end
 
-    def publishable_and_by_tag_posts(tags_name)
-      post_by_tag = Blog::PostByTagFinder.new(tags_name, Blog::Post).find
-      Blog::PostPublishableFinder.new(post_by_tag).find
+    def posts_by_tags(tags_name)
+      Blog::PostByTagFinder.new(tags_name, Blog::Post).find
     end
   end
 end

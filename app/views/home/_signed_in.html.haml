@@ -14,6 +14,6 @@
             .subject-picture-split-description
               = link_to post_path(post) do
                 %p= post.post_summary
-      = link_to posts_path(category: category.original_category_type) do
+      = link_to categories_posts_path(category) do
         %button.subject-picture-split-see-all-posts.center-block{ class: "#{category.original_category_type}-button" }
           = t('views.application.show_all_post_from_this_category')

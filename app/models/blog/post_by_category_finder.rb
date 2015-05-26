@@ -7,10 +7,9 @@ module Blog
 
     def find
       return @relation unless @category_id
-      category_ids = Category.where(parent_category_id: @category_id)
-      @relation
-        .joins(:category)
-        .merge(Category.where(id: category_ids))
+      @relation.joins(:category).merge(
+        Category.where(parent_category_id: @category_id)
+      )
     end
   end
 end
