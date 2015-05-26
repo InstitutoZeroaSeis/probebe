@@ -51,6 +51,7 @@ class BeanstalkDeploy
     end
 
     git_root = '/root/pro-bebe'
+    environment = @environment
     on '45.55.217.11' do
       within ('/root') do
         next if test("[ -d pro-bebe ]")
@@ -59,8 +60,8 @@ class BeanstalkDeploy
 
       within('/root/pro-bebe') do
         execute("git -C #{git_root} pull")
-        execute("#{git_root}/deploy/#{@environment}/build.sh")
-        execute("#{git_root}/deploy/#{@environment}/deploy.sh")
+        execute("#{git_root}/deploy/#{environment}/build.sh")
+        execute("#{git_root}/deploy/#{environment}/deploy.sh")
       end
     end
   end
