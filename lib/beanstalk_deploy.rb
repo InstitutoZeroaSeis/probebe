@@ -59,8 +59,8 @@ class BeanstalkDeploy
 
       within('/root/pro-bebe') do
         execute("git -C #{git_root} pull")
-        execute("#{git_root}/deploy/staging/build.sh")
-        execute("#{git_root}/deploy/staging/deploy.sh")
+        execute("#{git_root}/deploy/#{@environment}/build.sh")
+        execute("#{git_root}/deploy/#{@environment}/deploy.sh")
       end
     end
   end
