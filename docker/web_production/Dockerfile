@@ -22,4 +22,4 @@ RUN bundle exec rake assets:precompile
 
 RUN whenever -w
 
-CMD ["foreman", "start", "-f", "Procfile"]
+CMD ["foreman", "start"]
