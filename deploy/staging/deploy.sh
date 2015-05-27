@@ -8,9 +8,9 @@ APP_VERSION_DESCRIPTION=$(git log -1 --pretty=%B)
 S3_BUCKET='elasticbeanstalk-us-east-1-505000041159'
 
 echo "Building Docker Image..."
-docker build -t vizir/probebe -f docker/web_staging/Dockerfile .
+docker build -t vizir/probebe:staging -f docker/web_staging/Dockerfile .
 echo "Pushing Docker Image..."
-docker push vizir/probebe
+docker push vizir/probebe:staging
 
 echo "Uploading to S3"
 aws s3 cp Dockerrun.aws.json s3://"$S3_BUCKET"/Dockerrun-${APP_VERSION}.aws.json
