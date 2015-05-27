@@ -5,7 +5,7 @@
     "Key": ".dockercfg"
   },
   "Image": {
-    "Name": "vizir/probebe:staging",
+    "Name": "vizir/probebe",
     "Update": "true"
   },
   "Ports": [
