@@ -216,7 +216,7 @@
   @include category-color($purple);
 }
 .category-finances {
-  @include category-color($green);
+  @include category-color($cyan);
 }
 .category-safety {
   @include category-color($yellow);
@@ -227,7 +227,7 @@
 }
 
 .category-finance {
-  @include category-color($green);
+  @include category-color($cyan);
 }
 
 .category-behavior {
