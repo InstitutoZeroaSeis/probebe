@@ -9,23 +9,22 @@ module Articles
 
     default_scope -> { order(created_at: :desc) }
 
-    enum gender: GENDER_ENUM
     enum baby_target_type: BABY_TARGET_TYPE_ENUM
     enum child_life_period: CHILD_LIFE_PERIOD_ENUM
+    enum gender: GENDER_ENUM
 
     belongs_to :category
-    belongs_to :user
     belongs_to :original_author, class_name: 'Authors::Author'
-    has_many :article_references
+    belongs_to :user
     has_and_belongs_to_many :tags
+    has_many :article_references
 
     accepts_nested_attributes_for :article_references, allow_destroy: true
     accepts_nested_attributes_for :tags, allow_destroy: false
 
     validates_presence_of :text, :title, :category, :user, :type, :baby_target_type, :gender
-
-    validate :presence_of_maximum_or_minimum
     validate :minimum_not_higher_than_maximum
+    validate :presence_of_maximum_or_minimum
 
     before_save :set_defaults
 
