@@ -5,7 +5,7 @@ feature 'Author create an authorial article' do
 
   scenario 'successfully' do
     article_title = 'Test title see if index showing title'
-    create(:category, name: 'Saúde')
+    create(:category, :with_parent, name: 'Saúde')
 
     visit new_admin_authorial_article_path
     within '#articles_authorial_article_category_id' do

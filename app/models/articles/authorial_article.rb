@@ -16,6 +16,7 @@ class Articles::AuthorialArticle < Articles::Article
 
   def update_related_journalistic_articles
     Articles::JournalisticArticleUpdater
-      .update_journalistic_from_authorial_article(self)
+      .new(self)
+      .update_all!
   end
 end

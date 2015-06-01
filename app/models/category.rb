@@ -18,8 +18,16 @@ class Category < ActiveRecord::Base
 
   has_paper_trail
 
+  def subcategory?
+    parent_category.present?
+  end
+
   def self.base_categories
     where(parent_category_id: nil)
+  end
+
+  def self.sub_categories
+    where.not(parent_category_id: nil)
   end
 
   def self.original_categories

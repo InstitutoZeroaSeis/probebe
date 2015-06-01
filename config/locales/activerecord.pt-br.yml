@@ -96,6 +96,8 @@ pt-BR:
             base:
               has_no_minimum_and_maximum_valid_week: Tem que definir pelo menos validade inicial ou final
               minimum_higher_than_maximum: Validade Inicial não pode ser maior que a final
+            category:
+              should_be_subcategory: deve ser uma subcategoria
         articles/journalistic_article:
           attributes:
             base:

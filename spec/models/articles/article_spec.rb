@@ -50,4 +50,13 @@ RSpec.describe Articles::Article, type: :model do
     expect(all_posts.map(&:title))
       .to eq([newer_post.title, older_post.title])
   end
+
+  it 'allows only categories that have a parent' do
+    category = Category.new
+    article = Articles::Article.new(category: category)
+
+    article.valid?
+
+    expect(article.errors[:category]).to include('deve ser uma subcategoria')
+  end
 end
