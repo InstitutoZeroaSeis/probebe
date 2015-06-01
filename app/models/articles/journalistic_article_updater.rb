@@ -1,24 +1,27 @@
 module Articles
   class JournalisticArticleUpdater
+    PROPERTIES = [
+      :baby_target_type, :category_id, :gender, :minimum_valid_week,
+      :maximum_valid_week, :teenage_pregnancy
+    ]
 
-    def self.update_journalistic_from_authorial_article(authorial_article)
-      atribbutes = [:baby_target_type, :category_id, :gender,
-                    :minimum_valid_week, :maximum_valid_week,
-                    :teenage_pregnancy]
+    def initialize(article)
+      @article = article
+    end
 
-      authorial_article.journalistic_articles.each do |journalistic|
-        copy_attributes(authorial_article, journalistic, atribbutes)
+    def update_all!
+      @article.journalistic_articles.each do |journalistic_article|
+        copy_properties(journalistic_article)
+        journalistic_article.save!
       end
     end
 
     protected
 
-    def self.copy_attributes(authorial_article, journalistic_article, atribbutes)
-      atribbutes.each do |attribute|
-        journalistic_article[attribute] = authorial_article[attribute]
+    def copy_properties(to)
+      PROPERTIES.each do |prop|
+        to.send("#{prop}=", @article.send(prop))
       end
-      journalistic_article.save!
     end
-
   end
 end

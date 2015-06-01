@@ -7,7 +7,7 @@ module Articles
     CHILD_LIFE_PERIOD_ENUM = [:first_to_fourth, :fifth_to_eighth,
                               :nineth_to_twelfth, :thirteenth_to_eighteenth]
 
-    default_scope -> { order(created_at: :desc) }
+    default_scope { order(created_at: :desc) }
 
     enum baby_target_type: BABY_TARGET_TYPE_ENUM
     enum child_life_period: CHILD_LIFE_PERIOD_ENUM
@@ -22,9 +22,12 @@ module Articles
     accepts_nested_attributes_for :article_references, allow_destroy: true
     accepts_nested_attributes_for :tags, allow_destroy: false
 
-    validates_presence_of :text, :title, :category, :user, :type, :baby_target_type, :gender
+    validates :text, :title, :category, :user, :type,
+              :baby_target_type, :gender, presence: true
+
     validate :minimum_not_higher_than_maximum
     validate :presence_of_maximum_or_minimum
+    validate :category_is_a_subcategory
 
     before_save :set_defaults
 
@@ -53,6 +56,13 @@ module Articles
 
     def pregnancy?
       !born?
+    end
+
+    protected
+
+    def category_is_a_subcategory
+      return if category.try(:subcategory?)
+      errors.add(:category, :should_be_subcategory)
     end
   end
 end
