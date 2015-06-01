@@ -36,8 +36,11 @@
             %li= link_to 'Login', '#', class: 'open-modal'
 
           %li
-            .input-group
-              %input.form-control{ type: 'text', name: 'search' }
-              %span.input-group-btn
-                %button.btn.btn-default{ type: 'submit' }
-                  %span.glyphicon.glyphicon-search
+            %form.form-inline{ action: posts_path, method: 'GET' }
+              .input-group
+                %input.form-control{ name: 'search',
+                                     style: 'height: 34px',
+                                     placeholder: t('views.blog.search') }
+                %span.input-group-btn
+                  %button.btn.btn-default.search-submit{ type: 'submit' }
+                    %span.glyphicon.glyphicon-search
