@@ -1,0 +1,19 @@
+%nav.blog-time-range
+  %ul.home-categories-list.category-education
+    %h3
+      Posts por Período
+    %li.home-categories-item.time-01
+      = link_to t('views.blog.pregnancy'),
+        posts_path(life_period: 'pregnancy')
+    %li.home-categories-item.time-02
+      = link_to t('views.blog.first_to_fourth'),
+        posts_path(life_period: 'first_to_fourth')
+    %li.home-categories-item.time-03
+      = link_to t('views.blog.fifth_to_eighth'),
+        posts_path(life_period: 'fifth_to_eighth')
+    %li.home-categories-item.time-04
+      = link_to t('views.blog.nineth_to_twelfth'),
+        posts_path(life_period: 'nineth_to_twelfth')
+    %li.home-categories-item.time-05
+      = link_to t('views.blog.thirteenth_to_eighteenth'),
+        posts_path(life_period: 'thirteenth_to_eighteenth')

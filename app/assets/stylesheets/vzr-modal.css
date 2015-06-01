@@ -1,0 +1,138 @@
+.vzr-modal {
+  position: fixed;
+  z-index: 999;
+  background: #fff;
+  border-radius: 5px 5px 4px 4px;
+  display: none;
+  padding: 20px;
+}
+
+.vzr-modal.is-visible {
+  display: inline;
+}
+
+.vzr-modal:before {
+  position: fixed;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.vzr-modal:after {
+  content: '';
+  text-align: right;
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  border-radius: 5px 5px 4px 4px;
+  left: 0;
+  box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.5);
+}
+
+a.vzr-modal-btn-close {
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  color: #494949;
+  background: #fff;
+  border-radius: 100%;
+  width: 23px;
+  height: 23px;
+  line-height: 1;
+  text-align: center;
+}
+
+a.vzr-modal-btn-close:before {
+  content: '×';
+  font-size: 20px;
+}
+
+.timeline-modal {
+  position: fixed;
+  z-index: 9999;
+  background: #fff url('http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif') no-repeat center;
+  background-size: 100px;
+  border-radius: 0;
+  display: none;
+  padding: 0px;
+  width: 80%;
+  max-width: 1000px;
+  overflow: scroll;
+  margin-left: 10%;
+  height: 100%;
+}
+
+.timeline-modal.remove-loading{
+  background-image: none;
+  
+}
+
+.timeline-modal.is-visible, .timeline-modal-close.is-visible, .timeline-modal-bg.is-visible {
+  display: block;
+}
+
+a.timeline-modal-btn-close {
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  color: #494949;
+  background: #fff;
+  border-radius: 100%;
+  width: 23px;
+  height: 23px;
+  line-height: 1;
+  text-align: center;
+}
+
+a.timeline-modal-btn-close:before {
+  content: '×';
+  font-size: 20px;
+}
+
+.timeline-modal-bg{
+  position: fixed;
+  background: rgba(0, 0, 0, .75);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 9999;
+}
+
+.timeline-modal-close {
+  box-sizing: border-box;
+  cursor: pointer;
+  position: fixed;
+  right: 50%;
+  top: 10px;
+  color: #494949;
+  background: #fff;
+  border-radius: 100%;
+  width: 23px;
+  height: 23px;
+  line-height: 22px;
+  text-align: center;
+  display: none;
+  z-index: 999999;
+  margin-right: -620px;
+  font-weight: 600;
+  padding-left: 1px;
+}
+
+.timeline-modal-close:before {
+  content: '×';
+  font-size: 20px;
+}

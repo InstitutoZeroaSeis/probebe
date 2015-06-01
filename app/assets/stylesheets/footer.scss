@@ -1,0 +1,127 @@
+.footer-sign-up h2{
+  font-weight: 300;
+}
+
+.footer {
+  background-color: rgba(100, 100, 100, 1);
+  color: #fff;
+  min-height: 60px;
+  margin-top: 20px;
+  padding-top: 20px;
+  position: relative;
+  z-index: 99;
+  float: left;
+  width: 100%;
+}
+
+.footer-sign-up {
+  margin-bottom: 100px;
+}
+
+.footer-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.footer-input {
+  border: none;
+  border-radius: 3px;
+  color: black;
+  width: 100%;
+  padding: 15px 15px;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.footer-form-group {
+  border: 1px dashed #999;
+  padding: 30px 30px 40px;
+  margin-top: 30px;
+}
+
+.footer-sign-up-button {
+  background-color: $orange;
+  border: $orange;
+  color: #fff;
+  margin-top: 25px;
+  padding: 16px 15px;
+  width: 100%;
+
+  &:hover {
+    border: 1px solid $orange;
+    background-color: #fff;
+    color: $orange;
+  }
+}
+
+.footer-sign-up-facebook {
+  background-color: #23589a;
+  border-radius: 5px;
+  border: 0;
+  color: white;
+  float: left;
+  font-size: 18px;
+  font-weight: 300;
+  height: 60px;
+  width: 48%;
+
+  .highlight {
+    font-weight: 500;
+  }
+}
+
+.footer-sign-up-or {
+  background-color: rgba(100, 100, 100, 1);
+  border-radius: 100%;
+  float: left;
+  font-size: 18px;
+  font-weight: 300;
+  height: 66px;
+  left: 48.5%;
+  line-height: 66px;
+  margin: -3px 0 0 -33px;
+  position: absolute;
+  text-align: center;
+  width: 66px;
+}
+
+.footer-sign-up-google-plus {
+  background-color: #fe4934;
+  border-radius: 5px;
+  border: 0;
+  color: white;
+  float: left;
+  font-size: 18px;
+  font-weight: 300;
+  height: 60px;
+  margin-left: 4%;
+  width: 48%;
+
+  .highlight {
+    font-weight: 500;
+  }
+}
+
+.footer-copyright {
+  background-color: rgba(100, 100, 100, 1);
+  bottom: 0;
+  font-size: 16px;
+  font-weight: 300;
+  height: 60px;
+  line-height: 60px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-sign-up {
+  .has-error {
+    input {
+      border: 0;
+    }
+    label, span.help-block {
+      color: #D5D557 !important;
+    }
+  }
+}

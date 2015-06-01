@@ -5,23 +5,22 @@ class Message < ActiveRecord::Base
   belongs_to :category
   belongs_to :messageable, polymorphic: true
 
+  validates_presence_of :text
+
+  scope :male_and_both, -> { where(gender: [0, 2]) }
+  scope :female_and_both, -> { where(gender: [1, 2]) }
+  scope :journalistic, -> { where(messageable_type: 'Articles::JournalisticArticle') }
+
+  before_save :update_messageable_type
+
   delegate :parent_category, to: :category
 
   enum gender: [:male, :female, :both]
   enum baby_target_type: [:pregnancy, :born]
 
-  validates_presence_of :text
-
-  scope :male_and_both, -> { where(gender:[0,2]) }
-  scope :female_and_both, -> { where(gender:[1,2]) }
-  scope :journalistic, -> { where(messageable_type: 'Articles::JournalisticArticle') }
-
-  before_save :set_messageable_type
-
-  def set_messageable_type
-    if messageable_type
-      self.messageable_type = messageable.class.to_s
-    end
+  def update_messageable_type
+    return unless messageable_type
+    self.messageable_type = messageable.class.to_s
   end
 
   def age_valid_for_message?(age_in_weeks)
@@ -35,4 +34,7 @@ class Message < ActiveRecord::Base
     max_week - age_in_weeks
   end
 
+  def text_size
+    (text || '').size
+  end
 end

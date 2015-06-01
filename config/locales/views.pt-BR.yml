@@ -1,0 +1,123 @@
+pt-BR:
+  view:
+    message:
+      back_to_admin: Voltar para Admin
+      remove: Remover
+      send_message: Enviar mensagens
+  views:
+    admin:
+      journalistic_article:
+        thumb_image_cover_help: O tamanho da imagem será redimensionada para 300 x 200 pixels
+    application:
+      admin: Admin
+      back_to_home: Voltar ao início
+      exit: Sair
+      name: Pro Bebê
+      sign_in: Login
+      toggle_navigation: 'Abrir/Fechar Menu'
+      show_all_post_from_this_category: Ver todos os posts na categoria
+    banner:
+      did_you_know: Você Sabia?
+      pregnancy:
+        >
+          A partir do quarto mês de gestação o bebê já consegue ouvir a sua
+          voz?
+      first_to_fourth_month:
+        >
+          O recém nascido possui 300 ossos e quando cresce esse volume diminui
+          para 206 ossos?
+      fifth_to_eighth_month:
+        >
+          Que com 5 meses os bebês já reconhecem o próprio nome?
+      nineth_to_twelfth_month:
+        >
+          Que bebês não podem ingerir mel até completarem um ano de idade?
+      thirteenth_to_eighteenth_month:
+        >
+          Aos 18 meses, o bebê já tem um vocabulário com cerca de 50 palavras.
+    blog:
+      parent_category: Categoria
+      back_html: "&larr; Voltar"
+      by: "Publicado por %{author}"
+      date_posted: "Postado em %{date}"
+      fifth_to_eighth: 5 a 8 messes
+      first_to_fourth: 1 a 4 meses
+      newer_html: "Página Anterior &rarr;"
+      nineth_to_twelfth: 9 a 12 meses
+      older_html: "&larr; Próxima Página"
+      pregnancy: Gravidez
+      read_more: Leia Mais
+      related_post: Posts Relacionados
+      search: Busca de posts
+      tags: Tags
+      thirteenth_to_eighteenth: 13 a 18 meses
+    errors:
+      forbidden: Acesso não autorizado
+      internal_server_error: Ocorreu um erro ao processar a requisição
+      not_found: Página não encontrada
+    home:
+      anonymous:
+        read: Leia
+        sign_up: Cadastre-se
+        behavior:
+          header_html: <span class="highlight">Desenvolvimento</span> e cuidados com a mente do bebê
+          description:
+            >
+              Descubra como acontece o fantástico desenvolvimento dos bebês,
+              desde o útero, e o que você pode fazer para torná-lo ainda
+              melhor.
+          picture_legend:
+            >
+              O cérebro do bebê não nasce totalmente formado. Cabe aos pais
+              terminar essa delicada tarefa.
+        education:
+          header_html: ''
+          description:
+            >
+              Educar uma criança exige dedicação, mas não é um bicho de sete cabeças.
+              Aprenda com nossos especialistas.
+          picture_legend:
+            >
+              Com poucos meses, o bebê já consegue distinguir entre bons e maus
+              comportamentos.
+        finance:
+          header_html: Finanças
+          description:
+            >
+              Não é fácil criar um filho hoje em dia. Mas, com a ajuda de
+              nossos especialistas, você vai aprender a fazer seu dinheiro
+              render muito mais.
+          picture_legend:
+            >
+              Quanto custa ter um filho? Você já fez as contas?
+        health:
+          header_html: Mais de <span class="highlight">300</span> artigos
+          description:
+            >
+              com orientações simples e práticas para garantir uma gestação
+              tranquila e o nascimento de um bebê saudável.
+          picture_legend:
+            >
+              Você acha que precisa comer por dois? Esqueça disso e veja como
+              se alimentar de forma correta.
+        security:
+          header_html: Mais de <span class="highlight">100</span> dicas
+          description:
+            >
+              Você pode proteger melhor o seu filho. Veja como tornar a sua
+              casa mais segura
+          picture_legend:
+            >
+              No Brasil, os acidentes são a principal causa de morte de
+              crianças de até 9 anos.
+    profile:
+      cell_phone: Celular
+      cell_phones: Celulares
+      cell_phone_system: Sistema do Celular
+      children: Filhos
+      contact_informations: Dados de Contato
+      create_profile: Criar Perfil
+      personal_information: Informações Pessoais
+      phones: Telefones
+    timeline:
+      read_more: Leia Mais

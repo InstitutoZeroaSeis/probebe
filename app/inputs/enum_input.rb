@@ -1,5 +1,4 @@
 class EnumInput < SimpleForm::Inputs::CollectionSelectInput
-
   def input(wrapper_options)
     options[:collection] ||= get_collection
     super
@@ -16,5 +15,4 @@ class EnumInput < SimpleForm::Inputs::CollectionSelectInput
   def constant_name
     "#{attribute_name.upcase}_ENUM"
   end
-
 end

@@ -1,45 +1,62 @@
 require 'rails_helper'
 
-RSpec.describe Articles::Article, :type => :model do
-
-  context "without text" do
+RSpec.describe Articles::Article, type: :model do
+  context 'without text' do
     subject { build_stubbed :article, :without_text }
     it { is_expected.to be_invalid }
   end
 
-  context "without title" do
+  context 'without title' do
     subject { build_stubbed :article, :without_title }
     it { is_expected.to be_invalid }
   end
 
-  context "without category" do
+  context 'without category' do
     subject { build_stubbed :article, :without_category }
     it { is_expected.to be_invalid }
   end
 
-  context "without user" do
+  context 'without user' do
     subject { build_stubbed :article, :without_user }
     it { is_expected.to be_invalid }
   end
 
-  context "without type" do
+  context 'without type' do
     subject { build_stubbed :article, :without_type }
     it { is_expected.to be_invalid }
   end
 
-  context "without minimum and maximum valid week" do
+  context 'without minimum and maximum valid week' do
     subject { build_stubbed(:article, :without_minimum_valid_week, :without_maximum_valid_week) }
     it { is_expected.to be_invalid }
   end
 
-   context "minimum less than maximum" do
-    subject { build_stubbed(:article, minimum_valid_week: 5, maximum_valid_week: 10 ) }
+  context 'minimum less than maximum' do
+    subject { build_stubbed(:article, minimum_valid_week: 5, maximum_valid_week: 10) }
     it { is_expected.to be_valid }
   end
 
-  context "minimum higher than maximum" do
-    subject { build_stubbed(:article, minimum_valid_week: 12, maximum_valid_week: 10 ) }
+  context 'minimum higher than maximum' do
+    subject { build_stubbed(:article, minimum_valid_week: 12, maximum_valid_week: 10) }
     it { is_expected.to be_invalid }
   end
 
+  it 'is ordered from the newest to oldest by default' do
+    older_post = create(:article)
+    newer_post = create(:article)
+
+    all_posts = Articles::Article.all
+
+    expect(all_posts.map(&:title))
+      .to eq([newer_post.title, older_post.title])
+  end
+
+  it 'allows only categories that have a parent' do
+    category = Category.new
+    article = Articles::Article.new(category: category)
+
+    article.valid?
+
+    expect(article.errors[:category]).to include('deve ser uma subcategoria')
+  end
 end

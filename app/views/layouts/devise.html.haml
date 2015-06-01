@@ -2,9 +2,17 @@
 %html
   %head
     %title Pro Bebe
-    = stylesheet_link_tag 'carnival_devise_views.css'
+
+    = favicon_link_tag
+    = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
+
     = csrf_meta_tags
     = render partial: 'flash_messages'
-  %body
+
+    = yield :head
+  %body{class: "#{params[:controller]} signin"}
     = yield
+
+
+

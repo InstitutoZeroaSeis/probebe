@@ -1,35 +1,49 @@
 class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
-
   model_name 'User'
 
   field :id,
-        actions: [:index, :show], :sortable => false
+        actions: [:index, :show], sortable: false
 
   field :email,
-        actions: [:index, :show], :sortable => true,
-        advanced_search: {:operator => :like}
+        actions: [:index, :show], sortable: true,
+        advanced_search: { operator: :like }
 
-  field :profile_name,
+  field 'profile.name',
         actions: [:index, :show]
 
-  field :profile_birth_date,
+  field 'profile.birth_date',
         actions: [:show]
 
-  field :profile_state,
+  field 'profile.state',
         actions: [:show]
 
-  field :profile_city,
+  field 'profile.city',
         actions: [:show]
 
-  field :profile_street,
+  field 'profile.street',
         actions: [:show]
 
-  field :profile_primary_cell_phone_number,
+  field 'profile.primary_cell_phone_number',
         actions: [:show]
 
   action :show
-  action :impersonate,
-          remote: :false,
-          method: 'POST'
+  action :impersonate
+  action :authorize_receive_sms
+  action :unauthorize_receive_sms
 
+  scope :authorized_receive_sms
+  scope :unauthorized_receive_sms
+
+  def render_action?(record, record_action, _page_action)
+    action = record_action.name.to_sym
+
+    case action
+    when :authorize_receive_sms
+      !record.profile.authorized_receive_sms?
+    when :unauthorize_receive_sms
+      record.profile.authorized_receive_sms?
+    else
+      true
+    end
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127160904) do
+ActiveRecord::Schema.define(version: 20150521002016) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -26,24 +26,46 @@ ActiveRecord::Schema.define(version: 20150127160904) do
     t.text     "text"
     t.text     "summary"
     t.text     "box"
-    t.integer  "gender",                      default: 2
+    t.integer  "gender",                         default: 2
     t.integer  "category_id"
     t.boolean  "teenage_pregnancy"
     t.integer  "baby_target_type"
     t.integer  "minimum_valid_week"
     t.integer  "maximum_valid_week"
-    t.integer  "journalistic_articles_count", default: 0,     null: false
+    t.integer  "journalistic_articles_count",    default: 0,     null: false
     t.integer  "user_id"
     t.integer  "parent_article_id"
     t.integer  "original_author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "publishable",                 default: false
+    t.boolean  "publishable",                    default: false
+    t.string   "image_cover"
+    t.integer  "child_life_period"
+    t.string   "intro_text"
+    t.string   "thumb_image_cover_file_name"
+    t.string   "thumb_image_cover_content_type"
+    t.integer  "thumb_image_cover_file_size"
+    t.datetime "thumb_image_cover_updated_at"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   create_table "articles_tags", id: false, force: true do |t|
     t.integer "article_id", null: false
     t.integer "tag_id",     null: false
+  end
+
+  create_table "authors", force: true do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "avatars", force: true do |t|
@@ -61,16 +83,12 @@ ActiveRecord::Schema.define(version: 20150127160904) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "parent_category"
+    t.integer  "parent_category_id"
+    t.string   "color"
+    t.integer  "original_category_type"
   end
 
-  create_table "cell_phones", force: true do |t|
-    t.string   "number"
-    t.integer  "profile_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "area_code"
-  end
+  add_index "categories", ["parent_category_id"], name: "index_categories_on_parent_category_id", using: :btree
 
   create_table "children", force: true do |t|
     t.string   "name"
@@ -79,6 +97,7 @@ ActiveRecord::Schema.define(version: 20150127160904) do
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "born",       default: false
   end
 
   create_table "ckeditor_assets", force: true do |t|
@@ -119,6 +138,7 @@ ActiveRecord::Schema.define(version: 20150127160904) do
     t.datetime "updated_at"
     t.integer  "status",            default: 0
     t.string   "cell_phone_number"
+    t.boolean  "sms_allowed",       default: false
   end
 
   create_table "messages", force: true do |t|
@@ -137,16 +157,19 @@ ActiveRecord::Schema.define(version: 20150127160904) do
 
   create_table "profiles", force: true do |t|
     t.date     "birth_date"
-    t.integer  "gender",     default: 2
+    t.integer  "gender",                 default: 2
     t.integer  "user_id"
     t.string   "city"
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "state"
     t.string   "street"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "address_complement"
+    t.string   "postal_code"
+    t.integer  "cell_phone_system",      default: 2
+    t.string   "cell_phone"
+    t.boolean  "authorized_receive_sms", default: false
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree

@@ -6,5 +6,4 @@ class Api::CredentialsController < ApplicationController
     valid_hash = { valid: user.try(:valid_password?, params[:password]) || false }
     render json: valid_hash
   end
-
 end

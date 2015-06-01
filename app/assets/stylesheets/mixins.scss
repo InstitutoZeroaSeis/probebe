@@ -1,0 +1,16 @@
+@mixin default-button() {
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857;
+  padding: 9px 14px 8px;
+  text-align: center;
+  width: 150px;
+}
+
+@mixin timeline-bg-pag($opacity){
+  background: rgba(78,131,175, $opacity)
+}

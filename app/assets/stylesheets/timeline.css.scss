@@ -1,4 +1,5 @@
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+@import 'mixins';
 
 html,
 button,
@@ -71,7 +72,8 @@ body {
   padding: 0;
   background-color: rgb(114, 164, 223) !important;
   background-image: image-url("site-bg.jpg");
-  background-size: 100%;
+  background-size: 1920px;
+  background-position:  center top;
   background-repeat: no-repeat;
 }
 
@@ -86,6 +88,18 @@ body {
   position: relative;
   padding-bottom: 200px;
   padding-top: 33px;
+  
+  &:before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: #72A4DF;
+    height: 80px;
+    box-shadow: 0px -40px 60px #72A4DF;
+  }
+
 }
 
 .timeline-start{
@@ -96,7 +110,7 @@ body {
   position: relative;
   top: 46px;
   left: -285px;
-  z-index: 9;
+  z-index: 1;
   margin-left: 50%;
 }
 
@@ -112,7 +126,7 @@ body {
 
 .timeline-steps .day-data{
   position: absolute;
-  width: 100px;
+  width: 95px;
   margin-left: 50%;
   top: 24%;
   height: 40%;
@@ -204,7 +218,7 @@ body {
     left: 24px
   }
   .entry{
-    left: 415px !important;
+    left: 410px !important;
     &:before{
     }
   }
@@ -244,7 +258,7 @@ body {
     left: -90px
   }
   .entry{
-    right: 365px !important;
+    right: 358px !important;
     &:before{
       width: 125px !important;
       right: -130px !important;
@@ -430,7 +444,7 @@ body {
   .entry{
     min-width: 280px;
     text-align: left;
-    padding: 5px 20px;
+    padding: 14px 16px 4px;
     position: relative;
     opacity: .7;
     transition: all 0.3s ease;
@@ -446,8 +460,10 @@ body {
     }
 
     a{
-      color: #999;
       text-decoration: none;
+      float: none !important;
+      color: rgba(0, 0, 0, 0.7) !important;
+      padding: 0 !important;
     }
 
     &:hover{
@@ -516,6 +532,7 @@ body {
   float: left;
   width: 80%;
   margin-left: 10%;
+  display: none;
 
   li{
     margin: 0;
@@ -528,7 +545,6 @@ body {
     margin: 0 auto;
   }
 }
-
 
 .step-01, .step-05, .step-09, .step-13, .step-17{
   .entry{
@@ -555,6 +571,65 @@ body {
   .entry{
     background: #fff5f6;
     border: 4px solid #ffdfe4;
+  }
+}
+
+
+.timeline-months{
+  list-style: none;
+  padding: 0px;
+  float: left;
+  width: 100%;
+  margin-bottom: -20px;
+
+  .timeline-month{
+    text-align: center;
+    font-size: 17px;
+    @include timeline-bg-pag(1);
+    float: left;
+    width: 100%;
+
+    .month-timeline{
+      background: #73A5E1 image-url("site-bg.jpg") no-repeat center top !important;
+      background-size: 1920px !important;
+      margin-top: 54px;
+    }
+
+    a{
+      color: #fff;
+      padding: 15px;
+      width: 100%;
+      float: left;
+      background: none;
+
+      &:hover{
+        text-decoration: none;
+      }
+   }
+  }
+
+  .month-step-01, .month-step-11{
+    @include timeline-bg-pag(1);
+  }
+
+  .month-step-02, .month-step-10, .month-step-12, .month-step-20{
+    @include timeline-bg-pag(0.83);
+  }
+
+  .month-step-03, .month-step-09, .month-step-13, .month-step-19{
+    @include timeline-bg-pag(0.67);
+  }
+
+  .month-step-04, .month-step-08, .month-step-14, .month-step-18{
+    @include timeline-bg-pag(0.50);
+  }
+
+  .month-step-05, .month-step-07, .month-step-15, .month-step-17{
+    @include timeline-bg-pag(0.34);
+  }
+
+  .month-step-06, .month-step-16{
+    @include timeline-bg-pag(0.17);
   }
 }
 
@@ -702,3 +777,4 @@ Print styles
     page-break-after: avoid;
   }
 }
+

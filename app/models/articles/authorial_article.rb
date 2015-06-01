@@ -4,19 +4,19 @@ class Articles::AuthorialArticle < Articles::Article
 
   after_update :update_related_journalistic_articles
 
-  has_many :messages, as: :messageable do
-    def build(*args, &block)
-      item = super(*args, &block)
-      item.messageable_type = "Articles::AuthorialArticle"
-      item
-    end
-  end
+  has_many :messages,
+           -> { where(messageable_type: 'Articles::AuthorialArticle') },
+           foreign_key: 'messageable_id'
 
-  has_many :journalistic_articles, class_name: "Articles::JournalisticArticle", foreign_key: :parent_article_id
+  has_many :journalistic_articles,
+           class_name: 'Articles::JournalisticArticle',
+           foreign_key: :parent_article_id
 
   accepts_nested_attributes_for :messages, reject_if: all_blank?(:text)
 
   def update_related_journalistic_articles
-    Articles::JournalisticArticleUpdater.update_journalistic_from_authorial_article(self)
+    Articles::JournalisticArticleUpdater
+      .new(self)
+      .update_all!
   end
 end

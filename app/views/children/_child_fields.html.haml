@@ -1,8 +1,12 @@
-.child_fields.col-sm-offset-1.row
-  = f.input :name
-  = f.input :birth_date, as: :date_picker, input_html: { format: :short }
-  = f.input :gender, as: :enum
-  = f.simple_fields_for :avatar, f.object.avatar || Avatar.new,  wrapper: :horizontal_file_input do |ff|
-    = ff.input :photo, as: :file
-  .col-sm-offset-2.form-control-static
+%fieldset.form-block.child_fields.profile-form-child
+  .col-sm-3
+    = f.input :name
+  .col-sm-3.birth-or-born-date
+    = f.input :birth_date, as: :week_to_date, input_html: { format: :short }, label: false
+  .col-sm-2.birth-or-born
+    = f.input :born, input_html: { class: 'born_child' }
+  .col-sm-4
+    = render 'gender_radio_buttons',
+              form: f, options: @profile.options_to_gender_enum
+  .form-control-static
     = remove_fields_link('Remover', f, container_to_hide: '.child_fields')

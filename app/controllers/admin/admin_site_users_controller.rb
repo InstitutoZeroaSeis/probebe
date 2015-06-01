@@ -1,28 +1,25 @@
 class Admin::AdminSiteUsersController < Admin::AdminController
-  layout "carnival/admin"
+  layout 'carnival/admin'
 
   after_action :send_reset_password_email, only: [:create]
   skip_before_action :deny_site_user_access_on_admin
   load_and_authorize_resource 'User'
 
-  defaults :resource_class => User, instance_name: :user
+  defaults resource_class: User, instance_name: :user
 
   def table_items
     User.admin_site_user
   end
 
   def send_reset_password_email
-    if @user.valid?
-      @user.confirm!
-      @user.send_reset_password_instructions
-    end
+    @user.send_reset_password_instructions if @user.valid?
   end
 
   def build_resource
-    if action_name == "create"
-      @user = User.new(permitted_params[:user])
-      @user.skip_confirmation! if @user.valid?
-      @user
+    if action_name == 'create'
+      create_user = Users::CreateUserWithRandomPassword.new(permitted_params[:user])
+      create_user.save
+      @user = create_user.user
     else
       super
     end
@@ -36,7 +33,6 @@ class Admin::AdminSiteUsersController < Admin::AdminController
   private
 
   def permitted_params
-    params.permit(user: [:email, :role, { profile_attributes: [:first_name, :last_name] }]) || {}
+    params.permit(user: [:email, :role, profile_attributes: [:name]])
   end
-
 end

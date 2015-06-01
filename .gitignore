@@ -22,16 +22,14 @@
 /profiler
 /coverage
 
-.data
-vendor/bundle
-public/system
-tags
+/.data
+/vendor/bundle
+/public/system
+/tags
 /public/system
 /public/ckeditor_assets
-provisioning/roles/*
-/path/
-.capistrano/
-dump.sql
+/provisioning/roles/*
+/dump.sql
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

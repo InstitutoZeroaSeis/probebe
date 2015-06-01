@@ -2,16 +2,32 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  devise_for :users, :controllers => { registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
-  root to: 'posts#index'
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+  root to: 'home#index'
 
-  match ':status', to: 'errors#show', constraints: {status: /\d{3}/}, via: [:get, :post]
+  match ':status', to: 'errors#show', constraints: { status: /\d{3}/ }, via: [:get, :post]
   resource :profile, except: :index
   resources :timelines, only: :show
-  resources(:posts, only: [:show, :index])
+  get 'timelines/:id/monthly/:date' => 'timelines#monthly', as: :timeline_monthly
+  constraints(id: /\d+/) do
+    resources(:posts, only: [:show, :index]) do
+      collection do
+        scope :categories do
+          get ':category_id', to: 'posts#index', as: :categories
+        end
+      end
+      get :raw, on: :member
+    end
+  end
   get 'posts/page/:page_id' => 'posts#index', as: :paged_posts
-  resources(:tags) { resources :posts, only: :index }
+  resources(:tags, param: :name, only: []) { resources :posts, only: :index }
   resources(:categories) { resources :posts, only: :index }
+  get :about, to: 'static_pages#about'
+  get :partners, to: 'static_pages#partners'
+  get :what, to: 'static_pages#what'
 
   namespace :api do
     resources :credentials, only: :create
@@ -23,18 +39,22 @@ Rails.application.routes.draw do
 
   mount_carnival_at 'admin'
   namespace :admin do
-    authenticate :user, lambda {|u| u.admin? }  do
+    authenticate :user, ->(u) { u.admin? }  do
       mount Sidekiq::Web => '/sidekiq'
     end
     resources :activity_logs, only: [:index, :show]
     resources :admin_site_users
     resources :authorial_articles
+    resources :authors, only: [:new, :index, :edit, :update, :create, :show]
     resources :categories
     resources :journalistic_articles
     resources :messages
     resources :message_deliveries, only: :index
     resources :profiles
-    resources :site_users
+    resources :site_users do
+      get :authorize_receive_sms, on: :member
+      get :unauthorize_receive_sms, on: :member
+    end
     resources :tags
     get 'authorial_articles/:id/create_journalistic_article' => 'authorial_articles#create_journalistic_article', as: :create_journalistic_article
     get 'journalistic_articles/:id/show_activity_log' => 'journalistic_articles#show_activity_log'
@@ -42,5 +62,4 @@ Rails.application.routes.draw do
     get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile
     post 'site_users/:id/impersonate' => 'site_users#impersonate', as: :impersonate_user
   end
-
 end

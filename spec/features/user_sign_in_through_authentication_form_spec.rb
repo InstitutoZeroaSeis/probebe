@@ -1,21 +1,18 @@
 require 'rails_helper'
 
-feature "Standard Authentication" do
-  scenario "confirmed user authenticates through registration form" do
-    user = create(:user, :confirmed)
-    sign_in(user.email, user.password)
-    expect(current_path).to eq(root_path)
-  end
+feature 'user sign in through authentication form' do
+  scenario 'successfully', :js, :skip_auth do
+    user = create(:user)
 
-  scenario "User with complete profile authenticates through registration form" do
-    user = create(:user, :with_profile, :confirmed)
-    sign_in(user.email, user.password)
-    expect(current_path).to eq(root_path)
-  end
+    visit root_path
+    click_on I18n.t('views.application.sign_in')
+    within '.sign-in' do
+      fill_in 'user_email', with: user.email
+      fill_in 'user_password', with: user.password
+    end
+    click_on 'Entrar'
 
-  scenario "User with incomplete profile authenticates through registration form" do
-    user = create(:user, :confirmed, profile: create(:profile, :without_cell_phone))
-    sign_in(user.email, user.password)
     expect(current_path).to eq(root_path)
+    expect(page).to have_content(user.profile_name)
   end
 end

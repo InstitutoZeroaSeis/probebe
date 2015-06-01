@@ -1,28 +1,39 @@
 require 'rails_helper'
 
-RSpec.describe Profile, :type => :model do
+RSpec.describe Profile, type: :model do
+  it 'is valid with name' do
+    profile = Profile.new(name: 'Name')
 
-  context "without first name" do
-    subject { build_stubbed(:profile, first_name: "") }
-    it { is_expected.to be_invalid }
+    profile.valid?
+
+    expect(profile.errors[:name]).to_not include('não pode ser vazio')
   end
 
-  context "without last name" do
-    subject { build_stubbed(:profile, last_name: "") }
-    it { is_expected.to be_invalid }
+  it 'is invalid without name' do
+    profile = Profile.new(name: '')
+
+    profile.valid?
+
+    expect(profile.errors[:name]).to include('não pode ser vazio')
   end
 
-  it "is expected to set the name attribute when creating" do
-    profile = build_stubbed(:profile)
-    profile.run_callbacks(:save)
-    expect(profile.name).to eq("#{profile.first_name} #{profile.last_name}")
+  ['11 1234-5678', '11 91234-5678'].each do |number|
+    it "is valid with #{number} set to cell_phone" do
+      profile = Profile.new(cell_phone: number)
+
+      profile.valid?
+
+      expect(profile.errors[:cell_phone]).to_not include('não é válido')
+    end
   end
 
-  it "is expected to update the name attribute when being updated" do
-    profile = build_stubbed(:profile)
-    profile.first_name = "Fname"
-    profile.last_name = "Lname"
-    profile.run_callbacks(:save)
-    expect(profile.name).to eq("Fname Lname")
+  ['1234-5678', '111234-5678'].each do |number|
+    it "is invalid with #{number} set to cell_phone" do
+      profile = Profile.new(cell_phone: number)
+
+      profile.valid?
+
+      expect(profile.errors[:cell_phone]).to include('não é válido')
+    end
   end
 end

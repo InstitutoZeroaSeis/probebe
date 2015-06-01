@@ -3,6 +3,10 @@ FactoryGirl.define do
     text "Test"
     category
 
+    factory :message_for_delivery do
+      with_journalistic_article
+    end
+
     trait :with_journalistic_article do
       association :messageable, factory: :journalistic_article
     end
@@ -23,8 +27,8 @@ FactoryGirl.define do
       association :category, factory: [:category, :with_finance_parent]
     end
 
-    trait :with_socio_emotional_category do
-      association :category, factory: [:category, :with_socio_emotional_parent]
+    trait :with_behavior_category do
+      association :category, factory: [:category, :with_behavior_parent]
     end
   end
 end

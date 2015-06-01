@@ -1,25 +1,21 @@
 class PostsController < ApplicationController
-  POSTS_PER_PAGE = 3
-  layout "blog"
-
   def index
-    @pager = build_pager Articles::JournalisticArticle.ordered_by_creation_date
-      .publishable
-      .by_tag(params[:tag_id])
-      .by_search_term(params[:search])
-      .journalistic
-
-    @posts = @pager.paged
+    @presenter = PostsPresenter.new(post_search_params)
   end
 
   def show
-    @post = Articles::JournalisticArticle.find(params[:id])
+    @post = PostPresenter.new(Blog::Post.find(params[:id]))
+    render layout: 'single-post'
+  end
+
+  def raw
+    @post = PostPresenter.new(Blog::Post.find(params[:id]))
+    render layout: 'raw-single-post'
   end
 
   protected
 
-  def build_pager(posts)
-    page = params[:page] || 1
-    Pager.new(posts, page, POSTS_PER_PAGE)
+  def post_search_params
+    params.slice(:search, :category_id, :tag_name, :life_period, :page)
   end
 end

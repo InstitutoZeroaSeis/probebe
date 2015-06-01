@@ -1,0 +1,32 @@
+!!!5
+%html
+  %head
+    %title Pro Bebe
+
+    = favicon_link_tag
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+
+    = csrf_meta_tags
+    = render partial: 'flash_messages'
+
+    = yield :head
+  %body{class: "#{params[:controller]}"}
+    = render 'sign_in'
+    = render 'site_menu'
+    = yield
+    %footer.footer
+      = render 'sign_up_footer' unless current_user
+      %section.footer-copyright
+        .container
+          Pro Bebê
+
+
+  :javascript
+    window.onload = function() {
+      var modal = vzr.modal(
+        '.vzr-modal',
+        '.open-modal'
+      )
+    }
+

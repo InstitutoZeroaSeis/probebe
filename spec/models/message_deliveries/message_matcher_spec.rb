@@ -1,155 +1,90 @@
 require 'rails_helper'
 
-RSpec.describe MessageDeliveries::MessageMatcher, :type => :model do
+RSpec.describe MessageDeliveries::MessageMatcher, type: :model do
   before(:each) { @system_date = MessageDeliveries::SystemDate.new }
-  describe('.filter_messages_for_child') do
-    context "with two message applicable for child" do
-      subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).filter_messages_for_child }
-      before { @child = create(:child, birth_date: 5.months.ago) }
-      before { @message1 = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
-      before { @message2 = create(:message, :with_journalistic_article, :both, minimum_valid_week: 10, baby_target_type: 'born') }
-      it { is_expected.to match_array([@message1, @message2]) }
-    end
+  let(:system_date) { MessageDeliveries::SystemDate.new }
 
-    context "with two message applicable for child" do
-      context "one of message already sent for profile" do
-        subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).filter_messages_for_child }
-        before { @child = create(:child, birth_date: 5.months.ago) }
-        before { @message1 = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
-        before { @message2 = create(:message, :with_journalistic_article, :both, minimum_valid_week: 10, baby_target_type: 'born') }
-        before { MessageDeliveries::MessageDelivery.create!(child: @child, message: @message1) }
-        it { is_expected.to match_array([@message2]) }
-      end
-    end
+  it 'filters only messages that apply to the children profile' do
+    first_message = create(:message_for_delivery, :male, maximum_valid_week: 22, baby_target_type: 'born')
+    last_message = create(:message_for_delivery, :both, minimum_valid_week: 10, baby_target_type: 'born')
 
-    context "with two message applicable for child" do
-      context "message from same article" do
-        subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).filter_messages_for_child }
-        before { @child = create(:child, birth_date: 5.months.ago) }
-        before { @message1 = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
-        before { @message2 = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
-        it { is_expected.to match_array([@message1, @message2]) }
-      end
-    end
+    child = create(:child, birth_date: 5.months.ago)
 
-    context "with child born, male and five months old" do
-      context "and with messages that are applicable for that child" do
-        before { @child = create(:child, :with_profile, birth_date: 5.months.ago) }
-        before { @message1 = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
-        before { @message2 = create(:message, :with_journalistic_article, :both, minimum_valid_week: 10, baby_target_type: 'born') }
-        before { @system_date = MessageDeliveries::SystemDate.new }
+    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matched_message = matcher.match_message_for_child
 
-        subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).filter_messages_for_child }
+    expect(matched_message.id).to eq(first_message.id)
+  end
 
-        it { is_expected.to match_array([@message1, @message2]) }
-      end
-    end
+  it 'filters out non applicable messages' do
+    create(:message_for_delivery, :male)
+    message_to_match = create(:message_for_delivery, :female, maximum_valid_week: 22, baby_target_type: 'born')
 
-    context "with a born child, female and half an year old" do
-      context "return empty if no applicable messages were found for that child" do
-        before { @child = create(:child, birth_date: 18.months.ago) }
-        before { @message1 = create(:message, :with_journalistic_article, :female, minimum_valid_week: 12, maximum_valid_week: 22, baby_target_type: 'born') }
-        before { @message2 = create(:message, :with_journalistic_article, :both, maximum_valid_week: 10, baby_target_type: 'born') }
-        before { @system_date = MessageDeliveries::SystemDate.new }
+    child = create(:child, :female, birth_date: 5.months.ago)
 
-        subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).filter_messages_for_child }
+    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matched_message = matcher.match_message_for_child
 
-        it { is_expected.to be_empty }
-      end
-    end
+    expect(matched_message.id).to eq(message_to_match.id)
+  end
 
-    context "with pregnancy child, no gender specified, pregnancy for about 5 months" do
-      context "and articles that applicable for that child " do
-        before { @child = create(:child, :with_profile, birth_date: 7.months.from_now) }
-        before { @message1 = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'pregnancy') }
-        before { @message2 = create(:message, :with_journalistic_article, :male, minimum_valid_week: 10, maximum_valid_week: 25, baby_target_type: 'pregnancy') }
-        before { @system_date = MessageDeliveries::SystemDate.new }
+  it 'filters out already sent messages' do
+    child = create(:child, birth_date: 5.months.ago)
+    sent_message = create(:message_for_delivery, :both, baby_target_type: 'born', minimum_valid_week: 10)
+    create(:message_delivery, message: sent_message, child: child)
+    not_sent_message = create(:message_for_delivery, :both, baby_target_type: 'born', minimum_valid_week: 12)
 
-        subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).filter_messages_for_child }
+    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matched_message = matcher.match_message_for_child
 
-        it { is_expected.to match_array([@message1, @message2]) }
-      end
-    end
+    expect(matched_message.id).to eq(not_sent_message.id)
+  end
 
-    context "with pregnancy child, no gender specified, pregnancy for about 2 months" do
-      context "and 4 articles with only 2 of than being applicable" do
-        before { @child = create(:child, :with_profile, birth_date: 7.months.from_now) }
-        before { @message1 = create(:message, :with_journalistic_article, :male, maximum_valid_week: 14, baby_target_type: 'pregnancy') }
-        before { @message2 = create(:message, :with_journalistic_article, :male, minimum_valid_week: 3, baby_target_type: 'pregnancy') }
-        before { @message3 = create(:message, :with_journalistic_article, :both, minimum_valid_week: 16, baby_target_type: 'pregnancy') }
-        before { @message4 = create(:message, :with_journalistic_article, :both, minimum_valid_week: 10, baby_target_type: 'born') }
-        before { @system_date = MessageDeliveries::SystemDate.new }
+  it 'sends the older message in case it can\'t choose the appropriate one' do
+    child = create(:child, birth_date: 5.months.ago)
+    older_message = create(:message_for_delivery, :both, baby_target_type: 'born', minimum_valid_week: 10)
+    create(:message_for_delivery, :both, baby_target_type: 'born', minimum_valid_week: 10)
 
-        subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).filter_messages_for_child }
+    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matched_message = matcher.match_message_for_child
 
-        it { is_expected.to match_array([@message1, @message2]) }
-      end
-    end
+    expect(matched_message.id).to eq(older_message.id)
+  end
 
-    context "with articles, one is ending valiates maximum weeks" do
-      context "order them by priority of ending valid week" do
-        before { @child = create(:child, :with_profile, birth_date: 7.months.from_now) }
-        before { @message1 = create(:message, :with_journalistic_article, :male, minimum_valid_week: 9, maximum_valid_week: 13, baby_target_type: 'pregnancy') }
-        before { @message2 = create(:message, :with_journalistic_article, :male, minimum_valid_week: 7, maximum_valid_week: 11, baby_target_type: 'pregnancy') }
-        before { @message3 = create(:message, :with_journalistic_article, :male, minimum_valid_week: 7, maximum_valid_week: 12, baby_target_type: 'pregnancy') }
-        before { @system_date = MessageDeliveries::SystemDate.new }
+  it 'returns nil if there are no matching messages' do
+    child = create(:child, :female)
+    create(:message_for_delivery, :male)
 
-        subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).filter_messages_for_child }
+    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matched_message = matcher.match_message_for_child
 
-        it { is_expected.to match_array([@message2, @message3, @message1]) }
-      end
-    end
+    expect(matched_message).to be_nil
+  end
 
-    context "with articles and system date with date different from today" do
-      context "order them by priority of ending valid week" do
-        before { @child = create(:child, :with_profile, birth_date: 7.months.from_now) }
-        before { @message1 = create(:message, :with_journalistic_article, :male, minimum_valid_week: 9, maximum_valid_week: 20, baby_target_type: 'pregnancy') }
-        before { @message2 = create(:message, :with_journalistic_article, :male, minimum_valid_week: 7, maximum_valid_week: 17, baby_target_type: 'pregnancy') }
-        before { @message3 = create(:message, :with_journalistic_article, :male, minimum_valid_week: 7, baby_target_type: 'pregnancy') }
-        before { @system_date = MessageDeliveries::SystemDate.new(5.weeks.from_now.to_date.to_s) }
+  it 'with two matching messages send the one with the nearest "due date"' do
+    child = create(:child, :with_profile, birth_date: 1.week.ago)
+    create(:message_for_delivery, baby_target_type: 'born', maximum_valid_week: 2)
+    message_in_due_date = create(:message_for_delivery, baby_target_type: 'born', maximum_valid_week: 1)
 
-        subject { MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date).filter_messages_for_child }
+    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matched_message = matcher.match_message_for_child
 
-        it { is_expected.to match_array([@message2, @message1, @message3]) }
-      end
-    end
+    expect(matched_message.id).to eq(message_in_due_date.id)
+  end
 
-    describe('.match_message_for_child') do
-      context "messages with different maximum valid week and different category" do
-        context "match message from nearest date from child age and right category" do
-          before { @child = create(:child, :with_profile, birth_date: 5.months.ago) }
-          before { @message1 = create(:message, :with_journalistic_article, :with_health_category, :male, minimum_valid_week: 9, maximum_valid_week: 22, baby_target_type: 'born') }
-          before { @message2 = create(:message, :with_journalistic_article, :with_security_category, :male, minimum_valid_week: 7, maximum_valid_week: 24, baby_target_type: 'born') }
-          before { @message3 = create(:message, :with_journalistic_article, :with_education_category, :male, minimum_valid_week: 1, maximum_valid_week: 22, baby_target_type: 'born') }
-          before { @message4 = create(:message, :with_journalistic_article, :with_health_category, :male, minimum_valid_week: 9, maximum_valid_week: 21, baby_target_type: 'born') }
-          before { @message5 = create(:message, :with_journalistic_article, :with_security_category, :male, minimum_valid_week: 7, maximum_valid_week: 22, baby_target_type: 'born') }
-          before { MessageDeliveries::MessageDelivery.create!(child: @child, message: @message4) }
-          before { MessageDeliveries::MessageDelivery.create!(child: @child, message: @message5) }
-          before { @message_matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date) }
-          subject { @message_matcher.match_message_for_child }
+  it 'matches the category with less sent messages' do
+    less_sent_category, more_sent_category = create_pair(:category, :with_parent)
 
-          it { is_expected.to eq(@message3) }
-        end
-      end
+    child = create(:child, :with_profile, birth_date: 1.week.ago)
 
-      context "messages with different maximum valid week and different category" do
-        context "match message from nearest date from child age and hasn't the right category" do
-          before { @child = create(:child, :with_profile, birth_date: 5.months.ago) }
-          before { @message1 = create(:message, :with_journalistic_article, :with_health_category, :male, minimum_valid_week: 9, maximum_valid_week: 22, baby_target_type: 'born') }
-          before { @message2 = create(:message, :with_journalistic_article, :with_security_category, :male, minimum_valid_week: 7, maximum_valid_week: 24, baby_target_type: 'born') }
-          before { @message3 = create(:message, :with_journalistic_article, :with_education_category, :male, minimum_valid_week: 1, maximum_valid_week: 22, baby_target_type: 'born') }
-          before { @message4 = create(:message, :with_journalistic_article, :with_education_category, :male, minimum_valid_week: 1, maximum_valid_week: 22, baby_target_type: 'born') }
-          before { @message5 = create(:message, :with_journalistic_article, :with_health_category, :male, minimum_valid_week: 9, maximum_valid_week: 21, baby_target_type: 'born') }
-          before { @message6 = create(:message, :with_journalistic_article, :with_security_category, :male, minimum_valid_week: 7, maximum_valid_week: 22, baby_target_type: 'born') }
-          before { MessageDeliveries::MessageDelivery.create!(child: @child, message: @message4) }
-          before { MessageDeliveries::MessageDelivery.create!(child: @child, message: @message5) }
-          before { MessageDeliveries::MessageDelivery.create!(child: @child, message: @message6) }
-          before { @message_matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, @child, @system_date) }
-          subject { @message_matcher.match_message_for_child }
+    more_sent_category_message = create(:message_for_delivery, baby_target_type: 'born', maximum_valid_week: 2, category: more_sent_category)
+    less_sent_category_message = create(:message_for_delivery, baby_target_type: 'born', maximum_valid_week: 2, category: less_sent_category)
+    create_pair(:message_delivery, category: more_sent_category, child: child)
+    create(:message_delivery, category: more_sent_category, child: child)
 
-          it { is_expected.to eq(@message1)  }
-        end
-      end
-    end
+    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matched_message = matcher.match_message_for_child
+
+    expect(matched_message.id).to_not eq(more_sent_category.id)
   end
 end

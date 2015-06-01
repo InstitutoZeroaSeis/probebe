@@ -4,58 +4,50 @@ module Articles
 
     GENDER_ENUM = [:male, :female, :both]
     BABY_TARGET_TYPE_ENUM = [:pregnancy, :born]
+    CHILD_LIFE_PERIOD_ENUM = [:first_to_fourth, :fifth_to_eighth,
+                              :nineth_to_twelfth, :thirteenth_to_eighteenth]
 
-    enum gender: GENDER_ENUM
+    default_scope { order(created_at: :desc) }
+
     enum baby_target_type: BABY_TARGET_TYPE_ENUM
+    enum child_life_period: CHILD_LIFE_PERIOD_ENUM
+    enum gender: GENDER_ENUM
 
     belongs_to :category
+    belongs_to :original_author, class_name: 'Authors::Author'
     belongs_to :user
-    belongs_to :original_author, class_name: "User"
-    has_many :article_references
     has_and_belongs_to_many :tags
+    has_many :article_references
 
     accepts_nested_attributes_for :article_references, allow_destroy: true
     accepts_nested_attributes_for :tags, allow_destroy: false
 
-    validates_presence_of :text, :title, :category, :user, :type, :baby_target_type, :gender
+    validates :text, :title, :category, :user, :type,
+              :baby_target_type, :gender, presence: true
 
-    validate :presence_of_maximum_or_minimum
     validate :minimum_not_higher_than_maximum
+    validate :presence_of_maximum_or_minimum
+    validate :category_is_a_subcategory
 
     before_save :set_defaults
 
-    scope :ordered_by_creation_date, -> { order(created_at: :desc) }
-    scope :by_tag, ->(tag_name) { joins(:tags).merge(Tag.where(name: tag_name)) if tag_name }
-    scope :by_search_term, ->(search_term) { where(match_title(search_term).or(match_text(search_term))) if search_term }
     scope :journalistic, -> { where(type: 'Articles::JournalisticArticle') }
-    scope :publishable, -> { where(publishable: true) }
 
     has_paper_trail
 
     def presence_of_maximum_or_minimum
-      if (self.minimum_valid_week.blank? && self.maximum_valid_week.blank?)
-        errors.add(:base, I18n.t('activerecord.errors.models.article.base.has_no_minimum_and_maximum_valid_week'))
-      end
+      return unless minimum_valid_week.blank? && maximum_valid_week.blank?
+      errors.add(:base, :has_no_minimum_and_maximum_valid_week)
     end
 
     def minimum_not_higher_than_maximum
-      if self.minimum_valid_week.present? and self.maximum_valid_week.present?
-        if minimum_valid_week > maximum_valid_week
-          errors.add(:base, I18n.t('activerecord.errors.models.article.base.minimum_higher_than_maximum'))
-        end
-      end
+      return unless minimum_valid_week.present? && maximum_valid_week.present?
+      return unless minimum_valid_week > maximum_valid_week
+      errors.add(:base, :minimum_higher_than_maximum)
     end
 
     def set_defaults
       self.baby_target_type ||= 'pregnancy'
-    end
-
-    def self.match_title(search_term)
-      arel_table[:title].matches("%#{search_term}%")
-    end
-
-    def self.match_text(search_term)
-      arel_table[:text].matches("%#{search_term}%")
     end
 
     def born?
@@ -66,5 +58,11 @@ module Articles
       !born?
     end
 
+    protected
+
+    def category_is_a_subcategory
+      return if category.try(:subcategory?)
+      errors.add(:category, :should_be_subcategory)
+    end
   end
 end

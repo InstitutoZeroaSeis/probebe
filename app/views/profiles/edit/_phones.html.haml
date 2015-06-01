@@ -1,0 +1,6 @@
+.container
+  %h3= @profile.phones_text
+  %fieldset.edit-profile-form-address
+    .row
+      .col-sm-12
+        = f.input :cell_phone, input_html: { class: 'phone' }

@@ -1,4 +1,4 @@
-Rails.application.configure do
+  Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -18,7 +18,8 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { address: 'mail_1', port: 1025 }
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'web.probebe.dev' }
+  Rails.application.routes.default_url_options[:host] = 'web.probebe.dev'
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -39,7 +40,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  BetterErrors::Middleware.allow_ip! "0.0.0.0/0" if defined? BetterErrors && Rails.env == :development
+  BetterErrors::Middleware.allow_ip! "0.0.0.0/0" if defined? BetterErrors
 
   config.after_initialize do
     Bullet.enable = true

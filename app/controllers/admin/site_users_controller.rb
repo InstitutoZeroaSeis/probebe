@@ -1,9 +1,10 @@
 class Admin::SiteUsersController < Admin::AdminController
-  layout "carnival/admin"
+  layout 'carnival/admin'
 
-  skip_before_action :deny_site_user_access_on_admin, only: [:stop_impersonating]
+  skip_before_action :deny_site_user_access_on_admin,
+                     only: [:stop_impersonating]
   load_and_authorize_resource 'User', except: :stop_impersonating
-  defaults :resource_class => User
+  defaults resource_class: User
 
   def table_items
     User.site_user.includes(:profile)
@@ -12,7 +13,10 @@ class Admin::SiteUsersController < Admin::AdminController
   def impersonate
     user = User.find(params[:id])
     impersonate_user(user)
-    flash[:success] = I18n.t('success.controllers.admin.users.impersonate', user_name: current_user.email)
+    flash[:success] = I18n.t(
+      'success.controllers.admin.users.impersonate',
+      user_name: current_user.email
+    )
     redirect_to root_path
   end
 
@@ -21,4 +25,15 @@ class Admin::SiteUsersController < Admin::AdminController
     redirect_to carnival_root_path
   end
 
+  def authorize_receive_sms
+    user = User.find(params[:id])
+    user.profile.authorize_receive_sms!
+    redirect_to action: :index
+  end
+
+  def unauthorize_receive_sms
+    user = User.find(params[:id])
+    user.profile.unauthorize_receive_sms!
+    redirect_to action: :index
+  end
 end

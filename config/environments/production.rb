@@ -65,11 +65,11 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.smtp_settings = {
-    :address => "smtp.sendgrid.net",
-    :port => "587",
-    :authentication => :plain,
-    :user_name => "antonioams",
-    :password => "Ib$cJ3l0"
+    address: "smtp.sendgrid.net",
+    port: "587",
+    authentication: :plain,
+    user_name: "antonioams",
+    password: "Ib$cJ3l0"
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
@@ -97,6 +97,7 @@ Rails.application.configure do
       bucket: ENV['S3_BUCKET_NAME'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-    }
+    },
+    s3_host_name: 's3-us-west-2.amazonaws.com/'
   }
 end

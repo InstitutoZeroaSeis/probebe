@@ -1,0 +1,207 @@
+.site-banner {
+  background: black;
+  position: relative;
+  width: 100%;
+}
+
+.site-banner-list {
+  margin: 0;
+  padding: 0;
+  float: left;
+  width: 100%;
+}
+
+.site-banner-item {
+  float: left;
+  height: 500px;
+  list-style: none;
+  margin: 0;
+  padding: 150px 0 0;
+  width: 100%;
+}
+
+.site-banner-header {
+  font-weight: 300;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  text-shadow: 0px 0px 40px rgba(0, 0, 0, 1);
+  width: 650px;
+  z-index: 9;
+
+  h1 {
+    font-size: 54px;
+    font-weight: 300;
+    color: #f7bc65;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    position: relative;
+
+    &:before {
+      border-top: 1px dashed #f7bc65;
+      bottom: -5px;
+      content: '';
+      display: block;
+      position: absolute;
+      width: 30%;
+      margin-left: 35%;
+    }
+  }
+
+  p {
+    font-size: 28px;
+    color: #fff;
+  }
+}
+
+.site-banner-image {
+  background: image-url('img-banner-probebe.jpg') center top;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 1920px;
+
+  img {
+    display: none !important;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: image-url('site-banner-texture.png');
+    z-index: 2;
+  }
+}
+
+.site-banner-image-pregnancy {
+  background: transparent image-url('banner-1.jpg') repeat scroll center -360px;
+}
+
+.site-banner-image-first-to-fourth-month {
+  background: transparent image-url('banner-2.jpg') repeat scroll center -500px;
+}
+
+.site-banner-image-fifth-to-eighth-month {
+  background: transparent image-url('banner-3.jpg') repeat scroll center -150px;
+}
+
+.site-banner-image-nineth-to-twelfth-month {
+  background: transparent image-url('banner-4.jpg') repeat scroll center -350px;
+}
+
+.site-banner-image-thirteenth-to-eightteenth-month {
+  background: transparent image-url('banner-5.jpg') repeat scroll center -280px;
+}
+
+.site-banner-arrow {
+  background: image-url('site-banner-arrow.png') no-repeat center;
+  cursor: pointer;
+  height: 35px;
+  left: 50%;
+  margin-left: -38px;
+  position: absolute;
+  top: 415px;
+  width: 77px;
+  z-index: 10;
+}
+
+.site-banner-dots {
+  cursor: pointer;
+  height: 70px;
+  position: relative;
+}
+
+@mixin site-banner-step($color, $active-bottom-color, $initial-bg-x, $initial-bg-y, $active-bg-x, $active-bg-y) {
+  border-bottom-color: $color;
+  color: $color;
+  &:after{ background-position: $initial-bg-x $initial-bg-y; }
+
+  &.is-active {
+    background: $color;
+    border-bottom-color: $active-bottom-color;
+    &:before{ background-position: $active-bg-x $active-bg-y; }
+  }
+}
+
+.site-banner-dot {
+  float: left;
+  height: 70px;;
+  width: 20%;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 65px;
+  text-align: center;
+  position: relative;
+  padding-left: 5%;
+
+  &.step-0 {
+    @include site-banner-step($red, $dark-red, 0, 0, -31px, 0)
+  }
+
+  &.step-1 {
+    @include site-banner-step($orange, $dark-orange, -290px, 0, -61px, 0)
+  }
+
+  &.step-2 {
+    @include site-banner-step($purple, $dark-purple, -600px, 0, -93px, 0)
+  }
+
+  &.step-3 {
+    @include site-banner-step($green, $dark-green, -910px, 0, -124px, 0)
+  }
+
+  &.step-4 {
+    @include site-banner-step($cyan, $dark-cyan, -1235px, 0, -124px, 0)
+  }
+
+  &.is-active {
+    color: #fff;
+  }
+
+  &:before{
+    content: '';
+    display: block;
+    position: absolute;
+    right: -12px;
+    width: 15px;
+    height: 66px;
+    background-image: image-url('banner-bullets.png');
+    background-repeat: no-repeat;
+    z-index: 9;
+  }
+
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 80px;
+    height: 66px;
+    top: -5px;
+    left: 5%;
+    background-image: image-url('banner-bullets-icons.png');
+    background-repeat: no-repeat;
+  }
+
+  @media (min-width: 1366px) {
+    &:after {
+      left: 21%;
+    }
+  }
+
+  @media (min-width: 1100px) and (max-width: 1365px) {
+    &:after {
+      left: 10%;
+    }
+  }
+}

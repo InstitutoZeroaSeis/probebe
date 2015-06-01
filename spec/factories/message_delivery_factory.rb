@@ -1,7 +1,17 @@
 FactoryGirl.define do
-  factory :message_delivery, class: "MessageDeliveries::MessageDelivery" do
+  factory :message_delivery, class: 'MessageDeliveries::MessageDelivery' do
     child
     message
+    sms_allowed true
+
+    transient do
+      category nil
+    end
+
+    after(:build, :stub) do |delivery, evaluator|
+      next unless evaluator.category
+      delivery.message = create(:message, category: evaluator.category)
+    end
 
     trait :sent do
       status 'sent'
@@ -14,6 +24,5 @@ FactoryGirl.define do
     trait :with_device_registrations do
       device_registrations { create_list(:device_registration, 1) }
     end
-
   end
 end

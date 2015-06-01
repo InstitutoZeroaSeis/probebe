@@ -1,0 +1,235 @@
+.main.container-fluid{
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1000px !important;
+}
+
+.home-categories {
+  position: absolute;
+  right: 50%;
+  margin-right: -490px;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 6%, rgba(0, 0, 0, 0.04) 33%, rgba(0, 0, 0, 0.04) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(6%, rgba(0, 0, 0, 0)), color-stop(33%, rgba(0, 0, 0, 0.04)), color-stop(100%, rgba(0, 0, 0, 0.04)));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 6%, rgba(0, 0, 0, 0.04) 33%, rgba(0, 0, 0, 0.04) 100%);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 6%, rgba(0, 0, 0, 0.04) 33%, rgba(0, 0, 0, 0.04) 100%);
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 6%, rgba(0, 0, 0, 0.04) 33%, rgba(0, 0, 0, 0.04) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 6%, rgba(0, 0, 0, 0.04) 33%, rgba(0, 0, 0, 0.04) 100%);
+  padding: 20px 30px;
+  height: 100%;
+  z-index: 9;
+}
+
+.how-it-works {
+  margin: 50px 0;
+  padding-bottom: 100px;
+  float: left;
+  width: 100%;
+  background: url(default-shade-bg.png) no-repeat center bottom;
+}
+
+.how-it-works-header {
+  font-weight: 300;
+  font-size: 35px;
+  text-transform: uppercase;
+}
+
+.how-it-works-list {
+  margin-top: 40px;
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+.how-it-works-item {
+  float: left;
+  margin-right: 40px;
+  text-align: center;
+  position: relative;
+  width: 200px;
+
+  figure {
+    border-radius: 50%;
+    border: 1px solid $border-gray;
+    height: 150px;
+    margin: 0 auto;
+    position: relative;
+    width: 150px;
+  }
+
+  p {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #000;
+  }
+}
+
+.home-categories-list {
+  border-color: #cccccc;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px 1px 8px;
+  box-shadow: 0 2px 40px #cccccc;
+  float: right;
+  list-style-type: none;
+  margin-top: 30px;
+  padding: 20px 25px 30px;
+  position: relative;
+  width: 222px;
+  background: #fff;
+}
+
+.blog-tags{
+  float: right;
+}
+
+.blog-tags .home-categories-list {
+  border-color: #cccccc;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px 1px 8px;
+  box-shadow: 0 2px 40px #cccccc;
+  float: right;
+  list-style-type: none;
+  margin-top: 30px;
+  padding: 20px 25px 30px;
+  position: relative;
+  width: 222px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.blog-tags.collapsed .home-categories-list{
+  max-height: 172px;
+}
+
+.blog-tags .more{
+  display: none;
+}
+
+.collapsed.blog-tags .more{
+  cursor: pointer;
+  content: '+';
+  display: block;
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  margin-left: -22px;
+  border: 1px solid #ccc;
+  width: 30px;
+  height: 26px;
+  border-radius: 0px 0px 100% 100%;
+  background: #fff;
+  z-index: 99;
+  line-height: 24px;
+  text-align: center;
+  font-size: 18px;
+  color: #999;
+  border-top: none;
+}
+
+
+.home-categories-item {
+  line-height: 50px;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+
+  &:after {
+    border-bottom-color: $border-gray;
+    border-bottom-style: dashed;
+    border-bottom-width: 1px;
+    border-bottom: 1px dashed #CCC;
+    content: '';
+    display: block;
+    left: 10%;
+    position: absolute;
+    width: 80%;
+  }
+}
+
+.subject {
+  margin-bottom: 85px;
+  position: relative;
+}
+
+.subject.posts {
+  margin-bottom: 85px;
+  position: relative;
+  padding: 0 !important;
+  margin-top: 30px;
+}
+
+.subject.posts .post{
+  padding: 0 10px 0 0px;
+  margin-right: 4%;
+  width: 46% !important;
+  max-height: 500px;
+}
+
+.single-post {
+  padding: 0 30px 0 0;
+
+  p {
+    font-weight: 300;
+  }
+}
+
+.subject:after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 1060px;
+  background: #eee;
+  position: absolute;
+  bottom: -55px;
+}
+
+.home-categories-item a{
+  color: #333;
+  text-decoration: none;
+}
+
+@mixin category-color($color) {
+  border-bottom-color: $color;
+  &.is-active {
+    color: $color;
+    &:after {
+      border-bottom-color: $color;
+      border-bottom-style: solid;
+    }
+    a{
+      color: $color;
+    }
+  }
+}
+
+.category-health {
+  @include category-color($red);
+}
+.category-education {
+  @include category-color($orange);
+}
+.category-emotional {
+  @include category-color($purple);
+}
+.category-finances {
+  @include category-color($cyan);
+}
+.category-safety {
+  @include category-color($yellow);
+}
+
+.category-security {
+  @include category-color($yellow);
+}
+
+.category-finance {
+  @include category-color($cyan);
+}
+
+.category-behavior {
+  @include category-color($purple);
+}

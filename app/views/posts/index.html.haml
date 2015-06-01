@@ -1,27 +1,15 @@
-%h1= t('views.application.name')
-.posts
-  - @posts.each do |post|
-    .post
-      %hr
-      %h2.post_title= link_to post.title.titleize, post_path(post)
-      %p.lead= t('views.blog.by', author: post.original_author.email)
-      %p
-        %span.glyphicon.glyphicon-time
-        = t('views.blog.date_posted', date: l(post.created_at))
-      %hr
-      %p
-        - if post.summary.blank?
-          = truncate Nokogiri::HTML(post.text).text, length: 500
-        - else
-          = post.summary
-      = link_to post_path(post), class: 'btn btn-primary' do
-        = t('views.blog.read_more')
-        %span.glyphicon.glyphicon-chevron-right
+%section.subjects.container
+  .posts.subject.col-md-9
+    = render partial: 'post', collection: @presenter.posts
 
-  %ul.pager
-    - if @pager.has_next_step?
-      %li.previous
-        = link_to t('views.blog.older_html'), previous_blog_page(@pager.page)
-    - if @pager.has_previous_step?
-      %li.next
-        = link_to t('views.blog.newer_html'), next_blog_page(@pager.page)
+    %ul.pager.col-md-12
+      - if @presenter.render_next_step?
+        %li.previous
+          = link_to t('views.blog.older_html'), @presenter.previous_blog_page
+      - if @presenter.render_previous_step?
+        %li.next
+          = link_to t('views.blog.newer_html'), @presenter.next_blog_page
+
+  = render 'sidebar',
+    tags: @presenter.tags_for_sidebar,
+    categories: @presenter.categories_for_sidebar

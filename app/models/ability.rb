@@ -39,7 +39,7 @@ class Ability
   def set_site_user_permissions(user)
     if user.site_user?
       can [:read, :create, :update], Profile
-      can :show, Child, profile_id: user.profile_id
+      can [:show, :monthly], Child, profile_id: user.profile_id
     end
   end
 

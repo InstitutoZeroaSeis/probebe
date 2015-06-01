@@ -1,0 +1,13 @@
+.post.col-md-6{ class: post.category_type }
+  %hr
+  %h2.post-title= link_to post.title, post_path(post)
+  %p.periodo-label{ class: "period-#{post.pregnancy_or_child_life_period}" }
+    = t("views.blog.#{post.pregnancy_or_child_life_period}")
+  %p.categoria-label= post.category_name
+  %figure
+    %img{width: 300, height: 200, src: post.thumb_image_cover}
+  %hr
+  %p.post-summary
+    = post.post_summary
+  = link_to post_path(post), class: 'btn btn-primary education-button btn-list' do
+    = t('views.blog.read_more')

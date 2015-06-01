@@ -1,0 +1,20 @@
+#image-cover-preview, #add-image-cover{
+  margin-top: 20px;
+  margin-left: 15px;
+  float: left;
+  clear: both;
+}
+
+#image-cover-preview{
+}
+
+.hide{
+  display: none;
+}
+
+.help{
+  float: left;
+  margin-left: 10px;
+  font-size: 13px;
+  margin-top: 19px;  
+}

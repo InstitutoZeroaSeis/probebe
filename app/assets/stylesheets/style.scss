@@ -1,0 +1,356 @@
+@import 'variables';
+
+* {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+h3{
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-weight: 100;
+	font-size: 34px;
+}
+
+section.main.container-fuild {
+  float: left;
+  width: 100%;
+}
+
+.home .col-md-6, .home .col-md-12, .home .col-md-7, .home .col-md-5, .home .col-md-9 {
+  margin-left: 0;
+  padding: 0 30px 0 0px;
+}
+
+.blog-sidebar{
+	margin-top: 20px;
+}
+
+.signed-in{
+	margin-top: 30px;
+	margin-bottom: 280px;
+}
+
+@import 'header';
+@import 'site-banner';
+@import 'site-body';
+@import 'forms';
+@import 'block-categories';
+@import 'blog';
+@import 'footer';
+
+.blog-time-range{
+
+}
+
+.blog-time-range li{
+	position: relative;
+	padding-left: 34px;
+}
+
+.blog-time-range li:after {
+  border-bottom-color: #cccccc;
+  border-bottom-style: dashed;
+  border-bottom-width: 1px;
+  border-bottom: 1px dashed #CCC;
+  content: '';
+  display: block;
+  left: 0%;
+  position: absolute;
+  width: 100%;
+}
+
+.blog-time-range li:before{
+  content: '';
+  display: block;
+  position: absolute;
+  left: -8%;
+  width: 50px;
+  height: 66px;
+  top: 3px;
+  background-image: url(/assets/banner-bullets-icons-pb.png);
+  background-repeat: no-repeat;
+  background-size: 850px;
+}
+
+.blog-time-range li.time-02:before{background-position: -189px 0px;}
+.blog-time-range li.time-03:before{background-position: -386px 0px;}
+.blog-time-range li.time-04:before{background-position: -588px 0px;}
+.blog-time-range li.time-05:before{background-position: -794px 0px;}
+
+.btn-list{
+	background: #fff;
+	border-color: #f69343 !important;
+	color: #f69343 !important;
+	width: 50%;
+	margin-left: 25%;
+}
+
+.btn-list:hover{
+	background: #f69343 !important;
+	color: #fff !important;
+}
+
+.periodo-label{
+	color: #333;
+	float: left;
+	font-size: 13px;
+	padding: 4px 14px 4px 35px;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.periodo-label:before{
+  content: '';
+  display: block;
+  position: absolute;
+  left: -12%;
+  width: 80px;
+  height: 66px;
+  top: -13px;
+  background-image: url(/assets/banner-bullets-icons-pb.png);
+  background-repeat: no-repeat;
+  background-size: 850px;
+}
+
+.period-first_to_fourth.periodo-label:before{background-position: -185px 0px;}
+.period-fifth_to_eighth.periodo-label:before{background-position: -383px 0px;}
+.period-nineth_to_twelfth.periodo-label:before{background-position: -585px 0px;}
+.period-thirteenth_to_eighteenth.periodo-label:before{background-position: -791px 0px;}
+
+
+.categoria-label{
+	font-size: 13px;
+	float: left;
+	background: #ca3343;
+	padding: 4px 8px;
+	color: white;
+	margin-bottom: 10px;
+	border-radius: 3px;
+}
+
+.education .categoria-label{
+	background: #f69343;
+}
+
+.finance .categoria-label{
+	background: #39868c;
+}
+
+.security .categoria-label{
+	background: #fabe67;
+}
+
+.behavior .categoria-label{
+	background: #6859aa;
+}
+
+nav ul h3{
+	font-size: 18px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	font-weight: 400;
+	opacity: .8;
+}
+
+.blog-time-range ul.home-categories-list.category-education {
+  border-bottom-color: #39868C;
+}
+
+.single-post hr {
+    float: left;
+    width: 100%;
+}
+
+.single-post p:not(.categoria-label) {
+    float: left;
+    width: 100%;
+}
+
+.single-post p.periodo-label {
+    float: left;
+    width: auto;
+}
+
+nav.blog-tags ul li a {
+    float: left;
+    width: auto;
+    display: inline;
+    line-height: initial;
+    font-size: 14px;
+    margin: 10px 5px 0px 0px;
+    padding: 0px 5px 0px 0px;
+    border-right: 1px solid #ccc;
+}
+
+nav.blog-tags ul li {
+    border: none !important;
+}
+
+.lead{
+	font-size: 18px;
+}
+
+.anonymous{
+	margin-top: 30px;
+}
+
+.senha{
+	margin-left: -15px;
+	margin-bottom: 10px;
+}
+
+ul.nav.navbar-nav {
+  margin-top: 10px;
+}
+
+.signup-signin .footer-sign-up-or{
+  background: #fff;
+  left: 50%;
+}
+
+.footer-sign-up-facebook{
+
+}
+
+.signup-signin .senha{
+  margin-left: 0;
+}
+
+/*********** MODAL SIGNIN ************/
+
+.modal-signin{
+  position: fixed;
+  background: #fff;
+  z-index: 999;
+  width: 500px;
+  height: 600px;
+  top: 45%;
+  margin-top: -300px;
+  left: 50%;
+  margin-left: -250px;
+  padding: 10px 50px 50px 50px;
+}
+
+.modal-signin input{
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-signin input[type="submit"]{
+  background: #F69343;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.modal-signin input[type="checkbox"]{
+  width: auto;
+  float: left;
+  margin-right: 8px;
+}
+
+.modal-signin .footer-sign-up-google-plus, .modal-signin .footer-sign-up-facebook{
+  width: 100%;
+  color: #fff;
+  margin-left: 0;
+  margin-bottom: 15px;
+}
+
+.modal-signin .footer-form-group{
+  padding-bottom: 20px;
+}
+
+a.vzr-modal-btn-close{
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  right: -1px;
+  top: -35px;
+  color: #fff;
+  background: none;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
+  line-height: 21px;
+  text-align: center;
+  border: 2px solid #fff;
+  padding-left: 1px;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.stay-connected{
+  margin-top: -14px;
+  margin-bottom: 6px;
+}
+
+.stay-connected label{
+  font-weight: 300 !important;
+}
+
+.raw-container{
+  margin-top: 30px;
+}
+
+.form-control-static {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-bottom: 0;
+  position: relative;
+}
+
+a.remove_fields {
+  position: absolute;
+  bottom: -131px;
+  right: 0;
+  background: #fff;
+  padding: 10px 15px;
+  color: #D87575;
+  font-weight: 400;
+}
+
+.gender-input .radio-inline {
+  padding: 23px 17px;
+}
+
+.gender-input .custom-check-box {
+  position: absolute !important;
+  top: 25px !important;
+  left: -6px !important;
+}
+
+.birth-or-born input{
+  margin-top: 20px;
+}
+
+.birth-or-born-date{
+  position: relative;
+  margin-top: -10px;
+}
+
+.input-group-addon {
+  position: absolute;
+  background: none;
+  border: none;
+  left: -6px;
+  font-weight: 300;
+  top: 4px;
+}
+
+input#birth_date {
+  margin-top: 32px;
+}
+
+.edit-profile-form label.sistema{
+  float: left;
+  width: 60%;
+  margin-bottom: 21px !important;
+}
+
+.submit-update{
+  position: relative;
+  margin-top: 25px;
+}

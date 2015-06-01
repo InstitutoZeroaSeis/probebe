@@ -1,0 +1,3 @@
+%li.timeline-month{class: "month-step-#{@month_step.next_step}", id: dom_id(timeline_month)}
+  = link_to l(timeline_month.date, format: :month_name_year), timeline_monthly_path(@child, date: timeline_month.date), remote: true, :format => :js
+  .month-timeline

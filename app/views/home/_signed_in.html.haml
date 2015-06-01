@@ -1,0 +1,19 @@
+= render 'home_categories'
+
+%section.subjects.container.signed-in
+  - @categories_posts.each do |category, posts|
+    .subject.col-md-9{ id: category.original_category_type }
+      .row.col-md-12
+        = render "subject_header_#{category.original_category_type}"
+      - posts.each do |post|
+        .col-md-6
+          .subject-picture-split
+            = link_to post_path(post) do
+              %figure
+                %img{ width: 300, height: 200, src: post.thumb_image_cover }
+            .subject-picture-split-description
+              = link_to post_path(post) do
+                %p= post.post_summary
+      = link_to categories_posts_path(category) do
+        %button.subject-picture-split-see-all-posts.center-block{ class: "#{category.original_category_type}-button" }
+          = t('views.application.show_all_post_from_this_category')

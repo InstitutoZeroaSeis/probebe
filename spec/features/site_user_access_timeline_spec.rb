@@ -1,19 +1,21 @@
 require 'rails_helper'
 
-feature "Site user access timeline" do
-  before { @user = create(:user, :confirmed, :with_profile) }
-  before { sign_in(@user.email, @user.password) }
+feature 'Site user access timeline' do
+  let!(:user) { create(:user) }
+  before { login_as user }
+  before { Timecop.freeze Date.new(2015, 5, 15) }
+  after { Timecop.return }
 
   context 'with two events' do
-
-    let(:child) do
-      create :child, profile: @user.profile,  message_deliveries: [
+    let!(:child) do
+      create :child, profile: user.profile,  message_deliveries: [
         create(:message_delivery, delivery_date: 3.days.ago),
         create(:message_delivery, delivery_date: 1.days.ago)
       ]
     end
 
-    scenario "and sees its children events" do
+    before { user.reload }
+    scenario 'and sees its child events' do
       visit timeline_path(child)
 
       within_timeline_date(Date.today) do
@@ -36,16 +38,16 @@ feature "Site user access timeline" do
     end
   end
 
-  context "with one message derived from a published article" do
+  context 'with one message derived from a published article' do
     let(:journalistic_article) { create(:journalistic_article, :published) }
     let(:message) { create(:message, messageable: journalistic_article) }
-    let(:child) { create(:child, profile: @user.profile) }
+    let(:child) { create(:child, profile: user.profile) }
     let(:message_delivery) { create(:message_delivery, message: message, delivery_date: Date.today, child: child) }
 
-    scenario "and sees a link for a blog post in the message box" do
+    scenario 'and sees a link for a blog post in the message box' do
       visit timeline_path(message_delivery.child)
       link_content = message_delivery.text
-      link_href = posts_path(id: message_delivery.article.id)
+      link_href = raw_post_path(message_delivery.article.id)
 
       within_timeline(Date.today) do
         expect(page).to have_message_with_link_to_post(link_content, link_href)
@@ -53,10 +55,10 @@ feature "Site user access timeline" do
     end
   end
 
-  context "with one message derived from a non published article" do
+  context 'with one message derived from a non published article' do
     let(:journalistic_article) { create(:journalistic_article, :unpublished) }
     let(:message) { create(:message, messageable: journalistic_article) }
-    let(:child) { create(:child, profile: @user.profile) }
+    let(:child) { create(:child, profile: user.profile) }
     let(:message_delivery) { create(:message_delivery, message: message, delivery_date: Date.today, child: child) }
 
     scenario "and doesn't see a link for a blog post in the message box" do

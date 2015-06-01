@@ -15,6 +15,7 @@ class Child < ActiveRecord::Base
 
   delegate :primary_cell_phone_number, to: :profile
   delegate :device_registrations, to: :profile
+  delegate :authorized_receive_sms, to: :profile
 
   def age_in_weeks system_date = nil
     system_date ||= MessageDeliveries::SystemDate.new
@@ -44,6 +45,10 @@ class Child < ActiveRecord::Base
     birth_date - PREGNANCY_DURATION_IN_WEEKS.weeks if pregnancy?(system_date)
   end
 
+  def category_ids
+    message_deliveries.joins(message: :category).pluck(:category_id)
+  end
+
   protected
 
   def maximum_permited_pregnancy_date?
@@ -57,6 +62,4 @@ class Child < ActiveRecord::Base
   def set_defaults
     self.gender ||= 'not_informed'
   end
-
-
 end
