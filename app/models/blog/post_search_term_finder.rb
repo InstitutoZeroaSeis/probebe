@@ -1,17 +1,12 @@
 module Blog
   class PostSearchTermFinder
-
     def initialize(term, relation)
       @term = term
       @relation = relation
     end
 
     def find
-      if @term
-        @relation.where(match_title.or(match_text))
-      else
-        @relation
-      end
+      @relation.where(match_title.or(match_text))
     end
 
     protected
