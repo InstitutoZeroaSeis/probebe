@@ -42,9 +42,9 @@ pt-BR:
       date_posted: "Postado em %{date}"
       fifth_to_eighth: 5 a 8 messes
       first_to_fourth: 1 a 4 meses
-      newer_html: "Mais recentes &rarr;"
+      newer_html: "Página Anterior &rarr;"
       nineth_to_twelfth: 9 a 12 meses
-      older_html: "&larr; Mais antigos"
+      older_html: "&larr; Próxima Página"
       pregnancy: Gravidez
       read_more: Leia Mais
       related_post: Posts Relacionados
