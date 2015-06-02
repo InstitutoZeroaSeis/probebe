@@ -106,4 +106,24 @@ describe Category do
     expect(category.errors[:base])
       .to include('não pode remover categoria com artigos')
   end
+
+  it 'lists only base categories(without parent_category)' do
+    base_category = create(:category)
+    create(:category, parent_category: base_category)
+
+    expected_base_categories = Category.base_categories
+
+    expect(expected_base_categories.map(&:name))
+      .to match_array([base_category.name])
+  end
+
+  it 'lists only sub categories(with parent_category)' do
+    base_category = create(:category)
+    sub_category = create(:category, parent_category: base_category)
+
+    expected_sub_categories = Category.sub_categories
+
+    expect(expected_sub_categories.map(&:name))
+      .to match_array([sub_category.name])
+  end
 end
