@@ -12,6 +12,8 @@ class Category < ActiveRecord::Base
   validate :parent_category_cannot_be_a_children
   validate :with_children_cannot_have_parent
 
+  before_destroy :check_for_articles
+
   enum original_category_type: [
     :health, :education, :security, :finance, :behavior
   ]
@@ -43,6 +45,12 @@ class Category < ActiveRecord::Base
   end
 
   protected
+
+  def check_for_articles
+    return if articles.empty?
+    errors.add(:base, 'não pode remover categoria com artigos')
+    false
+  end
 
   def parent_category_is_not_equals_self
     return unless parent_category == self

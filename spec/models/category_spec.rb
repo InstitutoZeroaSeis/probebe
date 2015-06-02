@@ -87,4 +87,21 @@ describe Category do
     expect(parent_category.errors[:parent_category])
       .to include('não pode ter mais que dois níveis')
   end
+
+  it 'can be destroyed if has no articles associated' do
+    category = create(:category)
+
+    category.destroy
+
+    expect(category).to be_destroyed
+  end
+
+  it 'can\'t be destroyed if has articles associated' do
+    category = create(:category, :with_parent)
+    article = create(:article, category: category)
+
+    category.destroy
+
+    expect(category).to_not be_destroyed
+  end
 end
