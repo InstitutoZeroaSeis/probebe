@@ -109,9 +109,13 @@ pt-BR:
           base:
             has_child_categories: Categoria não pode ser deletada por conter subcategoria
           attributes:
+            base:
+              has_articles: não pode remover categoria com artigos
             parent_category:
-              hierarchy_too_big: Só é permitido um nível de subcategoria
-              hierarchy_has_cycles: A subcategoria não pode ser igual a categoria
+              children_with_parent: não pode ter mais do que dois níves
+              equals_sub_category: não pode ser igual a uma subcategoria
+              equals_self:  não pode ser igual a categoria
+              more_than_two_levels_deep: não pode ter mais que dois níveis
         profile:
           base:
             needs_to_be_mother_or_pregnant: Você precisa ser mãe ou estar grávida

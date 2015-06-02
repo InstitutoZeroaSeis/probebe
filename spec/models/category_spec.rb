@@ -79,13 +79,13 @@ describe Category do
 
   it 'is invalid if a category with children is updated with a parent' do
     parent_category = create(:category)
-    children_category = create_pair(:category, parent_category: parent_category)
+    create_pair(:category, parent_category: parent_category)
     parent_category.parent_category = Category.new
 
     parent_category.valid?
 
     expect(parent_category.errors[:parent_category])
-      .to include('não pode ter mais que dois níveis')
+      .to include('não pode ter mais do que dois níves')
   end
 
   it 'can be destroyed if has no articles associated' do
@@ -98,10 +98,12 @@ describe Category do
 
   it 'can\'t be destroyed if has articles associated' do
     category = create(:category, :with_parent)
-    article = create(:article, category: category)
+    create(:article, category: category)
 
     category.destroy
 
     expect(category).to_not be_destroyed
+    expect(category.errors[:base])
+      .to include('não pode remover categoria com artigos')
   end
 end
