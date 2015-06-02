@@ -15,8 +15,11 @@ class Admin::CategoryPresenter < Carnival::BaseAdminPresenter
         sortable: false,
         advanced_search: { operator: :like }
 
-  action :show
-  action :edit
   action :destroy
+  action :edit
   action :new
+  action :show
+
+  scope :base_categories
+  scope :sub_categories
 end

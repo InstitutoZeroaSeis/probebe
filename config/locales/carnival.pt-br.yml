@@ -1,5 +1,10 @@
 pt-BR:
 
+  category:
+    scope:
+      base_categories: Categorias Base
+      sub_categories: Sub Categorias
+
   user:
     scope:
       authorized_receive_sms: Autorizados a receber SMS
