@@ -79,12 +79,51 @@ describe Category do
 
   it 'is invalid if a category with children is updated with a parent' do
     parent_category = create(:category)
-    children_category = create_pair(:category, parent_category: parent_category)
+    create_pair(:category, parent_category: parent_category)
     parent_category.parent_category = Category.new
 
     parent_category.valid?
 
     expect(parent_category.errors[:parent_category])
-      .to include('não pode ter mais que dois níveis')
+      .to include('não pode ter mais do que dois níves')
+  end
+
+  it 'can be destroyed if has no articles associated' do
+    category = create(:category)
+
+    category.destroy
+
+    expect(category).to be_destroyed
+  end
+
+  it 'can\'t be destroyed if has articles associated' do
+    category = create(:category, :with_parent)
+    create(:article, category: category)
+
+    category.destroy
+
+    expect(category).to_not be_destroyed
+    expect(category.errors[:base])
+      .to include('não pode remover categoria com artigos')
+  end
+
+  it 'lists only base categories(without parent_category)' do
+    base_category = create(:category)
+    create(:category, parent_category: base_category)
+
+    expected_base_categories = Category.base_categories
+
+    expect(expected_base_categories.map(&:name))
+      .to match_array([base_category.name])
+  end
+
+  it 'lists only sub categories(with parent_category)' do
+    base_category = create(:category)
+    sub_category = create(:category, parent_category: base_category)
+
+    expected_sub_categories = Category.sub_categories
+
+    expect(expected_sub_categories.map(&:name))
+      .to match_array([sub_category.name])
   end
 end

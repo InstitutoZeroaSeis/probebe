@@ -12,6 +12,8 @@ class Category < ActiveRecord::Base
   validate :parent_category_cannot_be_a_children
   validate :with_children_cannot_have_parent
 
+  before_destroy :check_for_articles
+
   enum original_category_type: [
     :health, :education, :security, :finance, :behavior
   ]
@@ -44,23 +46,29 @@ class Category < ActiveRecord::Base
 
   protected
 
+  def check_for_articles
+    return true if articles.empty?
+    errors.add(:base, :has_articles)
+    false
+  end
+
   def parent_category_is_not_equals_self
     return unless parent_category == self
-    errors.add(:parent_category, 'não pode ser igual a categoria')
+    errors.add(:parent_category, :equals_self)
   end
 
   def parent_category_is_at_most_two_levels_deep
     return unless parent_category.try(:parent_category)
-    errors.add(:parent_category, 'não pode ter mais que dois níveis')
+    errors.add(:parent_category, :more_than_two_levels_deep)
   end
 
   def parent_category_cannot_be_a_children
     return unless parent_category.try(:parent_category) == self
-    errors.add(:parent_category, 'não pode ser igual a uma subcategoria')
+    errors.add(:parent_category, :equals_sub_category)
   end
 
   def with_children_cannot_have_parent
     return unless categories.any? && parent_category.present?
-    errors.add(:parent_category, 'não pode ter mais que dois níveis')
+    errors.add(:parent_category, :children_with_parent)
   end
 end
