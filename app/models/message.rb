@@ -4,6 +4,7 @@ class Message < ActiveRecord::Base
 
   belongs_to :category
   belongs_to :messageable, polymorphic: true
+  has_many :message_deliveries, class_name: 'MessageDeliveries::MessageDelivery'
 
   validates_presence_of :text
 
