@@ -5,8 +5,18 @@ class CharCountableInput < SimpleForm::Inputs::TextInput
 
   def input(wrapper_options)
     super + content_tag(:span) do
-      content_tag(:span, class: "char_count") { "(0)" } + " caracter(es)"
+      content_tag(:span, class: 'char_count') do
+        "(#{char_count})"
+      end + ' caracter(es)'
     end
+  end
+
+  protected
+
+  def char_count
+    attribute_value = object.try(attribute_name)
+    return 0 if attribute_value.blank?
+    attribute_value.length
   end
 
   def input_html_classes
@@ -14,10 +24,10 @@ class CharCountableInput < SimpleForm::Inputs::TextInput
   end
 
   def input_html_options
-    base_options = super
-    base_options[:onkeydown] = 'countChar(event)'
-    base_options[:onkeyup] = 'countChar(event)'
-    base_options[:onfocus] = 'countChar(event)'
-    base_options
+    super.tap do |options|
+      options[:onkeydown] = 'countChar(event)'
+      options[:onkeyup] = 'countChar(event)'
+      options[:onfocus] = 'countChar(event)'
+    end
   end
 end
