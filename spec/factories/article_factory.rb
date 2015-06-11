@@ -95,7 +95,7 @@ FactoryGirl.define do
     title nil
   end
 
-  trait :with_message do
+  trait :with_messages do
     messages { create_list :message, 2 }
   end
 end

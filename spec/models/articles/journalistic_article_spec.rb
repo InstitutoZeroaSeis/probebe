@@ -54,7 +54,7 @@ RSpec.describe Articles::JournalisticArticle, type: :model do
   end
 
   it 'is expected to update the messages with the correct attributes' do
-    article = build(:journalistic_article, :with_message)
+    article = build(:journalistic_article, :with_messages)
 
     article.save
 
