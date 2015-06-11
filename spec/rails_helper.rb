@@ -52,6 +52,7 @@ RSpec.configure do |config|
   config.include Features::TimelineHelper, type: :feature
   config.include Devise::TestHelpers, type: :controller
   config.include Controllers::ApiAuthenticationHelper, type: :controller
+  config.include Controllers::AuthenticationHelper, type: :controller
   config.include Warden::Test::Helpers, type: :feature
 
   config.before(:each, :feature) do
