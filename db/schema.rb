@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612185817) do
+ActiveRecord::Schema.define(version: 20150612205714) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20150612185817) do
   end
 
   create_table "articles", force: true do |t|
-    t.string   "type"
     t.string   "title"
     t.text     "text"
     t.text     "summary"
@@ -34,7 +33,6 @@ ActiveRecord::Schema.define(version: 20150612185817) do
     t.integer  "maximum_valid_week"
     t.integer  "journalistic_articles_count",    default: 0,     null: false
     t.integer  "user_id"
-    t.integer  "parent_article_id"
     t.integer  "original_author_id"
     t.datetime "created_at"
     t.datetime "updated_at"

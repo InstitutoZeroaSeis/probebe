@@ -8,7 +8,7 @@ RSpec.describe MessageDeliveries::MessageDeliveryCreator, type: :model do
 
   describe '.create_deliveries_for_all_children' do
     before { @child = create(:child, birth_date: 5.months.ago, profile: @profile) }
-    before { @message = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
+    before { @message = create(:message, :with_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
     subject { MessageDeliveries::MessageDeliveryCreator.new(@system_date).create_deliveries_for_all_children }
     it 'is expected to correctly create the message delivery' do
       expect(subject.first.message).to eq(@message)
@@ -23,7 +23,7 @@ RSpec.describe MessageDeliveries::MessageDeliveryCreator, type: :model do
 
   context 'with only one message and already sent before' do
     before { @child = create(:child, profile: @profile, birth_date: 5.months.ago) }
-    before { @message = create(:message, :with_journalistic_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
+    before { @message = create(:message, :with_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
     before { MessageDeliveries::MessageDelivery.create!(child: @child, message: @message) }
     before { @before_message_count = MessageDeliveries::MessageDelivery.count }
 
@@ -36,7 +36,7 @@ RSpec.describe MessageDeliveries::MessageDeliveryCreator, type: :model do
 
   context 'with no message for that profile' do
     before { @child = create(:child, profile: @profile, birth_date: 5.months.ago) }
-    before { create(:message, :with_journalistic_article, :male, maximum_valid_week: 10, baby_target_type: 'pregnancy') }
+    before { create(:message, :with_article, :male, maximum_valid_week: 10, baby_target_type: 'pregnancy') }
 
     subject { MessageDeliveries::MessageDeliveryCreator.new(@system_date).create_deliveries_for_all_children }
 
@@ -48,7 +48,7 @@ RSpec.describe MessageDeliveries::MessageDeliveryCreator, type: :model do
   context 'with a message targeting female with up to 24 months of pregnancy' do
     context 'and with a children in its 5th month of gestation' do
       before { @child = create(:child, profile: @profile, birth_date: (Child::PREGNANCY_DURATION_IN_WEEKS.weeks - 5.months).from_now) }
-      before { @message = create(:message, :with_journalistic_article, :male, maximum_valid_week: 24, baby_target_type: 'pregnancy') }
+      before { @message = create(:message, :with_article, :male, maximum_valid_week: 24, baby_target_type: 'pregnancy') }
       it 'is expected to send a message for the given child' do
         MessageDeliveries::MessageDeliveryCreator.new(@system_date).create_deliveries_for_all_children
         expect(MessageDeliveries::MessageDelivery.count).to eq(1)

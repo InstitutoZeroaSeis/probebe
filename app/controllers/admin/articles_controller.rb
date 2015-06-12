@@ -1,13 +1,13 @@
-class Admin::JournalisticArticlesController < Admin::AdminController
-  defaults resource_class: Articles::JournalisticArticleWithImageCover
+class Admin::ArticlesController < Admin::AdminController
+  defaults resource_class: Articles::ArticleWithImageCover
   load_and_authorize_resource(
-    class: 'Articles::JournalisticArticleWithImageCover'
+    class: 'Articles::ArticleWithImageCover'
   )
 
   layout 'carnival/admin'
 
   def table_items
-    Articles::JournalisticArticle.includes(:category, :user)
+    Articles::Article.includes(:category, :user)
   end
 
   def build_resource
@@ -22,7 +22,7 @@ class Admin::JournalisticArticlesController < Admin::AdminController
     create! do |success, failure|
       success.html do
         flash[:notice] = I18n.t('messages.created')
-        redirect_to action: :edit, id: @journalistic_article.id
+        redirect_to action: :edit, id: @article.id
       end
       failure.html { instantiate_model && render('new') }
     end
@@ -41,12 +41,12 @@ class Admin::JournalisticArticlesController < Admin::AdminController
   protected
 
   def create_resource(resource)
-    @journalistic_article = resource
-    @journalistic_article.save
+    @article = resource
+    @article.save
   end
 
   def build_custom_article
-    factory = Articles::JournalisticArticleFactory.new(find_authorial_article)
+    factory = Articles::ArticleFactory.new()
     factory.build.tap do |article|
       if action_name == 'create'
         article.assign_attributes(*build_resource_params)
@@ -58,16 +58,9 @@ class Admin::JournalisticArticlesController < Admin::AdminController
     %w(new create).include? action_name
   end
 
-  def find_authorial_article
-    return unless needs_custom_article?
-    Articles::AuthorialArticle.find(
-      params[:articles_journalistic_article][:parent_article_id]
-    )
-  end
-
   def build_resource_params
     [
-      params.require(:articles_journalistic_article).permit(
+      params.require(:articles_article).permit(
         :text, :title, :intro_text, :summary, :category_id, :user_id,
         :original_author_id, :gender, :teenage_pregnancy, :baby_target_type,
         :publishable, :cover, :thumb_image_cover, :box, :minimum_valid_week,

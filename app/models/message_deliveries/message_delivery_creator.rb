@@ -34,7 +34,7 @@ module MessageDeliveries
     end
 
     def messages_to_send
-      Message.journalistic
+      Message.all
     end
   end
 end

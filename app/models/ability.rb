@@ -3,7 +3,6 @@ class Ability
 
   def initialize(user)
     set_admin_permissions(user)
-    set_author_permissions(user)
     set_journalist_permissions(user)
     set_site_user_permissions(user)
   end
@@ -14,22 +13,9 @@ class Ability
     end
   end
 
-  def set_author_permissions(user)
-    if user.author?
-      can [:read, :create], Articles::AuthorialArticle
-      can [:update], Articles::AuthorialArticle, user_id: user.id
-
-      can [:read], Articles::JournalisticArticle
-      can [:read], Message
-      can [:read, :update, :create], Category
-      can [:read, :update, :create], Tag
-    end
-  end
-
   def set_journalist_permissions(user)
     if user.journalist?
-      can [:read, :create, :update], Articles::JournalisticArticle
-      can [:read, :create_journalistic_article], Articles::AuthorialArticle
+      can [:read, :create, :update], Articles::Article
       can [:read], Message
       can [:read, :update, :create], Category
       can [:read, :update, :create], Tag

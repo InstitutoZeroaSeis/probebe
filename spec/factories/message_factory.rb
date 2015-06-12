@@ -4,11 +4,11 @@ FactoryGirl.define do
     category
 
     factory :message_for_delivery do
-      with_journalistic_article
+      with_article
     end
 
-    trait :with_journalistic_article do
-      association :messageable, factory: :journalistic_article
+    trait :with_article do
+      association :article, factory: :article
     end
 
     trait :with_health_category do

@@ -47,7 +47,6 @@ pt-BR:
     behavior: Desenvolvimento
     security: Segurança
   carnival:
-    create_journalistic_article: Criar artigo jornalistico
     create_profile: Criar perfil
     edit_profile: Editar perfil
     impersonate: Logar como

@@ -1,11 +1,5 @@
-class Admin::JournalisticArticlePresenter < Carnival::BaseAdminPresenter
-  model_name 'Articles::JournalisticArticleWithImageCover'
-
-  field :parent_article_id,
-        as: :hidden,
-        actions: [:index, :show, :new],
-        sortable: true,
-        advanced_search: { operator: :equal }
+class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
+  model_name 'Articles::ArticleWithImageCover'
 
   field :original_author,
         actions: [:new, :edit],

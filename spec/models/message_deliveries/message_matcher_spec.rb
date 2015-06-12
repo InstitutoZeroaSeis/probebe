@@ -10,7 +10,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, type: :model do
 
     child = create(:child, birth_date: 5.months.ago)
 
-    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matcher = MessageDeliveries::MessageMatcher.new(Message.all, child, system_date)
     matched_message = matcher.match_message_for_child
 
     expect(matched_message.id).to eq(first_message.id)
@@ -22,7 +22,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, type: :model do
 
     child = create(:child, :female, birth_date: 5.months.ago)
 
-    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matcher = MessageDeliveries::MessageMatcher.new(Message.all, child, system_date)
     matched_message = matcher.match_message_for_child
 
     expect(matched_message.id).to eq(message_to_match.id)
@@ -34,7 +34,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, type: :model do
     create(:message_delivery, message: sent_message, child: child)
     not_sent_message = create(:message_for_delivery, :both, baby_target_type: 'born', minimum_valid_week: 12)
 
-    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matcher = MessageDeliveries::MessageMatcher.new(Message.all, child, system_date)
     matched_message = matcher.match_message_for_child
 
     expect(matched_message.id).to eq(not_sent_message.id)
@@ -45,7 +45,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, type: :model do
     older_message = create(:message_for_delivery, :both, baby_target_type: 'born', minimum_valid_week: 10)
     create(:message_for_delivery, :both, baby_target_type: 'born', minimum_valid_week: 10)
 
-    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matcher = MessageDeliveries::MessageMatcher.new(Message.all, child, system_date)
     matched_message = matcher.match_message_for_child
 
     expect(matched_message.id).to eq(older_message.id)
@@ -55,7 +55,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, type: :model do
     child = create(:child, :female)
     create(:message_for_delivery, :male)
 
-    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matcher = MessageDeliveries::MessageMatcher.new(Message.all, child, system_date)
     matched_message = matcher.match_message_for_child
 
     expect(matched_message).to be_nil
@@ -66,7 +66,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, type: :model do
     create(:message_for_delivery, baby_target_type: 'born', maximum_valid_week: 2)
     message_in_due_date = create(:message_for_delivery, baby_target_type: 'born', maximum_valid_week: 1)
 
-    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matcher = MessageDeliveries::MessageMatcher.new(Message.all, child, system_date)
     matched_message = matcher.match_message_for_child
 
     expect(matched_message.id).to eq(message_in_due_date.id)
@@ -82,7 +82,7 @@ RSpec.describe MessageDeliveries::MessageMatcher, type: :model do
     create_pair(:message_delivery, category: more_sent_category, child: child)
     create(:message_delivery, category: more_sent_category, child: child)
 
-    matcher = MessageDeliveries::MessageMatcher.new(Message.journalistic, child, system_date)
+    matcher = MessageDeliveries::MessageMatcher.new(Message.all, child, system_date)
     matched_message = matcher.match_message_for_child
 
     expect(matched_message.id).to_not eq(more_sent_category.id)

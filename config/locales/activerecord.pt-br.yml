@@ -24,15 +24,11 @@ pt-BR:
         title: Título
         type: Tipo
         user_email: E-mail
-      articles/authorial_article:
-        <<: *article
-        journalistic_articles: Artigos Jornalísticos
-      articles/journalistic_article:
-        <<: *article
         cover: Imagem de capa
         thumb_image_cover: Imagem para listagem do blog
         intro_text: Linha fina
         tag_names: Tags
+
       authors/author:
         name: Nome
         bio: Bio
@@ -93,14 +89,11 @@ pt-BR:
       models:
         articles/article:
           attributes:
+            category:
+              should_be_subcategory: deve ser uma subcategoria
             base:
               has_no_minimum_and_maximum_valid_week: Tem que definir pelo menos validade inicial ou final
               minimum_higher_than_maximum: Validade Inicial não pode ser maior que a final
-            category:
-              should_be_subcategory: deve ser uma subcategoria
-        articles/journalistic_article:
-          attributes:
-            base:
               messages_length: O comprimento máximo de cada mensagem dever ser de até 150 caracteres
         child:
           base:

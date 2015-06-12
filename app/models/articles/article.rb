@@ -1,6 +1,7 @@
 module Articles
   class Article < ActiveRecord::Base
     include Carnival::ModelHelper
+    include RejectAttributesConcern
 
     GENDER_ENUM = [:male, :female, :both]
     BABY_TARGET_TYPE_ENUM = [:pregnancy, :born]
@@ -13,25 +14,42 @@ module Articles
     enum child_life_period: CHILD_LIFE_PERIOD_ENUM
     enum gender: GENDER_ENUM
 
+    has_attached_file :cover,
+                      path: 'articles/journalistic_articles/:attachment/:id_partition/:style/:filename',
+                      styles: { content: '1920>', thumb: '118x100#' }
+    has_attached_file :thumb_image_cover,
+                      path: 'articles/journalistic_articles/:attachment/:id_partition/:style/:filename',
+                      styles: { content: '300x200', thumb: '118x100#' }
+
     belongs_to :category
     belongs_to :original_author, class_name: 'Authors::Author'
     belongs_to :user
     has_and_belongs_to_many :tags
     has_many :article_references
+    has_many :messages
 
+    accepts_nested_attributes_for :messages, reject_if: all_blank?(:text)
     accepts_nested_attributes_for :article_references, allow_destroy: true
     accepts_nested_attributes_for :tags, allow_destroy: false
 
-    validates :text, :title, :category, :user, :type,
+    validates :text, :title, :category, :user, :original_author,
               :baby_target_type, :gender, presence: true
 
     validate :minimum_not_higher_than_maximum
     validate :presence_of_maximum_or_minimum
     validate :category_is_a_subcategory
+    validate :length_of_messages
 
+    validates_attachment_content_type :cover, content_type: /\Aimage/
+    validates_attachment_content_type :thumb_image_cover, content_type: /\Aimage/
+
+    before_validation :ensure_presence_of_original_author
     before_save :set_defaults
+    before_save :update_child_life_period
+    after_save :update_messages
 
-    scope :journalistic, -> { where(type: 'Articles::JournalisticArticle') }
+    delegate :name, to: :category, prefix: true
+    delegate :name, to: :original_author, prefix: true
 
     has_paper_trail
 
@@ -58,6 +76,17 @@ module Articles
       !born?
     end
 
+    def tag_names
+      tags.map(&:name).join(', ')
+    end
+
+    def tag_names=(tag_names)
+      split_tag_names = Articles::TagSplitter.new(tag_names).split_by_comma
+      self.tags =
+        Articles::TagByNameCreator.new(split_tag_names)
+        .find_or_create_tags
+    end
+
     protected
 
     def category_is_a_subcategory
@@ -67,6 +96,21 @@ module Articles
 
     def update_messages
       Articles::MessageUpdater.update_many_from_article(messages, self)
+    end
+
+    def length_of_messages
+      return unless messages.find { |message| message.text_size > 150 }
+      errors.add(:base, :messages_length)
+    end
+
+    def update_child_life_period
+      return unless born?
+      self.child_life_period = Children::LifePeriodForWeek
+        .new(minimum_valid_week, maximum_valid_week).life_period
+    end
+
+    def ensure_presence_of_original_author
+      self.original_author ||= Authors::DefaultAuthor.find_default_author
     end
   end
 end

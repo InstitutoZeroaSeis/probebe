@@ -6,53 +6,32 @@ FactoryGirl.define do
     gender 'both'
     baby_target_type 'pregnancy'
     minimum_valid_week 8
-    type 'Articles::AuthorialArticle'
     user
     category { create(:category, :with_parent) }
     tags { [FactoryGirl.create(:tag)] }
+    original_author { create(:author) }
+    publishable true
 
-    factory :authorial_article, class: Articles::AuthorialArticle do
-      type 'Articles::AuthorialArticle'
+    factory :post, class: Blog::Post do
+      category { create(:category, :with_parent) }
     end
 
-    factory :journalistic_article, class: Articles::JournalisticArticle do
-      type 'Articles::JournalisticArticle'
-      original_author { create(:author) }
+    trait :without_original_author do
+      original_author nil
+    end
+
+    trait :random_created_at do
+      created_at { rand(1..365).days.ago }
+    end
+
+    trait :published do
       publishable true
-      with_parent_authorial_article
-
-      factory :post do
-        category { create(:category, :with_parent) }
-      end
-
-      trait :with_parent_authorial_article do
-        association :parent_article, factory: :authorial_article
-      end
-
-      trait :with_parent_journalistic_article do
-        association :parent_article, factory: :journalistic_article
-      end
-
-      trait :without_parent_article do
-        parent_article nil
-      end
-
-      trait :without_original_author do
-        original_author nil
-      end
-
-      trait :random_created_at do
-        created_at { rand(1..365).days.ago }
-      end
-
-      trait :published do
-        publishable true
-      end
-
-      trait :unpublished do
-        publishable false
-      end
     end
+
+    trait :unpublished do
+      publishable false
+    end
+
   end
 
   trait :without_minimum_valid_week do
