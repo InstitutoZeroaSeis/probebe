@@ -7,7 +7,6 @@ class Category < ActiveRecord::Base
   has_many :messages
 
   validates :name, presence: true
-  validates :name, uniqueness: true
   validate :parent_category_is_not_equals_self
   validate :parent_category_is_at_most_two_levels_deep
   validate :parent_category_cannot_be_a_children
