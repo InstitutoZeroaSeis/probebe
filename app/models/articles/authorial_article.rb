@@ -20,4 +20,15 @@ class Articles::AuthorialArticle < Articles::Article
       .new(self)
       .update_all!
   end
+
+  def self.model_name
+    super.tap do |name|
+      name.instance_variable_set(
+        '@singular_route_key', 'admin_authorial_article'
+      )
+      name.instance_variable_set(
+        '@route_key', 'admin_authorial_articles'
+      )
+    end
+  end
 end

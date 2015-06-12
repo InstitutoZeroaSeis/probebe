@@ -46,6 +46,17 @@ class Articles::JournalisticArticle < Articles::Article
       .find_or_create_tags
   end
 
+  def self.model_name
+    super.tap do |name|
+      name.instance_variable_set(
+        '@singular_route_key', 'admin_journalistic_article'
+      )
+      name.instance_variable_set(
+        '@route_key', 'admin_journalistic_articles'
+      )
+    end
+  end
+
   private
 
   def ensure_presence_of_original_author
