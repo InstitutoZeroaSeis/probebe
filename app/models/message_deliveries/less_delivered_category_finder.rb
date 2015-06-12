@@ -21,7 +21,7 @@ module MessageDeliveries
         .joins(:message_deliveries)
         .merge(@deliveries_relation)
         .where('category_id = categories_categories.id')
-        .select('count (*)')
+        .select('count(*)')
         .to_sql
       "(#{count_sql}) as categories_count"
     end
