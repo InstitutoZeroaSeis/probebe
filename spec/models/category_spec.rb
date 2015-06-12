@@ -88,7 +88,7 @@ describe Category do
       .to include('não pode ter mais do que dois níves')
   end
 
-  it 'is invalid with an existing name' do
+  it 'is invalid with an existing name with same parent' do
     category_name = 'Existing Category'
     create(:category, name: category_name)
     category = Category.new(name: category_name)
@@ -96,6 +96,16 @@ describe Category do
     category.valid?
 
     expect(category.errors[:name]).to include('não está disponível')
+  end
+
+  it 'is valid with an existing name with different parent' do
+    category_name = 'Existing Category'
+    parent_category = create(:category, name: category_name)
+    category = Category.new(name: category_name, parent_category: parent_category)
+
+    category.valid?
+
+    expect(category.errors[:name]).to_not include('não está disponível')
   end
 
   it 'can be destroyed if has no articles associated' do
