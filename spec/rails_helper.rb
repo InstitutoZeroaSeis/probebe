@@ -1,6 +1,6 @@
-ENV["RAILS_ENV"] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 
 require 'factory_girl'
@@ -23,9 +23,10 @@ Dir[Rails.root.join('lib/**/*.rb')].each { |f| require_dependency f }
 
 Capybara.javascript_driver = :selenium
 
-Dir[Rails.root.join('spec/factories/**/*.rb')].each {|factory| require factory }
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
-Dir[Rails.root.join("spec/stubs/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/factories/**/*.rb')].each { |factory| require factory }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/stubs/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/models/shared/**/*.rb')].each { |f| require f }
 
 class ActiveRecord::Base
   mattr_accessor :shared_connection

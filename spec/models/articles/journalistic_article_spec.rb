@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Articles::JournalisticArticle, type: :model do
+  it_behaves_like 'a article', :journalistic_article
+
   it 'is valid with parent_article' do
     article = Articles::JournalisticArticle.new(parent_article: Articles::AuthorialArticle.new)
 
@@ -51,20 +53,5 @@ RSpec.describe Articles::JournalisticArticle, type: :model do
 
     expect(article.errors[:base])
       .to include('O comprimento máximo de cada mensagem dever ser de até 150 caracteres')
-  end
-
-  it 'is expected to update the messages with the correct attributes' do
-    article = build(:journalistic_article, :with_messages)
-
-    article.save
-
-    article.messages.each do |message|
-      expect(article.gender).to eq(message.gender)
-      expect(article.teenage_pregnancy).to eq(message.teenage_pregnancy)
-      expect(article.baby_target_type).to eq(message.baby_target_type)
-      expect(article.minimum_valid_week).to eq(message.minimum_valid_week)
-      expect(article.maximum_valid_week).to eq(message.maximum_valid_week)
-      expect(article.category).to eq(message.category)
-    end
   end
 end

@@ -35,10 +35,6 @@ class Articles::JournalisticArticle < Articles::Article
   delegate :name, to: :category, prefix: true
   delegate :name, to: :original_author, prefix: true
 
-  def update_messages
-    Articles::MessageUpdater.update_many_from_article(messages, self)
-  end
-
   def tag_names
     tags.map(&:name).join(', ')
   end

@@ -64,5 +64,9 @@ module Articles
       return if category.try(:subcategory?)
       errors.add(:category, :should_be_subcategory)
     end
+
+    def update_messages
+      Articles::MessageUpdater.update_many_from_article(messages, self)
+    end
   end
 end

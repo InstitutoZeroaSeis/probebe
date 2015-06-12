@@ -12,6 +12,7 @@ class Articles::AuthorialArticle < Articles::Article
            class_name: 'Articles::JournalisticArticle',
            foreign_key: :parent_article_id
 
+  after_save :update_messages
   accepts_nested_attributes_for :messages, reject_if: all_blank?(:text)
 
   def update_related_journalistic_articles
