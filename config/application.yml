@@ -3,8 +3,8 @@ default: &default
     deliver_sms: false
     spring_user: "zero6"
     spring_password: "zero6ws"
-    wsdl_url: http://probebe.org.br:3020/BasicSourceMT?wsdl
-    wsdl_end_point: http://probebe.org.br:3020/BasicSourceMT
+    wsdl_url: http://54.208.151.164/BasicSourceMT?WSDL
+    wsdl_end_point: http://54.208.151.164/BasicSourceMT
     wsdl_name_space: http://basic.webservice.gateway.springwireless.com/
 
 development:
@@ -22,3 +22,4 @@ production:
     deliver_sms: true
     wsdl_url: http://54.208.151.164/BasicSourceMT?WSDL
     wsdl_end_point: http://54.208.151.164/BasicSourceMT
+    wsdl_name_space: http://basic.webservice.gateway.springwireless.com/
