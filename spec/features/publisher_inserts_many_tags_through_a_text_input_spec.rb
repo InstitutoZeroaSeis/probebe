@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'Journalist inserts many tags through a text input' do
-  before { login_as create(:user, :journalist) }
+feature 'Publisher inserts many tags through a text input' do
+  before { login_as create(:user, :publisher) }
 
   scenario 'and the tags are associated with the article' do
     article = create(:article)

@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     set_admin_permissions(user)
-    set_journalist_permissions(user)
+    set_publisher_permissions(user)
     set_site_user_permissions(user)
   end
 
@@ -13,8 +13,8 @@ class Ability
     end
   end
 
-  def set_journalist_permissions(user)
-    if user.journalist?
+  def set_publisher_permissions(user)
+    if user.publisher?
       can [:read, :create, :update], Articles::Article
       can [:read], Message
       can [:read, :update, :create], Category

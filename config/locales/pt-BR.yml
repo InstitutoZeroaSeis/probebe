@@ -52,12 +52,11 @@ pt-BR:
     impersonate: Logar como
     show_activity_log: Mostrar log de atividade
     menu:
-      authorial_articles: Artigo Autoral
       authors: Autores
       admin_site_users: Administradores
       administration: Administração
       categories: Categorias
-      journalistic_articles: Artigo Jornalístico
+      articles: Artigos
       messages: Mensagens
       message_deliveries: Mensagens Enviadas
       site_users: Usuários do Site
@@ -107,7 +106,6 @@ pt-BR:
       user:
         role:
           admin: "Administrador"
-          author: "Autor"
-          journalist: "Jornalista"
+          publisher: "Editor"
   unauthorized:
     default: "Você não tem permissão para acessar a página solicitada"

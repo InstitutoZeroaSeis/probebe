@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-feature 'Journalist edit his own article' do
-  before { login_as create(:user, :journalist) }
+feature 'Publisher edit his own article' do
+  before { login_as create(:user, :publisher) }
 
   scenario 'successfully' do
     article_title = 'New title'
     article = create(:article)
-    user = create(:user, :author)
+    user = create(:user, :publisher)
 
     visit edit_admin_article_path(article, user: user)
     fill_in 'articles_article_title', with: article_title

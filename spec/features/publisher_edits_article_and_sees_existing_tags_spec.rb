@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'Journalist edits article and sees existing tags' do
-  before { login_as create(:user, :journalist) }
+feature 'Publisher edits article and sees existing tags' do
+  before { login_as create(:user, :publisher) }
 
   scenario 'succesffully' do
     article = create(:article, tags: create_pair(:tag))

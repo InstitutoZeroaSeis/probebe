@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'Author create an article' do
-  before { login_as create(:user, :journalist) }
+feature 'Publisher create an article' do
+  before { login_as create(:user, :publisher) }
 
   scenario 'successfully' do
     article_title = 'Test title see if index showing title'

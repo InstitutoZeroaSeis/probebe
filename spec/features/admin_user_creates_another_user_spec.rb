@@ -4,7 +4,7 @@ feature 'Admin user creates another user' do
   before { login_as create(:user, :admin) }
 
   scenario 'and the user is shown in the user list' do
-    new_user_email = 'new-journalist@probebe.com.br'
+    new_user_email = 'new-publisher@probebe.com.br'
 
     visit new_admin_admin_site_user_path
     fill_in 'user[email]', with: new_user_email
@@ -17,7 +17,7 @@ feature 'Admin user creates another user' do
   end
 
   scenario 'and an email is sent to the new user' do
-    new_user_email = 'new-journalist@probebe.com.br'
+    new_user_email = 'new-publisher@probebe.com.br'
 
     visit new_admin_admin_site_user_path
     fill_in 'user[email]', with: new_user_email

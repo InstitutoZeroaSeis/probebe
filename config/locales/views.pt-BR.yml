@@ -6,7 +6,7 @@ pt-BR:
       send_message: Enviar mensagens
   views:
     admin:
-      journalistic_article:
+      article:
         thumb_image_cover_help: O tamanho da imagem será redimensionada para 300 x 200 pixels
     application:
       admin: Admin

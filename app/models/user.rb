@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable,
          :rememberable, :trackable, :validatable, :omniauthable
 
-  ROLE_ENUM = [:admin, :journalist, :author]
+  ROLE_ENUM = [:admin, :publisher]
   ALL_ROLES = ROLE_ENUM + [:site_user]
 
   has_one :profile
