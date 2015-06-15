@@ -9,7 +9,7 @@ feature "Blog pagination only appears when necessary" do
   end
 
   scenario "With three pages and on page two" do
-    create_list(:journalistic_article, PostsPresenter::POSTS_PER_PAGE * 3)
+    create_list(:article, PostsPresenter::POSTS_PER_PAGE * 3)
     visit posts_path(page: 2)
 
     expect(page).to have_selector('a', text: strip_tags(I18n.t('views.blog.older_html')))

@@ -20,7 +20,7 @@ module MessageDeliveries
     delegate :category_id, :text, to: :message
 
     def article
-      message.messageable
+      message.article
     end
 
     protected

@@ -23,12 +23,8 @@ Carnival.configure do |config|
           link: '/admin/messages'
         },
         {
-          label: 'authorial_articles',
-          link: '/admin/authorial_articles'
-        },
-        {
-          label: 'journalistic_articles',
-          link: '/admin/journalistic_articles'
+          label: 'articles',
+          link: '/admin/articles'
         },
         {
           label: 'tags',
@@ -55,5 +51,5 @@ Carnival.configure do |config|
   )
   config.custom_css_files = %w(jquery-ui admin jquery.tagit.css)
   config.use_full_model_name = false
-  config.root_action = 'admin/journalistic_articles#index'
+  config.root_action = 'admin/articles#index'
 end

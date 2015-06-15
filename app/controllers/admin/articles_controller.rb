@@ -15,7 +15,11 @@ class Admin::ArticlesController < Admin::AdminController
   end
 
   def show
-    redirect_to post_path(params[:id])
+    if current_user.site_user?
+      redirect_to post_path(params[:id])
+    else
+      super
+    end
   end
 
   def create

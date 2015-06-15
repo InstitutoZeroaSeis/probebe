@@ -4,7 +4,7 @@ feature "User paginates blog pages" do
   scenario "successfully" do
     per_page = PostsPresenter::POSTS_PER_PAGE
     current_page = 2
-    posts = create_list(:journalistic_article, per_page * 3, :random_created_at)
+    posts = create_list(:article, per_page * 3, :random_created_at)
     post_titles = posts.sort_by(&:created_at).reverse.map(&:title)
     expected_titles = post_titles[((current_page - 1) * per_page), current_page * per_page]
     non_expected_titles = post_titles - expected_titles

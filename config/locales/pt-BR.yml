@@ -88,17 +88,15 @@ pt-BR:
       children:
         gender:
           <<: *gender
-      articles_authorial_article: &authotial_article_simple_form
+      articles_article: &authotial_article_simple_form
         baby_target_type:
           <<: *baby_target_type_enum
-        gender:
-          <<: *gender
-          both: 'Ambos'
-      articles_journalistic_article:
-        <<: *authotial_article_simple_form
         teenage_pregnancy:
           "true": 'Sim'
           "false": 'Não'
+        gender:
+          <<: *gender
+          both: 'Ambos'
       category:
         parent_category:
           <<: *parent_category

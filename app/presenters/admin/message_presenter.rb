@@ -8,10 +8,6 @@ class Admin::MessagePresenter < Carnival::BaseAdminPresenter
         advanced_search: { operator: :like },
         as: :char_countable
 
-  field 'messageable.name',
-        actions: [:index, :show],
-        as: :partial
-
   field :created_at, actions: [:index, :show]
 
   action :show

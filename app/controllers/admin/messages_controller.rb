@@ -3,15 +3,13 @@ class Admin::MessagesController < Admin::AdminController
   defaults resource_class: Message
 
   def edit
-    redirect_to polymorphic_url(
-      Articles::Article.find(@message.messageable_id), action: :edit
-    )
+    redirect_to edit_admin_article_path Articles::Article.find(@message.article_id)
   end
 
   protected
 
   def table_items
-    Message.includes(:messageable)
+    Message.includes(:article)
   end
 
   def permitted_params

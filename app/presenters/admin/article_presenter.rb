@@ -1,13 +1,17 @@
 class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
   model_name 'Articles::ArticleWithImageCover'
 
-  field :original_author,
-        actions: [:new, :edit],
-        advanced_search: { operator: :like }
+  field :id,
+        actions: [:index, :show], sortable: true,
+        advanced_search: { operator: :equal }
 
   field 'category.name',
         actions: [:show, :index],
         advanced_search: { operator: :equal }
+
+  field :original_author,
+        actions: [:new, :edit],
+        advanced_search: { operator: :like }
 
   field :category_id,
         actions: [:new, :edit],
@@ -86,6 +90,7 @@ class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
 
   field :created_at, actions: [:index, :show]
 
+  action :new
   action :show
   action :edit
   action :destroy

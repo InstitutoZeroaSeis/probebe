@@ -39,8 +39,8 @@ feature 'Site user access timeline' do
   end
 
   context 'with one message derived from a published article' do
-    let(:journalistic_article) { create(:journalistic_article, :published) }
-    let(:message) { create(:message, messageable: journalistic_article) }
+    let(:article) { create(:article, :published) }
+    let(:message) { create(:message, article: article) }
     let(:child) { create(:child, profile: user.profile) }
     let(:message_delivery) { create(:message_delivery, message: message, delivery_date: Date.today, child: child) }
 
@@ -56,8 +56,8 @@ feature 'Site user access timeline' do
   end
 
   context 'with one message derived from a non published article' do
-    let(:journalistic_article) { create(:journalistic_article, :unpublished) }
-    let(:message) { create(:message, messageable: journalistic_article) }
+    let(:article) { create(:article, :unpublished) }
+    let(:message) { create(:message, article: article) }
     let(:child) { create(:child, profile: user.profile) }
     let(:message_delivery) { create(:message_delivery, message: message, delivery_date: Date.today, child: child) }
 

@@ -44,10 +44,9 @@ Rails.application.routes.draw do
     end
     resources :activity_logs, only: [:index, :show]
     resources :admin_site_users
-    resources :authorial_articles
+    resources :articles
     resources :authors, only: [:new, :index, :edit, :update, :create, :show]
     resources :categories
-    resources :journalistic_articles
     resources :messages
     resources :message_deliveries, only: :index
     resources :profiles
@@ -56,8 +55,7 @@ Rails.application.routes.draw do
       get :unauthorize_receive_sms, on: :member
     end
     resources :tags
-    get 'authorial_articles/:id/create_journalistic_article' => 'authorial_articles#create_journalistic_article', as: :create_journalistic_article
-    get 'journalistic_articles/:id/show_activity_log' => 'journalistic_articles#show_activity_log'
+    get 'articles/:id/show_activity_log' => 'articles#show_activity_log'
     get 'site_users/:id/stop_impersonating' => 'site_users#stop_impersonating', as: :stop_impersonating
     get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile
     post 'site_users/:id/impersonate' => 'site_users#impersonate', as: :impersonate_user
