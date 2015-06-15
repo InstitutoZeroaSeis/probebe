@@ -18,10 +18,14 @@ module MessageDeliveries
       return true if sms_should_not_be_sent?
 
       MessageDeliveries::SpringWsdl.send_message(
-        @message_delivery.cell_phone_number,
+        number_for_delivery,
         @message_delivery.text,
         @message_delivery.id
       )
+    end
+
+    def number_for_delivery
+      @message_delivery.cell_phone_number.gsub(/([^\d])+/, '')
     end
 
     def sms_should_not_be_sent?
