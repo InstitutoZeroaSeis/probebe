@@ -10,10 +10,6 @@ class Admin::ArticlesController < Admin::AdminController
     Articles::Article.includes(:category, :user)
   end
 
-  def build_resource
-    needs_custom_article? ? build_custom_article : super
-  end
-
   def show
     if current_user.site_user?
       redirect_to post_path(params[:id])
@@ -49,20 +45,8 @@ class Admin::ArticlesController < Admin::AdminController
     @article.save
   end
 
-  def build_custom_article
-    factory = Articles::ArticleFactory.new()
-    factory.build.tap do |article|
-      if action_name == 'create'
-        article.assign_attributes(*build_resource_params)
-      end
-    end
-  end
-
-  def needs_custom_article?
-    %w(new create).include? action_name
-  end
-
   def build_resource_params
+    return if params[:articles_article].nil?
     [
       params.require(:articles_article).permit(
         :text, :title, :intro_text, :summary, :category_id, :user_id,
