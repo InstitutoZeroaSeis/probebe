@@ -72,4 +72,23 @@ RSpec.describe MessageDeliveries::MessageSender, type: :model do
 
     expect(MessageDeliveries::SpringWsdl).to_not have_received(:send_message)
   end
+
+  it 'cleans the number before sending a sms' do
+    allow(MessageDeliveries::SpringWsdl).to receive(:send_message)
+    allow(ProBebeConfig).to receive(:deliver_sms?).and_return(true)
+    message_delivery = build_stubbed(
+      :message_delivery,
+      cell_phone_number: '11 1234-5678',
+      sms_allowed: true
+    )
+    sender = MessageDeliveries::MessageSender.new(message_delivery)
+
+    sender.send_to_device
+
+    expect(MessageDeliveries::SpringWsdl).to have_received(:send_message).with(
+      '1112345678',
+      message_delivery.text,
+      message_delivery.id
+    )
+  end
 end
