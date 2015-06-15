@@ -21,6 +21,7 @@
 /.vagrant
 /profiler
 /coverage
+/articles
 
 /.data
 /vendor/bundle
