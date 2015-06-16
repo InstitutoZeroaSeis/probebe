@@ -27,7 +27,7 @@ class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
         advanced_search: { operator: :like }
 
   field :intro_text,
-        actions: [:index, :new, :edit, :show],
+        actions: [:new, :edit, :show],
         sortable: true
 
   field :text,
@@ -44,38 +44,38 @@ class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
         actions: [:edit, :new]
 
   field :summary,
-        actions: [:index, :show, :edit, :new],
+        actions: [:show, :edit, :new],
         sortable: true,
         advanced_search: { operator: :like }
 
   field :gender,
-        actions: [:index, :new, :edit, :show],
+        actions: [:new, :edit, :show],
         advanced_search: { operator: :equal },
         as: :enum
 
   field :teenage_pregnancy,
-        actions: [:index, :new, :edit, :show],
+        actions: [:new, :edit, :show],
         advanced_search: { operator: :equal }
 
   field :baby_target_type,
-        actions: [:index, :new, :edit, :show],
+        actions: [:new, :edit, :show],
         advanced_search: { operator: :equal },
         as: :enum
 
   field :minimum_valid_week,
-        actions: [:index, :new, :edit, :show],
+        actions: [:new, :edit, :show],
         advanced_search: { operator: :equal }
 
   field :maximum_valid_week,
-        actions: [:index, :new, :edit, :show],
+        actions: [:new, :edit, :show],
         advanced_search: { operator: :equal }
 
   field :publishable,
-        actions: [:index, :new, :edit, :show],
+        actions: [:new, :edit, :show],
         sortable: true
 
   field :intro_text,
-        actions: [:index, :new, :edit, :show],
+        actions: [:new, :edit, :show],
         sortable: true
 
   field :original_author_name,
@@ -96,5 +96,4 @@ class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
   action :destroy
   action :show_activity_log
 
-  index_as :list
 end
