@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :message_delivery, class: 'MessageDeliveries::MessageDelivery' do
     child
     message
+    cell_phone_number '123123123'
     sms_allowed true
 
     transient do
