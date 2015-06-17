@@ -37,6 +37,10 @@ Carnival.configure do |config|
         {
           label: 'authors',
           link: '/admin/authors'
+        },
+        {
+          label: 'site_banners',
+          link: '/admin/site_banners'
         }
       ]
     }

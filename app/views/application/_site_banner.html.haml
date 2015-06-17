@@ -1,35 +1,12 @@
 .site-banner
   %ul.site-banner-list
-    %li.site-banner-item
-      %header.site-banner-header
-        %h1= t('views.banner.did_you_know')
-        %p= t('views.banner.pregnancy')
-      %figure.site-banner-image.site-banner-image-pregnancy
-        = image_tag 'img-banner-probebe.jpg'
-    %li.site-banner-item
-      %header.site-banner-header
-        %h1= t('views.banner.did_you_know')
-        %p= t('views.banner.first_to_fourth_month')
-      %figure.site-banner-image.site-banner-image-first-to-fourth-month
-        = image_tag 'img-banner-probebe.jpg'
-    %li.site-banner-item
-      %header.site-banner-header
-        %h1= t('views.banner.did_you_know')
-        %p= t('views.banner.fifth_to_eighth_month')
-      %figure.site-banner-image.site-banner-image-fifth-to-eighth-month
-        = image_tag 'img-banner-probebe.jpg'
-    %li.site-banner-item
-      %header.site-banner-header
-        %h1= t('views.banner.did_you_know')
-        %p= t('views.banner.nineth_to_twelfth_month')
-      %figure.site-banner-image.site-banner-image-nineth-to-twelfth-month
-        = image_tag 'img-banner-probebe.jpg'
-    %li.site-banner-item
-      %header.site-banner-header
-        %h1= t('views.banner.did_you_know')
-        %p= t('views.banner.thirteenth_to_eighteenth_month')
-      %figure.site-banner-image.site-banner-image-thirteenth-to-eightteenth-month
-        = image_tag 'img-banner-probebe.jpg'
+    - SiteBanner.all.each do |banner|
+      %li.site-banner-item
+        %header.site-banner-header
+          %h1= banner.title
+          %p= banner.text
+        %figure.site-banner-image{style: "background-position: center; background-image: url(#{banner.background_image.url})"}
+          = image_tag 'img-banner-probebe.jpg'
 
   .site-banner-arrow
   .site-banner-dots

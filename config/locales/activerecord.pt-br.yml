@@ -85,6 +85,16 @@ pt-BR:
         password: Senha
         profile_name: Nome
         role: Perfil de acesso
+      site_banner:
+        banner_type: Tipo
+        title: Título
+        text: Texto
+        background_image: Imagem
+        fifth_to_eighth: 5 a 8 meses
+        first_to_fourth: 1 a 4 meses
+        nineth_to_twelfth: 9 a 12 meses
+        pregnancy: Gravidez
+        thirteenth_to_eighteenth: 13 a 18 meses
     errors:
       models:
         articles/article:
