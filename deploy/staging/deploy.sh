@@ -14,7 +14,7 @@ echo "Pushing Docker Image..."
 docker push vizir/probebe:staging
 
 echo "Creating deploy bundle"
-zip tmp/deploy.zip .ebextensions/* Dockerrun.aws.json
+zip tmp/deploy.zip .ebextensions/* Dockerrun.staging.aws.json
 
 echo "Uploading to S3"
 aws s3 cp tmp/deploy.zip s3://"$S3_BUCKET"/"$FILE_NAME"
