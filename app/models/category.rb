@@ -45,6 +45,11 @@ class Category < ActiveRecord::Base
     Slug.from_args(id, name)
   end
 
+  def self.list_for_search
+    select = []
+    select << ['', '']
+    select.concat sub_categories.collect{|c|[c.to_label, c.to_label]}
+  end
   protected
 
   def check_for_articles
