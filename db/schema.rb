@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617193422) do
+ActiveRecord::Schema.define(version: 20150618175052) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 20150617193422) do
     t.integer  "baby_target_type"
     t.integer  "minimum_valid_week"
     t.integer  "maximum_valid_week"
-    t.integer  "journalistic_articles_count",    default: 0,     null: false
+    t.integer  "journalistic_articles_count",    default: 0,    null: false
     t.integer  "user_id"
     t.integer  "original_author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "publishable",                    default: false
+    t.boolean  "publishable",                    default: true
     t.string   "image_cover"
     t.integer  "child_life_period"
     t.string   "intro_text"
