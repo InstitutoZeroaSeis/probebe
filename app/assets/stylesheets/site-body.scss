@@ -172,8 +172,11 @@
 .single-post {
   padding: 0 30px 0 0;
 
-  p {
-    font-weight: 300;
+  ul {
+    float: left;
+    li {
+      float: left;
+    }
   }
 }
 
