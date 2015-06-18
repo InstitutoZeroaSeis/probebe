@@ -8,13 +8,16 @@ APP_VERSION_DESCRIPTION=$(git log -1 --pretty=%B)
 S3_BUCKET='elasticbeanstalk-us-east-1-505000041159'
 FILE_NAME=deploy-${APP_VERSION}.zip
 
+
 echo "Building Docker Image..."
 docker build -t vizir/probebe:staging -f docker/web_staging/Dockerfile .
 echo "Pushing Docker Image..."
 docker push vizir/probebe:staging
 
 echo "Creating deploy bundle"
+[[ -f tmp/deploy.zip ]] && rm -f tmp/deploy.zip
 zip tmp/deploy.zip .ebextensions/* Dockerrun.staging.aws.json
+printf "@ Dockerrun.staging.aws.json\n@=Dockerrun.aws.json\n" | zipnote -w tmp/deploy.zip
 
 echo "Uploading to S3"
 aws s3 cp tmp/deploy.zip s3://"$S3_BUCKET"/"$FILE_NAME"
