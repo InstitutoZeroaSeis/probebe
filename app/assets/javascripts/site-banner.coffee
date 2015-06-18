@@ -1,4 +1,6 @@
 $ ->
+  if $('.site-banner-list li').length <= 1
+    return
   carousel = $('.site-banner-list')
   carousel.owlCarousel
     autoplay: true
