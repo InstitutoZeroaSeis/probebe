@@ -35,9 +35,10 @@
     font-weight: 300;
     color: #f7bc65;
     margin-bottom: 20px;
-    text-transform: uppercase;
     position: relative;
+  }
 
+  .with-dashed-line {
     &:before {
       border-top: 1px dashed #f7bc65;
       bottom: -5px;
