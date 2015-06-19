@@ -1,17 +1,22 @@
 .site-banner
   %ul.site-banner-list
-    - SiteBanner.all.each do |banner|
+    - SiteBanner.order(:position).each do |banner|
       %li.site-banner-item
         %header.site-banner-header
-          %h1= banner.title
+          - if banner.title.present?
+            %h1.with-dashed-line= banner.title
+          - else
+            %h1= banner.title
+
           %p= banner.text
         %figure.site-banner-image{style: "background-position: center; background-image: url(#{banner.background_image.url})"}
           = image_tag 'img-banner-probebe.jpg'
 
   .site-banner-arrow
   .site-banner-dots
-    .site-banner-dot.step-0.is-active= t('views.blog.pregnancy')
-    .site-banner-dot.step-1= t('views.blog.first_to_fourth')
-    .site-banner-dot.step-2= t('views.blog.fifth_to_eighth')
-    .site-banner-dot.step-3= t('views.blog.nineth_to_twelfth')
-    .site-banner-dot.step-4= t('views.blog.thirteenth_to_eighteenth')
+    - step = 0
+    - SiteBanner.order(:position).each do |banner|
+      - css_classes = "site-banner-dot step-#{step}"
+      - css_classes << " is-active" if step == 0
+      %div{ class: "#{css_classes}" }= banner.name
+      - step += 1

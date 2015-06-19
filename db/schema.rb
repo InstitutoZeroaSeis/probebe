@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150619015154) do
+=======
+ActiveRecord::Schema.define(version: 20150619155119) do
+>>>>>>> home-banners
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -242,7 +246,7 @@ ActiveRecord::Schema.define(version: 20150619015154) do
   add_index "rpush_notifications", ["delivered", "failed"], name: "index_rpush_notifications_multi", using: :btree
 
   create_table "site_banners", force: true do |t|
-    t.integer  "banner_type"
+    t.integer  "position"
     t.string   "title"
     t.text     "text"
     t.datetime "created_at"
@@ -251,6 +255,7 @@ ActiveRecord::Schema.define(version: 20150619015154) do
     t.string   "background_image_content_type"
     t.integer  "background_image_file_size"
     t.datetime "background_image_updated_at"
+    t.string   "name"
   end
 
   create_table "tags", force: true do |t|
