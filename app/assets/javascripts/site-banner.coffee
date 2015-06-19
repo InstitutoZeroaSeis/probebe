@@ -15,6 +15,8 @@ $ ->
 
   .on 'changed.owl.carousel', (event) ->
     current = carousel.data('owlCarousel').current() - 2
+    dotsNumber = $(".site-banner-dot").length
+    current = 0 if current == dotsNumber
     $(".site-banner-dot").removeClass('is-active')
     $(".step-#{current}").addClass('is-active')
 
