@@ -39,7 +39,15 @@ pt-BR:
         id: Id
         name: Nome
         parent_category: Categoria pai
+        parent_category_id: Categoria pai
         parent_category_name: Categoria pai
+        show_in_home: Mostrar na Home?
+        title: Título
+        subtitle: Subtítulo
+        text: Texto
+        category_image: Imagem
+        category_image_text: Texto abaixo da imagem
+        color: Cor
       cell_phone:
         number: Número
         area_code: Código de área
@@ -114,6 +122,7 @@ pt-BR:
           attributes:
             base:
               has_articles: não pode remover categoria com artigos
+              parent_show_in_home: categoria base não pode estar na Home
             parent_category:
               children_with_parent: não pode ter mais do que dois níves
               equals_sub_category: não pode ser igual a uma subcategoria

@@ -146,4 +146,29 @@ describe Category do
     expect(expected_sub_categories.map(&:name))
       .to match_array([sub_category.name])
   end
+
+  context 'show_in_home is true' do
+    it 'is invalid if is parent category' do
+      category = create(:category)
+
+      category.show_in_home = true
+      category.valid?
+
+      expect(category.errors[:base])
+        .to include('categoria base não pode estar na Home')
+    end
+
+    it 'is invalid without image or title' do
+      category = create(:category, :with_parent)
+      category.show_in_home = true
+
+      category.valid?
+
+      expect(category.errors[:category_image])
+        .to include('não pode ser vazio')
+      expect(category.errors[:title])
+        .to include('não pode ser vazio')
+
+    end
+  end
 end
