@@ -1,10 +1,10 @@
 class Admin::SiteBannerPresenter < Carnival::BaseAdminPresenter
   model_name 'SiteBannerDecorator'
-  field :banner_type,
-    actions: [:index, :show]
 
-  field :banner_type_edit,
-    actions: [:edit], as: :partial
+  field :position
+
+  field :name,
+    actions: [:index, :show, :new, :edit]
 
   field :title,
     actions: [:index, :show, :edit]
