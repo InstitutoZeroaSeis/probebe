@@ -18,16 +18,23 @@ class Admin::CategoryPresenter < Carnival::BaseAdminPresenter
   field :show_in_home,
         actions: [:new, :edit, :index, :show]
 
+  field :position_in_home,
+        actions: [:new, :edit, :index, :show]
+
   field :color,
-        actions: [:new, :edit, :show]
+        actions: [:new, :edit, :show],
+        as: :color_picker
 
   field :title,
+        as: :ckeditor,
         actions: [:new, :edit, :show]
 
   field :subtitle,
+        as: :ckeditor,
         actions: [:new, :edit, :show]
 
   field :text,
+        as: :ckeditor,
         actions: [:new, :edit, :show]
 
   field :category_image,

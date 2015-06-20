@@ -1,20 +1,20 @@
 .subject.col-md-9{ id: subject }
-  .row.col-md-12= render "subject_header_#{subject}"
+  .row.col-md-12= render "subject_header", category: category
 
   .col-md-5
     .subject-picture.subject-picture-back-shadow
-      %figure{ class: "subject-picture-#{subject}" }
+      %figure{ style: "background-image: url(#{category.category_image.url})" }
         %img
       .subject-picture-description
-        %p= t("views.home.anonymous.#{subject}.picture_legend")
+        %p= category.category_image_text
   .col-md-7
     .subject-description
       .subject-description-header{ class: "subject-description-header-#{subject}" }
-        %h3= t("views.home.anonymous.#{subject}.header_html")
-        %p= t("views.home.anonymous.#{subject}.description")
+        %h3= raw category.subtitle
+        %p= raw category.text
     .subject-description-buttons
-      %button.sign-up{ class: "subject-description-buttons-sign-in-#{subject}" }
+      %button.sign-up{ style: "background-color:#{category.color}; color:#fff", class: "subject-description-buttons-sign-in" , data: { color1: "#{category.color}", color2: "#fff" } }
         = t('views.home.anonymous.sign_up')
       = link_to category ? categories_posts_path(category_id: category) : '#' do
-        %button{ class: "subject-description-buttons-read-#{subject}" }
+        %button{ style: "background-color:#fff; color:#{category.color}", class: "subject-description-buttons-read", data: { color1: '#fff', color2: "#{category.color}" } }
           = t('views.home.anonymous.read')

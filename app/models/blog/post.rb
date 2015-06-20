@@ -8,4 +8,9 @@ class Blog::Post < Articles::Article
     def self.sti_name
       Articles::Article.sti_name
     end
+
+    def category_color
+      self.category.parent_category.color if self.category.parent_category.present?
+      ''
+    end
 end

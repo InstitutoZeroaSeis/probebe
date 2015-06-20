@@ -1,12 +1,9 @@
 %nav.home-categories
   %ul.home-categories-list.category-health
-    %li.home-categories-item.home-categories-click.category-health.is-active
-      = link_to "Saúde", "#health"
-    %li.home-categories-item.home-categories-click.category-education
-      = link_to "Educação", "#education"
-    %li.home-categories-item.home-categories-click.category-emotional
-      = link_to "Desenvolvimento", "#behavior"
-    %li.home-categories-item.home-categories-click.category-safety
-      = link_to "Segurança", "#security"
-    %li.home-categories-item.home-categories-click.category-finances
-      = link_to "Finanças", "#finance"
+    -index = 0
+    - Category.to_show_in_home.each do |category|
+      - css_class = "home-categories-item home-categories-click category-#{category.slug}"
+      - css_class << ' is-active' if index == 0
+      - index += 1
+      %li{ class: "#{css_class}", data: { color: "#{category.color}" } }
+        = link_to category.name, "##{category.slug}"

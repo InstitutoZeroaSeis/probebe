@@ -3,7 +3,7 @@ module Blog
     ARTICLES_PER_CATEGORY = 2
 
     def find
-      categories = Category.original_categories
+      categories = Category.to_show_in_home
       sort_by_home_order(categories).map do |category|
         [category, articles_from_category(category)]
       end.to_h
@@ -20,14 +20,7 @@ module Blog
 
     def sort_by_home_order(categories)
       categories.sort_by do |category|
-        case category.original_category_type
-        when 'health' then 0
-        when 'education' then 1
-        when 'behavior' then 2
-        when 'security' then 3
-        when 'finance' then 4
-        else 5
-        end
+
       end
     end
   end

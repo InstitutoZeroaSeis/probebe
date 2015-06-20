@@ -3,17 +3,11 @@ class HomeController < ApplicationController
     if current_user
       @categories_posts = posts_grouped_by_category
     else
-      @categories = original_categories
+      @categories = Category.to_show_in_home
     end
   end
 
   protected
-
-  def original_categories
-    Category.original_categories.map do |category|
-      [category.original_category_type, category]
-    end.to_h
-  end
 
   def posts_grouped_by_category
     Blog::CategoryGroupedPostsFinder.new.find.map do |category, posts|

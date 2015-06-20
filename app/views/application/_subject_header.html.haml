@@ -1,4 +1,5 @@
-.subject-header.subject-education
-  %h2
+- color = Paleta::Color.new(:hex, category.color)
+.subject-header
+  %h2{ style: "background-color: ##{color.lighten!(47).hex}" }
     %span.highlight
-      = category.title
+      = raw category.title

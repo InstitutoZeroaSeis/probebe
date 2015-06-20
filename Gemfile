@@ -37,6 +37,8 @@ gem 'aws-sdk', '< 2.0'
 gem 'sshkit', '~> 1.7.1'
 gem 'highline', '~> 1.7.2'
 gem 'seed_dump', '~> 3.2.2'
+gem 'paleta', '~> 0.2.2'
+gem 'jquery-minicolors-rails', '~> 2.1.4'
 
 group :development do
   gem 'better_errors', '0.9.0'

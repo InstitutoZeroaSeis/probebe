@@ -130,18 +130,17 @@
   border-top: none;
 }
 
-
 .home-categories-item {
   line-height: 50px;
   font-size: 20px;
   margin: 0;
   padding: 0;
 
+  border-bottom-style: dashed;
+  border-bottom-width: 1px;
+  border-bottom: 1px dashed #CCC;
+  border-bottom-color: $border-gray;
   &:after {
-    border-bottom-color: $border-gray;
-    border-bottom-style: dashed;
-    border-bottom-width: 1px;
-    border-bottom: 1px dashed #CCC;
     content: '';
     display: block;
     left: 10%;
@@ -195,44 +194,13 @@
   text-decoration: none;
 }
 
-@mixin category-color($color) {
-  border-bottom-color: $color;
+.home-categories-item{
   &.is-active {
-    color: $color;
-    &:after {
-      border-bottom-color: $color;
-      border-bottom-style: solid;
-    }
-    a{
-      color: $color;
-    }
+    border-bottom-style: solid;
   }
 }
+@mixin category-color($color) {
+  border-bottom-color: $color;
 
-.category-health {
-  @include category-color($red);
-}
-.category-education {
-  @include category-color($orange);
-}
-.category-emotional {
-  @include category-color($purple);
-}
-.category-finances {
-  @include category-color($cyan);
-}
-.category-safety {
-  @include category-color($yellow);
 }
 
-.category-security {
-  @include category-color($yellow);
-}
-
-.category-finance {
-  @include category-color($cyan);
-}
-
-.category-behavior {
-  @include category-color($purple);
-}

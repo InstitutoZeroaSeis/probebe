@@ -14,7 +14,7 @@
           %i= @post.intro_text
         %p.periodo-label{ class: "period-#{@post.pregnancy_or_child_life_period}" }
           = t("views.blog.#{@post.pregnancy_or_child_life_period}")
-        %p.categoria-label= @post.category_name
+        %p.categoria-label{ style: "background-color: #{@post.category_color}" }= @post.category_name
         %hr
         %p
           = raw @post.text

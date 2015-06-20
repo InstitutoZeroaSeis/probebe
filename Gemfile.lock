@@ -168,6 +168,9 @@ GEM
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
+    jquery-minicolors-rails (2.1.4.0)
+      jquery-rails
+      rails (>= 3.2.8)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -223,6 +226,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    paleta (0.2.2)
     paper_trail (3.0.6)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
@@ -424,12 +428,14 @@ DEPENDENCIES
   guard-rspec
   highline (~> 1.7.2)
   jbuilder (~> 2.0)
+  jquery-minicolors-rails (~> 2.1.4)
   jquery-rails
   jquery-ui-rails (~> 5.0.2)
   json (= 1.8.1)
   mysql2
   omniauth-facebook (~> 2.0.0)
   omniauth-google-oauth2 (~> 0.2.5)
+  paleta (~> 0.2.2)
   paper_trail (~> 3.0.6)
   paperclip (~> 4.2.0)
   pretender (~> 0.1.0)

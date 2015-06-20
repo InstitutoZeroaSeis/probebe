@@ -5,6 +5,6 @@ class Admin::CategoriesController < Admin::AdminController
   def permitted_params
     params.permit(category: [:name, :parent_category_id, :show_in_home,
                              :title, :subtitle, :text, :category_image,
-                             :category_image_text])
+                             :category_image_text, :position_in_home, :color])
   end
 end

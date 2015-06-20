@@ -42,7 +42,7 @@ class Category < ActiveRecord::Base
   end
 
   def self.to_show_in_home
-    where(show_in_home: true)
+    where(show_in_home: true).order(:position_in_home)
   end
 
   def parent_category_type
