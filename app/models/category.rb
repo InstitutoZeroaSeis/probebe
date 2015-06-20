@@ -13,10 +13,11 @@ class Category < ActiveRecord::Base
   validate :parent_category_is_at_most_two_levels_deep
   validate :parent_category_cannot_be_a_children
   validate :with_children_cannot_have_parent
-  validate :parent_category_cannot_show_in_home
+  validate :sub_category_cannot_show_in_home
   validates_presence_of :category_image, :title, :if => :show_in_home?
   validates_attachment_content_type :category_image, :content_type => /\Aimage\/.*\Z/
   before_destroy :check_for_articles
+  before_save :create_slug
 
   enum original_category_type: [
     :health, :education, :security, :finance, :behavior
@@ -38,6 +39,10 @@ class Category < ActiveRecord::Base
 
   def self.original_categories
     where.not(original_category_type: nil).order(:original_category_type)
+  end
+
+  def self.to_show_in_home
+    where(show_in_home: true)
   end
 
   def parent_category_type
@@ -81,9 +86,15 @@ class Category < ActiveRecord::Base
     errors.add(:parent_category, :children_with_parent)
   end
 
-  def parent_category_cannot_show_in_home
+  def sub_category_cannot_show_in_home
     return unless show_in_home
-    return if parent_category.present?
-    errors.add(:base, :parent_show_in_home)
+    return if parent_category.nil?
+    errors.add(:base, :sub_show_in_home)
+  end
+
+  def create_slug
+    return if self.slug.present?
+    s = I18n.transliterate(self.name)
+    self.slug = s.gsub(' ', '').underscore
   end
 end

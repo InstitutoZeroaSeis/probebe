@@ -147,9 +147,19 @@ describe Category do
       .to match_array([sub_category.name])
   end
 
+  it 'has to create a slug before_save' do
+      category = build(:category)
+      category.name = 'Educação'
+
+      category.send(:create_slug)
+
+      expect(category.slug)
+        .to be == 'educacao'
+  end
+
   context 'show_in_home is true' do
-    it 'is invalid if is parent category' do
-      category = create(:category)
+    it 'is invalid if is subcategory' do
+      category = create(:category, :with_parent)
 
       category.show_in_home = true
       category.valid?
@@ -159,7 +169,7 @@ describe Category do
     end
 
     it 'is invalid without image or title' do
-      category = create(:category, :with_parent)
+      category = create(:category)
       category.show_in_home = true
 
       category.valid?
