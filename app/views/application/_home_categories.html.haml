@@ -1,12 +1,17 @@
 %nav.home-categories
   %ul.home-categories-list.category-health
+
+    - Category.where(show_in_home: true).each do |category|
+      %li.home-categories-item.home-categories-click.category-health.is-active
+        = link_to category.name, category.slug
+
     %li.home-categories-item.home-categories-click.category-health.is-active
       = link_to "Saúde", "#health"
     %li.home-categories-item.home-categories-click.category-education
       = link_to "Educação", "#education"
-    %li.home-categories-item.home-categories-click.category-emotional
+    %li.home-categories-item.home-categories-click.category-behavior
       = link_to "Desenvolvimento", "#behavior"
-    %li.home-categories-item.home-categories-click.category-safety
+    %li.home-categories-item.home-categories-click.category-security
       = link_to "Segurança", "#security"
-    %li.home-categories-item.home-categories-click.category-finances
+    %li.home-categories-item.home-categories-click.category-finance
       = link_to "Finanças", "#finance"

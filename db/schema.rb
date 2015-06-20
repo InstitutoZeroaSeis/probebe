@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150619015154) do
-=======
 ActiveRecord::Schema.define(version: 20150619155119) do
->>>>>>> home-banners
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -86,6 +82,7 @@ ActiveRecord::Schema.define(version: 20150619155119) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_category_id"
+    t.string   "color"
     t.integer  "original_category_type"
     t.string   "slug"
     t.string   "title"
@@ -93,7 +90,6 @@ ActiveRecord::Schema.define(version: 20150619155119) do
     t.text     "text"
     t.text     "category_image_text"
     t.boolean  "show_in_home"
-    t.string   "color"
     t.string   "category_image_file_name"
     t.string   "category_image_content_type"
     t.integer  "category_image_file_size"
