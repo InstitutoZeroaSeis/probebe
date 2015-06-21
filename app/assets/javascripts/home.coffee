@@ -11,8 +11,6 @@ $ ->
     $(btn).css('color', $(btn).parent().data('color'))
     $(btn).parent().css('border-bottom-color', $(btn).parent().data('color'))
 
-    $('.home-categories-list').removeClass('category-health category-education category-behavior category-finance category-security')
-    $('.home-categories-list').addClass('category-'+item)
     $('.home-categories-list').css('border-bottom-color', $(btn).parent().data('color'))
 
   $('.home-categories-item.home-categories-click a').on 'click', ->

@@ -6,7 +6,7 @@
       %figure{ style: "background-image: url(#{category.category_image.url})" }
         %img
       .subject-picture-description
-        %p= category.category_image_text
+        = raw category.category_image_text
   .col-md-7
     .subject-description
       .subject-description-header{ class: "subject-description-header-#{subject}" }

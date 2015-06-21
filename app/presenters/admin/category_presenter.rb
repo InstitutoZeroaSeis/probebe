@@ -25,6 +25,10 @@ class Admin::CategoryPresenter < Carnival::BaseAdminPresenter
         actions: [:new, :edit, :show],
         as: :color_picker
 
+  field :second_color,
+        actions: [:new, :edit, :show],
+        as: :color_picker
+
   field :title,
         as: :ckeditor,
         actions: [:new, :edit, :show]

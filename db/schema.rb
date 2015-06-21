@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20150621135257) do
     t.integer  "category_image_file_size"
     t.datetime "category_image_updated_at"
     t.integer  "position_in_home"
+    t.string   "second_color"
   end
 
   add_index "categories", ["parent_category_id"], name: "index_categories_on_parent_category_id", using: :btree

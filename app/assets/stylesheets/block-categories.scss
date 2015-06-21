@@ -1,5 +1,11 @@
 @import 'mixins';
 
+.subject {
+  strong {
+    font-weight: 400;
+  }
+}
+
 .subject-header {
   h2 {
     border-radius: 5px;
@@ -32,8 +38,9 @@
       width: 20%;
     }
 
-    .highlight {
-      font-weight: 400;
+
+    p {
+      margin: 0px;
     }
   }
 }
@@ -45,26 +52,6 @@
   .highlight {
     color: $color;
   }
-}
-
-.subject-health {
-  @include subject($bg-red, $red);
-}
-
-.subject-education {
-  @include subject($bg-orange, $orange);
-}
-
-.subject-behavior {
-  @include subject($bg-purple, $purple);
-}
-
-.subject-finance {
-  @include subject($bg-cyan, $cyan);
-}
-
-.subject-security {
-  @include subject($bg-yellow, $yellow);
 }
 
 .subject-picture, .subject-picture-split {
@@ -89,27 +76,6 @@
     border-bottom: 4px solid $border-gray;
   }
 }
-
-.subject-picture-health {
-  background-image: image-url('category-health.jpg');
-}
-
-.subject-picture-education {
-  background-image: image-url('category-education.jpg');
-}
-
-.subject-picture-security {
-  background-image: image-url('category-security.jpg');
-}
-
-.subject-picture-finance {
-  background-image: image-url('category-finance.jpg');
-}
-
-.subject-picture-behavior {
-  background-image: image-url('category-behavior.jpg');
-}
-
 
 .subject-picture-split {
   position: relative;
@@ -145,26 +111,6 @@
   cursor: pointer;
 }
 
-.health-button {
-  background-color: $red;
-}
-
-.education-button {
-  background-color: $orange;
-}
-
-.security-button {
-  background-color: $yellow;
-}
-
-.finance-button {
-  background-color: $cyan;
-}
-
-.behavior-button {
-  background-color: $purple;
-}
-
 .subject-picture-back-shadow {
   &:before {
     border-radius: 4px;
@@ -181,8 +127,10 @@
 
 .subject-description-header {
   h3 {
-    font-size: 40px;
-    font-weight: 300;
+    p {
+      font-size: 40px;
+      font-weight: 300;
+    }
   }
 
   .highlight {
@@ -191,36 +139,6 @@
 
   p {
     font-size: 28px;
-  }
-}
-
-.subject-description-header-health {
-  .highlight {
-    color: $red;
-  }
-}
-
-.subject-description-header-education {
-  .highlight {
-    color: $orange;
-  }
-}
-
-.subject-description-header-finance {
-  .highlight {
-    color: $cyan;
-  }
-}
-
-.subject-description-header-behavior {
-  .highlight {
-    color: $purple;
-  }
-}
-
-.subject-description-header-security {
-  .highlight {
-    color: $yellow;
   }
 }
 
@@ -251,47 +169,6 @@
     color: #fff;
   }
 }
-
-.subject-description-buttons-sign-in-health {
-  @include subject-description-buttons-sign-in($red);
-}
-
-.subject-description-buttons-read-health {
-  @include subject-description-buttons-read($red);
-}
-
-.subject-description-buttons-sign-in-education {
-  @include subject-description-buttons-sign-in($orange);
-}
-
-.subject-description-buttons-read-education {
-  @include subject-description-buttons-read($orange);
-}
-
-.subject-description-buttons-sign-in-behavior {
-  @include subject-description-buttons-sign-in($purple);
-}
-
-.subject-description-buttons-read-behavior {
-  @include subject-description-buttons-read($purple);
-}
-
-.subject-description-buttons-sign-in-finance {
-  @include subject-description-buttons-sign-in($cyan);
-}
-
-.subject-description-buttons-read-finance {
-  @include subject-description-buttons-read($cyan);
-}
-
-.subject-description-buttons-sign-in-security {
-  @include subject-description-buttons-sign-in($yellow);
-}
-
-.subject-description-buttons-read-security {
-  @include subject-description-buttons-read($yellow);
-}
-
 
 .subject-description{
   margin-top: 20px;
