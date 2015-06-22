@@ -15,7 +15,8 @@ module MessageDeliveries
     protected
 
     def deliver_through_sms
-      return true if sms_should_not_be_sent?
+      return true if sms_should_not_be_sent? ||
+        @message_delivery.cell_phone_number.nil?
 
       MessageDeliveries::SpringWsdl.send_message(
         number_for_delivery,
