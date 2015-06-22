@@ -165,7 +165,7 @@ describe Category do
       category.valid?
 
       expect(category.errors[:base])
-        .to include('categoria base não pode estar na Home')
+        .to include('sub categoria não pode estar na Home')
     end
 
     it 'is invalid without image or title' do
