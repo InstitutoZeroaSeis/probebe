@@ -51,6 +51,7 @@ pt-BR:
       search: Busca de posts
       tags: Tags
       thirteenth_to_eighteenth: 13 a 18 meses
+      view_all_author_articles: Ver todos os artigos deste autor
     errors:
       forbidden: Acesso não autorizado
       internal_server_error: Ocorreu um erro ao processar a requisição

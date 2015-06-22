@@ -16,6 +16,6 @@ class PostsController < ApplicationController
   protected
 
   def post_search_params
-    params.slice(:search, :category_id, :tag_name, :life_period, :page)
+    params.slice(:search, :category_id, :tag_name, :life_period, :page, :author_id)
   end
 end
