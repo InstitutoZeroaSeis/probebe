@@ -10,7 +10,7 @@ pt-BR:
         created_at: Data de criação
         gender: Sexo
         id: Id
-        articles_count: Quantidade de artigos jornalístico
+        articles_count: Quantidade de artigos
         maximum_valid_week: Semana final
         messages: Mensagens
         minimum_valid_week: Semana inicial
@@ -134,8 +134,8 @@ pt-BR:
             has_no_children: Você precisa cadastrar ao menos um filho
             needs_mobile_phone: Precisa de pelo menos um celular
     models:
-      articles/article: Artigo Jornalístico
-      articles/article_plural: Artigos Jornalísticos
+      articles/article: Artigo
+      articles/article_plural: Artigos
       authors/author: Autor
       category: Categoria
       cell_phone: Celular
