@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.noty.packaged
+//= require jquery.modal
 //= require jquery-ui/datepicker
 //= require jquery-ui/datepicker-pt-BR
 //= require pro-bebe

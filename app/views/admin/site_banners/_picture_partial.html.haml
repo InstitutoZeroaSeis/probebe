@@ -1,0 +1,36 @@
+#probebe-images{style: 'display: none'}
+  #probebe-gallery
+    - Ckeditor::Picture.all.each do |pic|
+      = image_tag pic.url_thumb
+
+  %input#picture{ type:'file', name: 'picture'  }
+  %a{onclick: 'upload()'}
+    Upload
+
+  = f.input :picture_id
+
+= link_to_modal 'Open', '#probebe-images'
+
+:javascript
+
+  function upload(){
+    var pic = document.getElementById('picture').files[0];
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', "/ckeditor/pictures?authenticity_token=#{form_authenticity_token}&qqfile=" + pic.name, true)
+    xhr.onload = function(){
+      if (xhr.status === 200){
+        $('#picture').val('');
+        var resp = JSON.parse(xhr.response);
+        addOnGallery(resp.asset);
+        alert('Upload')
+      } else {
+        alert('Error')
+      }
+    }
+    xhr.send(pic);
+  }
+
+  function addOnGallery(image){
+    $('#probebe-gallery').append("<image src="+ image.url_thumb  +"></img>")
+  }
+

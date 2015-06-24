@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621135257) do
+ActiveRecord::Schema.define(version: 20150624174008) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -254,7 +254,10 @@ ActiveRecord::Schema.define(version: 20150621135257) do
     t.integer  "background_image_file_size"
     t.datetime "background_image_updated_at"
     t.string   "name"
+    t.integer  "picture_id"
   end
+
+  add_index "site_banners", ["picture_id"], name: "index_site_banners_on_picture_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"

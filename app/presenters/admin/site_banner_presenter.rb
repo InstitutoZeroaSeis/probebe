@@ -12,9 +12,9 @@ class Admin::SiteBannerPresenter < Carnival::BaseAdminPresenter
   field :text,
     actions: [:index, :show, :edit]
 
-  field :background_image,
-        as: :admin_previewable_file,
-    actions: [:show, :edit]
+  field :picture_partial,
+    actions: [:show, :edit],
+    as: :partial
 
   action :show
   action :edit

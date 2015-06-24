@@ -7,6 +7,7 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 Rails.application.config.assets.precompile += %w( admin.css )
 Rails.application.config.assets.precompile += %w( jquery.minicolors.css )
+Rails.application.config.assets.precompile += %w( jquery.modal.css )
 Rails.application.config.assets.precompile += %w( fonts.css )
 Rails.application.config.assets.precompile += %w( carnival_devise_views.css )
 Rails.application.config.assets.precompile += %w( message_deliveries.js )
@@ -22,7 +23,7 @@ Rails.application.config.assets.precompile += %w( ckeditor/* )
 Rails.application.config.assets.precompile += %w( profile.js )
 Rails.application.config.assets.precompile += %w( sign_up.js )
 Rails.application.config.assets.precompile += %w( home.js )
-Rails.application.config.assets.precompile += %w( jquery.tagit.js jquery.tagit.css article_tags.js jquery.minicolors.js jquery.minicolors.simple_form.js)
+Rails.application.config.assets.precompile += %w( jquery.tagit.js jquery.tagit.css article_tags.js jquery.minicolors.js jquery.minicolors.simple_form.js jquery.modal.js)
 Rails.application.config.assets.precompile += %w( jquery-scrolltofixed.js )
 
 Rails.application.config.assets.precompile += %w(
