@@ -10,7 +10,7 @@ class Blog::Post < Articles::Article
     end
 
     def category_color
-      self.category.parent_category.color if self.category.parent_category.present?
+      return self.category.parent_category.color if self.category.parent_category.present?
       ''
     end
 end
