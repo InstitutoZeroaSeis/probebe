@@ -86,6 +86,7 @@ class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
   field :messages,
         actions: [:new, :show, :edit],
         nested_form: true,
+        nested_form_allow_destroy: true,
         nested_form_modes: [:new]
 
   field :created_at, actions: [:index, :show]
