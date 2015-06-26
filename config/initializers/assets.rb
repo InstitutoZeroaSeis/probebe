@@ -23,7 +23,7 @@ Rails.application.config.assets.precompile += %w( ckeditor/* )
 Rails.application.config.assets.precompile += %w( profile.js )
 Rails.application.config.assets.precompile += %w( sign_up.js )
 Rails.application.config.assets.precompile += %w( home.js )
-Rails.application.config.assets.precompile += %w( jquery.tagit.js jquery.tagit.css article_tags.js jquery.minicolors.js jquery.minicolors.simple_form.js jquery.modal.js)
+Rails.application.config.assets.precompile += %w( jquery.tagit.js jquery.tagit.css article_tags.js jquery.minicolors.js jquery.minicolors.simple_form.js jquery.modal.js angular.js )
 Rails.application.config.assets.precompile += %w( jquery-scrolltofixed.js )
 
 Rails.application.config.assets.precompile += %w(

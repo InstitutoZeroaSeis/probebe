@@ -26,3 +26,4 @@
 //= require bootstrap.min
 //= require owl.carousel
 //= require site-banner
+//= require angular

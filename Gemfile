@@ -11,8 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'spring', group: :development
 gem 'pry'
 gem 'rails-i18n', '~> 4.0.0'
-#gem 'carnival', github: 'Vizir/carnival'
-gem 'carnival', path: '/carnival'
+gem 'carnival', github: 'Vizir/carnival'
+#gem 'carnival', path: '/carnival'
 gem 'carnival_devise_views', '~> 0.0.4'
 gem 'devise', '~> 3.4.0'
 gem 'devise-i18n', '~> 0.11.2'
@@ -40,6 +40,7 @@ gem 'highline', '~> 1.7.2'
 gem 'seed_dump', '~> 3.2.2'
 gem 'jquery-minicolors-rails', '~> 2.1.4'
 gem 'jquery-modal-rails', '~> 0.0.4'
+gem 'angularjs-rails', '~> 1.4.0'
 
 group :development do
   gem 'better_errors', '0.9.0'

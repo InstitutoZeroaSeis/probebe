@@ -1,7 +1,9 @@
-#probebe-images{style: 'display: none'}
+= javascript_include_tag 'angular/application'
+
+#probebe-images{style: 'display: none', :'ng-app' => 'gallery' }
   #probebe-gallery
     - Ckeditor::Picture.all.each do |pic|
-      = image_tag pic.url_thumb
+      %gallery-image{ image: "#{pic.url_thumb}" }
 
   %input#picture{ type:'file', name: 'picture'  }
   %a{onclick: 'upload()'}

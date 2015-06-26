@@ -1,5 +1,6 @@
-PATH
-  remote: /carnival
+GIT
+  remote: git://github.com/Vizir/carnival.git
+  revision: 635bf80aa8c0d983683a01cf9f9a33290c76e905
   specs:
     carnival (0.2.3)
       coffee-rails (>= 4.0.0)
@@ -46,6 +47,7 @@ GEM
     akami (1.2.2)
       gyoku (>= 0.4.0)
       nokogiri
+    angularjs-rails (1.4.0)
     arel (5.0.1.20140414130214)
     aws-sdk (1.64.0)
       aws-sdk-v1 (= 1.64.0)
@@ -416,6 +418,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.9.1)
+  angularjs-rails (~> 1.4.0)
   aws-sdk (< 2.0)
   better_errors (= 0.9.0)
   binding_of_caller (~> 0.7.2)
