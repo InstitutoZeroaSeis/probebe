@@ -2,14 +2,8 @@
 
 #probebe-images{style: 'display: none', :'ng-app' => 'gallery' }
   #probebe-gallery
-    - Ckeditor::Picture.all.each do |pic|
-      %gallery-image{ image: "#{pic.url_thumb}" }
-
-  %input#picture{ type:'file', name: 'picture'  }
-  %a{onclick: 'upload()'}
-    Upload
-
-  = f.input :picture_id
+    %gallery-container
+    %uploader
 
 = link_to_modal 'Open', '#probebe-images'
 

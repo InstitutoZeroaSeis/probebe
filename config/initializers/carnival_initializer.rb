@@ -57,7 +57,7 @@ Carnival.configure do |config|
     jquery.minicolors.simple_form.js
     angular.js
   )
-  config.custom_css_files = %w(jquery-ui admin jquery.tagit.css jquery.minicolors.css jquery.modal.css)
+  config.custom_css_files = %w(jquery-ui admin jquery.tagit.css jquery.minicolors.css jquery.modal.css angular.css)
   config.use_full_model_name = false
   config.root_action = 'admin/articles#index'
 end

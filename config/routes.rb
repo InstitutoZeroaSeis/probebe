@@ -59,5 +59,7 @@ Rails.application.routes.draw do
     get 'site_users/:id/stop_impersonating' => 'site_users#stop_impersonating', as: :stop_impersonating
     get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile
     post 'site_users/:id/impersonate' => 'site_users#impersonate', as: :impersonate_user
+
+    get 'gallery_images' => 'gallery_images#index'
   end
 end

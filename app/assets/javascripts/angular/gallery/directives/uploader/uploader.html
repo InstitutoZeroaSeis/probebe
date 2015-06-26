@@ -1,0 +1,7 @@
+<div id='uploader'>
+  <div id='image-preview'>
+    <img src='{{picture}}'></img>
+  </div>
+  <input type='file' onchange='angular.element(this).scope().onChange()' id='picture' name= 'picture'>
+  <span ng-click='upload()'>Upload</span>
+</div>
