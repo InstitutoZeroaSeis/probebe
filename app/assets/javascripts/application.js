@@ -27,3 +27,4 @@
 //= require owl.carousel
 //= require site-banner
 //= require angular
+//= require jquery.Jcrop.min
