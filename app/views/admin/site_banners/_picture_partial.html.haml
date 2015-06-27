@@ -1,11 +1,9 @@
 = javascript_include_tag 'angular/application'
 
-#probebe-images{style: 'display: none', :'ng-app' => 'gallery' }
+#probebe-images{:'ng-app' => 'gallery' }
   #probebe-gallery
     %gallery-container
     %uploader
-
-= link_to_modal 'Open', '#probebe-images'
 
 :javascript
 
