@@ -1,68 +1,64 @@
 angular.module('gallery')
   .directive('uploader', [ '$timeout', ($timeout) ->
-    {
-      restrict: 'E'
-      replace: true
-      templateUrl: '/assets/angular/gallery/directives/uploader/uploader.html',
-      controller: [ '$scope', 'GalleryImageService', ($scope, GalleryImageService) ->
+    restrict: 'E'
+    replace: true
+    templateUrl: '/assets/angular/gallery/directives/uploader/uploader.html',
+    controller: [ '$scope', 'GalleryImageService', 'ImageDataService', ($scope, GalleryImageService, ImageDataService) ->
 
-        $scope.points = {}
+      $scope.points = {}
+      $scope.jCropApi = null
 
-        updateCrop = (coords) ->
-          image = $('#image-preview img')[0]
-          canvas = document.createElement('canvas')
-          canvas.width = coords.w
-          canvas.height = coords.h
-          ctx = canvas.getContext('2d')
-          ctx.drawImage(image, coords.x, coords.y, coords.w, coords.h, 0, 0, coords.w, coords.h)
-          $scope.$apply ->
-            $scope.preview = canvas.toDataURL()
+      calculateRatio = (coords) ->
+        image = $('#choosed-image')[0]
+        cssHeight = parseInt(image.style.height)
+        height = image.naturalHeight
+        ratio = height/cssHeight
+        coords.x = coords.x * ratio
+        coords.y = coords.y * ratio
+        coords.w = coords.w * ratio
+        coords.h = coords.h * ratio
+        coords
 
-        addCrop = ->
-          $('#image-preview img').Jcrop(
-            onChange: updateCrop
-            onSelect: updateCrop
-          )
+      updateCrop = (coords) ->
+        coords = calculateRatio(coords)
+        image = $('#choosed-image')[0]
+        canvas = document.createElement('canvas')
+        canvas.width = coords.w
+        canvas.height = coords.h
+        ctx = canvas.getContext('2d')
+        ctx.drawImage(image, coords.x, coords.y, coords.w, coords.h, 0, 0, coords.w, coords.h)
+        $scope.$apply ->
+          $scope.preview = canvas.toDataURL()
 
-        addPreview = ->
-          pic = document.getElementById('picture').files[0]
-          reader = new FileReader()
+      addCrop = ->
+        if $scope.jCropApi
+          $scope.jCropApi.destroy()
+        $scope.jCropApi = $.Jcrop '#choosed-image',
+                      onChange: updateCrop
+                      onSelect: updateCrop
 
-          reader.onload = (e) ->
-            $scope.$apply () ->
-              $scope.picture = e.target.result
-              $timeout(addCrop, 0)
+      showImage = ->
+        pic = document.getElementById('picture').files[0]
+        reader = new FileReader()
 
-          reader.readAsDataURL(pic)
+        reader.onload = (e) ->
+          $scope.$apply () ->
+            $scope.picture = e.target.result
+            $timeout(addCrop, 0)
 
-        $scope.onChange = () ->
-          addPreview()
+        reader.readAsDataURL(pic)
 
-        dataURItoBlob = (dataURI) ->
-          # convert base64/URLEncoded data component to raw binary data held in a string
-          byteString = undefined
-          if dataURI.split(',')[0].indexOf('base64') >= 0
-            byteString = atob(dataURI.split(',')[1])
-          else
-            byteString = unescape(dataURI.split(',')[1])
-          # separate out the mime component
-          mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-          # write the bytes of the string to a typed array
-          ia = new Uint8Array(byteString.length)
-          i = 0
-          while i < byteString.length
-            ia[i] = byteString.charCodeAt(i)
-            i++
-          pic = document.getElementById('picture').files[0]
-          image = new Blob([ ia ], type: mimeString)
-          image.name = pic.name
-          image
+      $scope.onChange = () ->
+        showImage()
 
-        $scope.upload = () ->
-          pic = dataURItoBlob $scope.preview
-          GalleryImageService.upload(pic, $scope.points)
-            .then (image) ->
-              $('#picture').val ''
-      ]
-    }
+      $scope.upload = () ->
+        imageTag = document.getElementById('picture').files[0]
+        pic = ImageDataService.dataURIToBlob $scope.preview, imageTag.name
+        GalleryImageService.upload(pic, $scope.points)
+          .then (image) ->
+            $('#picture').val ''
+            $scope.jCropApi.destroy()
+            $scope.picture = ''
+            $scope.preview = ''
+    ]
   ])

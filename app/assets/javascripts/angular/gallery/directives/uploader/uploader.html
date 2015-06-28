@@ -1,6 +1,6 @@
 <div id='uploader'>
-  <div id='image-preview'>
-    <img src='{{picture}}'></img>
+  <div>
+    <img id='choosed-image' src='{{picture}}'></img>
   </div>
   <img  id='image-to-upload' src='{{preview}}'></img>
   <input type='file' onchange='angular.element(this).scope().onChange()' id='picture' name= 'picture'>
