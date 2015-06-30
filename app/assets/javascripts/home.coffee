@@ -19,7 +19,7 @@ $ ->
 
   $('.sign-up').on 'click', (event) ->
     event.preventDefault()
-    $('html').animate
+    $('body').animate
       scrollTop: $('.footer-sign-up').offset().top
     , 800
 
