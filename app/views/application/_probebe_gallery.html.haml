@@ -9,8 +9,8 @@
   %label
     ="Mensagem de fundo"
   - if defined?(ng_app_already_included) && ng_app_already_included
-    #probebe-images
+    #probebe-images{class: "probebe-gallery-#{type}"}
       %probebe-gallery{:'picture-tag-name' => field_name, :'image-url' => selected_url, :'image-id' => selected_id, type: type}
   - else
-    #probebe-images{:'ng-app' => 'gallery' }
+    #probebe-images{:'ng-app' => 'gallery', class: "probebe-gallery-#{type}"}
       %probebe-gallery{:'picture-tag-name' => field_name, :'image-url' => selected_url, :'image-id' => selected_id, type: type}

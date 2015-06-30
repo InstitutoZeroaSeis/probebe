@@ -11,7 +11,8 @@ angular.module('gallery')
     templateUrl: '/assets/angular/gallery/directives/probebe_gallery/probebe_gallery.html',
     controller: [ '$scope', 'GalleryImageService', ($scope, GalleryImageService) ->
       $scope.showGallery = ->
-        $('#gallery-images-container').dialog(
+        selector = "#gallery-images-container_#{$scope.type}"
+        $(selector).dialog(
           minWidth: 600
           maxHeight: 500
         )

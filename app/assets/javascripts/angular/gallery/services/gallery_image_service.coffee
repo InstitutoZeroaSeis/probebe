@@ -30,9 +30,9 @@ angular.module('gallery')
     @getSelectedImage = () ->
       @selectedImage
 
-    @setSelectedImage = (image) ->
+    @setSelectedImage = (image, type) ->
       @selectedImage = image
-      $rootScope.$broadcast('selectedImageChange')
+      $rootScope.$broadcast('selectedImageChange', type: type)
 
 
     @upload = (image, type) ->
@@ -47,7 +47,7 @@ angular.module('gallery')
         if xhr.status == 200
           resp = JSON.parse(xhr.response)
           @images.push resp
-          @setSelectedImage resp.asset
+          @setSelectedImage resp.asset, type
           deferred.resolve(resp)
         else
           deferred.reject("Error")

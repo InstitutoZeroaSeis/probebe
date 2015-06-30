@@ -28,6 +28,7 @@
 /public/system
 /tags
 /public/system
+/public/articles
 /public/ckeditor_assets
 /provisioning/roles/*
 /dump.sql

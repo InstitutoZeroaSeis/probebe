@@ -5,6 +5,7 @@ angular.module('gallery')
       replace: true
       scope: {
         picturesUrl: '@'
+        imageType: '@'
       }
       templateUrl: '/assets/angular/gallery/directives/gallery_container/gallery_container.html',
       controller: [ '$scope', 'GalleryImageService', ($scope, GalleryImageService) ->
@@ -12,7 +13,7 @@ angular.module('gallery')
         $scope.showGallery = false
 
         $scope.openGallery = ->
-          $('#gallery-images-container').dialog(
+          $("#gallery-images-container_#{$scope.imageType}").dialog(
             minWidth: 800
             maxHeight: 100
           )

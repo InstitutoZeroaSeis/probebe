@@ -76,35 +76,41 @@ angular.module('gallery')
           if $scope.jCropApi
             $scope.jCropApi.destroy()
           $scope.picture = ''
-        pic = document.getElementById('picture').files[0]
-        reader = new FileReader()
+          selector = ".probebe-gallery-#{$scope.imageType} #picture"
+          pic = $(selector)[0].files[0]
+          reader = new FileReader()
 
-        reader.onload = (e) ->
-          $scope.$apply () ->
-            $scope.picture = $sce.trustAsHtml("<img id='choosed-image' src='#{e.target.result}'></img>")
-            $timeout(->
-              $('#gallery-image-modal').dialog(
-                minWidth: 800
-                minHeight: 500
-                maxHeight: 500
-              )
-            , 0)
-            $timeout(resizeImage, 100)
-            $timeout(addCrop, 200)
+          reader.onload = (e) ->
+            $scope.$apply () ->
+              $scope.picture = $sce.trustAsHtml("<img id='choosed-image' src='#{e.target.result}'></img>")
+              $timeout(->
+
+                selector = "#gallery-image-modal_#{$scope.imageType}"
+                $(selector).dialog(
+                  minWidth: 800
+                  minHeight: 500
+                  maxHeight: 500
+                )
+              , 0)
+              $timeout(resizeImage, 100)
+              $timeout(addCrop, 200)
 
 
-        reader.readAsDataURL(pic)
+          reader.readAsDataURL(pic)
 
       $scope.onChange = () ->
         showImage()
 
       $scope.upload = () ->
-        imageTag = document.getElementById('picture').files[0]
+        selector = ".probebe-gallery-#{$scope.imageType} #picture"
+        imageTag = $(selector)[0].files[0]
         pic = ImageDataService.dataURIToBlob $scope.preview, imageTag.name
         GalleryImageService.upload(pic, $scope.imageType)
           .then (image) ->
-            $('#gallery-image-modal').dialog('close')
-            $('#picture').val ''
+            selector = "#gallery-image-modal_#{$scope.imageType}"
+            $(selector).dialog('close')
+            selector = ".probebe-gallery-#{$scope.imageType} #picture"
+            $(selector).val ''
             $scope.jCropApi.destroy()
             $scope.picture = ''
             $scope.preview = ''
