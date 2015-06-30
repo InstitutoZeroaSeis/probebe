@@ -19,14 +19,15 @@ $ ->
 
   $('.sign-up').on 'click', (event) ->
     event.preventDefault()
-    $('html').animate
+    $('body').animate
       scrollTop: $('.footer-sign-up').offset().top
     , 800
 
-  $('.home-categories').scrollToFixed
-    marginTop: 10
-    limit: $('footer').offset().top - 450
-    zIndex: 9
+  if $('.home-categories').length > 0
+    $('.home-categories').scrollToFixed
+      marginTop: 10
+      limit: $('footer').offset().top - 450
+      zIndex: 9
 
 
   isUserSeeingThisCategory = (categoryId) =>

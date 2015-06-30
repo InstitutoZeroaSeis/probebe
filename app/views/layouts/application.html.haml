@@ -19,7 +19,7 @@
     %section.main.container-fuild
       = yield
     %footer.footer
-      = render 'sign_up_footer' unless current_user
+      = render 'sign_up_footer', source: @source unless current_user
       %section.footer-copyright
         .container
           Pro Bebê

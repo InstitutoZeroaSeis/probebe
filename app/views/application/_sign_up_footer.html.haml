@@ -1,6 +1,6 @@
 = javascript_include_tag 'sign_up'
 
-.footer-sign-up.container
+.footer-sign-up.container#sign-up
   %h2 Faça seu cadastro
   %section.footer-sign-up
     = simple_form_for User.new,
@@ -14,6 +14,7 @@
             = p.input :name, input_html: { class: 'name' }, wrapper_html: { class: 'name' }
         .col-md-6= f.input :email
         .col-md-8.senha= f.input :password
+        .col-md-8.senha= f.input :source, as: :hidden, input_html: { value: source }
         .form-group.col-md-4
           %button.btn.btn-default.footer-sign-up-button
             Cadastrar-se
