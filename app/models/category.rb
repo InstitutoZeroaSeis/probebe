@@ -1,11 +1,11 @@
 class Category < ActiveRecord::Base
   include Carnival::ModelHelper
 
+  belongs_to :picture, class_name: 'Ckeditor::Asset'
   belongs_to :parent_category, class_name: 'Category'
   has_many :articles, class_name: 'Articles::Article'
   has_many :categories, foreign_key: :parent_category_id
   has_many :messages
-  has_attached_file :category_image, :styles => { :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
   validates :name, presence: true
   validates_uniqueness_of :name, scope: [:parent_category_id]
@@ -14,8 +14,6 @@ class Category < ActiveRecord::Base
   validate :parent_category_cannot_be_a_children
   validate :with_children_cannot_have_parent
   validate :sub_category_cannot_show_in_home
-  validates_presence_of :category_image, :title, :if => :show_in_home?
-  validates_attachment_content_type :category_image, :content_type => /\Aimage\/.*\Z/
   before_destroy :check_for_articles
   before_save :create_slug
 
@@ -47,6 +45,10 @@ class Category < ActiveRecord::Base
 
   def parent_category_type
     parent_category.try(:original_category_type)
+  end
+
+  def category_image
+    self.picture.data if self.picture.present?
   end
 
   def to_param

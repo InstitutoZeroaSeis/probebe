@@ -14,13 +14,9 @@ module Articles
     enum child_life_period: CHILD_LIFE_PERIOD_ENUM
     enum gender: GENDER_ENUM
 
-    has_attached_file :cover,
-                      path: 'articles/journalistic_articles/:attachment/:id_partition/:style/:filename',
-                      styles: { content: '1920>', thumb: '118x100#' }
-    has_attached_file :thumb_image_cover,
-                      path: 'articles/journalistic_articles/:attachment/:id_partition/:style/:filename',
-                      styles: { content: '300x200', thumb: '118x100#' }
 
+    belongs_to :cover_picture, class_name: 'Ckeditor::Asset'
+    belongs_to :thumb_picture, class_name: 'Ckeditor::Asset'
     belongs_to :category
     belongs_to :original_author, class_name: 'Authors::Author'
     belongs_to :user
@@ -39,9 +35,6 @@ module Articles
     validate :presence_of_maximum_or_minimum
     validate :category_is_a_subcategory
     validate :length_of_messages
-
-    validates_attachment_content_type :cover, content_type: /\Aimage/
-    validates_attachment_content_type :thumb_image_cover, content_type: /\Aimage/
 
     before_validation :ensure_presence_of_original_author
     before_save :set_defaults

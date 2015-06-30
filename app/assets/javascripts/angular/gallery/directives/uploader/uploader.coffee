@@ -3,6 +3,9 @@ angular.module('gallery')
     restrict: 'E'
     replace: true
     templateUrl: '/assets/angular/gallery/directives/uploader/uploader.html',
+    scope:{
+      imageType: '@'
+    }
     controller: [ '$scope', '$sce', 'GalleryImageService', 'ImageDataService', ($scope, $sce, GalleryImageService, ImageDataService) ->
 
 
@@ -98,7 +101,7 @@ angular.module('gallery')
       $scope.upload = () ->
         imageTag = document.getElementById('picture').files[0]
         pic = ImageDataService.dataURIToBlob $scope.preview, imageTag.name
-        GalleryImageService.upload(pic, $scope.points)
+        GalleryImageService.upload(pic, $scope.imageType)
           .then (image) ->
             $('#gallery-image-modal').dialog('close')
             $('#picture').val ''

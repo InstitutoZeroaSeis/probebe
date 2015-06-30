@@ -35,13 +35,13 @@ class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
         actions: [:show, :edit, :new],
         sortable: true
 
-  field :cover,
-        as: :admin_previewable_file,
-        actions: [:edit, :new]
+  field :cover_picture_partial,
+    actions: [:show, :edit],
+    as: :partial
 
-  field :thumb_image_cover,
-        as: :admin_previewable_file,
-        actions: [:edit, :new]
+  field :thumb_picture_partial,
+    actions: [:show, :edit],
+    as: :partial
 
   field :summary,
         actions: [:show, :edit, :new],

@@ -1,0 +1,5 @@
+
+#probebe-images{:'ng-app' => 'gallery' }
+  = render 'probebe_gallery', picture: record.cover_picture, field_name: 'articles_article[cover_picture_id]', type: 'article_cover', ng_app_already_included: true
+  = render 'probebe_gallery', picture: record.thumb_picture, field_name: 'articles_article[thumb_picture_id]', type: 'article_thumb', ng_app_already_included: true
+

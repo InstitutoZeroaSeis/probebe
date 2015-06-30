@@ -35,11 +35,11 @@ angular.module('gallery')
       $rootScope.$broadcast('selectedImageChange')
 
 
-    @upload = (image) ->
+    @upload = (image, type) ->
       deferred = $q.defer()
       authenticity_token = getCookie 'XSRF-TOKEN'
       xhr = new XMLHttpRequest
-      url = "/admin/new_image?authenticity_token=#{authenticity_token}&qqfile=#{image.name}"
+      url = "/admin/new_image?authenticity_token=#{authenticity_token}&qqfile=#{image.name}&type=#{type}"
 
       xhr.open 'POST', url, true
 

@@ -41,9 +41,9 @@ class Admin::CategoryPresenter < Carnival::BaseAdminPresenter
         as: :ckeditor,
         actions: [:new, :edit, :show]
 
-  field :category_image,
-        actions: [:new, :edit, :show],
-        as: :admin_previewable_file
+  field :picture_partial,
+    actions: [:show, :edit],
+    as: :partial
 
   field :category_image_text,
         actions: [:new, :edit, :show]

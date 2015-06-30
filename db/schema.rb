@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629224341) do
+ActiveRecord::Schema.define(version: 20150630182306) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -48,7 +48,10 @@ ActiveRecord::Schema.define(version: 20150629224341) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.integer  "cover_picture_id"
   end
+
+  add_index "articles", ["cover_picture_id"], name: "index_articles_on_cover_picture_id", using: :btree
 
   create_table "articles_tags", id: false, force: true do |t|
     t.integer "article_id", null: false
@@ -96,9 +99,11 @@ ActiveRecord::Schema.define(version: 20150629224341) do
     t.datetime "category_image_updated_at"
     t.integer  "position_in_home"
     t.string   "second_color"
+    t.integer  "picture_id"
   end
 
   add_index "categories", ["parent_category_id"], name: "index_categories_on_parent_category_id", using: :btree
+  add_index "categories", ["picture_id"], name: "index_categories_on_picture_id", using: :btree
 
   create_table "children", force: true do |t|
     t.string   "name"

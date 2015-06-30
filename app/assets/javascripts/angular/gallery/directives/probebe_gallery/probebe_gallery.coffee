@@ -6,6 +6,7 @@ angular.module('gallery')
       pictureTagName: '@',
       imageUrl: '@'
       imageId: '@'
+      type: '@'
     }
     templateUrl: '/assets/angular/gallery/directives/probebe_gallery/probebe_gallery.html',
     controller: [ '$scope', 'GalleryImageService', ($scope, GalleryImageService) ->

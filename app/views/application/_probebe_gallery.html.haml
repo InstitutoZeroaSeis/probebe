@@ -1,12 +1,16 @@
 #col-md-12
   = javascript_include_tag 'angular/application'
 
-  - if record.picture.present?
-    - selected_pic = record.picture.data
+  - if picture.present?
+    - selected_pic = picture.data
     - selected_url = selected_pic.url if selected_pic.present?
-    - selected_id = record.picture.id
+    - selected_id = picture.id
 
   %label
     ="Mensagem de fundo"
-  #probebe-images{:'ng-app' => 'gallery' }
-    %probebe-gallery{:'picture-tag-name' => 'site_banner[picture_id]', :'image-url' => selected_url, :'image-id' => selected_id}
+  - if defined?(ng_app_already_included) && ng_app_already_included
+    #probebe-images
+      %probebe-gallery{:'picture-tag-name' => field_name, :'image-url' => selected_url, :'image-id' => selected_id, type: type}
+  - else
+    #probebe-images{:'ng-app' => 'gallery' }
+      %probebe-gallery{:'picture-tag-name' => field_name, :'image-url' => selected_url, :'image-id' => selected_id, type: type}

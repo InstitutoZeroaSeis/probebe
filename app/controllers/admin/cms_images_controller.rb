@@ -1,6 +1,18 @@
 class Admin::CmsImagesController < Ckeditor::PicturesController
   def create
-    @picture = SiteBannersImage.new
+    @picture = picture_model
     respond_with_asset(@picture)
+  end
+
+
+  private
+
+  def picture_model
+    type = params[:type]
+    return SiteBannersImage.new if type == 'site_banner'
+    return Ckeditor::CategoryImage.new if type == 'category'
+    return Ckeditor::ArticleCoverImage.new if type == 'article_cover'
+    return Ckeditor::ArticleThumbImage.new if type == 'article_thumb'
+    Ckeditor::Picture
   end
 end

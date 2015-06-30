@@ -1,6 +1,6 @@
 module Articles
   class ArticleWithImageCover < Article
-    validates :cover, presence: true
+    validates :cover_picture, presence: true
 
     def self.model_name
       Article.model_name

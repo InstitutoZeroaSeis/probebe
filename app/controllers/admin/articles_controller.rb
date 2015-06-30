@@ -51,7 +51,7 @@ class Admin::ArticlesController < Admin::AdminController
       params.require(:articles_article).permit(
         :text, :title, :intro_text, :summary, :category_id, :user_id,
         :original_author_id, :gender, :teenage_pregnancy, :baby_target_type,
-        :publishable, :cover, :thumb_image_cover, :box, :minimum_valid_week,
+        :publishable, :cover_picture_id, :thumb_picture_id, :box, :minimum_valid_week,
         :maximum_valid_week, :tag_names,
         article_references_attributes: [:id, :source, :_destroy],
         messages_attributes: [:id, :text, :_destroy]
