@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621135257) do
+ActiveRecord::Schema.define(version: 20150630214805) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -48,7 +48,12 @@ ActiveRecord::Schema.define(version: 20150621135257) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.integer  "cover_picture_id"
+    t.integer  "thumb_picture_id"
   end
+
+  add_index "articles", ["cover_picture_id"], name: "index_articles_on_cover_picture_id", using: :btree
+  add_index "articles", ["thumb_picture_id"], name: "index_articles_on_thumb_picture_id", using: :btree
 
   create_table "articles_tags", id: false, force: true do |t|
     t.integer "article_id", null: false
@@ -96,9 +101,11 @@ ActiveRecord::Schema.define(version: 20150621135257) do
     t.datetime "category_image_updated_at"
     t.integer  "position_in_home"
     t.string   "second_color"
+    t.integer  "picture_id"
   end
 
   add_index "categories", ["parent_category_id"], name: "index_categories_on_parent_category_id", using: :btree
+  add_index "categories", ["picture_id"], name: "index_categories_on_picture_id", using: :btree
 
   create_table "children", force: true do |t|
     t.string   "name"
@@ -121,6 +128,7 @@ ActiveRecord::Schema.define(version: 20150621135257) do
     t.integer  "height"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "old_id"
   end
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
@@ -254,7 +262,10 @@ ActiveRecord::Schema.define(version: 20150621135257) do
     t.integer  "background_image_file_size"
     t.datetime "background_image_updated_at"
     t.string   "name"
+    t.integer  "picture_id"
   end
+
+  add_index "site_banners", ["picture_id"], name: "index_site_banners_on_picture_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"
@@ -278,6 +289,7 @@ ActiveRecord::Schema.define(version: 20150621135257) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "role"
+    t.string   "source"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
