@@ -80,6 +80,14 @@ module Articles
         .find_or_create_tags
     end
 
+    def thumb_image_cover
+      return self.thumb_picture.data if self.thumb_picture.present?
+    end
+
+    def cover
+      return self.cover_picture.data if self.cover_picture.present?
+    end
+
     protected
 
     def category_is_a_subcategory

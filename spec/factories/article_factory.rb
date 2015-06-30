@@ -11,8 +11,8 @@ FactoryGirl.define do
     tags { [FactoryGirl.create(:tag)] }
     original_author { create(:author) }
     publishable true
-    cover { File.new(Rails.root.join('spec', 'support', 'files', 'logo.png')) }
-    thumb_image_cover { File.new(Rails.root.join('spec', 'support', 'files', 'logo.png')) }
+    cover_picture { FactoryGirl.create(:ckeditor_asset) }
+    thumb_picture { FactoryGirl.create(:ckeditor_asset) }
 
     factory :post, class: Blog::Post do
       category { create(:category, :with_parent) }

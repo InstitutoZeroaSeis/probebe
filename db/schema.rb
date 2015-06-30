@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630182306) do
+ActiveRecord::Schema.define(version: 20150630203945) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -49,9 +49,11 @@ ActiveRecord::Schema.define(version: 20150630182306) do
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.integer  "cover_picture_id"
+    t.integer  "thumb_picture_id"
   end
 
   add_index "articles", ["cover_picture_id"], name: "index_articles_on_cover_picture_id", using: :btree
+  add_index "articles", ["thumb_picture_id"], name: "index_articles_on_thumb_picture_id", using: :btree
 
   create_table "articles_tags", id: false, force: true do |t|
     t.integer "article_id", null: false

@@ -1,9 +1,9 @@
-<div id="probebe-gallery">
-<selected-image picture-tag-name={{pictureTagName}} image-url={{imageUrl}} picture-id={{imageId}} image-type={{type}}>
+<div id="probebe-gallery" class='row'>
+  <selected-image picture-tag-name={{pictureTagName}} image-url={{imageUrl}} picture-id={{imageId}} image-type={{type}} class='col-md-12'>
   </selected-image>
   <a href='#' class='carnival-action-button' ng-click='showGallery()'>Escolher da Galeria</a>
   <gallery-container style='display: none' image-type={{type}}>
   </gallery-container>
-  <uploader image-type={{type}}>
+  <uploader image-type={{type}} class='col-md-12'>
   </uploader>
 </div>

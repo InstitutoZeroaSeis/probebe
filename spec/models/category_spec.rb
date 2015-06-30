@@ -174,10 +174,8 @@ describe Category do
 
       category.valid?
 
-      expect(category.errors[:category_image])
-        .to include('não pode ser vazio')
-      expect(category.errors[:title])
-        .to include('não pode ser vazio')
+      expect(category.errors[:base])
+        .to include('o título é necessário para categorias mostradas na Home')
 
     end
   end

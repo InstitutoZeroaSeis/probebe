@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Publisher create an article' do
   before { login_as create(:user, :publisher) }
 
-  scenario 'successfully' do
+  scenario 'successfully', js: true do
     article_title = 'Test title see if index showing title'
     create(:category, :with_parent, name: 'Saúde')
     author = create(:author)
@@ -15,7 +15,9 @@ feature 'Publisher create an article' do
     within '#articles_article_original_author_id' do
       find('option', text: author.name).select_option
     end
-    attach_file "articles_article_cover", "spec/support/files/logo.png"
+    pic = FactoryGirl.create :ckeditor_asset
+    fill_in 'articles_article[cover_picture_id]', with: pic.id
+
     fill_in 'articles_article_title', with: article_title
     fill_in 'articles_article_text', with: 'Text'
     fill_in 'articles_article_summary', with: 'Summary'

@@ -14,6 +14,7 @@ class Category < ActiveRecord::Base
   validate :parent_category_cannot_be_a_children
   validate :with_children_cannot_have_parent
   validate :sub_category_cannot_show_in_home
+  validate :show_in_home_attributes
   before_destroy :check_for_articles
   before_save :create_slug
 
@@ -92,6 +93,13 @@ class Category < ActiveRecord::Base
     return unless show_in_home
     return if parent_category.nil?
     errors.add(:base, :sub_show_in_home)
+  end
+
+  def show_in_home_attributes
+    return unless show_in_home
+    if self.title.nil?
+      errors.add(:base, :show_in_home_attributes)
+    end
   end
 
   def create_slug

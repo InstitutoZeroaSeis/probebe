@@ -123,6 +123,7 @@ pt-BR:
             base:
               has_articles: não pode remover categoria com artigos
               sub_show_in_home: sub categoria não pode estar na Home
+              show_in_home_attributes: o título é necessário para categorias mostradas na Home
             parent_category:
               children_with_parent: não pode ter mais do que dois níves
               equals_sub_category: não pode ser igual a uma subcategoria
