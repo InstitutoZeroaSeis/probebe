@@ -1,4 +1,4 @@
-$ ->
+$(document).ready ->
   phoneMask = (phone) ->
     has_ninth_digit = phone.replace(/[^\d]/g, '').length > 10
     if has_ninth_digit

@@ -21,7 +21,8 @@
   }
 
   vzrModal.prototype.open = function(openBtn) {
-    openBtn.addEventListener('click', this.show.bind(this))
+    if(openBtn)
+      openBtn.addEventListener('click', this.show.bind(this))
   }
 
   vzrModal.prototype.close = function() {
