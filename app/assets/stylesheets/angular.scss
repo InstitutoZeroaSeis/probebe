@@ -1,5 +1,60 @@
-#image-preview{
-  img{
-    width: 100px
+#probebe-gallery{
+  .modal{
+    width: 80%;
+  }
+
+
+  #selected-image{
+    height: 230px;
+    img{
+      max-height: 200px;
+    }
   }
 }
+
+#gallery-images-container{
+  height: 500px !important;
+}
+
+.jquery-modal.blocker{
+  z-index: 9999 !important
+}
+
+#gallery-image-modal{
+  height: 400px !important;
+}
+
+
+#gallery-images{
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
+  border: 1px solid #555;
+
+  #gallery-image {
+    display: inline;
+    img{
+      margin: 5px;
+      height: 100px;
+      width: 100px;
+    }
+  }
+  @media all and (max-width:960px) {
+    #gallery-images {
+      width: 900px;
+     }
+  }
+  @media all and (max-width:720px) {
+     #gallery-images {
+       width: 660px;
+     }
+  }
+  @media all and (max-width:480px) {
+    #gallery-images {
+      width: 420px;
+    }
+  }
+}
+
+

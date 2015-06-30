@@ -1,10 +1,7 @@
-<div id='gallery_images'>
-
-  <ul>
-    <li ng-repeat='image in images'>
-      <gallery-image image={{image.asset.url_thumb}}/>
-    </li>
-
-  </ul>
-
+<div id='gallery-images-container'>
+  <div id='gallery-images'>
+    <div id='gallery-image' ng-repeat='image in images'>
+      <gallery-image image="image.asset" />
+    </div>
+  </div>
 </div>

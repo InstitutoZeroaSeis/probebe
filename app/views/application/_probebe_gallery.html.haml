@@ -1,0 +1,12 @@
+#col-md-12
+  = javascript_include_tag 'angular/application'
+
+  - if record.picture.present?
+    - selected_pic = record.picture.data
+    - selected_url = selected_pic.url if selected_pic.present?
+    - selected_id = record.picture.id
+
+  %label
+    ="Mensagem de fundo"
+  #probebe-images{:'ng-app' => 'gallery' }
+    %probebe-gallery{:'picture-tag-name' => 'site_banner[picture_id]', :'image-url' => selected_url, :'image-id' => selected_id}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624174008) do
+ActiveRecord::Schema.define(version: 20150629224341) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20150624174008) do
     t.integer  "height"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "old_id"
   end
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree

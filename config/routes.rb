@@ -61,5 +61,7 @@ Rails.application.routes.draw do
     post 'site_users/:id/impersonate' => 'site_users#impersonate', as: :impersonate_user
 
     get 'gallery_images' => 'gallery_images#index'
+
+    post 'new_image' => 'cms_images#create'
   end
 end

@@ -1,6 +1,8 @@
 angular.module('gallery')
-  .service( 'GalleryImageService', [ '$http', '$q',  ($http, $q) ->
+  .service( 'GalleryImageService', [ '$http', '$q', '$rootScope',  ($http, $q, $rootScope) ->
     @images = []
+
+    @selectedImage = null
 
     @syncList = () ->
       deferred = $q.defer()
@@ -25,11 +27,19 @@ angular.module('gallery')
         c = parts.pop().split(';').shift()
       c
 
+    @getSelectedImage = () ->
+      @selectedImage
+
+    @setSelectedImage = (image) ->
+      @selectedImage = image
+      $rootScope.$broadcast('selectedImageChange')
+
+
     @upload = (image) ->
       deferred = $q.defer()
       authenticity_token = getCookie 'XSRF-TOKEN'
       xhr = new XMLHttpRequest
-      url = "/ckeditor/pictures?authenticity_token=#{authenticity_token}&qqfile=#{image.name}"
+      url = "/admin/new_image?authenticity_token=#{authenticity_token}&qqfile=#{image.name}"
 
       xhr.open 'POST', url, true
 
@@ -37,6 +47,7 @@ angular.module('gallery')
         if xhr.status == 200
           resp = JSON.parse(xhr.response)
           @images.push resp
+          @setSelectedImage resp.asset
           deferred.resolve(resp)
         else
           deferred.reject("Error")
