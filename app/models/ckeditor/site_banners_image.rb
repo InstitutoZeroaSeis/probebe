@@ -1,4 +1,4 @@
-class SiteBannersImage < Ckeditor::Asset
+class Ckeditor::SiteBannersImage < Ckeditor::Asset
   has_attached_file :data, styles: { content: '1920>', thumb: '118x100#' },
     url: :custom_url
 

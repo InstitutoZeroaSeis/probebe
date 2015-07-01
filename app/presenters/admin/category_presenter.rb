@@ -42,7 +42,7 @@ class Admin::CategoryPresenter < Carnival::BaseAdminPresenter
         actions: [:new, :edit, :show]
 
   field :picture_partial,
-    actions: [:show, :edit],
+    actions: [:new, :edit],
     as: :partial
 
   field :category_image_text,

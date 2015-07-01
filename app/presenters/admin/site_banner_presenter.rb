@@ -13,7 +13,7 @@ class Admin::SiteBannerPresenter < Carnival::BaseAdminPresenter
     actions: [:index, :show, :edit]
 
   field :picture_partial,
-    actions: [:show, :edit],
+    actions: [:edit],
     as: :partial
 
   action :show

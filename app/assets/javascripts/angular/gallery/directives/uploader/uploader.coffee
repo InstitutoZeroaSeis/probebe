@@ -5,12 +5,17 @@ angular.module('gallery')
     templateUrl: '/assets/angular/gallery/directives/uploader/uploader.html',
     scope:{
       imageType: '@'
+      cropRatio: '@'
     }
     controller: [ '$scope', '$sce', 'GalleryImageService', 'ImageDataService', ($scope, $sce, GalleryImageService, ImageDataService) ->
 
-
+      $scope.uploading = false
       $scope.points = {}
       $scope.jCropApi = null
+
+      $scope.getButtonLabel = ->
+        return 'Upload' if !$scope.uploading
+        return 'Uploading...'
 
       calculateRatio = (coords) ->
         image = $('#choosed-image')[0]
@@ -47,9 +52,12 @@ angular.module('gallery')
       addCrop = ->
         if $scope.jCropApi
           $scope.jCropApi.destroy()
-        $scope.jCropApi = $.Jcrop '#choosed-image',
-                      onChange: updateCrop
-                      onSelect: updateCrop
+        props = {}
+        props.onChange = updateCrop
+        props.onSelect = updateCrop
+        if $scope.cropRatio
+          props.aspectRatio = $scope.cropRatio
+        $scope.jCropApi = $.Jcrop '#choosed-image', props
 
       resizeImage = ->
         $('#choosed-image').each ->
@@ -87,6 +95,12 @@ angular.module('gallery')
 
                 selector = "#gallery-image-modal_#{$scope.imageType}"
                 $(selector).dialog(
+                  close: () =>
+                    $scope.$apply ->
+                      if $scope.jCropApi
+                        $scope.jCropApi.destroy()
+                      $scope.picture = ''
+
                   minWidth: 800
                   minHeight: 500
                   maxHeight: 500
@@ -101,12 +115,23 @@ angular.module('gallery')
       $scope.onChange = () ->
         showImage()
 
+      imageToUpload = () ->
+        pic = null
+        if $scope.preview
+          selector = ".probebe-gallery-#{$scope.imageType} #picture"
+          imageTag = $(selector)[0].files[0]
+          pic = ImageDataService.dataURIToBlob $scope.preview, imageTag.name
+        else
+          selector = ".probebe-gallery-#{$scope.imageType} #picture"
+          pic = $(selector)[0].files[0]
+        pic
+
       $scope.upload = () ->
-        selector = ".probebe-gallery-#{$scope.imageType} #picture"
-        imageTag = $(selector)[0].files[0]
-        pic = ImageDataService.dataURIToBlob $scope.preview, imageTag.name
+        $scope.uploading = true
+        pic = imageToUpload()
         GalleryImageService.upload(pic, $scope.imageType)
           .then (image) ->
+            $scope.uploading = false
             selector = "#gallery-image-modal_#{$scope.imageType}"
             $(selector).dialog('close')
             selector = ".probebe-gallery-#{$scope.imageType} #picture"

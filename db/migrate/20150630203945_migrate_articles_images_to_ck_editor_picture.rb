@@ -20,6 +20,7 @@ class MigrateArticlesImagesToCkEditorPicture < ActiveRecord::Migration
         [table[:data_content_type], article.cover_content_type],
         [table[:data_file_size], article.cover_file_size],
         [table[:type], 'Ckeditor::ArticleCoverImage'],
+        [table[:created_at], DateTime.now],
         [table[:old_id], article.id]
       ]
     )
@@ -40,6 +41,7 @@ class MigrateArticlesImagesToCkEditorPicture < ActiveRecord::Migration
         [table[:data_content_type], article.thumb_image_cover_content_type],
         [table[:data_file_size], article.thumb_image_cover_file_size],
         [table[:type], 'Ckeditor::ArticleThumbImage'],
+        [table[:created_at], DateTime.now],
         [table[:old_id], article.id]
       ]
     )

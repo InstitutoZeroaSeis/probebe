@@ -1,6 +1,6 @@
 <div id='uploader' class='row'>
   <input type='file' onchange='angular.element(this).scope().onChange()' id='picture' name= 'picture'>
-  <div id="gallery-image-modal_{{imageType}}" class='row' style='display: none'>
+  <div id="gallery-image-modal_{{imageType}}" title="Upload" class='row' style='display: none'>
     <div class='col-sm-10' ng-bind-html='picture'>
     </div>
     <div class='col-sm-2 row'>
@@ -10,7 +10,7 @@
       <span class='col-sm-12'>
         Largura: {{imageWidth}}
       </span>
-      <a  href='#' class='col-sm-6 carnival-action-button' ng-click='upload()'>Upload</a>
+      <a  href='#' class='col-sm-6 carnival-action-button' ng-click='upload()' ng-disabled="uploading">{{getButtonLabel()}}</a>
     </div>
   </div>
 </div>

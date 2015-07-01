@@ -10,6 +10,7 @@ class MigrateCategoriesImagesToCkEditorPicture < ActiveRecord::Migration
           [table[:data_content_type], category.category_image_content_type],
           [table[:data_file_size], category.category_image_file_size],
           [table[:type], 'Ckeditor::CategoryImage'],
+          [table[:created_at], DateTime.now],
           [table[:old_id], category.id]
         ]
       )

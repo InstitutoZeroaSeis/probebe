@@ -9,7 +9,7 @@ class Admin::CmsImagesController < Ckeditor::PicturesController
 
   def picture_model
     type = params[:type]
-    return SiteBannersImage.new if type == 'site_banner'
+    return Ckeditor::SiteBannersImage.new if type == 'site_banner'
     return Ckeditor::CategoryImage.new if type == 'category'
     return Ckeditor::ArticleCoverImage.new if type == 'article_cover'
     return Ckeditor::ArticleThumbImage.new if type == 'article_thumb'

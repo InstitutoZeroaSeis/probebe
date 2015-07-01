@@ -5,7 +5,7 @@
 
 
   #selected-image{
-    height: 230px;
+    max-height: 230px;
     img{
       max-height: 200px;
     }
@@ -24,20 +24,29 @@
   height: 400px !important;
 }
 
-
 #gallery-images{
   width: 100%;
   margin: 0 auto;
   padding-top: 10px;
   text-align: center;
-  border: 1px solid #555;
+  height: 400px;
+  overflow-y: scroll;
 
   #gallery-image {
     display: inline;
-    img{
-      margin: 5px;
-      height: 100px;
-      width: 100px;
+    position: relative;
+    float: left;
+    width: 110px;
+    font-size: 10px;
+    border: solid 1px #ccc;
+    margin: 10px;
+    div{
+      display: inline;
+      img{
+        margin: 5px;
+        height: 100px;
+        width: 100px;
+      }
     }
   }
   @media all and (max-width:960px) {

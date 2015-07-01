@@ -36,11 +36,11 @@ class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
         sortable: true
 
   field :cover_picture_partial,
-    actions: [:show, :edit],
+    actions: [:new, :edit],
     as: :partial
 
   field :thumb_picture_partial,
-    actions: [:show, :edit],
+    actions: [:new, :edit],
     as: :partial
 
   field :summary,

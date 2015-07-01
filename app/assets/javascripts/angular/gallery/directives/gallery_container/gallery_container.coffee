@@ -10,8 +10,6 @@ angular.module('gallery')
       templateUrl: '/assets/angular/gallery/directives/gallery_container/gallery_container.html',
       controller: [ '$scope', 'GalleryImageService', ($scope, GalleryImageService) ->
 
-        $scope.showGallery = false
-
         $scope.openGallery = ->
           $("#gallery-images-container_#{$scope.imageType}").dialog(
             minWidth: 800

@@ -6,6 +6,7 @@ angular.module('gallery')
       pictureTagName: '@',
       imageUrl: '@'
       imageId: '@'
+      cropRatio: '@'
       type: '@'
     }
     templateUrl: '/assets/angular/gallery/directives/probebe_gallery/probebe_gallery.html',
@@ -16,5 +17,6 @@ angular.module('gallery')
           minWidth: 600
           maxHeight: 500
         )
+        true
     ]
   ])
