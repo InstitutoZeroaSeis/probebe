@@ -12,7 +12,7 @@ class Ckeditor::ArticleThumbImage < Ckeditor::Asset
   end
 
   def custom_url
-    "/articles/journalistic_articles/thumb_image_covers/#{image_partition}/:style/:filename"
+    "/system/articles/journalistic_articles/thumb_image_covers/#{image_partition}/:style/:filename"
   end
 
 end

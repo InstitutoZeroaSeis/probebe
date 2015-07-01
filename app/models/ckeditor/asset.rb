@@ -2,7 +2,6 @@ class Ckeditor::Asset < ActiveRecord::Base
   include Ckeditor::Orm::ActiveRecord::AssetBase
   include Ckeditor::Backend::Paperclip
 
-
   def image_partition
     id = self.old_id || self.id
     case id
@@ -14,6 +13,5 @@ class Ckeditor::Asset < ActiveRecord::Base
       nil
     end
   end
-
 
 end

@@ -11,7 +11,7 @@ class Ckeditor::ArticleCoverImage < Ckeditor::Asset
   end
 
   def custom_url
-    "/articles/journalistic_articles/covers/#{image_partition}/:style/:filename"
+    "/system/articles/journalistic_articles/covers/#{image_partition}/:style/:filename"
   end
 
 end
