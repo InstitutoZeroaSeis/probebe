@@ -49,7 +49,7 @@ class Admin::ArticlesController < Admin::AdminController
     return if params[:articles_article].nil?
     [
       params.require(:articles_article).permit(
-        :text, :title, :intro_text, :summary, :category_id, :user_id,
+        :text, :title, :intro_text, :category_id, :user_id,
         :original_author_id, :gender, :teenage_pregnancy, :baby_target_type,
         :publishable, :cover_picture_id, :thumb_picture_id, :box, :minimum_valid_week,
         :maximum_valid_week, :tag_names,

@@ -6,7 +6,7 @@ class PostPresenter < SimpleDelegator
   end
 
   def post_summary
-    summary.presence || Nokogiri::HTML(text).text.truncate(TEXT_MAXIMUM_LENGTH)
+    intro_text.presence || Nokogiri::HTML(text).text.truncate(TEXT_MAXIMUM_LENGTH)
   end
 
   def author_name

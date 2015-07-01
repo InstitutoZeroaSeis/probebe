@@ -43,11 +43,6 @@ class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
     actions: [:new, :edit],
     as: :partial
 
-  field :summary,
-        actions: [:show, :edit, :new],
-        sortable: true,
-        advanced_search: { operator: :like }
-
   field :gender,
         actions: [:new, :edit, :show],
         advanced_search: { operator: :equal },
