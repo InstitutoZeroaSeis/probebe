@@ -15,7 +15,7 @@ pt-BR:
       name: Pro Bebê
       sign_in: Login
       toggle_navigation: 'Abrir/Fechar Menu'
-      show_all_post_from_this_category: Ver todos os posts na categoria
+      show_all_post_from_this_category: Ver todos os artigos da categoria
     banner:
       did_you_know: Você Sabia?
       pregnancy:
@@ -47,8 +47,8 @@ pt-BR:
       older_html: "&larr; Próxima Página"
       pregnancy: Gravidez
       read_more: Leia Mais
-      related_post: Posts Relacionados
-      search: Busca de posts
+      related_post: Artigos Relacionados
+      search: Busca de artigos
       tags: Tags
       thirteenth_to_eighteenth: 13 a 18 meses
       view_all_author_articles: Ver todos os artigos deste autor

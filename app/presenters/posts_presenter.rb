@@ -1,5 +1,5 @@
 class PostsPresenter
-  POSTS_PER_PAGE = 4
+  POSTS_PER_PAGE = 10
   POSTS_CONTROLLER = 'posts'
 
   include Rails.application.routes.url_helpers
