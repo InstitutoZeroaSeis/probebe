@@ -24,7 +24,7 @@ module Articles
     has_many :article_references
     has_many :messages
 
-    accepts_nested_attributes_for :messages, reject_if: all_blank?(:text)
+    accepts_nested_attributes_for :messages, reject_if: all_blank?(:text), allow_destroy: true
     accepts_nested_attributes_for :article_references, allow_destroy: true
     accepts_nested_attributes_for :tags, allow_destroy: false
 
