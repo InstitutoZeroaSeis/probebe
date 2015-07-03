@@ -22,7 +22,5 @@ RUN bundle exec rake assets:precompile
 
 RUN whenever -w
 
-CMD ["cron", "-f"]
-
 CMD ["foreman", "start", "-f", "Procfile.staging"]
 
