@@ -1,6 +1,7 @@
 class Ckeditor::CategoryImage < Ckeditor::Asset
   has_attached_file :data, styles: { content: '1920>', thumb: '118x100#' },
-    path: "categories/category_images/:image_partition/:style/:filename"
+    path: ":path_root/categories/category_images/:image_partition/:style/:filename",
+    url: ":url_root/categories/category_images/:image_partition/:style/:filename"
 
   validates_attachment_presence :data
   validates_attachment_size :data, less_than: 2.megabytes
