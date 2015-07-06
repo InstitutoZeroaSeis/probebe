@@ -45,7 +45,7 @@ angular.module('gallery')
         ctx = canvas.getContext('2d')
         ctx.drawImage(image, coords.x, coords.y, coords.w, coords.h, 0, 0, coords.w, coords.h)
         $scope.$apply ->
-          $scope.preview = canvas.toDataURL()
+          $scope.preview = canvas.toDataURL("image/jpeg")
           $scope.imageWidth = coords.w.toFixed 2
           $scope.imageHeight = coords.h.toFixed 2
 
