@@ -20,4 +20,10 @@ $(document).ready(function () {
     window.open(url, 'imageCoverUploadWindow', specs);
   });
 
+  //linktTarget default = _blank
+  CKEDITOR.on('dialogDefinition', function ( ev ){
+     if(ev.data.name == 'link'){
+        ev.data.definition.getContents('target').get('linkTargetType')['default']='_blank';
+     }
+  });
 });
