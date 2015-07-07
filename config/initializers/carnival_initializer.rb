@@ -7,6 +7,10 @@ Carnival.configure do |config|
       class: 'administracao',
       subs: [
         {
+          label: 'Novo Artigo',
+          link: '/admin/articles/new'
+        },
+        {
           label: 'admin_site_users',
           link: '/admin/admin_site_users'
         },
