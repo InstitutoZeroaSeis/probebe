@@ -87,6 +87,7 @@ pt-BR:
       tag:
         id: Id
         name: Nome
+        articles_count: Nº de artigos
       user:
         email: Email
         id: Id

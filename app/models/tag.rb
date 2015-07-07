@@ -8,4 +8,8 @@ class Tag < ActiveRecord::Base
   def to_param
     Slug.from_args(id, name)
   end
+
+  def articles_count
+    articles.size
+  end
 end
