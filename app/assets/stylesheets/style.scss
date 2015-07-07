@@ -162,6 +162,10 @@ nav ul h3{
   border-bottom-color: #39868C;
 }
 
+.single-post {
+  font-weight: 300;
+}
+
 .single-post hr {
     float: left;
     width: 100%;
@@ -174,7 +178,6 @@ nav ul h3{
 
 .single-post p:not(.categoria-label) {
   width: 100%;
-  font-weight: 300;
 }
 
 .single-post p.periodo-label {
