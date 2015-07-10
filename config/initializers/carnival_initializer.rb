@@ -52,6 +52,7 @@ Carnival.configure do |config|
 
   config.custom_javascript_files = %w(
     ckeditor/init
+    ckeditor/probebe_config
     inputs/countable_input
     jquery-ui/datepicker-pt-BR
     article_tags.js

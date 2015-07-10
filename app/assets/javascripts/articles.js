@@ -1,8 +1,5 @@
 //= require ckeditor/init
-
 $(document).ready(function () {
-
-
   var imageCoveUploadFunction = CKEDITOR.tools.addFunction(function(url){
     $('#articles_article_cover').val(url);
     $('#image-cover-preview').attr('src', window.location.origin + url).show();;
