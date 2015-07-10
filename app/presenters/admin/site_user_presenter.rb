@@ -28,8 +28,13 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
 
   action :show
   action :impersonate
-  action :authorize_receive_sms
-  action :unauthorize_receive_sms
+  action :authorize_receive_sms,
+         :remote => true,
+         :method => 'GET'
+
+  action :unauthorize_receive_sms,
+         :remote => true,
+         :method => 'GET'
 
   scope :authorized_receive_sms
   scope :unauthorized_receive_sms
