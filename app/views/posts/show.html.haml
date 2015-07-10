@@ -37,13 +37,16 @@
             %strong.lead= t('views.blog.tags')
           %p= render @post.tags
 
-        %p
-          %h2= t('views.blog.related_post')
-          = render partial: 'related_post', collection: @post.related_posts
+        - if @post.related_posts.size > 0
+          %p
+            %h2= t('views.blog.related_post')
+            = render partial: 'related_post', collection: @post.related_posts
 
         %ul.pager
           %li.previous
             = link_to t('views.blog.back_html'), root_path
+        %p
+          = render 'posts/disqus'
 
     = render 'sidebar',
       tags: @post.tags_for_sidebar,
