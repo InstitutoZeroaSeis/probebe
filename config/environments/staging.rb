@@ -28,6 +28,8 @@ Rails.application.configure do
 
   Rails.application.routes.default_url_options[:host] = 'staging.probebe.org.br'
 
+  config.disqus_shortname = 'probebedev'
+
   config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {
