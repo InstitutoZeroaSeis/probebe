@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe PostPresenter do
   it 'presents the summary if it has one' do
     summary = 'Post Summary'
-    post = double(summary: summary)
+    post = double(intro_text: summary)
 
     post_presenter = PostPresenter.new(post)
 
@@ -12,7 +12,7 @@ RSpec.describe PostPresenter do
 
   it 'presents the truncated text if it has no summary' do
     text = 'A' * (PostPresenter::TEXT_MAXIMUM_LENGTH + 1)
-    post = double(summary: '', text: text)
+    post = double(intro_text: '', text: text)
 
     post_presenter = PostPresenter.new(post)
 

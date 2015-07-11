@@ -14,8 +14,10 @@ class Category < ActiveRecord::Base
   validate :parent_category_cannot_be_a_children
   validate :with_children_cannot_have_parent
   validate :sub_category_cannot_show_in_home
+  validate :sub_category_cannot_blog_section
   validate :show_in_home_attributes
   before_destroy :check_for_articles
+  before_destroy :check_if_is_blog_section
   before_save :create_slug
 
   enum original_category_type: [
@@ -69,6 +71,12 @@ class Category < ActiveRecord::Base
     false
   end
 
+  def check_if_is_blog_section
+    return true if !blog_section
+    errors.add(:base, :is_blog_section)
+    false
+  end
+
   def parent_category_is_not_equals_self
     return unless parent_category == self
     errors.add(:parent_category, :equals_self)
@@ -93,6 +101,12 @@ class Category < ActiveRecord::Base
     return unless show_in_home
     return if parent_category.nil?
     errors.add(:base, :sub_show_in_home)
+  end
+
+  def sub_category_cannot_blog_section
+    return unless blog_section
+    return if parent_category.nil?
+    errors.add(:base, :sub_blog_section)
   end
 
   def show_in_home_attributes
