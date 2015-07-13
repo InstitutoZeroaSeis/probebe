@@ -1,4 +1,4 @@
-class Blog::Post < Articles::Article
+class Site::Article < Articles::Article
   default_scope -> { where(publishable: true) }
 
     def self.model_name

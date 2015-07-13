@@ -1,15 +1,15 @@
-class PostsController < ApplicationController
+class ArticlesController < ApplicationController
   def index
-    @presenter = PostsPresenter.new(post_search_params)
+    @presenter = ArticlesPresenter.new(post_search_params)
   end
 
   def show
-    @post = PostPresenter.new(Blog::Post.find(params[:id]))
+    @article = ArticlePresenter.new(Site::Article.find(params[:id]))
     render layout: 'single-post'
   end
 
   def raw
-    @post = PostPresenter.new(Blog::Post.find(params[:id]))
+    @article = ArticlePresenter.new(Site::Article.find(params[:id]))
     render layout: 'raw-single-post'
   end
 

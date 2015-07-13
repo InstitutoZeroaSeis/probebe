@@ -1,19 +1,19 @@
 = render 'home_categories'
 
 %section.subjects.container.signed-in
-  - @categories_posts.each do |category, posts|
+  - @categories_articles.each do |category, articles|
     .subject.col-md-9{ id: category.slug }
       .row.col-md-12
         = render "subject_header", category: category
-      - posts.each do |post|
+      - articles.each do |article|
         .col-md-6
           .subject-picture-split
-            = link_to post_path(post) do
+            = link_to article_path(article) do
               %figure
-                %img{ width: 300, height: 200, src: post.thumb_image_cover }
+                %img{ width: 300, height: 200, src: article.thumb_image_cover }
             .subject-picture-split-description
-              = link_to post_path(post) do
-                %p= post.post_summary
-      = link_to categories_posts_path(category) do
+              = link_to article_path(article) do
+                %p= article.post_summary
+      = link_to categories_articles_path(category) do
         %button.subject-picture-split-see-all-posts.center-block{ style: "background-color: #{category.color}" }
           = t('views.application.show_all_post_from_this_category')

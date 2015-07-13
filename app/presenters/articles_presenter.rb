@@ -1,16 +1,16 @@
-class PostsPresenter
+class ArticlesPresenter
   POSTS_PER_PAGE = 10
-  POSTS_CONTROLLER = 'posts'
+  POSTS_CONTROLLER = 'articles'
 
   include Rails.application.routes.url_helpers
 
-  def initialize(post_params = {})
-    @post_params = post_params
+  def initialize(article_params = {})
+    @article_params = article_params
     build_pager
   end
 
-  def posts
-    @posts ||= PostPresenter.wrap @pager.paged
+  def articles
+    @articles ||= ArticlePresenter.wrap @pager.paged
   end
 
   def render_next_step?
@@ -22,11 +22,11 @@ class PostsPresenter
   end
 
   def previous_blog_page
-    url_for(@post_params.merge(page: current_page + 1, controller: POSTS_CONTROLLER))
+    url_for(@article_params.merge(page: current_page + 1, controller: POSTS_CONTROLLER))
   end
 
   def next_blog_page
-    url_for(@post_params.merge(page: current_page - 1, controller: POSTS_CONTROLLER))
+    url_for(@article_params.merge(page: current_page - 1, controller: POSTS_CONTROLLER))
   end
 
   def tags_for_sidebar
@@ -43,12 +43,12 @@ class PostsPresenter
   protected
 
   def current_page
-    page = @post_params[:page]
+    page = @article_params[:page]
     page ? page.to_i : 1
   end
 
   def build_pager
-    posts = Blog::PostFinder.new(@post_params).find
-    @pager = Pager.new(posts, current_page, POSTS_PER_PAGE)
+    articles = Site::ArticleFinder.new(@article_params).find
+    @pager = Pager.new(articles, current_page, POSTS_PER_PAGE)
   end
 end

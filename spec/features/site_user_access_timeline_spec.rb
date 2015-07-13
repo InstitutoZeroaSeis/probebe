@@ -47,7 +47,7 @@ feature 'Site user access timeline' do
     scenario 'and sees a link for a blog post in the message box' do
       visit timeline_path(message_delivery.child)
       link_content = message_delivery.text
-      link_href = raw_post_path(message_delivery.article.id)
+      link_href = raw_article_path(message_delivery.article.id)
 
       within_timeline(Date.today) do
         expect(page).to have_message_with_link_to_post(link_content, link_href)

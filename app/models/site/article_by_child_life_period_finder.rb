@@ -1,5 +1,5 @@
-module Blog
-  class PostByChildLifePeriodFinder
+module Site
+  class ArticleByChildLifePeriodFinder
     def initialize(life_period, relation)
       @life_period = life_period
       @relation = relation

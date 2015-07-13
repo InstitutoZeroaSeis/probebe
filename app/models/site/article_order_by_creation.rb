@@ -1,5 +1,5 @@
-module Blog
-  class PostOrderByCreation
+module Site
+  class ArticleOrderByCreation
     def initialize(relation)
       @relation = relation
     end

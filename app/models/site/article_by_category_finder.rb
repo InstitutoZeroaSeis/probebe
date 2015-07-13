@@ -1,5 +1,5 @@
-module Blog
-  class PostByCategoryFinder
+module Site
+  class ArticleByCategoryFinder
     def initialize(category_id, relation)
       @category_id = category_id
       @relation = relation

@@ -1,0 +1,7 @@
+.related-post.col-md-6
+  %p
+    %figure
+      %img{width: 300, height: 200, src: related_article.thumb_image_cover}
+  %p
+    = link_to related_article.title, article_path(related_article)
+  %p= related_article.post_summary

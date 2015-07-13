@@ -1,4 +1,4 @@
-class PostPresenter < SimpleDelegator
+class ArticlePresenter < SimpleDelegator
   TEXT_MAXIMUM_LENGTH = 500
 
   def category_type
@@ -21,9 +21,9 @@ class PostPresenter < SimpleDelegator
     original_author.photo_url
   end
 
-  def related_posts
-    @related_posts ||= self.class.wrap(
-      Blog::RelatedPostFinder.new(id).find_related
+  def related_articles
+    @related_articles ||= self.class.wrap(
+      Site::RelatedArticleFinder.new(id).find_related
     )
   end
 
@@ -39,9 +39,9 @@ class PostPresenter < SimpleDelegator
     Category.base_categories
   end
 
-  def self.wrap(posts)
-    posts.map do |post|
-      new(post)
+  def self.wrap(articles)
+    articles.map do |article|
+      new(article)
     end
   end
 end

@@ -1,5 +1,5 @@
-module Blog
-  class CategoryGroupedPostsFinder
+module Site
+  class CategoryGroupedArticlesFinder
     ARTICLES_PER_CATEGORY = 2
 
     def find
@@ -13,7 +13,7 @@ module Blog
 
     def articles_from_category(parent_category)
       categories = Category.where(parent_category_id: parent_category.id)
-      Blog::Post
+      Site::Article
         .where(category_id: categories)
         .sample(ARTICLES_PER_CATEGORY)
     end
