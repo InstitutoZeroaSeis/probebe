@@ -1,0 +1,13 @@
+%section.subjects.container
+  .row
+    = render partial: 'post', collection: @presenter.posts
+
+    %ul.pager.col-md-12
+      - if @presenter.render_next_step?
+        %li.previous
+          = link_to t('views.blog.older_html'), @presenter.previous_blog_page
+      - if @presenter.render_previous_step?
+        %li.next
+          = link_to t('views.blog.newer_html'), @presenter.next_blog_page
+
+

@@ -32,8 +32,8 @@ module Articles
               :baby_target_type, :gender, presence: true
 
     validate :minimum_not_higher_than_maximum
-    validate :presence_of_maximum_or_minimum
     validate :category_is_a_subcategory
+    validate :presence_of_maximum_or_minimum
     validate :length_of_messages
 
     before_validation :ensure_presence_of_original_author
@@ -47,6 +47,7 @@ module Articles
     has_paper_trail
 
     def presence_of_maximum_or_minimum
+      return if category.parent_category.blog_section
       return unless minimum_valid_week.blank? && maximum_valid_week.blank?
       errors.add(:base, :has_no_minimum_and_maximum_valid_week)
     end

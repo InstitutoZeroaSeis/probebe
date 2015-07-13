@@ -1,4 +1,4 @@
-class ArticlePresenter < SimpleDelegator
+class PostPresenter < SimpleDelegator
   TEXT_MAXIMUM_LENGTH = 500
 
   def category_type
@@ -21,8 +21,8 @@ class ArticlePresenter < SimpleDelegator
     original_author.photo_url
   end
 
-  def related_articles
-    @related_articles ||= self.class.wrap(
+  def related_posts
+    @related_posts ||= self.class.wrap(
       Site::RelatedArticleFinder.new(id).find_related
     )
   end
@@ -31,18 +31,9 @@ class ArticlePresenter < SimpleDelegator
     born? ? child_life_period : baby_target_type
   end
 
-  def tags_for_sidebar
-    Tag.all
-  end
-
-  def categories_for_sidebar
-    Category.base_categories.
-      where(blog_section: false)
-  end
-
-  def self.wrap(articles)
-    articles.map do |article|
-      new(article)
+  def self.wrap(posts)
+    posts.map do |post|
+      new(post)
     end
   end
 end

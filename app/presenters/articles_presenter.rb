@@ -37,7 +37,8 @@ class ArticlesPresenter
   end
 
   def categories_for_sidebar
-    Category.base_categories
+    Category.base_categories.
+      where(blog_section: false)
   end
 
   protected

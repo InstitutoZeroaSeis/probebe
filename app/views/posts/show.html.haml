@@ -1,0 +1,35 @@
+.site-banner
+  %ul.site-banner-list
+    %li.site-banner-item
+      %figure.site-banner-image{ style: "background-image: url(#{@post.cover})" }
+        %img{ src: @post.cover }
+
+
+%section.main.container-fuild
+  %section.subjects.container{ class: @post.category_type }
+    .posts.subject.col-md-12
+      .single-post.col-md-12
+        .single-post-header
+          %h2.post_title= @post.title
+          %h5
+            %i= @post.intro_text
+          %p.periodo-label{ class: "period-#{@post.pregnancy_or_child_life_period}" }
+            = t("views.blog.#{@post.pregnancy_or_child_life_period}")
+          %p.categoria-label{ style: "background-color: #{@post.category_color}" }= @post.category_name
+          %hr
+        %p
+          = raw @post.text
+
+        %hr
+        %p.lead
+          %img{width: 50, height: 50, src: @post.author_photo_url}
+          = t('views.blog.by', author: @post.author_name)
+        %p
+          = @post.author_bio
+
+        %ul.pager
+          %li.previous
+            = link_to t('views.blog.back_html'), root_path
+        %p
+          = render 'articles/disqus'
+

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :timelines, only: :show
   get 'timelines/:id/monthly/:date' => 'timelines#monthly', as: :timeline_monthly
   constraints(id: /\d+/) do
+    resources(:posts, only: [:show, :index])
     resources(:articles, only: [:show, :index]) do
       collection do
         scope :categories do
