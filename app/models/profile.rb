@@ -16,10 +16,9 @@ class Profile < ActiveRecord::Base
   )
   has_one :avatar
 
-  validates :name, presence: true
+  validates :name, :cell_phone, presence: true
   validates :cell_phone, format: {
-    with: /\A\d{2}\s\d{4,5}\-\d{4,4}\Z/,
-    allow_blank: true
+    with: /\A\d{2}\s\d{4,5}\-\d{4,4}\Z/
   }
 
   accepts_nested_attributes_for :avatar

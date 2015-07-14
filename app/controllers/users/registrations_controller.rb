@@ -7,6 +7,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up)
       .push(:source)
-      .push(profile_attributes: [:name])
+      .push(profile_attributes: [:name, :cell_phone])
   end
 end
