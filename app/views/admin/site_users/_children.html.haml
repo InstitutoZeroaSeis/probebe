@@ -1,0 +1,14 @@
+.row.children
+  - if record.profile.children.size > 0
+    - record.profile.children.each do |child|
+      .child
+        .row
+          .col-md-12
+            %label="#{t('activerecord.attributes.child.name')}: "
+            .value="#{child.name}"
+        .row
+          .col-md-12
+            %label="#{t('activerecord.attributes.child.birth_date')}: "
+            .value="#{child.birth_date}"
+
+

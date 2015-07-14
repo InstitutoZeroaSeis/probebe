@@ -29,6 +29,10 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   field :confirmation_sent_at,
         :sortable => {:direction => :desc, :default => true}
 
+  field :children,
+        actions: [:show],
+        as: :partial
+
   action :show
   action :impersonate
   action :authorize_receive_sms,

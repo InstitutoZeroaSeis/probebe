@@ -94,6 +94,12 @@ pt-BR:
         password: Senha
         profile_name: Nome
         role: Perfil de acesso
+        profile_birth_date: Data de Nascimento
+        profile_state: Estado
+        profile_city: Cidade
+        profile_street: Rua
+        profile_primary_cell_phone_number: Celular
+        children: Filhos
       site_banner:
         banner_type: Tipo
         title: Título
