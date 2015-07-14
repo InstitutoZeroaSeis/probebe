@@ -6,16 +6,23 @@ class Admin::PostsController < Admin::ArticlesController
   end
 
   def create
-    category = Category.find_by_blog_section(true).categories.first
-    parametes = build_resource_params.first
-    parametes[:category_id] = category.id
-    @article = Articles::Article.new parametes
-    if @article.save
+
+    @model = Articles::Article.new(create_parameters)
+    if @model.save
       flash[:notice] = I18n.t('messages.created')
-      redirect_to action: :edit, id: @article.id
+      redirect_to action: :edit, id: @model.id
     else
-      redirect_to action: :new
+      render action: 'new'
     end
+  end
+
+  protected
+
+  def create_parameters
+    category = Category.find_by_blog_section(true).categories.first
+    parameters = build_resource_params.first
+    parameters[:category_id] = category.id
+    parameters
   end
 
 end

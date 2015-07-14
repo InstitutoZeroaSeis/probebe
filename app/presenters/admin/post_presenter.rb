@@ -35,16 +35,6 @@ class Admin::PostPresenter < Carnival::BaseAdminPresenter
     actions: [:new, :edit],
     as: :partial
 
-  field :gender,
-        actions: [:new, :edit, :show],
-        advanced_search: { operator: :equal },
-        as: :enum
-
-  field :baby_target_type,
-        actions: [:new, :edit, :show],
-        advanced_search: { operator: :equal },
-        as: :enum
-
   field :publishable,
         actions: [:new, :edit, :show],
         sortable: true
