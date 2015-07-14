@@ -13,18 +13,19 @@ Rails.application.routes.draw do
   resources :timelines, only: :show
   get 'timelines/:id/monthly/:date' => 'timelines#monthly', as: :timeline_monthly
   constraints(id: /\d+/) do
-    resources(:posts, only: [:show, :index]) do
+    resources(:posts, only: [:show, :index])
+    resources(:articles, only: [:show, :index]) do
       collection do
         scope :categories do
-          get ':category_id', to: 'posts#index', as: :categories
+          get ':category_id', to: 'articles#index', as: :categories
         end
       end
       get :raw, on: :member
     end
   end
-  get 'posts/page/:page_id' => 'posts#index', as: :paged_posts
-  resources(:tags, param: :name, only: []) { resources :posts, only: :index }
-  resources(:categories) { resources :posts, only: :index }
+  get 'articles/page/:page_id' => 'articles#index', as: :paged_articles
+  resources(:tags, param: :name, only: []) { resources :articles, only: :index }
+  resources(:categories) { resources :articles, only: :index }
   get :about, to: 'static_pages#about'
   get :partners, to: 'static_pages#partners'
   get :what, to: 'static_pages#what'
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
     resources :activity_logs, only: [:index, :show]
     resources :admin_site_users
     resources :articles
+    resources :posts
     resources :authors, only: [:new, :index, :edit, :update, :create, :show]
     resources :categories
     resources :messages
@@ -59,7 +61,7 @@ Rails.application.routes.draw do
     get 'articles/:id/show_activity_log' => 'articles#show_activity_log'
     get 'site_users/:id/stop_impersonating' => 'site_users#stop_impersonating', as: :stop_impersonating
     get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile
-    post 'site_users/:id/impersonate' => 'site_users#impersonate', as: :impersonate_user
+    get 'site_users/:id/impersonate' => 'site_users#impersonate', as: :impersonate_user
 
     get 'gallery_images' => 'gallery_images#index'
 

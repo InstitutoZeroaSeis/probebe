@@ -1,5 +1,5 @@
-module Blog
-  class PostSearchTermFinder
+module Site
+  class ArticleSearchTermFinder
     def initialize(term, relation)
       @term = term
       @relation = relation
@@ -20,7 +20,7 @@ module Blog
     end
 
     def table
-      Post.arel_table
+      Article.arel_table
     end
   end
 end

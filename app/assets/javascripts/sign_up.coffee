@@ -21,6 +21,7 @@ class SignUpFormWithError
   transform_errors_object = (object) ->
     new_object = $.extend {},
       name: object['profile.name']
+      cell_phone: object['profile.cell_phone']
       email: object.email
       password: object.password
 
@@ -43,3 +44,15 @@ class SignUp
 $ ->
   sign_up = new SignUp('.sign-up-form')
   sign_up.bind()
+
+  phoneMask = (phone) ->
+    has_ninth_digit = phone.replace(/[^\d]/g, '').length > 10
+    if has_ninth_digit
+      '00 00000-0000'
+    else
+      '00 0000-0000'
+
+  $(".phone").mask phoneMask,
+    onKeyPress: (phone, e, currentField, options) ->
+      $(currentField).mask(phoneMask(phone), options)
+

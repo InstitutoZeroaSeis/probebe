@@ -94,6 +94,12 @@ pt-BR:
         password: Senha
         profile_name: Nome
         role: Perfil de acesso
+        profile_birth_date: Data de Nascimento
+        profile_state: Estado
+        profile_city: Cidade
+        profile_street: Rua
+        profile_primary_cell_phone_number: Celular
+        children: Filhos
       site_banner:
         banner_type: Tipo
         title: Título
@@ -123,7 +129,9 @@ pt-BR:
           attributes:
             base:
               has_articles: não pode remover categoria com artigos
+              is_blog_section: não pode remover categoria do menu blog
               sub_show_in_home: sub categoria não pode estar na Home
+              sub_blog_section: sub categoria não pode ser do menu blog
               show_in_home_attributes: o título é necessário para categorias mostradas na Home
             parent_category:
               children_with_parent: não pode ter mais do que dois níves

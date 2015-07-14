@@ -4,13 +4,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = PostPresenter.new(Blog::Post.find(params[:id]))
+    @post = PostPresenter.new(Site::Article.find(params[:id]))
     render layout: 'single-post'
-  end
-
-  def raw
-    @post = PostPresenter.new(Blog::Post.find(params[:id]))
-    render layout: 'raw-single-post'
   end
 
   protected

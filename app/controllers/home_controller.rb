@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
     @source = get_source
     if current_user
-      @categories_posts = posts_grouped_by_category
+      @categories_articles = articles_grouped_by_category
     else
       @categories = Category.to_show_in_home
     end
@@ -10,9 +10,9 @@ class HomeController < ApplicationController
 
   protected
 
-  def posts_grouped_by_category
-    Blog::CategoryGroupedPostsFinder.new.find.map do |category, posts|
-      [category, PostPresenter.wrap(posts)]
+  def articles_grouped_by_category
+    Site::CategoryGroupedArticlesFinder.new.find.map do |category, articles|
+      [category, ArticlePresenter.wrap(articles)]
     end
   end
 

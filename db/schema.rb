@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630214805) do
+ActiveRecord::Schema.define(version: 20150711135139) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20150630214805) do
     t.integer  "position_in_home"
     t.string   "second_color"
     t.integer  "picture_id"
+    t.boolean  "blog_section",                default: false
   end
 
   add_index "categories", ["parent_category_id"], name: "index_categories_on_parent_category_id", using: :btree

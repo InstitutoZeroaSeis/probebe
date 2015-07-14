@@ -3,9 +3,9 @@
     %ul.home-categories-list.category-health
       - categories.each do |category|
         %li.home-categories-item
-          = link_to category.name, categories_posts_path(category_id: category)
+          = link_to category.name, categories_articles_path(category_id: category)
 
-  = render 'post_for_period'
+  = render 'article_for_period'
 
   %nav.blog-tags
     %ul.home-categories-list.category-education

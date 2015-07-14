@@ -1,11 +1,12 @@
 class PostsPresenter
-  POSTS_PER_PAGE = 10
+  POSTS_PER_PAGE = 9
   POSTS_CONTROLLER = 'posts'
 
   include Rails.application.routes.url_helpers
 
   def initialize(post_params = {})
     @post_params = post_params
+    @post_params[:initial_relation] = Site::Article.joins(:category).where('categories.blog_section = ?', true)
     build_pager
   end
 
@@ -30,14 +31,10 @@ class PostsPresenter
   end
 
   def tags_for_sidebar
-    Tag.joins(:articles).
-      select('tags.id, tags.name, COUNT(*) as articles_count').
+    Tag.joins(:posts).
+      select('tags.id, tags.name, COUNT(*) as posts_count').
       group('tags.id').
-      order('articles_count DESC')
-  end
-
-  def categories_for_sidebar
-    Category.base_categories
+      order('posts_count DESC')
   end
 
   protected
@@ -48,7 +45,7 @@ class PostsPresenter
   end
 
   def build_pager
-    posts = Blog::PostFinder.new(@post_params).find
+    posts = Site::ArticleFinder.new(@post_params).find
     @pager = Pager.new(posts, current_page, POSTS_PER_PAGE)
   end
 end

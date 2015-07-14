@@ -1,6 +1,6 @@
 %section.subjects.container
-  .row
-    = render partial: 'post', collection: @presenter.posts
+  .posts.subject.col-md-9
+    = render partial: 'article', collection: @presenter.articles
 
     %ul.pager.col-md-12
       - if @presenter.render_next_step?
@@ -10,4 +10,6 @@
         %li.next
           = link_to t('views.blog.newer_html'), @presenter.next_blog_page
 
-
+  = render 'sidebar',
+    tags: @presenter.tags_for_sidebar,
+    categories: @presenter.categories_for_sidebar

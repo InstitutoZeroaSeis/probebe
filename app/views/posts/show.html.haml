@@ -7,7 +7,7 @@
 
 %section.main.container-fuild
   %section.subjects.container{ class: @post.category_type }
-    .posts.subject.col-md-9
+    .posts.subject.col-md-12
       .single-post.col-md-12
         .single-post-header
           %h2.post_title= @post.title
@@ -27,27 +27,9 @@
         %p
           = @post.author_bio
 
-        %p
-          = link_to t('views.blog.view_all_author_articles'), posts_path(author_id: @post.original_author_id)
-
-        %hr
-
-        .single-post-tags
-          %p
-            %strong.lead= t('views.blog.tags')
-          %p= render @post.tags
-
-        - if @post.related_posts.size > 0
-          %p
-            %h2= t('views.blog.related_post')
-            = render partial: 'related_post', collection: @post.related_posts
-
         %ul.pager
           %li.previous
             = link_to t('views.blog.back_html'), root_path
         %p
-          = render 'posts/disqus'
+          = render 'articles/disqus'
 
-    = render 'sidebar',
-      tags: @post.tags_for_sidebar,
-      categories: @post.categories_for_sidebar

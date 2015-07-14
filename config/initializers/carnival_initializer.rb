@@ -11,6 +11,10 @@ Carnival.configure do |config|
           link: '/admin/articles/new'
         },
         {
+          label: 'Novo Post',
+          link: '/admin/posts/new'
+        },
+        {
           label: 'admin_site_users',
           link: '/admin/admin_site_users'
         },
@@ -29,6 +33,10 @@ Carnival.configure do |config|
         {
           label: 'articles',
           link: '/admin/articles'
+        },
+        {
+          label: 'posts',
+          link: '/admin/posts'
         },
         {
           label: 'tags',

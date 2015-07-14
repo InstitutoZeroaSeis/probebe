@@ -9,11 +9,13 @@
       wrapper: :custom_forms,
       html: { class: 'sign-up-form', 'data-type' => 'json' } do |f|
       %fieldset.footer-form-group
-        .col-md-6
-          = f.simple_fields_for :profile, Profile.new, wrapper: :custom_forms do |p|
+        = f.simple_fields_for :profile, Profile.new, wrapper: :custom_forms do |p|
+          .col-md-6
             = p.input :name, input_html: { class: 'name' }, wrapper_html: { class: 'name' }
-        .col-md-6= f.input :email
-        .col-md-8.senha= f.input :password
+          .col-md-6= f.input :email
+          .col-md-6
+            = p.input :cell_phone, input_html: { class: 'cell_phone phone' }, wrapper_html: { class: 'cell_phone' }
+        .col-md-6.senha= f.input :password
         .col-md-8.senha= f.input :source, as: :hidden, input_html: { value: source }
         .form-group.col-md-4
           %button.btn.btn-default.footer-sign-up-button

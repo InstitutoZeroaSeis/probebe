@@ -179,4 +179,25 @@ describe Category do
 
     end
   end
+
+  context 'blog_section is true' do
+    it 'is invalid if is subcategory' do
+      category = create(:category, :with_parent)
+
+      category.blog_section = true
+      category.valid?
+
+      expect(category.errors[:base])
+        .to include('sub categoria não pode ser do menu blog')
+    end
+
+    it 'cannot be destroy' do
+      category = create(:category, blog_section: true)
+
+      category.save
+
+      category.destroy
+      expect(category).to_not be_destroyed
+    end
+  end
 end

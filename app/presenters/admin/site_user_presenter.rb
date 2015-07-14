@@ -26,6 +26,13 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   field 'profile.primary_cell_phone_number',
         actions: [:show]
 
+  field :confirmation_sent_at,
+        :sortable => {:direction => :desc, :default => true}
+
+  field :children,
+        actions: [:show],
+        as: :partial
+
   action :show
   action :impersonate
   action :authorize_receive_sms,

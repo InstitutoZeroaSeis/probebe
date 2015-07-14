@@ -14,7 +14,7 @@ FactoryGirl.define do
     cover_picture { FactoryGirl.create(:ckeditor_asset) }
     thumb_picture { FactoryGirl.create(:ckeditor_asset) }
 
-    factory :post, class: Blog::Post do
+    factory :post, class: Site::Article do
       category { create(:category, :with_parent) }
     end
 

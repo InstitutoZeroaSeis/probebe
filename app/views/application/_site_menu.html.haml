@@ -18,7 +18,8 @@
                 - current_profile.children.each do |child|
                   - if child.persisted?
                     %li= link_to child.name.present? ? child.name : l(child.birth_date), timeline_path(id: child.id)
-          %li= link_to 'Artigos', posts_path
+          %li= link_to 'Artigos', articles_path
+          %li= link_to 'Posts', posts_path
         %ul.nav.navbar-nav.navbar-right
           - if current_profile
             %li.dropdow
@@ -37,7 +38,7 @@
             %li= link_to 'Login', '#', class: 'open-modal'
 
           %li
-            %form.form-inline{ action: posts_path, method: 'GET' }
+            %form.form-inline{ action: articles_path, method: 'GET' }
               .input-group
                 %input.form-control{ name: 'search',
                                      style: 'height: 34px',

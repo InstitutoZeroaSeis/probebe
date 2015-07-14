@@ -1,5 +1,5 @@
-module Blog
-  class PostByTagFinder
+module Site
+  class ArticleByTagFinder
     def initialize(tag_id, relation)
       @tag_id = tag_id
       @relation = relation

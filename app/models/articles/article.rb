@@ -28,12 +28,13 @@ module Articles
     accepts_nested_attributes_for :article_references, allow_destroy: true
     accepts_nested_attributes_for :tags, allow_destroy: false
 
-    validates :text, :title, :category, :user, :original_author,
-              :baby_target_type, :gender, presence: true
+    validates :text, :title, :category, :user, :original_author, presence: true
+
+    validates :baby_target_type, :gender, presence: true, if: :category_is_not_blog_section?
 
     validate :minimum_not_higher_than_maximum
-    validate :presence_of_maximum_or_minimum
     validate :category_is_a_subcategory
+    validate :presence_of_maximum_or_minimum
     validate :length_of_messages
 
     before_validation :ensure_presence_of_original_author
@@ -47,6 +48,7 @@ module Articles
     has_paper_trail
 
     def presence_of_maximum_or_minimum
+      return if !category_is_not_blog_section?
       return unless minimum_valid_week.blank? && maximum_valid_week.blank?
       errors.add(:base, :has_no_minimum_and_maximum_valid_week)
     end
@@ -112,6 +114,12 @@ module Articles
 
     def ensure_presence_of_original_author
       self.original_author ||= Authors::DefaultAuthor.find_default_author
+    end
+
+    def category_is_not_blog_section?
+      return true if self.category.nil?
+      return true if self.category.parent_category.nil?
+      !self.category.parent_category.blog_section
     end
   end
 end

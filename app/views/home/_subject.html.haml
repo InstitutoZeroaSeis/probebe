@@ -15,6 +15,6 @@
     .subject-description-buttons
       %button.sign-up{ style: "background-color:#{category.color}; color:#fff", class: "subject-description-buttons-sign-in" , data: { color1: "#{category.color}", color2: "#fff" } }
         = t('views.home.anonymous.sign_up')
-      = link_to category ? categories_posts_path(category_id: category) : '#' do
+      = link_to category ? categories_articles_path(category_id: category) : '#' do
         %button{ style: "background-color:#fff; color:#{category.color}", class: "subject-description-buttons-read", data: { color1: '#fff', color2: "#{category.color}" } }
           = t('views.home.anonymous.read')

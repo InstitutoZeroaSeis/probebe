@@ -1,5 +1,5 @@
-module Blog
-  class PostByAuthorFinder
+module Site
+  class ArticleByAuthorFinder
     def initialize(author_id, relation)
       @author_id = author_id
       @relation = relation
