@@ -7,6 +7,8 @@ pt-BR:
 
   user:
     scope:
+      all: Todos
+      completed_profile: Perfis Completos
       authorized_receive_sms: Autorizados a receber SMS
       unauthorized_receive_sms: Não autorizados a receber SMS
   carnival:

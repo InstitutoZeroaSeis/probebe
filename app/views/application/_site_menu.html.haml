@@ -19,7 +19,8 @@
                   - if child.persisted?
                     %li= link_to child.name.present? ? child.name : l(child.birth_date), timeline_path(id: child.id)
           %li= link_to 'Artigos', articles_path
-          %li= link_to 'Posts', posts_path
+          - if Articles::Article.joins(:category).where('categories.blog_section = ?', true).size > 0
+            %li= link_to 'Posts', posts_path
         %ul.nav.navbar-nav.navbar-right
           - if current_profile
             %li.dropdow
