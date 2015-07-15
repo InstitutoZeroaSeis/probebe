@@ -9,10 +9,6 @@ class Admin::PostPresenter < Carnival::BaseAdminPresenter
         actions: [:new, :edit],
         advanced_search: { operator: :like }
 
-  field :category_id,
-        actions: [:new, :edit],
-        as: :partial
-
   field :title,
         actions: [:index, :show, :edit, :new],
         sortable: true,

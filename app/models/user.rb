@@ -15,8 +15,9 @@ class User < ActiveRecord::Base
   before_save :set_defaults
 
   scope :admin_site_user, -> { where(role: [0, 1, 2]) }
-  scope :authorized_receive_sms, -> { joins(:profile).merge(Profile.where(authorized_receive_sms: true)) }
-  scope :unauthorized_receive_sms, -> { joins(:profile).merge(Profile.where(authorized_receive_sms: false)) }
+  scope :completed_profile, -> {joins(:profile).merge(Profile.completed)}
+  scope :authorized_receive_sms, -> { joins(:profile).merge(Profile.completed.where(authorized_receive_sms: true)) }
+  scope :unauthorized_receive_sms, -> { joins(:profile).merge(Profile.completed.where(authorized_receive_sms: false)) }
 
   enum role: ALL_ROLES
 

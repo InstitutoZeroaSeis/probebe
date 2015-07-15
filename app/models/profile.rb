@@ -16,10 +16,11 @@ class Profile < ActiveRecord::Base
   )
   has_one :avatar
 
-  validates :name, :cell_phone, presence: true
+  validates :name, presence: true
+  validates :cell_phone, presence: true, on: [:update]
   validates :cell_phone, format: {
     with: /\A\d{2}\s\d{4,5}\-\d{4,4}\Z/
-  }
+  }, on: [:update]
 
   accepts_nested_attributes_for :avatar
   accepts_nested_attributes_for(
@@ -30,6 +31,10 @@ class Profile < ActiveRecord::Base
 
   scope :admin_site_user_profiles, lambda {
     joins(:user).merge(User.admin_site_user)
+  }
+  scope :completed, -> {
+    where.not(cell_phone: nil).
+    joins(:children)
   }
 
   alias_attribute :primary_cell_phone_number, :cell_phone

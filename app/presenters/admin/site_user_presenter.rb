@@ -43,6 +43,8 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
          :remote => true,
          :method => 'GET'
 
+  scope :all
+  scope :completed_profile
   scope :authorized_receive_sms
   scope :unauthorized_receive_sms
 
