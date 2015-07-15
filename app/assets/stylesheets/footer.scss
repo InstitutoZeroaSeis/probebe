@@ -13,7 +13,6 @@
   color: #fff;
   min-height: 60px;
   margin-top: 20px;
-  padding-top: 20px;
   position: relative;
   z-index: 99;
   float: left;
@@ -21,7 +20,7 @@
 }
 
 .footer-sign-up {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .footer-label {
@@ -110,8 +109,9 @@
 }
 
 .footer-copyright {
-  background-color: rgba(100, 100, 100, 1);
+  background-color: #333333;
   bottom: 0;
+  padding: 50px;
   font-size: 16px;
   font-weight: 300;
   min-height: 60px;
@@ -138,9 +138,14 @@
     padding: 0px;
     li{
       padding: 2px;
-      a{
-        color: white;
-      }
+      font-size: 15px;
+      a{ color: white; }
     }
+  }
+
+  img{ max-width: 60px; }
+
+  .siteawi{
+    img{ max-width: 30px; }
   }
 }
