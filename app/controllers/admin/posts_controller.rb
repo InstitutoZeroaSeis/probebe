@@ -6,7 +6,6 @@ class Admin::PostsController < Admin::ArticlesController
   end
 
   def create
-
     @model = Articles::Article.new(create_parameters)
     if @model.save
       flash[:notice] = I18n.t('messages.created')
