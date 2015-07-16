@@ -7,7 +7,7 @@ class Admin::ArticlesController < Admin::AdminController
   layout 'carnival/admin'
 
   def table_items
-    Articles::Article.includes(:category, :user)
+    Articles::Article.includes(:category, :user, :original_author)
   end
 
   def show

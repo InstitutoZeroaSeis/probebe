@@ -10,8 +10,7 @@ class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
         advanced_search: { operator: :equal }
 
   field :original_author,
-        actions: [:new, :edit],
-        advanced_search: { operator: :like }
+        actions: [:new, :edit]
 
   field :category_id,
         actions: [:new, :edit],
@@ -73,10 +72,10 @@ class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
         actions: [:new, :edit, :show],
         sortable: true
 
-  field :original_author_name,
+  field 'original_author.name',
         actions: [:index, :show],
         sortable: true,
-        advanced_search: { operator: :like }
+        advanced_search: { operator: :equal }
 
   field :messages,
         actions: [:new, :show, :edit],

@@ -1,5 +1,5 @@
 class Site::Article < Articles::Article
-  default_scope -> { where(publishable: true) }
+    default_scope -> { where(publishable: true).order(created_at: :desc) }
 
     def self.model_name
       Articles::Article.model_name

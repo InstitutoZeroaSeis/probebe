@@ -29,6 +29,9 @@ pt-BR:
         intro_text: Linha fina
         tag_names: Tags
 
+      "Articles::ArticleWithImageCover":
+        <<: *article
+
       authors/author:
         name: Nome
         bio: Bio

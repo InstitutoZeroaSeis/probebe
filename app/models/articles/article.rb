@@ -8,8 +8,6 @@ module Articles
     CHILD_LIFE_PERIOD_ENUM = [:first_to_fourth, :fifth_to_eighth,
                               :nineth_to_twelfth, :thirteenth_to_eighteenth]
 
-    default_scope { order(created_at: :desc) }
-
     enum baby_target_type: BABY_TARGET_TYPE_ENUM
     enum child_life_period: CHILD_LIFE_PERIOD_ENUM
     enum gender: GENDER_ENUM

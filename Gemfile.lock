@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Vizir/carnival.git
-  revision: 635bf80aa8c0d983683a01cf9f9a33290c76e905
+  revision: 60d33c7882c0121a9ae7294245f78e662937739f
   specs:
-    carnival (0.2.3)
+    carnival (0.3.0)
       coffee-rails (>= 4.0.0)
       haml-rails (>= 0.7.0)
       inherited_resources (>= 1.5.1)
@@ -197,7 +197,7 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
-    multi_json (1.11.1)
+    multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.17)
@@ -363,7 +363,7 @@ GEM
     spring (1.2.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (2.12.3)
+    sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
