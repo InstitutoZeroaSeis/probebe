@@ -17,3 +17,15 @@
       %figure
         %img.partners-partner-logo-img{ src: image_path('logo-sitawi.png') }
     %p.lead= t('partners.sitawi')
+
+  %h3
+    = t 'partners.colaborators'
+  - Authors::Author.all.each do |author|
+    - next if author.name == 'Pro Bebe'
+    .partners-authors
+      %p.lead
+        %img{width: 50, height: 50, src: author.photo_url}
+        = author.name
+      %p
+        = author.bio
+
