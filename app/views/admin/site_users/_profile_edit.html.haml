@@ -1,0 +1,6 @@
+= f.simple_fields_for :profile do |p|
+  = p.input :name
+  = p.input :state
+  = p.input :city
+  = p.input :street
+  = p.input :cell_phone, input_html: { class: 'phone' }
