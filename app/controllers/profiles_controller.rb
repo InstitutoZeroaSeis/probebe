@@ -18,7 +18,6 @@ class ProfilesController < ApplicationController
 
   def permitted_params
     profile_params = params[:profile]
-
     personal_attributes = [:name, :gender, :birth_date, :cell_phone_system, avatar_attributes: [:id, :photo]]
     mother_attributes = [children_attributes: [:id, :_destroy, :name, :born, :birth_date, :gender, avatar_attributes: [:id, :photo]]]
     contact_attributes = [:state, :city, :street, :postal_code, :address_complement, :cell_phone]
