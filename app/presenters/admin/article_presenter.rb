@@ -83,7 +83,8 @@ class Admin::ArticlePresenter < Carnival::BaseAdminPresenter
         nested_form_allow_destroy: true,
         nested_form_modes: [:new]
 
-  field :created_at, actions: [:index, :show]
+  field :created_at, actions: [:index, :show],
+        :sortable => {:direction => :desc, :default => true}
 
   action :new
   action :show
