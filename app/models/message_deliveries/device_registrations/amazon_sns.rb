@@ -1,7 +1,6 @@
 module MessageDeliveries
   module DeviceRegistrations
     class AmazonSns
-      attr_accessor :sns
       def initialize
         @sns = Aws::SNS::Client.new
         @arn = ENV['AWS_SNS_APP_ARN']
