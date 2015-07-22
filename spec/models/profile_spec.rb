@@ -29,9 +29,9 @@ RSpec.describe Profile, type: :model do
 
   ['1234-5678', '111234-5678'].each do |number|
     it "is invalid with #{number} set to cell_phone" do
-      profile = Profile.new(cell_phone: number)
+      profile = create(:profile, :with_site_user)
 
-      profile.valid?
+      profile.update_attributes cell_phone: number
 
       expect(profile.errors[:cell_phone]).to include('não é válido')
     end

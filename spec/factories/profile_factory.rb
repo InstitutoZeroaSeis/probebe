@@ -3,10 +3,11 @@ FactoryGirl.define do
     sequence(:name) { |n| "Name #{n}" }
     gender 'male'
     birth_date { 20.years.ago }
+    cell_phone '11 88798-7654'
     children { create_list :child, 2 }
 
     trait :with_cell_phone do
-      cell_phone '1112345678'
+      cell_phone '11 88798-7654'
     end
 
     trait :without_cell_phone do
@@ -15,6 +16,10 @@ FactoryGirl.define do
 
     trait :with_children do
       children { create_list :child, 2 }
+    end
+
+    trait :with_site_user do
+      user { create(:user, :site_user) }
     end
 
     trait :without_children do

@@ -1,4 +1,4 @@
--f.object.build_profile
+- f.object.build_profile if f.object.profile.nil?
 = f.simple_fields_for :profile do |ff|
   .row= ff.input :name
 

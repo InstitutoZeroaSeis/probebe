@@ -18,17 +18,15 @@ class Api::DeviceRegistrationsController < ApplicationController
     if registration
       head 304
     else
-      registration = MessageDeliveries::DeviceRegistration.new
-      registration.assign_attributes permitted_params
-      registration.profile = current_profile
-      registration.save
+      registration = MessageDeliveries::DeviceRegistrations::
+                     DeviceRegistrationCreator.create permitted_params, current_profile
       render json: registration
     end
   end
 
   def destroy
-    registration = MessageDeliveries::DeviceRegistration.find_by(platform_code: params[:platform_code])
-    registration.destroy
+    MessageDeliveries::DeviceRegistrations::
+    DeviceRegistrationDestroyer.destroy params[:platform_code]
     head 200
   end
 

@@ -101,4 +101,6 @@ Rails.application.configure do
     },
     s3_host_name: 's3-us-west-2.amazonaws.com/'
   }
+
+  config.aws_sns_app_arn = 'arn:aws:sns:us-east-1:505000041159:app/GCM/ProBebe'
 end

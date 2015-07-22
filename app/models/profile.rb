@@ -17,10 +17,10 @@ class Profile < ActiveRecord::Base
   has_one :avatar
 
   validates :name, presence: true
-  validates :cell_phone, presence: true, on: [:update]
+  validates :cell_phone, presence: true, on: [:update], if: :site_user?
   validates :cell_phone, format: {
     with: /\A\d{2}\s\d{4,5}\-\d{4,4}\Z/
-  }, on: [:update]
+  }, on: [:update], if: :site_user?
 
   accepts_nested_attributes_for :avatar
   accepts_nested_attributes_for(
@@ -67,5 +67,9 @@ class Profile < ActiveRecord::Base
 
   def set_defaults
     self.gender ||= 'not_informed'
+  end
+
+  def site_user?
+    user.present? && user.site_user?
   end
 end

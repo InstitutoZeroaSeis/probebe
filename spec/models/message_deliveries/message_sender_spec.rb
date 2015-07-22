@@ -15,13 +15,13 @@ RSpec.describe MessageDeliveries::MessageSender, type: :model do
   end
 
   context 'with a message delivery that has one registered device' do
-    before { Rpush::Gcm::App.create!(name: 'pro-bebe-android', connections: 1, auth_key: 'dummy') }
     let(:message_delivery) { build_stubbed(:message_delivery, :with_device_registrations) }
 
     it 'is expected to send the message to that device' do
+
+      expect_any_instance_of(Aws::SNS::Client).to receive(:publish).at_least(:once)
       sender = MessageDeliveries::MessageSender.new(message_delivery)
       expect(sender.send_to_device).to eq(true)
-      expect(Rpush::Gcm::Notification.count).to eq(1)
     end
   end
 

@@ -76,7 +76,7 @@ pt-BR:
   general:
     cell_phone_systems:
       android: Android
-      ios: iOS
+      ios: iPhone
       other: Outros
     commom_words:
       <<: *commom_words

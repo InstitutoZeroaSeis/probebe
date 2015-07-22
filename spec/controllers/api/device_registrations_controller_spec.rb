@@ -1,6 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Api::DeviceRegistrationsController, type: :controller do
+
+  SnsResponse = Struct.new(:endpoint_arn)
+  let(:sns_response) { SnsResponse.new('123') }
+
+  before(:each) do
+    allow_any_instance_of(Aws::SNS::Client).to receive(:create_platform_endpoint).
+      and_return(sns_response)
+    allow_any_instance_of(Aws::SNS::Client).to receive(:delete_endpoint).
+      and_return(true)
+  end
+
   describe 'POST create'  do
     context 'unauthenticated' do
       it 'does not insert a new device register' do
@@ -27,6 +38,7 @@ RSpec.describe Api::DeviceRegistrationsController, type: :controller do
         registration_response = JSON.parse(response.body).symbolize_keys
         expect(registration_response[:errors]).to be_nil
         expect(registration_response[:platform]).to eq(registration[:platform])
+        expect(registration_response[:endpoint_arn]).to eq('123')
       end
 
       it 'associates the current user with the given device' do

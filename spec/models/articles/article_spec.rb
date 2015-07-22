@@ -38,16 +38,6 @@ RSpec.describe Articles::Article, type: :model do
     it { is_expected.to be_invalid }
   end
 
-  it 'is ordered from the newest to oldest by default' do
-    older_post = create(:article)
-    newer_post = create(:article)
-
-    all_posts = Articles::Article.all
-
-    expect(all_posts.map(&:title))
-      .to eq([newer_post.title, older_post.title])
-  end
-
   it 'allows only categories that have a parent' do
     category = Category.new
     article = Articles::Article.new(category: category)

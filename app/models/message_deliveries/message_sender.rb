@@ -34,12 +34,11 @@ module MessageDeliveries
     end
 
     def deliver_through_app
-      n = Rpush::Gcm::Notification.new
-      n.app = Rpush::Gcm::App.find_by(name: 'pro-bebe-android')
-      n.registration_ids =
-        @message_delivery.device_registrations.map(&:platform_code)
-      n.data = { message: @message_delivery.text }
-      n.save
+      amazon_sns = MessageDeliveries::DeviceRegistrations::AmazonSns.new
+      @message_delivery.device_registrations.each do |device_registration|
+        amazon_sns.send_message device_registration.endpoint_arn, @message_delivery.text
+      end
+      true
     end
   end
 end
