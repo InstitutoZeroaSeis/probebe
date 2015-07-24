@@ -10,24 +10,26 @@ module MessageDeliveries
         begin
           Rails.logger.debug "[AmazonSNS] - create_endpoint, platform_code: #{platform_code},
                                             device_registration_id: #{device_registration_id}"
-          @sns.create_platform_endpoint(
+          return @sns.create_platform_endpoint(
             platform_application_arn: @arn,
             token: platform_code,
             custom_user_data:  "device_registration_id: #{device_registration_id}"
           )
         rescue => e
           Rails.logger.error "[AmazonSNS] - A error occurs on create_endpoint: #{e}"
+          return nil
         end
       end
 
       def delete_endpoint(endpoint_arn)
         begin
           Rails.logger.debug "[AmazonSNS] - delete_endpoint, endpoint_arn: #{endpoint_arn}"
-          @sns.delete_endpoint(
+          return @sns.delete_endpoint(
             endpoint_arn: endpoint_arn,
           )
         rescue => e
           Rails.logger.error "[AmazonSNS] - A error occurs on delete_endpoint: #{e}"
+          return nil
         end
       end
 
@@ -35,12 +37,13 @@ module MessageDeliveries
         begin
           Rails.logger.debug "[AmazonSNS] - send_message, target_arn: #{target_arn}, message: #{message}"
           return if message.blank?
-          @sns.publish({
+          return @sns.publish({
             target_arn: target_arn,
             message: message
           })
         rescue => e
           Rails.logger.error "[AmazonSNS] - A error occurs on send_message: #{e}"
+          return nil
         end
       end
     end
