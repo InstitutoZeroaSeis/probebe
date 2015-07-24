@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   scope :admin_site_user, -> { where(role: [0, 1, 2]) }
   scope :completed_profile, -> {
       joins(profile: [:children]).
-      where.not('profiles.cell_phone is not NULL')
+      where('profiles.cell_phone is not NULL')
   }
   scope :authorized_receive_sms, -> { completed_profile.where('profiles.authorized_receive_sms = ?', true) }
   scope :unauthorized_receive_sms, -> { completed_profile.where('profiles.authorized_receive_sms = ?', false) }
