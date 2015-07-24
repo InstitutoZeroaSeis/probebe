@@ -10,12 +10,8 @@ module MessageDeliveries
       end
 
       def self.destroy_sns_endpoint(registration)
-        begin
-          amazon_sns = MessageDeliveries::DeviceRegistrations::AmazonSns.new
-          amazon_sns.delete_endpoint(registration.endpoint_arn)
-        rescue => e
-          Rails.logger.error "[AmazonSNS] - A error occurs on destroy_sns_endpoint: #{e}"
-        end
+        amazon_sns = MessageDeliveries::DeviceRegistrations::AmazonSns.new
+        amazon_sns.delete_endpoint(registration.endpoint_arn)
       end
 
     end

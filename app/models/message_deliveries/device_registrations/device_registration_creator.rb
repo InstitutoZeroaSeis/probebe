@@ -12,13 +12,9 @@ module MessageDeliveries
       end
 
       def self.create_sns_endpoint(registration)
-        begin
-          amazon_sns = MessageDeliveries::DeviceRegistrations::AmazonSns.new
-          result = amazon_sns.create_endpoint(registration.platform_code, registration.id)
-          registration.update_attributes(endpoint_arn: result.endpoint_arn)
-        rescue
-
-        end
+        amazon_sns = MessageDeliveries::DeviceRegistrations::AmazonSns.new
+        result = amazon_sns.create_endpoint(registration.platform_code, registration.id)
+        registration.update_attributes(endpoint_arn: result.endpoint_arn)
       end
 
     end
