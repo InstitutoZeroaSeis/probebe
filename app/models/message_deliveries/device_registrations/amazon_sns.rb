@@ -21,11 +21,15 @@ module MessageDeliveries
       end
 
       def send_message(target_arn, message)
-        return if message.blank?
-        @sns.publish({
-          target_arn: target_arn,
-          message: message
-        })
+        begin
+          return if message.blank?
+          @sns.publish({
+            target_arn: target_arn,
+            message: message
+          })
+        rescue => e
+          Rails.logger.error "[AmazonSNS] - A error occurs on send_message: #{e}"
+        end
       end
     end
   end
