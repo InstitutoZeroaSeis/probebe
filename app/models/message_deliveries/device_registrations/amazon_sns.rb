@@ -6,14 +6,14 @@ module MessageDeliveries
         @arn = ENV['AWS_SNS_APP_ARN']
       end
 
-      def create_endpoint(platform_code, device_registration_id)
+      def create_endpoint(platform_code, profile_id)
         begin
           Rails.logger.debug "[AmazonSNS] - create_endpoint, platform_code: #{platform_code},
-                                            device_registration_id: #{device_registration_id}"
+                                            profile_id: #{profile_id}"
           return @sns.create_platform_endpoint(
             platform_application_arn: @arn,
             token: platform_code,
-            custom_user_data:  "device_registration_id: #{device_registration_id}"
+            custom_user_data:  "{profile_id: #{profile_id}}"
           )
         rescue => e
           Rails.logger.error "[AmazonSNS] - A error occurs on create_endpoint: #{e}"
