@@ -16,6 +16,10 @@ class Api::DeviceRegistrationsController < ApplicationController
       platform: permitted_params[:platform]
     )
     if registration
+      if registration.endpoint_arn.nil?
+        MessageDeliveries::DeviceRegistrations::
+          DeviceRegistrationCreator.create_sns_endpoint(registration)
+      end
       head 304
     else
       registration = MessageDeliveries::DeviceRegistrations::
