@@ -13,7 +13,7 @@ module MessageDeliveries
           return @sns.create_platform_endpoint(
             platform_application_arn: @arn,
             token: platform_code,
-            custom_user_data:  "{profile_id: #{profile_id}}"
+            custom_user_data:  {profile_id: profile_id}.to_json
           )
         rescue => e
           Rails.logger.error "[AmazonSNS] - A error occurs on create_endpoint: #{e}"
