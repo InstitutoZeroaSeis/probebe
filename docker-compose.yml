@@ -12,6 +12,8 @@ web:
   command: bundle exec rails s --pid=/tmp/server.pid
   environment:
     VIRTUAL_HOST: web.probebe.dev
+    ZENVIA_ACCOUNT: zeroaseis.connectweb
+    ZENVIA_PASSWORD: 206Opr3Cu6
   links:
     - db
     - mail

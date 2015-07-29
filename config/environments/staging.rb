@@ -30,6 +30,7 @@ Rails.application.configure do
 
   config.disqus_shortname = 'probebedev'
 
+  config.zenvia_url = 'http://www.zenvia360.com.br/GatewayIntegration/msgSms.do'
   config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {

@@ -18,10 +18,9 @@ module MessageDeliveries
       return true if sms_should_not_be_sent? ||
         @message_delivery.cell_phone_number.nil?
 
-      MessageDeliveries::SpringWsdl.send_message(
+      MessageDeliveries::ZenviaSmsSender.send(
         number_for_delivery,
-        @message_delivery.text,
-        @message_delivery.id
+        @message_delivery.text
       )
     end
 
