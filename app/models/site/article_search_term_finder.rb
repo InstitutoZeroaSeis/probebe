@@ -6,7 +6,7 @@ module Site
     end
 
     def find
-      @relation.where(match_title.or(match_text))
+      @relation.joins(:tags).where(match_title.or(match_text.or(match_tag_name))).uniq
     end
 
     protected
@@ -21,6 +21,10 @@ module Site
 
     def table
       Article.arel_table
+    end
+
+    def match_tag_name
+      Tag.arel_table[:name].matches("%#{@term}%")
     end
   end
 end
