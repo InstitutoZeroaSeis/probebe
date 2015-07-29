@@ -29,6 +29,8 @@
 
         %p
           = link_to t('views.blog.view_all_author_articles'), articles_path(author_id: @article.original_author_id)
+        %p
+          = social_share_button_tag(@article.title, popup: true, :'data-type' => '')
 
         %hr
 

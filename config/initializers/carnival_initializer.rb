@@ -67,6 +67,7 @@ Carnival.configure do |config|
     jquery.minicolors.js
     jquery.modal.js
     jquery.minicolors.simple_form.js
+    social-share-button.js
     angular.js
     jquery.Jcrop.min.js
   )
@@ -76,6 +77,7 @@ Carnival.configure do |config|
     jquery.tagit.css
     jquery.minicolors.css
     jquery.modal.css
+    social-share-button.css
     angular.css
     jquery.Jcrop.min.css
   )

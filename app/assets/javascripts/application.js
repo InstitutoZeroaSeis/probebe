@@ -27,4 +27,5 @@
 //= require owl.carousel
 //= require site-banner
 //= require angular
+//= require social-share-button
 //= require jquery.Jcrop.min
