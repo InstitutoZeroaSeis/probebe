@@ -35,6 +35,8 @@ Rails.application.config.assets.precompile += %w(
   jquery.modal.js angular.js
   jquery.Jcrop.min.js
   jquery-scrolltofixed.js
+  social-share-button.js
+  social-share-button.css
 )
 
 Rails.application.config.assets.precompile += %w(

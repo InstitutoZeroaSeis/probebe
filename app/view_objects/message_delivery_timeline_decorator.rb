@@ -2,7 +2,9 @@ class MessageDeliveryTimelineDecorator < MessageDeliveries::MessageDelivery
   include Rails.application.routes.url_helpers
 
   def self.from_child(child)
-    where(child: child).order_by_delivery_date.includes(:message => :article)
+    where(child: child).
+    where.not(delivery_date: nil).
+    order_by_delivery_date.includes(:message => :article)
   end
 
   def self.from_child_by_period(child, period)
