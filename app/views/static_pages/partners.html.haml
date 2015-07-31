@@ -28,4 +28,5 @@
         = author.name
       %p
         = author.bio
-
+      %p
+        = link_to t('views.blog.view_all_author_articles'), articles_path(author_id: author.id)
