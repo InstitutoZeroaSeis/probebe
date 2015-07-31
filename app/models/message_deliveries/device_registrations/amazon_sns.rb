@@ -39,12 +39,18 @@ module MessageDeliveries
           return if message.blank?
           return @sns.publish({
             target_arn: target_arn,
-            message: message
+            message: '{"GCM": "{ \"data\": { \"message\": \"' + message + '\" } }"}',
+            message_structure: 'json',
+            subject: "subject"
           })
         rescue => e
           Rails.logger.error "[AmazonSNS] - A error occurs on send_message: #{e}"
           return nil
         end
+      end
+
+      def get_endpoint(target_arn)
+        return @sns.get_endpoint_attributes({endpoint_arn: target_arn})
       end
     end
   end
