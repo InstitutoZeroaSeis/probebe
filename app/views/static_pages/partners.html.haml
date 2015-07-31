@@ -21,7 +21,7 @@
   %h3
     = t 'partners.colaborators'
   - Authors::Author.all.each do |author|
-    - next if author.name == 'Pro Bebe'
+    - next if author.name == 'ProBebê'
     .partners-authors
       %p.lead
         %img{width: 50, height: 50, src: author.photo_url}
