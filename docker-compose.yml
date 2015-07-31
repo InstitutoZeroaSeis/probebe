@@ -17,7 +17,6 @@ web:
   links:
     - db
     - mail
-    - rpush
     - redis
   ports:
     - 3000
@@ -31,15 +30,6 @@ mail:
   environment:
     VIRTUAL_HOST: mail.probebe.dev
     VIRTUAL_PORT: 1080
-
-rpush:
-  build: docker/development_image
-  command: bundle exec rpush start --foreground --pid-file=/tmp/rpush.pid
-  links:
-    - db
-  volumes:
-    - .:/app
-  working_dir: /app
 
 redis:
   image: redis
