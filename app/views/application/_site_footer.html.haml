@@ -9,7 +9,7 @@
       %li= link_to 'Artigos', posts_path
   .footer-categories.col-md-4
     %h4
-      Categorias
+      Especialidades
     %ul
       - Category.to_show_in_home.each do |category|
         %li= link_to category.name, categories_articles_path(category.id)
