@@ -41,6 +41,8 @@
 
   config.zenvia_url = 'http://www.zenvia360.com.br/GatewayIntegration/msgSms.do'
 
+  config.server_url = 'http://web.probebe.dev/'
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

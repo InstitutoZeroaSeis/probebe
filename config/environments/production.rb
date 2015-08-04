@@ -92,6 +92,8 @@ Rails.application.configure do
 
   config.zenvia_url = 'http://www.zenvia360.com.br/GatewayIntegration/msgSms.do'
 
+  config.server_url = 'http://www.probebe.org.br'
+
   config.disqus_shortname = 'probebe'
   # config.action_controller.asset_host = "http://s3.amazonaws.com/elasticbeanstalk-us-east-1-119499395752/"
   config.paperclip_defaults = {
