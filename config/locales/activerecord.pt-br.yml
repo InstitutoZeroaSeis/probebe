@@ -87,6 +87,7 @@ pt-BR:
         pregnancy_start_date: Idade da gestação
         state: Estado
         street: Rua
+        children: Filhos
       tag:
         id: Id
         name: Nome
