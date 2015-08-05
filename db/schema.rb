@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722141731) do
+ActiveRecord::Schema.define(version: 20150805184632) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -189,6 +189,8 @@ ActiveRecord::Schema.define(version: 20150722141731) do
     t.integer  "cell_phone_system",      default: 2
     t.string   "cell_phone"
     t.boolean  "authorized_receive_sms", default: false
+    t.integer  "profile_type"
+    t.integer  "donor_id"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree

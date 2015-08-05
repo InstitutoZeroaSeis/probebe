@@ -5,11 +5,14 @@ class Profile < ActiveRecord::Base
   DAYS_IN_WEEK = 7
   GENDER_ENUM = [:male, :female, :not_informed]
   CELL_PHONE_SYSTEM_ENUM = [:ios, :android, :other]
+  PROFILE_TYPE_ENUM = [:donor, :recipient]
 
   enum gender: GENDER_ENUM
   enum cell_phone_system: CELL_PHONE_SYSTEM_ENUM
 
   belongs_to :user
+  belongs_to :donor, class_name: 'Profile'
+  has_many :recipients, class_name: 'Profile', foreign_key: :donor_id
   has_many :children
   has_many(
     :device_registrations, class_name: 'MessageDeliveries::DeviceRegistration'
