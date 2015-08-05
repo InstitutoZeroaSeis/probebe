@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805184632) do
+ActiveRecord::Schema.define(version: 20150805190114) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -189,7 +189,7 @@ ActiveRecord::Schema.define(version: 20150805184632) do
     t.integer  "cell_phone_system",      default: 2
     t.string   "cell_phone"
     t.boolean  "authorized_receive_sms", default: false
-    t.integer  "profile_type"
+    t.integer  "profile_type",           default: 0
     t.integer  "donor_id"
   end
 

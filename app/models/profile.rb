@@ -5,10 +5,11 @@ class Profile < ActiveRecord::Base
   DAYS_IN_WEEK = 7
   GENDER_ENUM = [:male, :female, :not_informed]
   CELL_PHONE_SYSTEM_ENUM = [:ios, :android, :other]
-  PROFILE_TYPE_ENUM = [:donor, :recipient]
+  PROFILE_TYPE_ENUM = [:type_recipient, :type_donor]
 
   enum gender: GENDER_ENUM
   enum cell_phone_system: CELL_PHONE_SYSTEM_ENUM
+  enum profile_type: PROFILE_TYPE_ENUM
 
   belongs_to :user
   belongs_to :donor, class_name: 'Profile'
