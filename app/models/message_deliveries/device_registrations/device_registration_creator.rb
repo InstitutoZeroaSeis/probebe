@@ -6,6 +6,7 @@ module MessageDeliveries
         registration = MessageDeliveries::DeviceRegistration.new
         registration.assign_attributes params
         registration.profile = profile
+        profile.type_donor!
         registration.save
         create_sns_endpoint(registration)
         registration
