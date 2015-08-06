@@ -32,6 +32,7 @@ class Profile < ActiveRecord::Base
   )
 
   before_save :set_defaults
+  before_save :manage_donor_children
 
   scope :admin_site_user_profiles, lambda {
     joins(:user).merge(User.admin_site_user)
@@ -71,6 +72,12 @@ class Profile < ActiveRecord::Base
 
   def set_defaults
     self.gender ||= 'not_informed'
+  end
+
+  def manage_donor_children
+    if self.type_donor?
+      self.children.update_all(donor_id: nil)
+    end
   end
 
   def site_user?

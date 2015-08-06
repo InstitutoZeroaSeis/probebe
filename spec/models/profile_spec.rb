@@ -48,4 +48,20 @@ RSpec.describe Profile, type: :model do
         .to include('Você precisa ser doadora para poder doar mensagens para outras crianças.')
     end
   end
+
+  context "has donor children" do
+    context "when profile_type change to type_donor" do
+      it 'has to remove donor children' do
+        donor_profile = create(:profile, profile_type: :type_donor)
+        child = create(:child, :with_profile, donor: donor_profile)
+        profile = child.profile
+
+        profile.reload
+        profile.profile_type = :type_donor
+        profile.save
+
+        expect(profile.children.last.donor).to be nil
+      end
+    end
+  end
 end
