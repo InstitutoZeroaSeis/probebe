@@ -4,15 +4,13 @@ module MessageDeliveries
       begin
         phone = "55#{phone}"
         Rails.logger.debug "Sending SMS #{phone}"
-        account = ENV['ZENVIA_ACCOUNT']
-        code = ENV['ZENVIA_PASSWORD']
+        message = message[0..150] if message.size > 150
         params = {
-          account: "#{account}",
-          code: "#{code}",
-          dispatch: 'send',
-          from: 'ProBebe',
-          to: phone,
-          msg: message
+          sendSmsRequest:{
+            from: 'ProBebe',
+            to: phone,
+            msg: message
+          }
         }
         resp = send_request params
         Rails.logger.debug "Sending SMS #{phone} - Response #{resp}"
@@ -24,14 +22,10 @@ module MessageDeliveries
 
     def self.send_request params
       api_url = ProBebe::Application.config.zenvia_url
-      parameters = URI.escape(params.collect{|k,v| "#{k}=#{v}"}.join('&'))
-      make_req api_url, parameters
-    end
-
-  private
-  def self.make_req api_url, parameters
-      data = URI.parse("#{api_url}?#{parameters}").read
-      response =  Rack::Utils.parse_nested_query(data)
+      account = ENV['ZENVIA_ACCOUNT']
+      code = ENV['ZENVIA_PASSWORD']
+      resp = RestClient.post "https://#{account}:#{code}@#{api_url}", params.to_json, :content_type => :json, :accept => :json
+      JSON.parse resp
     end
   end
 end

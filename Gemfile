@@ -42,7 +42,7 @@ gem 'jquery-minicolors-rails', '~> 2.1.4'
 gem 'jquery-modal-rails', '~> 0.0.4'
 gem 'angularjs-rails', '~> 1.4.0'
 gem 'social-share-button', '~> 0.1.8'
-
+gem 'rest-client', '~> 1.8.0'
 group :development do
   gem 'better_errors', '0.9.0'
   gem 'bullet'

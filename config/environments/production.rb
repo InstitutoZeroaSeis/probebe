@@ -90,7 +90,7 @@ Rails.application.configure do
 
   Rails.application.routes.default_url_options[:host] = 'www.probebe.org.br'
 
-  config.zenvia_url = 'http://www.zenvia360.com.br/GatewayIntegration/msgSms.do'
+  config.zenvia_url = 'api-rest.zenvia360.com.br/services/send-sms'
 
   config.server_url = 'http://www.probebe.org.br'
 
