@@ -34,7 +34,8 @@ module MessageDeliveries
     end
 
     def messages_to_send
-      Message.all
+      Message.joins(:article).
+              where('articles.publishable = ?', true)
     end
   end
 end

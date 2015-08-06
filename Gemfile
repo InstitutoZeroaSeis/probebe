@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'spring', group: :development
 gem 'pry'
 gem 'rails-i18n', '~> 4.0.0'
-gem 'carnival', '0.3.0'
+gem 'carnival', git: 'https://github.com/Vizir/carnival.git', branch: 'master'
 #gem 'carnival', path: '/carnival'
 gem 'carnival_devise_views', '~> 0.0.4'
 gem 'devise', '~> 3.4.0'

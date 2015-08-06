@@ -1,3 +1,19 @@
+GIT
+  remote: https://github.com/Vizir/carnival.git
+  revision: 514fac6c73edf0f2f41561972a0604d31a41be9e
+  branch: master
+  specs:
+    carnival (0.3.1)
+      coffee-rails (>= 4.0.0)
+      haml-rails (>= 0.7.0)
+      inherited_resources (>= 1.5.1)
+      jquery-rails
+      rails (>= 4.0)
+      sass-rails
+      simple_form (~> 3.1.0)
+      unicode (>= 0.4.4.2)
+      will_paginate (~> 3.0.7)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -67,16 +83,6 @@ GEM
     capybara-webkit (1.5.1)
       capybara (>= 2.3.0, < 2.5.0)
       json
-    carnival (0.3.0)
-      coffee-rails (>= 4.0.0)
-      haml-rails (>= 0.7.0)
-      inherited_resources (>= 1.5.1)
-      jquery-rails
-      rails (>= 4.0)
-      sass-rails
-      simple_form (~> 3.1.0)
-      unicode (>= 0.4.4.2)
-      will_paginate (~> 3.0.7)
     carnival_devise_views (0.0.4)
     celluloid (0.16.0)
       timers (~> 4.0.0)
@@ -419,7 +425,7 @@ DEPENDENCIES
   bullet
   cancancan (~> 1.9.2)
   capybara-webkit (~> 1.5.1)
-  carnival (= 0.3.0)
+  carnival!
   carnival_devise_views (~> 0.0.4)
   ckeditor (~> 4.1.0)
   coffee-rails (~> 4.0.0)

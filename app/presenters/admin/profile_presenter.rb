@@ -31,4 +31,8 @@ class Admin::ProfilePresenter < Carnival::BaseAdminPresenter
     nested_form_allow_destroy: true,
     nested_form_modes: [:new, :edit]
 
+  field :children,
+        actions: [:show],
+        as: :partial
+
 end

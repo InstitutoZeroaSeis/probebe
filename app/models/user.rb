@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   scope :completed_profile, -> {
       joins(profile: [:children]).
       where('profiles.cell_phone is not NULL').
+      where('length(profiles.cell_phone) > 1').
       distinct
   }
   scope :authorized_receive_sms, -> { completed_profile.where('profiles.authorized_receive_sms = ?', true) }

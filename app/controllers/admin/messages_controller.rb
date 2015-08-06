@@ -9,7 +9,7 @@ class Admin::MessagesController < Admin::AdminController
   protected
 
   def table_items
-    Message.includes(:article)
+    Message.joins(:article)
   end
 
   def permitted_params
