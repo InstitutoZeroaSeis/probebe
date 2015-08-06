@@ -32,4 +32,18 @@ RSpec.describe Child, :type => :model do
     subject { build_stubbed :child, birth_date: 41.weeks.from_now }
     it { is_expected.to be_valid }
   end
+
+  context 'with donor' do
+    it 'is invalid with profile_type == donor' do
+      profile1 = Profile.new profile_type: :type_donor
+      profile2 = Profile.new profile_type: :type_donor
+      child = build :child, profile: profile2, donor: profile1
+
+      child.valid?
+
+      expect(child.errors[:donor])
+        .to include('A mãe ja é uma doadora.')
+    end
+
+  end
 end

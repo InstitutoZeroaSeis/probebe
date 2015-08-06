@@ -12,8 +12,7 @@ class Profile < ActiveRecord::Base
   enum profile_type: PROFILE_TYPE_ENUM
 
   belongs_to :user
-  belongs_to :donor, class_name: 'Profile'
-  has_many :recipients, class_name: 'Profile', foreign_key: :donor_id
+  has_many :donations_children, class_name: 'Child', foreign_key: :donor_id
   has_many :children
   has_many(
     :device_registrations, class_name: 'MessageDeliveries::DeviceRegistration'
@@ -25,6 +24,7 @@ class Profile < ActiveRecord::Base
   validates :cell_phone, format: {
     with: /\A\d{2}\s\d{4,5}\-\d{4,4}\Z/
   }, on: [:update], if: :site_user?
+  validate :validate_profile_type, if: "!donations_children.empty?"
 
   accepts_nested_attributes_for :avatar
   accepts_nested_attributes_for(
@@ -75,5 +75,10 @@ class Profile < ActiveRecord::Base
 
   def site_user?
     user.present? && user.site_user?
+  end
+
+  def validate_profile_type
+    return if self.type_donor?
+    errors.add(:base, :needs_to_be_donor)
   end
 end

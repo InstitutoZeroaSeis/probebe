@@ -36,4 +36,16 @@ RSpec.describe Profile, type: :model do
       expect(profile.errors[:cell_phone]).to include('não é válido')
     end
   end
+
+  context "has donations_children" do
+    it 'is invalid if type_recipient?' do
+      child = build(:child)
+      profile = build(:profile, profile_type: :type_recipient, donations_children: [child])
+
+      profile.valid?
+
+      expect(profile.errors[:base])
+        .to include('Você precisa ser doadora para poder doar mensagens para outras crianças.')
+    end
+  end
 end

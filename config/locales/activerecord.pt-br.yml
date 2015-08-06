@@ -127,6 +127,9 @@ pt-BR:
         child:
           base:
             maximum_permited_pregnancy_date: A data de gestação ultrapassará os 9 meses
+          attributes:
+            donor:
+              profile_donor: A mãe ja é uma doadora.
         category:
           base:
             has_child_categories: Categoria não pode ser deletada por conter subcategoria
@@ -143,10 +146,12 @@ pt-BR:
               equals_self:  não pode ser igual a categoria
               more_than_two_levels_deep: não pode ter mais que dois níveis
         profile:
-          base:
-            needs_to_be_mother_or_pregnant: Você precisa ser mãe ou estar grávida
-            has_no_children: Você precisa cadastrar ao menos um filho
-            needs_mobile_phone: Precisa de pelo menos um celular
+          attributes:
+            base:
+              needs_to_be_mother_or_pregnant: Você precisa ser mãe ou estar grávida
+              has_no_children: Você precisa cadastrar ao menos um filho
+              needs_mobile_phone: Precisa de pelo menos um celular
+              needs_to_be_donor: Você precisa ser doadora para poder doar mensagens para outras crianças.
     models:
       articles/article: Artigo
       articles/article_plural: Artigos

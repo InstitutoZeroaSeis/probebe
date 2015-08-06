@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20150805190114) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "born",       default: false
+    t.integer  "donor_id"
   end
 
   create_table "ckeditor_assets", force: true do |t|
@@ -190,7 +191,6 @@ ActiveRecord::Schema.define(version: 20150805190114) do
     t.string   "cell_phone"
     t.boolean  "authorized_receive_sms", default: false
     t.integer  "profile_type",           default: 0
-    t.integer  "donor_id"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree

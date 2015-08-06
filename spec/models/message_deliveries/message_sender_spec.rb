@@ -6,7 +6,7 @@ RSpec.describe MessageDeliveries::MessageSender, type: :model do
       message_delivery = build_stubbed(:message_delivery)
 
       expect(ProBebeConfig).to receive(:deliver_sms?).and_return(true)
-      expect(MessageDeliveries::SpringWsdl).to receive(:send_message).with(message_delivery.cell_phone_number, message_delivery.text, message_delivery.id).and_return(true)
+      expect(MessageDeliveries::ZenviaSmsSender).to receive(:send).with(message_delivery.cell_phone_number, message_delivery.text).and_return(true)
 
       sender = MessageDeliveries::MessageSender.new(message_delivery)
 
@@ -30,7 +30,7 @@ RSpec.describe MessageDeliveries::MessageSender, type: :model do
 
     it 'is expected to not deliver sms' do
       expect(ProBebeConfig).to receive(:deliver_sms?).and_return(false)
-      expect(MessageDeliveries::SpringWsdl).to_not receive(:send_message)
+      expect(MessageDeliveries::ZenviaSmsSender).to_not receive(:send)
 
       sender = MessageDeliveries::MessageSender.new(message_delivery)
 
@@ -43,7 +43,7 @@ RSpec.describe MessageDeliveries::MessageSender, type: :model do
 
     it 'is expected to deliver sms' do
       expect(ProBebeConfig).to receive(:deliver_sms?).and_return(true)
-      expect(MessageDeliveries::SpringWsdl).to receive(:send_message)
+      expect(MessageDeliveries::ZenviaSmsSender).to receive(:send)
 
       sender = MessageDeliveries::MessageSender.new(message_delivery)
 
@@ -52,43 +52,41 @@ RSpec.describe MessageDeliveries::MessageSender, type: :model do
   end
 
   it 'sends a sms if the message is allowed to be sent' do
-    allow(MessageDeliveries::SpringWsdl).to receive(:send_message)
+    allow(MessageDeliveries::ZenviaSmsSender).to receive(:send)
     allow(ProBebeConfig).to receive(:deliver_sms?).and_return(true)
     message_delivery = build_stubbed(:message_delivery, sms_allowed: true)
     sender = MessageDeliveries::MessageSender.new(message_delivery)
 
     sender.send_to_device
 
-    expect(MessageDeliveries::SpringWsdl).to have_received(:send_message)
+    expect(MessageDeliveries::ZenviaSmsSender).to have_received(:send)
   end
 
   it 'does not send a sms if the message is not allowed to be sent' do
-    allow(MessageDeliveries::SpringWsdl).to receive(:send_message)
+    allow(MessageDeliveries::ZenviaSmsSender).to receive(:send)
     allow(ProBebeConfig).to receive(:deliver_sms?).and_return(true)
     message_delivery = build_stubbed(:message_delivery, sms_allowed: false)
     sender = MessageDeliveries::MessageSender.new(message_delivery)
 
     sender.send_to_device
 
-    expect(MessageDeliveries::SpringWsdl).to_not have_received(:send_message)
+    expect(MessageDeliveries::ZenviaSmsSender).to_not have_received(:send)
   end
 
   it 'cleans the number before sending a sms' do
-    allow(MessageDeliveries::SpringWsdl).to receive(:send_message)
+    allow(MessageDeliveries::ZenviaSmsSender).to receive(:send)
     allow(ProBebeConfig).to receive(:deliver_sms?).and_return(true)
     message_delivery = build_stubbed(
       :message_delivery,
-      cell_phone_number: '11 1234-5678',
-      sms_allowed: true
+      cell_phone_number: '11 1234-5678'
     )
     sender = MessageDeliveries::MessageSender.new(message_delivery)
 
     sender.send_to_device
 
-    expect(MessageDeliveries::SpringWsdl).to have_received(:send_message).with(
+    expect(MessageDeliveries::ZenviaSmsSender).to have_received(:send).with(
       '1112345678',
-      message_delivery.text,
-      message_delivery.id
+      message_delivery.text
     )
   end
 end

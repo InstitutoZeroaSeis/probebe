@@ -4,12 +4,14 @@ class Child < ActiveRecord::Base
   GENDER_ENUM = [:male, :female, :not_informed]
 
   belongs_to :profile
+  belongs_to :donor, class_name: 'Profile'
   has_many :message_deliveries, class_name: "MessageDeliveries::MessageDelivery"
   has_one :avatar
   enum gender: GENDER_ENUM
 
   validates_presence_of :birth_date
   validate :maximum_permited_pregnancy_date?
+  validate :recipient_profile?, if: "donor.present?"
 
   before_save :set_defaults
 
@@ -57,6 +59,11 @@ class Child < ActiveRecord::Base
         errors.add(:birth_date, I18n.t('activerecord.errors.models.child.base.maximum_permited_pregnancy_date'))
       end
     end
+  end
+
+  def recipient_profile?
+    return if profile.type_recipient?
+    errors.add(:donor, :profile_donor)
   end
 
   def set_defaults
