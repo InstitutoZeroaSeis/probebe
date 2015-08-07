@@ -39,7 +39,7 @@
 
   config.disqus_shortname = 'probebedev'
 
-  config.zenvia_url = 'http://www.zenvia360.com.br/GatewayIntegration/msgSms.do'
+  config.zenvia_url = 'api-rest.zenvia360.com.br/services/send-sms'
 
   config.server_url = 'http://web.probebe.dev/'
 
