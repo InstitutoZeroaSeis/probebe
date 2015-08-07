@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
   DAYS_IN_WEEK = 7
   GENDER_ENUM = [:male, :female, :not_informed]
   CELL_PHONE_SYSTEM_ENUM = [:ios, :android, :other]
-  PROFILE_TYPE_ENUM = [:type_recipient, :type_donor]
+  PROFILE_TYPE_ENUM = [:recipient, :possible_donor , :donor]
 
   enum gender: GENDER_ENUM
   enum cell_phone_system: CELL_PHONE_SYSTEM_ENUM
@@ -75,7 +75,7 @@ class Profile < ActiveRecord::Base
   end
 
   def manage_donor_children
-    if self.type_donor?
+    if self.donor? || self.possible_donor?
       self.children.update_all(donor_id: nil)
     end
   end
@@ -85,7 +85,7 @@ class Profile < ActiveRecord::Base
   end
 
   def validate_profile_type
-    return if self.type_donor?
+    return if self.donor?
     errors.add(:base, :needs_to_be_donor)
   end
 end

@@ -35,8 +35,8 @@ RSpec.describe Child, :type => :model do
 
   context 'with donor' do
     it 'is invalid with profile_type == donor' do
-      profile1 = Profile.new profile_type: :type_donor
-      profile2 = Profile.new profile_type: :type_donor
+      profile1 = Profile.new profile_type: :donor
+      profile2 = Profile.new profile_type: :donor
       child = build :child, profile: profile2, donor: profile1
 
       child.valid?

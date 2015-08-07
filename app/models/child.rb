@@ -62,7 +62,7 @@ class Child < ActiveRecord::Base
   end
 
   def recipient_profile?
-    return if profile.type_recipient?
+    return if profile.recipient?
     errors.add(:donor, :profile_donor)
   end
 

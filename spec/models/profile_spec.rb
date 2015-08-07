@@ -40,7 +40,7 @@ RSpec.describe Profile, type: :model do
   context "has donations_children" do
     it 'is invalid if type_recipient?' do
       child = build(:child)
-      profile = build(:profile, profile_type: :type_recipient, donations_children: [child])
+      profile = build(:profile, profile_type: :recipient, donations_children: [child])
 
       profile.valid?
 
@@ -50,14 +50,14 @@ RSpec.describe Profile, type: :model do
   end
 
   context "has donor children" do
-    context "when profile_type change to type_donor" do
+    context "when profile_type change to donor" do
       it 'has to remove donor children' do
-        donor_profile = create(:profile, profile_type: :type_donor)
+        donor_profile = create(:profile, profile_type: :donor)
         child = create(:child, :with_profile, donor: donor_profile)
         profile = child.profile
 
         profile.reload
-        profile.profile_type = :type_donor
+        profile.profile_type = :donor
         profile.save
 
         expect(profile.children.last.donor).to be nil
