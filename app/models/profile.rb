@@ -18,6 +18,7 @@ class Profile < ActiveRecord::Base
     :device_registrations, class_name: 'MessageDeliveries::DeviceRegistration'
   )
   has_one :avatar
+  has_many :donated_messages
 
   validates :name, presence: true
   validates :cell_phone, presence: true, on: [:update], if: :site_user?

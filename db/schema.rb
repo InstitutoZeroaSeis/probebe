@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810215536) do
+ActiveRecord::Schema.define(version: 20150811184621) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -149,6 +149,15 @@ ActiveRecord::Schema.define(version: 20150810215536) do
     t.integer "device_registration_id", null: false
     t.integer "message_delivery_id",    null: false
   end
+
+  create_table "donated_messages", force: true do |t|
+    t.integer  "message_delivery_id"
+    t.integer  "donor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "donated_messages", ["message_delivery_id"], name: "index_donated_messages_on_message_delivery_id", using: :btree
 
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"

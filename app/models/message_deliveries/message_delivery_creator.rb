@@ -8,7 +8,9 @@ module MessageDeliveries
     def create_deliveries_for_all_children
       Child.all.map do |child|
         message = find_message_for_child(child)
-        create_message_delivery(child, message)
+        message_delivery = create_message_delivery(child, message)
+        create_donated_message(child.donor, message_delivery) if child.donor.present?
+        message_delivery
       end.select(&:present?)
     end
 
@@ -24,6 +26,11 @@ module MessageDeliveries
         device_registrations: child.device_registrations,
         sms_allowed: child.authorized_receive_sms
       )
+    end
+
+    def create_donated_message(donor, message_delivery)
+      return unless message_delivery
+      DonatedMessage.create donor: donor, message_delivery: message_delivery
     end
 
     def find_message_for_child(child)

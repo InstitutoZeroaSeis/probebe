@@ -57,4 +57,16 @@ RSpec.describe MessageDeliveries::MessageDeliveryCreator, type: :model do
       end
     end
   end
+
+  context 'when the child has a donor' do
+    before { @donor = create(:profile) }
+    before { @child = create(:child, profile: @profile, donor: @donor, birth_date: (Child::PREGNANCY_DURATION_IN_WEEKS.weeks - 5.months).from_now) }
+    before { @message = create(:message, :with_article, :male, maximum_valid_week: 24, baby_target_type: 'pregnancy') }
+
+    it "should create a donated_message" do
+      MessageDeliveries::MessageDeliveryCreator.new(@system_date).create_deliveries_for_all_children
+        expect(MessageDeliveries::MessageDelivery.count).to eq(1)
+        expect(MessageDeliveries::DonatedMessage.count).to eq(1)
+    end
+  end
 end
