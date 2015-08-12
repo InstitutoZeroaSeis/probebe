@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :profiles, only: [:index]
     post 'profiles/max_recipient_children' => 'profiles#update_max_recipient_children'
     resources :donated_messages, only: [:index]
-    post 'donated_messages/mark_as_sent' => 'profiles#mark_as_sent'
+    post 'donated_messages/mark_as_sent' => 'donated_messages#mark_as_sent'
     resources :children, only: :index
     post 'd3d4b74ea38c163c820cd84b25f5/a8eecbf2d604ff6769fd64f1a492' => 'message_deliveries#create'
   end

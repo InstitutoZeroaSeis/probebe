@@ -1,6 +1,6 @@
 module Api
   class DonatedMessagesController < ApplicationController
-    #include HeaderAuthenticationConcern
+    include HeaderAuthenticationConcern
     def index
       current_profile = Profile.last
       donated_messages = MessageDeliveries::DonatedMessage.joins([:donor, :message_delivery]).
