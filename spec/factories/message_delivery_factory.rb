@@ -23,7 +23,7 @@ FactoryGirl.define do
     end
 
     trait :with_device_registrations do
-      device_registrations { create_list(:device_registration, 1) }
+      device_registrations { create_list(:device_registration, 1, profile: create(:profile)) }
     end
   end
 end

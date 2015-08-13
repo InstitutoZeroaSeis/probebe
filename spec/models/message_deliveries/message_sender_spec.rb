@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe MessageDeliveries::MessageSender, type: :model do
+
+
   context 'with a message delivery that has no device registration' do
     it 'is expected to send the message via sms' do
       message_delivery = build_stubbed(:message_delivery)
@@ -17,9 +19,11 @@ RSpec.describe MessageDeliveries::MessageSender, type: :model do
   context 'with a message delivery that has one registered device' do
     let(:message_delivery) { build_stubbed(:message_delivery, :with_device_registrations) }
 
+    before(:each) do
+      allow_any_instance_of(MessageDeliveries::MessageSender).to receive(:deliver_through_app).
+        and_return(true)
+    end
     it 'is expected to send the message to that device' do
-
-      expect_any_instance_of(Aws::SNS::Client).to receive(:publish).at_least(:once)
       sender = MessageDeliveries::MessageSender.new(message_delivery)
       expect(sender.send_to_device).to eq(true)
     end

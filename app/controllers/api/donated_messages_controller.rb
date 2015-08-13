@@ -12,8 +12,8 @@ module Api
     end
 
     def mark_as_sent
-      donated_messages = MessageDeliveries::DonatedMessage.find(params[:id])
-      donated_messages.sent! if donated_messages.donor_id == current_profile.id
+      #donated_messages = MessageDeliveries::DonatedMessage.find(params[:id])
+      #donated_messages.sent! if donated_messages.donor_id == current_profile.id
       head 200
     end
   end

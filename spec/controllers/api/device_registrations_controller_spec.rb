@@ -90,7 +90,7 @@ RSpec.describe Api::DeviceRegistrationsController, type: :controller do
     end
 
     it 'is expected to return the registration if it exists' do
-      registration = create(:device_registration)
+      registration = create(:device_registration, :with_profile)
 
       get :show, platform_code: registration.platform_code, format: :json
 

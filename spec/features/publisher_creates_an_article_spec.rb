@@ -16,7 +16,7 @@ feature 'Publisher create an article' do
       find('option', text: author.name).select_option
     end
     pic = FactoryGirl.create :ckeditor_asset
-    fill_in 'articles_article[cover_picture_id]', with: pic.id
+    fill_in 'articles_article_cover_picture_id', with: pic.id
 
     fill_in 'articles_article_title', with: article_title
     fill_in 'articles_article_text', with: 'Text'

@@ -17,5 +17,6 @@ angular.module('gallery')
         $scope.pictureId = $scope.image.id
       )
 
+      $scope.pictureTagId = $scope.pictureTagName.replace('[', '_').replace(']', '')
     ]
   ])

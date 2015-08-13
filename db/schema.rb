@@ -200,7 +200,7 @@ ActiveRecord::Schema.define(version: 20150811184621) do
     t.string   "cell_phone"
     t.boolean  "authorized_receive_sms", default: false
     t.integer  "profile_type",           default: 0
-    t.integer  "max_recipient_children"
+    t.integer  "max_recipient_children", default: 0
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree

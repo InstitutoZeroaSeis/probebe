@@ -7,9 +7,13 @@ module Api
     end
 
     def update_max_recipient_children
-      current_profile.donor! if params[:max_recipient_children].to_i > 0
-      current_profile.max_recipient_children = params[:max_recipient_children]
-      current_profile.save
+      if params[:max_recipient_children].to_i > 0
+        current_profile.donor!
+        current_profile.max_recipient_children = params[:max_recipient_children]
+        current_profile.save
+        MessageDeliveries::DonatedMessages::
+          DonorRecipientCreator.create(current_profile)
+      end
       head 200
     end
   end
