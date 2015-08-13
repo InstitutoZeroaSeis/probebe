@@ -63,5 +63,30 @@ RSpec.describe Profile, type: :model do
         expect(profile.children.last.donor).to be nil
       end
     end
+    context "when is authorize_to_receive_sms" do
+      it 'has to remove donor children' do
+        donor_profile = create(:profile, profile_type: :donor)
+        child = create(:child, :with_profile, donor: donor_profile)
+        profile = child.profile
+
+        profile.reload
+        profile.authorize_receive_sms!
+
+        expect(profile.children.last.donor).to be nil
+      end
+    end
+  end
+  context "is authorize_to_receive_sms" do
+    context "when is unauthorize_receive_sms and not has device_registrations" do
+      it "should return the profile_type to recipient" do
+        profile = create(:profile, profile_type: :possible_donor, authorized_receive_sms: true)
+        child = create(:child, profile: profile)
+
+        profile.unauthorize_receive_sms!
+
+        expect(profile.recipient?).to be true
+
+      end
+    end
   end
 end

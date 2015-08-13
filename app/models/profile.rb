@@ -47,11 +47,15 @@ class Profile < ActiveRecord::Base
 
   def authorize_receive_sms!
     self.authorized_receive_sms = true
+    self.profile_type = Profile.profile_types[:possible_donor] if self.recipient?
     save!
   end
 
   def unauthorize_receive_sms!
     self.authorized_receive_sms = false
+    if self.device_registrations.empty? && self.possible_donor?
+      self.profile_type = Profile.profile_types[:recipient]
+    end
     save!
   end
 
