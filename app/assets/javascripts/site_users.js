@@ -19,18 +19,23 @@ function unauthorize_receive_sms_success_callback(data){
 
 $(document).ready(function() {
   var phoneMask;
+
   phoneMask = function(phone) {
     var has_ninth_digit;
-    has_ninth_digit = phone.replace(/[^\d]/g, '').length > 10;
+    has_ninth_digit = false;
+    if (phone) {
+      has_ninth_digit = phone.replace(/[^\d]/g, '').length >= 11;
+    }
     if (has_ninth_digit) {
-      return '00 00000-0000';
+      return $(".phone").mask('00 00000-0000');
     } else {
-      return '00 0000-0000';
+      return $(".phone").mask('00 0000-00009');
     }
   };
-  return $(".phone").mask(phoneMask, {
-    onKeyPress: function(phone, e, currentField, options) {
-      return $(currentField).mask(phoneMask(phone), options);
-    }
+
+  phoneMask($('.phone').val());
+
+  $('.phone').focusout(function(event) {
+    return phoneMask($(this).val());
   });
 });
