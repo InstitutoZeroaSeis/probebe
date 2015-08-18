@@ -57,6 +57,9 @@ pt-BR:
       internal_server_error: Ocorreu um erro ao processar a requisição
       not_found: Página não encontrada
     home:
+      landing:
+        sign_up: Cadastre-se agora
+        how_works: Como funciona
       anonymous:
         read: Leia
         sign_up: Cadastre-se

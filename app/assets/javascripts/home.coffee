@@ -39,14 +39,22 @@ $ ->
   subjectButtonHoverIn = () ->
     $(@).css('background-color', $(@).data('color2'))
     $(@).css('border', "1px solid " + $(@).data('color1'))
-    $(@).css('color', $(@).data('color1'))
+    if $(@).data('color1') == 'transparent'
+      $(@).css('color', '#fff')
+    else
+      $(@).css('color', $(@).data('color1'))
   subjectButtonHoverOut = () ->
     $(@).css('background-color', $(@).data('color1'))
     $(@).css('border', "1px solid rgba(0, 0, 0, 0.1)")
-    $(@).css('color', $(@).data('color2'))
+    if $(@).data('color2') == 'transparent'
+      $(@).css('color', '#fff')
+    else
+      $(@).css('color', $(@).data('color2'))
+
   $('.subject-description-buttons-read').hover(subjectButtonHoverIn, subjectButtonHoverOut)
   $('.subject-description-buttons-sign-in').hover(subjectButtonHoverIn, subjectButtonHoverOut)
-
+  $('.site-landing-buttons-read').hover(subjectButtonHoverIn, subjectButtonHoverOut)
+  $('.site-landing-buttons-sign-in').hover(subjectButtonHoverIn, subjectButtonHoverOut)
   $(window).scroll ->
     # Função para ativar e desativar itens do menu no scroll
     categories = $('.subjects div.subject').map( -> this.id).toArray()

@@ -1,0 +1,16 @@
+.site-landing
+  %figure.site-landing-image{style: "background-position: center; background-image: url(http://s3-us-west-2.amazonaws.com//probebe-uploads/articles/journalistic_articles/covers/000/000/654/original/probb_204.jpg)"}
+    = image_tag 'img-landing-probebe.jpg'
+  .site-landing-content
+    .site-landing-content-text
+      %h3
+        LOREM IMPSU ASDAS DASD ASDAS
+      %p
+        Aqui vai o texto
+
+      .site-landing-buttons
+        %button.sign-up{ style: "background-color:#F69343; color:#fff", class: "site-landing-buttons-sign-in" , data: { color1: "#F69343", color2: "transparent" } }
+          = t('views.home.landing.sign_up')
+        %button{ style: "background-color:transparent; color:#F69343", class: "site-landing-buttons-read", data: { color1: 'transparent', color2: "#F69343" } }
+          = t('views.home.landing.how_works')
+    %img.site-landing-content-mobile-picture{style: "background-position: center", src: image_path('iphone.png')}
