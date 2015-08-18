@@ -11,6 +11,6 @@
       .site-landing-buttons
         %button.sign-up{ style: "background-color:#F69343; color:#fff", class: "site-landing-buttons-sign-in" , data: { color1: "#F69343", color2: "transparent" } }
           = t('views.home.landing.sign_up')
-        %button{ style: "background-color:transparent; color:#F69343", class: "site-landing-buttons-read", data: { color1: 'transparent', color2: "#F69343" } }
+        %button#how-works-button{ style: "background-color:transparent; color:#F69343", class: "site-landing-buttons-read", data: { color1: 'transparent', color2: "#F69343" } }
           = t('views.home.landing.how_works')
     %img.site-landing-content-mobile-picture{style: "background-position: center", src: image_path('iphone.png')}
