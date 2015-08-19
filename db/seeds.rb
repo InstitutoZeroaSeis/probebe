@@ -115,3 +115,9 @@ if SiteHeader.count == 0
   SiteHeader.create( path: '/articles')
   SiteHeader.create( path: '/posts')
 end
+
+if SiteLandingPage.count == 0
+  SiteLandingPage.create( title: 'TITLE',
+                          text: 'Content'
+                        )
+end

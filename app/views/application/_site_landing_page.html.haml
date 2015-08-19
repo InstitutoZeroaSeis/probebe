@@ -1,16 +1,21 @@
+- landing = SiteLandingPage.first
 .site-landing
-  %figure.site-landing-image{style: "background-position: center; background-image: url(http://s3-us-west-2.amazonaws.com//probebe-uploads/articles/journalistic_articles/covers/000/000/654/original/probb_204.jpg)"}
+  - if landing.picture.present?
+    %figure.site-landing-image{style: "background-position: center; background-image: url(#{landing.background_image.url})"}
     = image_tag 'img-landing-probebe.jpg'
-  .site-landing-content
-    .site-landing-content-text
+  - else
+    %figure.site-landing-image{style: "background-position: center;"}
+    = image_tag 'img-landing-probebe.jpg'
+  .site-landing-content.row
+    .site-landing-content-text.col-md-8
       %h3
-        LOREM IMPSU ASDAS DASD ASDAS
+        = raw landing.title
       %p
-        Aqui vai o texto
+        = raw landing.text
 
       .site-landing-buttons
         %button.sign-up{ style: "background-color:#F69343; color:#fff", class: "site-landing-buttons-sign-in" , data: { color1: "#F69343", color2: "transparent" } }
           = t('views.home.landing.sign_up')
         %button#how-works-button{ style: "background-color:transparent; color:#F69343", class: "site-landing-buttons-read", data: { color1: 'transparent', color2: "#F69343" } }
           = t('views.home.landing.how_works')
-    %img.site-landing-content-mobile-picture{style: "background-position: center", src: image_path('iphone.png')}
+    %img.site-landing-content-mobile-picture.col-md-4{style: "background-position: center", src: image_path('iphone.png')}
