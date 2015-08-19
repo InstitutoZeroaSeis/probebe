@@ -38,12 +38,13 @@
           - else
             %li= link_to 'Login', '#', class: 'open-modal'
 
-          %li
-            %form.form-inline{ action: articles_path, method: 'GET' }
-              .input-group
-                %input.form-control{ name: 'search',
-                                     style: 'height: 34px',
-                                     placeholder: t('views.blog.search') }
-                %span.input-group-btn
-                  %button.btn.btn-default.search-submit{ type: 'submit' }
-                    %span.glyphicon.glyphicon-search
+          - if current_user || home?
+            %li
+              %form.form-inline{ action: articles_path, method: 'GET' }
+                .input-group
+                  %input.form-control{ name: 'search',
+                                       style: 'height: 34px',
+                                       placeholder: t('views.blog.search') }
+                  %span.input-group-btn
+                    %button.btn.btn-default.search-submit{ type: 'submit' }
+                      %span.glyphicon.glyphicon-search

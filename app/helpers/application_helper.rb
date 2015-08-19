@@ -16,6 +16,11 @@ module ApplicationHelper
     end
   end
 
+  def home?
+    controller.controller_name == 'home' &&
+      controller.action_name == 'index'
+  end
+
   def remove_fields_link(name, form_builder, container_to_hide: '')
     html_data = { container_to_hide: container_to_hide }
     form_builder.hidden_field(:_destroy, value: false) +

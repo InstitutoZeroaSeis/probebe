@@ -16,10 +16,15 @@
     = render 'how_works'
     = render 'sign_in'
     = render 'site_menu'
-    - if current_user
-      = render 'site_banner'
+    - if home?
+      - if current_user
+        = render 'site_banner'
+      - else
+        = render 'site_landing_page'
     - else
-      = render 'site_landing_page'
+      = render 'site_header'
+
+
     %section.main.container-fuild
       = yield
     %footer.footer
