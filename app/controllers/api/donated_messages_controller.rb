@@ -2,7 +2,6 @@ module Api
   class DonatedMessagesController < ApplicationController
     include HeaderAuthenticationConcern
     def index
-      current_profile = Profile.last
       donated_messages = MessageDeliveries::DonatedMessage.joins([:donor, :message_delivery]).
         where(profiles: { id: current_profile.id }).
         where(message_deliveries: { status: MessageDeliveries::MessageDelivery.statuses[:not_sent] }).
