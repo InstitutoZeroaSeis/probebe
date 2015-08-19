@@ -52,6 +52,15 @@ module MessageDeliveries
       def get_endpoint(target_arn)
         return @sns.get_endpoint_attributes({endpoint_arn: target_arn})
       end
+
+      def enable_endpoint(endpoint_arn)
+        return @sns.set_endpoint_attributes({
+          endpoint_arn: endpoint_arn,
+          attributes: {
+            "Enabled" => "true"
+          }
+        })
+      end
     end
   end
 end

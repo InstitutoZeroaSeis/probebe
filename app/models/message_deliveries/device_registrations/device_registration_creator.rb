@@ -15,9 +15,16 @@ module MessageDeliveries
       def self.create_sns_endpoint(registration)
         amazon_sns = MessageDeliveries::DeviceRegistrations::AmazonSns.new
         result = amazon_sns.create_endpoint(registration.platform_code, registration.profile_id)
-        registration.update_attributes(endpoint_arn: result[:endpoint_arn]) if result.present?
+        if result.present?
+          registration.update_attributes(endpoint_arn: result[:endpoint_arn])
+          enable_endpoint result[:endpoint_arn]
+        end
       end
 
+      def self.enable_endpoint endpoint_arn
+        amazon_sns = MessageDeliveries::DeviceRegistrations::AmazonSns.new
+        amazon_sns.enable_endpoint(endpoint_arn)
+      end
     end
   end
 end
