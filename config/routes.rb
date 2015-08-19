@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     resources :message_deliveries, only: :index
     resources :profiles
     resources :site_banners
+    resources :site_headers
     resources :site_users do
       get :authorize_receive_sms, on: :member
       get :unauthorize_receive_sms, on: :member

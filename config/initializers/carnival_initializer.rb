@@ -53,6 +53,10 @@ Carnival.configure do |config|
         {
           label: 'site_banners',
           link: '/admin/site_banners'
+        },
+        {
+          label: 'site_headers',
+          link: '/admin/site_headers'
         }
       ]
     }

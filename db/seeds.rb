@@ -107,3 +107,11 @@ if Category.to_show_in_home.count == 0
   category.category_image = File.new(img)
   category.save
 end
+
+if SiteHeader.count == 0
+  SiteHeader.create( path: '/about')
+  SiteHeader.create( path: '/what')
+  SiteHeader.create( path: '/partners')
+  SiteHeader.create( path: '/articles')
+  SiteHeader.create( path: '/posts')
+end
