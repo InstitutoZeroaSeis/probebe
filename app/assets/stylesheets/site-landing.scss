@@ -23,19 +23,24 @@
 
   .site-landing-content{
     height: 100px;
-    width: 800px;
+    width: 860px;
     position: absolute;
     margin: 0px 0px 0px -400px;
     left: 50%;
     top: 130px;
+    .site-landing-content-text{
+      font-weight: normal;
+    }
   }
 
   .site-landing-buttons {
     button {
       @include default-button;
-      width: 250px;
+      width: 264px;
       font-size: 18px;
-      font-weight: none;
+      font-weight: 300;
+      height: 56px;
+      border-radius: 2px;
     }
   }
 
