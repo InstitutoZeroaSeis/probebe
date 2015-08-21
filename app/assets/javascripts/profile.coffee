@@ -14,22 +14,6 @@ $(document).ready ->
   $('.phone').focusout (event) ->
     phoneMask($(@).val())
 
-  $('body').on 'change', '.born_child', (event) ->
-    form = $(@).parents('fieldset.form-block')
-
-    if @checked
-      showBirthDate(form)
-    else
-      showWeeksToBorn(form)
-
-  showBirthDate = (form) ->
-    form.find('.week_to_date_number').hide()
-    form.find('.date_picker').show()
-
-  showWeeksToBorn = (form) ->
-    form.find('.week_to_date_number').show()
-    form.find('.date_picker').hide()
-
   $('.born_child').trigger 'change'
 
   $('.add_fields').click ->

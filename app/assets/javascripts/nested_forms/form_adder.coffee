@@ -17,5 +17,6 @@ class @NestedForms.FormAdder
     new NestedForms.AttributeIdentifiersReplacer(new_element)
       .replaceAttributeNames()
 
-    $(button).parent().append(new_element)
+    childrenForm = $(button).parent().parent().find('.children-form')
+    childrenForm.append(new_element)
     setupDatePickers()
