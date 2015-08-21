@@ -15,7 +15,7 @@ module MessageDeliveries
     protected
 
     def deliver_through_sms
-      return true if sms_should_not_be_sent? ||
+      return false if sms_should_not_be_sent? ||
         @message_delivery.cell_phone_number.nil?
 
       MessageDeliveries::ZenviaSmsSender.send(
