@@ -49,7 +49,14 @@ Carnival.configure do |config|
         {
           label: 'authors',
           link: '/admin/authors'
-        },
+        }
+      ]
+    },
+    cms: {
+      label: 'cms',
+      link: '/admin/site_banners',
+      class: 'administracao',
+      subs: [
         {
           label: 'site_banners',
           link: '/admin/site_banners'
@@ -57,7 +64,16 @@ Carnival.configure do |config|
         {
           label: 'site_headers',
           link: '/admin/site_headers'
+        },
+        {
+          label: 'site_landing_pages',
+          link: '/admin/site_landing_pages'
+        },
+        {
+          label: 'site_mobile_images',
+          link: '/admin/site_mobile_images'
         }
+
       ]
     }
   }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819211405) do
+ActiveRecord::Schema.define(version: 20150821175638) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -289,6 +289,15 @@ ActiveRecord::Schema.define(version: 20150819211405) do
   end
 
   create_table "site_landing_pages", force: true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.integer  "picture_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "site_mobile_images", force: true do |t|
+    t.string   "name"
     t.string   "title"
     t.text     "text"
     t.integer  "picture_id"

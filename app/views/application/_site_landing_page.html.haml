@@ -18,4 +18,21 @@
           = t('views.home.landing.sign_up')
         %button#how-works-button{ style: "background-color:transparent; color:#F69343", class: "site-landing-buttons-read", data: { color1: 'transparent', color2: "#F69343" } }
           = t('views.home.landing.how_works')
-    %img.site-landing-content-mobile-picture.col-md-4{style: "background-position: center", src: image_path('iphone.png')}
+    .site-landing-list.col-md-4
+      %ul.site-landing-carousel
+        - step = 0
+        - SiteMobileImage.all.each do |site_mobile_image|
+          %li.site-landing-item
+            %header.site-landing-header
+              %h1.with-dashed-line
+                = site_mobile_image.title
+              %p
+                = site_mobile_image.text
+            - background_image = ''
+            - background_image = site_mobile_image.background_image.url if site_mobile_image.picture.present?
+            %figure.site-landing-carousel-image{style: "background-position: center; background-image: url(#{background_image})"}
+            - css_classes = "step-#{step}"
+            - step += 1
+            .site-landing-footer{ class: "#{css_classes}" }
+              .site-landing-title
+                = site_mobile_image.name

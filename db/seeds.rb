@@ -1,7 +1,8 @@
-Rpush::Gcm::App.create!(name: 'pro-bebe-android', connections: 1, auth_key: "AIzaSyCvHX8Wuiu5y8XjLiIw5QDoIITr7FHCza8") unless Rpush::Gcm::App.find_by(name: 'pro-bebe-android')
-User.create!(email: 'admin@probebe.com.br', role: 'admin', password: 'v1z12010', profile: (Profile.create!(name: 'Admin'))) unless User.find_by(email: 'admin@probebe.com.br')
-User.create!(email: 'contato@probebe.com.br', role: 'admin', password: 'v1z12010', profile: (Profile.create!(name: 'Probebe'))) unless User.find_by(email: 'contato@probebe.com.br')
-User.create!(email: 'publisher@probebe.com.br', role: 'publisher', password: 'v1z12010', profile: (Profile.create!(name: 'Publisher'))) unless User.find_by(email: 'publisher@probebe.com.br')
+if User.count == 0
+  User.create!(email: 'admin@probebe.com.br', role: 'admin', password: 'v1z12010', profile: (Profile.create!(name: 'Admin'))) unless User.find_by(email: 'admin@probebe.com.br')
+  User.create!(email: 'contato@probebe.com.br', role: 'admin', password: 'v1z12010', profile: (Profile.create!(name: 'Probebe'))) unless User.find_by(email: 'contato@probebe.com.br')
+  User.create!(email: 'publisher@probebe.com.br', role: 'publisher', password: 'v1z12010', profile: (Profile.create!(name: 'Publisher'))) unless User.find_by(email: 'publisher@probebe.com.br')
+end
 
 if SiteBanner.count == 0
   background_img = Rails.root.join('app', 'assets', 'images', 'banner-1.jpg')
@@ -120,4 +121,18 @@ if SiteLandingPage.count == 0
   SiteLandingPage.create( title: 'TITLE',
                           text: 'Content'
                         )
+end
+
+if SiteMobileImage.count == 0
+  SiteMobileImage.create(name: 'Gravidez', title: 'VOCÊ SABIA?',
+                        text: 'A partir do quarto mês de gestação o bebê já consegue ouvir a sua voz?')
+  SiteMobileImage.create(name: '1 a 4 meses', title: 'VOCÊ SABIA?',
+                        text: 'O recém nascido possui 300 ossos e quando cresce esse volume diminui para 206 ossos?')
+  SiteMobileImage.create(name: '5 a 8 meses', title: 'VOCÊ SABIA?',
+                        text: 'Que com 5 meses os bebês já reconhecem o próprio nome?')
+  SiteMobileImage.create(name: '9 a 12 meses', title: 'VOCÊ SABIA?',
+                        text: 'Que bebês não podem ingerir mel até completarem um ano de idade?')
+  SiteMobileImage.create(name: '13 a 18 meses', title: 'VOCÊ SABIA?',
+                        text: 'Aos 18 meses, o bebê já tem um vocabulário com cerca de 50 palavras.')
+
 end

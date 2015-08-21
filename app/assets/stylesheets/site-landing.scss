@@ -5,7 +5,7 @@
   background: #fff none repeat scroll 0% 0%;
   position: relative;
   width: 100%;
-  figure{
+  .site-landing-image{
     background: transparent url("/assets/img-banner-probebe-5aa4363aa609dd23bb55dc866b0606d1.jpg") no-repeat scroll center top / 1920px auto;
     left: 0px;
     margin: 0px;
@@ -36,6 +36,139 @@
       width: 250px;
       font-size: 18px;
       font-weight: none;
+    }
+  }
+
+  .site-landing-list{
+    background: no-repeat url('/assets/iphone.png');
+    height: 505px;
+
+    ul{
+      overflow: hidden;
+      position: relative;
+      top: 73px;
+      padding: 0px;
+      width: 202px;
+      height: 360px;
+      left: 4px;
+
+      li{
+        list-style: none;
+        width: 208px;
+        height: 363px;
+        header{
+          position: relative;
+          z-index: 99;
+          text-align: center;
+          top: 90px;
+        }
+
+        .site-landing-carousel-image{
+          background: transparent url("/assets/img-banner-probebe-5aa4363aa609dd23bb55dc866b0606d1.jpg") no-repeat scroll center top / 250px auto;
+          position: absolute;
+          width: 202px;
+          height: 363px;
+          top: 0px;
+
+
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: image-url('site-banner-texture.png');
+            z-index: 2;
+          }
+        }
+      }
+    }
+  }
+
+  @mixin site-landing-step($color, $active-bottom-color, $initial-bg-x, $initial-bg-y, $active-bg-x, $active-bg-y) {
+    border-bottom-color: $color;
+    background-color: $color;
+    background-position: $initial-bg-x $initial-bg-y;
+
+  }
+  .site-landing-footer {
+    float: left;
+    width: 202px;
+    font-size: 12px;
+    text-align: center;
+    position: absolute;
+    top: 314px;
+    font-weight: 300;
+    line-height: 47px;
+    background-image: image-url('banner-bullets-icons.png');
+    background-repeat: no-repeat;
+    color: #fff;
+    z-index: 999;
+
+    &.step-0 {
+      @include site-landing-step($red, $dark-red, 0, -14px, -31px, 0)
+    }
+
+    &.step-1 {
+      @include site-landing-step($orange, $dark-orange, -290px, -14px, -61px, 0)
+    }
+
+    &.step-2 {
+      @include site-landing-step($purple, $dark-purple, -600px, -14px, -93px, 0)
+    }
+
+    &.step-3 {
+      @include site-landing-step($green, $dark-green, -910px, -14px, -124px, 0)
+    }
+
+    &.step-4 {
+      @include site-landing-step($cyan, $dark-cyan, -1235px, -14px, -124px, 0)
+    }
+
+    &.is-active {
+      color: #fff;
+    }
+
+    @media (min-width: 1366px) {
+      &:after {
+        left: 21%;
+      }
+    }
+
+    @media (min-width: 1100px) and (max-width: 1365px) {
+      &:after {
+        left: 10%;
+      }
+    }
+  }
+
+  .site-landing-header{
+    h1 {
+      font-size: 30px;
+      font-weight: 300;
+      color: #f7bc65;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .with-dashed-line {
+      &:before {
+        border-top: 1px dashed #f7bc65;
+        bottom: -5px;
+        content: '';
+        display: block;
+        position: absolute;
+        width: 30%;
+        margin-left: 35%;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      color: #fff;
+      width: 203px;
     }
   }
 
