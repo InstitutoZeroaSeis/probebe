@@ -118,8 +118,8 @@ if SiteHeader.count == 0
 end
 
 if SiteLandingPage.count == 0
-  SiteLandingPage.create( title: 'TITLE',
-                          text: 'Content'
+  SiteLandingPage.create( title: 'Receba mensagens surpreendentes em seu celular',
+                          text: 'Cadastre-se no ProBebê e receba informações importantes para o bom desenvolvimento de seu bebê, desde o inicio da gravidez até os 18 meses. ProBebê vai ajudar você e seus familiares a cuidar e dar o melhor para seu bebê.  Conheça nosso conteúdo ->'
                         )
 end
 
