@@ -1,5 +1,5 @@
 .site-footer.row
-  .site-map.col-md-4
+  .site-map.col-md-3
     %h4
       probebê
     %ul
@@ -7,23 +7,23 @@
       %li= link_to 'O que é o ProBebê', what_path
       %li= link_to 'Parceiros', partners_path
       %li= link_to 'Artigos', posts_path
-  .footer-categories.col-md-4
+  .footer-categories.col-md-3
     %h4
       Especialidades
     %ul
       - Category.to_show_in_home.each do |category|
         %li= link_to category.name, categories_articles_path(category.id)
 
-  .footer-partners.col-md-4
+  .footer-partners.col-md-6
     %h4
       Parceiros
 
-    .partners-container
-      %figure.google
+    .partners-container.row
+      %figure.google.col-md-4
         %img.partners-partner-logo-img{ src: image_path('logo-google.png') }
 
-      %figure.cria
+      %figure.cria.col-md-4
         %img.partners-partner-logo-img{ src: image_path('logo-cria.png') }
 
-      %figure.siteawi
+      %figure.siteawi.col-md-4
         %img.partners-partner-logo-img{ src: image_path('logo-sitawi.png') }

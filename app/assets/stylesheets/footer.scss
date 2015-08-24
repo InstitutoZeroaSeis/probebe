@@ -133,6 +133,7 @@
 }
 
 .site-footer{
+  text-align: left;
   h4 {
     color: #F7BC65;
   }
@@ -146,9 +147,34 @@
     }
   }
 
-  img{ max-width: 60px; }
+  img{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
 
   .siteawi{
-    img{ max-width: 30px; }
+    img{ max-width: 40px; }
   }
+
+  .partners-container{
+    margin-top: 35px;
+
+    .google{
+      img{
+        width: 100px;
+      }
+    }
+
+    .cria{
+      img{
+        width: 96px;
+        top: -8px;
+        position: relative;
+      }
+    }
+
+
+
+  }
+
 }
