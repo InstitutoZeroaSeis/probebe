@@ -25,3 +25,18 @@ $(document).ready ->
     setTimeout (->
       $('.born_child:last').prop('checked', true)
     ), 300
+
+  managePhoneSystem = (system) ->
+    $('.phone-stores-links').hide()
+    $(".store-#{system}").show()
+
+
+  $('input[name=\'profile[cell_phone_system]\']').change ->
+    managePhoneSystem($(@).val())
+
+  cell_phone_system = $('input[name=\'profile[cell_phone_system]\']:checked').val()
+  managePhoneSystem(cell_phone_system)
+
+
+
+

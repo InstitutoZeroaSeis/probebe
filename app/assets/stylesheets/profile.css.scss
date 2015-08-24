@@ -145,3 +145,77 @@ li.child-entry:nth-child(even) .child-name{
   position: relative;
   float: left;
 }
+
+.birth-date-obs{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.add-children-button{
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857;
+  text-align: center;
+  width: 150px;
+  border: 0px none;
+  background-color: #F69343;
+  color: #FFF;
+  height: 40px;
+  float: right;
+  margin-top: 10px;
+
+  .plus-symbol-container{
+    font-size: 35px;
+    float: left;
+    position: relative;
+    border-right: solid 1px #ccc;
+    padding-right: 5px;
+    height: 40px;
+
+    .plus-symbol{
+      top: -5px;
+      position: relative;
+      font-weight: 300;
+    }
+  }
+
+  label{
+    top: 11px;
+    position: relative;
+  }
+}
+
+.phone-system-profile{
+  img{
+    position: relative;
+    width: 40px;
+    top: -5px;
+  }
+}
+
+.phone-stores-links{
+  display: none;
+}
+
+.store-android{
+  a{
+    padding: 7px;
+    font-size: 14px;
+    background-color:  #002B53;
+    color: white;
+    border: 0px none;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+  a:hover{
+    text-decoration: none;
+  }
+
+  img{
+    width: 20px;
+  }
+}

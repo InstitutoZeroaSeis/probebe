@@ -4,7 +4,9 @@
     = f.simple_fields_for :children do |ff|
       = render 'children/child_fields', f: ff
 
-  %button.add_fields{ data: { fields: template_for_association(f, :children, 'children/child_fields') } }
-    Adicionar
-
-
+  %button.add_fields.add-children-button{ data: { fields: template_for_association(f, :children, 'children/child_fields') } }
+    %span.plus-symbol-container
+      %span.plus-symbol
+        +
+    %label
+      Adicionar

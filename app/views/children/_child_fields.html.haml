@@ -3,7 +3,7 @@
     = f.input :name
   .col-sm-3.birth-or-born-date
     = f.input :birth_date, as: :date_picker, input_html: { format: :short }
-    %p
+    %p.birth-date-obs
       Se você esta grávida, coloque a data aproximada do parto
   .col-sm-4
     = render 'gender_radio_buttons',
