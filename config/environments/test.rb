@@ -38,6 +38,8 @@ Rails.application.configure do
 
   config.server_url = 'http://web.probebe.dev/'
 
+  config.telein_url = 'http://consultaoperadora2.telein.com.br/sistema/consulta_json.php'
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }

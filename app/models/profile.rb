@@ -25,6 +25,7 @@ class Profile < ActiveRecord::Base
   validates :cell_phone, format: {
     with: /\A\d{2}\s\d{4,5}\-\d{4,4}\Z/
   }, on: [:update], if: :site_user?
+  validate :mobile_phone?, on: [:update], if: :site_user?
   validate :validate_profile_type, if: "!donations_children.empty?"
 
   accepts_nested_attributes_for :avatar
@@ -87,6 +88,14 @@ class Profile < ActiveRecord::Base
 
   def site_user?
     user.present? && user.site_user?
+  end
+
+  def mobile_phone?
+    return if self.cell_phone.nil?
+    return if !self.cell_phone_changed?
+    return if errors.get(:cell_phone).present?
+    return if TeleinService.mobile_phone? self.cell_phone.gsub(/([^\d])+/, '')
+    errors.add(:cell_phone, :not_mobile_phone)
   end
 
   def validate_profile_type

@@ -94,6 +94,8 @@ Rails.application.configure do
 
   config.server_url = 'http://www.probebe.org.br'
 
+  config.telein_url = 'http://consultaoperadora2.telein.com.br/sistema/consulta_json.php'
+
   config.disqus_shortname = 'probebe'
   # config.action_controller.asset_host = "http://s3.amazonaws.com/elasticbeanstalk-us-east-1-119499395752/"
   config.paperclip_defaults = {

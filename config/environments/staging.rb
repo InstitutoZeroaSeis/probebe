@@ -34,6 +34,8 @@ Rails.application.configure do
 
   config.server_url = 'http://web.probebe.dev/'
 
+  config.telein_url = 'http://consultaoperadora2.telein.com.br/sistema/consulta_json.php'
+
   config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {
