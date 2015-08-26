@@ -58,19 +58,19 @@ Carnival.configure do |config|
       class: 'administracao',
       subs: [
         {
-          label: 'site_banners',
+          label: 'Site Banners',
           link: '/admin/site_banners'
         },
         {
-          label: 'site_headers',
+          label: 'Site Headers',
           link: '/admin/site_headers'
         },
         {
-          label: 'site_landing_pages',
+          label: 'Landing Page',
           link: '/admin/site_landing_pages'
         },
         {
-          label: 'site_mobile_images',
+          label: 'Site Mobile',
           link: '/admin/site_mobile_images'
         }
 

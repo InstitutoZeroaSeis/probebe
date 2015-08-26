@@ -43,6 +43,7 @@ $ ->
       $(@).css('color', '#fff')
     else
       $(@).css('color', $(@).data('color1'))
+      $(@).css('borderColor', $(@).data('color1'))
   subjectButtonHoverOut = () ->
     $(@).css('background-color', $(@).data('color1'))
     $(@).css('border', "1px solid rgba(0, 0, 0, 0.1)")
@@ -50,6 +51,7 @@ $ ->
       $(@).css('color', '#fff')
     else
       $(@).css('color', $(@).data('color2'))
+      $(@).css('borderColor', $(@).data('color2'))
 
   $('.subject-description-buttons-read').hover(subjectButtonHoverIn, subjectButtonHoverOut)
   $('.subject-description-buttons-sign-in').hover(subjectButtonHoverIn, subjectButtonHoverOut)

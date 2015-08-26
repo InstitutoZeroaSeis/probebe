@@ -1,11 +1,12 @@
 - landing = SiteLandingPage.first
 .site-landing
-  - if landing.picture.present?
-    %figure.site-landing-image{style: "background-position: center; background-image: url(#{landing.background_image.url})"}
-    = image_tag 'img-landing-probebe.jpg'
-  - else
-    %figure.site-landing-image{style: "background-position: center;"}
-    = image_tag 'img-landing-probebe.jpg'
+  .site-landing-image-background
+    - if landing.picture.present?
+      %figure.site-landing-image{style: "background-position: center; background-image: url(#{landing.background_image.url})"}
+      = image_tag 'img-landing-probebe.jpg'
+    - else
+      %figure.site-landing-image{style: "background-position: center;"}
+      = image_tag 'img-landing-probebe.jpg'
   .site-landing-content.row
     .site-landing-content-text.col-md-8
       %h3
