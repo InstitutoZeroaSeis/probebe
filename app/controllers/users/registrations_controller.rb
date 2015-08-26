@@ -1,6 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters
   respond_to :json
+  layout "application", only: [:edit]
+
 
   protected
 

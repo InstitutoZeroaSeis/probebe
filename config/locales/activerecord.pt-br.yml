@@ -96,6 +96,8 @@ pt-BR:
         email: Email
         id: Id
         password: Senha
+        password_confirmation: Confirmação de Senha
+        current_password: Senha Atual
         profile_name: Nome
         role: Perfil de acesso
         profile_birth_date: Data de Nascimento
