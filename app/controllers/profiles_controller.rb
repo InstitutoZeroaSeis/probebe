@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
       sign_in @user, bypass: true
       redirect_to root_path
     else
-      @profile.errors.add(:base, user.errors.full_messages.first)
+      @profile.errors.add(:base, @user.errors.full_messages.first) if !@user.change_omniauth_password?
       render :edit
     end
   end
@@ -15,10 +15,16 @@ class ProfilesController < ApplicationController
   protected
 
   def update_password_and_profile
-    password = params[:profile][:user][:password] || ""
-    @user.update_attributes password: password,
-                            change_omniauth_password: true,
-                            profile_attributes: permitted_params.merge(id: @profile.id)
+    if @user.change_omniauth_password?
+      return @profile.update_attributes(permitted_params)
+    else
+      password = params[:profile][:user][:password] || ""
+      return @user.update_attributes password: password,
+                              change_omniauth_password: true,
+                              profile_attributes: permitted_params.merge(id: @profile.id)
+    end
+
+
   end
 
   def instantiate_profile

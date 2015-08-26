@@ -9,7 +9,7 @@
     = javascript_include_tag 'home'
 
     = csrf_meta_tags
-    = render partial: 'flash_messages'
+    //= render partial: 'flash_messages'
 
     = yield :head
   %body{class: "#{params[:controller]}"}
