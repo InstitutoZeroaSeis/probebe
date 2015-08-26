@@ -7,7 +7,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       find_or_create_user
       find_or_create_profile
     end
-    sign_in_and_redirect @user, event: :authentication
+    if @user.change_omniauth_password?
+      sign_in_and_redirect @user, event: :authentication
+    else
+      sign_in @user
+      redirect_to edit_profile_path
+    end
   rescue ActiveRecord::RecordInvalid
     flash[:notice] =
       I18n.t('controller.messages.could_not_sign_up_with_omniauth')
@@ -28,7 +33,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def create_user
     create_with_password = Users::CreateUserWithRandomPassword.new(
-      email: @omni_auth_hash.email
+      email: @omni_auth_hash.email,
+      change_omniauth_password: false
     )
     create_with_password.save
     create_with_password.user

@@ -3,17 +3,27 @@ class ProfilesController < ApplicationController
   before_action :instantiate_profile
 
   def update
-    if @profile.update_attributes(permitted_params)
+    if update_password_and_profile
+      sign_in @user, bypass: true
       redirect_to root_path
     else
+      @profile.errors.add(:base, user.errors.full_messages.first)
       render :edit
     end
   end
 
   protected
 
+  def update_password_and_profile
+    password = params[:profile][:user][:password] || ""
+    @user.update_attributes password: password,
+                            change_omniauth_password: true,
+                            profile_attributes: permitted_params.merge(id: @profile.id)
+  end
+
   def instantiate_profile
     @profile = ProfilePresenter.new(current_profile)
+    @user = @profile.user
   end
 
   def permitted_params

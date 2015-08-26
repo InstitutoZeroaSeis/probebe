@@ -37,6 +37,7 @@ $(document).ready ->
   cell_phone_system = $('input[name=\'profile[cell_phone_system]\']:checked').val()
   managePhoneSystem(cell_phone_system)
 
+  $('.date_mask').find('input').mask('00/00/0000')
 
 
 
