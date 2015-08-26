@@ -14,6 +14,7 @@ web:
     VIRTUAL_HOST: web.probebe.dev
     ZENVIA_ACCOUNT: zeroaseis.connectweb
     ZENVIA_PASSWORD: 206Opr3Cu6
+    TELEIN_KEY: 19cbe523ebe3ee759d67
     AWS_REGION: us-east-1
   links:
     - db

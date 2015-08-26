@@ -1,4 +1,5 @@
 pt-BR:
+
   activerecord:
     attributes:
       articles/article: &article
@@ -154,6 +155,8 @@ pt-BR:
               has_no_children: Você precisa cadastrar ao menos um filho
               needs_mobile_phone: Precisa de pelo menos um celular
               needs_to_be_donor: Você precisa ser doadora para poder doar mensagens para outras crianças.
+            cell_phone:
+              not_mobile_phone: Este telefone não é um celular
     models:
       articles/article: Artigo
       articles/article_plural: Artigos
