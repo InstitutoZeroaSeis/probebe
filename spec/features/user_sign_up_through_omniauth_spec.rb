@@ -12,7 +12,7 @@ feature 'OAuth2 authentication' do
     click_on I18n.t('views.application.sign_in')
     within('.modal-signin') { find('.footer-sign-up-google-plus').click }
 
-    expect(current_path).to eq(root_path)
+    expect(current_path).to eq(edit_profile_path)
     expect(page).to have_no_content(I18n.t('views.application.sign_in'))
   end
 

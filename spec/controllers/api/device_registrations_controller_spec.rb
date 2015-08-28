@@ -10,6 +10,8 @@ RSpec.describe Api::DeviceRegistrationsController, type: :controller do
       and_return(sns_response)
     allow_any_instance_of(Aws::SNS::Client).to receive(:delete_endpoint).
       and_return(true)
+    allow_any_instance_of(Aws::SNS::Client).to receive(:set_endpoint_attributes).
+      and_return(true)
     ENV['AWS_REGION'] = "aws"
   end
 

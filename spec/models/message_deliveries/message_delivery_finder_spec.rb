@@ -6,6 +6,8 @@ describe MessageDeliveries::MessageDeliveryFinder, type: :model do
     subject { create(:message_delivery, :not_sent) }
 
     it "is expected to set the delivery date when delivering" do
+      allow_any_instance_of(MessageDeliveries::MessageSender).to receive(:send_to_device).
+        and_return(true)
       expect(subject.delivery_date).to be_nil
 
       MessageDeliveries::MessageDeliveryFinder.find_and_deliver_messages
@@ -20,6 +22,8 @@ describe MessageDeliveries::MessageDeliveryFinder, type: :model do
     before { create(:message_delivery, :not_sent) }
 
     it "is expected to deliver them to the user devices" do
+      allow_any_instance_of(MessageDeliveries::MessageSender).to receive(:send_to_device).
+        and_return(true)
       MessageDeliveries::MessageDeliveryFinder.find_and_deliver_messages
       expect(MessageDeliveries::MessageDelivery.sent.count).to eq(5)
       expect(MessageDeliveries::MessageDelivery.not_sent.count).to eq(0)

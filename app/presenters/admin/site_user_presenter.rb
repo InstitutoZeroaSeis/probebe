@@ -9,7 +9,8 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
         advanced_search: { operator: :like }
 
   field 'profile.name',
-        actions: [:index, :show]
+        actions: [:index, :show],
+        advanced_search: { operator: :like }
 
   field 'profile.birth_date',
         actions: [:show]
