@@ -37,9 +37,10 @@ module MessageDeliveries
         begin
           Rails.logger.debug "[AmazonSNS] - send_message, target_arn: #{target_arn}, message: #{message}"
           return if message.blank?
+          title = 'ProBebe'
           return @sns.publish({
             target_arn: target_arn,
-            message: '{"GCM": "{ \"data\": { \"message\": \"' + message + '\" } }"}',
+            message: '{"GCM": "{ \"data\": { \"title\": \"' + title + '\", \"message\": \"' + message + '\" } }"}',
             message_structure: 'json',
             subject: "subject"
           })
