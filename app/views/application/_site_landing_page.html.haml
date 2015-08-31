@@ -8,7 +8,7 @@
       %figure.site-landing-image{style: "background-position: center;"}
       = image_tag 'img-banner-probebe.jpg'
   .site-landing-content.row
-    .site-landing-content-text.col-md-8
+    .site-landing-content-text.col-md-8.col-sm-8
       %h3
         = raw landing.title if landing.present?
       %p
@@ -19,7 +19,7 @@
           = t('views.home.landing.sign_up')
         %button#how-works-button{ style: "background-color:transparent; color:#F69343", class: "site-landing-buttons-read", data: { color1: 'transparent', color2: "#F69343" } }
           = t('views.home.landing.how_works')
-    .site-landing-list.col-md-4
+    .site-landing-list.col-md-4.col-sm-4
       %ul.site-landing-carousel
         - step = 0
         - SiteMobileImage.all.each do |site_mobile_image|
