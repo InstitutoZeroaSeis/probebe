@@ -15,6 +15,19 @@ describe MessageDeliveries::MessageDeliveryFinder, type: :model do
       subject.reload
       expect(subject.delivery_date).to_not be_nil
     end
+
+    context "when its not possible to send the message" do
+      it "expect to not mark as sent" do
+        allow_any_instance_of(MessageDeliveries::MessageSender).to receive(:deliver_through_sms).
+          and_return(false)
+        expect(subject.delivery_date).to be_nil
+
+        MessageDeliveries::MessageDeliveryFinder.find_and_deliver_messages
+
+        subject.reload
+        expect(subject.delivery_date).to be_nil
+      end
+    end
   end
 
   context "with two messages to be sent" do
