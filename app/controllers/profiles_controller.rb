@@ -16,15 +16,16 @@ class ProfilesController < ApplicationController
 
   def update_password_and_profile
     if @user.change_omniauth_password?
-      return @profile.update_attributes(permitted_params)
+      result = @profile.update_attributes(permitted_params)
     else
       password = params[:profile][:user][:password] || ""
-      return @user.update_attributes password: password,
+      result =  @user.update_attributes password: password,
                               change_omniauth_password: true,
                               profile_attributes: permitted_params.merge(id: @profile.id)
     end
 
-
+    Users::SmsMessageSender.send_completed_profile_msg(@user) if result
+    result
   end
 
   def instantiate_profile

@@ -35,7 +35,6 @@ class Profile < ActiveRecord::Base
 
   before_save :set_defaults
   before_save :manage_donor_children
-  before_save :send_completed_profile_msg
 
   scope :admin_site_user_profiles, lambda {
     joins(:user).merge(User.admin_site_user)
@@ -50,7 +49,7 @@ class Profile < ActiveRecord::Base
   def authorize_receive_sms!
     self.authorized_receive_sms = true
     self.profile_type = Profile.profile_types[:possible_donor] if self.recipient?
-    send_authorize_receive_sms_msg
+    Users::SmsMessageSender.send_authorize_receive_sms_msg self.user
     save!
   end
 
@@ -118,30 +117,5 @@ class Profile < ActiveRecord::Base
     return if self.donor?
     errors.add(:base, :needs_to_be_donor)
   end
-
-  def send_completed_profile_msg
-    return if !errors.empty?
-    return if self.profile_completed_message_sent?
-    return if self.cell_phone.nil?
-    return if self.children.empty?
-    message = I18n.t('profile_messages.completed_without_smartphone')
-    if self.ios? || self.android?
-      message = I18n.t('profile_messages.completed_with_smartphone')
-    end
-    self.profile_completed_message_sent!
-    MessageDeliveries::ZenviaSmsSender.send(
-                           self.cell_phone_numbers,
-                           message )
-  end
-
-  def send_authorize_receive_sms_msg
-    return if self.allow_sms_message_sent?
-    message = I18n.t('profile_messages.authorized_receive_sms')
-    self.allow_sms_message_sent!
-    MessageDeliveries::ZenviaSmsSender.send(
-                           self.cell_phone_numbers,
-                           message )
-  end
-
 
 end
