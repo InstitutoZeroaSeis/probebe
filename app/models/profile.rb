@@ -35,6 +35,7 @@ class Profile < ActiveRecord::Base
 
   before_save :set_defaults
   before_save :manage_donor_children
+  before_save :send_completed_profile_msg
 
   scope :admin_site_user_profiles, lambda {
     joins(:user).merge(User.admin_site_user)
@@ -60,6 +61,11 @@ class Profile < ActiveRecord::Base
     save!
   end
 
+  def profile_completed_message_sent!
+    self.profile_completed_message_sent = true
+    save!
+  end
+
   def avatar_url
     avatar.photo.url(:thumb) if avatar
   end
@@ -72,6 +78,10 @@ class Profile < ActiveRecord::Base
   def pregnancy_start_date
     child = children.find(&:pregnancy?)
     child.pregnancy_start_date if child
+  end
+
+  def cell_phone_numbers
+    self.cell_phone.gsub(/([^\d])+/, '')
   end
 
   protected
@@ -94,7 +104,7 @@ class Profile < ActiveRecord::Base
     return if self.cell_phone.nil?
     return if !self.cell_phone_changed?
     return if errors.get(:cell_phone).present?
-    return if TeleinService.mobile_phone? self.cell_phone.gsub(/([^\d])+/, '')
+    return if TeleinService.mobile_phone? self.cell_phone_numbers
     errors.add(:cell_phone, :not_mobile_phone)
   end
 
@@ -102,4 +112,21 @@ class Profile < ActiveRecord::Base
     return if self.donor?
     errors.add(:base, :needs_to_be_donor)
   end
+
+  def send_completed_profile_msg
+    return if !errors.empty?
+    return if self.profile_completed_message_sent?
+    return if self.cell_phone.nil?
+    return if self.children.empty?
+    message = I18n.t('profile_messages.completed_without_smartphone')
+    if self.ios? || self.android?
+      message = I18n.t('profile_messages.completed_with_smartphone')
+    end
+    self.profile_completed_message_sent!
+    MessageDeliveries::ZenviaSmsSender.send(
+                           self.cell_phone_numbers,
+                           message )
+  end
+
+
 end

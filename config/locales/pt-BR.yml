@@ -46,6 +46,10 @@ pt-BR:
     health: Saúde
     behavior: Desenvolvimento
     security: Segurança
+  profile_messages:
+    completed_without_smartphone: Voce fez o cadastro do ProBebe. As mensagens vao ser enviadas por SMS para este numero. Aguarde um novo SMS indicando que o envio foi liberado.
+    completed_with_smartphone: Voce fez o cadastro do ProBebe com sucesso. Entre na loja e baixe o aplicativo para começar a receber as mensagens.
+
   carnival:
     create_profile: Criar perfil
     edit_profile: Editar perfil
