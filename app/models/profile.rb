@@ -50,6 +50,7 @@ class Profile < ActiveRecord::Base
   def authorize_receive_sms!
     self.authorized_receive_sms = true
     self.profile_type = Profile.profile_types[:possible_donor] if self.recipient?
+    send_authorize_receive_sms_msg
     save!
   end
 
@@ -63,6 +64,11 @@ class Profile < ActiveRecord::Base
 
   def profile_completed_message_sent!
     self.profile_completed_message_sent = true
+    save!
+  end
+
+  def allow_sms_message_sent!
+    self.allow_sms_message_sent = true
     save!
   end
 
@@ -123,6 +129,15 @@ class Profile < ActiveRecord::Base
       message = I18n.t('profile_messages.completed_with_smartphone')
     end
     self.profile_completed_message_sent!
+    MessageDeliveries::ZenviaSmsSender.send(
+                           self.cell_phone_numbers,
+                           message )
+  end
+
+  def send_authorize_receive_sms_msg
+    return if self.allow_sms_message_sent?
+    message = I18n.t('profile_messages.authorized_receive_sms')
+    self.allow_sms_message_sent!
     MessageDeliveries::ZenviaSmsSender.send(
                            self.cell_phone_numbers,
                            message )

@@ -49,6 +49,7 @@ pt-BR:
   profile_messages:
     completed_without_smartphone: Voce fez o cadastro do ProBebe. As mensagens vao ser enviadas por SMS para este numero. Aguarde um novo SMS indicando que o envio foi liberado.
     completed_with_smartphone: Voce fez o cadastro do ProBebe com sucesso. Entre na loja e baixe o aplicativo para começar a receber as mensagens.
+    authorized_receive_sms: Agora voce passara a receber as mensagens do ProBebe neste numero de celular. Para qualquer mudanca, volte ao site para alterar seu perfil.
 
   carnival:
     create_profile: Criar perfil
