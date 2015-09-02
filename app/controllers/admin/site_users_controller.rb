@@ -52,7 +52,10 @@ class Admin::SiteUsersController < Admin::AdminController
   def permitted_params
     params.permit(user: [:email, :role, profile_attributes: [
                                           :name, :state, :city,
-                                          :street, :cell_phone
+                                          :street, :cell_phone,
+                                          children_attributes: [
+                                            :id, :name, :birth_date
+                                            ]
                                           ]
                   ])
   end

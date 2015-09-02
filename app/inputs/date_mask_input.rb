@@ -7,6 +7,6 @@ class DateMaskInput < SimpleForm::Inputs::StringInput
   end
 
   def input_html_classes
-    super.push('datemask')
+    super.push('date_mask')
   end
 end

@@ -4,3 +4,14 @@
   = p.input :city
   = p.input :street
   = p.input :cell_phone, input_html: { class: 'phone' }
+  - if record.present? && record.profile.children.size > 0
+    .row
+      .nested-form
+        %label= "Filho(s)"
+        %ul.nested-form-list
+        = p.simple_fields_for :children do |c|
+          %li.nested-form-list-item
+            = c.input :id, as: :hidden
+            = c.input :name
+            = c.input :birth_date, as: :date_mask
+

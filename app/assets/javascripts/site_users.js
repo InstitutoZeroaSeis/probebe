@@ -34,6 +34,7 @@ $(document).ready(function() {
   };
 
   phoneMask($('.phone').val());
+  $('.date_mask').find('input').mask('00/00/0000')
 
   $('.phone').focusout(function(event) {
     return phoneMask($(this).val());

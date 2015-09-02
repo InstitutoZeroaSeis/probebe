@@ -11,6 +11,7 @@ class Child < ActiveRecord::Base
 
   validates_presence_of :birth_date
   validate :maximum_permited_pregnancy_date?
+  validate :minimum_birth_date?
   validate :recipient_profile?, if: "donor.present?"
 
   before_save :set_defaults
@@ -58,6 +59,13 @@ class Child < ActiveRecord::Base
       if birth_date > PREGNANCY_DURATION_IN_WEEKS.weeks.from_now
         errors.add(:birth_date, I18n.t('activerecord.errors.models.child.base.maximum_permited_pregnancy_date'))
       end
+    end
+  end
+
+  def minimum_birth_date?
+    return if birth_date.nil?
+    if birth_date < (DateTime.now - 5.years)
+      errors.add(:birth_date, I18n.t('activerecord.errors.models.child.base.minimum_birth_date'))
     end
   end
 
