@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 feature 'User edits new profile' do
-  before { login_as create(:user) }
+  before do
+    login_as create(:user)
+  end
 
   scenario 'successfully' do
+    allow(MessageDeliveries::ZenviaSmsSender).to receive(:send).and_return(true)
     visit edit_profile_path
     fill_in 'profile_name', with: 'New name'
 
@@ -13,6 +16,7 @@ feature 'User edits new profile' do
   end
 
   scenario 'with invalid data' do
+    allow(MessageDeliveries::ZenviaSmsSender).to receive(:send).and_return(true)
     visit edit_profile_path
     fill_in 'profile_name', with: ''
     click_button 'Atualizar Perfil'

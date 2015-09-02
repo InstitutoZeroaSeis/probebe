@@ -65,8 +65,11 @@ RSpec.describe Profile, type: :model do
     end
     context "when is authorize_to_receive_sms" do
       it 'has to remove donor children' do
+        allow(MessageDeliveries::ZenviaSmsSender).to receive(:send).and_return(true)
         donor_profile = create(:profile, profile_type: :donor)
         child = create(:child, :with_profile, donor: donor_profile)
+        child.profile.user = create(:user, :site_user)
+        child.profile.save
         profile = child.profile
 
         profile.reload
