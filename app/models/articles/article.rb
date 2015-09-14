@@ -91,9 +91,9 @@ module Articles
       return self.cover_picture.data if self.cover_picture.present?
     end
 
-    def should_generate_new_friendly_id?
-      new_record? || title_changed? || slug.nil?
-    end
+   # def should_generate_new_friendly_id?
+   #   new_record? || title_changed?
+   # end
 
     protected
 
