@@ -6,9 +6,9 @@ feature 'Admin site user visit one article view page' do
   scenario 'successfully' do
     article = create(:article)
 
-    visit admin_article_path(article)
+    visit admin_article_path(article.id)
 
-    expect(current_path).to eq(admin_article_path(article))
+    expect(current_path).to eq(admin_article_path(article.id))
 
     expect(page).to have_content(article.id)
     expect(page).to have_content(

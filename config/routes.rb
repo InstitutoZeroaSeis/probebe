@@ -14,14 +14,14 @@ Rails.application.routes.draw do
   get 'timelines/:id/monthly/:date' => 'timelines#monthly', as: :timeline_monthly
   constraints(id: /\d+/) do
     resources(:posts, only: [:show, :index])
-    resources(:articles, only: [:show, :index]) do
-      collection do
-        scope :categories do
-          get ':category_id', to: 'articles#index', as: :categories
-        end
+  end
+  resources(:articles, only: [:show, :index]) do
+    collection do
+      scope :categories do
+        get ':category_id', to: 'articles#index', as: :categories
       end
-      get :raw, on: :member
     end
+    get :raw, on: :member
   end
   get 'articles/page/:page_id' => 'articles#index', as: :paged_articles
   resources(:tags, param: :name, only: []) { resources :articles, only: :index }

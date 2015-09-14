@@ -4,12 +4,12 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = ArticlePresenter.new(Site::Article.find(params[:id]))
+    @article = ArticlePresenter.new(Site::Article.friendly.find(params[:id]))
     render layout: 'single-post'
   end
 
   def raw
-    @article = ArticlePresenter.new(Site::Article.find(params[:id]))
+    @article = ArticlePresenter.new(Site::Article.friendly.find(params[:id]))
     render layout: 'raw-single-post'
   end
 

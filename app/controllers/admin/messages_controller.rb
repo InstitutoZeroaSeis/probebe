@@ -3,7 +3,7 @@ class Admin::MessagesController < Admin::AdminController
   defaults resource_class: Message
 
   def edit
-    redirect_to edit_admin_article_path Articles::Article.find(@message.article_id)
+    redirect_to edit_admin_article_path Articles::Article.find(@message.article_id).id
   end
 
   protected

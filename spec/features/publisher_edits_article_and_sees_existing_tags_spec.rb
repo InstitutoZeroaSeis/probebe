@@ -5,7 +5,7 @@ feature 'Publisher edits article and sees existing tags' do
 
   scenario 'succesffully' do
     article = create(:article, tags: create_pair(:tag))
-    visit edit_admin_article_path(article)
+    visit edit_admin_article_path(article.id)
 
     tags = find('#articles_article_tag_names').value
 

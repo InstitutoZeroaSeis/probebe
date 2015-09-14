@@ -2,6 +2,9 @@ module Articles
   class Article < ActiveRecord::Base
     include Carnival::ModelHelper
     include RejectAttributesConcern
+    extend FriendlyId
+
+    friendly_id :title, use: :slugged
 
     GENDER_ENUM = [:male, :female, :both]
     BABY_TARGET_TYPE_ENUM = [:pregnancy, :born]
@@ -27,8 +30,8 @@ module Articles
     accepts_nested_attributes_for :tags, allow_destroy: false
 
     validates :text, :title, :category, :user, :original_author, presence: true
-
     validates :baby_target_type, :gender, presence: true, if: :category_is_not_blog_section?
+    validates :title, uniqueness: { case_sensitive: false }
 
     validate :minimum_not_higher_than_maximum
     validate :category_is_a_subcategory
@@ -86,6 +89,10 @@ module Articles
 
     def cover
       return self.cover_picture.data if self.cover_picture.present?
+    end
+
+    def should_generate_new_friendly_id?
+      new_record? || title_changed?
     end
 
     protected

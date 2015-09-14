@@ -9,7 +9,7 @@ describe Admin::MessagesController do
       get :edit, id: article.messages.first.id
 
       expect(response).to redirect_to(
-        edit_admin_article_path(article.id)
+        edit_admin_article_path(article)
       )
     end
   end

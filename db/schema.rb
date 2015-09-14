@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902201938) do
+ActiveRecord::Schema.define(version: 20150913155742) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -50,9 +50,11 @@ ActiveRecord::Schema.define(version: 20150902201938) do
     t.datetime "cover_updated_at"
     t.integer  "cover_picture_id"
     t.integer  "thumb_picture_id"
+    t.string   "slug"
   end
 
   add_index "articles", ["cover_picture_id"], name: "index_articles_on_cover_picture_id", using: :btree
+  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["thumb_picture_id"], name: "index_articles_on_thumb_picture_id", using: :btree
 
   create_table "articles_tags", id: false, force: true do |t|
@@ -158,6 +160,19 @@ ActiveRecord::Schema.define(version: 20150902201938) do
   end
 
   add_index "donated_messages", ["message_delivery_id"], name: "index_donated_messages_on_message_delivery_id", using: :btree
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"

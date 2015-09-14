@@ -8,7 +8,7 @@ feature 'Publisher edit his own article' do
     article = create(:article)
     user = create(:user, :publisher)
 
-    visit edit_admin_article_path(article, user: user)
+    visit edit_admin_article_path(article.id, user: user)
     fill_in 'articles_article_title', with: article_title
     click_on I18n.t('update')
     visit admin_articles_path
