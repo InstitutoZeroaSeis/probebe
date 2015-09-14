@@ -92,7 +92,7 @@ module Articles
     end
 
     def should_generate_new_friendly_id?
-      new_record? || title_changed?
+      new_record? || title_changed? || slug.nil?
     end
 
     protected
