@@ -9,7 +9,7 @@ class MessageDeliverySerializer < ActiveModel::Serializer
 
   def url
     if object.article.try(:publishable?)
-      post_url(id: object.article)
+      article_url(object.article)
     end
   end
 end
