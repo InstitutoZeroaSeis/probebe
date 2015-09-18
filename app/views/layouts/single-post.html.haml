@@ -9,9 +9,11 @@
 
     = csrf_meta_tags
     = render partial: 'flash_messages'
+    = render 'google_analytics'
 
     = yield :head
   %body{class: "#{params[:controller]}"}
+    = render 'tag_manager'
     = render 'sign_in'
     = render 'site_menu'
     = yield
