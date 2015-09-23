@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     resources :site_headers
     resources :site_landing_pages
     resources :site_mobile_images
+    resources :partners
     resources :site_users do
       get :authorize_receive_sms, on: :member
       get :unauthorize_receive_sms, on: :member

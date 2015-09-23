@@ -117,6 +117,11 @@ pt-BR:
         nineth_to_twelfth: 9 a 12 meses
         pregnancy: Gravidez
         thirteenth_to_eighteenth: 13 a 18 meses
+      partner:
+        name: Nome
+        text: Texto
+        logo: Logo
+        picture: Imagem
     errors:
       models:
         articles/article:

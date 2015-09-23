@@ -72,6 +72,10 @@ Carnival.configure do |config|
         {
           label: 'Site Mobile',
           link: '/admin/site_mobile_images'
+        },
+        {
+          label: 'Parceiros',
+          link: '/admin/partners'
         }
 
       ]

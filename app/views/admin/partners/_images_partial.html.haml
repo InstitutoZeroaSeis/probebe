@@ -1,0 +1,3 @@
+#probebe-images{:'ng-app' => 'gallery' }
+  = render 'probebe_gallery', picture: record.logo, field_name: 'partner[logo_id]', type: 'article_cover', ng_app_already_included: true, field_label: t('activerecord.attributes.partner.logo'), crop_ratio: 3.84
+  = render 'probebe_gallery', picture: record.picture, field_name: 'partner[picture_id]', type: 'article_thumb', ng_app_already_included: true, field_label: t('activerecord.attributes.partner.picture'), crop_ratio: 3.84
