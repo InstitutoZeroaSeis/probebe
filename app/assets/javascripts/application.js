@@ -26,6 +26,7 @@
 //= require bootstrap.min
 //= require owl.carousel
 //= require site-banner
+//= require partner
 //= require site-landing
 //= require angular
 //= require social-share-button

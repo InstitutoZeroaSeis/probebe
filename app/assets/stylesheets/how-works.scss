@@ -1,7 +1,14 @@
 .how-works-partner{
   display: block !important;
   position: relative !important;
-  background: #ccc !important;
+  margin-bottom: 20px;
+  background: #f0f0f0 !important;
+  .how-works-content{
+    color: #000 !important;
+    h3 {
+      margin: 10px !important;
+    }
+  }
 }
 
 

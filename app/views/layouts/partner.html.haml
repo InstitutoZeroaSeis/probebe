@@ -17,14 +17,13 @@
     = render 'tag_manager'
     = render 'how_works'
     = render 'sign_in'
-    = render 'site_menu'
+    = render 'partner_site_menu'
     = render 'partner_landing_page'
 
 
     %section.main.container-fuild
       = yield
     %footer.footer
-      = render 'sign_up_footer', source: @source unless current_user
       %section.footer-copyright
         .container
           = render 'site_footer'

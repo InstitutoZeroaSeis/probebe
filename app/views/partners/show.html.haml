@@ -1,11 +1,12 @@
 .partner-section
   %figure.partner-image{ style: "background-image: url(#{@partner.background_image})" }
 
-  .partner-content
+  .partner-content.container
     %figure.partner-logo{ style: "background-image: url(#{@partner.logo.data})" }
     .partner-name
-      = @partner.name
+      = raw @partner.name
     .partner-text
-      = "ASD ASD ADS ASDAS DASDASD ASDAS DAS"
+      = raw @partner.text
 
   = render 'partners/how_works_in_partner'
+  = render 'partners/what_in_partner'

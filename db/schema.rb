@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923021803) do
+ActiveRecord::Schema.define(version: 20150923184035) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -206,7 +206,10 @@ ActiveRecord::Schema.define(version: 20150923021803) do
     t.integer  "picture_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "partners", ["slug"], name: "index_partners_on_slug", unique: true, using: :btree
 
   create_table "profiles", force: true do |t|
     t.date     "birth_date"
