@@ -1,0 +1,11 @@
+.partner-section
+  %figure.partner-image{ style: "background-image: url(#{@partner.background_image})" }
+
+  .partner-content
+    %figure.partner-logo{ style: "background-image: url(#{@partner.logo.data})" }
+    .partner-name
+      = @partner.name
+    .partner-text
+      = "ASD ASD ADS ASDAS DASDASD ASDAS DAS"
+
+  = render 'partners/how_works_in_partner'

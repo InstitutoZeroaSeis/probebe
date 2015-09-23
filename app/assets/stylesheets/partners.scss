@@ -11,3 +11,51 @@
     font-weight: 300;
   }
 }
+
+.partner-section {
+  margin-top: 60px;
+
+  .partner-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1280px;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 200px;
+  }
+
+  .partner-content{
+    position: relative;
+    min-height: 100px;
+  }
+
+  .partner-logo {
+    background-position: center;
+    background-repeat: no-repeat;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: -66px;
+    margin-left: 100px;
+  }
+
+  .partner-name{
+    position: absolute;
+    top: -32px;
+    margin-left: 265px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .partner-text{
+    margin-left: 265px;
+    padding-top: 30px;
+  }
+
+}

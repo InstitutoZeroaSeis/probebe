@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     end
     get :raw, on: :member
   end
+
+  resources :partners, only: :show
   get 'articles/page/:page_id' => 'articles#index', as: :paged_articles
   resources(:tags, param: :name, only: []) { resources :articles, only: :index }
   resources(:categories) { resources :articles, only: :index }
