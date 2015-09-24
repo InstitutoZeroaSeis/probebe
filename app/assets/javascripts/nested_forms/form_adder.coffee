@@ -1,9 +1,11 @@
 #= require nested_forms/attribute_identifiers_replacer
+#= require nested_forms/form_utils
 
 @NestedForms ||= {}
 class @NestedForms.FormAdder
   constructor: (@selector, element) ->
     @element = $(element)
+    @utils = new NestedForms.FormUtils()
 
   bind: ->
     self = @
@@ -20,3 +22,4 @@ class @NestedForms.FormAdder
     childrenForm = $(button).parent().parent().find('.children-form')
     childrenForm.append(new_element)
     setupDatePickers()
+    @utils.replaceChildrenFormIndexes()

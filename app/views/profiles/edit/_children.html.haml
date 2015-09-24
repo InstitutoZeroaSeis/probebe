@@ -1,12 +1,10 @@
 .born-or-not.container
   %h3 Cadastrar Filhos
   .children-form
+    - children_number = 0
     = f.simple_fields_for :children do |ff|
-      = render 'children/child_fields', f: ff
+      - children_number += 1
+      = render 'children/child_fields', f: ff, children_number: children_number
 
   %button.add_fields.add-children-button{ data: { fields: template_for_association(f, :children, 'children/child_fields') } }
-    %span.plus-symbol-container
-      %span.plus-symbol
-        +
-    %label
-      Adicionar
+    Adicionar outro filho
