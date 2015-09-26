@@ -538,3 +538,37 @@ input#birth_date {
     }
   }
 }
+
+.profile-cofirmation {
+
+  img {
+    width: 70px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h3{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+  }
+
+  button{
+    border-radius: 3px;
+    font-weight: 200;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    line-height: 1.42857;
+    text-align: center;
+    width: 250px;
+    border: 0px none;
+    background-color: #F69343;
+    color: #FFF;
+    height: 40px;
+    margin: 10px auto 0px auto;
+    position: relative;
+    top: 10px;
+  }
+}
