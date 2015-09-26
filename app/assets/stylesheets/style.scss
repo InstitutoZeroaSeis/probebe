@@ -34,7 +34,17 @@ section.main.container-fuild {
   width: 222px;
   background-size: 100%;
   margin-left: -7px;
+  cursor: pointer;
 
+  a, a:hover, a:visited, a:link, a:active
+  {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    float: left;
+  }
   figure {
     background: no-repeat url(/assets/signup-banner-sidebar.png);
     height: 113px;
@@ -45,25 +55,39 @@ section.main.container-fuild {
   }
 
   label {
+    cursor: pointer;
     float: left;
     width: 70%;
     font-weight: 200;
-    font-size: 15px;
+    font-size: 14px;
     margin-top: 13px;
   }
 
 }
 
+
+
 .signup-banner-footer{
   background: no-repeat url(/assets/signup-banner-background.png);
   height: 96px;
   border-radius: 4px;
-  color: white;
   float: left;
   margin-top: 20px;
   width: 100%;
   background-size: 100%;
   background-position-y: -130px;
+  text-decoration: none;
+  cursor: pointer;
+
+  a, a:hover, a:visited, a:link, a:active
+  {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    float: left;
+  }
 
   figure {
     background: no-repeat url(/assets/signup-banner-footer.png);
@@ -82,6 +106,40 @@ section.main.container-fuild {
     font-weight: 200;
     font-size: 17px;
     margin-top: 33px;
+  }
+}
+
+.single-post-info{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.single-post-tags {
+  figure{
+    background: no-repeat url('/assets/tag.png');
+    height: 16px;
+    float: left;
+    width: 16px;
+    margin-top: 4px;
+    margin-right: 8px;
+  }
+
+  a {
+    color: rgb(246, 147, 67);
+  }
+}
+
+.single-post-author{
+  a {
+    color: rgb(246, 147, 67);
+  }
+
+  .single-post-author-info{
+    label{
+      font-weight: 100;
+      font-style: italic;
+      font-size: 13px;
+    }
   }
 }
 
@@ -435,4 +493,48 @@ input#birth_date {
 
 .partner-menu-navbar{
   float: right;
+}
+
+.social-share-button-wrapper{
+  width: 100%;
+  text-align: center;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+  float: left;
+  margin-top: 30px;
+
+  p {
+    text-transform: uppercase;
+  }
+
+  .social-share-button{
+    background:#fff;
+    padding:0 10px;
+  }
+
+  a{
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.social-share-button-twitter {
+  background: no-repeat url('/assets/twitter-icon.png') !important;
+}
+
+.social-share-button-facebook {
+  background: no-repeat url('/assets/facebook-icon.png') !important;
+}
+
+.social-share-button-google_plus {
+  background: no-repeat url('/assets/googleplus-icon.png') !important;
+}
+
+.related-post{
+  p {
+    a{
+      color: #000;
+      font-weight: 400;
+    }
+  }
 }

@@ -1,4 +1,11 @@
 $ ->
+  if $('.blog-tags ul').outerHeight() > 160
+    $('.blog-tags').addClass('collapsed')
+
+  $('.more').on 'click', (event) ->
+    event.preventDefault()
+    $('.blog-tags').removeClass('collapsed')
+
   if $('.site-banner-list li').length <= 1
     return
   carousel = $('.site-banner-list')
@@ -20,12 +27,6 @@ $ ->
     $(".site-banner-dot").removeClass('is-active')
     $(".step-#{current}").addClass('is-active')
 
-  if $('.blog-tags ul').outerHeight() > 160
-    $('.blog-tags').addClass('collapsed')
-
-  $('.more').on 'click', (event) ->
-    event.preventDefault()
-    $('.blog-tags').removeClass('collapsed')
 
   $('.site-banner-dot').click ->
     carousel_position = carousel.data('owlCarousel').current() - 2

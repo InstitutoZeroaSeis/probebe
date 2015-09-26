@@ -20,41 +20,42 @@
         %p
           = raw @article.text
 
-        %hr
-        %p.lead
-          %img{width: 50, height: 50, src: @article.author_photo_url}
-          = t('views.blog.by', author: @article.author_name)
-        %p
-          = @article.author_bio
+        .row.single-post-info
+          .single-post-tags.col-md-8
+            %figure
+            = render @article.tags
 
-        %p
-          = link_to t('views.blog.view_all_author_articles'), articles_path(author_id: @article.original_author_id)
-        %p
-          = social_share_button_tag(@article.title, popup: true, :'data-type' => '')
-
-        %hr
-
-        .single-post-tags
-          %p
-            %strong.lead= t('views.blog.tags')
-          %p= render @article.tags
+          .single-post-author.col-md-4.row
+            %img.col-md-2{width: 50, height: 50, src: @article.author_photo_url}
+            .single-post-author-info.col-md-10
+              = t('views.blog.by', author: ' ')
+              = link_to @article.author_name, articles_path(author_id: @article.original_author_id)
+              %label
+                = l(@article.created_at, format: '%d de %B de %Y' )
 
         .signup-banner-footer
-          %figure
-          %label
-            %b
-              Cadastre-se
-            e receba mensagens sobre o
-            %b
-              seu bebê
-            direto no
-            %b
-              celular!
+          %a{href: '/#sign-up'}
+            %figure
+            %label
+              %b
+                Cadastre-se
+              e receba mensagens sobre o
+              %b
+                seu bebê
+              direto no
+              %b
+                celular!
+
+
+        .social-share-button-wrapper
+          %p
+            Compartilhe
+          = social_share_button_tag(@article.title, popup: true, :'data-type' => '')
 
 
         - if @article.related_articles.size > 0
           %p
-            %h2= t('views.blog.related_post')
+            %h4= t('views.blog.related_post')
             = render partial: 'related_article', collection: @article.related_articles
 
         %ul.pager
