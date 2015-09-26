@@ -54,6 +54,37 @@ section.main.container-fuild {
 
 }
 
+.signup-banner-footer{
+  background: no-repeat url(/assets/signup-banner-background.png);
+  height: 96px;
+  border-radius: 4px;
+  color: white;
+  float: left;
+  margin-top: 20px;
+  width: 100%;
+  background-size: 100%;
+  background-position-y: -130px;
+
+  figure {
+    background: no-repeat url(/assets/signup-banner-footer.png);
+    height: 119px;
+    position: relative;
+    width: 14%;
+    float: left;
+    top: -25px;
+    background-size: 100%;
+    left: 17px;
+  }
+
+  label {
+    float: right;
+    width: 78%;
+    font-weight: 200;
+    font-size: 17px;
+    margin-top: 33px;
+  }
+}
+
 .signed-in{
 	margin-top: 30px;
 	margin-bottom: 280px;

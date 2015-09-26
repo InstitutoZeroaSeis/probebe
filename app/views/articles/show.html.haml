@@ -39,6 +39,19 @@
             %strong.lead= t('views.blog.tags')
           %p= render @article.tags
 
+        .signup-banner-footer
+          %figure
+          %label
+            %b
+              Cadastre-se
+            e receba mensagens sobre o
+            %b
+              seu bebê
+            direto no
+            %b
+              celular!
+
+
         - if @article.related_articles.size > 0
           %p
             %h2= t('views.blog.related_post')
