@@ -16,7 +16,6 @@
           %p.periodo-label{ class: "period-#{@article.pregnancy_or_child_life_period}" }
             = t("views.blog.#{@article.pregnancy_or_child_life_period}")
           %p.categoria-label{ style: "background-color: #{@article.category_color}" }= @article.category_name
-          %hr
         %p
           = raw @article.text
 
@@ -50,7 +49,8 @@
         .social-share-button-wrapper
           %p
             Compartilhe
-          = social_share_button_tag(@article.title, popup: true, :'data-type' => '')
+          .social-share-button-lines
+            = social_share_button_tag(@article.title, popup: true, :'data-type' => '')
 
 
         - if @article.related_articles.size > 0

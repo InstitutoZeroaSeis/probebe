@@ -503,6 +503,14 @@ input#birth_date {
   float: left;
   margin-top: 30px;
 
+  .social-share-button-lines{
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+  }
+
   p {
     text-transform: uppercase;
   }
@@ -510,6 +518,10 @@ input#birth_date {
   .social-share-button{
     background:#fff;
     padding:0 10px;
+    display: inline;
+    /* padding: 23px; */
+    top: 13px;
+    position: relative;
   }
 
   a{

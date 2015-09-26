@@ -165,7 +165,25 @@
   padding: 0 10px 0 0px;
   margin-right: 4%;
   width: 46% !important;
-  max-height: 500px;
+  max-height: 530px;
+
+  label{
+    top: 14px;
+    position: relative;
+    font-size: 12px;
+    font-weight: 100;
+    font-style: italic;
+  }
+
+  .social-share-button-wrapper {
+    margin: 0px !important;
+
+    .social-share-button {
+      a {
+        opacity: 0.5;
+      }
+    }
+  }
 }
 
 .single-post {

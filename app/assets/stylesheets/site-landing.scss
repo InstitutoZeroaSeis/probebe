@@ -52,12 +52,16 @@
       @include default-button;
       border-color: #F69343;
 
-      width: 264px;
+      width: 230px;
       font-size: 18px;
       font-weight: 300;
       height: 56px;
       border-radius: 2px;
     }
+  }
+
+  .site-landing-buttons-sign-in{
+    margin-right: 30px;
   }
 
   .site-landing-list{
