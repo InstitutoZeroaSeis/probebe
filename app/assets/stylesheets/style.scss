@@ -24,6 +24,36 @@ section.main.container-fuild {
 	margin-top: 20px;
 }
 
+.signup-banner-sidebar{
+  background: no-repeat url(/assets/signup-banner-background.png);
+  height: 96px;
+  border-radius: 4px;
+  color: white;
+  float: left;
+  margin-top: 20px;
+  width: 222px;
+  background-size: 100%;
+  margin-left: -7px;
+
+  figure {
+    background: no-repeat url(/assets/signup-banner-sidebar.png);
+    height: 113px;
+    position: relative;
+    width: 30%;
+    float: left;
+    top: -25px;
+  }
+
+  label {
+    float: left;
+    width: 70%;
+    font-weight: 200;
+    font-size: 15px;
+    margin-top: 13px;
+  }
+
+}
+
 .signed-in{
 	margin-top: 30px;
 	margin-bottom: 280px;
