@@ -14,4 +14,4 @@
 
   .social-share-button-wrapper
     .social-share-button-lines
-      = social_share_button_tag(article.title, popup: true, :'data-type' => '')
+      = social_share_button_tag(article.title, popup: true, :url => article_url(article),  :'data-type' => '')
