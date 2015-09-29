@@ -2,7 +2,8 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   model_name 'User'
 
   field :id,
-        actions: [:index, :show], sortable: false
+        :sortable => {:direction => :desc, :default => true},
+        actions: [:index, :show]
 
   field :email,
         actions: [:index, :show], sortable: true,
@@ -30,9 +31,6 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   field :profile_edit,
         actions: [:edit],
         as: :partial
-
-  field :confirmation_sent_at,
-        :sortable => {:direction => :desc, :default => true}
 
   field :children,
         actions: [:show],
