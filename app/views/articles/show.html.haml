@@ -32,18 +32,19 @@
               %label
                 = l(@article.created_at, format: '%d de %B de %Y' )
 
-        .signup-banner-footer
-          %a{href: '/#sign-up'}
-            %figure
-            %label
-              %b
-                Cadastre-se
-              e receba mensagens sobre o
-              %b
-                seu bebê
-              direto no
-              %b
-                celular!
+        - if current_user.nil?
+          .signup-banner-footer
+            %a{href: '/#sign-up'}
+              %figure
+              %label
+                %b
+                  Cadastre-se
+                e receba mensagens sobre o
+                %b
+                  seu bebê
+                direto no
+                %b
+                  celular!
 
 
         .social-share-button-wrapper

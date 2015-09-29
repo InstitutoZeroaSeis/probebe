@@ -1,18 +1,19 @@
 %aside.blog-sidebar.col-md-3
 
   %nav
-    .signup-banner-sidebar
-      %a{href: '/#sign-up'}
-        %figure
-        %label
-          %b
-            Cadastre-se
-          e receba mensagens sobre o
-          %b
-            seu bebê
-          direto no
-          %b
-            celular!
+    - if current_user.nil?
+      .signup-banner-sidebar
+        %a{href: '/#sign-up'}
+          %figure
+          %label
+            %b
+              Cadastre-se
+            e receba mensagens sobre o
+            %b
+              seu bebê
+            direto no
+            %b
+              celular!
 
   %nav.blog-nav
     %ul.home-categories-list.category-health
