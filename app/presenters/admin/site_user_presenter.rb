@@ -6,7 +6,7 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
         actions: [:index, :show]
 
   field :email,
-        actions: [:index, :show], sortable: true,
+        actions: [:index, :show, :edit], sortable: true,
         advanced_search: { operator: :like }
 
   field 'profile.name',
