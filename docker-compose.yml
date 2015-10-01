@@ -24,7 +24,6 @@ web:
     - 3000:3000
   volumes:
     - .:/app
-    - ../carnival:/carnival
   working_dir: /app
 
 mail:

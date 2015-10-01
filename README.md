@@ -34,6 +34,9 @@ To run the application just issue a ```docker-compose up -d```, this will start
 the application, after the process is finished the application should be
 accessible through [web.probebe.dev](http://web.probebe.dev)
 
+** If it is not accessible run ```docker-compose ps```.
+If the web contaner is exit run ```docker-compose run web bash``` and ``` bundle install --path=vendor/bundle```
+
 #### Testing
 To run the tests run a ```docker-compose run web bash```, this will start a
 shell into the application context in which you'll be able to run a bin/rspec to
