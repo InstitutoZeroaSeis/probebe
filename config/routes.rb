@@ -42,7 +42,9 @@ Rails.application.routes.draw do
     post 'donated_messages/mark_as_sent' => 'donated_messages#mark_as_sent'
     resources :children, only: :index
     post 'd3d4b74ea38c163c820cd84b25f5/a8eecbf2d604ff6769fd64f1a492' => 'message_deliveries#create'
-    post 'users' => 'users#create'
+    devise_scope :user do
+      post "/users" => 'users#create'
+    end
   end
 
   mount_carnival_at 'admin'

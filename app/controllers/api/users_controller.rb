@@ -1,12 +1,10 @@
-class Api::UsersController < ApplicationController
+class Api::UsersController < Devise::RegistrationsController
+  include HeaderAuthenticationConcern
+
   protect_from_forgery with: :null_session
-  # before_action :configure_permitted_parameters
+  before_action :configure_permitted_parameters
   respond_to :json
   layout "application", only: [:edit]
-
-  def create
-    render json: {message: "ok"}
-  end
 
   protected
 
