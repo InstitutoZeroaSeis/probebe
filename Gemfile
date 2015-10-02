@@ -44,6 +44,7 @@ gem 'angularjs-rails', '~> 1.4.0'
 gem 'social-share-button', '~> 0.1.8'
 gem 'rest-client', '~> 1.8.0'
 gem 'friendly_id', '~> 5.1.0'
+gem 'newrelic_rpm', '~> 3.13.2'
 
 group :development do
   gem 'better_errors', '0.9.0'
