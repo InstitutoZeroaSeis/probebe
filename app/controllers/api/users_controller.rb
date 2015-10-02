@@ -1,6 +1,6 @@
 class Api::UsersController < Devise::RegistrationsController
-  include HeaderAuthenticationConcern
-
+  # include HeaderAuthenticationConcern
+  skip_before_action :verify_authenticity_token
   protect_from_forgery with: :null_session
   before_action :configure_permitted_parameters
   respond_to :json
