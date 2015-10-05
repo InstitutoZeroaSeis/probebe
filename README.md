@@ -37,7 +37,12 @@ accessible through [web.probebe.dev](http://web.probebe.dev)
 ** If it is not accessible run ```docker-compose ps```.
 If the web contaner is exit run ```docker-compose run web bash``` and ``` bundle install --path=vendor/bundle```
 
+or ```docker-compose run --service-ports web bash```
+
+
+
 #### Testing
 To run the tests run a ```docker-compose run web bash```, this will start a
 shell into the application context in which you'll be able to run a bin/rspec to
 run all the specs
+

@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     devise_scope :user do
       post "/users" => 'users#create'
     end
+    post "profiles" => 'profiles#update'
   end
 
   mount_carnival_at 'admin'
