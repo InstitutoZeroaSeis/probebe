@@ -9,3 +9,6 @@
   - if timeline_day.has_event?
     .entry
       %p= link_to timeline_day.event_content, timeline_day.event_url
+      .social-share-button-wrapper-timeline
+        .social-share-button-lines-timeline
+          = social_share_button_tag(timeline_day.event_content, popup: true, :url => timeline_day.event_url,  :'data-type' => '')
