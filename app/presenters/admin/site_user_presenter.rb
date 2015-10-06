@@ -39,6 +39,10 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
         actions: [:show],
         as: :partial
 
+  field :sms_buttons,
+        actions: [:show, :edit],
+        as: :partial
+
   action :show
   action :edit
   action :impersonate
