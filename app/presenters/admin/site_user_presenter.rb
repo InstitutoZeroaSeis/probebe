@@ -66,7 +66,8 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
     when :authorize_receive_sms
       record.profile.cell_phone.present? &&
       record.profile.children.size > 0 &&
-      !record.profile.authorized_receive_sms?
+      !record.profile.authorized_receive_sms? &&
+      record.profile.recipient?
     when :unauthorize_receive_sms
       record.profile.cell_phone.present? &&
       record.profile.children.size > 0 &&

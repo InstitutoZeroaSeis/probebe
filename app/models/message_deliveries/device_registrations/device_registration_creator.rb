@@ -7,6 +7,7 @@ module MessageDeliveries
         registration.assign_attributes params
         registration.profile = profile
         profile.possible_donor! if !profile.donor?
+        profile.unauthorize_receive_sms!
         registration.save
         create_sns_endpoint(registration)
         registration
