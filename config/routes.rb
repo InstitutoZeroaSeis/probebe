@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :messages, only: :show
     resources :profiles, only: [:index]
     post 'profiles/max_recipient_children' => 'profiles#update_max_recipient_children'
+    post "profiles" => 'profiles#update'
     resources :donated_messages, only: [:index]
     post 'donated_messages/mark_as_sent' => 'donated_messages#mark_as_sent'
     resources :children, only: :index
@@ -45,7 +46,6 @@ Rails.application.routes.draw do
     devise_scope :user do
       post "/users" => 'users#create'
     end
-    post "profiles" => 'profiles#update'
   end
 
   mount_carnival_at 'admin'

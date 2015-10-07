@@ -20,6 +20,17 @@ module Api
       end
     end
 
+    def update_max_recipient_children
+      if params[:max_recipient_children].to_i > 0
+        current_profile.donor!
+        current_profile.max_recipient_children = params[:max_recipient_children]
+        current_profile.save
+        MessageDeliveries::DonatedMessages::
+          DonorRecipientCreator.create(current_profile)
+      end
+      head 200
+    end
+
     protected
 
     def update_password_and_profile
@@ -50,15 +61,5 @@ module Api
       profile_params ? profile_params.permit(personal_attributes + mother_attributes + contact_attributes) : {}
     end
 
-    def update_max_recipient_children
-      if params[:max_recipient_children].to_i > 0
-        current_profile.donor!
-        current_profile.max_recipient_children = params[:max_recipient_children]
-        current_profile.save
-        MessageDeliveries::DonatedMessages::
-          DonorRecipientCreator.create(current_profile)
-      end
-      head 200
-    end
   end
 end
