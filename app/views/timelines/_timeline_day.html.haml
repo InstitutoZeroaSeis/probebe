@@ -11,4 +11,5 @@
       %p= link_to timeline_day.event_content, timeline_day.event_url
       .social-share-button-wrapper-timeline
         .social-share-button-lines-timeline
-          = social_share_button_tag(timeline_day.event_content, popup: true, :url => timeline_day.event_url,  :'data-type' => '')
+          - path = "#{request.protocol}#{request.host_with_port}#{timeline_day.event_url}"
+          = social_share_button_tag(timeline_day.event_content, popup: true, :url => path,  :'data-type' => '')
