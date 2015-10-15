@@ -16,7 +16,7 @@ module Api
         render json: {message: "ok"}
       else
         @profile.errors.add(:base, @user.errors.full_messages.first) if !@user.change_omniauth_password?
-       render json: {message: @profile.errors}
+       render json: {errors: @profile.errors}, status: :bad_request
       end
     end
 
