@@ -13,6 +13,7 @@ module HeaderAuthenticationConcern
     if user.try(:valid_password?, password)
       sign_out
       sign_in user
+      impersonate_user user
     else
       head :unauthorized
     end
