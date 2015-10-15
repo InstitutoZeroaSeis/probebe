@@ -1,0 +1,5 @@
+.sms-buttons
+  - if record.profile && record.profile.authorized_receive_sms
+    = link_to t('carnival.unauthorize_receive_sms'), authorize_receive_sms_admin_site_user_path(id: record.id)
+  - else
+    = link_to t('carnival.authorize_receive_sms'), authorize_receive_sms_admin_site_user_path(id: record.id)

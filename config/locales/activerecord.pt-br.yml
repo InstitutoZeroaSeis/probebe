@@ -107,6 +107,7 @@ pt-BR:
         profile_street: Rua
         profile_primary_cell_phone_number: Celular
         children: Filhos
+        sms_buttons: Envio de SMS
       site_banner:
         banner_type: Tipo
         title: Título
