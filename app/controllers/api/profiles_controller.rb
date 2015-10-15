@@ -16,8 +16,19 @@ module Api
         render json: {message: "ok"}
       else
         @profile.errors.add(:base, @user.errors.full_messages.first) if !@user.change_omniauth_password?
-       render json: {message: @profile.errors}
+       render json: {errors: @profile.errors}, status: :bad_request
       end
+    end
+
+    def update_max_recipient_children
+      if params[:max_recipient_children].to_i > 0
+        current_profile.donor!
+        current_profile.max_recipient_children = params[:max_recipient_children]
+        current_profile.save
+        MessageDeliveries::DonatedMessages::
+          DonorRecipientCreator.create(current_profile)
+      end
+      head 200
     end
 
     protected
@@ -50,15 +61,5 @@ module Api
       profile_params ? profile_params.permit(personal_attributes + mother_attributes + contact_attributes) : {}
     end
 
-    def update_max_recipient_children
-      if params[:max_recipient_children].to_i > 0
-        current_profile.donor!
-        current_profile.max_recipient_children = params[:max_recipient_children]
-        current_profile.save
-        MessageDeliveries::DonatedMessages::
-          DonorRecipientCreator.create(current_profile)
-      end
-      head 200
-    end
   end
 end
