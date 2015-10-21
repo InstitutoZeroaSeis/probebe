@@ -58,6 +58,22 @@ RSpec.describe MessageDeliveries::MessageDeliveryCreator, type: :model do
     end
   end
 
+  context "when the profile has two children" do
+    before { @child = create(:child, birth_date: 5.months.ago, profile: @profile) }
+    before { @child2 = create(:child, birth_date: 5.months.ago, profile: @profile) }
+    before { @message = create(:message, :with_article, :male, maximum_valid_week: 22, baby_target_type: 'born') }
+    subject { MessageDeliveries::MessageDeliveryCreator.new(@system_date).create_deliveries_for_all_children }
+    it 'is expected to correctly create the message delivery' do
+      expect(subject.first.message).to eq(@message)
+      expect(subject.first.child).to eq(@child)
+      expect(subject.first.message_for_test).to be false
+      expect(subject.first.cell_phone_number).to eq(@child.primary_cell_phone_number)
+      expect(subject.first.device_registrations).to eq(@child.device_registrations)
+      expect(subject.first.sms_allowed).to eq(@child.authorized_receive_sms)
+      expect(subject.first.status).to eq('not_sent')
+    end
+  end
+
   context 'when the child has a donor' do
     before { @donor = create(:profile) }
     before { @child = create(:child, profile: @profile, donor: @donor, birth_date: (Child::PREGNANCY_DURATION_IN_WEEKS.weeks - 5.months).from_now) }

@@ -29,7 +29,7 @@ module MessageDeliveries
     end
 
     def create_donated_message(donor, message_delivery)
-      return unless message_delivery
+      return unless message_delivery || message_delivery.new_record?
       DonatedMessage.create donor: donor, message_delivery: message_delivery
     end
 
