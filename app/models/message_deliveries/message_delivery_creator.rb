@@ -18,6 +18,7 @@ module MessageDeliveries
 
     def create_message_delivery(child, message)
       return unless message
+      return if child.message_deliveries.created_today.size > 0
       MessageDelivery.create(
         message: message,
         child: child,
