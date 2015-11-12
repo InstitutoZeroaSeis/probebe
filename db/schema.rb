@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923184035) do
+ActiveRecord::Schema.define(version: 20151112133853) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -112,13 +112,14 @@ ActiveRecord::Schema.define(version: 20150923184035) do
 
   create_table "children", force: true do |t|
     t.string   "name"
-    t.integer  "gender",     default: 2
+    t.integer  "gender",              default: 2
     t.date     "birth_date"
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "born",       default: false
+    t.boolean  "born",                default: false
     t.integer  "donor_id"
+    t.datetime "was_recipient_until"
   end
 
   create_table "ckeditor_assets", force: true do |t|
