@@ -20,17 +20,18 @@
           = raw @article.text
 
         .row.single-post-info
-          .single-post-tags.col-md-8
+          .single-post-tags.col-md-12
             %figure
             = render @article.tags
 
-          .single-post-author.col-md-4.row
+          .single-post-author.col-md-12
             %img{width: 50, height: 50, src: @article.author_photo_url}
             .single-post-author-info
               = t('views.blog.by', author: ' ')
               = link_to @article.author_name, articles_path(author_id: @article.original_author_id)
-              %label
-                = l(@article.created_at, format: '%d de %B de %Y' )
+              .single-post-author-description
+                = @article.author_bio
+
 
         - if current_user.nil?
           .signup-banner-footer
