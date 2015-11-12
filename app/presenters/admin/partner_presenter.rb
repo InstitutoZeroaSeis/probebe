@@ -4,6 +4,10 @@ class Admin::PartnerPresenter < Carnival::BaseAdminPresenter
   field :name,
     actions: [:index, :show, :new, :edit]
 
+  field :show_path,
+    actions: [:index],
+    sortable: false
+
   field :text,
     as: :ckeditor,
     actions: [:index, :show, :edit, :new]

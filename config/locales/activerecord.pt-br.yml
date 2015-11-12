@@ -121,6 +121,7 @@ pt-BR:
       partner:
         name: Nome
         text: Texto
+        show_path: URL
         logo: Logo
         picture: Imagem
     errors:
