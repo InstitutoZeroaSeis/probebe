@@ -26,7 +26,7 @@ RUN bundle exec rake assets:precompile
 
 # Comment this line on /etc/pam.d/cron
 # Cron doesnt work with it
-RUN sed -i '/session    required   pam_loginuid.so/c\#session    required   pam_loginuid.so' /etc/pam.d/crond
+RUN sed -i '/session    required   pam_loginuid.so/c\#session    required   pam_loginuid.so' /etc/pam.d/cron
 
 RUN whenever -w
 
