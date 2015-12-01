@@ -21,7 +21,7 @@
     %section.main.container-fuild
       = yield
     %footer.footer
-      = render 'sign_up_footer', source: '' unless current_user
+      = render 'sign_up_footer', source: session[:utm_source]
       %section.footer-copyright
         .container
           = render 'site_footer'

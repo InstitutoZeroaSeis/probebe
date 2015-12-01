@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @source = get_source
     if current_user
       @categories_articles = articles_grouped_by_category
     else
@@ -16,9 +15,5 @@ class HomeController < ApplicationController
     end
   end
 
-  def get_source
-    return params[:utm_source] if params[:utm_source].present?
-    URI(request.referer).path if request.referer.present?
-    ''
-  end
+
 end
