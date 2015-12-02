@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     post 'd3d4b74ea38c163c820cd84b25f5/a8eecbf2d604ff6769fd64f1a492' => 'message_deliveries#create'
     devise_scope :user do
       post "/users" => 'users#create'
+      post '/users/reset_password' => 'passwords#create'
     end
   end
 
