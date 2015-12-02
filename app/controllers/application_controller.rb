@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   after_filter :set_csrf_cookie_for_ng
 
+  before_action :utm_source
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to carnival_root_path, alert: exception.message
   end
@@ -43,5 +45,18 @@ private
     else
       carnival_root_path
     end
+  end
+
+  def utm_source
+    source = get_source
+    session[:utm_source] = source if source.present?
+  end
+
+  def get_source
+    return params[:utm_source] if params[:utm_source].present?
+    if request.referer.present?
+      return request.referer if URI(request.referer).host != request.host
+    end
+    ''
   end
 end
