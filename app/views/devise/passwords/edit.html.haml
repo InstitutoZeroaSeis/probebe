@@ -1,15 +1,22 @@
-.login-container
+= render 'site_header'
+
+.footer-sign-up.container#sign-up
   %h2= t('carnival_devise.passwords.change_message')
+
+%section.main.container-fuild
   = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
     = devise_error_messages!
     = f.hidden_field :reset_password_token
-    %div
-      = f.label :password, t('carnival_devise.passwords.new')
-      %br/
-      = f.password_field :password, :autofocus => true
-    %div
-      = f.label :password_confirmation, t('carnival_devise.passwords.confirm')
-      %br/
-      = f.password_field :password_confirmation
-    %div= f.submit t('carnival_devise.passwords.change')
-    = render "devise/shared/links"
+    .container
+      .row.form-group
+        .col-sm-12
+          = f.label :password, t('carnival_devise.passwords.new')
+          %br/
+          = f.password_field :password, :autofocus => true, :class => "form-control"
+      .row.form-group
+        .col-sm-12
+          = f.label :password_confirmation, t('carnival_devise.passwords.confirm')
+          %br/
+          = f.password_field :password_confirmation, :class => "form-control"
+
+    %div= f.submit t('carnival_devise.passwords.change'), :class => "btn btn-default"
