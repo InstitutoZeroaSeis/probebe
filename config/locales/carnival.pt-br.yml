@@ -11,6 +11,7 @@ pt-BR:
       completed_profile: Perfis Completos
       authorized_receive_sms: Autorizados a receber SMS
       unauthorized_receive_sms: Não autorizados a receber SMS
+      with_device: Com aplicativo
   carnival:
     errors:
       invalid_field:  "As actions '%{actions}' não são válidas para o campo '%{field}' do presenter '%{presenter}'"
