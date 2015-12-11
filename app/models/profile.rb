@@ -11,6 +11,8 @@ class Profile < ActiveRecord::Base
   enum cell_phone_system: CELL_PHONE_SYSTEM_ENUM
   enum profile_type: PROFILE_TYPE_ENUM
 
+  serialize :message_days
+
   belongs_to :user
   has_many :donations_children, class_name: 'Child', foreign_key: :donor_id
   has_many :children

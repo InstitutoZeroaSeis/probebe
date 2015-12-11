@@ -89,6 +89,7 @@ pt-BR:
         state: Estado
         street: Rua
         children: Filhos
+        message_days: Dias de receber mensagens
       tag:
         id: Id
         name: Nome

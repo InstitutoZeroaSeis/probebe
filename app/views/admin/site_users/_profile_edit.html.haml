@@ -4,6 +4,7 @@
   = p.input :city
   = p.input :street
   = p.input :cell_phone, input_html: { class: 'phone' }
+  = p.input :message_days, collection: ['Se', 'Te', 'Qa', 'Qi', 'Sx', 'Sa', 'Do'], as: :check_boxes
   - if record.present? && record.profile.children.size > 0
     .row
       .nested-form
