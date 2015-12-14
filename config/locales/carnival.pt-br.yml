@@ -240,6 +240,11 @@ pt-BR:
         name: Nome
         photo: Foto
         sign_in_count: Total de acessos
+      birthday_card:
+        avatar: Imagem
+        type: Período
+        age: idade
+        text: Texto
     errors:
       template:
         header:

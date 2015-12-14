@@ -77,6 +77,7 @@ Rails.application.routes.draw do
       get :unauthorize_receive_sms, on: :member
     end
     resources :tags
+    resources :birthday_cards
     get 'articles/:id/show_activity_log' => 'articles#show_activity_log'
     get 'site_users/:id/stop_impersonating' => 'site_users#stop_impersonating', as: :stop_impersonating
     get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile

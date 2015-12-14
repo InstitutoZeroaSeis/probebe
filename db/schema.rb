@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208180219) do
+ActiveRecord::Schema.define(version: 20151214162805) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -82,6 +82,18 @@ ActiveRecord::Schema.define(version: 20151208180219) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "child_id"
+  end
+
+  create_table "birthday_cards", force: true do |t|
+    t.integer  "age"
+    t.text     "text"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "type",                default: 0
   end
 
   create_table "categories", force: true do |t|

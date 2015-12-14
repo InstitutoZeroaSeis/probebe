@@ -49,6 +49,10 @@ Carnival.configure do |config|
         {
           label: 'authors',
           link: '/admin/authors'
+        },
+        {
+          label: 'birthday_card',
+          link: '/admin/birthday_cards'
         }
       ]
     },

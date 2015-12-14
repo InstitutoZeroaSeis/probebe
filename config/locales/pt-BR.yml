@@ -46,6 +46,9 @@ pt-BR:
     health: Saúde
     behavior: Desenvolvimento
     security: Segurança
+  _birthday_cards_type: &birthday_cards_type
+    week: Semana
+    month: Mês
   profile_messages:
     completed_without_smartphone: Voce fez o cadastro do ProBebe. As mensagens vao ser enviadas por SMS para este numero. Aguarde um novo SMS indicando que o envio foi liberado.
     completed_with_smartphone: Voce fez o cadastro do ProBebe com sucesso. Entre na loja e baixe o aplicativo para começar a receber as mensagens.
@@ -112,5 +115,8 @@ pt-BR:
         role:
           admin: "Administrador"
           publisher: "Editor"
+      birthday_card:
+        type:
+          <<: *birthday_cards_type
   unauthorized:
     default: "Você não tem permissão para acessar a página solicitada"

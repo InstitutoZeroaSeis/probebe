@@ -59,4 +59,5 @@
     Bullet.add_footer = true
   end
   config.middleware.insert 0, TurboDevAssets
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end
