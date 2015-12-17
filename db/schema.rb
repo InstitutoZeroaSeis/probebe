@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217131439) do
+ActiveRecord::Schema.define(version: 20151217190301) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -197,7 +197,7 @@ ActiveRecord::Schema.define(version: 20151217131439) do
     t.integer  "status",                        default: 0
     t.string   "cell_phone_number"
     t.boolean  "sms_allowed",                   default: false
-    t.date     "child_age_in_week_at_delivery"
+    t.integer  "child_age_in_week_at_delivery"
   end
 
   create_table "messages", force: true do |t|
