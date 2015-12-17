@@ -33,6 +33,7 @@ module MessageDeliveries
     def update_delivery_date
       if status_changed? and status == 'sent'
         self.delivery_date = DateTime.now
+        self.child_age_in_week_at_delivery = child.age_in_weeks
       end
     end
   end
