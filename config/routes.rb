@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       post "/users" => 'users#create'
       post '/users/reset_password' => 'passwords#create'
     end
+    get 'birthday_cards/show' => 'birthday_cards#show'
   end
 
   mount_carnival_at 'admin'
