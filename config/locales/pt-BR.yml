@@ -69,6 +69,7 @@ pt-BR:
       message_deliveries: Mensagens Enviadas
       site_users: Usuários do Site
       users: Usuários
+      birthday_card: Cartão de Aniversário
   controller:
     messages:
       could_not_sign_up_with_omniauth: Não foi possível realizar a autencação com o seu provedor
