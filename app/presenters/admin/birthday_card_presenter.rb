@@ -17,4 +17,5 @@ class Admin::BirthdayCardPresenter < Carnival::BaseAdminPresenter
   action :new
   action :edit
   action :show
+  action :destroy
 end
