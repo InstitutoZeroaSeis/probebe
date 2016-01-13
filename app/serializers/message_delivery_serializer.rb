@@ -1,7 +1,7 @@
 class MessageDeliverySerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :text, :delivery_date, :url, :child_age_in_week_at_delivery, :article_category, :article_text, :article_title
+  attributes :id, :text, :delivery_date, :url, :child_age_in_week_at_delivery, :article_category, :article_text, :article_title, :mon_is_pregnant
 
   def text
     object.text
@@ -27,5 +27,9 @@ class MessageDeliverySerializer < ActiveModel::Serializer
     if object.article.try(:publishable?)
       object.article.title
     end
+  end
+
+  def mon_is_pregnant
+    object.mon_is_pregnat
   end
 end
