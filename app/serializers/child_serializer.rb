@@ -4,6 +4,6 @@ class ChildSerializer < ActiveModel::Serializer
 
 
   def message_deliveries
-    object.message_deliveries.order(delivery_date: :desc).limit(15)
+    object.message_deliveries.order(delivery_date: :desc).limit(100)
   end
 end
