@@ -3,7 +3,7 @@ module Api
     include HeaderAuthenticationConcern
 
     def show
-      message = MessageDeliveries::MessageDelivery.find(params[:id])
+      message = Child.find(params[:id]).message_deliveries
       render json: message
     end
 
