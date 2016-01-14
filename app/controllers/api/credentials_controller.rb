@@ -6,7 +6,10 @@ class Api::CredentialsController < ApplicationController
 
     if user.present?
       valid_hash = { valid: user.try(:valid_password?, params[:password]) || false }
-      valid_hash[:profile_type] = user.profile.profile_type if valid_hash[:valid]
+      if valid_hash[:valid]
+        valid_hash[:profile_type] = user.profile.profile_type
+        valid_hash[:children] = user.profile.children
+      end
     else
       valid_hash = { valid: false }
     end
