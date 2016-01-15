@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :credentials, only: :create
+    post 'credentials/update_social_network_id' => 'credentials#update_social_network_id'
     resources :device_registrations, only: [:create, :show, :destroy], id: /[^\/]+/, param: :platform_code
     resources :messages, only: :show
     resources :profiles, only: [:index]
