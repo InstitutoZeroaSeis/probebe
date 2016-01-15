@@ -32,4 +32,5 @@ class Api::CredentialsController < ApplicationController
     end
     render json: {message: "ok"}
   end
+
 end
