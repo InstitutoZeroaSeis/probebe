@@ -42,4 +42,5 @@ class User < ActiveRecord::Base
     joins("LEFT JOIN profiles on profiles.user_id = users.id LEFT JOIN device_registrations ON profiles.id = device_registrations.profile_id")
     .where("device_registrations.profile_id IS NOT NULL")
   end
+
 end

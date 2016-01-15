@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160113171336) do
+ActiveRecord::Schema.define(version: 20160114234503) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -246,6 +246,7 @@ ActiveRecord::Schema.define(version: 20160113171336) do
     t.boolean  "profile_completed_message_sent", default: false
     t.boolean  "allow_sms_message_sent",         default: false
     t.text     "message_days"
+    t.string   "social_network_id"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
