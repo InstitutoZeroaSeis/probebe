@@ -13,11 +13,11 @@
           .col-md-6
             = p.input :name, input_html: { class: 'name' }, wrapper_html: { class: 'name' }
           .col-md-6= f.input :email
-        .col-md-8.senha= f.input :password
-        .col-md-4
+        .col-md-6.senha= f.input :password
+        .col-md-6
           %button.btn.btn-default.footer-sign-up-button
             Cadastrar-se
-        .col-md-8.senha= f.input :source, as: :hidden, input_html: { value: source }
+        .col-md-6.senha= f.input :source, as: :hidden, input_html: { value: source }
 
         .footer-sign-up-oauth.col-md-12
           = render 'facebook_sign_up_button'
