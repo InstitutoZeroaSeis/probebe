@@ -1,5 +1,6 @@
 class Api::CredentialsController < ApplicationController
   protect_from_forgery with: :null_session
+  respond_to :json
 
   def create
     user = User.find_by(email: params[:email])

@@ -52,6 +52,16 @@ class Child < ActiveRecord::Base
     message_deliveries.joins(message: :category).pluck(:category_id)
   end
 
+  def attributes
+    {
+      id: nil,
+      name: @name,
+      age_in_weeks: self.age_in_weeks,
+      birth_date: @birth_date,
+      gender: @gender
+    }
+  end
+
   protected
 
   def maximum_permited_pregnancy_date?
