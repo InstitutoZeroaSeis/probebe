@@ -64,7 +64,7 @@ Rails.application.routes.draw do
     resources :admin_site_users
     resources :articles
     resources :posts
-    resources :authors, only: [:new, :index, :edit, :update, :create, :show]
+    resources :authors
     resources :categories
     resources :messages
     resources :message_deliveries, only: :index

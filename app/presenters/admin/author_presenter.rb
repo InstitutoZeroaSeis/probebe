@@ -12,4 +12,5 @@ class Admin::AuthorPresenter < Carnival::BaseAdminPresenter
   action :new
   action :edit
   action :show
+  action :destroy
 end

@@ -9,4 +9,14 @@ class Authors::Author < ActiveRecord::Base
   validates :bio, presence: true
 
   delegate :url, to: :photo, prefix: true
+  before_destroy :check_for_articles
+
+  has_many :articles, foreign_key: "original_author_id", class_name: 'Articles::Article'
+
+  def check_for_articles
+    if articles.count > 0
+      errors.add(:articles, I18n.t("errors.models.articles.base.has_articles"))
+      return false
+    end
+  end
 end
