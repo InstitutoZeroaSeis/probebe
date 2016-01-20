@@ -7,8 +7,8 @@ module MessageDeliveries
     def send_to_device
       if @message_delivery.device_registrations.empty?
         deliver_through_sms
-      # else
-      #   deliver_through_app
+      else
+        deliver_through_app
       end
     end
 
