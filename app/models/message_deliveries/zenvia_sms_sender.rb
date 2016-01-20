@@ -3,7 +3,7 @@ module MessageDeliveries
     def self.send phone, message
       begin
         phone = "55#{phone}"
-        Rails.logger.debug "Sending SMS #{phone}"
+        Rails.logger.info "Sending SMS #{phone}"
         message = message[0..150] if message.size > 150
         params = {
           sendSmsRequest:{
