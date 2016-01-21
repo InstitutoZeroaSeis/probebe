@@ -34,6 +34,7 @@ module MessageDeliveries
       if status_changed? and status == 'sent'
         self.delivery_date = DateTime.now
         self.child_age_in_week_at_delivery = child.age_in_weeks
+        self.mon_is_pregnat = child.pregnancy?
       end
     end
   end
