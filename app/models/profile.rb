@@ -37,6 +37,7 @@ class Profile < ActiveRecord::Base
 
   before_save :set_defaults
   before_save :manage_donor_children
+  before_save :check_has_already_saved_child
 
   scope :admin_site_user_profiles, lambda {
     joins(:user).merge(User.admin_site_user)
@@ -118,6 +119,15 @@ class Profile < ActiveRecord::Base
   def validate_profile_type
     return if self.donor?
     errors.add(:base, :needs_to_be_donor)
+  end
+
+  def check_has_already_saved_child
+    self.children.each do |child|
+      if Child.exists?(name: child.name, birth_date: child.birth_date, profile_id: self.id)
+        errors.add(:base, :already_exist_child)
+        return false
+      end
+    end
   end
 
 end
