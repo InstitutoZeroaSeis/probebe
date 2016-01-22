@@ -37,7 +37,7 @@ class Profile < ActiveRecord::Base
 
   before_save :set_defaults
   before_save :manage_donor_children
-  before_save :check_has_already_saved_child
+  # before_save :check_has_already_saved_child
 
   scope :admin_site_user_profiles, lambda {
     joins(:user).merge(User.admin_site_user)
