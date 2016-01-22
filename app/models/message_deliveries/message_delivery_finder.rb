@@ -17,8 +17,8 @@ module MessageDeliveries
         else
           Rails.logger.info "[SendMessage] Message not Sent, id: #{message_delivery.id}, status: #{message_delivery.status}"
         end
-      rescue
-        Rails.logger.info "Erron on MessageSender, message_delivery.id: #{message_delivery.id}"
+      rescue => e
+        Rails.logger.info "Erron on MessageSender, message_delivery.id: #{message_delivery.id} #{e}"
       end
     end
   end
