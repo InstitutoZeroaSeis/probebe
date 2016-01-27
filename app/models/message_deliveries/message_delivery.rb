@@ -11,7 +11,6 @@ module MessageDeliveries
     enum status: [:not_sent, :sent, :failed]
 
     before_save :set_defaults
-    before_update :update_delivery_date
 
     scope :order_by_delivery_date, -> { order(delivery_date: :desc) }
     scope :created_today, -> { where(created_at: Date.today.beginning_of_day..Date.today.end_of_day) }
@@ -24,18 +23,9 @@ module MessageDeliveries
       message.article
     end
 
-    protected
-
-    def set_defaults
-      self.status ||= :not_sent
-    end
-
-    def update_delivery_date
-      if status_changed? and status == 'sent'
-        self.delivery_date = DateTime.now
-        self.child_age_in_week_at_delivery = child.age_in_weeks
-        self.mon_is_pregnat = child.pregnancy?
-      end
+    def sent!
+      self.delivery_date = DateTime.now
+      super
     end
   end
 end
