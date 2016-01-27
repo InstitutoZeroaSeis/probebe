@@ -27,5 +27,12 @@ module MessageDeliveries
       self.delivery_date = DateTime.now
       super
     end
+
+    protected
+
+    def set_defaults
+      self.status ||= :not_sent
+    end
+
   end
 end

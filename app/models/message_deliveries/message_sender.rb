@@ -15,14 +15,12 @@ module MessageDeliveries
     protected
 
     def deliver_through_sms
-      # return false if sms_should_not_be_sent? ||
-      #   @message_delivery.cell_phone_number.nil?
-      return false if @message_delivery.cell_phone_number.nil?
-      true
-      # MessageDeliveries::ZenviaSmsSender.send(
-      #   number_for_delivery,
-      #   @message_delivery.text
-      # )
+      return false if sms_should_not_be_sent? ||
+        @message_delivery.cell_phone_number.nil?
+      MessageDeliveries::ZenviaSmsSender.send(
+        number_for_delivery,
+        @message_delivery.text
+      )
     end
 
     def number_for_delivery
@@ -34,10 +32,10 @@ module MessageDeliveries
     end
 
     def deliver_through_app
-      # amazon_sns = MessageDeliveries::DeviceRegistrations::AmazonSns.new
-      # @message_delivery.device_registrations.each do |device_registration|
-      #   amazon_sns.send_message device_registration.endpoint_arn, @message_delivery.text
-      # end
+      amazon_sns = MessageDeliveries::DeviceRegistrations::AmazonSns.new
+      @message_delivery.device_registrations.each do |device_registration|
+        amazon_sns.send_message device_registration.endpoint_arn, @message_delivery.text
+      end
       true
     end
   end
