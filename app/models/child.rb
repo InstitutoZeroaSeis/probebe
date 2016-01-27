@@ -20,6 +20,10 @@ class Child < ActiveRecord::Base
   delegate :device_registrations, to: :profile
   delegate :authorized_receive_sms, to: :profile
 
+  scope :completed_profile, -> {
+    joins(:profile).where.not('profiles.cell_phone' => nil)
+  }
+
   def age_in_weeks system_date = nil
     system_date ||= MessageDeliveries::SystemDate.new
     if pregnancy?(system_date)
