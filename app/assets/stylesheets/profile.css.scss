@@ -201,6 +201,27 @@ li.child-entry:nth-child(even) .child-name{
   }
 }
 
+.store-ios{
+  a{
+    padding: 7px;
+    font-size: 14px;
+    background-color:  #002B53;
+    color: white;
+    border: 0px none;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+  a:hover{
+    text-decoration: none;
+  }
+
+  img{
+    width: 20px;
+    margin-bottom: 3px;
+  }
+}
+
 .change-password-submit{
   padding: 10px;
   float: right;
