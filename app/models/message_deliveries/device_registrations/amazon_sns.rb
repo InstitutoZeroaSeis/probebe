@@ -38,15 +38,21 @@ module MessageDeliveries
         end
       end
 
-      def send_message(target_arn, message)
+      def send_message(platform, target_arn, message)
         begin
           Rails.logger.debug "[AmazonSNS] - send_message, target_arn: #{target_arn}, message: #{message}"
           return if message.blank?
           title = 'ProBebe'
+
+          if platform.downcase == 'ios'
+            sns_message = '{"APNS": "{\"aps\":{\"alert\": \"' + message + '\", \"badge\" : 1,\"sound\" :\"default\"} }"}'
+          else
+            sns_message = '{"GCM": "{ \"data\": { \"title\": \"' + title + '\", \"message\": \"' + message + '\" } }"}'
+          end
+          
           return @sns.publish({
             target_arn: target_arn,
-            message: '{"GCM": "{ \"data\": { \"title\": \"' + title + '\", \"message\": \"' + message + '\" } }",
-                      "APNS": "{\"aps\":{\"alert\": \"' + title + '\", \"badge\" : 1,\"sound\" :\"default\"} }"}',
+            message: sns_message,
             message_structure: 'json',
             subject: "subject"
           })
