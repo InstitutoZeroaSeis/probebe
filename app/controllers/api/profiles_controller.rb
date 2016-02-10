@@ -43,7 +43,10 @@ module Api
                                 profile_attributes: permitted_params.merge(id: @profile.id)
       end
 
-      Users::SmsMessageSender.send_completed_profile_msg(@user) if result
+      if result
+        Users::SmsMessageSender.send_completed_profile_msg(@user)
+        create_retroactive_messages
+      end
       result
     end
 
@@ -59,6 +62,14 @@ module Api
       contact_attributes = [:state, :city, :street, :postal_code, :address_complement, :cell_phone]
 
       profile_params ? profile_params.permit(personal_attributes + mother_attributes + contact_attributes) : {}
+    end
+
+    def create_retroactive_messages
+      @user.profile.children.each do |child|
+        if child.message_deliveries.empty?
+          RetroactiveMessagesWorker.perform_async(Date.today, child.id)
+        end
+      end
     end
 
   end
