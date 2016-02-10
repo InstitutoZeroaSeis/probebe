@@ -6,7 +6,7 @@ module MessageDeliveries
       end
 
       def create_endpoint(platform_code, profile_id)
-        if platform_code == 'iOS'
+        if platform_code.downcase == 'ios'
           @arn = ENV['AWS_SNS_IOS_ARN']
         else
           @arn = ENV['AWS_SNS_GCM_ARN']
