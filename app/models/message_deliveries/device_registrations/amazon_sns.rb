@@ -5,8 +5,8 @@ module MessageDeliveries
         @sns = Aws::SNS::Client.new
       end
 
-      def create_endpoint(platform_code, profile_id)
-        if platform_code.downcase == 'ios'
+      def create_endpoint(platform, platform_code, profile_id)
+        if platform.downcase == 'ios'
           @arn = ENV['AWS_SNS_IOS_ARN']
         else
           @arn = ENV['AWS_SNS_GCM_ARN']
@@ -45,7 +45,8 @@ module MessageDeliveries
           title = 'ProBebe'
           return @sns.publish({
             target_arn: target_arn,
-            message: '{"GCM": "{ \"data\": { \"title\": \"' + title + '\", \"message\": \"' + message + '\" } }"}',
+            message: '{"GCM": "{ \"data\": { \"title\": \"' + title + '\", \"message\": \"' + message + '\" } }",
+                      "APNS": "{\"aps\":{\"alert\": \"' + title + '\", \"badge\" : 1,\"sound\" :\"default\"} }"}',
             message_structure: 'json',
             subject: "subject"
           })
