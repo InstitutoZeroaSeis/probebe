@@ -3,10 +3,15 @@ module MessageDeliveries
     class AmazonSns
       def initialize
         @sns = Aws::SNS::Client.new
-        @arn = ENV['AWS_SNS_APP_ARN']
       end
 
-      def create_endpoint(platform_code, profile_id)
+      def create_endpoint(platform, platform_code, profile_id)
+        if platform.downcase == 'ios'
+          @arn = ENV['AWS_SNS_IOS_ARN']
+        else
+          @arn = ENV['AWS_SNS_GCM_ARN']
+        end
+
         begin
           Rails.logger.debug "[AmazonSNS] - create_endpoint, platform_code: #{platform_code},
                                             profile_id: #{profile_id}"
@@ -33,14 +38,21 @@ module MessageDeliveries
         end
       end
 
-      def send_message(target_arn, message)
+      def send_message(platform, target_arn, message)
         begin
           Rails.logger.debug "[AmazonSNS] - send_message, target_arn: #{target_arn}, message: #{message}"
           return if message.blank?
           title = 'ProBebe'
+
+          if platform.downcase == 'ios'
+            sns_message = '{"APNS": "{\"aps\":{\"alert\": \"' + message + '\", \"badge\" : 1,\"sound\" :\"default\"} }"}'
+          else
+            sns_message = '{"GCM": "{ \"data\": { \"title\": \"' + title + '\", \"message\": \"' + message + '\" } }"}'
+          end
+          
           return @sns.publish({
             target_arn: target_arn,
-            message: '{"GCM": "{ \"data\": { \"title\": \"' + title + '\", \"message\": \"' + message + '\" } }"}',
+            message: sns_message,
             message_structure: 'json',
             subject: "subject"
           })
