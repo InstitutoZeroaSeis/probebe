@@ -66,6 +66,7 @@ group :development, :test do
   gem 'capybara-webkit', '~> 1.5.1'
   gem 'factory_girl', '~> 4.5.0', require: false
   gem 'guard-rspec', require: false
+  gem 'pry-rails'
   gem 'pry-byebug', '~> 2.0.0'
   gem 'rspec', '~> 3.1.0'
   gem 'rspec-rails', '~> 3.1.0'
