@@ -3,10 +3,15 @@ module MessageDeliveries
     class AmazonSns
       def initialize
         @sns = Aws::SNS::Client.new
-        @arn = ENV['AWS_SNS_APP_ARN']
       end
 
       def create_endpoint(platform_code, profile_id)
+        if platform_code == 'iOS'
+          @arn = ENV['AWS_SNS_IOS_ARN']
+        else
+          @arn = ENV['AWS_SNS_GCM_ARN']
+        end
+
         begin
           Rails.logger.debug "[AmazonSNS] - create_endpoint, platform_code: #{platform_code},
                                             profile_id: #{profile_id}"
