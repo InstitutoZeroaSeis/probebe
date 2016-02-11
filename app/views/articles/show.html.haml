@@ -19,6 +19,11 @@
         %p
           = raw @article.text
 
+
+        %ul.pager
+          %li.previous
+            = link_to t('views.blog.back_html'), root_path
+
         .row.single-post-info
           .single-post-tags.col-md-12
             %figure
@@ -58,9 +63,6 @@
             %h4= t('views.blog.related_post')
             = render partial: 'related_article', collection: @article.related_articles
 
-        %ul.pager
-          %li.previous
-            = link_to t('views.blog.back_html'), root_path
         %p
           = render 'articles/disqus'
 
