@@ -31,7 +31,7 @@ class Category < ActiveRecord::Base
   end
 
   def self.base_categories
-    where(parent_category_id: nil)
+    where(parent_category_id: nil).order(:position_in_home)
   end
 
   def self.sub_categories
