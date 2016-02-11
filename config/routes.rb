@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       post '/users/reset_password' => 'passwords#create'
     end
     get 'birthday_cards/show' => 'birthday_cards#show'
+    resources :categories, only: [:index]
   end
 
   mount_carnival_at 'admin'

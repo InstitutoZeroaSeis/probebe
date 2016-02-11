@@ -1,5 +1,7 @@
 module MessageDeliveries
   class MessageDeliveryCreator
+    attr_accessor :system_date
+
     def initialize(system_date, testing_mode: false)
       @system_date = system_date
       @testing_mode = testing_mode
@@ -12,6 +14,11 @@ module MessageDeliveries
         create_donated_message(child.donor, message_delivery) if child.donor.present?
         message_delivery
       end.select(&:present?)
+    end
+
+    def create_deliveries_for (child)
+      message = find_message_for_child(child)
+      create_retroactive_message_delivery(child, message)
     end
 
     protected
@@ -28,6 +35,22 @@ module MessageDeliveries
         sms_allowed: child.authorized_receive_sms,
         child_age_in_week_at_delivery: child.age_in_weeks,
         mon_is_pregnat: child.pregnancy?
+      )
+    end
+
+    def create_retroactive_message_delivery(child, message)
+      return unless message
+      MessageDelivery.create(
+        message: message,
+        child: child,
+        message_for_test: @testing_mode,
+        cell_phone_number: child.primary_cell_phone_number,
+        device_registrations: child.device_registrations,
+        sms_allowed: child.authorized_receive_sms,
+        child_age_in_week_at_delivery: child.age_in_weeks(@system_date),
+        mon_is_pregnat: child.pregnancy?(@system_date),
+        delivery_date: @system_date.date,
+        status: :sent
       )
     end
 
