@@ -38,7 +38,7 @@ module MessageDeliveries
         end
       end
 
-      def send_message(platform, target_arn, message)
+      def send_message(platform, target_arn, message, image_url)
         begin
           Rails.logger.debug "[AmazonSNS] - send_message, target_arn: #{target_arn}, message: #{message}"
           return if message.blank?
@@ -47,7 +47,7 @@ module MessageDeliveries
           if platform.downcase == 'ios'
             sns_message = '{"APNS": "{\"aps\":{\"alert\": \"' + message + '\", \"badge\" : 1,\"sound\" :\"default\"} }"}'
           else
-            sns_message = '{"GCM": "{ \"data\": { \"title\": \"' + title + '\", \"message\": \"' + message + '\", \"style\": \"picture\", \"picture\": \"http://36.media.tumblr.com/c066cc2238103856c9ac506faa6f3bc2/tumblr_nmstmqtuo81tssmyno1_1280.jpg\", \"summaryText\": \"' + message + '\", \"soundname\": \"baby-laughing-01\" } }"}'
+            sns_message = '{"GCM": "{ \"data\": { \"title\": \"' + title + '\", \"message\": \"' + message + '\", \"style\": \"picture\", \"picture\": \"' + image_url + '\", \"summaryText\": \"' + message + '\", \"soundname\": \"baby_laughing_01\" } }"}'
           end
 
           return @sns.publish({
