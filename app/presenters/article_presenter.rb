@@ -35,7 +35,7 @@ class ArticlePresenter < SimpleDelegator
     Tag.joins(:articles).
       select('tags.id, tags.name, COUNT(*) as posts_count').
       group('tags.id').
-      order('posts_count DESC')
+      order('tags.name ASC, posts_count DESC')
   end
 
   def categories_for_sidebar

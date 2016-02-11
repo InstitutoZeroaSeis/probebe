@@ -34,7 +34,7 @@ class PostsPresenter
     Tag.joins(:posts).
       select('tags.id, tags.name, COUNT(*) as posts_count').
       group('tags.id').
-      order('posts_count DESC')
+      order('tags.name ASC, posts_count DESC')
   end
 
   protected

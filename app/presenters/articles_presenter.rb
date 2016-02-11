@@ -33,7 +33,7 @@ class ArticlesPresenter
     Tag.joins(:articles).
       select('tags.id, tags.name, COUNT(*) as articles_count').
       group('tags.id').
-      order('articles_count DESC')
+      order('tags.name ASC, articles_count DESC')
   end
 
   def categories_for_sidebar
