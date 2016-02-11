@@ -13,5 +13,4 @@ class Ckeditor::Asset < ActiveRecord::Base
       nil
     end
   end
-
 end
