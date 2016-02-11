@@ -45,7 +45,7 @@ module MessageDeliveries
           title = 'ProBebe'
 
           if platform.downcase == 'ios'
-            sns_message = '{"APNS": "{\"aps\":{\"alert\": \"' + message + '\", \"badge\" : 1,\"sound\" :\"default\"} }"}'
+            sns_message = '{"APNS": "{\"aps\":{\"alert\": \"' + message + '\", \"badge\": 1,\"sound\": \"default\"} }"}'
           else
             sns_message = '{"GCM": "{ \"data\": { \"title\": \"' + title + '\", \"message\": \"' + message + '\", \"style\": \"picture\", \"picture\": \"' + image_url + '\", \"summaryText\": \"' + message + '\", \"soundname\": \"baby_laughing_01\" } }"}'
           end
