@@ -11,7 +11,7 @@ class RetroactiveMessagesWorker
       if system_date.date.monday? || system_date.date.wednesday? || system_date.date.friday?
         message_delivery_creator.system_date = system_date
         message_delivery_creator.create_deliveries_for child
-        child.reload
+        child.message_deliveries.reload
       end
       system_date = MessageDeliveries::SystemDate.new(system_date.date.prev_day)
     end
