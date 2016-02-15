@@ -1,13 +1,13 @@
-<meta property=”og:site_name” content=”ProBebê” />
-<meta property=”og:type” content="article" />
-<meta property=”og:title” content=”#{@article.title}” />
-<meta property=”og:description” content=”#{@article.summary}” />
-<meta property=”og:image” content=”#{@article.cover}” />
+%meta{content: "”ProBebê”", property: "”og:site_name”"}/
+%meta{content: "article", property: "”og:type”"}/
+%meta{content: "”\#{@article.title}”", property: "”og:title”"}/
+%meta{content: "”\#{@article.summary}”", property: "”og:description”"}/
+%meta{content: "”\#{@article.cover}”", property: "”og:image”"}/
 
-<meta name=”twitter:card” content=”summary” />
-<meta name=”twitter:site” content=”@brprobebe“>
-<meta name=”twitter:title” content=”ProBebê” />
-<meta name=”twitter:creator” content=”@brprobebe“>
-<meta name=”twitter:description” content=”#{@article.summary}” />
-<meta name=”twitter:url” content=”#{article_url(@article)}” />
-<meta name=”twitter:image” content=”#{@article.cover}” />
+%meta{content: "”summary”", name: "”twitter:card”"}/
+%meta{content: "”@brprobebe“", name: "”twitter:site”"}/
+%meta{content: "”ProBebê”", name: "”twitter:title”"}/
+%meta{content: "”@brprobebe“", name: "”twitter:creator”"}/
+%meta{content: "”\#{@article.summary}”", name: "”twitter:description”"}/
+%meta{content: "”\#{article_url(@article)}”", name: "”twitter:url”"}/
+%meta{content: "”\#{@article.cover}”", name: "”twitter:image”"}/
