@@ -1,11 +1,23 @@
+- institute = InstitutePage.first
 .about.container
-  %h2= t('about.who_are_we')
+
+  - if institute.present? && institute.title.present?
+    %h2= raw institute.title
+  -else
+    %h2= t('about.who_are_we')
 
   .about-zero-a-seis-logo
+  - if institute.present? && institute.picture.present?
+    %figure
+      %img.about-zero-a-seis-logo-img{style: "background-size: 350px 186px; background-position: center; background-image: url(#{institute.brand_image.url})"}
+  - else
     %figure
       %img.about-zero-a-seis-logo-img{ src: image_path('logo-zero-a-seis.png') }
 
   %p.about-zero-a-seis-description
+  - if institute.present? && institute.text.present?
+    %p.lead= raw institute.text
+  - else
     %p.lead= t('about.first_paragraph')
     %p.lead= t('about.second_paragraph')
     %p.lead= t('about.third_paragraph')
