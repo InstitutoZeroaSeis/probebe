@@ -78,6 +78,10 @@ Carnival.configure do |config|
           link: '/admin/institute_pages'
         },
         {
+          label: 'História',
+          link: '/admin/site_history_pages'
+        },
+        {
           label: 'Site Mobile',
           link: '/admin/site_mobile_images'
         },

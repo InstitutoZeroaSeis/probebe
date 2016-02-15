@@ -1,19 +1,32 @@
+- history = SiteHistoryPage.first
 .container.what
-  %h2.what-title= t('what.title')
-  %figure
-    %img.what-probebe-logo-img{ src: asset_path('logo-orange-probebe.png') }
-  %p.lead
-    %strong
-      = t('what.header.1_right_message')
-      %br
-      = t('what.header.2_right_person')
-      %br
-      = t('what.header.3_right_hour')
+  - if history.present? && history.title.present?
+    %h2.what-title= raw history.title
+  - else
+    %h2.what-title= t('what.title')
 
-  %p.lead= t('what.body.first_paragraph')
-  %p.lead= t('what.body.second_paragraph')
-  %p.lead= t('what.body.third_paragraph')
-  %p.lead= t('what.body.fourth_paragraph')
-  %p.lead= t('what.body.fifth_paragraph')
-  %p.lead
-    %strong= t('what.body.sixth_paragraph')
+  - if history.present? && history.text.present?
+    %figure
+      %img.what-probebe-logo-img{style: "background-size: 350px 186px; background-position: center; background-image: url(#{history.background_image.url})"}
+  - else
+    %figure
+      %img.what-probebe-logo-img{ src: asset_path('logo-orange-probebe.png') }
+
+  - if history.present? && history.text.present?
+    %p.lead= raw history.text
+  - else
+    %p.lead
+      %strong
+        = t('what.header.1_right_message')
+        %br
+        = t('what.header.2_right_person')
+        %br
+        = t('what.header.3_right_hour')
+
+    %p.lead= t('what.body.first_paragraph')
+    %p.lead= t('what.body.second_paragraph')
+    %p.lead= t('what.body.third_paragraph')
+    %p.lead= t('what.body.fourth_paragraph')
+    %p.lead= t('what.body.fifth_paragraph')
+    %p.lead
+      %strong= t('what.body.sixth_paragraph')
