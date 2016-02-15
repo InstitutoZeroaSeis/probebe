@@ -82,10 +82,6 @@ Carnival.configure do |config|
           link: '/admin/site_history_pages'
         },
         {
-          label: 'Equipe',
-          link: '/admin/site_coordinator_pages'
-        },
-        {
           label: 'Parceiros',
           link: '/admin/site_partners_pages'
         },

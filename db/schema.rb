@@ -335,14 +335,6 @@ ActiveRecord::Schema.define(version: 20160215192959) do
 
   add_index "site_banners", ["picture_id"], name: "index_site_banners_on_picture_id", using: :btree
 
-  create_table "site_coordinators_pages", force: true do |t|
-    t.string   "title"
-    t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "picture_id"
-  end
-
   create_table "site_headers", force: true do |t|
     t.string   "path"
     t.integer  "picture_id"
