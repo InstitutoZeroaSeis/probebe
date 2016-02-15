@@ -86,6 +86,10 @@ Carnival.configure do |config|
           link: '/admin/site_partners_pages'
         },
         {
+          label: 'Coordenadores',
+          link: '/admin/site_coordinators_pages'
+        },
+        {
           label: 'Site Mobile',
           link: '/admin/site_mobile_images'
         },
