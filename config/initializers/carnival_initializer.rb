@@ -74,6 +74,10 @@ Carnival.configure do |config|
           link: '/admin/site_landing_pages'
         },
         {
+          label: 'O Instituto',
+          link: '/admin/institute_pages'
+        },
+        {
           label: 'Site Mobile',
           link: '/admin/site_mobile_images'
         },
