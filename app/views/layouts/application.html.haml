@@ -8,7 +8,7 @@
     = javascript_include_tag 'application'
     = javascript_include_tag 'home'
 
-    <meta name="viewport" content="width=1054, initial-scale=0, maximum-scale=1.0, minimum-scale=0.25, user-scalable=yes" />
+    %meta{content: "width=1054, initial-scale=0, maximum-scale=1.0, minimum-scale=0.25, user-scalable=yes", name: "viewport"}/
     = csrf_meta_tags
     //= render partial: 'flash_messages'
     = render 'google_analytics'
