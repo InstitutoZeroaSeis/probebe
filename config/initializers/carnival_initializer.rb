@@ -74,28 +74,16 @@ Carnival.configure do |config|
           link: '/admin/site_landing_pages'
         },
         {
-          label: 'O Instituto',
-          link: '/admin/institute_pages'
-        },
-        {
-          label: 'História',
-          link: '/admin/site_history_pages'
-        },
-        {
-          label: 'Parceiros',
-          link: '/admin/site_partners_pages'
-        },
-        {
-          label: 'Coordenadores',
-          link: '/admin/site_coordinators_pages'
-        },
-        {
           label: 'Site Mobile',
           link: '/admin/site_mobile_images'
         },
         {
           label: 'Parceiros',
           link: '/admin/partners'
+        },
+        {
+          label: 'Páginas',
+          link: '/admin/pages'
         }
 
       ]

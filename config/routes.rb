@@ -81,10 +81,7 @@ Rails.application.routes.draw do
     end
     resources :tags
     resources :birthday_cards
-    resources :institute_pages
-    resources :site_history_pages
-    resources :site_coordinators_pages
-    resources :site_partners_pages
+    resources :pages
     get 'articles/:id/show_activity_log' => 'articles#show_activity_log'
     get 'site_users/:id/stop_impersonating' => 'site_users#stop_impersonating', as: :stop_impersonating
     get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile
