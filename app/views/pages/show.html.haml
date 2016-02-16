@@ -1,9 +1,9 @@
 .about.container
-  %h2= raw @page.title
+  = raw @page.title
 
   - if @page.subtitle.present?
-    %h3= raw @page.subtitle
+    = raw @page.subtitle
 
   %p.about-zero-a-seis-description
-    %p.lead= raw @page.text
+    = raw @page.text
 
