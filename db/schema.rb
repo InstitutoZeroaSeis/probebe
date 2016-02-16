@@ -335,32 +335,8 @@ ActiveRecord::Schema.define(version: 20160215195805) do
 
   add_index "site_banners", ["picture_id"], name: "index_site_banners_on_picture_id", using: :btree
 
-  create_table "site_coordinators_pages", force: true do |t|
-    t.string   "title"
-    t.text     "text"
-    t.integer  "picture_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "site_headers", force: true do |t|
     t.string   "path"
-    t.integer  "picture_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "site_history_pages", force: true do |t|
-    t.string   "title"
-    t.text     "text"
-    t.integer  "picture_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "site_institute_pages", force: true do |t|
-    t.string   "title"
-    t.text     "text"
     t.integer  "picture_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -376,14 +352,6 @@ ActiveRecord::Schema.define(version: 20160215195805) do
 
   create_table "site_mobile_images", force: true do |t|
     t.string   "name"
-    t.string   "title"
-    t.text     "text"
-    t.integer  "picture_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "site_partners_pages", force: true do |t|
     t.string   "title"
     t.text     "text"
     t.integer  "picture_id"
