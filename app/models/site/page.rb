@@ -1,8 +1,11 @@
 class Site::Page < ActiveRecord::Base
+  extend FriendlyId
+
   include Carnival::ModelHelper
   has_one :menu, class_name: 'Menu'
+  friendly_id :title, use: :slugged
 
   def label
-    self.title.to_s
+    self.title.html_save
   end
 end

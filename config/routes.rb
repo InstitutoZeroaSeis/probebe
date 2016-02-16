@@ -28,13 +28,10 @@ Rails.application.routes.draw do
   get 'articles/page/:page_id' => 'articles#index', as: :paged_articles
   resources(:tags, param: :name, only: []) { resources :articles, only: :index }
   resources(:categories) { resources :articles, only: :index }
-  get :institute, to: 'static_pages#institute'
-  get :coordinators, to: 'static_pages#coordinators'
-  get :history, to: 'static_pages#history'
   get :about, to: 'static_pages#about'
   get :what, to: 'static_pages#what'
   get :colaborators, to: 'static_pages#colaborators'
-  get :partners, to: 'static_pages#partners'
+  resources :pages, only: :show
 
   namespace :api do
     resources :credentials, only: :create
