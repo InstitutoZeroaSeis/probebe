@@ -2,7 +2,6 @@ class Admin::PagePresenter < Carnival::BaseAdminPresenter
   model_name 'Site::Page'
 
   field :title,
-    as: :ckeditor,
     actions: [:index, :show, :new, :edit]
 
   field :subtitle,
