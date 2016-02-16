@@ -125,6 +125,16 @@ pt-BR:
         show_path: URL
         logo: Logo
         picture: Imagem
+      site/page:
+        title: Título
+        subtitle: Subtítulo
+        text: Texto
+      site/menu:
+        name: Nome
+        position: Posição
+        target_blank: Abrir em outra aba?
+        parent_menu_name: Nome menu principal
+        page_title: Nome da página
     errors:
       models:
         articles/article:
@@ -168,6 +178,10 @@ pt-BR:
               already_exist_child: Já existe uma filho(a) com mesmo nome e data de nascimento.
             cell_phone:
               not_mobile_phone: Este telefone não é um celular
+        site/menu:
+          attributes:
+            base:
+              has_no_link_or_page: Não foi definido nenhuma página ou link para o menu
     models:
       articles/article: Artigo
       articles/article_plural: Artigos
@@ -179,3 +193,5 @@ pt-BR:
       tag: Tag
       messages: Mensagens
       birthday_card: Cartão de Aniversário
+      site/page: Página
+      site/menu: Menu

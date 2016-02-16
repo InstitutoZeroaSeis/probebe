@@ -245,6 +245,14 @@ pt-BR:
         type: Período
         age: idade
         text: Texto
+      page:
+        title: Título
+        subtitle: Subtítulo
+        text: Texto
+      menu:
+        name: Nome
+        position: Posição
+        target_blank: Abrir em outra aba?
     errors:
       template:
         header:
