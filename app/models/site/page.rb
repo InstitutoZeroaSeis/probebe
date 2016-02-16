@@ -6,6 +6,6 @@ class Site::Page < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   def label
-    self.title.html_save
+    self.title
   end
 end

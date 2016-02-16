@@ -9,7 +9,9 @@ module MenuHelper
   end
 
   def build_link_to(submenu)
-    return link_to submenu.name, page_path(submenu.page), target: "_blank" if submenu.target_blank
-    link_to submenu.name, page_path(submenu.page)
+    path = submenu.link if submenu.link.present?
+    path = page_path(submenu.page) unless submenu.link.present?
+    return link_to submenu.name, path, target: "_blank" if submenu.target_blank
+    link_to submenu.name, path
   end
 end
