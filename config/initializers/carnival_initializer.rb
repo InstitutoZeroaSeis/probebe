@@ -84,6 +84,10 @@ Carnival.configure do |config|
         {
           label: 'Páginas',
           link: '/admin/pages'
+        },
+        {
+          label: 'Menu',
+          link: '/admin/menus'
         }
 
       ]

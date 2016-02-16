@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216125950) do
+ActiveRecord::Schema.define(version: 20160216152717) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -372,6 +372,17 @@ ActiveRecord::Schema.define(version: 20160216125950) do
     t.integer  "picture_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "site_menus", force: true do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.integer  "parent_menu_id"
+    t.boolean  "target_blank"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "page_id"
   end
 
   create_table "site_mobile_images", force: true do |t|
