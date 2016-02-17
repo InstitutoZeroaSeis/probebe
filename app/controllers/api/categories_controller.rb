@@ -3,7 +3,7 @@ module Api
     include HeaderAuthenticationConcern
 
     def index
-      categories = Category.all
+      categories = Category.base_categories
       render json: categories, root: false
     end
   end
