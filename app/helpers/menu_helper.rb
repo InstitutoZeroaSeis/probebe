@@ -12,7 +12,7 @@ module MenuHelper
     path = submenu.link if submenu.link.present?
     path = page_path(submenu.page) unless submenu.link.present?
     return link_to submenu.name, path, class: 'white-link', target: "_blank" if submenu.target_blank
-    link_to submenu.name, path
+    link_to submenu.name, path, class: 'white-link'
   end
 
 end
