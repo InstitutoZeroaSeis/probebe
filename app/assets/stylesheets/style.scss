@@ -607,3 +607,8 @@ input#birth_date {
   -webkit-border-radius: 150px;
   -moz-border-radius: 150px;
 }
+
+.white-link a, a:hover, a:visited, a:link, a:active
+{
+  color: white;
+}

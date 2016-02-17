@@ -3,10 +3,13 @@
     %h4
       ProBebê
     - base_menus.each do |menu|
-      = menu.name
-      %ul
-        - child_menus(menu.id).each do |submenu|
-          %li= build_link_to(submenu)
+      - if child_menus(menu.id).empty?
+        = build_link_to(menu)
+      - else
+        = menu.name
+        %ul
+          - child_menus(menu.id).each do |submenu|
+            %li= build_link_to(submenu)
 
   .footer-categories.col-md-3.col-sm-3
     %h4

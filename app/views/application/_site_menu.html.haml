@@ -8,12 +8,15 @@
         %ul.nav.navbar-nav
           - base_menus.each do |menu|
             %li.dropdow
-              %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
-                = menu.name
-                %span.caret
-              %ul.dropdown-menu{ role: 'menu' }
-                - child_menus(menu.id).each do |submenu|
-                  %li= build_link_to(submenu)
+              - if child_menus(menu.id).empty?
+                = build_link_to(menu)
+              - else
+                %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
+                  = menu.name
+                  %span.caret
+                %ul.dropdown-menu{ role: 'menu' }
+                  - child_menus(menu.id).each do |submenu|
+                    %li= build_link_to(submenu)
 
           - if current_profile.present?
             %li.dropdow
