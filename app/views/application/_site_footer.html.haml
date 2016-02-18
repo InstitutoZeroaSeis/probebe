@@ -4,7 +4,7 @@
       ProBebê
     - base_menus.each do |menu|
       - if child_menus(menu.id).empty?
-        = build_link_to(menu)
+        .menu-footer-link= build_link_to(menu)
       - else
         = menu.name
         %ul
