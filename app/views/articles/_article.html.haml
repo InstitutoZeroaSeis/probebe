@@ -5,7 +5,7 @@
     = t("views.blog.#{article.pregnancy_or_child_life_period}")
   %p.categoria-label{ style: "background-color: #{article.category_color}" }= article.category_name
   %figure
-    %img{width: 300, height: 200, src: article.thumb_image_cover}
+    %img{width: 300, height: 200, src: article.thumb_image_cover.url(:content)}
   %p.post-summary
     = article.post_summary
   = link_to article_path(article), class: 'btn btn-primary education-button btn-list' do
