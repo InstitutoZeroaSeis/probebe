@@ -18,7 +18,7 @@ class ArticlePresenter < SimpleDelegator
   end
 
   def author_photo_url
-    original_author.photo_url
+    original_author.photo.url(:thumb)
   end
 
   def related_articles
