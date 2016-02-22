@@ -10,7 +10,7 @@
           .subject-picture-split
             = link_to article_path(article) do
               %figure
-                %img{ width: 300, height: 200, src: article.thumb_image_cover }
+                %img{ width: 300, height: 200, src: article.thumb_image_cover.url(:content)}
             .subject-picture-split-description
               = link_to article_path(article) do
                 %p= article.post_summary
