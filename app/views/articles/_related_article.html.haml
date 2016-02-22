@@ -1,7 +1,7 @@
 .related-post.col-md-4
   %p
     %figure
-      %img{width: 300, height: 200, src: related_article.thumb_image_cover}
+      %img{width: 300, height: 200, src: related_article.thumb_image_cover.url(:content)}
   %p
     = link_to related_article.title, article_path(related_article)
   %p= related_article.post_summary
