@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   alias_attribute :to_label, :name
 
   def self.with_device
-    joins("LEFT JOIN profiles on profiles.user_id = users.id LEFT JOIN device_registrations ON profiles.id = device_registrations.profile_id")
+    joins("LEFT JOIN profiles as p on p.user_id = users.id LEFT JOIN device_registrations ON p.id = device_registrations.profile_id")
     .where("device_registrations.profile_id IS NOT NULL")
   end
 
