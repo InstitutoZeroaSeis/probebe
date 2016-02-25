@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216171525) do
+ActiveRecord::Schema.define(version: 20160225144659) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -435,6 +435,7 @@ ActiveRecord::Schema.define(version: 20160216171525) do
     t.integer  "role"
     t.string   "source"
     t.boolean  "change_omniauth_password", default: true
+    t.string   "search_column"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

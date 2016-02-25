@@ -6,15 +6,12 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
         actions: [:index, :show]
 
   field :email,
-        actions: [:index, :show, :edit], sortable: true,
-        advanced_search: { operator: :like }
+        actions: [:index, :show, :edit], sortable: true
 
   field 'profile.name',
-        actions: [:index, :show],
-        advanced_search: { operator: :like }
+        actions: [:index, :show]
 
-  field 'profile.cell_phone',
-        advanced_search: { operator: :like }
+  field 'profile.cell_phone'
 
   field 'profile.birth_date',
         actions: [:show]
@@ -42,6 +39,10 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   field :sms_buttons,
         actions: [:show, :edit],
         as: :partial
+
+  field :search_column,
+        advanced_search: { operator: :like }
+
 
   action :show
   action :edit

@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   before_save :set_defaults
+  before_save :set_search_column
 
   scope :admin_site_user, -> { where(role: [0, 1, 2]) }
   scope :completed_profile, -> {
@@ -28,6 +29,8 @@ class User < ActiveRecord::Base
 
   delegate :id, :name, to: :profile, prefix: true
 
+  alias_attribute :to_label, :name
+
   def password_required?
     true
   end
@@ -36,7 +39,9 @@ class User < ActiveRecord::Base
     self.role ||= :site_user
   end
 
-  alias_attribute :to_label, :name
+  def set_search_column
+    self.search_column = " #{email} #{profile.name} #{profile.cell_phone}"
+  end
 
   def self.with_device
     joins("LEFT JOIN profiles as p on p.user_id = users.id LEFT JOIN device_registrations ON p.id = device_registrations.profile_id")

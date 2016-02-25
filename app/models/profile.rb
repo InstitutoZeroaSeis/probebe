@@ -38,6 +38,7 @@ class Profile < ActiveRecord::Base
 
   before_save :set_defaults
   before_save :manage_donor_children
+  before_save :set_search_column_at_user
 
   scope :admin_site_user_profiles, lambda {
     joins(:user).merge(User.admin_site_user)
@@ -96,6 +97,10 @@ class Profile < ActiveRecord::Base
 
   def set_defaults
     self.gender ||= 'not_informed'
+  end
+
+  def set_search_column_at_user
+    user.update_columns(search_column: "#{user.email} #{name} #{cell_phone}")
   end
 
   def manage_donor_children
