@@ -11,7 +11,7 @@ module MessageDeliveries
         .select(Arel.star, count_subquery)
         .base_categories
         .joins(:categories)
-        .where("categories_categories.id NOT IN (?)", @categories_to_exclude)
+        .where("categories_categories.id NOT IN (coalesce(?,0))", @categories_to_exclude)
         .order('categories_count asc')
         .first
     end
