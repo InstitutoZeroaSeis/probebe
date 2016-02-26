@@ -34,7 +34,7 @@ module MessageDeliveries
     def deliver_through_app
       amazon_sns = MessageDeliveries::DeviceRegistrations::AmazonSns.new
       @message_delivery.device_registrations.each do |device_registration|
-        amazon_sns.send_message device_registration.platform, device_registration.endpoint_arn, @message_delivery.text, @message_delivery.message.article.thumb_image_cover.url(:thumb)
+        amazon_sns.send_message device_registration.platform, device_registration.endpoint_arn, @message_delivery.text, @message_delivery.message.article.thumb_image_cover.url(:content)
       end
       true
     end
