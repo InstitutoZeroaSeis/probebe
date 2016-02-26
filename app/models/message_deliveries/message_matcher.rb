@@ -78,8 +78,9 @@ module MessageDeliveries
 
     def match_message_from_category(messages)
       category = category_for_child
+      article_to_exclude = map_last_ten_articles_from(@child, category)
       matched_message = messages.find do |message|
-        message.parent_category == category
+        message.parent_category == category && !article_to_exclude.include?(message.article.id)
       end
       matched_message || messages.first
     end
@@ -87,7 +88,7 @@ module MessageDeliveries
     def category_for_child
       less_delivered_finder =
         MessageDeliveries::LessDeliveredCategoryFinder
-        .new(@child.message_deliveries, map_last_four_categories_from)
+        .new(@child.message_deliveries, map_last_four_categories_from(@child))
       less_delivered_finder.find
     end
 
@@ -95,6 +96,12 @@ module MessageDeliveries
       child.message_deliveries.last(4).map do |msg|
         msg.article.category.parent_category
       end.map(&:id)
+    end
+
+    def map_last_ten_articles_from(child, category)
+      child.message_deliveries.select do |msg|
+        msg.article.category == category
+      end.last(10).map(&:article).map(&:id)
     end
   end
 end
