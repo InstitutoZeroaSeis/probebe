@@ -78,30 +78,34 @@ module MessageDeliveries
 
     def match_message_from_category(messages)
       category = category_for_child
-      article_to_exclude = map_last_ten_articles_from(@child, category)
-      matched_message = messages.find do |message|
-        message.parent_category == category && !article_to_exclude.include?(message.article.id)
-      end
-      matched_message || messages.first
+      article_to_exclude = map_last_five_articles_from(child, category)
+      matched_message = matched_message_by(messages, category, article_to_exclude)
+      matched_message || messages.shuffle.first
     end
 
     def category_for_child
       less_delivered_finder =
         MessageDeliveries::LessDeliveredCategoryFinder
-        .new(@child.message_deliveries, map_last_four_categories_from(@child))
+        .new(@child.message_deliveries, map_last_two_categories_from(@child))
       less_delivered_finder.find
     end
 
-    def map_last_four_categories_from(child)
-      child.message_deliveries.last(4).map do |msg|
+    def map_last_two_categories_from(child)
+      child.message_deliveries.last(2).map do |msg|
         msg.article.category.parent_category
       end.map(&:id)
     end
 
-    def map_last_ten_articles_from(child, category)
+    def map_last_five_articles_from(child, category)
       child.message_deliveries.select do |msg|
         msg.article.category == category
-      end.last(10).map(&:article).map(&:id)
+      end.last(5).map(&:article).map(&:id)
+    end
+
+    def matched_message_by(messages, category, article_to_exclude)
+      messages.find do |message|
+        (message.parent_category == category || message.parent_category == category.parent_category) && !article_to_exclude.include?(message.article.id)
+      end
     end
   end
 end
