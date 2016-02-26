@@ -91,7 +91,7 @@ module MessageDeliveries
     end
 
     def map_last_two_categories_from(child)
-      child.message_deliveries.last(2).map do |msg|
+      child.message_deliveries.order('id DESC').last(2).map do |msg|
         msg.article.category.parent_category
       end.map(&:id)
     end
