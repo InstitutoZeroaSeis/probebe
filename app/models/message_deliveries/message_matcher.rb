@@ -87,8 +87,14 @@ module MessageDeliveries
     def category_for_child
       less_delivered_finder =
         MessageDeliveries::LessDeliveredCategoryFinder
-        .new(@child.message_deliveries)
+        .new(@child.message_deliveries, map_last_four_categories_from)
       less_delivered_finder.find
+    end
+
+    def map_last_four_categories_from(child)
+      child.message_deliveries.last(4).map do |msg|
+        msg.article.category.parent_category
+      end.map(&:id)
     end
   end
 end
