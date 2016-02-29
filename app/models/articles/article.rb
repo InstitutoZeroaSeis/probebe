@@ -1,7 +1,10 @@
+require 'elasticsearch/model'
+
 module Articles
   class Article < ActiveRecord::Base
     include Carnival::ModelHelper
     include RejectAttributesConcern
+    include Elasticsearch::Model
     extend FriendlyId
 
     friendly_id :title, use: :slugged

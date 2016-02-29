@@ -20,5 +20,7 @@ module ProBebe
     config.action_dispatch.rescue_responses['ActionController::RoutingError'] = :not_found
 
     console { config.console = Pry }
+
+    Elasticsearch::Client.new host: 'elasticsearch:9200', logger: true
   end
 end

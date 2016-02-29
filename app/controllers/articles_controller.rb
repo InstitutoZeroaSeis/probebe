@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   def index
+    p "========"
+    p post_search_params
     @presenter = ArticlesPresenter.new(post_search_params)
   end
 
