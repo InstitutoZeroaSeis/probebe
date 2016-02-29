@@ -20,6 +20,7 @@ web:
     - db
     - mail
     - redis
+    - elasticsearch
   ports:
     - 3000:3000
   volumes:
@@ -46,3 +47,10 @@ sidekiq:
   volumes:
     - .:/app
   working_dir: /app
+
+elasticsearch:
+  image: elasticsearch:1.5
+  command: elasticsearch -Des.network.host=0.0.0.0
+  ports:
+    - "9200:9200"
+    - "9300:9300"
