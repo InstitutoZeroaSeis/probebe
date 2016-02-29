@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/elasticsearch/elasticsearch-rails.git
+  revision: 489ab24998a87a0323c3085e29aad14367bfaf89
+  specs:
+    elasticsearch-model (0.1.8)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+
+GIT
   remote: https://github.com/Vizir/carnival.git
   revision: ac49bcb490d7e996f962514169b4ba99a2c7c9ab
   branch: master
@@ -137,6 +146,14 @@ GEM
     docile (1.1.5)
     domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
+    elasticsearch (1.0.15)
+      elasticsearch-api (= 1.0.15)
+      elasticsearch-transport (= 1.0.15)
+    elasticsearch-api (1.0.15)
+      multi_json
+    elasticsearch-transport (1.0.15)
+      faraday
+      multi_json
     erubis (2.7.0)
     execjs (2.6.0)
     factory_girl (4.5.0)
@@ -462,6 +479,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise (~> 3.4.0)
   devise-i18n (~> 0.11.2)
+  elasticsearch-model!
   factory_girl (~> 4.5.0)
   friendly_id (~> 5.1.0)
   guard-rspec
