@@ -102,7 +102,7 @@ module MessageDeliveries
       end.last(5).map(&:article).map(&:id)
     end
 
-    def matched_message_by(messages, category, article_to_exclude)
+    def matched_message_by(messages, category)
       messages.find do |message|
         (message.parent_category == category || message.parent_category == category.parent_category)
       end
