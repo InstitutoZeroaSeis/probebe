@@ -21,6 +21,5 @@ module ProBebe
 
     console { config.console = Pry }
 
-    Elasticsearch::Client.new host: 'elasticsearch:9200', logger: true
   end
 end
