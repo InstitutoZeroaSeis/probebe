@@ -48,8 +48,15 @@ class ArticlesPresenter
     page ? page.to_i : 1
   end
 
+  def articles_from_elasticsearch
+    Articles::Article.search(@article_params[:search]).page(current_page).records.to_a
+      .select { |a| a.publishable? }
+  end
+
   def build_pager
-    articles = Site::ArticleFinder.new(@article_params).find
-    @pager = Pager.new(articles, current_page, POSTS_PER_PAGE)
+    elasticsearch = @article_params[:search].present?
+    articles = Site::ArticleFinder.new(@article_params).find unless elasticsearch
+    articles =  articles_from_elasticsearch if elasticsearch
+    @pager = Pager.new(articles, current_page, POSTS_PER_PAGE, elasticsearch)
   end
 end
