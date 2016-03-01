@@ -47,6 +47,7 @@ module Articles
     after_save :update_messages
 
     delegate :name, to: :category, prefix: true
+    delegate :color, to: :category, prefix: true
     delegate :name, to: :original_author, prefix: true
 
     has_paper_trail
@@ -131,3 +132,5 @@ module Articles
     end
   end
 end
+
+Articles::Article.__elasticsearch__.client = Elasticsearch::Client.new host: 'elasticsearch:9200', log: true

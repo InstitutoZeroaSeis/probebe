@@ -1,15 +1,17 @@
 class Pager
   attr_reader :page
 
-  def initialize(model, page, per_page)
+  def initialize(model, page, per_page, elasticsearch)
     @model = model
     @page = page.to_i
     @per_page = per_page
+    @elasticsearch = elasticsearch
   end
 
   def paged
     page_offset = (@page - 1) * @per_page
-    @model.offset(page_offset).limit(@per_page)
+    return @model.offset(page_offset).limit(@per_page) unless @elasticsearch
+    @model if @elasticsearch
   end
 
   def has_previous_step?
