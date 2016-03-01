@@ -46,3 +46,11 @@ To run the tests run a ```docker-compose run web bash```, this will start a
 shell into the application context in which you'll be able to run a bin/rspec to
 run all the specs
 
+
+##Elastisearch
+
+``` rails c ```
+
+``` Articles::Article.__elasticsearch__.create_index! ```
+
+``` Articles::Article.import ```
