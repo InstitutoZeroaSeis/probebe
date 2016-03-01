@@ -78,8 +78,8 @@ module MessageDeliveries
 
     def match_message_from_category(messages)
       category = category_for_child
-      # article_to_exclude = map_last_five_articles_from(child, category)
-      matched_message = matched_message_by(messages, category)
+      article_to_exclude = map_last_five_articles_from(child, category)
+      matched_message = matched_message_by(messages, category, article_to_exclude)
       matched_message || messages.shuffle.first
     end
 
@@ -97,14 +97,14 @@ module MessageDeliveries
     end
 
     def map_last_five_articles_from(child, category)
-      child.message_deliveries.select do |msg|
-        msg.article.category == category if msg.present?
+      child.message_deliveries.select do |md|
+        md.message.present? && md.article.present? && md.article.category == category
       end.last(5).map(&:article).map(&:id)
     end
 
-    def matched_message_by(messages, category)
+    def matched_message_by(messages, category, article_to_exclude)
       messages.find do |message|
-        (message.parent_category == category || message.parent_category == category.parent_category)
+        (message.parent_category == category || message.parent_category == category.parent_category) && !article_to_exclude.include?(message.article.id)
       end
     end
   end
