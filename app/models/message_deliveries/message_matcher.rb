@@ -97,8 +97,8 @@ module MessageDeliveries
     end
 
     def map_last_five_articles_from(child, category)
-      child.message_deliveries.select do |msg|
-        msg.article.category == category if msg.present?
+      child.message_deliveries.select do |md|
+        md.message.present? && md.article.present? && md.article.category == category
       end.last(5).map(&:article).map(&:id)
     end
 
