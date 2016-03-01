@@ -187,14 +187,6 @@ ActiveRecord::Schema.define(version: 20160225144659) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "institute_pages", force: true do |t|
-    t.string   "title"
-    t.text     "text"
-    t.integer  "picture_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"
     t.integer  "child_id"
@@ -335,32 +327,8 @@ ActiveRecord::Schema.define(version: 20160225144659) do
 
   add_index "site_banners", ["picture_id"], name: "index_site_banners_on_picture_id", using: :btree
 
-  create_table "site_coordinators_pages", force: true do |t|
-    t.string   "title"
-    t.text     "text"
-    t.integer  "picture_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "site_headers", force: true do |t|
     t.string   "path"
-    t.integer  "picture_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "site_history_pages", force: true do |t|
-    t.string   "title"
-    t.text     "text"
-    t.integer  "picture_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "site_institute_pages", force: true do |t|
-    t.string   "title"
-    t.text     "text"
     t.integer  "picture_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -401,14 +369,6 @@ ActiveRecord::Schema.define(version: 20160225144659) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
-  end
-
-  create_table "site_partners_pages", force: true do |t|
-    t.string   "title"
-    t.text     "text"
-    t.integer  "picture_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "tags", force: true do |t|
