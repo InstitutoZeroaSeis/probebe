@@ -7,9 +7,12 @@ default:
     wsdl_end_point: http://54.208.151.164/BasicSourceMT
     wsdl_name_space: http://basic.webservice.gateway.springwireless.com/
 
+
 development:
   message_delivery:
     <<: *delivery
+  elasticsearch:
+    host: 'elasticsearch:9200'
 
 test:
   message_delivery:
@@ -23,3 +26,5 @@ production:
   message_delivery:
     <<: *delivery
     deliver_sms: true
+  elasticsearch:
+    host: https://search-probebe-pfe4of6w5kcmntodebrajt5xt4.us-east-1.es.amazonaws.com/

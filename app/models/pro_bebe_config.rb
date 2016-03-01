@@ -30,4 +30,7 @@ public
     APP_CONFIG['message_delivery']['spring_password']
   end
 
+  def self.elasticsearch_host
+    APP_CONFIG['elasticsearch']['host']
+  end
 end

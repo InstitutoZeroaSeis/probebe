@@ -133,4 +133,4 @@ module Articles
   end
 end
 
-Articles::Article.__elasticsearch__.client = Elasticsearch::Client.new host: 'elasticsearch:9200', log: true
+Articles::Article.__elasticsearch__.client = Elasticsearch::Client.new host: ProBebeConfig.elasticsearch_host, log: true
