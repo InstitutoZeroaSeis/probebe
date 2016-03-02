@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :credentials, only: :create
     post 'credentials/update_social_network_id' => 'credentials#update_social_network_id'
     resources :device_registrations, only: [:create, :show, :destroy], id: /[^\/]+/, param: :platform_code
-     resources :messages, only: :show
+    resources :messages, only: :show
     resources :profiles, only: [:index]
     post 'profiles/max_recipient_children' => 'profiles#update_max_recipient_children'
     post "profiles" => 'profiles#update'
