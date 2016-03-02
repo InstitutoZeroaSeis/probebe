@@ -78,8 +78,9 @@ module MessageDeliveries
 
     def match_message_from_category(messages)
       category = category_for_child
-      article_to_exclude = map_last_five_articles_from(child, category)
-      matched_message = matched_message_by(messages, category, article_to_exclude)
+      # article_to_exclude = map_last_five_articles_from(child, category)
+      # matched_message = matched_message_by(messages, category, article_to_exclude)
+      matched_message = matched_message_by(messages, category)
       matched_message || messages.shuffle.first
     end
 
@@ -102,9 +103,11 @@ module MessageDeliveries
       end.last(5).map(&:article).map(&:id)
     end
 
-    def matched_message_by(messages, category, article_to_exclude)
+    # def matched_message_by(messages, category, article_to_exclude)
+    def matched_message_by(messages, category)
       messages.find do |message|
-        (message.parent_category == category || message.parent_category == category.parent_category) && !article_to_exclude.include?(message.article.id)
+        # (message.parent_category == category || message.parent_category == category.parent_category) && !article_to_exclude.include?(message.article.id)
+        (message.parent_category == category || message.parent_category == category.parent_category)
       end
     end
   end
