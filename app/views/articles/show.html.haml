@@ -33,7 +33,7 @@
 
           .single-post-author.col-md-12
             %img.img-author{src: @article.author_photo_url}
-            .single-post-author-info
+            .single-post-author-info{ class: ("valign-middle" if @article.author_bio.empty?)}
               = t('views.blog.by', author: ' ')
               = link_to @article.author_name, articles_path(author_id: @article.original_author_id)
               .single-post-author-description
