@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources(:tags, param: :name, only: []) { resources :articles, only: :index }
   resources(:categories) { resources :articles, only: :index }
   get :colaborators, to: 'static_pages#colaborators'
+  resources :authors, only: :show
   resources :pages, only: :show
 
   namespace :api do

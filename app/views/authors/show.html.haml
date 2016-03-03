@@ -1,0 +1,13 @@
+.partners.container
+  %h2
+    = @author.name
+  .partners-authors
+    %p.lead
+      %img{width: 50, height: 50, src: @author.photo_url}
+    %p
+      = @author.bio
+    %p
+      = link_to t('views.application.back'), colaborators_path, class: "colaborator-link"
+    %p
+      = link_to t('views.blog.view_all_author_articles'), articles_path(author_id: @author.id)
+

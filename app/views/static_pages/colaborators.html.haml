@@ -7,7 +7,10 @@
       %p.lead
         %img{width: 50, height: 50, src: author.photo_url}
         = author.name
-      %p
+      %p{style: "max-height: 81px; overflow: hidden"}
         = author.bio
       %p
+        = link_to t('views.blog.read_more'), author_path(author), class: "colaborator-link"
+      %p
         = link_to t('views.blog.view_all_author_articles'), articles_path(author_id: author.id)
+

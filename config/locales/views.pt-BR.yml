@@ -11,6 +11,7 @@ pt-BR:
     application:
       admin: Admin
       back_to_home: Voltar ao início
+      back: Voltar
       exit: Sair
       name: Pro Bebê
       sign_in: Login
@@ -125,3 +126,5 @@ pt-BR:
       phones: Telefones
     timeline:
       read_more: Leia Mais
+  partners:
+    colaborators: Colaboradores
