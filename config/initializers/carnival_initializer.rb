@@ -53,6 +53,10 @@ Carnival.configure do |config|
         {
           label: 'birthday_card',
           link: '/admin/birthday_cards'
+        },
+        {
+          label: 'Monitoramento de mensagens',
+          link: '/admin/manager_message_deliveries'
         }
       ]
     },

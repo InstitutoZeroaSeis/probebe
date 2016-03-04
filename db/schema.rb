@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304160216) do
+ActiveRecord::Schema.define(version: 20160304210054) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -204,6 +204,20 @@ ActiveRecord::Schema.define(version: 20160304160216) do
 
   add_index "message_deliveries", ["child_id"], name: "index_message_deliveries_on_child_id", using: :btree
   add_index "message_deliveries", ["message_id"], name: "index_message_deliveries_on_message_id", using: :btree
+
+  create_table "message_deliveries_manager_message_deliveries", force: true do |t|
+    t.date     "messages_created_start"
+    t.date     "messages_created_end"
+    t.date     "messages_sent_start"
+    t.date     "messages_sent_end"
+    t.integer  "sum_messages_created"
+    t.integer  "sum_messages_sent"
+    t.integer  "sum_messages_sent_by_sms"
+    t.integer  "sum_messages_sent_by_android"
+    t.integer  "sum_messages_sent_by_ios"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.text     "text"
