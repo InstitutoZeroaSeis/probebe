@@ -67,7 +67,7 @@ module MessageDeliveries
     end
 
     def messages_to_send
-      Message.joins(:article).
+      Message.eager_load(:article, :category).
               where('articles.publishable = ?', true)
     end
   end

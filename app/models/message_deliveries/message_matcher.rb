@@ -8,6 +8,7 @@ module MessageDeliveries
       @messages = messages
       @child = child
       @system_date = system_date
+      @message_deliveries_of_child = message_deliveries_by(child)
     end
 
     def match_message_for_child
@@ -55,7 +56,7 @@ module MessageDeliveries
 
     def filter_by_already_sent_message(messages)
       messages.select do |message|
-        !child.message_deliveries.map(&:message).include? message
+        !@message_deliveries_of_child.map(&:message).include? message
       end
     end
 
@@ -78,9 +79,8 @@ module MessageDeliveries
 
     def match_message_from_category(messages)
       category = category_for_child
-      # article_to_exclude = map_last_five_articles_from(child, category)
-      # matched_message = matched_message_by(messages, category, article_to_exclude)
-      matched_message = matched_message_by(messages, category)
+      article_to_exclude = map_last_five_articles_from(child, category)
+      matched_message = matched_message_by(messages, category, article_to_exclude)
       matched_message || messages.shuffle.first
     end
 
@@ -92,23 +92,26 @@ module MessageDeliveries
     end
 
     def map_last_two_categories_from(child)
-      child.message_deliveries.order('id DESC').last(2).map do |msg|
+      @message_deliveries_of_child.last(2).map do |msg|
         msg.article.category.parent_category
       end.map(&:id)
     end
 
     def map_last_five_articles_from(child, category)
-      child.message_deliveries.select do |md|
+      @message_deliveries_of_child.select do |md|
         md.message.present? && md.article.present? && md.article.category == category
-      end.last(5).map(&:article).map(&:id)
+      end.first(5).map { |msg| msg.article.id }
     end
 
-    # def matched_message_by(messages, category, article_to_exclude)
-    def matched_message_by(messages, category)
+    def matched_message_by(messages, category, article_to_exclude)
       messages.find do |message|
-        # (message.parent_category == category || message.parent_category == category.parent_category) && !article_to_exclude.include?(message.article.id)
-        (message.parent_category == category || message.parent_category == category.parent_category)
+        (message.parent_category == category || message.parent_category == category.parent_category) && !article_to_exclude.include?(message.article.id)
       end
     end
+
+    def message_deliveries_by(child)
+      MessageDeliveries::MessageDelivery.eager_load(:message => {:article => {:category => :parent_category}}).where(child_id: child.id).order('message_deliveries.id DESC')
+    end
+
   end
 end

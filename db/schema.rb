@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225144659) do
+ActiveRecord::Schema.define(version: 20160304160216) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160225144659) do
     t.string   "slug"
   end
 
+  add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
   add_index "articles", ["cover_picture_id"], name: "index_articles_on_cover_picture_id", using: :btree
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["thumb_picture_id"], name: "index_articles_on_thumb_picture_id", using: :btree
@@ -201,6 +202,9 @@ ActiveRecord::Schema.define(version: 20160225144659) do
     t.boolean  "mon_is_pregnat"
   end
 
+  add_index "message_deliveries", ["child_id"], name: "index_message_deliveries_on_child_id", using: :btree
+  add_index "message_deliveries", ["message_id"], name: "index_message_deliveries_on_message_id", using: :btree
+
   create_table "messages", force: true do |t|
     t.text     "text"
     t.integer  "article_id"
@@ -213,6 +217,9 @@ ActiveRecord::Schema.define(version: 20160225144659) do
     t.integer  "maximum_valid_week"
     t.integer  "category_id"
   end
+
+  add_index "messages", ["article_id"], name: "index_messages_on_article_id", using: :btree
+  add_index "messages", ["category_id"], name: "index_messages_on_category_id", using: :btree
 
   create_table "partners", force: true do |t|
     t.string   "name"
