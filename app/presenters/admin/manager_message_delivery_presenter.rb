@@ -1,7 +1,8 @@
 class Admin::ManagerMessageDeliveryPresenter < Carnival::BaseAdminPresenter
 
   field :id,
-    actions: [:index]
+    actions: [:index],
+    :sortable => {:direction => :desc, :default => true}
 
   field :messages_created_start,
     actions: [:index]

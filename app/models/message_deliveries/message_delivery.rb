@@ -28,6 +28,10 @@ module MessageDeliveries
       super
     end
 
+    def self.by_cell_phone_system(system)
+      eager_load(child: :profile).where("profiles.cell_phone_system = #{system}")
+    end
+
     protected
 
     def set_defaults

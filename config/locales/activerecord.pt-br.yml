@@ -136,6 +136,17 @@ pt-BR:
         target_blank: Abrir em outra aba?
         parent_menu_name: Nome menu principal
         page_title: Nome da página
+      message_deliveries/manager_message_deliveries:
+        id: Id
+        messages_created_start: Início criação das mensagens
+        messages_created_end: Fim criação das mensagens
+        messages_sent_start: Início envio das mensagens
+        messages_sent_end: Fim criação das mensagens
+        sum_messages_created: Total de mensagens
+        sum_messages_sent: Total de mensagens enviadas
+        sum_messages_sent_by_sms: Total de mensagens enviadas por SMS
+        sum_messages_sent_by_android: Total de mensagens enviadas para Android
+        sum_messages_sent_by_ios: Total de mensagens enviadas IOS
     errors:
       models:
         articles/article:
