@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307144709) do
+ActiveRecord::Schema.define(version: 20160308143333) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -207,8 +207,6 @@ ActiveRecord::Schema.define(version: 20160307144709) do
 
   create_table "message_deliveries_manager_message_deliveries", force: true do |t|
     t.datetime "messages_created_start"
-    t.datetime "messages_created_end"
-    t.datetime "messages_sent_start"
     t.datetime "messages_sent_end"
     t.integer  "sum_messages_created"
     t.integer  "sum_messages_sent"
@@ -217,6 +215,7 @@ ActiveRecord::Schema.define(version: 20160307144709) do
     t.integer  "sum_messages_sent_by_ios"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "creator_jobs_end"
   end
 
   create_table "messages", force: true do |t|
