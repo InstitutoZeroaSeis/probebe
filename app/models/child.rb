@@ -1,6 +1,7 @@
 class Child < ActiveRecord::Base
   DAYS_IN_WEEK = 7
   PREGNANCY_DURATION_IN_WEEKS = 42
+  MAX_AGE_IN_WEEKS = 72
   GENDER_ENUM = [:male, :female, :not_informed]
 
   belongs_to :profile
@@ -45,6 +46,10 @@ class Child < ActiveRecord::Base
   def born? system_date = nil
     system_date ||= MessageDeliveries::SystemDate.new
     !pregnancy?(system_date)
+  end
+
+  def valid_age_in_weeks?
+    age_in_weeks <= MAX_AGE_IN_WEEKS
   end
 
   def pregnancy_start_date(system_date = nil)
