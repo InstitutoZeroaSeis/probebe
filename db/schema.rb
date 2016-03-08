@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308143333) do
+ActiveRecord::Schema.define(version: 20160308192844) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -210,9 +210,9 @@ ActiveRecord::Schema.define(version: 20160308143333) do
     t.datetime "messages_sent_end"
     t.integer  "sum_messages_created"
     t.integer  "sum_messages_sent"
-    t.integer  "sum_messages_sent_by_sms"
-    t.integer  "sum_messages_sent_by_android"
-    t.integer  "sum_messages_sent_by_ios"
+    t.integer  "sum_messages_sent_by_sms",     default: 0
+    t.integer  "sum_messages_sent_by_android", default: 0
+    t.integer  "sum_messages_sent_by_ios",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "creator_jobs_end"

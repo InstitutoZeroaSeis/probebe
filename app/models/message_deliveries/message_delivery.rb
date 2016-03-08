@@ -28,8 +28,9 @@ module MessageDeliveries
       super
     end
 
-    def self.by_cell_phone_system(system)
-      eager_load(child: :profile).where("profiles.cell_phone_system = #{system}")
+    def was_sent_through
+      return 'sms' if sms_allowed?
+      child.profile.cell_phone_system
     end
 
     protected
