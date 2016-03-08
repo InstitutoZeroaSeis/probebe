@@ -7,13 +7,9 @@ module MessageDeliveries
       @testing_mode = testing_mode
     end
 
-    def create_deliveries_for_all_children
-      Child.completed_profile.map do |child|
-        message = find_message_for_child(child)
-        message_delivery = create_message_delivery(child, message)
-        create_donated_message(child.donor, message_delivery) if child.donor.present?
-        message_delivery
-      end.select(&:present?)
+    def create_delivery_for(child)
+      message = find_message_for_child(child)
+      create_message_delivery(child, message)
     end
 
     def create_deliveries_for (child)

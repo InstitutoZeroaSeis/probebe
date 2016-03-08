@@ -7,13 +7,10 @@ class Admin::ManagerMessageDeliveryPresenter < Carnival::BaseAdminPresenter
   field :messages_created_start,
     actions: [:index]
 
-  field :messages_created_end,
-    actions: [:index]
-
-  field :messages_sent_start,
-    actions: [:index]
-
   field :messages_sent_end,
+    actions: [:index]
+
+  field :creator_jobs_end,
     actions: [:index]
 
   field :sum_messages_created,
