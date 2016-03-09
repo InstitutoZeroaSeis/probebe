@@ -100,7 +100,7 @@ class Profile < ActiveRecord::Base
   end
 
   def set_search_column_at_user
-    user.update_columns(search_column: "#{user.email} #{name} #{cell_phone}")
+    user.update_columns(search_column: "#{user.email} #{name} #{cell_phone}") if user.present?
   end
 
   def manage_donor_children

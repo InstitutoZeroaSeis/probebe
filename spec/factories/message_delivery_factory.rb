@@ -11,7 +11,7 @@ FactoryGirl.define do
 
     after(:build, :stub) do |delivery, evaluator|
       next unless evaluator.category
-      delivery.message = create(:message, category: evaluator.category)
+      delivery.message = create(:message, :with_article, category: evaluator.category)
     end
 
     trait :sent do
@@ -25,5 +25,6 @@ FactoryGirl.define do
     trait :with_device_registrations do
       device_registrations { create_list(:device_registration, 1, profile: create(:profile)) }
     end
+
   end
 end
