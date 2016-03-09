@@ -1,7 +1,7 @@
 module MessageDeliveries
   class MessageDeliveryFinder
     def self.find_and_deliver_messages(message_delivery)
-      send_message message_delivery
+      send_message(message_delivery)
     end
 
     def self.send_message(message_delivery)
@@ -22,9 +22,22 @@ module MessageDeliveries
     end
 
     def self.update_manager_message(message_delivery)
-      manager_message = MessageDeliveries::ManagerMessageDeliveries.lock.last
-      manager_message.counter_increase(message_delivery)
-      manager_message.save!
+      manager_message = MessageDeliveries::ManagerMessageDeliveries.last
+      counter_increase(manager_message, message_delivery)
+    end
+
+    def self.counter_increase(manager_message, message_delivery)
+      manager_message.with_lock do
+        manager_message.messages_sent_end = message_delivery.updated_at
+        manager_message.sum_messages_sent += 1
+        case message_delivery.was_sent_through
+           when 'sms' then manager_message.sum_messages_sent_by_sms += 1
+           when "ios" then manager_message.sum_messages_sent_by_ios += 1
+           when "android" then manager_message.sum_messages_sent_by_android += 1
+           else manager_message.sum_messages_sent_by_android += 1
+        end
+        manager_message.save!
+      end
     end
 
   end

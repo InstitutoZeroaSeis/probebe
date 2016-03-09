@@ -8,7 +8,6 @@ class Api::MessageDeliveriesController < ApplicationController
     children.map do |child|
       MessageSenderWorker.perform_async(Date.today, child.id)
     end
-    managerMessage.update(creator_jobs_end: Time.now)
     head :ok
   end
 
