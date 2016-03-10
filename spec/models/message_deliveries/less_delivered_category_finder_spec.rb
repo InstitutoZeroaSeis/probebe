@@ -3,11 +3,10 @@ require 'rails_helper'
 RSpec.describe MessageDeliveries::LessDeliveredCategoryFinder, type: :model do
   it 'finds the category that was less delivered' do
     less_delivered = create(:category, :with_parent)
-    create(:message_delivery, category: less_delivered)
     most_delivered = create(:category, :with_parent)
     create_pair(:message_delivery, category: most_delivered)
 
-    category_matcher = MessageDeliveries::LessDeliveredCategoryFinder.new(nil)
+    category_matcher = MessageDeliveries::LessDeliveredCategoryFinder.new(nil, [most_delivered.id])
     found_category = category_matcher.find
 
     expect(found_category.name).to eq(less_delivered.name)
@@ -18,7 +17,7 @@ RSpec.describe MessageDeliveries::LessDeliveredCategoryFinder, type: :model do
     create(:message_delivery, category: category_without_parent)
 
     category_matcher = MessageDeliveries::LessDeliveredCategoryFinder.new(
-      MessageDeliveries::MessageDelivery.default_scoped
+      MessageDeliveries::MessageDelivery.default_scoped, [category_without_parent.id]
     )
     found_category = category_matcher.find
 
@@ -29,7 +28,7 @@ RSpec.describe MessageDeliveries::LessDeliveredCategoryFinder, type: :model do
     category = create(:category, :with_parent)
 
     category_matcher = MessageDeliveries::LessDeliveredCategoryFinder.new(
-      MessageDeliveries::MessageDelivery.default_scoped
+      MessageDeliveries::MessageDelivery.default_scoped, nil
     )
     found_category = category_matcher.find
 
@@ -52,7 +51,7 @@ RSpec.describe MessageDeliveries::LessDeliveredCategoryFinder, type: :model do
     ])
 
     category_matcher = MessageDeliveries::LessDeliveredCategoryFinder.new(
-      child.message_deliveries, categories_relation
+      child.message_deliveries, nil, categories_relation
     )
     found_category = category_matcher.find
 

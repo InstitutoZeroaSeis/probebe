@@ -10,7 +10,7 @@ FactoryGirl.define do
     end
 
     after(:build, :stub) do |delivery, evaluator|
-      next unless evaluator.category
+      next unless evaluator.category && evaluator.category.parent_category.present?
       delivery.message = create(:message, :with_article, category: evaluator.category)
     end
 
