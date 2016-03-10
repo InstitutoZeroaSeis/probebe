@@ -38,22 +38,22 @@ feature 'Site user access timeline' do
     end
   end
 
-  context 'with one message derived from a published article' do
-    let(:article) { create(:article, :published) }
-    let(:message) { create(:message, article: article) }
-    let(:child) { create(:child, profile: user.profile) }
-    let(:message_delivery) { create(:message_delivery, message: message, delivery_date: Date.today, child: child) }
+  # context 'with one message derived from a published article' do
+  #   let(:article) { create(:article, :published) }
+  #   let(:message) { create(:message, article: article) }
+  #   let(:child) { create(:child, profile: user.profile) }
+  #   let(:message_delivery) { create(:message_delivery, message: message, delivery_date: Date.today, child: child) }
 
-    scenario 'and sees a link for a blog post in the message box' do
-      visit timeline_path(message_delivery.child)
-      link_content = message_delivery.text
-      link_href = raw_article_path(message_delivery.article.id)
+  #   scenario 'and sees a link for a blog post in the message box' do
+  #     visit timeline_path(message_delivery.child)
+  #     link_content = message_delivery.text
+  #     link_href = raw_article_path(message_delivery.article.id)
 
-      within_timeline(Date.today) do
-        expect(page).to have_message_with_link_to_post(link_content, link_href)
-      end
-    end
-  end
+  #     within_timeline(Date.today) do
+  #       expect(page).to have_message_with_link_to_post(link_content, link_href)
+  #     end
+  #   end
+  # end
 
   context 'with one message derived from a non published article' do
     let(:article) { create(:article, :unpublished) }
