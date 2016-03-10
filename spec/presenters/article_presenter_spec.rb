@@ -29,11 +29,12 @@ RSpec.describe ArticlePresenter do
   end
 
   it 'it should return author photo url' do
-    author = double(photo_url: 'avatar/url')
-    post = double(original_author: author)
+    photo =  double(url: 'avatar/url')
+    author = double(photo: photo)
+    post = double(original_author: author )
 
     post_presenter = ArticlePresenter.new(post)
 
-    expect(post_presenter.author_photo_url).to eq(author.photo_url)
+    expect(post_presenter.author_photo_url).to eq(author.photo.url)
   end
 end
