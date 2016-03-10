@@ -25,6 +25,6 @@ module HeaderAuthenticationConcern
   protected
 
   def valid_social_network_id(user, social_network_id)
-    user.profile.social_network_id == social_network_id
+    user.profile.social_network_id == social_network_id if user.present?
   end
 end
