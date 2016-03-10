@@ -49,36 +49,36 @@ RSpec.describe Profile, type: :model do
     end
   end
 
-  context "has donor children" do
-    context "when profile_type change to donor" do
-      it 'has to remove donor children' do
-        donor_profile = create(:profile, profile_type: :donor)
-        child = create(:child, :with_profile, donor: donor_profile)
-        profile = child.profile
+  # context "has donor children" do
+  #   context "when profile_type change to donor" do
+  #     it 'has to remove donor children' do
+  #       donor_profile = create(:profile, profile_type: :donor)
+  #       child = create(:child, :with_profile, donor: donor_profile)
+  #       profile = child.profile
 
-        profile.reload
-        profile.profile_type = :donor
-        profile.save
+  #       profile.reload
+  #       profile.profile_type = :donor
+  #       profile.save
 
-        expect(profile.children.last.donor).to be nil
-      end
-    end
-    context "when is authorize_to_receive_sms" do
-      it 'has to remove donor children' do
-        allow(MessageDeliveries::ZenviaSmsSender).to receive(:send).and_return(true)
-        donor_profile = create(:profile, profile_type: :donor)
-        child = create(:child, :with_profile, donor: donor_profile)
-        child.profile.user = create(:user, :site_user)
-        child.profile.save
-        profile = child.profile
+  #       expect(profile.children.last.donor).to be nil
+  #     end
+  #   end
+  #   context "when is authorize_to_receive_sms" do
+  #     it 'has to remove donor children' do
+  #       allow(MessageDeliveries::ZenviaSmsSender).to receive(:send).and_return(true)
+  #       donor_profile = create(:profile, profile_type: :donor)
+  #       child = create(:child, :with_profile, donor: donor_profile)
+  #       child.profile.user = create(:user, :site_user)
+  #       child.profile.save
+  #       profile = child.profile
 
-        profile.reload
-        profile.authorize_receive_sms!
+  #       profile.reload
+  #       profile.authorize_receive_sms!
 
-        expect(profile.children.last.donor).to be nil
-      end
-    end
-  end
+  #       expect(profile.children.last.donor).to be nil
+  #     end
+  #   end
+  # end
   context "is authorize_to_receive_sms" do
     context "when is unauthorize_receive_sms and not has device_registrations" do
       it "should return the profile_type to recipient" do
