@@ -23,6 +23,7 @@ FactoryGirl.define do
     end
 
     trait :with_device_registrations do
+      sms_allowed false
       device_registrations { create_list(:device_registration, 1, profile: create(:profile)) }
     end
 

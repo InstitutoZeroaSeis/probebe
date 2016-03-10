@@ -81,7 +81,7 @@ module MessageDeliveries
       category = category_for_child
       article_to_exclude = map_last_five_articles_from(child, category)
       matched_message = matched_message_by(messages, category, article_to_exclude)
-      matched_message || messages.shuffle.first
+      matched_message || messages.first
     end
 
     def category_for_child
