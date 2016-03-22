@@ -58,8 +58,9 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   scope :all
   scope :completed_profile
   scope :authorized_receive_sms
-  scope :with_device
   scope :unauthorized_receive_sms
+  scope :with_device_android
+  scope :with_device_ios
 
   def render_action?(record, record_action, _page_action)
     action = record_action.name.to_sym
@@ -68,8 +69,7 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
     when :authorize_receive_sms
       record.profile.cell_phone.present? &&
       record.profile.children.count > 0 &&
-      !record.profile.authorized_receive_sms? &&
-      record.profile.device_registrations.empty?
+      !record.profile.authorized_receive_sms?
     when :unauthorize_receive_sms
       record.profile.cell_phone.present? &&
       record.profile.children.count > 0 &&

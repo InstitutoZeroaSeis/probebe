@@ -23,8 +23,6 @@ class User < ActiveRecord::Base
       where('children.profile_id IS NOT NULL').
       distinct
   }
-  # scope :authorized_receive_sms, -> { completed_profile.where('profiles.authorized_receive_sms = ?', true) }
-  # scope :unauthorized_receive_sms, -> { completed_profile.where('profiles.authorized_receive_sms = ?', false) }
 
   enum role: ALL_ROLES
 
@@ -47,19 +45,33 @@ class User < ActiveRecord::Base
   def self.with_device
     completed_profile
     .where("device_registrations.profile_id IS NOT NULL")
-    .where('profiles.authorized_receive_sms = ?', false)
+    .distinct
+  end
+
+  def self.with_device_android
+    completed_profile
+    .with_device
+    .where('profiles.cell_phone_system = 1 OR profiles.cell_phone_system = 2')
+  end
+
+  def self.with_device_ios
+    completed_profile
+    .with_device
+    .where('profiles.cell_phone_system = 0')
   end
 
   def self.unauthorized_receive_sms
     completed_profile
     .where('profiles.authorized_receive_sms = ?', false)
     .where("device_registrations.profile_id IS NULL")
+    .distinct
   end
 
   def self.authorized_receive_sms
     completed_profile
     .where('profiles.authorized_receive_sms = ?', true)
     .where("device_registrations.profile_id IS NULL")
+    .distinct
   end
 
 end
