@@ -43,9 +43,13 @@ class Profile < ActiveRecord::Base
   scope :admin_site_user_profiles, lambda {
     joins(:user).merge(User.admin_site_user)
   }
+
   scope :completed, -> {
+    eager_load(:children).
     where.not(cell_phone: nil).
-    joins(:children)
+    where('length(cell_phone) > 1').
+    where('children.profile_id IS NOT NULL')
+    .distinct
   }
 
   alias_attribute :primary_cell_phone_number, :cell_phone

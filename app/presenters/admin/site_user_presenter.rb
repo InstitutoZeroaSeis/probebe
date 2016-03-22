@@ -55,11 +55,11 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
          :remote => true,
          :method => 'GET'
 
+  scope :all
   scope :completed_profile
   scope :authorized_receive_sms
-  scope :unauthorized_receive_sms
   scope :with_device
-  scope :all
+  scope :unauthorized_receive_sms
 
   def render_action?(record, record_action, _page_action)
     action = record_action.name.to_sym

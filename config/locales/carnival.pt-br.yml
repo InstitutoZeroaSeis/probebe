@@ -9,9 +9,9 @@ pt-BR:
     scope:
       all: Todos
       completed_profile: Perfis Completos
-      authorized_receive_sms: Autorizados a receber SMS
-      unauthorized_receive_sms: Não autorizados a receber SMS
-      with_device: Com aplicativo
+      authorized_receive_sms: Recebendo SMS
+      unauthorized_receive_sms: Pendente Autorizar SMS
+      with_device: Recebendo Notificação
   carnival:
     errors:
       invalid_field:  "As actions '%{actions}' não são válidas para o campo '%{field}' do presenter '%{presenter}'"
