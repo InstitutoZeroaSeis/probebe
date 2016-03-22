@@ -17,9 +17,10 @@ class User < ActiveRecord::Base
 
   scope :admin_site_user, -> { where(role: [0, 1, 2]) }
   scope :completed_profile, -> {
-      joins(profile: [:children]).
-      where('profiles.cell_phone is not NULL').
+      eager_load(profile: [:children, :device_registrations]).
+      where('profiles.cell_phone IS NOT NULL').
       where('length(profiles.cell_phone) > 1').
+      where('children.profile_id IS NOT NULL').
       distinct
   }
   # scope :authorized_receive_sms, -> { completed_profile.where('profiles.authorized_receive_sms = ?', true) }
@@ -44,26 +45,21 @@ class User < ActiveRecord::Base
   end
 
   def self.with_device
-    joins("LEFT JOIN profiles as p on p.user_id = users.id LEFT JOIN device_registrations ON p.id = device_registrations.profile_id")
+    completed_profile
     .where("device_registrations.profile_id IS NOT NULL")
+    .where('profiles.authorized_receive_sms = ?', false)
   end
 
   def self.unauthorized_receive_sms
-    eager_load(profile: [:children, :device_registrations])
-    .where('children.profile_id IS NOT NULL')
+    completed_profile
     .where('profiles.authorized_receive_sms = ?', false)
-    .where('profiles.cell_phone is not NULL')
-    .where('length(profiles.cell_phone) > 1')
     .where("device_registrations.profile_id IS NULL")
-    .distinct
   end
 
   def self.authorized_receive_sms
-    eager_load(:profile)
+    completed_profile
     .where('profiles.authorized_receive_sms = ?', true)
-    .where('profiles.cell_phone is not NULL')
-    .where('length(profiles.cell_phone) > 1')
-    .distinct
+    .where("device_registrations.profile_id IS NULL")
   end
 
 end
