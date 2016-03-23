@@ -202,9 +202,6 @@ ActiveRecord::Schema.define(version: 20160322131443) do
     t.boolean  "mon_is_pregnat"
   end
 
-  add_index "message_deliveries", ["child_id"], name: "index_message_deliveries_on_child_id", using: :btree
-  add_index "message_deliveries", ["message_id"], name: "index_message_deliveries_on_message_id", using: :btree
-
   create_table "message_deliveries_manager_message_deliveries", force: true do |t|
     t.datetime "messages_created_start"
     t.datetime "messages_sent_end"
@@ -229,9 +226,6 @@ ActiveRecord::Schema.define(version: 20160322131443) do
     t.integer  "maximum_valid_week"
     t.integer  "category_id"
   end
-
-  add_index "messages", ["article_id"], name: "index_messages_on_article_id", using: :btree
-  add_index "messages", ["category_id"], name: "index_messages_on_category_id", using: :btree
 
   create_table "partners", force: true do |t|
     t.string   "name"
