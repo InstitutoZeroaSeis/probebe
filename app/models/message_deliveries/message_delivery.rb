@@ -17,7 +17,7 @@ module MessageDeliveries
     scope :created_in_a_month, -> { where(created_at: 1.month.ago.beginning_of_day..Date.today.end_of_day) }
     scope :delivered_in_period, lambda { |period| where(delivery_date: period) }
 
-    delegate :category_id, :text, to: :message
+    delegate :category_id, :text, :father_text, to: :message
 
     def article
       message.article
