@@ -112,6 +112,10 @@ pt-BR:
         gender:
           <<: *gender
           not_informed: 'Não informado'
+        cell_phone_systems:
+          android: Android
+          ios: iPhone
+          other: Outros
       user:
         role:
           admin: "Administrador"
