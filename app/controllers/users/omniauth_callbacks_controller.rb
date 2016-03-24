@@ -22,10 +22,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   alias_method :facebook, :authenticate_user
 
   def failure
-    Rails.logger.info "=========================================="
     Rails.logger.info failure_message
     set_flash_message :alert, :failure, kind: OmniAuth::Utils.camelize(failed_strategy.name), reason: failure_message
-    flash[:notice] = " #{failure_message} ====== #{OmniAuth::Utils.camelize(failed_strategy.name)}"
+    flash[:notice] = I18n.t('controller.messages.could_not_sign_up_with_omniauth')
     redirect_to after_omniauth_failure_path_for(resource_name)
   end
 

@@ -235,7 +235,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :google_oauth2, '315459751586-34134ej3bd5gq9u3f9loubd1r8kkc3rk.apps.googleusercontent.com', 'axtW8xsFxJmpKz7jEHZstAQX'
+  config.omniauth :google_oauth2, '315459751586-34134ej3bd5gq9u3f9loubd1r8kkc3rk.apps.googleusercontent.com', 'axtW8xsFxJmpKz7jEHZstAQX', {prompt: "select_account"}
   config.omniauth :facebook, '123448778003166', '31c0be8eb8811a26aa6761e62aa5f530', image_size: 'large',  scope: 'email', info_fields: 'email, first_name, last_name', callback_url: Rails.env.production? ? 'http://www.probebe.org.br/users/auth/facebook/callback' : 'http://localhost:3000/users/auth/facebook/callback'
 
   # ==> Warden configuration
