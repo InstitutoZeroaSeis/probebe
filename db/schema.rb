@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322131443) do
+ActiveRecord::Schema.define(version: 20160324174442) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -225,6 +225,7 @@ ActiveRecord::Schema.define(version: 20160322131443) do
     t.integer  "minimum_valid_week"
     t.integer  "maximum_valid_week"
     t.integer  "category_id"
+    t.text     "father_text"
   end
 
   create_table "partners", force: true do |t|

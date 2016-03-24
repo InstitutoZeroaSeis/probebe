@@ -7,6 +7,7 @@ class Message < ActiveRecord::Base
   has_many :message_deliveries, class_name: 'MessageDeliveries::MessageDelivery'
 
   validates_presence_of :text
+  validates_presence_of :father_text
 
   scope :male_and_both, -> { where(gender: [0, 2]) }
   scope :female_and_both, -> { where(gender: [1, 2]) }

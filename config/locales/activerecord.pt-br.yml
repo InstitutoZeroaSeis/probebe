@@ -65,7 +65,8 @@ pt-BR:
         created_at: Criado em
         id: Id
         messageable_name: Artigo
-        text: Texto
+        text: Texto para Mãe
+        father_text: Texto para Pai
       message_deliveries/message_delivery:
         id: Id
         profile_name: Nome do destinatário
