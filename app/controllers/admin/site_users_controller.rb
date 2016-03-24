@@ -12,6 +12,8 @@ class Admin::SiteUsersController < Admin::AdminController
 
   def update
     @model = User.find params[:id]
+    @model.email = params[:user][:email]
+    @model.save(:validate => false)
     profile = @model.profile
     if profile.update_attributes permitted_params[:user][:profile_attributes]
       redirect_to action: :index
