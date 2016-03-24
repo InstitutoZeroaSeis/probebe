@@ -28,6 +28,9 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   field 'profile.primary_cell_phone_number',
         actions: [:show]
 
+  field 'profile.cell_phone_system',
+        actions: [:show]
+
   field :profile_edit,
         actions: [:edit],
         as: :partial

@@ -4,6 +4,12 @@
   = p.input :city
   = p.input :street
   = p.input :cell_phone, input_html: { class: 'phone' }
+
+  .form-group.form-group-sm.string
+    %label.string.control-label.col-sm-2.control-label
+      = "Fez login no app?  #{record.present? && record.profile.device_registrations.empty? ? 'Não' : 'Sim'}"
+  = p.input :cell_phone_system, input_html: {style: 'width: 1%; height: 17px'}, as: :radio_buttons, collection: [:ios, :android, :other]
+
   -# = p.input :message_days, collection: ['Se', 'Te', 'Qa', 'Qi', 'Sx', 'Sa', 'Do'], as: :check_boxes
   - if record.present? && record.profile.children.size > 0
     .row
@@ -15,4 +21,14 @@
             = c.input :id, as: :hidden
             = c.input :name
             = c.input :birth_date, as: :date_mask
+            = c.input :age_in_weeks, readonly: true
+          - record.profile.children.each do |child|
+            - if child.message_deliveries.size > 0
+              .row
+                .nested-form
+                  %label= "6 Últimas mensagens"
+                  %ul.nested-form-list
+                    - child.message_deliveries.last(6).each do |msg|
+                      %li
+                        = msg.message.text
 
