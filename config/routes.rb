@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     resources :device_registrations, only: [:create, :show, :destroy], id: /[^\/]+/, param: :platform_code
     resources :messages, only: :show
     resources :profiles, only: [:index]
+    get 'active_profile' => 'profiles#active'
+    get 'disable_profile' => 'profiles#disable'
     post 'profiles/max_recipient_children' => 'profiles#update_max_recipient_children'
     post "profiles" => 'profiles#update'
     resources :donated_messages, only: [:index]
