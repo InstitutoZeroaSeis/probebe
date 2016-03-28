@@ -455,6 +455,26 @@ a.remove_fields {
   font-weight: 400;
 }
 
+a.disable_profile {
+  position: absolute;
+  bottom: -131px;
+  right: 0;
+  background: #fff;
+  padding: 10px 15px;
+  color: #D87575;
+  font-weight: 400;
+}
+
+a.active_profile {
+  position: absolute;
+  bottom: -131px;
+  right: 0;
+  background: #fff;
+  padding: 10px 15px;
+
+  font-weight: 400;
+}
+
 .gender-input .radio-inline {
   padding: 23px 17px;
 }

@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   match ':status', to: 'errors#show', constraints: { status: /\d{3}/ }, via: [:get, :post]
-  resource :profile, except: :index
+  resource :profile, except: :index do
+    get :active, on: :member
+    get :disable, on: :member
+  end
   resources :timelines, only: :show
   get 'timelines/:id/monthly/:date' => 'timelines#monthly', as: :timeline_monthly
   constraints(id: /\d+/) do

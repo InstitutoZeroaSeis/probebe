@@ -12,6 +12,18 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def active
+    profile = Profile.find(params[:id])
+    profile.active!
+    redirect_to root_path
+  end
+
+  def disable
+    profile = Profile.find(params[:id])
+    profile.disable!
+    redirect_to root_path
+  end
+
   protected
 
   def update_password_and_profile

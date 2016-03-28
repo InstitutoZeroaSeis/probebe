@@ -17,7 +17,3 @@
       .col-sm-3
         = render 'gender_radio_buttons',
                   form: f, options: @profile.options_to_gender_enum
-
-  .form-control-static
-    - if @profile.active?
-      = link_to('Cancelar envio mensagens', '#', class: 'remove_fields')
