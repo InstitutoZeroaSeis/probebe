@@ -28,7 +28,7 @@ module MessageDeliveries
         message_for_test: @testing_mode,
         cell_phone_number: child.primary_cell_phone_number,
         device_registrations: child.device_registrations,
-        sms_allowed: child.device_registrations.empty?,
+        sms_allowed: child.authorized_receive_sms?,
         child_age_in_week_at_delivery: child.age_in_weeks,
         mon_is_pregnat: child.pregnancy?
       )
@@ -42,7 +42,7 @@ module MessageDeliveries
         message_for_test: @testing_mode,
         cell_phone_number: child.primary_cell_phone_number,
         device_registrations: child.device_registrations,
-        sms_allowed: child.device_registrations.empty?,
+        sms_allowed: child.authorized_receive_sms?,
         child_age_in_week_at_delivery: child.age_in_weeks(@system_date),
         mon_is_pregnat: child.pregnancy?(@system_date),
         delivery_date: @system_date.date,
