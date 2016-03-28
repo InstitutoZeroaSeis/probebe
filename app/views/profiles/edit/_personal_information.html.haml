@@ -19,5 +19,5 @@
                   form: f, options: @profile.options_to_gender_enum
 
   .form-control-static
-    - if @profile.authorized_receive_sms?
+    - if @profile.active?
       = link_to('Cancelar envio mensagens', '#', class: 'remove_fields')

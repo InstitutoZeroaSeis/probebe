@@ -75,6 +75,8 @@ Rails.application.routes.draw do
     resources :site_users do
       get :authorize_receive_sms, on: :member
       get :unauthorize_receive_sms, on: :member
+      get :active_profile, on: :member
+      get :disable_profile, on: :member
     end
     resources :tags
     resources :birthday_cards

@@ -23,6 +23,8 @@ pt-BR:
     new: Novo
     show: Visualizar
     unauthorize_receive_sms: Remover do Envio de SMS
+    active_profile: Habilitar conta
+    disable_profile: Desabilitar conta
 
   nested_form:
     open: Abrir
