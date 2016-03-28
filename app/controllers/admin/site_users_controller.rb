@@ -49,12 +49,24 @@ class Admin::SiteUsersController < Admin::AdminController
     redirect_to action: :index
   end
 
+  def active_profile
+    user = User.find(params[:id])
+    user.profile.active!
+    redirect_to action: :index
+  end
+
+  def disable_profile
+    user = User.find(params[:id])
+    user.profile.disable!
+    redirect_to action: :index
+  end
+
   protected
 
   def permitted_params
     params.permit(user: [:email, :role, profile_attributes: [
                                           :name, :state, :city,
-                                          :street, :cell_phone,
+                                          :street, :cell_phone, :cell_phone_system,
                                           children_attributes: [
                                             :id, :name, :birth_date
                                             ]

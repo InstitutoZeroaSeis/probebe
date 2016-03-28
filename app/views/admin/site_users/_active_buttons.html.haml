@@ -1,0 +1,5 @@
+.sms-buttons
+  - if record.profile.present? && record.profile.active?
+    = link_to t('carnival.disable_profile'), disable_profile_admin_site_user_path(id: record.id)
+  - else
+    = link_to t('carnival.active_profile'), active_profile_admin_site_user_path(id: record.id)

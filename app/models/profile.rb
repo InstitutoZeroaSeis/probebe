@@ -97,6 +97,16 @@ class Profile < ActiveRecord::Base
     self.cell_phone.gsub(/([^\d])+/, '')
   end
 
+  def active!
+    self.active = true
+    save!(validate: false)
+  end
+
+  def disable!
+    self.active = false
+    save!(validate: false)
+  end
+
   protected
 
   def set_defaults

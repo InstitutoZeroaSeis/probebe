@@ -43,6 +43,10 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
         actions: [:show, :edit],
         as: :partial
 
+  field :active_buttons,
+        actions: [:show, :edit],
+        as: :partial
+
   field :search_column,
         advanced_search: { operator: :like }
 

@@ -25,6 +25,12 @@
   %h3 Meu Perfil
   %p Adicione filhos, edite telefone e-mail e dados pessoais aqui
 
+  .form-control-static
+    - if @profile.active?
+      = link_to( t('carnival.disable_profile'), disable_profile_path(id: @profile.id), class: 'disable_profile')
+    - else
+      = link_to( t('carnival.active_profile'), active_profile_path(id: @profile.id), class: 'active_profile')
+
 %section.edit-profile-form
   = simple_form_for @profile,
     url: profile_path,

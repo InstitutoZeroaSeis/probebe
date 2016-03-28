@@ -31,6 +31,16 @@ module Api
       head 200
     end
 
+    def active
+      current_profile.active!
+      head 200
+    end
+
+    def disable
+      current_profile.disable!
+      head 200
+    end
+
     protected
 
     def update_password_and_profile

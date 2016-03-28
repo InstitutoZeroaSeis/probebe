@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   match ':status', to: 'errors#show', constraints: { status: /\d{3}/ }, via: [:get, :post]
-  resource :profile, except: :index
+  resource :profile, except: :index do
+    get :active, on: :member
+    get :disable, on: :member
+  end
   resources :timelines, only: :show
   get 'timelines/:id/monthly/:date' => 'timelines#monthly', as: :timeline_monthly
   constraints(id: /\d+/) do
@@ -38,6 +41,8 @@ Rails.application.routes.draw do
     resources :device_registrations, only: [:create, :show, :destroy], id: /[^\/]+/, param: :platform_code
     resources :messages, only: :show
     resources :profiles, only: [:index]
+    get 'active_profile' => 'profiles#active'
+    get 'disable_profile' => 'profiles#disable'
     post 'profiles/max_recipient_children' => 'profiles#update_max_recipient_children'
     post "profiles" => 'profiles#update'
     resources :donated_messages, only: [:index]
@@ -75,6 +80,8 @@ Rails.application.routes.draw do
     resources :site_users do
       get :authorize_receive_sms, on: :member
       get :unauthorize_receive_sms, on: :member
+      get :active_profile, on: :member
+      get :disable_profile, on: :member
     end
     resources :tags
     resources :birthday_cards
