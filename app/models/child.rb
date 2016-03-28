@@ -22,7 +22,13 @@ class Child < ActiveRecord::Base
   delegate :authorized_receive_sms, to: :profile
 
   scope :completed_profile, -> {
-    eager_load(:profile).where.not('profiles.cell_phone' => nil)
+    eager_load(:profile)
+    .where.not('profiles.cell_phone' => nil)
+  }
+
+  scope :actived_profile, -> {
+    eager_load(:profile)
+    .where('profiles.active' => true)
   }
 
   def age_in_weeks system_date = nil
