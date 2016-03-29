@@ -640,3 +640,25 @@ input#birth_date {
 .valign-middle{
   margin-top: 13px;
 }
+
+.not-found-box{
+  text-align: center;
+  h2{
+    color: #f69343;
+  }
+}
+
+.back-home-error {
+  background-color: $orange;
+  border: 1px solid $orange;
+  color: #fff;
+  margin-top: 25px;
+  padding: 16px 15px;
+  width: 20%;
+
+  &:hover {
+    border: 1px solid $orange;
+    background-color: #fff;
+    color: $orange;
+  }
+}

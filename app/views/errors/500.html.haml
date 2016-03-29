@@ -1,2 +1,6 @@
-%h1= t 'views.errors.internal_server_error'
-= link_to t('views.application.back_to_home'), root_path
+.about.container
+  .row
+    .col-md-12.col-sm-12.not-found-box
+      = image_tag 'not-found.svg'
+      %h2= t 'views.errors.internal_server_error'
+      = link_to t('views.application.back_to_home'), root_path, class: "button btn btn-default back-home-error"
