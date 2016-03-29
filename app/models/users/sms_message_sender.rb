@@ -27,4 +27,21 @@ class Users::SmsMessageSender
                            message )
   end
 
+  def self.send_disable_receive_msg(user)
+    user.reload
+    message = I18n.t('profile_messages.disable_receive_msg')
+    MessageDeliveries::ZenviaSmsSender.send(
+                           user.profile.cell_phone_numbers,
+                           message )
+  end
+
+  def self.send_active_receive_msg(user)
+    user.reload
+    message = I18n.t('profile_messages.active_receive_msg')
+    MessageDeliveries::ZenviaSmsSender.send(
+                           user.profile.cell_phone_numbers,
+                           message )
+  end
+
+
 end
