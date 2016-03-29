@@ -22,13 +22,14 @@
             = c.input :name
             = c.input :birth_date, as: :date_mask
             = c.input :age_in_weeks, readonly: true
-          - record.profile.children.each do |child|
-            - if child.message_deliveries.size > 0
-              .row
-                .nested-form
-                  %label= "6 Últimas mensagens"
-                  %ul.nested-form-list
-                    - child.message_deliveries.last(6).each do |msg|
-                      %li
-                        = msg.message.text
+        - record.profile.children.each do |child|
+          %h4= child.name
+          - if child.message_deliveries.size > 0
+            .row
+              .nested-form
+                %label= "6 Últimas mensagens"
+                %ul.nested-form-list
+                  - child.message_deliveries.last(6).each do |msg|
+                    %li
+                      = msg.message.text
 
