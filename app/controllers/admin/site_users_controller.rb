@@ -52,18 +52,12 @@ class Admin::SiteUsersController < Admin::AdminController
   def active_profile
     user = User.find(params[:id])
     user.profile.active!
-    Rails.logger.info "===============active_profile"
-    Rails.logger.info "==----  #{user.profile.errors.messages}"
-    Rails.logger.info "==----  #{user.errors.messages}"
     redirect_to action: :index
   end
 
   def disable_profile
     user = User.find(params[:id])
     user.profile.disable!
-    Rails.logger.info "===============disable_profile"
-    Rails.logger.info "==----  #{user.profile.errors.messages}"
-    Rails.logger.info "==----  #{user.errors.messages}"
     redirect_to action: :index
   end
 

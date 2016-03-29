@@ -99,13 +99,11 @@ class Profile < ActiveRecord::Base
 
   def active!
     self.active = true
-    Rails.logger.info "===============active #{self.active}"
     save!(validate: false)
   end
 
   def disable!
     self.active = false
-    Rails.logger.info "===============disable #{self.active}"
     save!(validate: false)
   end
 
