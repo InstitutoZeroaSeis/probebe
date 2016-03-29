@@ -13,14 +13,12 @@ class ProfilesController < ApplicationController
   end
 
   def active
-    profile = Profile.find(params[:id])
-    profile.active!
+    current_profile.active!
     redirect_to root_path
   end
 
   def disable
-    profile = Profile.find(params[:id])
-    profile.disable!
+    current_profile.disable!
     redirect_to root_path
   end
 

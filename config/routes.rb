@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
   match ':status', to: 'errors#show', constraints: { status: /\d{3}/ }, via: [:get, :post]
   resource :profile, except: :index do
-    get :active, on: :member
-    get :disable, on: :member
+    get :active
+    get :disable
   end
   resources :timelines, only: :show
   get 'timelines/:id/monthly/:date' => 'timelines#monthly', as: :timeline_monthly
