@@ -14,6 +14,7 @@ pt-BR:
       with_device: Recebendo Notificação
       with_device_android: Notificação Android
       with_device_ios: Notificação IOS
+      disabled: Inativos
   carnival:
     errors:
       invalid_field:  "As actions '%{actions}' não são válidas para o campo '%{field}' do presenter '%{presenter}'"

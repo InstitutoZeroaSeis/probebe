@@ -68,6 +68,7 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   scope :unauthorized_receive_sms
   scope :with_device_android
   scope :with_device_ios
+  scope :disabled
 
   def render_action?(record, record_action, _page_action)
     action = record_action.name.to_sym

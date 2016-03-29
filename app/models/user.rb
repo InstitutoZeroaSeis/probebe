@@ -74,4 +74,9 @@ class User < ActiveRecord::Base
     .distinct
   end
 
+  def self.disabled
+    eager_load(:profile)
+    .where("profiles.active = false")
+  end
+
 end
