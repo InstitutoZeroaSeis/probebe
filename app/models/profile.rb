@@ -99,11 +99,13 @@ class Profile < ActiveRecord::Base
 
   def active!
     self.active = true
+    Users::SmsMessageSender.send_active_receive_msg self.user
     save!(validate: false)
   end
 
   def disable!
     self.active = false
+    Users::SmsMessageSender.send_disable_receive_msg self.user
     save!(validate: false)
   end
 
