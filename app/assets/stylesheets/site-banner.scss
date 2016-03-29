@@ -148,7 +148,7 @@
   padding-left: 5%;
 
   &.step-0 {
-    @include site-banner-step($red, $dark-red, 0, 0, -31px, 0)
+    @include site-banner-step($red, $dark-red, 0, 0, -30px, 0)
   }
 
   &.step-1 {
