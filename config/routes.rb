@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get :colaborators, to: 'static_pages#colaborators'
   resources :authors, only: :show
   resources :pages, only: :show
+  match '/contacts',     to: 'contacts#new',             via: 'get'
+  resources "contacts", only: [:new, :create]
 
   namespace :api do
     resources :credentials, only: :create
