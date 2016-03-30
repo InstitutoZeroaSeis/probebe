@@ -1,0 +1,13 @@
+.about.container
+  .row
+    .col-md-12.col-sm-12.not-found-box
+      %h2 Fale conosco
+      = simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f|
+        = f.input :name, :required => true
+        = f.input :email, :required => true
+        = f.input :phone, :required => true
+        = f.input :message, :as => :text, input_html: {style: "height: 120px;"}, required: true
+        .hidden
+          = f.input :nickname, :hint => 'Leave this field blank!'
+        %div
+          = f.button :submit, 'Enviar', class: "button btn btn-default back-home-error"

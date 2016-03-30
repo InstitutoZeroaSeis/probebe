@@ -55,6 +55,9 @@ pt-BR:
     authorized_receive_sms: Agora voce passara a receber as mensagens do ProBebe neste numero de celular. Para qualquer mudanca, volte ao site para alterar seu perfil.
     active_receive_msg: Sua conta no ProBebê foi reativada. Você passará a receber as mensagens novamente.
     disable_receive_msg: Sua conta no ProBebê foi suspensa. Quando desejar receber mensagens novamente volte ao seu perfil e habilite o envio
+  contacts:
+    thanks: Obrigado pela mensagem. Entraremos em contato com você.
+    not_sent: Não foi possível enviar a mensagem. Tente mas tarde.
   carnival:
     create_profile: Criar perfil
     edit_profile: Editar perfil
@@ -126,3 +129,16 @@ pt-BR:
           <<: *birthday_cards_type
   unauthorized:
     default: "Você não tem permissão para acessar a página solicitada"
+  mail_form:
+    models:
+      contact: "Your site contact form"
+    attributes:
+      contact:
+        name: Nome
+        email: E-mail
+        phone: Telefone
+        message: Mensagem
+    request:
+      title: "Technical information about the user"
+      remote_ip: "IP Address"
+      user_agent: "Browser"
