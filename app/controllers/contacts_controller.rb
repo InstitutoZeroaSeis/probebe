@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+
   def new
     @contact = Contact.new
   end
@@ -7,9 +8,9 @@ class ContactsController < ApplicationController
     @contact = Contact.new(params[:contact])
     @contact.request = request
     if @contact.deliver
-      flash.now[:notice] = 'Obrigado pela mensagem. Entraremos em contato com você.'
+      flash.now[:notice] = I18n.t('contacts.thanks')
     else
-      flash.now[:error] = 'Não foi possível enviar a mensagem.'
+      flash.now[:error] = I18n.t('contacts.not_sent')
       render :new
     end
   end

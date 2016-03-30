@@ -1,5 +1,5 @@
-%div
+.about.container
   - flash.each do |key, value|
-    %div
-      %a{"data-dismiss" => "alert", :href => "#"} ×
-      = value
+    .row
+      .col-md-12.col-sm-12.not-found-box
+        %h2= value
