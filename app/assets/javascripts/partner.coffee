@@ -2,7 +2,7 @@ $ ->
   $('#partner-about-partner').on 'click', (event) ->
     event.preventDefault()
     $('html, body').animate
-      scrollTop: $('.partner-section').offset().top
+      scrollTop: $('.partner-section-scroll').offset().top
     , 800
 
   $('#partner-how-works').on 'click', (event) ->

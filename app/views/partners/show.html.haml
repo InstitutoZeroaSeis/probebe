@@ -14,6 +14,7 @@
       .site-landing-buttons
         %button.sign-up-partner{ style: "background-color:#F69343; color:#fff", class: "site-landing-buttons-sign-in" , data: { color1: "#F69343", color2: "transparent" } }
           = t('views.home.landing.sign_up')
+      %span.partner-section-scroll
 
     .site-landing-list.col-md-4.col-sm-4
       %ul.site-landing-carousel
@@ -37,8 +38,6 @@
 .partner-section
   .partner-content.container
     %figure.partner-logo{ style: "background-image: url(#{@partner.logo.data})" }
-    .partner-name
-      = raw @partner.name
     .partner-text
       = raw @partner.text
 
