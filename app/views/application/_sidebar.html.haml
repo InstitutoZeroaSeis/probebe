@@ -24,5 +24,18 @@
   %nav.blog-tags
     %ul.home-categories-list.category-education
       %h3 Tags
+      .row
+        .col-md-4.tag-order-text ordem:
+        - if show_page
+          .col-md-4.tag-order-text
+            = link_to "quantidade", article_path(article, order: 'quantity')
+          .col-md-4.tag-order-text
+            = link_to "alfabética", article_path(article, order: "alpha")
+        - else
+          .col-md-4.tag-order-text
+            = link_to "quantidade", articles_path(order: 'quantity')
+          .col-md-4.tag-order-text
+            = link_to "alfabética", articles_path(order: "alpha")
+
       %li.home-categories-item= render tags
     .more +

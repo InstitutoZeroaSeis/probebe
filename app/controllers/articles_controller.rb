@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
   def index
-    @presenter = ArticlesPresenter.new(post_search_params)
+    @presenter = ArticlesPresenter.new(post_search_params, params[:order])
   end
 
   def show
-    @article = ArticlePresenter.new(Site::Article.friendly.find(params[:id]))
+    @article = ArticlePresenter.new(Site::Article.friendly.find(params[:id]), params[:order])
     render layout: 'single-post'
   end
 

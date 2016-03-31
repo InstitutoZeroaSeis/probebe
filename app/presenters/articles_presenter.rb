@@ -4,8 +4,9 @@ class ArticlesPresenter
 
   include Rails.application.routes.url_helpers
 
-  def initialize(article_params = {})
+  def initialize(article_params = {}, order)
     @article_params = article_params
+    @order = order
     build_pager
   end
 
@@ -30,10 +31,13 @@ class ArticlesPresenter
   end
 
   def tags_for_sidebar
+    raw_order = 'tags.name ASC, articles_count DESC'
+    raw_order = 'articles_count DESC' if @order == 'quantity'
+
     Tag.joins(:articles).
       select('tags.id, tags.name, COUNT(*) as articles_count').
       group('tags.id').
-      order('tags.name ASC, articles_count DESC')
+      order(raw_order)
   end
 
   def categories_for_sidebar

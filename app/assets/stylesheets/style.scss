@@ -321,11 +321,15 @@ nav.blog-tags ul li a {
     font-size: 14px;
     margin: 10px 5px 0px 0px;
     padding: 0px 5px 0px 0px;
-    border-right: 1px solid #ccc;
 }
 
 nav.blog-tags ul li {
     border: none !important;
+}
+
+.tag-order-text{
+  font-size: 12px;
+  padding-right: 0;
 }
 
 .lead{
