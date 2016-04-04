@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = ArticlePresenter.new(Site::Article.friendly.find(params[:id]), params[:order])
+    @article = ArticlePresenter.new(Site::Article.friendly.find(params[:id]))
     render layout: 'single-post'
   end
 
