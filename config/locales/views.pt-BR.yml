@@ -128,3 +128,52 @@ pt-BR:
       read_more: Leia Mais
   partners:
     colaborators: Colaboradores
+
+  what:
+    body:
+      first_paragraph:
+        >
+          O ProBebê é um serviço inovador que leva, gratuitamente, informações
+          personalizadas sobre os cuidados básicos do bebê, por meio de
+          mensagens via celular. Direcionado prioritariamente às mães,
+          pais ou cuidadores, o aplicativo envia orientações semanais desde
+          o inicio da gravidez até os 18 meses de vida.
+
+      second_paragraph:
+        >
+          A utilização do aplicativo é simples e prática. Basta preencher o
+          cadastro - disponível no site - indicando a data do nascimento do
+          bebê ou a data prevista para o nascimento dele e o número do celular.
+          As mensagens passam a ser encaminhadas (pelo menos três por semana),
+          trazendo informações sobre cada etapa da gestação e ajustadas ao
+          momento de vida do bebê.
+
+      third_paragraph:
+        >
+          Dentro da “Linha do Tempo”, espaço que o site do ProBebê oferece aos
+          usuários, é possível encontrar o detalhamento das mensagens recebidas.
+
+      fourth_paragraph:
+        >
+          Tanto os textos transmitidos pelo celular como os artigos publicados
+          no site contam com a participação de qualificada equipe de especialistas,
+          profissionais responsáveis por reunir conhecimento atualizado sobre
+          as várias áreas abordadas: saúde, educação, segurança, comportamento,
+          desenvolvimento, finanças, entre outras.
+
+      fifth_paragraph:
+        >
+
+          Toda essa estrutura visa a possibilitar aumento no grau de segurança e
+          de autoconfiança, sobretudo das mães, para cuidar, nutrir e fazer com
+          que o bebê tenha condições essenciais para um saudável crescimento.
+
+      sixth_paragraph:
+        >
+          Programa do Instituto Zero a Seis, o ProBebê foi um dos premiados
+          do Desafio de Impacto Social Google | Brasil.
+    header:
+      1_right_message: Mensagem certa,
+      2_right_person: para a pessoa certa,
+      3_right_hour: na hora certa!
+    title: O que é o ProBebê
