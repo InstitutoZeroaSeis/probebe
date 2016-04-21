@@ -53,6 +53,8 @@ pt-BR:
       tags: Tags
       thirteenth_to_eighteenth: 13 a 18 meses
       view_all_author_articles: Ver todos os artigos deste autor
+    articles:
+      no_result: Nenhum artigo foi encontrado
     errors:
       forbidden: Acesso não autorizado
       internal_server_error: Ocorreu um erro ao processar a requisição
@@ -128,6 +130,7 @@ pt-BR:
       read_more: Leia Mais
   partners:
     colaborators: Colaboradores
+
 
   what:
     body:
