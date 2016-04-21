@@ -164,6 +164,7 @@ pt-BR:
           base:
             maximum_permited_pregnancy_date: A data de gestação ultrapassará os 9 meses
             minimum_birth_date: A data de nascimento deve ser maior
+            miximum_birth_date: Só é possível cadastrar crianças até 18 meses
           attributes:
             donor:
               profile_donor: A mãe ja é uma doadora.
