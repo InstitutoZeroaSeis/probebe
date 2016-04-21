@@ -14,7 +14,7 @@ class Admin::AdminSiteUserPresenter < Carnival::BaseAdminPresenter
         as: :enum
 
   field :profile_fields,
-        actions: [:new],
+        actions: [:new, :edit],
         as: :partial
 
   action :show

@@ -1,0 +1,2 @@
+= f.simple_fields_for :user do |ff|
+  .row= ff.input :role, as: :select, collection:  [:admin, :publisher, :site_user]

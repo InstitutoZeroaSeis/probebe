@@ -3,10 +3,7 @@ class Admin::ProfilePresenter < Carnival::BaseAdminPresenter
   field :id
 
   field :name,
-    actions: [:index, :show]
-
-  field :name,
-    actions: [:new, :edit],
+    actions: [:index, :new, :edit],
     sortable: true,
     advanced_search: {operator: :equal}
 
@@ -24,6 +21,10 @@ class Admin::ProfilePresenter < Carnival::BaseAdminPresenter
 
   field :cell_phone,
     actions: [:index, :show, :new, :edit]
+
+  field :role,
+        actions: [:edit],
+        as: :partial
 
   field :avatar,
     actions: [:new, :edit],
