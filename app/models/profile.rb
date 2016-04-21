@@ -27,6 +27,9 @@ class Profile < ActiveRecord::Base
   validates :cell_phone, format: {
     with: /\A\d{2}\s\d{4,5}\-\d{4,4}\Z/
   }, on: [:update], if: :site_user?
+  validates :cell_phone, uniqueness: {
+    message: I18n.t('activerecord.errors.models.profile.attributes.cell_phone.not_unique') }, if: :site_user?
+
   validate :mobile_phone?, on: [:update], if: :site_user?
   validate :validate_profile_type, if: "!donations_children.empty?"
   validate :check_has_already_saved_child, if: "!children.empty?"

@@ -192,6 +192,7 @@ pt-BR:
               already_exist_child: Já existe uma filho(a) com mesmo nome e data de nascimento.
             cell_phone:
               not_mobile_phone: Este telefone não é um celular
+              not_unique: Outro usuário já possue esse número de telefone
         site/menu:
           attributes:
             base:
