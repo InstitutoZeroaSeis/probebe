@@ -6,6 +6,7 @@ class ArticlesPresenter
 
   def initialize(article_params = {}, order)
     @article_params = article_params
+    @article_params[:search] = ActiveSupport::Inflector.transliterate(article_params[:search])
     @order = order
     build_pager
   end
@@ -62,5 +63,9 @@ class ArticlesPresenter
     articles = Site::ArticleFinder.new(@article_params).find unless elasticsearch
     articles =  articles_from_elasticsearch if elasticsearch
     @pager = Pager.new(articles, current_page, POSTS_PER_PAGE, elasticsearch)
+  end
+
+  def transliterate(string)
+    string.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s
   end
 end
