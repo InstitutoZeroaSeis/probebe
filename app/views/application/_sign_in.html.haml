@@ -15,6 +15,8 @@
           %div.stay-connected
             = f.check_box :remember_me
             = f.label t('carnival_devise.new.remember_me')
+          .forgot_password
+            = link_to t('carnival_devise.shared.forgot'), new_password_path(:user)
           .social-login
             = render 'facebook_sign_up_button'
             = render 'google_sign_up_button'
