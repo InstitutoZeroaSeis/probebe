@@ -16,6 +16,7 @@ module MessageDeliveries
         children = self.recipient_children(children_qtd)
         children.each do |child|
           child.update_attributes(donor_id: profile.id, was_recipient_until: nil)
+          self.send_welcame_message child
         end
       end
 
@@ -41,6 +42,12 @@ module MessageDeliveries
                 limit(limit).to_a
 
         was_recipient_children.concat children
+      end
+
+      def self.send_welcame_message(child)
+        MessageDeliveries::ZenviaSmsSender.send(
+                       child.profile.cell_phone_numbers,
+                       Engine.first.welcame_message )
       end
 
 
