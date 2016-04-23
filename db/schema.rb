@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423191212) do
+ActiveRecord::Schema.define(version: 20160423203034) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -179,6 +179,7 @@ ActiveRecord::Schema.define(version: 20160423191212) do
     t.boolean  "authorize_receive_sms", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "welcame_message"
   end
 
   create_table "friendly_id_slugs", force: true do |t|

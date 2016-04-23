@@ -153,6 +153,7 @@ pt-BR:
         sum_messages_sent_by_ios: Total de mensagens enviadas IOS
       engine:
         authorize_receive_sms: Autorizar usuário novos a receber SMS
+        welcame_message: Mensage de 'Boas Vindas' (Doação)
     errors:
       models:
         articles/article:
