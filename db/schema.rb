@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328165920) do
+ActiveRecord::Schema.define(version: 20160423191212) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -174,6 +174,12 @@ ActiveRecord::Schema.define(version: 20160328165920) do
   end
 
   add_index "donated_messages", ["message_delivery_id"], name: "index_donated_messages_on_message_delivery_id", using: :btree
+
+  create_table "engines", force: true do |t|
+    t.boolean  "authorize_receive_sms", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false

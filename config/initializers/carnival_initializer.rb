@@ -92,6 +92,10 @@ Carnival.configure do |config|
         {
           label: 'Menu',
           link: '/admin/menus'
+        },
+        {
+          label: 'Engine',
+          link: '/admin/engines'
         }
 
       ]

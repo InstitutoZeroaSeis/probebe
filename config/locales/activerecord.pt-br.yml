@@ -149,6 +149,8 @@ pt-BR:
         sum_messages_sent_by_sms: Total de mensagens enviadas por SMS
         sum_messages_sent_by_android: Total de mensagens enviadas para Android
         sum_messages_sent_by_ios: Total de mensagens enviadas IOS
+      engine:
+        authorize_receive_sms: Autorizar usuário novos a receber SMS
     errors:
       models:
         articles/article:
