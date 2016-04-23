@@ -8,7 +8,7 @@ pt-BR:
   user:
     scope:
       all: Todos
-      completed_profile: Aptos a receber mensagem
+      completed_profile: Recebendo MSG
       authorized_receive_sms: Recebendo SMS
       unauthorized_receive_sms: Pendente para autorizar SMS
       with_device: Recebendo Notificação

@@ -84,4 +84,9 @@ class User < ActiveRecord::Base
     .where("profiles.active = false")
   end
 
+  def self.donor
+    eager_load(:profile)
+    .where("profiles.profile_type = 2")
+  end
+
 end

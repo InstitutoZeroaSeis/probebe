@@ -31,6 +31,10 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   field 'profile.cell_phone_system',
         actions: [:show]
 
+  field 'profile.profile_type',
+        actions: [:show]
+
+
   field :profile_edit,
         actions: [:edit],
         as: :partial
@@ -63,6 +67,7 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
          :method => 'GET'
 
   scope :all
+  scope :donor
   scope :completed_profile
   scope :authorized_receive_sms
   scope :unauthorized_receive_sms
