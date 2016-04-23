@@ -15,6 +15,8 @@ pt-BR:
       with_device_android: Notificação Android
       with_device_ios: Notificação IOS
       disabled: Inativos
+      paid_sms: SMS Pago
+      donated_sms: SMS Doado
   carnival:
     errors:
       invalid_field:  "As actions '%{actions}' não são válidas para o campo '%{field}' do presenter '%{presenter}'"

@@ -89,4 +89,16 @@ class User < ActiveRecord::Base
     .where("profiles.profile_type = 2")
   end
 
+  def self.paid_sms
+    completed_profile
+    .authorized_receive_sms
+    .where("profiles.profile_type <> 0")
+  end
+
+  def self.donated_sms
+    completed_profile
+    .authorized_receive_sms
+    .where("profiles.profile_type = 0")
+  end
+
 end

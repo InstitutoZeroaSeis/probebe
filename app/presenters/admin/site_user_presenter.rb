@@ -69,7 +69,8 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   scope :all
   scope :donor
   scope :completed_profile
-  scope :authorized_receive_sms
+  scope :paid_sms
+  scope :donated_sms
   scope :unauthorized_receive_sms
   scope :with_device_android
   scope :with_device_ios
