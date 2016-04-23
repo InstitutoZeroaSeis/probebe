@@ -2,6 +2,7 @@ class Users::SmsMessageSender
   def self.send_completed_profile_msg(user)
     user.reload
     profile = user.profile
+    self.authorize_receive_sms_by_engine(user)
     return if profile.profile_completed_message_sent?
     return if profile.cell_phone.nil?
     return if profile.children.empty?
@@ -41,6 +42,10 @@ class Users::SmsMessageSender
     MessageDeliveries::ZenviaSmsSender.send(
                            user.profile.cell_phone_numbers,
                            message )
+  end
+
+  def self.authorize_receive_sms_by_engine(user)
+    user.profile.authorize_receive_sms! if Engine.first.authorize_receive_sms?
   end
 
 
