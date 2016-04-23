@@ -71,9 +71,9 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   scope :completed_profile
   scope :paid_sms
   scope :donated_sms
-  scope :unauthorized_receive_sms
   scope :with_device_android
   scope :with_device_ios
+  scope :unauthorized_receive_sms
   scope :disabled
 
   def render_action?(record, record_action, _page_action)
