@@ -23,6 +23,7 @@ module MessageDeliveries
         limit = children_qtd.abs
         children = profile.donations_children.limit(limit)
         children.update_all(donor_id: nil, was_recipient_until: DateTime.now)
+        children.each { |child| child.profile.authorize_receive_sms! }
       end
 
       def self.recipient_children(limit)
