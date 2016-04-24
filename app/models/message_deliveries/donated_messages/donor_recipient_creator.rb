@@ -45,16 +45,19 @@ module MessageDeliveries
           MessageDeliveries::ZenviaSmsSender.send(
                                    child.profile.cell_phone_numbers,
                                    Engine.first.warning_message_donated )
+        end
         unless child.was_recipient_until.present?
           MessageDeliveries::ZenviaSmsSender.send(
                          child.profile.cell_phone_numbers,
                          Engine.first.welcame_message )
+        end
       end
 
-      def profiles_with_priority
+      def self.profiles_with_priority
         priority_profiles = User.unauthorized_receive_sms.pluck('profiles.id')
         if priority_profiles.empty?
           priority_profiles = User.authorized_receive_sms.pluck('profiles.id')
+        end
         priority_profiles
       end
 
