@@ -16,7 +16,7 @@ module MessageDeliveries
         children = self.recipient_children(children_qtd)
         children.each do |child|
           child.update_attributes(donor_id: profile.id, was_recipient_until: nil)
-          self.send_welcame_message child
+          self.send_message_to_donated child
         end
       end
 
@@ -44,10 +44,15 @@ module MessageDeliveries
         was_recipient_children.concat children
       end
 
-      def self.send_welcame_message(child)
-        MessageDeliveries::ZenviaSmsSender.send(
-                       child.profile.cell_phone_numbers,
-                       Engine.first.welcame_message )
+      def self.send_message_to_donated(child)
+        if child.was_recipient_until.present?
+          MessageDeliveries::ZenviaSmsSender.send(
+                                   child.profile.cell_phone_numbers,
+                                   Engine.first.warning_message_donated )
+        unless child.donor.present?
+          MessageDeliveries::ZenviaSmsSender.send(
+                         child.profile.cell_phone_numbers,
+                         Engine.first.welcame_message )
       end
 
 
