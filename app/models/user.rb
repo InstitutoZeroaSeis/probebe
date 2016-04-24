@@ -86,19 +86,20 @@ class User < ActiveRecord::Base
 
   def self.donor
     eager_load(:profile)
-    .where("profiles.profile_type = 2")
+    .where(profiles: { profile_type: Profile.profile_types[:donor] })
   end
 
   def self.paid_sms
     completed_profile
     .authorized_receive_sms
-    .where("profiles.profile_type <> 0")
+    .where.not(profiles: { profile_type: Profile.profile_types[:recipient] })
   end
 
   def self.donated_sms
     completed_profile
     .authorized_receive_sms
-    .where("profiles.profile_type = 0")
+    .where(profiles: { profile_type: Profile.profile_types[:recipient] })
+
   end
 
 end

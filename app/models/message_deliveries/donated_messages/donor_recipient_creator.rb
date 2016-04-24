@@ -27,19 +27,15 @@ module MessageDeliveries
       end
 
       def self.recipient_children(limit)
-        base_query = Child.joins(:profile).
-                where(donor: nil).
-                where(profiles: { profile_type: Profile.profile_types[:recipient] })
-
-        was_recipient_children = base_query.
-                where.not(was_recipient_until: nil).
-                limit(limit).to_a
+        was_recipient_children = Child.recipients(profiles_with_priority)
+                                      .was_recipient(limit)
+                                      .to_a
 
         limit = limit - was_recipient_children.size
 
-        children = base_query.
-                where(was_recipient_until: nil).
-                limit(limit).to_a
+        children = Child.recipients(profiles_with_priority)
+                        .was_not_recipient(limit)
+                        .to_a
 
         was_recipient_children.concat children
       end
@@ -49,12 +45,18 @@ module MessageDeliveries
           MessageDeliveries::ZenviaSmsSender.send(
                                    child.profile.cell_phone_numbers,
                                    Engine.first.warning_message_donated )
-        unless child.donor.present?
+        unless child.was_recipient_until.present?
           MessageDeliveries::ZenviaSmsSender.send(
                          child.profile.cell_phone_numbers,
                          Engine.first.welcame_message )
       end
 
+      def profiles_with_priority
+        priority_profiles = User.unauthorized_receive_sms.pluck('profiles.id')
+        if priority_profiles.empty?
+          priority_profiles = User.authorized_receive_sms.pluck('profiles.id')
+        priority_profiles
+      end
 
     end
   end

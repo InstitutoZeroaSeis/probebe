@@ -78,6 +78,23 @@ class Child < ActiveRecord::Base
     }
   end
 
+  def self.recipients(profiles_with_priority)
+    eager_load(:profile).
+    where(donor: nil).
+    where(profiles: { profile_type: Profile.profile_types[:recipient] }).
+    where(profiles: {id: profiles_with_priority})
+  end
+
+  def self.was_recipient(limit)
+    where.not(was_recipient_until: nil).
+    limit(limit)
+  end
+
+  def self.was_not_recipient(limit)
+    where(was_recipient_until: nil).
+    limit(limit)
+  end
+
   protected
 
   def maximum_permited_pregnancy_date?
