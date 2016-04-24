@@ -32,6 +32,11 @@ class Child < ActiveRecord::Base
     .where('profiles.active' => true)
   }
 
+  scope :not_recipient, ->{
+    eager_load(:profile)
+    .where.not(profiles: { profile_type: Profile.profile_types[:recipient] })
+  }
+
   def age_in_weeks system_date = nil
     system_date ||= MessageDeliveries::SystemDate.new
     if pregnancy?(system_date)
