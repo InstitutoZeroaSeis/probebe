@@ -17,6 +17,7 @@ pt-BR:
       disabled: Inativos
       paid_sms: SMS Pago
       donated_sms: SMS Doado
+      children_with_invalid_age: Com filho acima da idade
   carnival:
     errors:
       invalid_field:  "As actions '%{actions}' não são válidas para o campo '%{field}' do presenter '%{presenter}'"

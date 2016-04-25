@@ -67,6 +67,7 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
          :method => 'GET'
 
   scope :all
+  scope :children_with_invalid_age
   scope :donor
   scope :completed_profile
   scope :paid_sms

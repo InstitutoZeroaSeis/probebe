@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
       where('profiles.cell_phone IS NOT NULL').
       where('length(profiles.cell_phone) > 1').
       where('children.profile_id IS NOT NULL').
+      where("children.birth_date >= ?", 72.weeks.ago).
       distinct
   }
 
@@ -68,6 +69,7 @@ class User < ActiveRecord::Base
     .where('profiles.authorized_receive_sms = ?', false)
     .where("device_registrations.profile_id IS NULL")
     .where("profiles.active = true")
+    .where(children: { donor_id: nil})
     .distinct
   end
 
@@ -76,6 +78,7 @@ class User < ActiveRecord::Base
     .where('profiles.authorized_receive_sms = ?', true)
     .where("device_registrations.profile_id IS NULL")
     .where("profiles.active = true")
+    .where(children: { donor_id: nil})
     .distinct
   end
 
@@ -85,7 +88,7 @@ class User < ActiveRecord::Base
   end
 
   def self.donor
-    eager_load(:profile)
+    completed_profile
     .where(profiles: { profile_type: Profile.profile_types[:donor] })
   end
 
@@ -93,13 +96,17 @@ class User < ActiveRecord::Base
     completed_profile
     .authorized_receive_sms
     .where.not(profiles: { profile_type: Profile.profile_types[:recipient] })
+    .where(children: { donor_id: nil})
   end
 
   def self.donated_sms
     completed_profile
-    .authorized_receive_sms
     .where(profiles: { profile_type: Profile.profile_types[:recipient] })
-
+    .where.not(children: { donor_id: nil})
   end
 
+  def self.children_with_invalid_age
+    eager_load(profile: :children)
+    .where("children.birth_date <= ?", 72.weeks.ago)
+  end
 end
