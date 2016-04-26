@@ -6,7 +6,6 @@ class ArticlesPresenter
 
   def initialize(article_params = {}, order)
     @article_params = article_params
-    @article_params[:search] = ActiveSupport::Inflector.transliterate(article_params[:search])
     @order = order
     build_pager
   end
@@ -54,7 +53,8 @@ class ArticlesPresenter
   end
 
   def articles_from_elasticsearch
-    Articles::Article.search(@article_params[:search]).page(current_page).records.to_a
+    data = ActiveSupport::Inflector.transliterate(@article_params[:search])
+    Articles::Article.search(data).page(current_page).records.to_a
       .select { |a| a.publishable? }
   end
 
@@ -62,10 +62,8 @@ class ArticlesPresenter
     elasticsearch = @article_params[:search].present?
     articles = Site::ArticleFinder.new(@article_params).find unless elasticsearch
     articles =  articles_from_elasticsearch if elasticsearch
+
     @pager = Pager.new(articles, current_page, POSTS_PER_PAGE, elasticsearch)
   end
 
-  def transliterate(string)
-    string.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s
-  end
 end
