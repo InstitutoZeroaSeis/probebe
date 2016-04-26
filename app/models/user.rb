@@ -101,7 +101,6 @@ class User < ActiveRecord::Base
 
   def self.donated_sms
     completed_profile
-    .where(profiles: { profile_type: Profile.profile_types[:recipient] })
     .where.not(children: { donor_id: nil})
   end
 

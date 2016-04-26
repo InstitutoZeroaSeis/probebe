@@ -86,8 +86,9 @@ class Child < ActiveRecord::Base
   def self.recipients(profiles_with_priority)
     eager_load(:profile).
     where(donor: nil).
-    where(profiles: { profile_type: Profile.profile_types[:recipient] }).
-    where(profiles: {id: profiles_with_priority})
+    where("profiles.profile_type = #{Profile.profile_types[:recipient]}
+      OR profiles.profile_type = #{Profile.profile_types[:possible_donor]}")
+    .where(profiles: {id: profiles_with_priority})
   end
 
   def self.was_recipient(limit)
@@ -125,7 +126,7 @@ class Child < ActiveRecord::Base
   end
 
   def recipient_profile?
-    return if profile.recipient?
+    return unless profile.donor?
     errors.add(:donor, :profile_donor)
   end
 
