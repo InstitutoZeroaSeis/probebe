@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   def self.with_device_android
     completed_profile
     .with_device
-    .where('profiles.cell_phone_system = 1 OR profiles.cell_phone_system = 2')
+    .where('profiles.cell_phone_system = 1')
     .where("profiles.active = true")
   end
 
@@ -101,6 +101,7 @@ class User < ActiveRecord::Base
 
   def self.donated_sms
     completed_profile
+    .where.not(profiles: { profile_type: Profile.profile_types[:donor] })
     .where.not(children: { donor_id: nil})
   end
 
