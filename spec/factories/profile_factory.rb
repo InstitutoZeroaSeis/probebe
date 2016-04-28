@@ -5,6 +5,7 @@ FactoryGirl.define do
     birth_date { 20.years.ago }
     cell_phone '11 88798-7654'
     children { create_list :child, 2 }
+    active true
 
     trait :with_cell_phone do
       cell_phone '11 88798-7654'

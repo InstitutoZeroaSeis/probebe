@@ -74,6 +74,7 @@ pt-BR:
       site_users: Usuários do Site
       users: Usuários
       birthday_card: Cartão de Aniversário
+      sender: Envios
   controller:
     messages:
       could_not_sign_up_with_omniauth: Não foi possível realizar a autencação com o seu provedor

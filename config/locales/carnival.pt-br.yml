@@ -8,13 +8,16 @@ pt-BR:
   user:
     scope:
       all: Todos
-      completed_profile: Aptos a receber mensagem
+      completed_profile: Recebendo MSG
       authorized_receive_sms: Recebendo SMS
       unauthorized_receive_sms: Pendente para autorizar SMS
       with_device: Recebendo Notificação
       with_device_android: Notificação Android
       with_device_ios: Notificação IOS
       disabled: Inativos
+      paid_sms: SMS Pago
+      donated_sms: SMS Doado
+      children_with_invalid_age: Com filho acima da idade
   carnival:
     errors:
       invalid_field:  "As actions '%{actions}' não são válidas para o campo '%{field}' do presenter '%{presenter}'"

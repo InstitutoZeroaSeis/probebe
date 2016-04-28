@@ -93,6 +93,7 @@ pt-BR:
         children: Filhos
         message_days: Dias de receber mensagens
         cell_phone_system: Sistema utilizado
+        profile_type: Tipo
       tag:
         id: Id
         name: Nome
@@ -110,6 +111,7 @@ pt-BR:
         profile_city: Cidade
         profile_street: Rua
         profile_primary_cell_phone_number: Celular
+        profile_profile_type: Tipo do perfil
         children: Filhos
         sms_buttons: Envio de SMS
         search_column: Nome, Email e Telefone
@@ -149,6 +151,10 @@ pt-BR:
         sum_messages_sent_by_sms: Total de mensagens enviadas por SMS
         sum_messages_sent_by_android: Total de mensagens enviadas para Android
         sum_messages_sent_by_ios: Total de mensagens enviadas IOS
+      engine:
+        authorize_receive_sms: Autorizar usuário novos a receber SMS
+        welcame_message: Mensagem de 'Boas Vindas' (Doação)
+        warning_message_donated: Mensagem de aviso para Doada
     errors:
       models:
         articles/article:

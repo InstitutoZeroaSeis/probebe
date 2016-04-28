@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
       where('profiles.cell_phone IS NOT NULL').
       where('length(profiles.cell_phone) > 1').
       where('children.profile_id IS NOT NULL').
+      where("children.birth_date >= ?", 72.weeks.ago).
       distinct
   }
 
@@ -45,25 +46,30 @@ class User < ActiveRecord::Base
   def self.with_device
     completed_profile
     .where("device_registrations.profile_id IS NOT NULL")
+    .where("profiles.active = true")
     .distinct
   end
 
   def self.with_device_android
     completed_profile
     .with_device
-    .where('profiles.cell_phone_system = 1 OR profiles.cell_phone_system = 2')
+    .where('profiles.cell_phone_system = 1')
+    .where("profiles.active = true")
   end
 
   def self.with_device_ios
     completed_profile
     .with_device
     .where('profiles.cell_phone_system = 0')
+    .where("profiles.active = true")
   end
 
   def self.unauthorized_receive_sms
     completed_profile
     .where('profiles.authorized_receive_sms = ?', false)
     .where("device_registrations.profile_id IS NULL")
+    .where("profiles.active = true")
+    .where(children: { donor_id: nil})
     .distinct
   end
 
@@ -71,6 +77,8 @@ class User < ActiveRecord::Base
     completed_profile
     .where('profiles.authorized_receive_sms = ?', true)
     .where("device_registrations.profile_id IS NULL")
+    .where("profiles.active = true")
+    .where(children: { donor_id: nil})
     .distinct
   end
 
@@ -79,4 +87,26 @@ class User < ActiveRecord::Base
     .where("profiles.active = false")
   end
 
+  def self.donor
+    completed_profile
+    .where(profiles: { profile_type: Profile.profile_types[:donor] })
+  end
+
+  def self.paid_sms
+    completed_profile
+    .authorized_receive_sms
+    .where.not(profiles: { profile_type: Profile.profile_types[:recipient] })
+    .where(children: { donor_id: nil})
+  end
+
+  def self.donated_sms
+    completed_profile
+    .where.not(profiles: { profile_type: Profile.profile_types[:donor] })
+    .where.not(children: { donor_id: nil})
+  end
+
+  def self.children_with_invalid_age
+    eager_load(profile: :children)
+    .where("children.birth_date <= ?", 72.weeks.ago)
+  end
 end

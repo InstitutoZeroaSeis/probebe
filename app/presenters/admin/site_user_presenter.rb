@@ -31,6 +31,10 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
   field 'profile.cell_phone_system',
         actions: [:show]
 
+  field 'profile.profile_type',
+        actions: [:show]
+
+
   field :profile_edit,
         actions: [:edit],
         as: :partial
@@ -63,11 +67,14 @@ class Admin::SiteUserPresenter < Carnival::BaseAdminPresenter
          :method => 'GET'
 
   scope :all
+  scope :children_with_invalid_age
+  scope :donor
   scope :completed_profile
-  scope :authorized_receive_sms
-  scope :unauthorized_receive_sms
+  scope :paid_sms
+  scope :donated_sms
   scope :with_device_android
   scope :with_device_ios
+  scope :unauthorized_receive_sms
   scope :disabled
 
   def render_action?(record, record_action, _page_action)

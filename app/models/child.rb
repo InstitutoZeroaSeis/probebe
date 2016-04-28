@@ -32,6 +32,11 @@ class Child < ActiveRecord::Base
     .where('profiles.active' => true)
   }
 
+  scope :not_recipient, ->{
+    eager_load(:profile)
+    .where.not(profiles: { profile_type: Profile.profile_types[:recipient] })
+  }
+
   def age_in_weeks system_date = nil
     system_date ||= MessageDeliveries::SystemDate.new
     if pregnancy?(system_date)
@@ -78,6 +83,23 @@ class Child < ActiveRecord::Base
     }
   end
 
+  def self.recipients(profiles_with_priority)
+    eager_load(:profile).
+    where(donor: nil).
+    where.not(profiles: {profile_type: Profile.profile_types[:donor]}).
+    where(profiles: {id: profiles_with_priority})
+  end
+
+  def self.was_recipient(limit)
+    where.not(was_recipient_until: nil).
+    limit(limit)
+  end
+
+  def self.was_not_recipient(limit)
+    where(was_recipient_until: nil).
+    limit(limit)
+  end
+
   protected
 
   def maximum_permited_pregnancy_date?
@@ -103,7 +125,7 @@ class Child < ActiveRecord::Base
   end
 
   def recipient_profile?
-    return if profile.recipient?
+    return unless profile.donor?
     errors.add(:donor, :profile_donor)
   end
 

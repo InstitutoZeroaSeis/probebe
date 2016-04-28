@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328165920) do
+ActiveRecord::Schema.define(version: 20160424131319) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(version: 20160328165920) do
     t.string   "slug"
   end
 
-  add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
-  add_index "articles", ["cover_picture_id"], name: "index_articles_on_cover_picture_id", using: :btree
-  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
-  add_index "articles", ["thumb_picture_id"], name: "index_articles_on_thumb_picture_id", using: :btree
+  add_index "articles", ["category_id"], name: "index_articles_on_category_id"
+  add_index "articles", ["cover_picture_id"], name: "index_articles_on_cover_picture_id"
+  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true
+  add_index "articles", ["thumb_picture_id"], name: "index_articles_on_thumb_picture_id"
 
   create_table "articles_tags", id: false, force: true do |t|
     t.integer "article_id", null: false
@@ -120,8 +120,8 @@ ActiveRecord::Schema.define(version: 20160328165920) do
     t.boolean  "blog_section",                default: false
   end
 
-  add_index "categories", ["parent_category_id"], name: "index_categories_on_parent_category_id", using: :btree
-  add_index "categories", ["picture_id"], name: "index_categories_on_picture_id", using: :btree
+  add_index "categories", ["parent_category_id"], name: "index_categories_on_parent_category_id"
+  add_index "categories", ["picture_id"], name: "index_categories_on_picture_id"
 
   create_table "children", force: true do |t|
     t.string   "name"
@@ -149,8 +149,8 @@ ActiveRecord::Schema.define(version: 20160328165920) do
     t.integer  "old_id"
   end
 
-  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
-  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
 
   create_table "device_registrations", force: true do |t|
     t.string   "platform"
@@ -173,7 +173,15 @@ ActiveRecord::Schema.define(version: 20160328165920) do
     t.datetime "updated_at"
   end
 
-  add_index "donated_messages", ["message_delivery_id"], name: "index_donated_messages_on_message_delivery_id", using: :btree
+  add_index "donated_messages", ["message_delivery_id"], name: "index_donated_messages_on_message_delivery_id"
+
+  create_table "engines", force: true do |t|
+    t.boolean  "authorize_receive_sms",   default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "welcame_message"
+    t.text     "warning_message_donated"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -183,10 +191,10 @@ ActiveRecord::Schema.define(version: 20160328165920) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "message_deliveries", force: true do |t|
     t.integer  "message_id"
@@ -238,7 +246,7 @@ ActiveRecord::Schema.define(version: 20160328165920) do
     t.string   "slug"
   end
 
-  add_index "partners", ["slug"], name: "index_partners_on_slug", unique: true, using: :btree
+  add_index "partners", ["slug"], name: "index_partners_on_slug", unique: true
 
   create_table "profiles", force: true do |t|
     t.date     "birth_date"
@@ -264,7 +272,7 @@ ActiveRecord::Schema.define(version: 20160328165920) do
     t.boolean  "active",                         default: true
   end
 
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "rpush_apps", force: true do |t|
     t.string   "name",                                null: false
@@ -283,48 +291,48 @@ ActiveRecord::Schema.define(version: 20160328165920) do
   end
 
   create_table "rpush_feedback", force: true do |t|
-    t.string   "device_token", limit: 64, null: false
-    t.datetime "failed_at",               null: false
+    t.string   "device_token", limit: 64,  null: false
+    t.datetime "failed_at",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "app_id"
+    t.integer  "app_id",       limit: 255
   end
 
-  add_index "rpush_feedback", ["device_token"], name: "index_rpush_feedback_on_device_token", using: :btree
+  add_index "rpush_feedback", ["device_token"], name: "index_rpush_feedback_on_device_token"
 
   create_table "rpush_notifications", force: true do |t|
     t.integer  "badge"
     t.string   "device_token",      limit: 64
-    t.string   "sound",                              default: "default"
+    t.string   "sound",                         default: "default"
     t.string   "alert"
     t.text     "data"
-    t.integer  "expiry",                             default: 86400
-    t.boolean  "delivered",                          default: false,     null: false
+    t.integer  "expiry",                        default: 86400
+    t.boolean  "delivered",                     default: false,     null: false
     t.datetime "delivered_at"
-    t.boolean  "failed",                             default: false,     null: false
+    t.boolean  "failed",                        default: false,     null: false
     t.datetime "failed_at"
     t.integer  "error_code"
-    t.text     "error_description"
+    t.text     "error_description", limit: 255
     t.datetime "deliver_after"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "alert_is_json",                      default: false
-    t.string   "type",                                                   null: false
+    t.boolean  "alert_is_json",                 default: false
+    t.string   "type",                                              null: false
     t.string   "collapse_key"
-    t.boolean  "delay_while_idle",                   default: false,     null: false
-    t.text     "registration_ids",  limit: 16777215
-    t.integer  "app_id",                                                 null: false
-    t.integer  "retries",                            default: 0
+    t.boolean  "delay_while_idle",              default: false,     null: false
+    t.text     "registration_ids"
+    t.integer  "app_id",                                            null: false
+    t.integer  "retries",                       default: 0
     t.string   "uri"
     t.datetime "fail_after"
-    t.boolean  "processing",                         default: false,     null: false
+    t.boolean  "processing",                    default: false,     null: false
     t.integer  "priority"
     t.text     "url_args"
     t.string   "category"
   end
 
-  add_index "rpush_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi", using: :btree
-  add_index "rpush_notifications", ["delivered", "failed"], name: "index_rpush_notifications_multi", using: :btree
+  add_index "rpush_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi"
+  add_index "rpush_notifications", ["delivered", "failed"], name: "index_rpush_notifications_multi", where: "NOT delivered AND NOT failed"
 
   create_table "site_banners", force: true do |t|
     t.integer  "position"
@@ -340,7 +348,7 @@ ActiveRecord::Schema.define(version: 20160328165920) do
     t.integer  "picture_id"
   end
 
-  add_index "site_banners", ["picture_id"], name: "index_site_banners_on_picture_id", using: :btree
+  add_index "site_banners", ["picture_id"], name: "index_site_banners_on_picture_id"
 
   create_table "site_headers", force: true do |t|
     t.string   "path"
@@ -413,8 +421,8 @@ ActiveRecord::Schema.define(version: 20160328165920) do
     t.string   "search_column"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "versions", force: true do |t|
     t.string   "item_type",  null: false
@@ -425,6 +433,6 @@ ActiveRecord::Schema.define(version: 20160328165920) do
     t.datetime "created_at"
   end
 
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
 end
