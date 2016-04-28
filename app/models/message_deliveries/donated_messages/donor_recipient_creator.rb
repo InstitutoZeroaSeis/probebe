@@ -17,7 +17,7 @@ module MessageDeliveries
         children = self.recipient_children(children_qtd)
         children.each do |child|
           child.update_attributes(donor_id: profile.id, was_recipient_until: nil)
-          self.send_message_to_donated child
+          # self.send_message_to_donated child
         end
       end
 
