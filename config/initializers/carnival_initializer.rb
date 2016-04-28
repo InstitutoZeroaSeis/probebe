@@ -43,21 +43,32 @@ Carnival.configure do |config|
           link: '/admin/tags'
         },
         {
-          label: 'message_deliveries',
-          link: '/admin/message_deliveries'
-        },
-        {
           label: 'authors',
           link: '/admin/authors'
+        }
+      ]
+    },
+    sender: {
+      label: 'sender',
+      link: '/admin/engines',
+      class: 'administracao',
+      subs: [
+        {
+          label: 'Engine',
+          link: '/admin/engines'
+        },
+        {
+          label: 'Monitoramento de mensagens',
+          link: '/admin/manager_message_deliveries'
         },
         {
           label: 'birthday_card',
           link: '/admin/birthday_cards'
         },
         {
-          label: 'Monitoramento de mensagens',
-          link: '/admin/manager_message_deliveries'
-        }
+          label: 'message_deliveries',
+          link: '/admin/message_deliveries'
+        },
       ]
     },
     cms: {
@@ -92,10 +103,6 @@ Carnival.configure do |config|
         {
           label: 'Menu',
           link: '/admin/menus'
-        },
-        {
-          label: 'Engine',
-          link: '/admin/engines'
         }
 
       ]
