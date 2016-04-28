@@ -2,7 +2,6 @@
 
 .modal-signin.vzr-modal
   .sign-in
-    %h2 Pode Entrar
     .login-container
       = form_for User.new, url: user_session_path, remote: true do |f|
         %fieldset.footer-form-group
