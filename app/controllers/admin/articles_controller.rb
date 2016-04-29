@@ -54,7 +54,7 @@ class Admin::ArticlesController < Admin::AdminController
         :publishable, :cover_picture_id, :thumb_picture_id, :box, :minimum_valid_week,
         :maximum_valid_week, :tag_names,
         article_references_attributes: [:id, :source, :_destroy],
-        messages_attributes: [:id, :text, :_destroy]
+        messages_attributes: [:id, :text, :father_text, :_destroy]
       ).merge(user_id: current_user.id)
     ]
   end

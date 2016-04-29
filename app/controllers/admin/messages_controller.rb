@@ -13,6 +13,6 @@ class Admin::MessagesController < Admin::AdminController
   end
 
   def permitted_params
-    params.permit(message: [:text])
+    params.permit(message: [:text, :father_text])
   end
 end
