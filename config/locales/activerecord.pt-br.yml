@@ -170,7 +170,6 @@ pt-BR:
           base:
             maximum_permited_pregnancy_date: A data de gestação ultrapassará os 9 meses
             minimum_birth_date: A data de nascimento deve ser maior
-            maximum_birth_date: Só é possível cadastrar crianças até 18 meses
           attributes:
             donor:
               profile_donor: A mãe ja é uma doadora.
@@ -217,3 +216,5 @@ pt-BR:
       birthday_card: Cartão de Aniversário
       site/page: Página
       site/menu: Menu
+    message:
+      maximum_birth_date: Atenção! Quando seu bebê alcançar 18 meses de vida, as mensagens não mais serão enviadas. O ProBebê está programado para acompanhar, neste momento inicial, crianças com até 1 ano e 6 meses.

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   after_filter :set_csrf_cookie_for_ng
 
   before_action :utm_source
+  add_flash_types :timer
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to carnival_root_path, alert: exception.message

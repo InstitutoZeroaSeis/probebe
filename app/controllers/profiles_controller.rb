@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
                               change_omniauth_password: true,
                               profile_attributes: permitted_params.merge(id: @profile.id)
     end
-
+    show_maximun_birth_date_message
     Users::SmsMessageSender.send_completed_profile_msg(@user) if result
     result
   end
@@ -50,5 +50,14 @@ class ProfilesController < ApplicationController
     contact_attributes = [:state, :city, :street, :postal_code, :address_complement, :cell_phone]
 
     profile_params ? profile_params.permit(personal_attributes + mother_attributes + contact_attributes) : {}
+  end
+
+
+  def show_maximun_birth_date_message
+    invalid_age_in_weeks = @profile.children.select {|child| !child.valid_age_in_weeks? }
+    unless invalid_age_in_weeks.empty?
+      flash[:alert] = I18n.t('activerecord.message.maximum_birth_date')
+      flash[:timer] = "11000"
+    end
   end
 end

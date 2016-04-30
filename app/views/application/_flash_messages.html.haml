@@ -6,5 +6,7 @@
 - if alert
   :javascript
     $(document).ready(function() {
-      noty({ text: "#{alert}", layout: 'top', type: 'warning', timeout: '5000' });
+      var timeout = '5000';
+      if("#{timer}") timeout = #{timer};
+      noty({ text: "#{alert}", layout: 'top', type: 'warning', timeout: timeout });
     });
