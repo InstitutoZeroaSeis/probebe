@@ -92,6 +92,7 @@ Rails.application.routes.draw do
     resources :menus
     resources :engines
     resources :manager_message_deliveries, only: :index
+    resources :searchlogs
     get 'articles/:id/show_activity_log' => 'articles#show_activity_log'
     get 'site_users/:id/stop_impersonating' => 'site_users#stop_impersonating', as: :stop_impersonating
     get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile

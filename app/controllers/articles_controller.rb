@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @presenter = ArticlesPresenter.new(post_search_params, params[:order])
+    @presenter = ArticlesPresenter.new(post_search_params, params[:order], current_user)
   end
 
   def show
