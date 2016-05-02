@@ -56,6 +56,8 @@ pt-BR:
     authorized_receive_sms: Agora voce passara a receber as mensagens do ProBebe neste numero de celular. Para qualquer mudanca, volte ao site para alterar seu perfil.
     active_receive_msg: Sua conta no ProBebê foi reativada. Você passará a receber as mensagens novamente.
     disable_receive_msg: Sua conta no ProBebê foi suspensa. Quando desejar receber mensagens novamente volte ao seu perfil e habilite o envio
+    add_child: Agora é só cadastrar o bebê, abaixo, para começar a receber mensagens. É bem simples.
+    add_child_header: Estamos quase lá!
   contacts:
     thanks: Obrigado pela mensagem. Entraremos em contato com você.
     not_sent: Não foi possível enviar a mensagem. Tente mas tarde.
