@@ -22,8 +22,11 @@
     </noscript>
 
 %header.profile-form.container
+  = render 'profiles/edit/message_first_child', profile: @profile
+
+%header.profile-form.container
   %h3 Meu Perfil
-  %p Adicione filhos, edite telefone e-mail e dados pessoais aqui
+  %p Adicione Bebês, edite telefone e-mail e dados pessoais aqui
 
   .form-control-static
     - if @profile.active?

@@ -45,6 +45,10 @@ Carnival.configure do |config|
         {
           label: 'authors',
           link: '/admin/authors'
+        },
+        {
+          label: 'Pesquisas',
+          link: '/admin/searchlogs'
         }
       ]
     },

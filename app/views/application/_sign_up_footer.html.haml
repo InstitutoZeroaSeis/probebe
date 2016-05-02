@@ -1,24 +1,24 @@
 = javascript_include_tag 'sign_up'
-
-.footer-sign-up.container#sign-up
-  %h2 Faça seu cadastro
-  %section.footer-sign-up
-    = simple_form_for User.new,
-      url: user_registration_path,
-      remote: true,
-      wrapper: :custom_forms,
-      html: { class: 'sign-up-form', 'data-type' => 'json' } do |f|
-      %fieldset.footer-form-group
-        = f.simple_fields_for :profile, Profile.new, wrapper: :custom_forms do |p|
+- unless user_signed_in?
+  .footer-sign-up.container#sign-up
+    %h2 Faça seu cadastro
+    %section.footer-sign-up
+      = simple_form_for User.new,
+        url: user_registration_path,
+        remote: true,
+        wrapper: :custom_forms,
+        html: { class: 'sign-up-form', 'data-type' => 'json' } do |f|
+        %fieldset.footer-form-group
+          = f.simple_fields_for :profile, Profile.new, wrapper: :custom_forms do |p|
+            .col-md-6
+              = p.input :name, input_html: { class: 'name' }, wrapper_html: { class: 'name' }
+            .col-md-6= f.input :email
+          .col-md-6.senha= f.input :password
           .col-md-6
-            = p.input :name, input_html: { class: 'name' }, wrapper_html: { class: 'name' }
-          .col-md-6= f.input :email
-        .col-md-6.senha= f.input :password
-        .col-md-6
-          %button.btn.btn-default.footer-sign-up-button
-            Cadastrar-se
-        .col-md-6.senha= f.input :source, as: :hidden, input_html: { value: source }
-        .footer-sign-up-oauth.col-md-12
-          = render 'facebook_sign_up_button'
-          -# %span.footer-sign-up-or ou
-          = render 'google_sign_up_button'
+            %button.btn.btn-default.footer-sign-up-button
+              Cadastrar-se
+          .col-md-6.senha= f.input :source, as: :hidden, input_html: { value: source }
+          .footer-sign-up-oauth.col-md-12
+            = render 'facebook_sign_up_button'
+            -# %span.footer-sign-up-or ou
+            = render 'google_sign_up_button'

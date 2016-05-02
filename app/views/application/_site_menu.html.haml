@@ -19,14 +19,18 @@
                     %li= build_link_to(submenu)
 
           - if current_profile.present?
-            %li.dropdow
-              %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
-                = t('general.commom_words.my_children')
-                %span.caret
-              %ul.dropdown-menu{ role: 'menu' }
-                - current_profile.children.each do |child|
-                  - if child.persisted?
-                    %li= link_to child.name.present? ? child.name : l(child.birth_date), timeline_path(id: child.id)
+            - if !current_profile.children.empty?
+              %li.dropdow
+                %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
+                  = t('general.commom_words.my_children')
+                  %span.caret
+                %ul.dropdown-menu{ role: 'menu' }
+                  - current_profile.children.each do |child|
+                    - if child.persisted?
+                      %li= link_to child.name.present? ? child.name : l(child.birth_date), timeline_path(id: child.id)
+            - else
+              %li.dropdow
+                = link_to t('general.commom_words.add_baby'), edit_profile_path
 
           %li= link_to 'Artigos', articles_path
           - if Articles::Article.joins(:category).where('categories.blog_section = ?', true).size > 0
@@ -48,7 +52,7 @@
                     %span.glyphicon.glyphicon-off
                     %span= t('views.application.exit')
           - else
-            %li= link_to 'Login', '#', class: 'open-modal'
+            %li.margin-menu-user= link_to 'Login', '#', class: 'open-modal'
 
 
           %li

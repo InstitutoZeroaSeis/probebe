@@ -4,9 +4,10 @@ class ArticlesPresenter
 
   include Rails.application.routes.url_helpers
 
-  def initialize(article_params = {}, order)
+  def initialize(article_params = {}, order, current_user)
     @article_params = article_params
     @order = order
+    @current_user = current_user
     build_pager
   end
 
@@ -54,6 +55,7 @@ class ArticlesPresenter
 
   def articles_from_elasticsearch
     data = ActiveSupport::Inflector.transliterate(@article_params[:search])
+    Searchlog.create text: data, user: @current_user
     Articles::Article.search(data).page(current_page).records.to_a
       .select { |a| a.publishable? }
   end
