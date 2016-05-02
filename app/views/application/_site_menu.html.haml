@@ -35,7 +35,7 @@
 
         %ul.nav.navbar-nav.navbar-right
           - if current_profile
-            %li.dropdow
+            %li.dropdow.margin-menu-user
               %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
                 %span.glyphicon.glyphicon-user
                 = current_profile.name
@@ -48,7 +48,7 @@
                     %span.glyphicon.glyphicon-off
                     %span= t('views.application.exit')
           - else
-            %li= link_to 'Login', '#', class: 'open-modal'
+            %li.margin-menu-user= link_to 'Login', '#', class: 'open-modal'
 
 
           %li
