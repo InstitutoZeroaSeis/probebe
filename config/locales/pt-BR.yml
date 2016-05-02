@@ -33,6 +33,7 @@ pt-BR:
     user_email: Email do Autor
     view: Visualizar
     weeks: Semanas
+    add_baby: Adicionar um bebê
   _gender: &gender
     male: Masculino
     female: Feminino
