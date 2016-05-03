@@ -22,8 +22,9 @@ module Articles
     belongs_to :category
     belongs_to :original_author, class_name: 'Authors::Author'
     belongs_to :user
-    has_and_belongs_to_many :tags, after_add:    [ lambda { |a,c| a.__elasticsearch__.index_document } ],
-                                       after_remove: [ lambda { |a,c| a.__elasticsearch__.index_document } ]
+    has_and_belongs_to_many :tags
+    # has_and_belongs_to_many :tags, after_add:    [ lambda { |a,c| a.__elasticsearch__.index_document } ],
+    #                                    after_remove: [ lambda { |a,c| a.__elasticsearch__.index_document } ]
     has_many :article_references
     has_many :messages
 

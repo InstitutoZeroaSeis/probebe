@@ -31,7 +31,7 @@
             = link_to t('general.commom_words.add_baby'), edit_profile_path
       %ul.nav.navbar-nav.navbar-right
         - if current_profile
-          %li
+          %li.margin-menu-user
             %a{href: profile_path}
               %span.glyphicon.glyphicon-user
               = current_profile.name
