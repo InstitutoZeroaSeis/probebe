@@ -1,6 +1,7 @@
-.row
-  .col-md-12.col-sm-12.not-found-box
-    %h2
-      = t('profile_messages.add_child_header')
-    %p.text-first-child
-      = t('profile_messages.add_child')
+- if @profile.children.empty?
+  .row
+    .col-md-12.col-sm-12.not-found-box
+      %h2
+        = t('profile_messages.add_child_header')
+      %p.text-first-child
+        = t('profile_messages.add_child')
