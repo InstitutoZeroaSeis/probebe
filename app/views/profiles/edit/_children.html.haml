@@ -6,5 +6,9 @@
       - children_number += 1
       = render 'children/child_fields', f: ff, children_number: children_number
 
+
   %button.add_fields.add-children-button{ data: { fields: template_for_association(f, :children, 'children/child_fields') } }
     Adicionar bebê
+
+  .submit-update
+    = f.submit class: 'profile-form-save-button pull-right'

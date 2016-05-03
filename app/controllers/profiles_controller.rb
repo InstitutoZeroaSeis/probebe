@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
 
   def update
     if update_password_and_profile
+      show_maximun_birth_date_message
       sign_in @user, bypass: true
       redirect_to root_path
     else
@@ -33,7 +34,6 @@ class ProfilesController < ApplicationController
                               change_omniauth_password: true,
                               profile_attributes: permitted_params.merge(id: @profile.id)
     end
-    show_maximun_birth_date_message
     Users::SmsMessageSender.send_completed_profile_msg(@user) if result
     result
   end

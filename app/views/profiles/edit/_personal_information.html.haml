@@ -4,16 +4,53 @@
     .row
       - @profile.user.reload
       - if @profile.user.change_omniauth_password?
-        .col-sm-9= f.input :name
+        .col-sm-6= f.input :name
       - else
-        .col-sm-5= f.input :name
-        .col-sm-4
+        .col-sm-4= f.input :name
+        .col-sm-2
           .string
             %label.control-label
               Senha
             .form-input
               = text_field_tag('profile[user][password]', nil, class: 'form-control', type: 'password')
 
-      .col-sm-3
+      .col-sm-6
+        = f.input :cell_phone, input_html: { class: 'phone' }
+
+    .row.row-margin-top
+      .col-sm-6
         = render 'gender_radio_buttons',
                   form: f, options: @profile.options_to_gender_enum
+      .col-sm-6
+        %label.profile-form-block-label{:for => ""}
+          = @profile.cell_phone_system_text
+
+        = f.collection_radio_buttons :cell_phone_system,
+          @profile.options_to_cell_phone_system,
+          :first, :last,
+          item_wrapper_class: 'col-sm-4' do |b|
+          %label.radio-inline.profile-form-radio
+            = image_tag "#{b.value}-icon.svg"
+            = b.text
+            = b.radio_button
+            = tag(:span, class: 'custom-check-box')
+
+    .row.row-margin-top
+      .col-sm-12.col-xs-offset-9
+
+        .col-sm-3.store-ios.phone-stores-links
+          %label
+            Baixe nosso app na Apple Store
+          %a{href: 'https://itunes.apple.com/br/app/pro-bebe/id1033366874?mt=8', target: '_blank'}
+            = image_tag 'apple-store-icon.png'
+            Disponível na Apple Store
+
+        .col-sm-3.store-android.phone-stores-links
+          %label
+            Baixe nosso app na Google Play
+          %a{href: 'https://play.google.com/store/apps/details?id=br.org.probebe&hl=pt_BR', target: '_blank'}
+            = image_tag 'google-play.png'
+            Disponível na Google Play
+        .col-sm-3.store-other.phone-stores-links
+          %label
+            Caso seu celular não tenha o sistema IOS ou Android, você receberá as mensagens por SMS
