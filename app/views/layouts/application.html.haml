@@ -25,7 +25,10 @@
       - else
         = render 'site_landing_page'
     - else
-      = render 'site_header'
+      - if "#{params[:controller]}" == "profiles"
+        = render 'site_header_profile'
+      -else
+        = render 'site_header'
 
 
     %section.main.container-fuild
