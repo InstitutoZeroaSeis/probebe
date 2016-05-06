@@ -11,4 +11,14 @@ class Api::MessageDeliveriesController < ApplicationController
     head :ok
   end
 
+  def check_numbers
+    number = params[:number].sub /(\d{4})(\d{4})/, '\1-\2'
+    user = User.where("search_column like ?", "%#{number}%").first
+    if user.present?
+      donor = Profile.find(params[:donorId])
+      SmsResponse.create(donor: donor.user, recipient: user, text: params[:text])
+    end
+    head :ok
+  end
+
 end

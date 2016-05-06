@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502215745) do
+ActiveRecord::Schema.define(version: 20160506191621) do
 
   create_table "article_references", force: true do |t|
     t.string   "source"
@@ -402,6 +402,17 @@ ActiveRecord::Schema.define(version: 20160502215745) do
     t.datetime "updated_at"
     t.string   "slug"
   end
+
+  create_table "sms_responses", force: true do |t|
+    t.integer  "donor_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "text"
+  end
+
+  add_index "sms_responses", ["donor_id"], name: "index_sms_responses_on_donor_id", using: :btree
+  add_index "sms_responses", ["recipient_id"], name: "index_sms_responses_on_recipient_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"

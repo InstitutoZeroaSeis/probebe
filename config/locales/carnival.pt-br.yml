@@ -261,6 +261,10 @@ pt-BR:
         name: Nome
         position: Posição
         target_blank: Abrir em outra aba?
+      sms_response:
+        text: Texto
+        donor: Doador
+        recipient: Doada
     errors:
       template:
         header:

@@ -58,7 +58,7 @@ Carnival.configure do |config|
       class: 'administracao',
       subs: [
         {
-          label: 'Engine',
+          label: 'engine',
           link: '/admin/engines'
         },
         {
@@ -73,6 +73,10 @@ Carnival.configure do |config|
           label: 'message_deliveries',
           link: '/admin/message_deliveries'
         },
+        {
+          label: 'sms_responses',
+          link: '/admin/sms_responses'
+        }
       ]
     },
     cms: {

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :credentials, only: :create
     post 'credentials/update_social_network_id' => 'credentials#update_social_network_id'
+    post 'check_numbers' => 'message_deliveries#check_numbers'
     resources :device_registrations, only: [:create, :show, :destroy], id: /[^\/]+/, param: :platform_code
     resources :messages, only: :show
     resources :profiles, only: [:index]
@@ -93,6 +94,7 @@ Rails.application.routes.draw do
     resources :engines
     resources :manager_message_deliveries, only: :index
     resources :searchlogs
+    resources :sms_responses
     get 'articles/:id/show_activity_log' => 'articles#show_activity_log'
     get 'site_users/:id/stop_impersonating' => 'site_users#stop_impersonating', as: :stop_impersonating
     get 'admin_site_users/:id/edit_profile' => 'admin_site_users#edit_profile', as: :edit_profile

@@ -78,6 +78,8 @@ pt-BR:
       users: Usuários
       birthday_card: Cartão de Aniversário
       sender: Envios
+      engine: Engine
+      sms_responses: SMSs de Resposta
   controller:
     messages:
       could_not_sign_up_with_omniauth: Não foi possível realizar a autencação com o seu provedor

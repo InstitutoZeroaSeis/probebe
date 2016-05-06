@@ -14,6 +14,7 @@ class Api::CredentialsController < ApplicationController
       end
 
       if valid_hash[:valid]
+        valid_hash[:id] = user.profile.id
         valid_hash[:profile_type] = user.profile.profile_type
         valid_hash[:children] = user.profile.children
       end
