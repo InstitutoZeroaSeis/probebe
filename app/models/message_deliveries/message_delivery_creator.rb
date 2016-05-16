@@ -9,7 +9,13 @@ module MessageDeliveries
 
     def create_delivery_for(child)
       message = find_message_for_child(child)
-      create_message_delivery(child, message)
+      message_delivery = create_message_delivery(child, message)
+      if child.donor.present?
+        create_donated_message(child.donor, message_delivery)
+        return false
+      else
+        message_delivery
+      end
     end
 
     def create_deliveries_for (child)
