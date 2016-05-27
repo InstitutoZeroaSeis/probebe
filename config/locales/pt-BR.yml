@@ -53,7 +53,7 @@ pt-BR:
   profile_messages:
     completed_without_smartphone: Voce fez o cadastro do ProBebe. As mensagens vao ser enviadas por SMS para este numero. Aguarde um novo SMS indicando que o envio foi liberado.
     completed_with_smartphone: Voce fez o cadastro do ProBebe com sucesso. Entre na loja e baixe o aplicativo para começar a receber as mensagens.
-    authorized_receive_sms: Agora voce passara a receber as mensagens do ProBebe neste numero de celular. Para qualquer mudanca, volte ao site para alterar seu perfil.
+    authorized_receive_sms: ProBebe vai mandar as mensagens por SMS para este numero. Voce tambem pode receber baixando o aplicativo na loja do seu aparelho. Basta instalar o app e fazer o login para voce ter acesso a todas as mensagens e ao conteudo completo.
     active_receive_msg: Sua conta no ProBebê foi reativada. Você passará a receber as mensagens novamente.
     disable_receive_msg: Sua conta no ProBebê foi suspensa. Quando desejar receber mensagens novamente volte ao seu perfil e habilite o envio
     add_child: Agora é só cadastrar logo abaixo o seu bebê. E começar a receber nossas mensagens. É bem simples!
