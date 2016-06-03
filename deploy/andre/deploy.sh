@@ -11,7 +11,7 @@ FILE_NAME=deploy-${APP_VERSION}.zip
 
 
 echo "Building Docker Image..."
-docker build -t vizir/probebe:staging -f docker/web_staging/Dockerfile .
+docker build -t vizir/probebe:staging -f docker/web_production/Dockerfile .
 echo "Pushing Docker Image..."
 docker push vizir/probebe:staging
 
