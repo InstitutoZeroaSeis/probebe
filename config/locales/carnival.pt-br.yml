@@ -280,7 +280,7 @@ pt-BR:
         empty: "não pode ser vazio"
         blank: "não pode ser vazio"
         too_long: "é muito longo (não mais do que %{count} caracteres)"
-        too_short: "é muito curto (não menos do que %{count} caracteres)"
+        too_short: "é muito curta (não menos do que %{count} caracteres)"
         wrong_length: "não é do tamanho correto (precisa ter %{count} caracteres)"
         taken: "não está disponível"
         not_a_number: "não é um número"

@@ -32,6 +32,7 @@
 /public/ckeditor_assets
 /provisioning/roles/*
 /dump.sql
+/etc/*
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
