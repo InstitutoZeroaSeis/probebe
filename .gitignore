@@ -33,6 +33,7 @@
 /provisioning/roles/*
 /dump.sql
 /etc/*
+.idea
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
