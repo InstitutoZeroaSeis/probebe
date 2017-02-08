@@ -12,9 +12,9 @@ web:
   command: bundle exec rails s --pid=/tmp/server.pid
   environment:
     VIRTUAL_HOST: web.probebe.dev
-    ZENVIA_ACCOUNT: zeroaseis.connectweb
-    ZENVIA_PASSWORD: 206Opr3Cu6
-    TELEIN_KEY: 19cbe523ebe3ee759d67
+    ZENVIA_ACCOUNT: ''
+    ZENVIA_PASSWORD: ''
+    TELEIN_KEY: ''
     AWS_REGION: us-east-1
   links:
     - db
@@ -55,4 +55,3 @@ elasticsearch:
   ports:
     - "9200:9200"
     - "9300:9300"
-
