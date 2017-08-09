@@ -6,7 +6,7 @@ module MessageDeliveries
 
     def send_to_device
       if @message_delivery.sms_allowed? and @message_delivery.child.device_registrations.empty?
-        deliver_through_sms
+        # deliver_through_sms
       else
         deliver_through_app
       end
