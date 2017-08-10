@@ -6,13 +6,10 @@ ENV RAILS_ENV production
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y \
-  cron \
-  python-pip
+  cron supervisor
 
 RUN echo America/Sao_Paulo > /etc/timezone && \
     dpkg-reconfigure --frontend noninteractive tzdata
-
-RUN pip install supervisor
 
 RUN gem install foreman
 
