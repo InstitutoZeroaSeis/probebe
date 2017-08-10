@@ -23,9 +23,11 @@ echo "Registrating uploaded file as a Beanstalk version"
 aws elasticbeanstalk create-application-version --application-name $APP_NAME \
   --description "$APP_VERSION_DESCRIPTION" \
   --version-label "$APP_VERSION" \
+  --region "us-east-1" \
   --source-bundle "S3Bucket=$S3_BUCKET,S3Key=$FILE_NAME"
 
 echo "Deploy to Beanstalk"
 aws elasticbeanstalk update-environment \
-  --environment-name production-docker \
+  --application-name "probebe-docker" \
+  --environment-name "probebe-production" \
   --version-label "$APP_VERSION"

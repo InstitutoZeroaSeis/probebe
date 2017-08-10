@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Authentication": {
-    "Bucket": "probebe",
+    "Bucket": "elasticbeanstalk-us-east-1-505000041159",
     "Key": ".dockercfg"
   },
   "Image": {
